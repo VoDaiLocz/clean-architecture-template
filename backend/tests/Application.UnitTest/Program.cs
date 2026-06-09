@@ -1,0 +1,151 @@
+using Application.Features.Dashboard.Queries;
+using Application.Features.LearningItems.Commands;
+using Domain.Aggregates.LearningItems;
+using Infrastructure.Data;
+
+var tests = new List<(string Name, Action Run)>
+{
+    ("valid Part 5 item publishes", ApplicationTests.ValidPart5ItemPublishes),
+    ("invalid answer is rejected before persistence", ApplicationTests.InvalidAnswerIsRejectedBeforePersistence),
+    ("low confidence goes to review issues", ApplicationTests.LowConfidenceGoesToReview),
+    ("dashboard reports raw learning and issue counts", ApplicationTests.DashboardReportsCounts),
+};
+
+var failed = 0;
+foreach (var test in tests)
+{
+    try
+    {
+        test.Run();
+        Console.WriteLine($"PASS {test.Name}");
+    }
+    catch (Exception ex)
+    {
+        failed++;
+        Console.Error.WriteLine($"FAIL {test.Name}: {ex.Message}");
+    }
+}
+
+if (failed > 0)
+{
+    Console.Error.WriteLine($"{failed} test(s) failed.");
+    return 1;
+}
+
+Console.WriteLine($"{tests.Count} tests passed.");
+return 0;
+
+static class ApplicationTests
+{
+    public static void ValidPart5ItemPublishes()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var handler = new PublishLearningItemHandler(repository);
+
+        var response = handler.Handle(new PublishLearningItemCommand(TestItems.ValidPart5Question()));
+
+        Assert.True(response.CanPublish, "Valid item should publish.");
+        Assert.Equal(1, repository.Count("learning_items"), "Expected one learning item.");
+        Assert.Equal(0, repository.Count("validation_issues"), "Valid item should not create issues.");
+    }
+
+    public static void InvalidAnswerIsRejectedBeforePersistence()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var handler = new PublishLearningItemHandler(repository);
+        var item = TestItems.ValidPart5Question() with { CorrectAnswer = "E" };
+
+        var response = handler.Handle(new PublishLearningItemCommand(item));
+
+        Assert.False(response.CanPublish, "Invalid answer must not publish.");
+        Assert.Equal(0, repository.Count("learning_items"), "Invalid item must not reach learning table.");
+        Assert.Equal(1, repository.Count("validation_issues"), "Validation issue should be stored.");
+        Assert.Contains(response.IssueCodes, "answer_not_in_options");
+    }
+
+    public static void LowConfidenceGoesToReview()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var handler = new PublishLearningItemHandler(repository);
+        var item = TestItems.ValidPart5Question() with { Confidence = 0.62m };
+
+        var response = handler.Handle(new PublishLearningItemCommand(item));
+
+        Assert.False(response.CanPublish, "Low-confidence item must not publish.");
+        Assert.True(response.NeedsReview, "Low-confidence item should need review.");
+        Assert.Contains(response.IssueCodes, "low_confidence");
+    }
+
+    public static void DashboardReportsCounts()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        repository.InsertRawSource("sheet-row-1", "Từ vựng Part 2", "https://drive.google.com/file/d/example/view", "opens");
+        var publishHandler = new PublishLearningItemHandler(repository);
+        publishHandler.Handle(new PublishLearningItemCommand(TestItems.ValidPart5Question()));
+        publishHandler.Handle(new PublishLearningItemCommand(TestItems.ValidPart5Question() with { CorrectAnswer = "E" }));
+        var dashboardHandler = new GetDashboardHandler(repository);
+
+        var response = dashboardHandler.Handle();
+
+        Assert.Equal(1, response.RawSourceCount, "Expected one raw source.");
+        Assert.Equal(1, response.LearningItemCount, "Expected one learning item.");
+        Assert.Equal(1, response.ValidationIssueCount, "Expected one validation issue.");
+    }
+}
+
+static class TestItems
+{
+    public static DraftLearningItem ValidPart5Question() => new(
+        ItemType: LearningItemType.Question,
+        Skill: ToeicSkill.Reading,
+        Part: 5,
+        Prompt: "The manager ____ the report yesterday.",
+        Options: new Dictionary<string, string>
+        {
+            ["A"] = "submit",
+            ["B"] = "submitted",
+            ["C"] = "submitting",
+            ["D"] = "submission",
+        },
+        CorrectAnswer: "B",
+        Explanation: "Yesterday requires the past tense form.",
+        SourceRef: new SourceRef("sheet-row-1", "drive-file-1", 12, "p12-b3"),
+        Confidence: 0.92m,
+        GroupRef: null,
+        Word: "",
+        Meaning: ""
+    );
+}
+
+static class Assert
+{
+    public static void True(bool condition, string message)
+    {
+        if (!condition) throw new InvalidOperationException(message);
+    }
+
+    public static void False(bool condition, string message)
+    {
+        if (condition) throw new InvalidOperationException(message);
+    }
+
+    public static void Equal<T>(T expected, T actual, string message)
+    {
+        if (!EqualityComparer<T>.Default.Equals(expected, actual))
+        {
+            throw new InvalidOperationException($"{message} Expected {expected}, got {actual}.");
+        }
+    }
+
+    public static void Contains(IEnumerable<string> values, string expected)
+    {
+        if (!values.Contains(expected, StringComparer.Ordinal))
+        {
+            throw new InvalidOperationException($"Expected value {expected}.");
+        }
+    }
+}
