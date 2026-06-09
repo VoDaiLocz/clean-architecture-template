@@ -5,11 +5,16 @@ using Application.Features.LearningItems.Commands;
 using Domain.Aggregates.LearningItems;
 using Infrastructure;
 using Microsoft.AspNetCore.Http.HttpResults;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddApplicationDependencies(builder.Configuration);
 builder.Services.AddInfrastructureDependencies(builder.Configuration);
+builder.Services.ConfigureHttpJsonOptions(options =>
+{
+    options.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
+});
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(
