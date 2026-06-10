@@ -1,5 +1,6 @@
 using Application.Features.Dashboard.Queries;
 using Application.Features.LearningItems.Commands;
+using Application.Features.SourceManifests;
 using Domain.Aggregates.Corpus;
 using Domain.Aggregates.LearnerProgress;
 using Domain.Aggregates.LearningItems;
@@ -14,6 +15,7 @@ var tests = new List<(string Name, Action Run)>
     ("dashboard reports corpus coverage without pretending backlog is published", ApplicationTests.DashboardReportsCorpusCoverage),
     ("source manifest classifier identifies provider material and access status", ApplicationTests.SourceManifestClassifierIdentifiesProviderMaterialAndAccessStatus),
     ("repository persists normalized source manifest entries", ApplicationTests.RepositoryPersistsNormalizedSourceManifestEntries),
+    ("imports audited TOEIC source manifest into database", ApplicationTests.ImportsAuditedToeicSourceManifestIntoDatabase),
     ("learner cannot unlock next unit until mastery gates pass", ApplicationTests.LearnerCannotUnlockNextUnitUntilMasteryGatesPass),
 };
 
@@ -198,6 +200,27 @@ static class ApplicationTests
         Assert.Equal(1, summary.DriveFolders, "Expected one Drive folder.");
         Assert.Equal(1, summary.SourcesWithAudio, "Expected audio count.");
         Assert.Equal(1, summary.SourcesWithAnswerKey, "Expected answer-key count.");
+    }
+
+    public static void ImportsAuditedToeicSourceManifestIntoDatabase()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var handler = new ImportToeicSourceManifestHandler(repository);
+
+        var result = handler.Handle();
+
+        Assert.Equal(73, result.ImportedCount, "Expected all audited source rows imported.");
+        Assert.Equal(13, result.BlockedCount, "Expected blocked source count from audit.");
+        Assert.Equal(33, result.SourcesWithPdf, "Expected PDF evidence count from audit.");
+        Assert.Equal(20, result.SourcesWithAudio, "Expected audio evidence count from audit.");
+        Assert.Equal(6, result.SourcesWithTranscript, "Expected transcript evidence count from audit.");
+        Assert.Equal(5, result.SourcesWithAnswerKey, "Expected answer-key evidence count from audit.");
+        Assert.Equal(73, repository.Count("source_manifest_entries"), "Expected DB rows.");
+        var summary = new GetSourceManifestSummaryHandler(repository).Handle();
+        Assert.Equal(36, summary.DriveFolders, "Expected Drive folder count from audit.");
+        Assert.Equal(14, summary.DriveFiles, "Expected Drive file count from audit.");
+        Assert.Equal(4, summary.Shortlinks, "Expected shortlink count from audit.");
     }
 
     public static void LearnerCannotUnlockNextUnitUntilMasteryGatesPass()
