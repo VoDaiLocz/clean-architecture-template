@@ -1,6 +1,7 @@
 using Application.Features.Dashboard.Queries;
 using Application.Features.LearningItems.Commands;
 using Domain.Aggregates.Corpus;
+using Domain.Aggregates.LearnerProgress;
 using Domain.Aggregates.LearningItems;
 using Infrastructure.Data;
 
@@ -11,6 +12,7 @@ var tests = new List<(string Name, Action Run)>
     ("low confidence goes to review issues", ApplicationTests.LowConfidenceGoesToReview),
     ("dashboard reports raw learning and issue counts", ApplicationTests.DashboardReportsCounts),
     ("dashboard reports corpus coverage without pretending backlog is published", ApplicationTests.DashboardReportsCorpusCoverage),
+    ("learner cannot unlock next unit until mastery gates pass", ApplicationTests.LearnerCannotUnlockNextUnitUntilMasteryGatesPass),
 };
 
 var failed = 0;
@@ -126,6 +128,48 @@ static class ApplicationTests
         Assert.True(response.NormalizationStages.Count >= 5, "Expected full stage coverage rows.");
         var inventoryStage = response.NormalizationStages.Single(stage => stage.StageKey == "inventory");
         Assert.Equal(932, inventoryStage.CompletedCount, "Expected completed inventory count.");
+    }
+
+    public static void LearnerCannotUnlockNextUnitUntilMasteryGatesPass()
+    {
+        var catalog = LearningPathCatalog.CreateDefault();
+        var state = LearnerState.Start("learner-1", catalog);
+        var engine = new LearningProgressEngine(catalog);
+
+        var nextAccessBeforeWork = engine.GetUnitAccess(state, "part5-verb-tense");
+        Assert.False(nextAccessBeforeWork.CanStart, "Next unit must be locked before the current unit is mastered.");
+        Assert.Contains(nextAccessBeforeWork.ReasonCodes, "previous_unit_incomplete");
+
+        engine.RecordLessonViewed(state, "part5-word-form");
+        engine.RecordDrillCompleted(state, "part5-word-form", correctCount: 15, totalCount: 15);
+        var failedMiniTest = engine.RecordMiniTestAttempt(
+            state,
+            "part5-word-form",
+            correctCount: 7,
+            totalCount: 10,
+            wrongItemIds: ["p5-word-form-007"],
+            errorTag: "word_form"
+        );
+
+        Assert.False(failedMiniTest.UnitCompleted, "A 70 percent mini test must not complete the unit.");
+        Assert.Equal(1, state.ReviewQueue.Count, "Wrong mini-test item should create one review item.");
+        var accessAfterFailedTest = engine.GetUnitAccess(state, "part5-verb-tense");
+        Assert.False(accessAfterFailedTest.CanStart, "Next unit must remain locked after failed mini test.");
+        Assert.Contains(accessAfterFailedTest.ReasonCodes, "previous_unit_incomplete");
+
+        engine.RecordReviewCompleted(state, state.ReviewQueue.Single().ReviewItemId);
+        var passedMiniTest = engine.RecordMiniTestAttempt(
+            state,
+            "part5-word-form",
+            correctCount: 9,
+            totalCount: 10,
+            wrongItemIds: [],
+            errorTag: "word_form"
+        );
+
+        Assert.True(passedMiniTest.UnitCompleted, "Unit should complete after lesson, drill, review, and passing mini test.");
+        var nextAccessAfterMastery = engine.GetUnitAccess(state, "part5-verb-tense");
+        Assert.True(nextAccessAfterMastery.CanStart, "Next unit should unlock after mastery gates pass.");
     }
 }
 

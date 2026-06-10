@@ -2,6 +2,7 @@ using Application;
 using Application.Common.Interfaces.Repositories;
 using Application.Features.Dashboard.Queries;
 using Application.Features.LearningItems.Commands;
+using Application.Features.Learner;
 using Domain.Aggregates.LearningItems;
 using Infrastructure;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -28,6 +29,7 @@ var app = builder.Build();
 app.UseCors("frontend");
 
 var api = app.MapGroup("/api");
+var learner = api.MapGroup("/learner");
 
 api.MapGet(
     "/dashboard",
@@ -61,6 +63,86 @@ api.MapPost(
         var response = handler.Handle(new PublishLearningItemCommand(request.ToDraftLearningItem()));
 
         return response.CanPublish ? TypedResults.Ok(response) : TypedResults.BadRequest(response);
+    }
+);
+
+learner.MapPost(
+    "/demo/reset",
+    NoContent (DemoLearnerSession session) =>
+    {
+        session.Reset();
+        return TypedResults.NoContent();
+    }
+);
+
+learner.MapGet(
+    "/home",
+    Ok<LearnerHomeResponse> (DemoLearnerSession session) =>
+    {
+        return TypedResults.Ok(session.GetHome());
+    }
+);
+
+learner.MapGet(
+    "/activities/{activityId}",
+    Results<Ok<LearnerActivityResponse>, NotFound> (
+        string activityId,
+        DemoLearnerSession session
+    ) =>
+    {
+        try
+        {
+            return TypedResults.Ok(session.GetActivity(activityId));
+        }
+        catch (ArgumentException)
+        {
+            return TypedResults.NotFound();
+        }
+    }
+);
+
+learner.MapPost(
+    "/activities/{activityId}/attempts",
+    Results<Ok<AttemptResponse>, NotFound> (
+        string activityId,
+        LearnerAttemptRequest request,
+        DemoLearnerSession session
+    ) =>
+    {
+        try
+        {
+            return TypedResults.Ok(session.SubmitActivityAttempt(activityId, request));
+        }
+        catch (ArgumentException)
+        {
+            return TypedResults.NotFound();
+        }
+    }
+);
+
+learner.MapGet(
+    "/review",
+    Ok<IReadOnlyList<LearnerReviewItemResponse>> (DemoLearnerSession session) =>
+    {
+        return TypedResults.Ok(session.GetReview());
+    }
+);
+
+learner.MapPost(
+    "/review/{reviewItemId}/attempts",
+    Results<Ok<AttemptResponse>, NotFound> (
+        string reviewItemId,
+        DemoLearnerSession session
+    ) =>
+    {
+        try
+        {
+            return TypedResults.Ok(session.SubmitReviewAttempt(reviewItemId));
+        }
+        catch (InvalidOperationException)
+        {
+            return TypedResults.NotFound();
+        }
     }
 );
 

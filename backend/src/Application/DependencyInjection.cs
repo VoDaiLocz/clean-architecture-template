@@ -1,3 +1,4 @@
+using Application.Features.Learner;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,6 +12,7 @@ public static class DependencyInjection
     )
     {
         _ = configuration;
+        services.AddSingleton<DemoLearnerSession>();
         return services;
     }
 }
