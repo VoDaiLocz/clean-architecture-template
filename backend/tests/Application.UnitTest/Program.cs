@@ -1,5 +1,6 @@
 using Application.Features.Dashboard.Queries;
 using Application.Features.LearningItems.Commands;
+using Domain.Aggregates.Corpus;
 using Domain.Aggregates.LearningItems;
 using Infrastructure.Data;
 
@@ -9,6 +10,7 @@ var tests = new List<(string Name, Action Run)>
     ("invalid answer is rejected before persistence", ApplicationTests.InvalidAnswerIsRejectedBeforePersistence),
     ("low confidence goes to review issues", ApplicationTests.LowConfidenceGoesToReview),
     ("dashboard reports raw learning and issue counts", ApplicationTests.DashboardReportsCounts),
+    ("dashboard reports corpus coverage without pretending backlog is published", ApplicationTests.DashboardReportsCorpusCoverage),
 };
 
 var failed = 0;
@@ -94,6 +96,36 @@ static class ApplicationTests
         Assert.Equal(1, response.RawSourceCount, "Expected one raw source.");
         Assert.Equal(1, response.LearningItemCount, "Expected one learning item.");
         Assert.Equal(1, response.ValidationIssueCount, "Expected one validation issue.");
+    }
+
+    public static void DashboardReportsCorpusCoverage()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        repository.UpsertCorpusManifest(new CorpusManifest(
+            CorpusId: "toeic-master",
+            Title: "TOEIC Google Sheet + PDF book library",
+            SheetTabs: 3,
+            SheetRows: 18000,
+            PdfBooks: 64,
+            PdfPages: 12800,
+            AudioFiles: 0,
+            TargetLearningItems: 54000
+        ));
+        repository.UpsertNormalizationStage(new NormalizationStageSnapshot("inventory", "Inventory scan", 18867, 932, 0));
+        repository.UpsertNormalizationStage(new NormalizationStageSnapshot("extraction", "Text extraction", 12800, 418, 21));
+        var publishHandler = new PublishLearningItemHandler(repository);
+        publishHandler.Handle(new PublishLearningItemCommand(TestItems.ValidPart5Question()));
+
+        var response = new GetDashboardHandler(repository).Handle();
+
+        Assert.Equal(3, response.Corpus.SheetTabs, "Expected imported sheet tab plan.");
+        Assert.Equal(64, response.Corpus.PdfBooks, "Expected PDF book backlog.");
+        Assert.Equal(54000, response.Corpus.TargetLearningItems, "Expected corpus-scale target.");
+        Assert.Equal(1, response.LearningItemCount, "Backlog must not inflate published learning items.");
+        Assert.True(response.NormalizationStages.Count >= 5, "Expected full stage coverage rows.");
+        var inventoryStage = response.NormalizationStages.Single(stage => stage.StageKey == "inventory");
+        Assert.Equal(932, inventoryStage.CompletedCount, "Expected completed inventory count.");
     }
 }
 
