@@ -16,6 +16,7 @@ __pycache__/
 
 # Local browser/debug artifacts
 .playwright-mcp/
+test-results/
 
 # Local databases and environment
 *.db
