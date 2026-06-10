@@ -7,7 +7,7 @@
     "dev": "vite --host 0.0.0.0",
     "test:catalog": "node --test tests/studyCatalog.test.mjs",
     "test:e2e:api": "node --test ../backend/tests/EndUser.SmokeTest/learner-flow.test.mjs",
-    "test:e2e:browser": "playwright test tests/e2e/learner-flow.spec.ts --project=chromium",
+    "test:e2e:browser": "playwright test tests/e2e --project=chromium",
     "build": "tsc && vite build",
     "preview": "vite preview --host 0.0.0.0"
   },
