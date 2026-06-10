@@ -8,7 +8,8 @@ public sealed record DashboardResponse(
     int LearningItemCount,
     int ValidationIssueCount,
     CorpusManifest Corpus,
-    IReadOnlyList<NormalizationStageSnapshot> NormalizationStages
+    IReadOnlyList<NormalizationStageSnapshot> NormalizationStages,
+    SourceManifestSummary SourceManifest
 );
 
 public sealed class GetDashboardHandler(IKnowledgeRepository repository)
@@ -20,7 +21,8 @@ public sealed class GetDashboardHandler(IKnowledgeRepository repository)
             repository.Count("learning_items"),
             repository.Count("validation_issues"),
             repository.GetCorpusManifest(),
-            repository.GetNormalizationStages()
+            repository.GetNormalizationStages(),
+            repository.GetSourceManifestSummary()
         );
     }
 }

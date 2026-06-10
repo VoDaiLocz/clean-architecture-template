@@ -3,6 +3,8 @@ using Application.Common.Interfaces.Repositories;
 using Application.Features.Dashboard.Queries;
 using Application.Features.LearningItems.Commands;
 using Application.Features.Learner;
+using Application.Features.SourceManifests;
+using Domain.Aggregates.Corpus;
 using Domain.Aggregates.LearningItems;
 using Infrastructure;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -36,6 +38,24 @@ api.MapGet(
     Ok<DashboardResponse> (IKnowledgeRepository repository) =>
     {
         var handler = new GetDashboardHandler(repository);
+        return TypedResults.Ok(handler.Handle());
+    }
+);
+
+api.MapPost(
+    "/source-manifest/toeic-audit",
+    Ok<ImportToeicSourceManifestResult> (IKnowledgeRepository repository) =>
+    {
+        var handler = new ImportToeicSourceManifestHandler(repository);
+        return TypedResults.Ok(handler.Handle());
+    }
+);
+
+api.MapGet(
+    "/source-manifest/summary",
+    Ok<SourceManifestSummary> (IKnowledgeRepository repository) =>
+    {
+        var handler = new GetSourceManifestSummaryHandler(repository);
         return TypedResults.Ok(handler.Handle());
     }
 );

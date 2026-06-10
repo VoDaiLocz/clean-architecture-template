@@ -16,6 +16,7 @@ var tests = new List<(string Name, Action Run)>
     ("source manifest classifier identifies provider material and access status", ApplicationTests.SourceManifestClassifierIdentifiesProviderMaterialAndAccessStatus),
     ("repository persists normalized source manifest entries", ApplicationTests.RepositoryPersistsNormalizedSourceManifestEntries),
     ("imports audited TOEIC source manifest into database", ApplicationTests.ImportsAuditedToeicSourceManifestIntoDatabase),
+    ("dashboard includes normalized source manifest summary", ApplicationTests.DashboardIncludesNormalizedSourceManifestSummary),
     ("learner cannot unlock next unit until mastery gates pass", ApplicationTests.LearnerCannotUnlockNextUnitUntilMasteryGatesPass),
 };
 
@@ -221,6 +222,19 @@ static class ApplicationTests
         Assert.Equal(36, summary.DriveFolders, "Expected Drive folder count from audit.");
         Assert.Equal(14, summary.DriveFiles, "Expected Drive file count from audit.");
         Assert.Equal(4, summary.Shortlinks, "Expected shortlink count from audit.");
+    }
+
+    public static void DashboardIncludesNormalizedSourceManifestSummary()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        new ImportToeicSourceManifestHandler(repository).Handle();
+
+        var response = new GetDashboardHandler(repository).Handle();
+
+        Assert.Equal(73, response.SourceManifest.TotalSources, "Dashboard should show normalized source inventory.");
+        Assert.Equal(13, response.SourceManifest.BlockedSources, "Dashboard should show blocked source count.");
+        Assert.Equal(36, response.SourceManifest.DriveFolders, "Dashboard should show Drive folder count.");
     }
 
     public static void LearnerCannotUnlockNextUnitUntilMasteryGatesPass()
