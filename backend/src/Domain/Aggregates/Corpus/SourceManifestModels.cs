@@ -60,3 +60,27 @@ public sealed record SourceManifestEntry(
     SourceEvidenceFlags Evidence,
     string AuditNotes
 );
+
+public sealed record SourceManifestSummary(
+    int TotalSources,
+    int AccessibleSources,
+    int BlockedSources,
+    int DriveFiles,
+    int DriveFolders,
+    int GoogleSheets,
+    int GoogleDocs,
+    int SharePointSources,
+    int Shortlinks,
+    int ExternalWebSources,
+    int TestBooks,
+    int SkillBooks,
+    int VocabularySources,
+    int RoadmapSources,
+    int SpeakingWritingSources,
+    int GrammarReferenceSources,
+    int SourcesWithPdf,
+    int SourcesWithAudio,
+    int SourcesWithImage,
+    int SourcesWithTranscript,
+    int SourcesWithAnswerKey
+);

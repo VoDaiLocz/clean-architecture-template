@@ -9,6 +9,12 @@ public interface IKnowledgeRepository
 
     void InsertRawSource(string sourceId, string title, string url, string status);
 
+    void UpsertSourceManifestEntry(SourceManifestEntry entry);
+
+    IReadOnlyList<SourceManifestEntry> GetSourceManifestEntries();
+
+    SourceManifestSummary GetSourceManifestSummary();
+
     void UpsertCorpusManifest(CorpusManifest manifest);
 
     void UpsertNormalizationStage(NormalizationStageSnapshot stage);

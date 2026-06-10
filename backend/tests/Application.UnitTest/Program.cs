@@ -13,6 +13,7 @@ var tests = new List<(string Name, Action Run)>
     ("dashboard reports raw learning and issue counts", ApplicationTests.DashboardReportsCounts),
     ("dashboard reports corpus coverage without pretending backlog is published", ApplicationTests.DashboardReportsCorpusCoverage),
     ("source manifest classifier identifies provider material and access status", ApplicationTests.SourceManifestClassifierIdentifiesProviderMaterialAndAccessStatus),
+    ("repository persists normalized source manifest entries", ApplicationTests.RepositoryPersistsNormalizedSourceManifestEntries),
     ("learner cannot unlock next unit until mastery gates pass", ApplicationTests.LearnerCannotUnlockNextUnitUntilMasteryGatesPass),
 };
 
@@ -167,6 +168,36 @@ static class ApplicationTests
 
         Assert.Equal(SourceAccessStatus.AccessBlocked, blockedGrammar.AccessStatus, "Blocked source must be explicit.");
         Assert.Equal(MaterialClass.GrammarReference, blockedGrammar.PrimaryMaterialClass, "Grammar book should not become test bank.");
+    }
+
+    public static void RepositoryPersistsNormalizedSourceManifestEntries()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var entry = SourceManifestClassifier.Classify(
+            7,
+            "SPARTA TOEIC ( quyển hồng - 10TEST )",
+            "https://drive.google.com/drive/folders/1oHUHYyEQ0T5H-rl_fXHMjljV4lGKCRB-",
+            inaccessible: false,
+            hasPdf: true,
+            hasAudio: true,
+            hasTranscript: true,
+            hasAnswerKey: true,
+            hasImage: false
+        );
+
+        repository.UpsertSourceManifestEntry(entry);
+
+        Assert.Equal(1, repository.Count("source_manifest_entries"), "Expected one normalized source row.");
+        var entries = repository.GetSourceManifestEntries();
+        Assert.Equal(1, entries.Count, "Expected one source manifest entry.");
+        Assert.Equal("sheet-row-7", entries.Single().SourceId, "Expected stable source id.");
+        var summary = repository.GetSourceManifestSummary();
+        Assert.Equal(1, summary.TotalSources, "Expected one total source.");
+        Assert.Equal(1, summary.AccessibleSources, "Expected one accessible source.");
+        Assert.Equal(1, summary.DriveFolders, "Expected one Drive folder.");
+        Assert.Equal(1, summary.SourcesWithAudio, "Expected audio count.");
+        Assert.Equal(1, summary.SourcesWithAnswerKey, "Expected answer-key count.");
     }
 
     public static void LearnerCannotUnlockNextUnitUntilMasteryGatesPass()

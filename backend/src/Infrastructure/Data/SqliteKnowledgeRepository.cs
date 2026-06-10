@@ -41,6 +41,23 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
                 status TEXT NOT NULL
             );
 
+            CREATE TABLE IF NOT EXISTS source_manifest_entries (
+                source_id TEXT PRIMARY KEY,
+                sheet_row_number INTEGER NOT NULL,
+                title TEXT NOT NULL,
+                url TEXT NOT NULL,
+                provider TEXT NOT NULL,
+                source_type TEXT NOT NULL,
+                material_class TEXT NOT NULL,
+                access_status TEXT NOT NULL,
+                has_pdf INTEGER NOT NULL,
+                has_audio INTEGER NOT NULL,
+                has_image INTEGER NOT NULL,
+                has_transcript INTEGER NOT NULL,
+                has_answer_key INTEGER NOT NULL,
+                audit_notes TEXT NOT NULL
+            );
+
             CREATE TABLE IF NOT EXISTS learning_items (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 item_type TEXT NOT NULL,
@@ -103,6 +120,137 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         command.Parameters.AddWithValue("$url", url);
         command.Parameters.AddWithValue("$status", status);
         command.ExecuteNonQuery();
+    }
+
+    public void UpsertSourceManifestEntry(SourceManifestEntry entry)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO source_manifest_entries (
+                source_id,
+                sheet_row_number,
+                title,
+                url,
+                provider,
+                source_type,
+                material_class,
+                access_status,
+                has_pdf,
+                has_audio,
+                has_image,
+                has_transcript,
+                has_answer_key,
+                audit_notes
+            )
+            VALUES (
+                $source_id,
+                $sheet_row_number,
+                $title,
+                $url,
+                $provider,
+                $source_type,
+                $material_class,
+                $access_status,
+                $has_pdf,
+                $has_audio,
+                $has_image,
+                $has_transcript,
+                $has_answer_key,
+                $audit_notes
+            )
+            ON CONFLICT(source_id) DO UPDATE SET
+                sheet_row_number = excluded.sheet_row_number,
+                title = excluded.title,
+                url = excluded.url,
+                provider = excluded.provider,
+                source_type = excluded.source_type,
+                material_class = excluded.material_class,
+                access_status = excluded.access_status,
+                has_pdf = excluded.has_pdf,
+                has_audio = excluded.has_audio,
+                has_image = excluded.has_image,
+                has_transcript = excluded.has_transcript,
+                has_answer_key = excluded.has_answer_key,
+                audit_notes = excluded.audit_notes
+            """;
+        command.Parameters.AddWithValue("$source_id", entry.SourceId);
+        command.Parameters.AddWithValue("$sheet_row_number", entry.SheetRowNumber);
+        command.Parameters.AddWithValue("$title", entry.Title);
+        command.Parameters.AddWithValue("$url", entry.Url);
+        command.Parameters.AddWithValue("$provider", entry.Provider.ToString());
+        command.Parameters.AddWithValue("$source_type", entry.SourceType.ToString());
+        command.Parameters.AddWithValue("$material_class", entry.PrimaryMaterialClass.ToString());
+        command.Parameters.AddWithValue("$access_status", entry.AccessStatus.ToString());
+        command.Parameters.AddWithValue("$has_pdf", entry.Evidence.HasPdf ? 1 : 0);
+        command.Parameters.AddWithValue("$has_audio", entry.Evidence.HasAudio ? 1 : 0);
+        command.Parameters.AddWithValue("$has_image", entry.Evidence.HasImage ? 1 : 0);
+        command.Parameters.AddWithValue("$has_transcript", entry.Evidence.HasTranscript ? 1 : 0);
+        command.Parameters.AddWithValue("$has_answer_key", entry.Evidence.HasAnswerKey ? 1 : 0);
+        command.Parameters.AddWithValue("$audit_notes", entry.AuditNotes);
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<SourceManifestEntry> GetSourceManifestEntries()
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT
+                source_id,
+                sheet_row_number,
+                title,
+                url,
+                provider,
+                source_type,
+                material_class,
+                access_status,
+                has_pdf,
+                has_audio,
+                has_image,
+                has_transcript,
+                has_answer_key,
+                audit_notes
+            FROM source_manifest_entries
+            ORDER BY sheet_row_number
+            """;
+
+        var entries = new List<SourceManifestEntry>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            entries.Add(ReadSourceManifestEntry(reader));
+        }
+
+        return entries;
+    }
+
+    public SourceManifestSummary GetSourceManifestSummary()
+    {
+        var entries = GetSourceManifestEntries();
+        return new SourceManifestSummary(
+            TotalSources: entries.Count,
+            AccessibleSources: entries.Count(entry => entry.AccessStatus == SourceAccessStatus.Accessible),
+            BlockedSources: entries.Count(entry => entry.AccessStatus == SourceAccessStatus.AccessBlocked),
+            DriveFiles: entries.Count(entry => entry.SourceType == SourceType.DriveFile),
+            DriveFolders: entries.Count(entry => entry.SourceType == SourceType.DriveFolder),
+            GoogleSheets: entries.Count(entry => entry.SourceType == SourceType.GoogleSheet),
+            GoogleDocs: entries.Count(entry => entry.SourceType == SourceType.GoogleDoc),
+            SharePointSources: entries.Count(entry => entry.SourceType == SourceType.SharePoint),
+            Shortlinks: entries.Count(entry => entry.SourceType == SourceType.Shortlink),
+            ExternalWebSources: entries.Count(entry => entry.SourceType == SourceType.ExternalWeb),
+            TestBooks: entries.Count(entry => entry.PrimaryMaterialClass == MaterialClass.TestBook),
+            SkillBooks: entries.Count(entry => entry.PrimaryMaterialClass == MaterialClass.SkillBook),
+            VocabularySources: entries.Count(entry => entry.PrimaryMaterialClass == MaterialClass.Vocabulary),
+            RoadmapSources: entries.Count(entry => entry.PrimaryMaterialClass == MaterialClass.Roadmap),
+            SpeakingWritingSources: entries.Count(entry => entry.PrimaryMaterialClass == MaterialClass.SpeakingWriting),
+            GrammarReferenceSources: entries.Count(entry => entry.PrimaryMaterialClass == MaterialClass.GrammarReference),
+            SourcesWithPdf: entries.Count(entry => entry.Evidence.HasPdf),
+            SourcesWithAudio: entries.Count(entry => entry.Evidence.HasAudio),
+            SourcesWithImage: entries.Count(entry => entry.Evidence.HasImage),
+            SourcesWithTranscript: entries.Count(entry => entry.Evidence.HasTranscript),
+            SourcesWithAnswerKey: entries.Count(entry => entry.Evidence.HasAnswerKey)
+        );
     }
 
     public void UpsertCorpusManifest(CorpusManifest manifest)
@@ -265,7 +413,7 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
 
     public int Count(string tableName)
     {
-        if (tableName is not ("raw_sources" or "learning_items" or "validation_issues"))
+        if (tableName is not ("raw_sources" or "source_manifest_entries" or "learning_items" or "validation_issues"))
         {
             throw new ArgumentException($"Unsupported table: {tableName}", nameof(tableName));
         }
@@ -278,6 +426,28 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
     public void Dispose()
     {
         connection.Dispose();
+    }
+
+    private static SourceManifestEntry ReadSourceManifestEntry(SqliteDataReader reader)
+    {
+        return new SourceManifestEntry(
+            reader.GetString(0),
+            reader.GetInt32(1),
+            reader.GetString(2),
+            reader.GetString(3),
+            Enum.Parse<SourceProvider>(reader.GetString(4)),
+            Enum.Parse<SourceType>(reader.GetString(5)),
+            Enum.Parse<MaterialClass>(reader.GetString(6)),
+            Enum.Parse<SourceAccessStatus>(reader.GetString(7)),
+            new SourceEvidenceFlags(
+                reader.GetInt32(8) == 1,
+                reader.GetInt32(9) == 1,
+                reader.GetInt32(10) == 1,
+                reader.GetInt32(11) == 1,
+                reader.GetInt32(12) == 1
+            ),
+            reader.GetString(13)
+        );
     }
 
     private void RecordIssues(DraftLearningItem item, ValidationResult result)
