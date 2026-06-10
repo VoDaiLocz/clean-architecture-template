@@ -12,6 +12,7 @@ var tests = new List<(string Name, Action Run)>
     ("low confidence goes to review issues", ApplicationTests.LowConfidenceGoesToReview),
     ("dashboard reports raw learning and issue counts", ApplicationTests.DashboardReportsCounts),
     ("dashboard reports corpus coverage without pretending backlog is published", ApplicationTests.DashboardReportsCorpusCoverage),
+    ("source manifest classifier identifies provider material and access status", ApplicationTests.SourceManifestClassifierIdentifiesProviderMaterialAndAccessStatus),
     ("learner cannot unlock next unit until mastery gates pass", ApplicationTests.LearnerCannotUnlockNextUnitUntilMasteryGatesPass),
 };
 
@@ -128,6 +129,44 @@ static class ApplicationTests
         Assert.True(response.NormalizationStages.Count >= 5, "Expected full stage coverage rows.");
         var inventoryStage = response.NormalizationStages.Single(stage => stage.StageKey == "inventory");
         Assert.Equal(932, inventoryStage.CompletedCount, "Expected completed inventory count.");
+    }
+
+    public static void SourceManifestClassifierIdentifiesProviderMaterialAndAccessStatus()
+    {
+        var driveFolder = SourceManifestClassifier.Classify(
+            7,
+            "SPARTA TOEIC ( quyển hồng - 10TEST )",
+            "https://drive.google.com/drive/folders/1oHUHYyEQ0T5H-rl_fXHMjljV4lGKCRB-",
+            inaccessible: false,
+            hasPdf: true,
+            hasAudio: true,
+            hasTranscript: true,
+            hasAnswerKey: true,
+            hasImage: false
+        );
+
+        Assert.Equal(SourceProvider.GoogleDrive, driveFolder.Provider, "Expected Google Drive provider.");
+        Assert.Equal(SourceType.DriveFolder, driveFolder.SourceType, "Expected Drive folder type.");
+        Assert.Equal(MaterialClass.TestBook, driveFolder.PrimaryMaterialClass, "SPARTA is a test book.");
+        Assert.Equal(SourceAccessStatus.Accessible, driveFolder.AccessStatus, "Expected accessible source.");
+        Assert.True(driveFolder.Evidence.HasAudio, "Expected audio evidence.");
+        Assert.True(driveFolder.Evidence.HasTranscript, "Expected transcript evidence.");
+        Assert.True(driveFolder.Evidence.HasAnswerKey, "Expected answer key evidence.");
+
+        var blockedGrammar = SourceManifestClassifier.Classify(
+            62,
+            "Advanced Grammar in Use",
+            "https://drive.google.com/file/d/example/view",
+            inaccessible: true,
+            hasPdf: false,
+            hasAudio: false,
+            hasTranscript: false,
+            hasAnswerKey: false,
+            hasImage: false
+        );
+
+        Assert.Equal(SourceAccessStatus.AccessBlocked, blockedGrammar.AccessStatus, "Blocked source must be explicit.");
+        Assert.Equal(MaterialClass.GrammarReference, blockedGrammar.PrimaryMaterialClass, "Grammar book should not become test bank.");
     }
 
     public static void LearnerCannotUnlockNextUnitUntilMasteryGatesPass()
