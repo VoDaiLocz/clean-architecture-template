@@ -2,6 +2,7 @@ using Application.Features.Dashboard.Queries;
 using Application.Features.LearningItems.Commands;
 using Application.Features.Learner;
 using Application.Features.SourceManifests;
+using Application.Common.Interfaces.Jobs;
 using Application.Common.Interfaces.Storage;
 using Application.ModuleBoundaries;
 using DatabaseMigrations;
@@ -11,6 +12,7 @@ using Domain.Aggregates.LearningItems;
 using Domain.ModuleBoundaries;
 using Infrastructure.Configuration;
 using Infrastructure.Data;
+using Infrastructure.Jobs;
 using Infrastructure.Storage;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
@@ -33,6 +35,7 @@ var tests = new List<(string Name, Action Run)>
     ("production configuration requires explicit database", ApplicationTests.ProductionConfigurationRequiresExplicitDatabase),
     ("postgres migration foundation is explicit", ApplicationTests.PostgresMigrationFoundationIsExplicit),
     ("object storage test double stores lists and deletes objects", ApplicationTests.ObjectStorageTestDoubleStoresListsAndDeletesObjects),
+    ("background job queue retries then records failure", ApplicationTests.BackgroundJobQueueRetriesThenRecordsFailure),
 };
 
 var failed = 0;
@@ -398,6 +401,31 @@ static class ApplicationTests
 
         Assert.True(storage.Get(objectKey) is null, "Deleted object must not be readable.");
         Assert.False(storage.List("source-assets/audio").Contains(objectKey.Value), "Deleted object must leave list results.");
+    }
+
+    public static void BackgroundJobQueueRetriesThenRecordsFailure()
+    {
+        IBackgroundJobQueue queue = new InMemoryBackgroundJobQueue(new BackgroundJobRetryPolicy(maxAttempts: 2));
+        var jobId = queue.Enqueue(new EnqueueBackgroundJobRequest("extract-pdf", "source-asset-1"));
+
+        var firstLease = queue.TryLeaseNext();
+        Assert.True(firstLease is not null, "Queued job should be leased.");
+        if (firstLease is null) return;
+
+        Assert.Equal(jobId, firstLease.Job.JobId, "Lease should return queued job.");
+        queue.RecordFailure(firstLease.Job.JobId, "PDF parser timed out.");
+
+        var retryLease = queue.TryLeaseNext();
+        Assert.True(retryLease is not null, "Failed job under retry limit should be leased again.");
+        if (retryLease is null) return;
+
+        Assert.Equal(2, retryLease.Job.AttemptCount, "Retry lease should increment attempt count.");
+        queue.RecordFailure(retryLease.Job.JobId, "PDF parser timed out again.");
+
+        var finalJob = queue.Get(jobId);
+        Assert.Equal(BackgroundJobStatus.Failed, finalJob.Status, "Job should fail after max attempts.");
+        Assert.Equal("PDF parser timed out again.", finalJob.FailureReason, "Failure reason should be recorded.");
+        Assert.True(queue.TryLeaseNext() is null, "Failed job must not be leased again.");
     }
 }
 

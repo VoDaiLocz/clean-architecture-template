@@ -66,6 +66,7 @@ Deferred:
 - [14-production-configuration.md](./14-production-configuration.md): environment rules, required configuration keys, secret handling, and production DB validation.
 - [15-postgresql-migration-foundation.md](./15-postgresql-migration-foundation.md): production PostgreSQL migration project, schema history migration, and enforcement.
 - [16-object-storage-abstraction.md](./16-object-storage-abstraction.md): object storage port, local test double, storage rules, and verification.
+- [17-background-job-foundation.md](./17-background-job-foundation.md): background job queue port, retry policy, local implementation, and job state rules.
 
 ## Non-Negotiable Product Rules
 

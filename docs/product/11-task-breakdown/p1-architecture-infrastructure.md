@@ -107,3 +107,23 @@ Each P1 task must include:
 **Definition Of Done:** Object storage abstraction is committed and pushed.  
 **Commit:** `feat(p1.4): add object storage abstraction`  
 **Push:** `git push origin main`
+
+## P1.5 - Add Background Job Foundation
+
+**Context:** Platform architecture  
+**Purpose:** Provide the queue abstraction needed for reliable asynchronous content extraction and processing.  
+**User/Business Value:** Allows large TOEIC source processing to run outside request/response flows and fail/retry predictably.  
+**Dependencies:** P1.1, P1.2.  
+**Detailed Scope:** Add application job queue interface, job request/model/status records, retry policy, in-memory infrastructure implementation, DI registration, tests, and documentation.  
+**Out Of Scope:** Hosted worker service, persistent job table, distributed locks, delayed scheduling, dead-letter queue, dashboard UI, external queue provider.  
+**Data Contract:** Job has id, type, payload reference, status, attempt count, and failure reason.  
+**API Contract:** none for P1.5.  
+**UI Contract:** none for P1.5.  
+**Business Rules:** Failed jobs retry until max attempts; failed-at-limit jobs record reason and are not leased again; succeeded jobs are not leased again.  
+**Edge Cases:** unknown job id throws; invalid retry policy rejected; empty job type or payload reference rejected.  
+**Required Tests:** Unit test covers enqueue, lease, retry, final failure, failure reason, and no lease after failed state.  
+**Acceptance Criteria:** `IBackgroundJobQueue` exists; `InMemoryBackgroundJobQueue` exists; retry policy exists; DI registers queue; tests and build pass; job foundation doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "IBackgroundJobQueue|InMemoryBackgroundJobQueue|Background Job Foundation" backend/src backend/tests docs/product`.  
+**Definition Of Done:** Background job foundation is committed and pushed.  
+**Commit:** `feat(p1.5): add background job foundation`  
+**Push:** `git push origin main`
