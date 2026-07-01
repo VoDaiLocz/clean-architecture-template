@@ -2,8 +2,12 @@ using Domain.Aggregates.LearnerProgress;
 
 namespace Application.Features.Learner;
 
+[Obsolete("P0.2 legacy demo-only learner flow. Do not use for production learner APIs.", false)]
 public sealed class DemoLearnerSession
 {
+    public const bool IsLegacyDemoOnly = true;
+    public const string ReplacementPhase = "P4";
+
     private readonly LearningPathCatalog catalog = LearningPathCatalog.CreateDefault();
     private readonly LearningProgressEngine engine;
     private LearnerState state;

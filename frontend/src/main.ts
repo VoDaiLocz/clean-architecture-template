@@ -112,8 +112,10 @@ type VocabCard = {
 };
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:5000';
+const LEGACY_DEMO_ONLY_FRONTEND_FALLBACK = true;
+const LEGACY_DEMO_ONLY_REPLACEMENT_PHASE = 'P7';
 
-const fallbackDashboard: DashboardResponse = {
+const legacyDemoOnlyDashboardFallback: DashboardResponse = {
   rawSourceCount: 0,
   learningItemCount: 0,
   validationIssueCount: 0,
@@ -136,7 +138,7 @@ const fallbackDashboard: DashboardResponse = {
   ],
 };
 
-const fallbackLearnerHome: LearnerHomeResponse = {
+const legacyDemoOnlyLearnerHomeFallback: LearnerHomeResponse = {
   learnerId: 'demo-learner',
   currentPart: 5,
   currentUnitId: 'part5-word-form',
@@ -216,8 +218,11 @@ if (!app) {
 }
 
 const appRoot = app;
-let dashboardState = fallbackDashboard;
-let learnerHomeState = fallbackLearnerHome;
+appRoot.dataset.legacyDemoOnlyFallback = String(LEGACY_DEMO_ONLY_FRONTEND_FALLBACK);
+appRoot.dataset.legacyDemoOnlyReplacementPhase = LEGACY_DEMO_ONLY_REPLACEMENT_PHASE;
+
+let dashboardState = legacyDemoOnlyDashboardFallback;
+let learnerHomeState = legacyDemoOnlyLearnerHomeFallback;
 let apiState: 'loading' | 'online' | 'offline' = 'loading';
 let lastAdminResult: { title: string; data: unknown; ok: boolean } | null = null;
 
@@ -1075,8 +1080,10 @@ async function publishItem(form: FormData): Promise<void> {
 }
 
 function normalizeDashboard(value: Partial<DashboardResponse>): DashboardResponse {
-  const corpus = { ...fallbackDashboard.corpus, ...value.corpus };
-  const stages = value.normalizationStages?.length ? value.normalizationStages : fallbackDashboard.normalizationStages;
+  const corpus = { ...legacyDemoOnlyDashboardFallback.corpus, ...value.corpus };
+  const stages = value.normalizationStages?.length
+    ? value.normalizationStages
+    : legacyDemoOnlyDashboardFallback.normalizationStages;
   return {
     rawSourceCount: value.rawSourceCount ?? 0,
     learningItemCount: value.learningItemCount ?? 0,
@@ -1090,7 +1097,9 @@ function normalizeDashboard(value: Partial<DashboardResponse>): DashboardRespons
 }
 
 function normalizationStages(): NormalizationStage[] {
-  return dashboardState.normalizationStages.length ? dashboardState.normalizationStages : fallbackDashboard.normalizationStages;
+  return dashboardState.normalizationStages.length
+    ? dashboardState.normalizationStages
+    : legacyDemoOnlyDashboardFallback.normalizationStages;
 }
 
 function rerenderCurrentRoute(): void {

@@ -1,10 +1,12 @@
 using Application.Features.Dashboard.Queries;
 using Application.Features.LearningItems.Commands;
+using Application.Features.Learner;
 using Application.Features.SourceManifests;
 using Domain.Aggregates.Corpus;
 using Domain.Aggregates.LearnerProgress;
 using Domain.Aggregates.LearningItems;
 using Infrastructure.Data;
+using System.Reflection;
 
 var tests = new List<(string Name, Action Run)>
 {
@@ -18,6 +20,7 @@ var tests = new List<(string Name, Action Run)>
     ("imports audited TOEIC source manifest into database", ApplicationTests.ImportsAuditedToeicSourceManifestIntoDatabase),
     ("dashboard includes normalized source manifest summary", ApplicationTests.DashboardIncludesNormalizedSourceManifestSummary),
     ("learner cannot unlock next unit until mastery gates pass", ApplicationTests.LearnerCannotUnlockNextUnitUntilMasteryGatesPass),
+    ("demo learner session is marked legacy non-production", ApplicationTests.DemoLearnerSessionIsMarkedLegacyNonProduction),
 };
 
 var failed = 0;
@@ -277,6 +280,24 @@ static class ApplicationTests
         Assert.True(passedMiniTest.UnitCompleted, "Unit should complete after lesson, drill, review, and passing mini test.");
         var nextAccessAfterMastery = engine.GetUnitAccess(state, "part5-verb-tense");
         Assert.True(nextAccessAfterMastery.CanStart, "Next unit should unlock after mastery gates pass.");
+    }
+
+    public static void DemoLearnerSessionIsMarkedLegacyNonProduction()
+    {
+#pragma warning disable CS0618
+        var obsolete = typeof(DemoLearnerSession).GetCustomAttribute<ObsoleteAttribute>();
+
+        Assert.True(obsolete is not null, "Demo learner session must be explicitly obsolete.");
+        if (obsolete is null) return;
+
+        Assert.Equal(
+            "P0.2 legacy demo-only learner flow. Do not use for production learner APIs.",
+            obsolete.Message,
+            "Demo learner obsolete message must block production use."
+        );
+        Assert.True(DemoLearnerSession.IsLegacyDemoOnly, "Demo learner session must expose demo-only marker.");
+        Assert.Equal("P4", DemoLearnerSession.ReplacementPhase, "Production replacement phase must be explicit.");
+#pragma warning restore CS0618
     }
 }
 

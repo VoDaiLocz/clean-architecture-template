@@ -12,7 +12,9 @@ public static class DependencyInjection
     )
     {
         _ = configuration;
+#pragma warning disable CS0618
         services.AddSingleton<DemoLearnerSession>();
+#pragma warning restore CS0618
         return services;
     }
 }

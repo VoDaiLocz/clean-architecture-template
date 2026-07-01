@@ -10,6 +10,8 @@ using Infrastructure;
 using Microsoft.AspNetCore.Http.HttpResults;
 using System.Text.Json.Serialization;
 
+#pragma warning disable CS0618
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddApplicationDependencies(builder.Configuration);
@@ -169,6 +171,8 @@ learner.MapPost(
 app.MapGet("/", () => Results.Redirect("/api/dashboard"));
 
 app.Run();
+
+#pragma warning restore CS0618
 
 public sealed record RawSourceRequest(
     string SourceId,
