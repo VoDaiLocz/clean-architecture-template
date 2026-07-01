@@ -61,6 +61,7 @@ Deferred:
 - [09-quality-strategy.md](./09-quality-strategy.md): testing, validation, observability, acceptance gates.
 - [10-release-plan.md](./10-release-plan.md): alpha, beta, market release gates.
 - [11-task-breakdown](./11-task-breakdown): phase-by-phase task execution specs.
+- [12-development-workflow.md](./12-development-workflow.md): TDD, Clean Architecture, SOLID, verification, commit, and push standard.
 
 ## Non-Negotiable Product Rules
 

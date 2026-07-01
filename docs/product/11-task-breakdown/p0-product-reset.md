@@ -63,3 +63,23 @@ Remove conflicting product direction, establish official enterprise-grade docume
 **Definition Of Done:** Context rules documented and pushed.  
 **Commit:** `docs(p0.3): define TOEIC bounded context ownership`  
 **Push:** `git push origin main`
+
+## P0.4 - Define Task Execution Standard
+
+**Context:** Product engineering governance  
+**Purpose:** Make every future task executable by a team without guessing process, quality bar, or commit rules.  
+**User/Business Value:** Prevents large vague commits, missing tests, local-only work, and architecture drift.  
+**Dependencies:** P0.1, P0.3.  
+**Detailed Scope:** Document task flow, TDD rule, Clean Architecture rule, SOLID/Clean Code rule, verification matrix, staging rule, exact commit rule, and push rule.  
+**Out Of Scope:** Implementing feature code, CI automation, branch protection.  
+**Data Contract:** none.  
+**API Contract:** none.  
+**UI Contract:** none.  
+**Business Rules:** No task is complete unless it is tested or checked, committed with exact message, and pushed.  
+**Edge Cases:** Documentation-only tasks still need objective checks; dirty unrelated files must remain unstaged.  
+**Required Tests:** Scan execution standard for TDD, Clean Architecture, SOLID, verification, commit, and push rules.  
+**Acceptance Criteria:** `12-development-workflow.md` exists; task index links to it; master spec links to it; task pass checklist exists.  
+**Verification Commands:** `rg -n "TDD Rule|Clean Architecture Rule|SOLID And Clean Code Rule|Verification Matrix|Commit And Push Rule|Task Pass Checklist" docs/product/12-development-workflow.md`; `rg -n "12-development-workflow" docs/product`.  
+**Definition Of Done:** Workflow standard is documented, committed, and pushed.  
+**Commit:** `docs(p0.4): define TOEIC task execution standard`  
+**Push:** `git push origin main`

@@ -2,6 +2,10 @@
 
 Every task in this folder is a mini-spec. A task is not done until it is tested, committed, and pushed.
 
+Execution standard:
+
+- [../12-development-workflow.md](../12-development-workflow.md)
+
 Task files:
 
 - [p0-product-reset.md](./p0-product-reset.md)
@@ -38,4 +42,3 @@ Definition Of Done:
 Commit:
 Push:
 ```
-
