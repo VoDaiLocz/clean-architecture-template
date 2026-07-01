@@ -1,4 +1,5 @@
 using Application.Common.ApiContracts;
+using Application.Common.Health;
 using Application.Features.Dashboard.Queries;
 using Application.Features.LearningItems.Commands;
 using Application.Features.Learner;
@@ -13,6 +14,7 @@ using Domain.Aggregates.LearningItems;
 using Domain.ModuleBoundaries;
 using Infrastructure.Configuration;
 using Infrastructure.Data;
+using Infrastructure.Health;
 using Infrastructure.Jobs;
 using Infrastructure.Storage;
 using Microsoft.Extensions.Configuration;
@@ -38,6 +40,7 @@ var tests = new List<(string Name, Action Run)>
     ("object storage test double stores lists and deletes objects", ApplicationTests.ObjectStorageTestDoubleStoresListsAndDeletesObjects),
     ("background job queue retries then records failure", ApplicationTests.BackgroundJobQueueRetriesThenRecordsFailure),
     ("api contract catalog defines stable typed routes", ApplicationTests.ApiContractCatalogDefinesStableTypedRoutes),
+    ("platform health reports dependency readiness", ApplicationTests.PlatformHealthReportsDependencyReadiness),
 };
 
 var failed = 0;
@@ -458,6 +461,24 @@ static class ApplicationTests
             .FirstOrDefault(group => group.Count() > 1);
 
         Assert.True(duplicateRoute is null, "API contract catalog must not contain duplicate method+route entries.");
+    }
+
+    public static void PlatformHealthReportsDependencyReadiness()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var storage = new InMemoryObjectStorage();
+        var queue = new InMemoryBackgroundJobQueue(new BackgroundJobRetryPolicy(maxAttempts: 2));
+        IPlatformHealthService healthService = new PlatformHealthService(repository, storage, queue);
+
+        var snapshot = healthService.Check();
+
+        Assert.Equal(PlatformHealthStatus.Healthy, snapshot.Status, "Platform health should be healthy.");
+        Assert.True(snapshot.Dependencies.Count >= 3, "Health snapshot should include DB, storage, and job queue.");
+        Assert.True(
+            snapshot.Dependencies.All(dependency => dependency.Status == PlatformHealthStatus.Healthy),
+            "All configured dependencies should be healthy."
+        );
     }
 }
 

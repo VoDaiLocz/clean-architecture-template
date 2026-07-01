@@ -167,3 +167,23 @@ Each P1 task must include:
 **Definition Of Done:** CI baseline is committed and pushed.  
 **Commit:** `ci(p1.7): add backend quality gate`  
 **Push:** `git push origin main`
+
+## P1.8 - Add Environment Health Checks
+
+**Context:** Platform architecture  
+**Purpose:** Expose runtime dependency readiness for deployment and operations.  
+**User/Business Value:** Lets operators and deployment automation detect whether API dependencies are ready before traffic relies on them.  
+**Dependencies:** P1.4, P1.5, P1.6.  
+**Detailed Scope:** Add platform health application contract, infrastructure health service, health endpoint, API contract catalog entry, tests, and documentation.  
+**Out Of Scope:** Kubernetes probes, external monitoring integration, metrics dashboards, authenticated ops portal.  
+**Data Contract:** health snapshot includes overall status and dependency statuses.  
+**API Contract:** `GET /api/health` returns `PlatformHealthSnapshot` and is marked `Operations` in API contract catalog.  
+**UI Contract:** none for P1.8.  
+**Business Rules:** Overall health is unhealthy when any dependency is unhealthy.  
+**Edge Cases:** dependency exception becomes unhealthy dependency result; empty job queue is healthy if reachable.  
+**Required Tests:** Unit test verifies database, object storage, and background job queue readiness are reported healthy.  
+**Acceptance Criteria:** health service exists; `/api/health` endpoint exists; API contract catalog includes route; tests and build pass; health doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "IPlatformHealthService|PlatformHealthService|/api/health|Platform Health Checks" backend/src backend/tests docs/product`.  
+**Definition Of Done:** Health checks are committed and pushed.  
+**Commit:** `feat(p1.8): add platform health checks`  
+**Push:** `git push origin main`

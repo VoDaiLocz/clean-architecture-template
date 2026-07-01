@@ -1,4 +1,5 @@
 using Application;
+using Application.Common.Health;
 using Application.Common.Interfaces.Repositories;
 using Application.Features.Dashboard.Queries;
 using Application.Features.LearningItems.Commands;
@@ -34,6 +35,14 @@ app.UseCors("frontend");
 
 var api = app.MapGroup("/api");
 var learner = api.MapGroup("/learner");
+
+api.MapGet(
+    "/health",
+    Ok<PlatformHealthSnapshot> (IPlatformHealthService healthService) =>
+    {
+        return TypedResults.Ok(healthService.Check());
+    }
+);
 
 api.MapGet(
     "/dashboard",

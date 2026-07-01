@@ -6,6 +6,7 @@ public static class ApiContractCatalog
 
     public static readonly IReadOnlyList<ApiContractDescriptor> All =
     [
+        new("GET", "/api/health", ApiAudience.Operations, "PlatformHealthSnapshot"),
         new("GET", "/api/dashboard", ApiAudience.Admin, "DashboardResponse"),
         new("POST", "/api/source-manifest/toeic-audit", ApiAudience.Admin, "ImportToeicSourceManifestResult"),
         new("GET", "/api/source-manifest/summary", ApiAudience.Admin, "SourceManifestSummary"),

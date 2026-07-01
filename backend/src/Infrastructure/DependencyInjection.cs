@@ -1,8 +1,10 @@
+using Application.Common.Health;
 using Application.Common.Interfaces.Jobs;
 using Application.Common.Interfaces.Repositories;
 using Application.Common.Interfaces.Storage;
 using Infrastructure.Configuration;
 using Infrastructure.Data;
+using Infrastructure.Health;
 using Infrastructure.Jobs;
 using Infrastructure.Storage;
 using Microsoft.Extensions.Configuration;
@@ -29,6 +31,7 @@ public static class DependencyInjection
         services.AddSingleton<IObjectStorage, InMemoryObjectStorage>();
         services.AddSingleton(new BackgroundJobRetryPolicy(maxAttempts: 3));
         services.AddSingleton<IBackgroundJobQueue, InMemoryBackgroundJobQueue>();
+        services.AddSingleton<IPlatformHealthService, PlatformHealthService>();
 
         return services;
     }

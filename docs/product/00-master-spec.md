@@ -69,6 +69,7 @@ Deferred:
 - [17-background-job-foundation.md](./17-background-job-foundation.md): background job queue port, retry policy, local implementation, and job state rules.
 - [18-typed-api-contract-convention.md](./18-typed-api-contract-convention.md): route/audience/response contract catalog and typed API drift prevention rules.
 - [19-ci-baseline.md](./19-ci-baseline.md): GitHub Actions backend quality workflow and baseline checks.
+- [20-platform-health-checks.md](./20-platform-health-checks.md): platform health endpoint, dependency readiness checks, and operations contract.
 
 ## Non-Negotiable Product Rules
 
