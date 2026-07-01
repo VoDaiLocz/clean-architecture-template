@@ -127,3 +127,23 @@ Each P1 task must include:
 **Definition Of Done:** Background job foundation is committed and pushed.  
 **Commit:** `feat(p1.5): add background job foundation`  
 **Push:** `git push origin main`
+
+## P1.6 - Add Typed API Contract Convention
+
+**Context:** Platform architecture  
+**Purpose:** Prevent frontend/backend route and response contract drift before learner UX work scales.  
+**User/Business Value:** Reduces broken UI/API integrations and gives teams a stable place to review API surface changes.  
+**Dependencies:** P1.1.  
+**Detailed Scope:** Add application API contract catalog with version, method, route, audience, and response contract; add tests for required routes and duplicate method+route prevention; document typed contract convention.  
+**Out Of Scope:** Full OpenAPI generation, generated TypeScript client, API version negotiation, runtime schema validation.  
+**Data Contract:** none.  
+**API Contract:** Contract catalog records method, route, audience, and response contract name for each current route.  
+**UI Contract:** Frontend must consume generated or mirrored typed contracts as the convention evolves; learner UI must not consume admin/legacy contracts as production product flows.  
+**Business Rules:** Legacy demo routes must be marked `LegacyDemo`; learner routes must not expose source/admin internals.  
+**Edge Cases:** Duplicate method+route entries rejected by test; changed route/response requires catalog update in same commit.  
+**Required Tests:** Unit test verifies catalog not empty, version explicit, required learner/admin routes present, and no duplicate method+route entries.  
+**Acceptance Criteria:** `ApiContractCatalog` exists; tests and build pass; API contract docs link to typed convention.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "ApiContractCatalog|Typed API Contract Convention" backend/src backend/tests docs/product`.  
+**Definition Of Done:** Typed API convention is committed and pushed.  
+**Commit:** `feat(p1.6): add typed API contract convention`  
+**Push:** `git push origin main`

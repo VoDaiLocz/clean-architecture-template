@@ -7,6 +7,9 @@
 - Error responses must use stable error codes.
 - All state-changing endpoints must be idempotent or explicitly reject duplicates.
 - API contracts must be covered by application/API tests.
+- Route method, audience, and response contract names must be represented in `Application.Common.ApiContracts.ApiContractCatalog`.
+
+Detailed typed-contract convention is defined in [18-typed-api-contract-convention.md](./18-typed-api-contract-convention.md).
 
 ## Learner APIs
 
@@ -95,4 +98,3 @@ Pass criteria:
 - validation gates run
 - invalid draft cannot publish
 - published content is visible to learner APIs only after success
-

@@ -1,3 +1,4 @@
+using Application.Common.ApiContracts;
 using Application.Features.Dashboard.Queries;
 using Application.Features.LearningItems.Commands;
 using Application.Features.Learner;
@@ -36,6 +37,7 @@ var tests = new List<(string Name, Action Run)>
     ("postgres migration foundation is explicit", ApplicationTests.PostgresMigrationFoundationIsExplicit),
     ("object storage test double stores lists and deletes objects", ApplicationTests.ObjectStorageTestDoubleStoresListsAndDeletesObjects),
     ("background job queue retries then records failure", ApplicationTests.BackgroundJobQueueRetriesThenRecordsFailure),
+    ("api contract catalog defines stable typed routes", ApplicationTests.ApiContractCatalogDefinesStableTypedRoutes),
 };
 
 var failed = 0;
@@ -426,6 +428,36 @@ static class ApplicationTests
         Assert.Equal(BackgroundJobStatus.Failed, finalJob.Status, "Job should fail after max attempts.");
         Assert.Equal("PDF parser timed out again.", finalJob.FailureReason, "Failure reason should be recorded.");
         Assert.True(queue.TryLeaseNext() is null, "Failed job must not be leased again.");
+    }
+
+    public static void ApiContractCatalogDefinesStableTypedRoutes()
+    {
+        var contracts = ApiContractCatalog.All;
+
+        Assert.True(contracts.Count > 0, "API contract catalog must not be empty.");
+        Assert.Equal("2026-07-01", ApiContractCatalog.Version, "API contract version must be explicit.");
+        Assert.True(
+            contracts.Any(contract =>
+                contract.Method == "GET"
+                && contract.Route == "/api/learner/home"
+                && contract.Audience == ApiAudience.Learner
+                && contract.ResponseContract == "LearnerHomeResponse"),
+            "Learner home route contract must be typed."
+        );
+        Assert.True(
+            contracts.Any(contract =>
+                contract.Method == "POST"
+                && contract.Route == "/api/source-manifest/toeic-audit"
+                && contract.Audience == ApiAudience.Admin
+                && contract.ResponseContract == "ImportToeicSourceManifestResult"),
+            "Source manifest import route contract must be typed."
+        );
+
+        var duplicateRoute = contracts
+            .GroupBy(contract => $"{contract.Method} {contract.Route}", StringComparer.Ordinal)
+            .FirstOrDefault(group => group.Count() > 1);
+
+        Assert.True(duplicateRoute is null, "API contract catalog must not contain duplicate method+route entries.");
     }
 }
 
