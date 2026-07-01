@@ -83,3 +83,23 @@ Remove conflicting product direction, establish official enterprise-grade docume
 **Definition Of Done:** Workflow standard is documented, committed, and pushed.  
 **Commit:** `docs(p0.4): define TOEIC task execution standard`  
 **Push:** `git push origin main`
+
+## P0.5 - Define Release Gate Policy
+
+**Context:** Product release governance  
+**Purpose:** Prevent premature release and define what quality evidence is required before each market stage.  
+**User/Business Value:** Protects real learners from unfinished flows and protects the business from launching an unready product.  
+**Dependencies:** P0.1, P0.3, P0.4.  
+**Detailed Scope:** Expand alpha, private beta, public beta, and market release gates with audience, required scope, exit criteria, evidence, blocker rules, and go/no-go checklist.  
+**Out Of Scope:** CI automation, deployment implementation, production infrastructure.  
+**Data Contract:** release evidence and readiness records are required future operational data.  
+**API Contract:** none for P0.5.  
+**UI Contract:** release gates must mention learner/admin readiness where relevant.  
+**Business Rules:** A gate cannot pass by date or opinion; it passes only with evidence.  
+**Edge Cases:** Known issues can pass only when non-critical, documented, and owned.  
+**Required Tests:** Scan release plan for gate policy, evidence, blocker rules, and go/no-go checklist.  
+**Acceptance Criteria:** Release plan defines alpha/private beta/public beta/market release readiness and explicit go/no-go checklist.  
+**Verification Commands:** `rg -n "Release Gate Policy|Evidence:|Go/No-Go Checklist|If any answer is no" docs/product/10-release-plan.md`.  
+**Definition Of Done:** Release policy is documented, committed, and pushed.  
+**Commit:** `docs(p0.5): define TOEIC release gate policy`  
+**Push:** `git push origin main`
