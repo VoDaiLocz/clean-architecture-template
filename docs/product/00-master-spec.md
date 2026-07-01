@@ -63,6 +63,7 @@ Deferred:
 - [11-task-breakdown](./11-task-breakdown): phase-by-phase task execution specs.
 - [12-development-workflow.md](./12-development-workflow.md): TDD, Clean Architecture, SOLID, verification, commit, and push standard.
 - [13-backend-module-boundaries.md](./13-backend-module-boundaries.md): backend context catalog, dependency direction, namespace target, and enforcement.
+- [14-production-configuration.md](./14-production-configuration.md): environment rules, required configuration keys, secret handling, and production DB validation.
 
 ## Non-Negotiable Product Rules
 

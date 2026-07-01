@@ -1,4 +1,5 @@
 using Application.Common.Interfaces.Repositories;
+using Infrastructure.Configuration;
 using Infrastructure.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,15 +10,15 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructureDependencies(
         this IServiceCollection services,
-        IConfiguration configuration
+        IConfiguration configuration,
+        string environmentName = "Development"
     )
     {
-        var connectionString =
-            configuration.GetConnectionString("ToeicDb") ?? "Data Source=toeic-normalization.db";
+        var options = ToeicPlatformOptions.FromConfiguration(configuration, environmentName);
 
         services.AddSingleton<IKnowledgeRepository>(_ =>
         {
-            var repository = SqliteKnowledgeRepository.FromConnectionString(connectionString);
+            var repository = SqliteKnowledgeRepository.FromConnectionString(options.Database.ConnectionString);
             repository.Initialize();
             return repository;
         });

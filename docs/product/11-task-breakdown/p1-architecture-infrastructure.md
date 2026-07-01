@@ -47,3 +47,23 @@ Each P1 task must include:
 **Definition Of Done:** Boundary catalogs and docs are committed and pushed.  
 **Commit:** `docs(p1.1): define backend module boundaries`  
 **Push:** `git push origin main`
+
+## P1.2 - Add Production Configuration Strategy
+
+**Context:** Platform architecture  
+**Purpose:** Separate local, staging, and production configuration so production cannot start with unsafe implicit defaults.  
+**User/Business Value:** Reduces deployment risk and prevents hidden local/demo settings from becoming market infrastructure.  
+**Dependencies:** P1.1.  
+**Detailed Scope:** Add configuration options for database startup behavior; document required keys for DB, storage, worker, auth, logging, and observability; prevent production DB fallback.  
+**Out Of Scope:** Implementing object storage, worker runtime, auth, or observability providers.  
+**Data Contract:** none.  
+**API Contract:** none.  
+**UI Contract:** none.  
+**Business Rules:** Production requires explicit `ConnectionStrings:ToeicDb`; local development may use SQLite fallback.  
+**Edge Cases:** Empty or whitespace production connection string must fail; development without connection string must still run locally.  
+**Required Tests:** Unit test validates production requires explicit DB configuration; solution build passes.  
+**Acceptance Criteria:** `ToeicPlatformOptions` exists; API passes environment name into Infrastructure DI; configuration strategy doc defines required keys and secret policy.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "ToeicPlatformOptions|ConnectionStrings:ToeicDb|Production Configuration Strategy" backend/src docs/product`.  
+**Definition Of Done:** Configuration validation and docs are committed and pushed.  
+**Commit:** `chore(p1.2): add production configuration strategy`  
+**Push:** `git push origin main`

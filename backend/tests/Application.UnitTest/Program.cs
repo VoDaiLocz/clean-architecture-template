@@ -7,7 +7,9 @@ using Domain.Aggregates.Corpus;
 using Domain.Aggregates.LearnerProgress;
 using Domain.Aggregates.LearningItems;
 using Domain.ModuleBoundaries;
+using Infrastructure.Configuration;
 using Infrastructure.Data;
+using Microsoft.Extensions.Configuration;
 using System.Reflection;
 
 var tests = new List<(string Name, Action Run)>
@@ -24,6 +26,7 @@ var tests = new List<(string Name, Action Run)>
     ("learner cannot unlock next unit until mastery gates pass", ApplicationTests.LearnerCannotUnlockNextUnitUntilMasteryGatesPass),
     ("demo learner session is marked legacy non-production", ApplicationTests.DemoLearnerSessionIsMarkedLegacyNonProduction),
     ("backend module boundaries are explicit", ApplicationTests.BackendModuleBoundariesAreExplicit),
+    ("production configuration requires explicit database", ApplicationTests.ProductionConfigurationRequiresExplicitDatabase),
 };
 
 var failed = 0;
@@ -329,6 +332,24 @@ static class ApplicationTests
 
         Assert.Equal(0, forbiddenDomainReferences.Count, "Domain must not reference outer layers.");
     }
+
+    public static void ProductionConfigurationRequiresExplicitDatabase()
+    {
+        var localOptions = ToeicPlatformOptions.FromConfiguration(
+            new ConfigurationBuilder().Build(),
+            "Development"
+        );
+        Assert.Equal(
+            "Data Source=toeic-normalization.db",
+            localOptions.Database.ConnectionString,
+            "Development can use local SQLite default."
+        );
+
+        Assert.Throws<InvalidOperationException>(
+            () => ToeicPlatformOptions.FromConfiguration(new ConfigurationBuilder().Build(), "Production"),
+            "Production must require explicit ToeicDb connection string."
+        );
+    }
 }
 
 static class TestItems
@@ -381,5 +402,20 @@ static class Assert
         {
             throw new InvalidOperationException($"Expected value {expected}.");
         }
+    }
+
+    public static void Throws<TException>(Action action, string message)
+        where TException : Exception
+    {
+        try
+        {
+            action();
+        }
+        catch (TException)
+        {
+            return;
+        }
+
+        throw new InvalidOperationException(message);
     }
 }
