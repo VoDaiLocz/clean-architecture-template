@@ -1,6 +1,8 @@
 using Application.Common.Interfaces.Repositories;
+using Application.Common.Interfaces.Storage;
 using Infrastructure.Configuration;
 using Infrastructure.Data;
+using Infrastructure.Storage;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -22,6 +24,7 @@ public static class DependencyInjection
             repository.Initialize();
             return repository;
         });
+        services.AddSingleton<IObjectStorage, InMemoryObjectStorage>();
 
         return services;
     }

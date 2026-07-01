@@ -2,6 +2,7 @@ using Application.Features.Dashboard.Queries;
 using Application.Features.LearningItems.Commands;
 using Application.Features.Learner;
 using Application.Features.SourceManifests;
+using Application.Common.Interfaces.Storage;
 using Application.ModuleBoundaries;
 using DatabaseMigrations;
 using Domain.Aggregates.Corpus;
@@ -10,8 +11,10 @@ using Domain.Aggregates.LearningItems;
 using Domain.ModuleBoundaries;
 using Infrastructure.Configuration;
 using Infrastructure.Data;
+using Infrastructure.Storage;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
+using System.Text;
 
 var tests = new List<(string Name, Action Run)>
 {
@@ -29,6 +32,7 @@ var tests = new List<(string Name, Action Run)>
     ("backend module boundaries are explicit", ApplicationTests.BackendModuleBoundariesAreExplicit),
     ("production configuration requires explicit database", ApplicationTests.ProductionConfigurationRequiresExplicitDatabase),
     ("postgres migration foundation is explicit", ApplicationTests.PostgresMigrationFoundationIsExplicit),
+    ("object storage test double stores lists and deletes objects", ApplicationTests.ObjectStorageTestDoubleStoresListsAndDeletesObjects),
 };
 
 var failed = 0;
@@ -372,6 +376,28 @@ static class ApplicationTests
             migrations.Any(migration => migration.SqlStatements.Contains("sqlite", StringComparison.OrdinalIgnoreCase)),
             "Production migrations must not use SQLite syntax."
         );
+    }
+
+    public static void ObjectStorageTestDoubleStoresListsAndDeletesObjects()
+    {
+        IObjectStorage storage = new InMemoryObjectStorage();
+        var objectKey = new ObjectKey("source-assets/audio/part2-track01.mp3");
+        var payload = Encoding.UTF8.GetBytes("audio-bytes");
+
+        storage.Put(new PutObjectRequest(objectKey, "audio/mpeg", payload));
+
+        var stored = storage.Get(objectKey);
+        Assert.True(stored is not null, "Stored object must be readable.");
+        if (stored is null) return;
+
+        Assert.Equal("audio/mpeg", stored.ContentType, "Content type must round-trip.");
+        Assert.Equal("audio-bytes", Encoding.UTF8.GetString(stored.Content), "Payload must round-trip.");
+        Assert.Contains(storage.List("source-assets/audio"), objectKey.Value);
+
+        storage.Delete(objectKey);
+
+        Assert.True(storage.Get(objectKey) is null, "Deleted object must not be readable.");
+        Assert.False(storage.List("source-assets/audio").Contains(objectKey.Value), "Deleted object must leave list results.");
     }
 }
 

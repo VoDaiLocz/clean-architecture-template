@@ -87,3 +87,23 @@ Each P1 task must include:
 **Definition Of Done:** Migration foundation is committed and pushed.  
 **Commit:** `feat(p1.3): add PostgreSQL migration foundation`  
 **Push:** `git push origin main`
+
+## P1.4 - Add Object Storage Abstraction
+
+**Context:** Platform architecture  
+**Purpose:** Store source/media assets outside the relational database through a clean application port.  
+**User/Business Value:** Enables PDF/audio/image processing at production scale without turning the database into a blob store.  
+**Dependencies:** P1.2.  
+**Detailed Scope:** Add `IObjectStorage` application interface; add object key/request/response records; add in-memory infrastructure test double; register storage in DI; document storage rules.  
+**Out Of Scope:** Cloud provider implementation, signed URLs, CDN, virus scanning, media transcoding, multipart upload.  
+**Data Contract:** Future DB records store object keys and metadata, not raw bytes.  
+**API Contract:** none for P1.4.  
+**UI Contract:** none for P1.4.  
+**Business Rules:** Object key and content type are required; storage implementation copies bytes on read/write to avoid mutation.  
+**Edge Cases:** missing object returns null; deleted object is no longer listable/readable; empty key/content type rejected.  
+**Required Tests:** Unit test covers put, get, list, delete, content type round-trip, payload round-trip, and missing-after-delete behavior.  
+**Acceptance Criteria:** `IObjectStorage` exists in Application; `InMemoryObjectStorage` exists in Infrastructure; DI registers the abstraction; tests and build pass; storage doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "IObjectStorage|InMemoryObjectStorage|Object Storage Abstraction" backend/src backend/tests docs/product`.  
+**Definition Of Done:** Object storage abstraction is committed and pushed.  
+**Commit:** `feat(p1.4): add object storage abstraction`  
+**Push:** `git push origin main`
