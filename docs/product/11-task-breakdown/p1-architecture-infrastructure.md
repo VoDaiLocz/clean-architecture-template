@@ -67,3 +67,23 @@ Each P1 task must include:
 **Definition Of Done:** Configuration validation and docs are committed and pushed.  
 **Commit:** `chore(p1.2): add production configuration strategy`  
 **Push:** `git push origin main`
+
+## P1.3 - Add PostgreSQL Migration Foundation
+
+**Context:** Platform architecture  
+**Purpose:** Establish the production database migration foundation before production schemas expand.  
+**User/Business Value:** Moves the product away from local-only SQLite assumptions and creates a controlled path to production PostgreSQL.  
+**Dependencies:** P1.2.  
+**Detailed Scope:** Add `DatabaseMigrations` project; add PostgreSQL migration catalog; add initial schema history migration; include project in solution; add tests proving provider and first migration.  
+**Out Of Scope:** Live PostgreSQL connection, migration runner CLI, full production schema, rollback engine.  
+**Data Contract:** `platform_schema_history` records applied migration id, UTC apply time, and checksum.  
+**API Contract:** none.  
+**UI Contract:** none.  
+**Business Rules:** SQLite remains local/dev/test only; production migrations must be PostgreSQL-specific and ordered.  
+**Edge Cases:** Migration catalog cannot be empty; migration SQL must not use SQLite syntax; first migration must create schema history before later schema work.  
+**Required Tests:** Unit test verifies PostgreSQL provider, first migration id, schema history SQL, and no SQLite marker text.  
+**Acceptance Criteria:** Migration project exists in solution; test project references it; tests and build pass; migration foundation doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "PostgresMigrationCatalog|platform_schema_history|DatabaseMigrations" backend/src backend/tests docs/product`.  
+**Definition Of Done:** Migration foundation is committed and pushed.  
+**Commit:** `feat(p1.3): add PostgreSQL migration foundation`  
+**Push:** `git push origin main`

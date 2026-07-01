@@ -3,6 +3,7 @@ using Application.Features.LearningItems.Commands;
 using Application.Features.Learner;
 using Application.Features.SourceManifests;
 using Application.ModuleBoundaries;
+using DatabaseMigrations;
 using Domain.Aggregates.Corpus;
 using Domain.Aggregates.LearnerProgress;
 using Domain.Aggregates.LearningItems;
@@ -27,6 +28,7 @@ var tests = new List<(string Name, Action Run)>
     ("demo learner session is marked legacy non-production", ApplicationTests.DemoLearnerSessionIsMarkedLegacyNonProduction),
     ("backend module boundaries are explicit", ApplicationTests.BackendModuleBoundariesAreExplicit),
     ("production configuration requires explicit database", ApplicationTests.ProductionConfigurationRequiresExplicitDatabase),
+    ("postgres migration foundation is explicit", ApplicationTests.PostgresMigrationFoundationIsExplicit),
 };
 
 var failed = 0;
@@ -348,6 +350,27 @@ static class ApplicationTests
         Assert.Throws<InvalidOperationException>(
             () => ToeicPlatformOptions.FromConfiguration(new ConfigurationBuilder().Build(), "Production"),
             "Production must require explicit ToeicDb connection string."
+        );
+    }
+
+    public static void PostgresMigrationFoundationIsExplicit()
+    {
+        var migrations = PostgresMigrationCatalog.All;
+
+        Assert.True(migrations.Count > 0, "PostgreSQL migration catalog must not be empty.");
+        Assert.Equal("postgresql", PostgresMigrationCatalog.Provider, "Migration provider must be PostgreSQL.");
+        Assert.Equal(
+            "001_platform_schema_history",
+            migrations[0].Id,
+            "First migration must create the platform schema history."
+        );
+        Assert.True(
+            migrations[0].SqlStatements.Contains("CREATE TABLE IF NOT EXISTS platform_schema_history", StringComparison.Ordinal),
+            "First migration must create schema history table."
+        );
+        Assert.False(
+            migrations.Any(migration => migration.SqlStatements.Contains("sqlite", StringComparison.OrdinalIgnoreCase)),
+            "Production migrations must not use SQLite syntax."
         );
     }
 }
