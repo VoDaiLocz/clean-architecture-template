@@ -28,3 +28,22 @@ Each P1 task must include:
 - verification command
 - commit and push
 
+## P1.1 - Define Backend Module Boundaries
+
+**Context:** Platform architecture  
+**Purpose:** Establish enforceable backend module boundaries before production feature work scales.  
+**User/Business Value:** Prevents tangled implementation where source extraction, learner journey, scoring, and operations mutate each other directly.  
+**Dependencies:** P0.3, P0.4.  
+**Detailed Scope:** Add backend context catalogs for Domain/Application; document dependency direction, target namespace layout, and enforcement checks.  
+**Out Of Scope:** Moving all existing classes into final folders; adding analyzers; rewriting current learner/demo endpoints.  
+**Data Contract:** none.  
+**API Contract:** none.  
+**UI Contract:** none.  
+**Business Rules:** Domain cannot reference Application, Infrastructure, or Api; Application context catalog must match Domain context catalog.  
+**Edge Cases:** Existing folders can remain until migration tasks; new production code should use target context vocabulary.  
+**Required Tests:** Unit test verifies context catalogs match and Domain has no forbidden outer-layer references.  
+**Acceptance Criteria:** `DomainContextCatalog` and `ApplicationContextCatalog` exist; backend module boundary doc exists; tests and solution build pass.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "DomainContextCatalog|ApplicationContextCatalog|Backend Module Boundaries" backend/src docs/product`.  
+**Definition Of Done:** Boundary catalogs and docs are committed and pushed.  
+**Commit:** `docs(p1.1): define backend module boundaries`  
+**Push:** `git push origin main`

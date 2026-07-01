@@ -62,6 +62,7 @@ Deferred:
 - [10-release-plan.md](./10-release-plan.md): alpha, beta, market release gates.
 - [11-task-breakdown](./11-task-breakdown): phase-by-phase task execution specs.
 - [12-development-workflow.md](./12-development-workflow.md): TDD, Clean Architecture, SOLID, verification, commit, and push standard.
+- [13-backend-module-boundaries.md](./13-backend-module-boundaries.md): backend context catalog, dependency direction, namespace target, and enforcement.
 
 ## Non-Negotiable Product Rules
 

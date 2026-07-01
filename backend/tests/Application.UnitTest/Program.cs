@@ -2,9 +2,11 @@ using Application.Features.Dashboard.Queries;
 using Application.Features.LearningItems.Commands;
 using Application.Features.Learner;
 using Application.Features.SourceManifests;
+using Application.ModuleBoundaries;
 using Domain.Aggregates.Corpus;
 using Domain.Aggregates.LearnerProgress;
 using Domain.Aggregates.LearningItems;
+using Domain.ModuleBoundaries;
 using Infrastructure.Data;
 using System.Reflection;
 
@@ -21,6 +23,7 @@ var tests = new List<(string Name, Action Run)>
     ("dashboard includes normalized source manifest summary", ApplicationTests.DashboardIncludesNormalizedSourceManifestSummary),
     ("learner cannot unlock next unit until mastery gates pass", ApplicationTests.LearnerCannotUnlockNextUnitUntilMasteryGatesPass),
     ("demo learner session is marked legacy non-production", ApplicationTests.DemoLearnerSessionIsMarkedLegacyNonProduction),
+    ("backend module boundaries are explicit", ApplicationTests.BackendModuleBoundariesAreExplicit),
 };
 
 var failed = 0;
@@ -298,6 +301,33 @@ static class ApplicationTests
         Assert.True(DemoLearnerSession.IsLegacyDemoOnly, "Demo learner session must expose demo-only marker.");
         Assert.Equal("P4", DemoLearnerSession.ReplacementPhase, "Production replacement phase must be explicit.");
 #pragma warning restore CS0618
+    }
+
+    public static void BackendModuleBoundariesAreExplicit()
+    {
+        var domainContexts = DomainContextCatalog.All;
+        var applicationContexts = ApplicationContextCatalog.All;
+
+        Assert.Contains(domainContexts, "ContentFactory");
+        Assert.Contains(domainContexts, "LearningContent");
+        Assert.Contains(domainContexts, "LearnerJourney");
+        Assert.Contains(domainContexts, "AttemptReview");
+        Assert.Contains(domainContexts, "AnalyticsOperations");
+
+        Assert.Equal(domainContexts.Count, applicationContexts.Count, "Application context count must match Domain.");
+        foreach (var context in domainContexts)
+        {
+            Assert.Contains(applicationContexts, context);
+        }
+
+        var forbiddenDomainReferences = typeof(DomainContextCatalog)
+            .Assembly
+            .GetReferencedAssemblies()
+            .Select(assembly => assembly.Name)
+            .Where(name => name is "Application" or "Infrastructure" or "Api")
+            .ToList();
+
+        Assert.Equal(0, forbiddenDomainReferences.Count, "Domain must not reference outer layers.");
     }
 }
 
