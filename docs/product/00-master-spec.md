@@ -53,6 +53,7 @@ Deferred:
 - [01-product-requirements.md](./01-product-requirements.md): product goals, users, success metrics, scope.
 - [02-domain-model.md](./02-domain-model.md): bounded contexts, entities, domain rules.
 - [03-user-journeys.md](./03-user-journeys.md): learner/admin journeys and state transitions.
+- [04-bounded-context-ownership.md](./04-bounded-context-ownership.md): context ownership, phase owners, cross-context contracts.
 - [05-technical-architecture.md](./05-technical-architecture.md): production architecture, tech standards, boundaries.
 - [06-data-model.md](./06-data-model.md): database entities and required relationships.
 - [07-api-contracts.md](./07-api-contracts.md): API groups and contract rules.
@@ -124,4 +125,3 @@ Every task in `11-task-breakdown` must define:
 - Push requirement
 
 If any of these are missing, the task is not ready for implementation.
-

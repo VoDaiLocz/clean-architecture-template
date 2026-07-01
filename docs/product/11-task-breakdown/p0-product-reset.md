@@ -58,9 +58,8 @@ Remove conflicting product direction, establish official enterprise-grade docume
 **Business Rules:** Learner context never exposes source factory internals.  
 **Edge Cases:** Shared read models are allowed only for analytics.  
 **Required Tests:** Architecture dependency checks when tooling exists; otherwise documented review checklist.  
-**Acceptance Criteria:** Every future task maps to one context owner.  
-**Verification Commands:** `rg -n "Content Factory|Learner Journey|Attempt And Review" docs/product`.  
+**Acceptance Criteria:** Every future task maps to one context owner; phase owner map exists; cross-context contract rules exist; review checklist exists.  
+**Verification Commands:** `rg -n "Ownership Matrix|Phase Owner Map|Cross-Context Contract Types|Review Checklist" docs/product/04-bounded-context-ownership.md`; `rg -n "Content Factory|Learner Journey|Attempt And Review" docs/product`.  
 **Definition Of Done:** Context rules documented and pushed.  
 **Commit:** `docs(p0.3): define TOEIC bounded context ownership`  
 **Push:** `git push origin main`
-

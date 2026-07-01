@@ -2,6 +2,8 @@
 
 ## Bounded Contexts
 
+Detailed ownership rules, phase owners, cross-context contract types, and task review checklist are defined in [04-bounded-context-ownership.md](./04-bounded-context-ownership.md). This file defines the domain vocabulary and core rules; the ownership file is the implementation governance contract.
+
 ### Content Factory
 
 Purpose: transform source materials into reviewed published content.
@@ -137,4 +139,3 @@ Draft content cannot become published content unless it passes the part-specific
 - Part 5 requires sentence, answer options, correct answer, and explanation.
 - Part 6 requires passage context.
 - Part 7 requires passage and evidence span.
-
