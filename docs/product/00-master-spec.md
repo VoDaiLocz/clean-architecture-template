@@ -68,6 +68,7 @@ Deferred:
 - [16-object-storage-abstraction.md](./16-object-storage-abstraction.md): object storage port, local test double, storage rules, and verification.
 - [17-background-job-foundation.md](./17-background-job-foundation.md): background job queue port, retry policy, local implementation, and job state rules.
 - [18-typed-api-contract-convention.md](./18-typed-api-contract-convention.md): route/audience/response contract catalog and typed API drift prevention rules.
+- [19-ci-baseline.md](./19-ci-baseline.md): GitHub Actions backend quality workflow and baseline checks.
 
 ## Non-Negotiable Product Rules
 

@@ -147,3 +147,23 @@ Each P1 task must include:
 **Definition Of Done:** Typed API convention is committed and pushed.  
 **Commit:** `feat(p1.6): add typed API contract convention`  
 **Push:** `git push origin main`
+
+## P1.7 - Add CI Baseline
+
+**Context:** Platform architecture  
+**Purpose:** Prevent broken backend commits from entering `main`.  
+**User/Business Value:** Protects production development velocity by catching build/test failures before they become shared team state.  
+**Dependencies:** P1.1, P1.2, P1.3.  
+**Detailed Scope:** Add GitHub Actions workflow for backend restore, build, and application unit tests; document CI baseline.  
+**Out Of Scope:** frontend CI, Playwright CI, deployment pipeline, branch protection, secrets, performance/security scans.  
+**Data Contract:** none.  
+**API Contract:** none.  
+**UI Contract:** none.  
+**Business Rules:** CI must not require secrets; CI must run on pull request and push to main; CI must build the solution and run tests.  
+**Edge Cases:** Workflow must use `--no-restore` after restore and `--no-build` for test executable after build to avoid duplicate work.  
+**Required Tests:** Local backend tests and build pass; workflow contains required commands.  
+**Acceptance Criteria:** `.github/workflows/backend-quality.yml` exists; restore/build/test steps exist; CI docs exist.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "backend-quality|dotnet build backend/ToeicSystem.sln|Application.UnitTest" .github/workflows/backend-quality.yml docs/product`.  
+**Definition Of Done:** CI baseline is committed and pushed.  
+**Commit:** `ci(p1.7): add backend quality gate`  
+**Push:** `git push origin main`
