@@ -123,6 +123,7 @@ Deferred:
 - [71-build-learner-app-shell.md](./71-build-learner-app-shell.md): detailed product specification for build learner app shell.
 - [72-build-onboarding-and-placement-ux.md](./72-build-onboarding-and-placement-ux.md): detailed product specification for build onboarding and placement ux.
 - [73-build-learner-today-screen.md](./73-build-learner-today-screen.md): detailed product specification for build learner today screen.
+- [74-build-lesson-and-example-ux.md](./74-build-lesson-and-example-ux.md): detailed product specification for build lesson and example ux.
 
 ## Non-Negotiable Product Rules
 
