@@ -134,6 +134,7 @@ Deferred:
 - [82-build-extraction-operations-dashboard.md](./82-build-extraction-operations-dashboard.md): detailed product specification for build extraction operations dashboard.
 - [83-build-draft-review-queue.md](./83-build-draft-review-queue.md): detailed product specification for build draft review queue.
 - [84-build-validation-issue-workflow.md](./84-build-validation-issue-workflow.md): detailed product specification for build validation issue workflow.
+- [85-build-content-publish-queue.md](./85-build-content-publish-queue.md): detailed product specification for build content publish queue.
 
 ## Non-Negotiable Product Rules
 
