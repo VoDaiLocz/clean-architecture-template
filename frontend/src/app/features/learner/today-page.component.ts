@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 import { ApiClientService } from '../../core/api/api-client.service';
 import { PageHeaderComponent } from '../../shared/ui/page-header.component';
@@ -7,7 +8,7 @@ import { PageHeaderComponent } from '../../shared/ui/page-header.component';
 @Component({
   selector: 'toeic-today-page',
   standalone: true,
-  imports: [AsyncPipe, PageHeaderComponent],
+  imports: [AsyncPipe, RouterLink, PageHeaderComponent],
   template: `
     <toeic-page-header
       eyebrow="Today"
@@ -22,7 +23,7 @@ import { PageHeaderComponent } from '../../shared/ui/page-header.component';
           <h2>{{ home.nextAction }}</h2>
           <p>{{ home.currentUnit }}</p>
         </div>
-        <button class="primary-action" type="button">{{ home.nextAction }}</button>
+        <a class="primary-action action-link" routerLink="/onboarding">{{ home.nextAction }}</a>
       </section>
 
       <section class="grid two">

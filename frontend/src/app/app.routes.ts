@@ -18,6 +18,21 @@ export const routes: Routes = [
     loadComponent: () => import('./features/learner/today-page.component').then((m) => m.TodayPageComponent),
   },
   {
+    path: 'onboarding',
+    canMatch: [ProtectedRouteGuard],
+    loadComponent: () => import('./features/learner/onboarding-page.component').then((m) => m.OnboardingPageComponent),
+  },
+  {
+    path: 'placement',
+    canMatch: [ProtectedRouteGuard],
+    loadComponent: () => import('./features/learner/placement-page.component').then((m) => m.PlacementPageComponent),
+  },
+  {
+    path: 'placement/:sessionId',
+    canMatch: [ProtectedRouteGuard],
+    loadComponent: () => import('./features/learner/placement-page.component').then((m) => m.PlacementPageComponent),
+  },
+  {
     path: 'learn',
     canMatch: [ProtectedRouteGuard],
     loadComponent: () => import('./features/learner/learn-page.component').then((m) => m.LearnPageComponent),

@@ -13,7 +13,7 @@ test.describe('Angular TOEIC learner routes', () => {
     await expect(page.getByTestId('user-menu')).toContainText('Profile');
     await expect(page.getByTestId('global-error-banner')).toContainText('API connection issue');
     await expect(page.getByRole('heading', { name: 'Your TOEIC next action' })).toBeVisible();
-    await expect(page.getByRole('button', { name: 'Start placement' })).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Start placement' })).toBeVisible();
     await expect(page.getByText(/backend decides the next required step/i)).toBeVisible();
 
     await expect(page.getByText(/Word Form/i)).toHaveCount(0);
