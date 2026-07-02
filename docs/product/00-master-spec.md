@@ -121,6 +121,7 @@ Deferred:
 - [69-generate-toeic-test-repair-plans.md](./69-generate-toeic-test-repair-plans.md): detailed product specification for generate toeic test repair plans.
 - [70-remove-frontend-demo-learner-content.md](./70-remove-frontend-demo-learner-content.md): detailed product specification for remove frontend demo learner content.
 - [71-build-learner-app-shell.md](./71-build-learner-app-shell.md): detailed product specification for build learner app shell.
+- [72-build-onboarding-and-placement-ux.md](./72-build-onboarding-and-placement-ux.md): detailed product specification for build onboarding and placement ux.
 
 ## Non-Negotiable Product Rules
 
