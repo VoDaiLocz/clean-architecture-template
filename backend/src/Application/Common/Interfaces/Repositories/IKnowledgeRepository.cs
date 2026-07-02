@@ -28,6 +28,10 @@ public interface IKnowledgeRepository
 
     IReadOnlyList<SourceDiscoveryIssue> GetSourceDiscoveryIssues(string sourceId);
 
+    void UpsertSourceResolutionRecord(SourceResolutionRecord record);
+
+    IReadOnlyList<SourceResolutionRecord> GetSourceResolutionRecords();
+
     void UpsertExtractedPage(ExtractedPage page);
 
     IReadOnlyList<ExtractedPage> GetExtractedPages(string assetId);

@@ -378,6 +378,24 @@ public static class PostgresMigrationCatalog
                 ON source_discovery_issues(source_id, status);
             """
         ),
+        new(
+            "013_source_resolution_records",
+            """
+            CREATE TABLE IF NOT EXISTS source_resolution_records (
+                resolution_id varchar(160) PRIMARY KEY,
+                source_id varchar(160) NOT NULL REFERENCES source_manifest_entries(source_id),
+                original_url text NOT NULL,
+                resolved_url text NOT NULL,
+                http_status_code integer NOT NULL,
+                redirect_count integer NOT NULL,
+                status varchar(80) NOT NULL,
+                resolved_at_utc timestamptz NOT NULL
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_source_resolution_records_source_status
+                ON source_resolution_records(source_id, status);
+            """
+        ),
     ];
 }
 

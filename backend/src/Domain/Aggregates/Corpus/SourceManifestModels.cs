@@ -136,6 +136,23 @@ public sealed record SourceDiscoveryIssue(
     DateTimeOffset CreatedAtUtc
 );
 
+public enum SourceResolutionStatus
+{
+    Resolved,
+    Failed,
+}
+
+public sealed record SourceResolutionRecord(
+    string ResolutionId,
+    string SourceId,
+    string OriginalUrl,
+    string ResolvedUrl,
+    int HttpStatusCode,
+    int RedirectCount,
+    SourceResolutionStatus Status,
+    DateTimeOffset ResolvedAtUtc
+);
+
 public enum ExtractedBlockType
 {
     Heading,

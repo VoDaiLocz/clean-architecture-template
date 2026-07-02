@@ -108,6 +108,21 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             CREATE INDEX IF NOT EXISTS idx_source_discovery_issues_source_status
                 ON source_discovery_issues(source_id, status);
 
+            CREATE TABLE IF NOT EXISTS source_resolution_records (
+                resolution_id TEXT PRIMARY KEY,
+                source_id TEXT NOT NULL,
+                original_url TEXT NOT NULL,
+                resolved_url TEXT NOT NULL,
+                http_status_code INTEGER NOT NULL,
+                redirect_count INTEGER NOT NULL,
+                status TEXT NOT NULL,
+                resolved_at_utc TEXT NOT NULL,
+                FOREIGN KEY (source_id) REFERENCES source_manifest_entries(source_id)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_source_resolution_records_source_status
+                ON source_resolution_records(source_id, status);
+
             CREATE TABLE IF NOT EXISTS extracted_pages (
                 page_id TEXT PRIMARY KEY,
                 asset_id TEXT NOT NULL,
@@ -768,6 +783,57 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         }
 
         return issues;
+    }
+
+    public void UpsertSourceResolutionRecord(SourceResolutionRecord record)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO source_resolution_records (
+                resolution_id, source_id, original_url, resolved_url, http_status_code, redirect_count, status, resolved_at_utc
+            )
+            VALUES (
+                $resolution_id, $source_id, $original_url, $resolved_url, $http_status_code, $redirect_count, $status, $resolved_at_utc
+            )
+            ON CONFLICT(resolution_id) DO UPDATE SET
+                source_id = excluded.source_id,
+                original_url = excluded.original_url,
+                resolved_url = excluded.resolved_url,
+                http_status_code = excluded.http_status_code,
+                redirect_count = excluded.redirect_count,
+                status = excluded.status,
+                resolved_at_utc = excluded.resolved_at_utc
+            """;
+        command.Parameters.AddWithValue("$resolution_id", record.ResolutionId);
+        command.Parameters.AddWithValue("$source_id", record.SourceId);
+        command.Parameters.AddWithValue("$original_url", record.OriginalUrl);
+        command.Parameters.AddWithValue("$resolved_url", record.ResolvedUrl);
+        command.Parameters.AddWithValue("$http_status_code", record.HttpStatusCode);
+        command.Parameters.AddWithValue("$redirect_count", record.RedirectCount);
+        command.Parameters.AddWithValue("$status", record.Status.ToString());
+        command.Parameters.AddWithValue("$resolved_at_utc", record.ResolvedAtUtc.ToString("O"));
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<SourceResolutionRecord> GetSourceResolutionRecords()
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT resolution_id, source_id, original_url, resolved_url, http_status_code, redirect_count, status, resolved_at_utc
+            FROM source_resolution_records
+            ORDER BY source_id
+            """;
+
+        var records = new List<SourceResolutionRecord>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            records.Add(ReadSourceResolutionRecord(reader));
+        }
+
+        return records;
     }
 
     public void UpsertExtractedPage(ExtractedPage page)
@@ -1958,6 +2024,7 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             or "source_containers"
             or "source_assets"
             or "source_discovery_issues"
+            or "source_resolution_records"
             or "extracted_pages"
             or "extracted_text_blocks"
             or "draft_content_items"
@@ -2052,6 +2119,20 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             reader.GetString(3),
             Enum.Parse<SourceDiscoveryIssueStatus>(reader.GetString(4)),
             DateTimeOffset.Parse(reader.GetString(5))
+        );
+    }
+
+    private static SourceResolutionRecord ReadSourceResolutionRecord(SqliteDataReader reader)
+    {
+        return new SourceResolutionRecord(
+            reader.GetString(0),
+            reader.GetString(1),
+            reader.GetString(2),
+            reader.GetString(3),
+            reader.GetInt32(4),
+            reader.GetInt32(5),
+            Enum.Parse<SourceResolutionStatus>(reader.GetString(6)),
+            DateTimeOffset.Parse(reader.GetString(7))
         );
     }
 

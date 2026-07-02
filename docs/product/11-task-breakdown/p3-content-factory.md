@@ -62,3 +62,23 @@ No content reaches learner APIs unless it is published and passes validation.
 **Definition Of Done:** Drive source asset discovery is committed and pushed.  
 **Commit:** `feat(p3.2): discover Drive source assets`  
 **Push:** `git push origin main`
+
+## P3.3 - Resolve TOEIC External Sources
+
+**Context:** Content Factory  
+**Purpose:** Resolve shortlinks, external web sources, and SharePoint URLs into stable source resolution records.  
+**User/Business Value:** Gives the content factory durable original/final URL evidence before asset registration and prevents fragile shortlinks from being the only persisted address.  
+**Dependencies:** P3.1.  
+**Detailed Scope:** Add external source resolver contract; add resolution handler; persist source resolution records with original URL, resolved URL, HTTP status, redirect count, status, and timestamp; add PostgreSQL migration `013_source_resolution_records`; add tests and docs.  
+**Out Of Scope:** real HTTP client implementation, retry/backoff policy, page scraping, asset registration, auth-gated SharePoint login handling.  
+**Data Contract:** `source_resolution_records` belongs to `source_manifest_entries` and stores original URL, resolved URL, status code, redirect count, resolution status, and timestamp.  
+**API Contract:** none for P3.3. Future admin API may trigger resolver with a real HTTP adapter.  
+**UI Contract:** none for P3.3. Admin UI may later display failed resolution records.  
+**Business Rules:** Only accessible shortlink/external/SharePoint sources are resolved; 2xx/3xx resolver statuses are marked resolved; failed statuses remain durable resolution records; original URL is always preserved.  
+**Edge Cases:** shortlinks with redirects persist redirect count; external web URLs persist final canonical URL; blocked sources are skipped here because P3.2 already records blocked discovery issues.  
+**Required Tests:** Application test covers shortlink and external source resolution, original/final URL persistence, status, counts, and migration coverage for `013_source_resolution_records`.  
+**Acceptance Criteria:** Handler exists; resolver contract exists; source resolution model/table exists; tests and build pass; source resolution doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "ResolveToeicExternalSources|SourceResolutionRecord|013_source_resolution_records" backend/src backend/tests docs/product`.  
+**Definition Of Done:** TOEIC external source resolution is committed and pushed.  
+**Commit:** `feat(p3.3): resolve TOEIC external sources`  
+**Push:** `git push origin main`

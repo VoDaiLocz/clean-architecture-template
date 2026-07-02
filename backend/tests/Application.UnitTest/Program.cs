@@ -34,6 +34,7 @@ var tests = new List<(string Name, Action Run)>
     ("repository persists normalized source manifest entries", ApplicationTests.RepositoryPersistsNormalizedSourceManifestEntries),
     ("imports audited TOEIC source manifest into database", ApplicationTests.ImportsAuditedToeicSourceManifestIntoDatabase),
     ("discovers Drive source assets and records blocked issues", ApplicationTests.DiscoversDriveSourceAssetsAndRecordsBlockedIssues),
+    ("resolves TOEIC external sources and shortlinks", ApplicationTests.ResolvesToeicExternalSourcesAndShortlinks),
     ("dashboard includes normalized source manifest summary", ApplicationTests.DashboardIncludesNormalizedSourceManifestSummary),
     ("learner cannot unlock next unit until mastery gates pass", ApplicationTests.LearnerCannotUnlockNextUnitUntilMasteryGatesPass),
     ("demo learner session is marked legacy non-production", ApplicationTests.DemoLearnerSessionIsMarkedLegacyNonProduction),
@@ -327,6 +328,61 @@ static class ApplicationTests
         Assert.Equal(SourceDiscoveryIssueStatus.Open, repository.GetSourceDiscoveryIssues(blocked.SourceId).Single().Status, "Blocked issue should remain open.");
     }
 
+    public static void ResolvesToeicExternalSourcesAndShortlinks()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var shortlink = SourceManifestClassifier.Classify(
+            67,
+            "Phương pháp nâng cấp Speaking",
+            "https://tinyurl.com/toeic-audit-67",
+            inaccessible: false,
+            hasPdf: false,
+            hasAudio: false,
+            hasTranscript: false,
+            hasAnswerKey: false,
+            hasImage: false
+        );
+        var external = SourceManifestClassifier.Classify(
+            38,
+            "Dễ dàng đạt Listening 750+ - Unica",
+            "https://toeic-source.example/materials/38",
+            inaccessible: false,
+            hasPdf: false,
+            hasAudio: true,
+            hasTranscript: false,
+            hasAnswerKey: false,
+            hasImage: false
+        );
+        repository.UpsertSourceManifestEntry(shortlink);
+        repository.UpsertSourceManifestEntry(external);
+        var resolver = new FakeExternalSourceResolver(new Dictionary<string, ExternalSourceResolutionResult>
+        {
+            [shortlink.Url] = new(
+                OriginalUrl: shortlink.Url,
+                ResolvedUrl: "https://youtube.com/watch?v=toeic-speaking-method",
+                HttpStatusCode: 200,
+                RedirectCount: 2
+            ),
+            [external.Url] = new(
+                OriginalUrl: external.Url,
+                ResolvedUrl: "https://unica.vn/toeic-listening-750",
+                HttpStatusCode: 200,
+                RedirectCount: 1
+            ),
+        });
+        var handler = new ResolveToeicExternalSourcesHandler(repository, resolver);
+
+        var result = handler.Handle(new ResolveToeicExternalSourcesCommand());
+
+        Assert.Equal(2, result.ResolvedCount, "Shortlink and external web sources should resolve.");
+        Assert.Equal(0, result.FailedCount, "Valid resolver responses should not fail.");
+        Assert.Equal(2, repository.Count("source_resolution_records"), "Resolution records should persist.");
+        var resolutions = repository.GetSourceResolutionRecords();
+        Assert.True(resolutions.Any(record => record.ResolvedUrl.Contains("youtube.com", StringComparison.Ordinal)), "Shortlink final URL should persist.");
+        Assert.True(resolutions.All(record => record.Status == SourceResolutionStatus.Resolved), "All resolver successes should be marked resolved.");
+    }
+
     public static void DashboardIncludesNormalizedSourceManifestSummary()
     {
         using var repository = SqliteKnowledgeRepository.InMemory();
@@ -544,6 +600,13 @@ static class ApplicationTests
                 && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS source_discovery_issues", StringComparison.Ordinal)
                 && migration.SqlStatements.Contains("idx_source_discovery_issues_source_status", StringComparison.Ordinal)),
             "Source discovery issue migration must create issue table and lookup index."
+        );
+        Assert.True(
+            migrations.Any(migration =>
+                migration.Id == "013_source_resolution_records"
+                && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS source_resolution_records", StringComparison.Ordinal)
+                && migration.SqlStatements.Contains("idx_source_resolution_records_source_status", StringComparison.Ordinal)),
+            "Source resolution migration must create resolution table and lookup index."
         );
     }
 
@@ -1247,6 +1310,14 @@ sealed class FakeDriveDiscoveryGateway(IReadOnlyList<DriveDiscoveredAsset> asset
     public IReadOnlyList<DriveDiscoveredAsset> ListFolderAssets(SourceManifestEntry source)
     {
         return assets;
+    }
+}
+
+sealed class FakeExternalSourceResolver(IReadOnlyDictionary<string, ExternalSourceResolutionResult> results) : IExternalSourceResolver
+{
+    public ExternalSourceResolutionResult Resolve(string url)
+    {
+        return results[url];
     }
 }
 
