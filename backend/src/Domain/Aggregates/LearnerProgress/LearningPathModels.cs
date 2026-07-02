@@ -85,3 +85,126 @@ public sealed record LearnerProfile(
     DateTimeOffset CreatedAtUtc,
     DateTimeOffset UpdatedAtUtc
 );
+
+public enum LearnerAssignmentType
+{
+    Lesson,
+    Drill,
+    MiniTest,
+    PartTest,
+    FullTest,
+    Review,
+}
+
+public enum LearnerAssignmentStatus
+{
+    Assigned,
+    Started,
+    Completed,
+    Cancelled,
+}
+
+public enum ActivitySessionStatus
+{
+    InProgress,
+    Completed,
+    Abandoned,
+}
+
+public enum LearnerAttemptStatus
+{
+    Submitted,
+    Scored,
+    Invalidated,
+}
+
+public sealed record LearnerAssignment(
+    string AssignmentId,
+    string LearnerId,
+    LearnerAssignmentType AssignmentType,
+    string ContentRefId,
+    LearnerAssignmentStatus Status,
+    DateTimeOffset AssignedAtUtc,
+    DateTimeOffset? DueAtUtc
+);
+
+public sealed record ActivitySession(
+    string SessionId,
+    string AssignmentId,
+    string LearnerId,
+    LearnerAssignmentType ActivityType,
+    ActivitySessionStatus Status,
+    DateTimeOffset StartedAtUtc,
+    DateTimeOffset? CompletedAtUtc
+);
+
+public sealed record LearnerAttempt(
+    string AttemptId,
+    string SessionId,
+    string LearnerId,
+    LearnerAttemptStatus Status,
+    int CorrectCount,
+    int TotalCount,
+    int ScorePercent,
+    DateTimeOffset SubmittedAtUtc
+);
+
+public sealed record AttemptAnswer(
+    string AnswerId,
+    string AttemptId,
+    string QuestionId,
+    string LearnerAnswer,
+    string CorrectAnswer,
+    bool IsCorrect,
+    DateTimeOffset AnsweredAtUtc
+);
+
+public static class LearnerWorkRules
+{
+    public static void EnsureValid(LearnerAssignment assignment)
+    {
+        RequireText(assignment.AssignmentId, "Assignment id is required.");
+        RequireText(assignment.LearnerId, "Assignment learner id is required.");
+        RequireText(assignment.ContentRefId, "Assignment content reference is required.");
+    }
+
+    public static void EnsureValid(ActivitySession session)
+    {
+        RequireText(session.SessionId, "Activity session id is required.");
+        RequireText(session.AssignmentId, "Activity session assignment id is required.");
+        RequireText(session.LearnerId, "Activity session learner id is required.");
+    }
+
+    public static void EnsureValid(LearnerAttempt attempt)
+    {
+        RequireText(attempt.AttemptId, "Attempt id is required.");
+        RequireText(attempt.SessionId, "Attempt session id is required.");
+        RequireText(attempt.LearnerId, "Attempt learner id is required.");
+
+        if (attempt.TotalCount <= 0 || attempt.CorrectCount < 0 || attempt.CorrectCount > attempt.TotalCount)
+        {
+            throw new InvalidOperationException("Attempt correct count must be between zero and total count.");
+        }
+
+        if (attempt.ScorePercent is < 0 or > 100)
+        {
+            throw new InvalidOperationException("Attempt score percent must be between 0 and 100.");
+        }
+    }
+
+    public static void EnsureValid(AttemptAnswer answer)
+    {
+        RequireText(answer.AnswerId, "Attempt answer id is required.");
+        RequireText(answer.AttemptId, "Attempt answer attempt id is required.");
+        RequireText(answer.QuestionId, "Attempt answer question id is required.");
+        RequireText(answer.CorrectAnswer, "Attempt answer correct answer is required.");
+    }
+
+    private static void RequireText(string value, string message)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            throw new InvalidOperationException(message);
+        }
+    }
+}

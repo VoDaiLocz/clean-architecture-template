@@ -164,3 +164,23 @@ Create durable data structures for content, learners, assignments, attempts, rev
 **Definition Of Done:** Learner profile model is committed and pushed.  
 **Commit:** `feat(p2.7): model learner profiles`  
 **Push:** `git push origin main`
+
+## P2.8 - Model Learner Assignments And Attempts
+
+**Context:** Learner Journey / Attempt And Review  
+**Purpose:** Persist the learner work lifecycle from assigned work to activity session, submitted attempt, and per-question answers.  
+**User/Business Value:** Makes Today Plan and practice work auditable and replayable, enabling scoring, review creation, mastery, and analytics in later tasks.  
+**Dependencies:** P2.7.  
+**Detailed Scope:** Add learner assignment, activity session, learner attempt, and attempt answer domain records; add lifecycle enums and validation rules; add repository upsert/query methods; add SQLite local/test tables and indexes; add PostgreSQL migration `009_learner_assignments_attempts`; add tests and docs.  
+**Out Of Scope:** review item creation, mastery update, TOEIC scaled score conversion, timer enforcement, frontend activity player, assignment recommendation engine.  
+**Data Contract:** `learner_assignments` belongs to learner profile; `activity_sessions` belongs to assignment and learner; `learner_attempts` belongs to session and learner; `attempt_answers` belongs to attempt and stores question id, learner answer, correct answer, correctness, and timestamp.  
+**API Contract:** none for P2.8. Future attempt APIs must write to these lifecycle tables.  
+**UI Contract:** none for P2.8. Future learner UI must submit attempts through backend lifecycle, not local-only state.  
+**Business Rules:** Assignment/session/attempt/answer ids are required; attempts require positive total count, correct count between zero and total count, and score percent 0-100; upserts are idempotent; attempts reference learner and session; answers reference attempt.  
+**Edge Cases:** repeated assignment updates status; session can move from in-progress to completed; invalid attempt counts are rejected before persistence; ordered reads are deterministic by lifecycle timestamp/id.  
+**Required Tests:** Repository integration test covers assignment, session, attempt, answer persistence and lifecycle update; invalid attempt count rejection; migration test covers `009_learner_assignments_attempts`.  
+**Acceptance Criteria:** Domain records exist; repository methods exist; SQLite schema exists; PostgreSQL migration exists; tests and build pass; lifecycle doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "LearnerAssignment|ActivitySession|LearnerAttempt|AttemptAnswer|009_learner_assignments_attempts" backend/src backend/tests docs/product`.  
+**Definition Of Done:** Learner assignment and attempt model is committed and pushed.  
+**Commit:** `feat(p2.8): model learner assignments and attempts`  
+**Push:** `git push origin main`

@@ -247,6 +247,65 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             CREATE INDEX IF NOT EXISTS idx_learner_profiles_status
                 ON learner_profiles(status);
 
+            CREATE TABLE IF NOT EXISTS learner_assignments (
+                assignment_id TEXT PRIMARY KEY,
+                learner_id TEXT NOT NULL,
+                assignment_type TEXT NOT NULL,
+                content_ref_id TEXT NOT NULL,
+                status TEXT NOT NULL,
+                assigned_at_utc TEXT NOT NULL,
+                due_at_utc TEXT,
+                FOREIGN KEY (learner_id) REFERENCES learner_profiles(learner_id)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_learner_assignments_learner_status
+                ON learner_assignments(learner_id, status);
+
+            CREATE TABLE IF NOT EXISTS activity_sessions (
+                session_id TEXT PRIMARY KEY,
+                assignment_id TEXT NOT NULL,
+                learner_id TEXT NOT NULL,
+                activity_type TEXT NOT NULL,
+                status TEXT NOT NULL,
+                started_at_utc TEXT NOT NULL,
+                completed_at_utc TEXT,
+                FOREIGN KEY (assignment_id) REFERENCES learner_assignments(assignment_id),
+                FOREIGN KEY (learner_id) REFERENCES learner_profiles(learner_id)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_activity_sessions_assignment
+                ON activity_sessions(assignment_id);
+
+            CREATE TABLE IF NOT EXISTS learner_attempts (
+                attempt_id TEXT PRIMARY KEY,
+                session_id TEXT NOT NULL,
+                learner_id TEXT NOT NULL,
+                status TEXT NOT NULL,
+                correct_count INTEGER NOT NULL,
+                total_count INTEGER NOT NULL,
+                score_percent INTEGER NOT NULL,
+                submitted_at_utc TEXT NOT NULL,
+                FOREIGN KEY (session_id) REFERENCES activity_sessions(session_id),
+                FOREIGN KEY (learner_id) REFERENCES learner_profiles(learner_id)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_learner_attempts_session
+                ON learner_attempts(session_id);
+
+            CREATE TABLE IF NOT EXISTS attempt_answers (
+                answer_id TEXT PRIMARY KEY,
+                attempt_id TEXT NOT NULL,
+                question_id TEXT NOT NULL,
+                learner_answer TEXT NOT NULL,
+                correct_answer TEXT NOT NULL,
+                is_correct INTEGER NOT NULL,
+                answered_at_utc TEXT NOT NULL,
+                FOREIGN KEY (attempt_id) REFERENCES learner_attempts(attempt_id)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_attempt_answers_attempt
+                ON attempt_answers(attempt_id);
+
             CREATE TABLE IF NOT EXISTS learning_items (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 item_type TEXT NOT NULL,
@@ -1284,6 +1343,196 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         return reader.Read() ? ReadLearnerProfile(reader) : null;
     }
 
+    public void UpsertLearnerAssignment(LearnerAssignment assignment)
+    {
+        LearnerWorkRules.EnsureValid(assignment);
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO learner_assignments (
+                assignment_id, learner_id, assignment_type, content_ref_id, status, assigned_at_utc, due_at_utc
+            )
+            VALUES (
+                $assignment_id, $learner_id, $assignment_type, $content_ref_id, $status, $assigned_at_utc, $due_at_utc
+            )
+            ON CONFLICT(assignment_id) DO UPDATE SET
+                learner_id = excluded.learner_id,
+                assignment_type = excluded.assignment_type,
+                content_ref_id = excluded.content_ref_id,
+                status = excluded.status,
+                assigned_at_utc = excluded.assigned_at_utc,
+                due_at_utc = excluded.due_at_utc
+            """;
+        command.Parameters.AddWithValue("$assignment_id", assignment.AssignmentId);
+        command.Parameters.AddWithValue("$learner_id", assignment.LearnerId);
+        command.Parameters.AddWithValue("$assignment_type", assignment.AssignmentType.ToString());
+        command.Parameters.AddWithValue("$content_ref_id", assignment.ContentRefId);
+        command.Parameters.AddWithValue("$status", assignment.Status.ToString());
+        command.Parameters.AddWithValue("$assigned_at_utc", assignment.AssignedAtUtc.ToString("O"));
+        command.Parameters.AddWithValue("$due_at_utc", assignment.DueAtUtc?.ToString("O") ?? (object)DBNull.Value);
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<LearnerAssignment> GetLearnerAssignments(string learnerId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT assignment_id, learner_id, assignment_type, content_ref_id, status, assigned_at_utc, due_at_utc
+            FROM learner_assignments
+            WHERE learner_id = $learner_id
+            ORDER BY assigned_at_utc, assignment_id
+            """;
+        command.Parameters.AddWithValue("$learner_id", learnerId);
+        var assignments = new List<LearnerAssignment>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read()) assignments.Add(ReadLearnerAssignment(reader));
+        return assignments;
+    }
+
+    public void UpsertActivitySession(ActivitySession session)
+    {
+        LearnerWorkRules.EnsureValid(session);
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO activity_sessions (
+                session_id, assignment_id, learner_id, activity_type, status, started_at_utc, completed_at_utc
+            )
+            VALUES (
+                $session_id, $assignment_id, $learner_id, $activity_type, $status, $started_at_utc, $completed_at_utc
+            )
+            ON CONFLICT(session_id) DO UPDATE SET
+                assignment_id = excluded.assignment_id,
+                learner_id = excluded.learner_id,
+                activity_type = excluded.activity_type,
+                status = excluded.status,
+                started_at_utc = excluded.started_at_utc,
+                completed_at_utc = excluded.completed_at_utc
+            """;
+        command.Parameters.AddWithValue("$session_id", session.SessionId);
+        command.Parameters.AddWithValue("$assignment_id", session.AssignmentId);
+        command.Parameters.AddWithValue("$learner_id", session.LearnerId);
+        command.Parameters.AddWithValue("$activity_type", session.ActivityType.ToString());
+        command.Parameters.AddWithValue("$status", session.Status.ToString());
+        command.Parameters.AddWithValue("$started_at_utc", session.StartedAtUtc.ToString("O"));
+        command.Parameters.AddWithValue("$completed_at_utc", session.CompletedAtUtc?.ToString("O") ?? (object)DBNull.Value);
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<ActivitySession> GetActivitySessions(string assignmentId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT session_id, assignment_id, learner_id, activity_type, status, started_at_utc, completed_at_utc
+            FROM activity_sessions
+            WHERE assignment_id = $assignment_id
+            ORDER BY started_at_utc, session_id
+            """;
+        command.Parameters.AddWithValue("$assignment_id", assignmentId);
+        var sessions = new List<ActivitySession>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read()) sessions.Add(ReadActivitySession(reader));
+        return sessions;
+    }
+
+    public void UpsertLearnerAttempt(LearnerAttempt attempt)
+    {
+        LearnerWorkRules.EnsureValid(attempt);
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO learner_attempts (
+                attempt_id, session_id, learner_id, status, correct_count, total_count, score_percent, submitted_at_utc
+            )
+            VALUES (
+                $attempt_id, $session_id, $learner_id, $status, $correct_count, $total_count, $score_percent, $submitted_at_utc
+            )
+            ON CONFLICT(attempt_id) DO UPDATE SET
+                session_id = excluded.session_id,
+                learner_id = excluded.learner_id,
+                status = excluded.status,
+                correct_count = excluded.correct_count,
+                total_count = excluded.total_count,
+                score_percent = excluded.score_percent,
+                submitted_at_utc = excluded.submitted_at_utc
+            """;
+        command.Parameters.AddWithValue("$attempt_id", attempt.AttemptId);
+        command.Parameters.AddWithValue("$session_id", attempt.SessionId);
+        command.Parameters.AddWithValue("$learner_id", attempt.LearnerId);
+        command.Parameters.AddWithValue("$status", attempt.Status.ToString());
+        command.Parameters.AddWithValue("$correct_count", attempt.CorrectCount);
+        command.Parameters.AddWithValue("$total_count", attempt.TotalCount);
+        command.Parameters.AddWithValue("$score_percent", attempt.ScorePercent);
+        command.Parameters.AddWithValue("$submitted_at_utc", attempt.SubmittedAtUtc.ToString("O"));
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<LearnerAttempt> GetLearnerAttempts(string sessionId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT attempt_id, session_id, learner_id, status, correct_count, total_count, score_percent, submitted_at_utc
+            FROM learner_attempts
+            WHERE session_id = $session_id
+            ORDER BY submitted_at_utc, attempt_id
+            """;
+        command.Parameters.AddWithValue("$session_id", sessionId);
+        var attempts = new List<LearnerAttempt>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read()) attempts.Add(ReadLearnerAttempt(reader));
+        return attempts;
+    }
+
+    public void UpsertAttemptAnswer(AttemptAnswer answer)
+    {
+        LearnerWorkRules.EnsureValid(answer);
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO attempt_answers (
+                answer_id, attempt_id, question_id, learner_answer, correct_answer, is_correct, answered_at_utc
+            )
+            VALUES (
+                $answer_id, $attempt_id, $question_id, $learner_answer, $correct_answer, $is_correct, $answered_at_utc
+            )
+            ON CONFLICT(answer_id) DO UPDATE SET
+                attempt_id = excluded.attempt_id,
+                question_id = excluded.question_id,
+                learner_answer = excluded.learner_answer,
+                correct_answer = excluded.correct_answer,
+                is_correct = excluded.is_correct,
+                answered_at_utc = excluded.answered_at_utc
+            """;
+        command.Parameters.AddWithValue("$answer_id", answer.AnswerId);
+        command.Parameters.AddWithValue("$attempt_id", answer.AttemptId);
+        command.Parameters.AddWithValue("$question_id", answer.QuestionId);
+        command.Parameters.AddWithValue("$learner_answer", answer.LearnerAnswer);
+        command.Parameters.AddWithValue("$correct_answer", answer.CorrectAnswer);
+        command.Parameters.AddWithValue("$is_correct", answer.IsCorrect ? 1 : 0);
+        command.Parameters.AddWithValue("$answered_at_utc", answer.AnsweredAtUtc.ToString("O"));
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<AttemptAnswer> GetAttemptAnswers(string attemptId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT answer_id, attempt_id, question_id, learner_answer, correct_answer, is_correct, answered_at_utc
+            FROM attempt_answers
+            WHERE attempt_id = $attempt_id
+            ORDER BY answered_at_utc, answer_id
+            """;
+        command.Parameters.AddWithValue("$attempt_id", attemptId);
+        var answers = new List<AttemptAnswer>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read()) answers.Add(ReadAttemptAnswer(reader));
+        return answers;
+    }
+
     public void UpsertCorpusManifest(CorpusManifest manifest)
     {
         using var command = connection.CreateCommand();
@@ -1459,6 +1708,10 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             or "published_test_sections"
             or "published_test_items"
             or "learner_profiles"
+            or "learner_assignments"
+            or "activity_sessions"
+            or "learner_attempts"
+            or "attempt_answers"
             or "learning_items"
             or "validation_issues"))
         {
@@ -1687,6 +1940,51 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             throw new InvalidOperationException("Learner daily study minutes must be positive.");
         }
     }
+
+    private static LearnerAssignment ReadLearnerAssignment(SqliteDataReader reader) =>
+        new(
+            reader.GetString(0),
+            reader.GetString(1),
+            Enum.Parse<LearnerAssignmentType>(reader.GetString(2)),
+            reader.GetString(3),
+            Enum.Parse<LearnerAssignmentStatus>(reader.GetString(4)),
+            DateTimeOffset.Parse(reader.GetString(5)),
+            reader.IsDBNull(6) ? null : DateTimeOffset.Parse(reader.GetString(6))
+        );
+
+    private static ActivitySession ReadActivitySession(SqliteDataReader reader) =>
+        new(
+            reader.GetString(0),
+            reader.GetString(1),
+            reader.GetString(2),
+            Enum.Parse<LearnerAssignmentType>(reader.GetString(3)),
+            Enum.Parse<ActivitySessionStatus>(reader.GetString(4)),
+            DateTimeOffset.Parse(reader.GetString(5)),
+            reader.IsDBNull(6) ? null : DateTimeOffset.Parse(reader.GetString(6))
+        );
+
+    private static LearnerAttempt ReadLearnerAttempt(SqliteDataReader reader) =>
+        new(
+            reader.GetString(0),
+            reader.GetString(1),
+            reader.GetString(2),
+            Enum.Parse<LearnerAttemptStatus>(reader.GetString(3)),
+            reader.GetInt32(4),
+            reader.GetInt32(5),
+            reader.GetInt32(6),
+            DateTimeOffset.Parse(reader.GetString(7))
+        );
+
+    private static AttemptAnswer ReadAttemptAnswer(SqliteDataReader reader) =>
+        new(
+            reader.GetString(0),
+            reader.GetString(1),
+            reader.GetString(2),
+            reader.GetString(3),
+            reader.GetString(4),
+            reader.GetInt32(5) == 1,
+            DateTimeOffset.Parse(reader.GetString(6))
+        );
 
     private void RecordIssues(DraftLearningItem item, ValidationResult result)
     {

@@ -233,6 +233,67 @@ public static class PostgresMigrationCatalog
                 ON learner_profiles(status);
             """
         ),
+        new(
+            "009_learner_assignments_attempts",
+            """
+            CREATE TABLE IF NOT EXISTS learner_assignments (
+                assignment_id varchar(160) PRIMARY KEY,
+                learner_id varchar(160) NOT NULL REFERENCES learner_profiles(learner_id),
+                assignment_type varchar(80) NOT NULL,
+                content_ref_id varchar(160) NOT NULL,
+                status varchar(80) NOT NULL,
+                assigned_at_utc timestamptz NOT NULL,
+                due_at_utc timestamptz
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_learner_assignments_learner_status
+                ON learner_assignments(learner_id, status);
+
+            CREATE TABLE IF NOT EXISTS activity_sessions (
+                session_id varchar(160) PRIMARY KEY,
+                assignment_id varchar(160) NOT NULL REFERENCES learner_assignments(assignment_id),
+                learner_id varchar(160) NOT NULL REFERENCES learner_profiles(learner_id),
+                activity_type varchar(80) NOT NULL,
+                status varchar(80) NOT NULL,
+                started_at_utc timestamptz NOT NULL,
+                completed_at_utc timestamptz
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_activity_sessions_assignment
+                ON activity_sessions(assignment_id);
+
+            CREATE TABLE IF NOT EXISTS learner_attempts (
+                attempt_id varchar(160) PRIMARY KEY,
+                session_id varchar(160) NOT NULL REFERENCES activity_sessions(session_id),
+                learner_id varchar(160) NOT NULL REFERENCES learner_profiles(learner_id),
+                status varchar(80) NOT NULL,
+                correct_count integer NOT NULL,
+                total_count integer NOT NULL,
+                score_percent integer NOT NULL,
+                submitted_at_utc timestamptz NOT NULL,
+                CONSTRAINT ck_learner_attempts_counts CHECK (
+                    total_count > 0 AND correct_count >= 0 AND correct_count <= total_count
+                ),
+                CONSTRAINT ck_learner_attempts_score_percent CHECK (score_percent BETWEEN 0 AND 100)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_learner_attempts_session
+                ON learner_attempts(session_id);
+
+            CREATE TABLE IF NOT EXISTS attempt_answers (
+                answer_id varchar(160) PRIMARY KEY,
+                attempt_id varchar(160) NOT NULL REFERENCES learner_attempts(attempt_id),
+                question_id varchar(160) NOT NULL,
+                learner_answer text NOT NULL,
+                correct_answer text NOT NULL,
+                is_correct boolean NOT NULL,
+                answered_at_utc timestamptz NOT NULL
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_attempt_answers_attempt
+                ON attempt_answers(attempt_id);
+            """
+        ),
     ];
 }
 

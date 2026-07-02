@@ -48,6 +48,7 @@ var tests = new List<(string Name, Action Run)>
     ("repository persists published questions and enforces part rules", ApplicationTests.RepositoryPersistsPublishedQuestionsAndEnforcesPartRules),
     ("repository persists TOEIC tests sections and ordered items", ApplicationTests.RepositoryPersistsToeicTestsSectionsAndOrderedItems),
     ("repository persists learner profiles across restart", ApplicationTests.RepositoryPersistsLearnerProfilesAcrossRestart),
+    ("repository persists learner assignments sessions attempts and answers", ApplicationTests.RepositoryPersistsLearnerAssignmentsSessionsAttemptsAndAnswers),
 };
 
 var failed = 0;
@@ -439,6 +440,15 @@ static class ApplicationTests
                 && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS learner_profiles", StringComparison.Ordinal)
                 && migration.SqlStatements.Contains("idx_learner_profiles_status", StringComparison.Ordinal)),
             "Learner profile migration must create profile table and status index."
+        );
+        Assert.True(
+            migrations.Any(migration =>
+                migration.Id == "009_learner_assignments_attempts"
+                && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS learner_assignments", StringComparison.Ordinal)
+                && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS activity_sessions", StringComparison.Ordinal)
+                && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS learner_attempts", StringComparison.Ordinal)
+                && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS attempt_answers", StringComparison.Ordinal)),
+            "Learner assignment migration must create lifecycle tables."
         );
     }
 
@@ -933,6 +943,95 @@ static class ApplicationTests
                 File.Delete(dbPath);
             }
         }
+    }
+
+    public static void RepositoryPersistsLearnerAssignmentsSessionsAttemptsAndAnswers()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        SeedLearnerProfile(repository);
+        var assignment = new LearnerAssignment(
+            AssignmentId: "assignment-learner-001-today-plan",
+            LearnerId: "learner-production-001",
+            AssignmentType: LearnerAssignmentType.MiniTest,
+            ContentRefId: "test-full-toeic-001",
+            Status: LearnerAssignmentStatus.Assigned,
+            AssignedAtUtc: new DateTimeOffset(2026, 7, 2, 2, 0, 0, TimeSpan.Zero),
+            DueAtUtc: new DateTimeOffset(2026, 7, 3, 2, 0, 0, TimeSpan.Zero)
+        );
+        var session = new ActivitySession(
+            SessionId: "session-learner-001-mini-test",
+            AssignmentId: assignment.AssignmentId,
+            LearnerId: assignment.LearnerId,
+            ActivityType: LearnerAssignmentType.MiniTest,
+            Status: ActivitySessionStatus.InProgress,
+            StartedAtUtc: new DateTimeOffset(2026, 7, 2, 2, 5, 0, TimeSpan.Zero),
+            CompletedAtUtc: null
+        );
+        var attempt = new LearnerAttempt(
+            AttemptId: "attempt-learner-001-mini-test-001",
+            SessionId: session.SessionId,
+            LearnerId: assignment.LearnerId,
+            Status: LearnerAttemptStatus.Submitted,
+            CorrectCount: 8,
+            TotalCount: 10,
+            ScorePercent: 80,
+            SubmittedAtUtc: new DateTimeOffset(2026, 7, 2, 2, 20, 0, TimeSpan.Zero)
+        );
+        var answer = new AttemptAnswer(
+            AnswerId: "answer-attempt-001-q001",
+            AttemptId: attempt.AttemptId,
+            QuestionId: "question-part5-word-form-001",
+            LearnerAnswer: "B",
+            CorrectAnswer: "B",
+            IsCorrect: true,
+            AnsweredAtUtc: new DateTimeOffset(2026, 7, 2, 2, 19, 0, TimeSpan.Zero)
+        );
+
+        repository.UpsertLearnerAssignment(assignment);
+        repository.UpsertLearnerAssignment(assignment with { Status = LearnerAssignmentStatus.Started });
+        repository.UpsertActivitySession(session);
+        repository.UpsertActivitySession(session with
+        {
+            Status = ActivitySessionStatus.Completed,
+            CompletedAtUtc = new DateTimeOffset(2026, 7, 2, 2, 20, 0, TimeSpan.Zero),
+        });
+        repository.UpsertLearnerAttempt(attempt);
+        repository.UpsertAttemptAnswer(answer);
+
+        var assignments = repository.GetLearnerAssignments(assignment.LearnerId);
+        var sessions = repository.GetActivitySessions(assignment.AssignmentId);
+        var attempts = repository.GetLearnerAttempts(session.SessionId);
+        var answers = repository.GetAttemptAnswers(attempt.AttemptId);
+
+        Assert.Equal(1, repository.Count("learner_assignments"), "Assignment upsert must be idempotent.");
+        Assert.Equal(1, repository.Count("activity_sessions"), "Activity session upsert must be idempotent.");
+        Assert.Equal(1, repository.Count("learner_attempts"), "Attempt should persist.");
+        Assert.Equal(1, repository.Count("attempt_answers"), "Attempt answer should persist.");
+        Assert.Equal(LearnerAssignmentStatus.Started, assignments.Single().Status, "Assignment lifecycle update should persist.");
+        Assert.Equal(ActivitySessionStatus.Completed, sessions.Single().Status, "Session completion should persist.");
+        Assert.Equal(80, attempts.Single().ScorePercent, "Attempt score should persist.");
+        Assert.True(answers.Single().IsCorrect, "Answer correctness should persist.");
+        Assert.Throws<InvalidOperationException>(
+            () => repository.UpsertLearnerAttempt(attempt with { AttemptId = "invalid-score", CorrectCount = 11 }),
+            "Attempt correct count cannot exceed total count."
+        );
+    }
+
+    private static void SeedLearnerProfile(SqliteKnowledgeRepository repository)
+    {
+        repository.UpsertLearnerProfile(new LearnerProfile(
+            LearnerId: "learner-production-001",
+            DisplayName: "Nguyen Van A",
+            Email: "learner@example.com",
+            TargetScore: 850,
+            CurrentEstimatedScore: 650,
+            DailyStudyMinutes: 75,
+            TimeZoneId: "Asia/Ho_Chi_Minh",
+            Status: LearnerProfileStatus.Active,
+            CreatedAtUtc: new DateTimeOffset(2026, 7, 2, 0, 0, 0, TimeSpan.Zero),
+            UpdatedAtUtc: new DateTimeOffset(2026, 7, 2, 1, 0, 0, TimeSpan.Zero)
+        ));
     }
 }
 

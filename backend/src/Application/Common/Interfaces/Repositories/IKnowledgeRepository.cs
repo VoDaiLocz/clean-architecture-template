@@ -64,6 +64,22 @@ public interface IKnowledgeRepository
 
     LearnerProfile? GetLearnerProfile(string learnerId);
 
+    void UpsertLearnerAssignment(LearnerAssignment assignment);
+
+    IReadOnlyList<LearnerAssignment> GetLearnerAssignments(string learnerId);
+
+    void UpsertActivitySession(ActivitySession session);
+
+    IReadOnlyList<ActivitySession> GetActivitySessions(string assignmentId);
+
+    void UpsertLearnerAttempt(LearnerAttempt attempt);
+
+    IReadOnlyList<LearnerAttempt> GetLearnerAttempts(string sessionId);
+
+    void UpsertAttemptAnswer(AttemptAnswer answer);
+
+    IReadOnlyList<AttemptAnswer> GetAttemptAnswers(string attemptId);
+
     void UpsertCorpusManifest(CorpusManifest manifest);
 
     void UpsertNormalizationStage(NormalizationStageSnapshot stage);
