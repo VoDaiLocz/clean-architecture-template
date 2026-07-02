@@ -23,3 +23,22 @@ Transform audited sources into reviewed published content.
 
 No content reaches learner APIs unless it is published and passes validation.
 
+## P3.1 - Import TOEIC Source Manifest
+
+**Context:** Content Factory  
+**Purpose:** Import the audited TOEIC source manifest into normalized source inventory tables.  
+**User/Business Value:** Starts the content factory from the real audited TOEIC material inventory instead of raw PDF/Drive navigation or frontend hardcoded data.  
+**Dependencies:** P2.1, P2.10.  
+**Detailed Scope:** Import 73 audited source rows; classify provider/source type/material class/access status/evidence flags; return audit summary counts; make repeated imports idempotent.  
+**Out Of Scope:** Drive folder child discovery, shortlink resolution, asset registration, PDF/audio extraction, parser jobs, learner-facing content publication.  
+**Data Contract:** `source_manifest_entries` receives stable `sheet-row-{row}` ids with title, url, provider, source type, material class, access status, evidence flags, and audit notes.  
+**API Contract:** `ImportToeicSourceManifestResult` returns imported, accessible, blocked, PDF, audio, image, transcript, and answer-key counts.  
+**UI Contract:** none for P3.1. Admin dashboards may display source manifest summary after import.  
+**Business Rules:** Import count must be 73; blocked count must be 13; accessible count must be 60; evidence counts must match audit; rerunning import must update rows without duplicating them.  
+**Edge Cases:** inaccessible rows remain explicit blocked inventory; Speaking/Writing rows remain classified but do not enter learner scope until later; repeated imports are idempotent by source id.  
+**Required Tests:** Application test covers 73 imported rows, 60 accessible, 13 blocked, evidence counts, provider/source summary, and idempotent rerun.  
+**Acceptance Criteria:** Handler persists audited rows; summary counts match audit; tests and build pass; import doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "ImportToeicSourceManifestResult|AccessibleCount|SourcesWithImage|P3.1" backend/src backend/tests docs/product`.  
+**Definition Of Done:** TOEIC source manifest import is committed and pushed.  
+**Commit:** `feat(p3.1): import TOEIC source manifest`  
+**Push:** `git push origin main`

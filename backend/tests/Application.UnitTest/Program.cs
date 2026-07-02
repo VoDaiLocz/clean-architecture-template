@@ -246,12 +246,16 @@ static class ApplicationTests
         var result = handler.Handle();
 
         Assert.Equal(73, result.ImportedCount, "Expected all audited source rows imported.");
+        Assert.Equal(60, result.AccessibleCount, "Expected accessible source count from audit.");
         Assert.Equal(13, result.BlockedCount, "Expected blocked source count from audit.");
         Assert.Equal(33, result.SourcesWithPdf, "Expected PDF evidence count from audit.");
         Assert.Equal(20, result.SourcesWithAudio, "Expected audio evidence count from audit.");
+        Assert.Equal(11, result.SourcesWithImage, "Expected image evidence count from audit.");
         Assert.Equal(6, result.SourcesWithTranscript, "Expected transcript evidence count from audit.");
         Assert.Equal(5, result.SourcesWithAnswerKey, "Expected answer-key evidence count from audit.");
         Assert.Equal(73, repository.Count("source_manifest_entries"), "Expected DB rows.");
+        handler.Handle();
+        Assert.Equal(73, repository.Count("source_manifest_entries"), "Repeated import must update rows instead of duplicating them.");
         var summary = new GetSourceManifestSummaryHandler(repository).Handle();
         Assert.Equal(36, summary.DriveFolders, "Expected Drive folder count from audit.");
         Assert.Equal(14, summary.DriveFiles, "Expected Drive file count from audit.");

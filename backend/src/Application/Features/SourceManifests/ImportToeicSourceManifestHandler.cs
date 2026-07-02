@@ -5,9 +5,11 @@ namespace Application.Features.SourceManifests;
 
 public sealed record ImportToeicSourceManifestResult(
     int ImportedCount,
+    int AccessibleCount,
     int BlockedCount,
     int SourcesWithPdf,
     int SourcesWithAudio,
+    int SourcesWithImage,
     int SourcesWithTranscript,
     int SourcesWithAnswerKey
 );
@@ -34,9 +36,11 @@ public sealed class ImportToeicSourceManifestHandler(IKnowledgeRepository reposi
         var summary = repository.GetSourceManifestSummary();
         return new ImportToeicSourceManifestResult(
             summary.TotalSources,
+            summary.AccessibleSources,
             summary.BlockedSources,
             summary.SourcesWithPdf,
             summary.SourcesWithAudio,
+            summary.SourcesWithImage,
             summary.SourcesWithTranscript,
             summary.SourcesWithAnswerKey
         );
