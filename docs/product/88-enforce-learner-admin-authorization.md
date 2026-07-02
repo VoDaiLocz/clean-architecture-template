@@ -27,6 +27,10 @@ Enforce role and ownership rules so learners access only their own learning stat
 - Row-level database security.
 - Paid subscription entitlements.
 
+## Data Contract
+
+Authorization reads authenticated user, role, learner ownership, and audit records. Denied privileged actions write an audit event with actor id, resource, action, outcome, reason, and timestamp.
+
 ## Role Matrix
 
 | Capability | Learner | Operator | Admin | SuperAdmin |
@@ -61,6 +65,10 @@ Error body follows P9.4:
   }
 }
 ```
+
+## UI Contract
+
+Learner UI hides admin routes, but backend authorization remains source of truth. Admin UI can hide disabled actions but must still handle `401` and `403` responses explicitly.
 
 ## Business Rules
 

@@ -25,6 +25,18 @@ Add baseline OWASP controls required before public release.
 - Compliance certification.
 - Paid SAST/DAST integration.
 
+## Data Contract
+
+Security events may write audit or observability records for rate-limit, authorization, validation, and suspicious request outcomes. No schema may store plaintext secrets, passwords, or raw tokens.
+
+## API Contract
+
+Security middleware must preserve standardized error responses, allow health endpoints as configured, enforce production CORS, and reject unsafe request sizes or methods with stable error codes.
+
+## UI Contract
+
+Frontend production origins must be configured explicitly. UI must not depend on wildcard CORS or development-only relaxed security behavior.
+
 ## Business Rules
 
 1. Wildcard CORS is forbidden outside Development.

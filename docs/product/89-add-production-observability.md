@@ -29,6 +29,10 @@ Add the minimum production observability baseline required to diagnose API, lear
 
 These are operational follow-up tasks after the code baseline exists.
 
+## Data Contract
+
+Operational records include correlation id, actor id when authenticated, route template, outcome, duration, and safe diagnostic detail. Logs and metrics must never contain tokens, passwords, answer keys before authorization, or raw source credentials.
+
 ## Log Contract
 
 Every request log must include:
@@ -80,6 +84,14 @@ Minimum metrics:
 - auth login success/failure when auth exists
 
 Metric names must be stable and documented in code/tests.
+
+## API Contract
+
+Expose liveness/readiness health endpoints and metrics collection through the production-approved path. Health responses are safe for infrastructure and do not leak secrets or internal exception stacks.
+
+## UI Contract
+
+No learner UI dependency is required. Admin/operator status screens may consume health or operational summaries later, but they must use role-protected APIs.
 
 ## Business Rules
 

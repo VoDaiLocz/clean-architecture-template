@@ -2,81 +2,28 @@
 
 ## Phase Goal
 
-Replace demo learner flow with persisted production journey.
+Replace demo learner flow with a persisted, backend-owned production journey from onboarding to mastery unlock.
 
-| Task | Purpose | Key Pass Criteria | Commit |
-| --- | --- | --- | --- |
-| P4.1 Learner onboarding | Capture learner goal | Profile persisted; next action returned | `feat(p4.1): implement learner onboarding` |
-| P4.2 Learner profile persistence | Remove memory-only learner state | Profile survives restart | `feat(p4.2): persist learner profile state` |
-| P4.3 Placement test start | Create placement session | Duplicate active session handled | `feat(p4.3): start TOEIC placement session` |
-| P4.4 Placement scoring | Diagnose part weaknesses | Result has accuracy by part and tags | `feat(p4.4): score TOEIC placement` |
-| P4.5 Learning path generation | Create path from diagnosis | Starting units generated from placement | `feat(p4.5): generate learner path from placement` |
-| P4.6 Today Plan assignment | Assign next best activity | Review blockers outrank new lessons | `feat(p4.6): assign learner today plan` |
-| P4.7 Activity session lifecycle | Track activity state | Start, resume, complete states persist | `feat(p4.7): manage learner activity sessions` |
-| P4.8 Attempt submission | Score learner work | Attempt persists and returns result | `feat(p4.8): process learner attempts` |
-| P4.9 Mistake review queue | Force repair | Wrong answer creates review item | `feat(p4.9): create learner review queue` |
-| P4.10 Mastery unlock engine | Enforce progression | Unit unlocks only after all gates pass | `feat(p4.10): enforce mastery unlocks` |
+## Source Of Truth
 
-## P4.1 - Implement Learner Onboarding
+Detailed implementation contracts live in the standalone task specs below. This phase file is an execution index only; do not add competing business rules here.
 
-**Context:** Learner Journey  
-**Purpose:** Create or update the learner's TOEIC learning profile and return the first backend-owned next action.  
-**User/Business Value:** Lets a real learner enter the product with durable goals, current level, daily study capacity, and a clear next step toward diagnosis instead of demo/static UI state.  
-**Dependencies:** P2.7, P1.6.  
-**Detailed Scope:** Add onboarding command/result models; add `OnboardLearnerHandler`; persist learner profile through `IKnowledgeRepository`; register typed API contract; map `POST /api/learner/onboarding`; add application/API-contract test; add docs.  
-**Out Of Scope:** authentication account creation, placement session creation, learning path generation, frontend onboarding screen, marketing profile fields, payments.  
-**Data Contract:** Onboarding writes one `learner_profiles` row keyed by `learner_id`; repeat onboarding updates the same row and preserves durable identity.  
-**API Contract:** `POST /api/learner/onboarding` accepts learner id, display name, email, target score, current estimated score, daily study minutes, and timezone; response is `OnboardLearnerResponse` with persisted profile summary and `NextAction`.  
-**UI Contract:** Future UI must display the returned next action and must not decide placement routing itself.  
-**Business Rules:** Learner profile must be active after onboarding; TOEIC score/minute validation remains repository/domain-owned; next action after onboarding is `StartPlacement` until placement flow is implemented.  
-**Edge Cases:** Repeat onboarding updates the profile idempotently; invalid score/minutes fail before persistence; timezone/name/email are required by repository validation.  
-**Required Tests:** Application test persists profile, checks next action, checks typed API contract, and checks repeated onboarding updates without duplicate profile rows.  
-**Acceptance Criteria:** Handler exists; endpoint is mapped; API contract is registered; profile persists; repeat onboarding updates; next action returned; tests and build pass.  
-**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "OnboardLearner|/api/learner/onboarding|StartPlacement" backend/src backend/tests docs/product`.  
-**Definition Of Done:** Learner onboarding workflow is committed and pushed.  
-**Commit:** `feat(p4.1): implement learner onboarding`  
-**Push:** `git push origin main`
-
-## P4.2 - Persist Learner Profile State
-
-**Context:** Learner Journey  
-**Purpose:** Make learner home state read from persisted learner profile data instead of the legacy in-memory demo session.  
-**User/Business Value:** A real learner can return after restart and still see the correct next backend-owned action.  
-**Dependencies:** P2.7, P4.1.  
-**Detailed Scope:** Add repository-backed `GetLearnerHomeHandler`; return onboarding CTA when profile is missing; return placement CTA when profile exists but placement is not implemented yet; update `GET /api/learner/home` to use repository state; add restart persistence test and docs.  
-**Out Of Scope:** placement session creation, assignment engine, frontend home redesign, deleting legacy demo activity endpoints.  
-**Data Contract:** `learner_profiles` is the source of truth for learner home identity and TOEIC goal state; review count comes from persisted review items.  
-**API Contract:** `GET /api/learner/home?learnerId=...` returns `LearnerHomeResponse` from repository-backed state. Missing profile returns onboarding state, not demo content.  
-**UI Contract:** Future UI should show onboarding or placement CTA from API response and must not infer profile state locally.  
-**Business Rules:** No profile means onboarding is required; profile without placement means placement is required; learner home cannot depend on `DemoLearnerSession` memory state.  
-**Edge Cases:** Profile survives repository restart; missing profile produces onboarding CTA; new persisted profile has zero open review blockers; existing open review items are counted from DB.  
-**Required Tests:** Application test creates profile through onboarding, restarts repository, then verifies home state comes from persisted profile and routes to placement.  
-**Acceptance Criteria:** Handler exists; `/api/learner/home` uses repository-backed handler; restart test passes; docs explain persisted home state; build passes.  
-**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "GetLearnerHome|toeic-placement-start|persisted learner home" backend/src backend/tests docs/product`.  
-**Definition Of Done:** Persisted learner home state is committed and pushed.  
-**Commit:** `feat(p4.2): persist learner profile state`  
-**Push:** `git push origin main`
-
-## P4.3 - Start TOEIC Placement Session
-
-**Context:** Learner Journey  
-**Purpose:** Start or resume the learner's active TOEIC placement diagnosis session.  
-**User/Business Value:** A learner can begin diagnosis after onboarding without duplicate active placement state or frontend-owned flow decisions.  
-**Dependencies:** P4.1, P4.2.  
-**Detailed Scope:** Add placement session domain model/status; add repository persistence; add `StartPlacementSessionHandler`; add `POST /api/learner/placement/start`; register API contract; add tests and docs.  
-**Out Of Scope:** placement question assignment, answer submission, scoring, part breakdown, placement result creation, frontend placement UX.  
-**Data Contract:** `placement_sessions` stores session id, learner id, status, started timestamp, completed timestamp; active duplicate starts must reuse the existing `InProgress` session.  
-**API Contract:** `POST /api/learner/placement/start` accepts learner id and returns `StartPlacementSessionResponse` with session id, status, and next action.  
-**UI Contract:** Future UI must use the returned session id/action and must not create local placement sessions.  
-**Business Rules:** Learner profile is required before placement; only one active `InProgress` placement session exists per learner; duplicate start resumes active session.  
-**Edge Cases:** Missing learner profile fails; duplicate active placement returns resume action; persisted session can be queried by learner; completed/cancelled future sessions do not block a new active session.  
-**Required Tests:** Application/API-contract test covers profile prerequisite, first start, duplicate active resume, repository count, and typed endpoint contract.  
-**Acceptance Criteria:** Domain model exists; repository persists sessions; handler starts/resumes correctly; endpoint and API contract exist; tests/build pass.  
-**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "StartPlacementSession|placement_sessions|/api/learner/placement/start" backend/src backend/tests docs/product`.  
-**Definition Of Done:** Placement session start workflow is committed and pushed.  
-**Commit:** `feat(p4.3): start TOEIC placement session`  
-**Push:** `git push origin main`
+| Task | Detailed Spec | Purpose | Key Pass Criteria | Commit |
+| --- | --- | --- | --- | --- |
+| P4.1 | [43-learner-onboarding.md](../43-learner-onboarding.md) | Capture learner goal | Profile persisted; next action returned | `feat(p4.1): implement learner onboarding` |
+| P4.2 | [44-persisted-learner-home.md](../44-persisted-learner-home.md) | Remove memory-only learner state | Profile survives restart | `feat(p4.2): persist learner profile state` |
+| P4.3 | [45-placement-session-start.md](../45-placement-session-start.md) | Create placement session | Duplicate active session handled | `feat(p4.3): start TOEIC placement session` |
+| P4.4 | [46-score-toeic-placement.md](../46-score-toeic-placement.md) | Diagnose part weaknesses | Diagnostic band and part/tag breakdowns persisted | `feat(p4.4): score TOEIC placement` |
+| P4.5 | [47-generate-learner-path-from-placement.md](../47-generate-learner-path-from-placement.md) | Create path from diagnosis | Starting units generated from placement | `feat(p4.5): generate learner path from placement` |
+| P4.6 | [48-assign-learner-today-plan.md](../48-assign-learner-today-plan.md) | Assign next best activity | Review blockers outrank new lessons | `feat(p4.6): assign learner today plan` |
+| P4.7 | [49-manage-learner-activity-sessions.md](../49-manage-learner-activity-sessions.md) | Track activity state | Start, resume, complete states persist | `feat(p4.7): manage learner activity sessions` |
+| P4.8 | [50-process-learner-attempts.md](../50-process-learner-attempts.md) | Score learner work | Attempt persists and returns result | `feat(p4.8): process learner attempts` |
+| P4.9 | [51-create-learner-review-queue.md](../51-create-learner-review-queue.md) | Force repair | Wrong answer creates review item | `feat(p4.9): create learner review queue` |
+| P4.10 | [52-enforce-mastery-unlocks.md](../52-enforce-mastery-unlocks.md) | Enforce progression | Unit unlocks only after all gates pass | `feat(p4.10): enforce mastery unlocks` |
 
 ## Required P4 Acceptance Standard
 
-`DemoLearnerSession` is not used by production endpoints after this phase.
+- Learner journey is durable across repository restart.
+- `DemoLearnerSession` is not used by production learner endpoints.
+- Frontend does not own placement, scoring, today assignment, review, or unlock logic.
+- Every task is implemented with tests before commit and pushed separately.

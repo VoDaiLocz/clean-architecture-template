@@ -1,61 +1,86 @@
 # Create Learner Review Queue
 
+## Task
+
+P4.9 - Create Learner Review Queue
+
 ## Purpose
-P4.9 records mistakes into the learner's review queue as review items.
 
-## Domain Model
-- `ReviewItem`
-  - `ReviewItemId` (string, UUID)
-  - `LearnerId` (string, UUID)
-  - `SourceAttemptId` (string, UUID)
-  - `QuestionId` (string, UUID)
-  - `UnitId` (string)
-  - `ErrorTag` (string)
-  - `LearnerAnswer` (string)
-  - `CorrectAnswer` (string)
-  - `Status` (Enum: `Open`, `Resolved`)
-  - `IsBlocking` (bool)
+Turn wrong answers into durable repair work so the learner cannot ignore core mistakes that block TOEIC progress.
 
-## Repository Contract
-- Interface: `IReviewRepository`
-  - `Task SaveReviewItemAsync(ReviewItem item, CancellationToken cancellationToken);`
-  - `Task<IEnumerable<ReviewItem>> GetOpenReviewItemsAsync(string learnerId, CancellationToken cancellationToken);`
-- Table: `review_items`
-  ```sql
-  CREATE TABLE review_items (
-      review_item_id TEXT PRIMARY KEY,
-      learner_id TEXT NOT NULL,
-      source_attempt_id TEXT NOT NULL,
-      question_id TEXT NOT NULL,
-      unit_id TEXT NOT NULL,
-      error_tag TEXT NOT NULL,
-      learner_answer TEXT NOT NULL,
-      correct_answer TEXT NOT NULL,
-      status TEXT NOT NULL,
-      is_blocking INTEGER NOT NULL,
-      created_at_utc TEXT NOT NULL,
-      resolved_at_utc TEXT,
-      FOREIGN KEY (learner_id) REFERENCES learner_profiles(learner_id)
-  );
-  ```
+## Detailed Scope
 
-## Application Contract
-- Handler: `GetLearnerReviewQueueHandler`
-- Query: `GetLearnerReviewQueueQuery`
-- Response: `LearnerReviewQueueResponse`
+- Add review item creation service called after attempts/tests.
+- Add `GetLearnerReviewQueueHandler`.
+- Persist review item status, source attempt, question, skill tag, explanation reference, and blocking flag.
+- Support resolving a review item through repair attempts.
+- Deduplicate repeated mistakes while preserving latest evidence.
+
+## Out Of Scope
+
+- Spaced repetition algorithm beyond first blocking repair.
+- Teacher comments.
+- Frontend review workspace.
+- Full mastery recalculation implementation.
+
+## Data Contract
+
+Table: `review_items`.
+Fields: `review_item_id`, `learner_id`, `source_attempt_id`, `question_id`, `unit_id`, `skill_tag`, `learner_answer`, `correct_answer`, `status`, `is_blocking`, `created_at_utc`, `resolved_at_utc`.
 
 ## API Contract
-- Endpoint: `GET /api/learner/review?learnerId={learnerId}`
 
-## Rules
-1. Every wrong answer in graded activities creates an open ReviewItem.
-2. Mistakes in MiniTests and official practice exams are set as `is_blocking = true`.
-3. Mistakes in focus drills are set as `is_blocking = false`.
-4. Duplicate errors for the same question update the attempt reference.
+`GET /api/learner/review?learnerId=...` returns open review items grouped by unit and severity.
+`POST /api/learner/review/{reviewItemId}/resolve` records repair result.
+Errors: `REVIEW_ITEM_NOT_FOUND`, `REVIEW_ITEM_NOT_OWNED`, `REPAIR_NOT_PASSED`.
+
+## UI Contract
+
+UI shows review queue from API and sends repair answers. UI must not locally mark blockers resolved.
+
+## Business Rules
+
+1. Every wrong graded answer creates or updates one review item.
+2. Mini-test and practice-test mistakes are blocking by default.
+3. Drill mistakes are non-blocking unless the unit rule says otherwise.
+4. Blocking review items prevent gated unit unlock.
+5. Resolution requires a passed repair attempt, not a button click.
+
+## Edge Cases
+
+- Same question missed multiple times.
+- Source attempt deleted or archived.
+- Review item for unpublished question.
+- Learner attempts another learner's review item.
+- Repair fails.
+- Already resolved item.
+
+## Required Tests
+
+- Wrong answers create review items.
+- Duplicate mistake updates existing item.
+- Blocking flags match activity type.
+- Resolve requires passed repair.
+- Queue groups and orders items correctly.
+
+## Acceptance Criteria
+
+- Review queue exists as durable backend state.
+- Unlock engine can query blockers.
+- Tests and build pass.
 
 ## Verification
+
 ```bash
 dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj
 dotnet build backend/ToeicSystem.sln
-rg -n "GetLearnerReviewQueue|review_items" backend/src backend/tests docs/product
+rg -n "ReviewItem|GetLearnerReviewQueue|REPAIR_NOT_PASSED|is_blocking" backend/src backend/tests docs/product
 ```
+
+## Commit
+
+`feat(p4.9): create learner review queue`
+
+## Push
+
+`git push origin main`

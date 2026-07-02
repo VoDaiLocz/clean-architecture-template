@@ -161,6 +161,10 @@ Response:
 - display name
 - role
 
+## UI Contract
+
+Login/register UI consumes auth APIs and stores only client-safe session state. UI must not store raw refresh tokens outside the approved secure client strategy and must not reveal whether an email exists on login failure.
+
 ## Business Rules
 
 1. Passwords are hashed using a framework-approved password hasher; do not store a separate salt unless the hasher contract requires it.

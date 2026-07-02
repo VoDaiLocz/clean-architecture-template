@@ -1,88 +1,88 @@
 # Generate Learner Path From Placement
 
+## Task
+
+P4.5 - Generate Learner Path From Placement
+
 ## Purpose
-P4.5 generates the active learning path of units ordered by the learner's weaknesses identified in placement.
 
-## Domain Model
-- `LearningPath`
-  - `PathId` (string, UUID)
-  - `LearnerId` (string, UUID)
-  - `Status` (Enum: `Active`, `Archived`)
-  - `CreatedAtUtc` (DateTimeOffset)
-- `LearningPathUnit`
-  - `UnitId` (string, UUID)
-  - `PathId` (string, UUID)
-  - `UnitKey` (string)
-  - `DisplayOrder` (int)
-  - `Status` (Enum: `Locked`, `Unlocked`, `Completed`)
+Generate the learner's first backend-owned learning path from placement weaknesses so every user starts with a controlled route instead of arbitrary part clicking.
 
-## Repository Contract
-- Interface: `ILearningPathRepository`
-  - `Task SaveLearningPathAsync(LearningPath path, IEnumerable<LearningPathUnit> units, CancellationToken cancellationToken);`
-  - `Task<LearningPath?> GetActiveLearningPathAsync(string learnerId, CancellationToken cancellationToken);`
-- Table: `learning_paths`
-  ```sql
-  CREATE TABLE learning_paths (
-      path_id TEXT PRIMARY KEY,
-      learner_id TEXT NOT NULL,
-      status TEXT NOT NULL,
-      created_at_utc TEXT NOT NULL,
-      FOREIGN KEY (learner_id) REFERENCES learner_profiles(learner_id)
-  );
-  ```
-- Table: `learning_path_units`
-  ```sql
-  CREATE TABLE learning_path_units (
-      unit_id TEXT PRIMARY KEY,
-      path_id TEXT NOT NULL,
-      unit_key TEXT NOT NULL,
-      display_order INTEGER NOT NULL,
-      status TEXT NOT NULL,
-      unlocked_at_utc TEXT,
-      completed_at_utc TEXT,
-      FOREIGN KEY (path_id) REFERENCES learning_paths(path_id)
-  );
-  ```
+## Detailed Scope
 
-## Application Contract
-- Handler: `GenerateLearningPathHandler`
-- Command: `GenerateLearningPathCommand`
-  - `LearnerId` (string)
-- Response: `GenerateLearningPathResponse`
-  - `PathId` (string)
-  - `LearnerId` (string)
-  - `FirstUnitId` (string)
+- Add `GenerateLearningPathHandler`.
+- Create active `LearningPath` and ordered `LearningPathUnit` rows.
+- Build units from a versioned TOEIC unit catalog.
+- Prioritize high/medium placement weaknesses.
+- Unlock only the first eligible unit.
+- Archive the previous active path when regenerating after a new diagnostic.
+
+## Out Of Scope
+
+- AI-generated custom lesson content.
+- Manual path editing UI.
+- Paid coaching plans.
+- Practice-test repair plans from P6.8.
+
+## Data Contract
+
+Tables: `learning_paths`, `learning_path_units`, `learner_path_generation_runs`.
+Each unit stores `unit_id`, `path_id`, `unit_key`, `toeic_part`, `skill_tags`, `display_order`, `status`, `unlock_reason`, `source_result_id`.
 
 ## API Contract
-- Endpoint: `POST /api/learner/path/generate`
-- Request JSON:
-  ```json
-  { "learnerId": "learner-101" }
-  ```
-- Response JSON (200 OK):
-  ```json
-  {
-    "pathId": "path-202",
-    "learnerId": "learner-101",
-    "status": "Active",
-    "firstUnit": {
-      "unitId": "unit-303",
-      "unitKey": "part5-word-form",
-      "title": "Part 5 Word Form"
-    }
-  }
-  ```
 
-## Rules
-1. Generating a learning path requires a completed placement result.
-2. Creating a path automatically archives any prior active path for that learner.
-3. Units corresponding to High and Medium weakness tags are placed first.
-4. Prerequisite rules in the catalog must be honored.
-5. The first unit status is initialized as Unlocked; all others default to Locked.
+`POST /api/learner/path/generate` accepts `{ learnerId, placementResultId }`.
+Success returns path id, first unlocked unit, total units, generated reason summary, and next action.
+Errors: `PLACEMENT_RESULT_REQUIRED`, `PLACEMENT_RESULT_NOT_OWNED`, `PATH_ALREADY_ACTIVE`, `UNIT_CATALOG_EMPTY`.
+
+## UI Contract
+
+UI shows the returned first unit/today action. UI must not reorder, unlock, or synthesize learning units.
+
+## Business Rules
+
+1. A completed placement result is required.
+2. High weakness units appear before medium/low units unless prerequisites force earlier foundation units.
+3. Exactly one active path exists per learner.
+4. Regeneration archives the old active path with a reason.
+5. Unit catalog version is persisted for auditability.
+
+## Edge Cases
+
+- No placement result.
+- Placement result belongs to another learner.
+- Empty catalog.
+- Multiple weaknesses mapping to same unit.
+- New placement after old path exists.
+- Missing prerequisite unit.
+
+## Required Tests
+
+- Requires placement result.
+- Generates deterministic order from fixture weaknesses.
+- Deduplicates units.
+- Archives old active path on regeneration.
+- Unlocks first eligible unit only.
+- Persists catalog version.
+
+## Acceptance Criteria
+
+- Learner path is generated from backend diagnostic data.
+- Unit order and unlock state are reproducible.
+- Tests and build pass.
 
 ## Verification
+
 ```bash
 dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj
 dotnet build backend/ToeicSystem.sln
-rg -n "GenerateLearningPath|learning_paths" backend/src backend/tests docs/product
+rg -n "GenerateLearningPath|learning_paths|learning_path_units|UNIT_CATALOG" backend/src backend/tests docs/product
 ```
+
+## Commit
+
+`feat(p4.5): generate learner path from placement`
+
+## Push
+
+`git push origin main`

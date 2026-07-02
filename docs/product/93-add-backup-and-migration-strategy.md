@@ -33,6 +33,14 @@ Backup/restore must cover:
 - published lessons/questions/tests
 - migration history
 
+## API Contract
+
+No public learner API is added. Admin/ops endpoints, if introduced, must be role-protected and return backup/migration status without exposing credentials or raw database dumps.
+
+## UI Contract
+
+No learner UI dependency. Any admin release/ops screen must show backup and migration state as read-only unless a separate privileged operation task approves mutations.
+
 ## Business Rules
 
 1. Destructive migration requires backup evidence.

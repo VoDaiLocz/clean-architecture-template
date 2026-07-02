@@ -26,6 +26,22 @@ Define the go/no-go checklist for private beta, public beta, and market release.
 - Marketing launch plan.
 - Pricing/legal documents.
 
+## Data Contract
+
+Release checklist evidence references committed specs, test reports, CI runs, migration status, backup/restore rehearsal, security checks, performance baseline, and deployment smoke results.
+
+## API Contract
+
+Release readiness requires health, auth, learner journey, practice, admin operations, and error contracts to pass smoke verification in the target environment.
+
+## UI Contract
+
+Release readiness requires learner and admin critical paths to pass desktop and mobile smoke checks with no demo content, placeholder learner screens, answer leaks, or raw source-link learning flow.
+
+## Business Rules
+
+A release cannot proceed if any non-negotiable product rule in `00-master-spec.md` is violated, if required content is unpublished, or if backup/security/deployment evidence is missing.
+
 ## Go/No-Go Rules
 
 Public release is blocked by:
@@ -39,6 +55,15 @@ Public release is blocked by:
 - CI/CD release gate failing.
 - Production health/readiness failing.
 
+## Edge Cases
+
+- CI green but staging smoke fails.
+- Content coverage below launch threshold.
+- Backup exists but restore was not rehearsed.
+- Security scan finds high severity issue.
+- Mobile learner route is unusable.
+- Admin publish path has unresolved validation issues.
+
 ## Required Evidence
 
 Each checklist item must include:
@@ -49,7 +74,7 @@ Each checklist item must include:
 - blocker severity
 - decision date
 
-## Required Checks
+## Required Tests
 
 - No empty checklist rows.
 - Every critical release rule has evidence.

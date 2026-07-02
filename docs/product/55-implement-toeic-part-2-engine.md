@@ -1,15 +1,81 @@
 # Implement TOEIC Part 2 Engine
 
-## Purpose
-P5.3 implements question-response audio-first behaviors for TOEIC Part 2.
+## Task
 
-## Rules
-1. Part 2 questions require audio; prompt text must not be shown to learners.
-2. Exactly 3 answer choices (A, B, C) are supported.
-3. Audio metadata duration check is enforced on publishing.
+P5.3 - Implement TOEIC Part 2 Engine
+
+## Purpose
+
+Implement question-response behavior where the learner hears audio but does not see the spoken question text.
+
+## Detailed Scope
+
+- Add part engine interfaces and validators.
+- Load published content through read models, not raw source files.
+- Validate media/passage/group requirements before learner payload creation.
+- Return learner-safe payloads for play mode and separate result/review payloads after submit.
+- Add contract tests per part.
+
+## Out Of Scope
+
+- Parsing raw PDFs/audio from source materials.
+- Admin draft review.
+- Frontend rendering implementation.
+- Official test scoring.
+
+## Data Contract
+
+Published read models must contain all media, passage, group, answer key, explanation, and skill-tag fields required by this part. Learner play payload excludes hidden answer fields.
+
+## API Contract
+
+Payload is returned through learner activity/session item APIs defined by P5.1. Part validation failures return stable content-invalid errors and are not silently skipped.
+
+## UI Contract
+
+UI renders the payload returned by the learner activity/session API. UI must not infer hidden answers, media eligibility, or group relationships.
+
+## Business Rules
+
+1. Part 2 requires audio.
+2. Exactly three choices A-C are required.
+3. Spoken prompt text is hidden in play mode.
+4. Transcript is admin/review evidence, not play-mode prompt.
+
+## Edge Cases
+
+- Missing required media/passage/group relation.
+- Invalid number of choices.
+- Draft/admin content accidentally requested.
+- Review mode requested before submit.
+- Legacy source with incomplete extraction evidence.
+
+## Required Tests
+
+- Valid payload is produced for the part.
+- Missing required media/passage/group relation fails.
+- Play-mode payload hides correct answer.
+- Review/result payload includes explanations only after submit.
+- Contract serialization remains stable.
+
+## Acceptance Criteria
+
+- Part engine validates content requirements.
+- Learner payload is safe and complete.
+- Tests and build pass.
 
 ## Verification
+
 ```bash
 dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj
-rg -n "Part2Engine" backend/src backend/tests docs/product
+dotnet build backend/ToeicSystem.sln
+rg -n "Part2Engine|QuestionResponse|hidden prompt" backend/src backend/tests docs/product
 ```
+
+## Commit
+
+`feat(p5.3): implement TOEIC Part 2 engine`
+
+## Push
+
+`git push origin main`

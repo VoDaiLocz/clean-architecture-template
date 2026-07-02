@@ -95,57 +95,57 @@ Deferred:
 - [43-learner-onboarding.md](./43-learner-onboarding.md): learner profile onboarding command, API contract, idempotent update, and next placement action.
 - [44-persisted-learner-home.md](./44-persisted-learner-home.md): repository-backed learner home state, onboarding CTA, placement CTA, and no memory-only home dependency.
 - [45-placement-session-start.md](./45-placement-session-start.md): placement session model, start/resume behavior, typed API contract, and duplicate active session handling.
-- [46-score-toeic-placement.md](./46-score-toeic-placement.md): detailed product specification for score toeic placement.
-- [47-generate-learner-path-from-placement.md](./47-generate-learner-path-from-placement.md): detailed product specification for generate learner path from placement.
-- [48-assign-learner-today-plan.md](./48-assign-learner-today-plan.md): detailed product specification for assign learner today plan.
-- [49-manage-learner-activity-sessions.md](./49-manage-learner-activity-sessions.md): detailed product specification for manage learner activity sessions.
-- [50-process-learner-attempts.md](./50-process-learner-attempts.md): detailed product specification for process learner attempts.
-- [51-create-learner-review-queue.md](./51-create-learner-review-queue.md): detailed product specification for create learner review queue.
-- [52-enforce-mastery-unlocks.md](./52-enforce-mastery-unlocks.md): detailed product specification for enforce mastery unlocks.
-- [53-define-toeic-item-contracts.md](./53-define-toeic-item-contracts.md): detailed product specification for define toeic item contracts.
-- [54-implement-toeic-part-1-engine.md](./54-implement-toeic-part-1-engine.md): detailed product specification for implement toeic part 1 engine.
-- [55-implement-toeic-part-2-engine.md](./55-implement-toeic-part-2-engine.md): detailed product specification for implement toeic part 2 engine.
-- [56-implement-toeic-part-3-engine.md](./56-implement-toeic-part-3-engine.md): detailed product specification for implement toeic part 3 engine.
-- [57-implement-toeic-part-4-engine.md](./57-implement-toeic-part-4-engine.md): detailed product specification for implement toeic part 4 engine.
-- [58-implement-toeic-part-5-engine.md](./58-implement-toeic-part-5-engine.md): detailed product specification for implement toeic part 5 engine.
-- [59-implement-toeic-part-6-engine.md](./59-implement-toeic-part-6-engine.md): detailed product specification for implement toeic part 6 engine.
-- [60-implement-toeic-part-7-engine.md](./60-implement-toeic-part-7-engine.md): detailed product specification for implement toeic part 7 engine.
-- [61-tag-toeic-learner-weaknesses.md](./61-tag-toeic-learner-weaknesses.md): detailed product specification for tag toeic learner weaknesses.
-- [62-run-toeic-mini-tests.md](./62-run-toeic-mini-tests.md): detailed product specification for run toeic mini tests.
-- [63-run-toeic-part-tests.md](./63-run-toeic-part-tests.md): detailed product specification for run toeic part tests.
-- [64-run-toeic-listening-tests.md](./64-run-toeic-listening-tests.md): detailed product specification for run toeic listening tests.
-- [65-run-toeic-reading-tests.md](./65-run-toeic-reading-tests.md): detailed product specification for run toeic reading tests.
-- [66-run-full-toeic-lr-tests.md](./66-run-full-toeic-lr-tests.md): detailed product specification for run full toeic lr tests.
-- [67-manage-toeic-test-sessions.md](./67-manage-toeic-test-sessions.md): detailed product specification for manage toeic test sessions.
-- [68-calculate-toeic-score-breakdown.md](./68-calculate-toeic-score-breakdown.md): detailed product specification for calculate toeic score breakdown.
-- [69-generate-toeic-test-repair-plans.md](./69-generate-toeic-test-repair-plans.md): detailed product specification for generate toeic test repair plans.
-- [70-remove-frontend-demo-learner-content.md](./70-remove-frontend-demo-learner-content.md): detailed product specification for remove frontend demo learner content.
-- [71-build-learner-app-shell.md](./71-build-learner-app-shell.md): detailed product specification for build learner app shell.
-- [72-build-onboarding-and-placement-ux.md](./72-build-onboarding-and-placement-ux.md): detailed product specification for build onboarding and placement ux.
-- [73-build-learner-today-screen.md](./73-build-learner-today-screen.md): detailed product specification for build learner today screen.
-- [74-build-lesson-and-example-ux.md](./74-build-lesson-and-example-ux.md): detailed product specification for build lesson and example ux.
-- [75-build-drill-and-mini-test-ux.md](./75-build-drill-and-mini-test-ux.md): detailed product specification for build drill and mini test ux.
-- [76-build-mistake-repair-ux.md](./76-build-mistake-repair-ux.md): detailed product specification for build mistake repair ux.
-- [77-build-toeic-part-overview.md](./77-build-toeic-part-overview.md): detailed product specification for build toeic part overview.
-- [78-build-toeic-practice-test-ux.md](./78-build-toeic-practice-test-ux.md): detailed product specification for build toeic practice test ux.
-- [79-build-learner-progress-ux.md](./79-build-learner-progress-ux.md): detailed product specification for build learner progress ux.
-- [80-build-admin-source-inventory.md](./80-build-admin-source-inventory.md): detailed product specification for build admin source inventory.
-- [81-build-admin-asset-discovery.md](./81-build-admin-asset-discovery.md): detailed product specification for build admin asset discovery.
-- [82-build-extraction-operations-dashboard.md](./82-build-extraction-operations-dashboard.md): detailed product specification for build extraction operations dashboard.
-- [83-build-draft-review-queue.md](./83-build-draft-review-queue.md): detailed product specification for build draft review queue.
-- [84-build-validation-issue-workflow.md](./84-build-validation-issue-workflow.md): detailed product specification for build validation issue workflow.
-- [85-build-content-publish-queue.md](./85-build-content-publish-queue.md): detailed product specification for build content publish queue.
-- [86-build-content-coverage-dashboard.md](./86-build-content-coverage-dashboard.md): detailed product specification for build content coverage dashboard.
-- [87-add-authentication.md](./87-add-authentication.md): detailed product specification for add authentication.
-- [88-enforce-learner-admin-authorization.md](./88-enforce-learner-admin-authorization.md): detailed product specification for enforce learner admin authorization.
-- [89-add-production-observability.md](./89-add-production-observability.md): detailed product specification for add production observability.
-- [90-standardize-error-handling.md](./90-standardize-error-handling.md): detailed product specification for standardize error handling.
-- [91-establish-performance-baseline.md](./91-establish-performance-baseline.md): detailed product specification for establish performance baseline.
-- [92-add-security-baseline.md](./92-add-security-baseline.md): detailed product specification for add security baseline.
-- [93-add-backup-and-migration-strategy.md](./93-add-backup-and-migration-strategy.md): detailed product specification for add backup and migration strategy.
-- [94-add-release-pipeline.md](./94-add-release-pipeline.md): detailed product specification for add release pipeline.
-- [95-add-production-deployment-config.md](./95-add-production-deployment-config.md): detailed product specification for add production deployment config.
-- [96-add-release-readiness-checklist.md](./96-add-release-readiness-checklist.md): detailed product specification for add release readiness checklist.
+- [46-score-toeic-placement.md](./46-score-toeic-placement.md): placement scoring, diagnostic score bands, idempotent submit, and weakness breakdown contract.
+- [47-generate-learner-path-from-placement.md](./47-generate-learner-path-from-placement.md): backend-owned learning path generation from placement weaknesses and unit catalog rules.
+- [48-assign-learner-today-plan.md](./48-assign-learner-today-plan.md): Today Plan priority engine for review blockers, resume work, and next unit activity.
+- [49-manage-learner-activity-sessions.md](./49-manage-learner-activity-sessions.md): durable activity session lifecycle and state-transition rules.
+- [50-process-learner-attempts.md](./50-process-learner-attempts.md): backend scoring of learner attempts, answer persistence, and result contract.
+- [51-create-learner-review-queue.md](./51-create-learner-review-queue.md): wrong-answer review item creation, blocking rules, and repair resolution contract.
+- [52-enforce-mastery-unlocks.md](./52-enforce-mastery-unlocks.md): mastery gates, unlock blockers, and locked-reason API contract.
+- [53-define-toeic-item-contracts.md](./53-define-toeic-item-contracts.md): learner-safe play/result/review item contracts that prevent answer-key leaks.
+- [54-implement-toeic-part-1-engine.md](./54-implement-toeic-part-1-engine.md): Part 1 photograph engine with required image/audio validation.
+- [55-implement-toeic-part-2-engine.md](./55-implement-toeic-part-2-engine.md): Part 2 audio question-response engine with hidden spoken prompt rules.
+- [56-implement-toeic-part-3-engine.md](./56-implement-toeic-part-3-engine.md): Part 3 conversation group engine and child-question relationship rules.
+- [57-implement-toeic-part-4-engine.md](./57-implement-toeic-part-4-engine.md): Part 4 short-talk group engine and talk-audio validation rules.
+- [58-implement-toeic-part-5-engine.md](./58-implement-toeic-part-5-engine.md): Part 5 incomplete-sentence engine with grammar/vocabulary tagging.
+- [59-implement-toeic-part-6-engine.md](./59-implement-toeic-part-6-engine.md): Part 6 text-completion engine with passage and blank-anchor rules.
+- [60-implement-toeic-part-7-engine.md](./60-implement-toeic-part-7-engine.md): Part 7 reading-comprehension engine with passage sets and evidence spans.
+- [61-tag-toeic-learner-weaknesses.md](./61-tag-toeic-learner-weaknesses.md): learner weakness event aggregation and severity summary contract.
+- [62-run-toeic-mini-tests.md](./62-run-toeic-mini-tests.md): unit-scoped mini-test sessions that feed mastery gates.
+- [63-run-toeic-part-tests.md](./63-run-toeic-part-tests.md): part-specific practice-test runtime and blueprint enforcement.
+- [64-run-toeic-listening-tests.md](./64-run-toeic-listening-tests.md): Listening section practice runtime for Parts 1-4.
+- [65-run-toeic-reading-tests.md](./65-run-toeic-reading-tests.md): Reading section practice runtime for Parts 5-7.
+- [66-run-full-toeic-lr-tests.md](./66-run-full-toeic-lr-tests.md): full 200-question TOEIC LR exam-mode practice runtime.
+- [67-manage-toeic-test-sessions.md](./67-manage-toeic-test-sessions.md): practice-test timer, resume, expiration, and final-submit state machine.
+- [68-calculate-toeic-score-breakdown.md](./68-calculate-toeic-score-breakdown.md): score-band, part, tag, and time breakdown result contract.
+- [69-generate-toeic-test-repair-plans.md](./69-generate-toeic-test-repair-plans.md): test-result repair assignment generation and Today Plan integration.
+- [70-remove-frontend-demo-learner-content.md](./70-remove-frontend-demo-learner-content.md): frontend fake-content removal and production API dependency gate.
+- [71-build-learner-app-shell.md](./71-build-learner-app-shell.md): production learner navigation shell and guarded route structure.
+- [72-build-onboarding-and-placement-ux.md](./72-build-onboarding-and-placement-ux.md): onboarding and placement UX driven by backend next actions.
+- [73-build-learner-today-screen.md](./73-build-learner-today-screen.md): daily learner workflow UI for assignments, blockers, and progress.
+- [74-build-lesson-and-example-ux.md](./74-build-lesson-and-example-ux.md): lesson and guided-example UI backed by published APIs.
+- [75-build-drill-and-mini-test-ux.md](./75-build-drill-and-mini-test-ux.md): drill and mini-test submission UI with no pre-submit answer leaks.
+- [76-build-mistake-repair-ux.md](./76-build-mistake-repair-ux.md): wrong-answer repair workspace with evidence, explanation, and media replay.
+- [77-build-toeic-part-overview.md](./77-build-toeic-part-overview.md): 7-part overview showing backend-owned progress, locks, and actions.
+- [78-build-toeic-practice-test-ux.md](./78-build-toeic-practice-test-ux.md): exam-like test UI for timer, navigation, answer state, and submit.
+- [79-build-learner-progress-ux.md](./79-build-learner-progress-ux.md): progress dashboard for score trends, weaknesses, and repair completion.
+- [80-build-admin-source-inventory.md](./80-build-admin-source-inventory.md): admin source inventory for 73 audited rows, blocked state, and source traceability.
+- [81-build-admin-asset-discovery.md](./81-build-admin-asset-discovery.md): admin asset discovery UI for containers, media classification, and checksums.
+- [82-build-extraction-operations-dashboard.md](./82-build-extraction-operations-dashboard.md): extraction job dashboard for status, failure reason, retry, and run history.
+- [83-build-draft-review-queue.md](./83-build-draft-review-queue.md): human review queue for draft content approve/reject/relabel decisions.
+- [84-build-validation-issue-workflow.md](./84-build-validation-issue-workflow.md): validation issue workflow for missing media, answer keys, and passage mismatches.
+- [85-build-content-publish-queue.md](./85-build-content-publish-queue.md): controlled publish queue with pre-publish validation and audit trail.
+- [86-build-content-coverage-dashboard.md](./86-build-content-coverage-dashboard.md): coverage dashboard by TOEIC part, media requirement, extraction, and publish readiness.
+- [87-add-authentication.md](./87-add-authentication.md): authentication, password hashing, token issuance, refresh rotation, and auth tests.
+- [88-enforce-learner-admin-authorization.md](./88-enforce-learner-admin-authorization.md): learner/admin authorization policies, ownership checks, and denial audit rules.
+- [89-add-production-observability.md](./89-add-production-observability.md): request logging, correlation ids, health checks, metrics, and redaction baseline.
+- [90-standardize-error-handling.md](./90-standardize-error-handling.md): global error taxonomy, safe response format, and correlation id propagation.
+- [91-establish-performance-baseline.md](./91-establish-performance-baseline.md): representative API/UI performance budgets, benchmark command, and baseline report.
+- [92-add-security-baseline.md](./92-add-security-baseline.md): secure headers, CORS, rate limits, validation, secret scan, and dependency audit baseline.
+- [93-add-backup-and-migration-strategy.md](./93-add-backup-and-migration-strategy.md): backup, restore rehearsal, migration rollback, and data-protection operating rules.
+- [94-add-release-pipeline.md](./94-add-release-pipeline.md): CI/CD release pipeline with quality gates and deployment evidence.
+- [95-add-production-deployment-config.md](./95-add-production-deployment-config.md): staging/production configuration for DB, storage, jobs, secrets, and health checks.
+- [96-add-release-readiness-checklist.md](./96-add-release-readiness-checklist.md): go/no-go checklist tying product, quality, security, operations, and release evidence.
 
 ## Non-Negotiable Product Rules
 

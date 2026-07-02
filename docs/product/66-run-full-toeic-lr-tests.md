@@ -1,13 +1,86 @@
 # Run Full TOEIC LR Tests
 
-## Purpose
-P6.5 implements full 200-question practice test runs.
+## Task
 
-## Rules
-1. Exam mode is active; explanations, corrections, and hints are disabled.
+P6.5 - Run Full TOEIC LR Tests
+
+## Purpose
+
+Run a full 200-question Listening and Reading practice test with exam-mode restrictions.
+
+## Detailed Scope
+
+- Add FullToeicTestSession domain/read model support.
+- Compose eligible published content from DB, not source files.
+- Start/resume/submit sessions through typed commands.
+- Persist answer state, timing state, and final result references.
+- Emit events for weakness tagging, review queue, and mastery/repair flows where applicable.
+
+## Out Of Scope
+
+- Frontend exam UI unless this task explicitly says UX.
+- Official certificate scoring.
+- Raw source extraction.
+- Admin content approval.
+
+## Data Contract
+
+Tables/read models must store session id, learner id, test type, content blueprint/version, status, started/submitted/expired timestamps, question assignments, answer state, and result id. `FullToeicTestSession` is durable and survives restart.
+
+## API Contract
+
+Primary endpoint: `POST /api/learner/practice-tests/full/start`. Related session endpoints must use `/api/learner/practice-tests/sessions/{sessionId}/...`. Errors include `TEST_CONTENT_UNAVAILABLE`, `TEST_SESSION_NOT_OWNED`, `TEST_SESSION_EXPIRED`, `TEST_ALREADY_SUBMITTED`.
+
+## UI Contract
+
+UI consumes session/result APIs and renders exam constraints returned by backend. UI must not own timer authority, scoring, or repair-plan creation.
+
+## Business Rules
+
+1. Full test has 200 questions, no hints, no explanations during the session, and backend-enforced timing.
+2. Only published, validated content can be assigned.
+3. Question assignment is frozen at session start.
+4. Final submit is immutable.
+5. Result data feeds weakness/review/repair flows.
+6. Expiration behavior is explicit and tested.
+
+## Edge Cases
+
+- Insufficient published content.
+- Missing required audio/passage.
+- Resume after refresh.
+- Submit after expiration.
+- Duplicate final submit.
+- Learner accesses another learner's session.
+- Content unpublished after session start.
+
+## Required Tests
+
+- Starts session with correct blueprint.
+- Rejects insufficient content.
+- Persists assignments and answers.
+- Resumes after repository restart.
+- Enforces expiration/final submit.
+- Emits downstream review/weakness data where applicable.
+
+## Acceptance Criteria
+
+- Practice-test behavior is deterministic, durable, and backend-owned.
+- Tests and build pass.
+- No raw source/PDF link is exposed as the learner experience.
 
 ## Verification
+
 ```bash
 dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj
-rg -n "FullToeicTest" backend/src backend/tests docs/product
+dotnet build backend/ToeicSystem.sln
+rg -n "FullToeicTestSession|practice-tests|TEST_SESSION" backend/src backend/tests docs/product
 ```
+
+## Commit
+
+`feat(p6.5): run full TOEIC LR tests`
+
+## Push
+
+`git push origin main`

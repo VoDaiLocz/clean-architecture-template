@@ -29,9 +29,9 @@ Each task row is complete only when read together with:
 1. the row itself,
 2. the global task contract below,
 3. the phase execution contract for the task phase,
-4. the related domain/API/data/UX spec files linked from `../00-master-spec.md`.
+4. the standalone task specification linked from the phase index and `../00-master-spec.md`.
 
-This avoids copying the same contract fields into 89 separate files while still making every task implementation-ready. If a row conflicts with a phase contract, the stricter rule wins. If a developer cannot identify the data/API/UI impact from the row plus the phase contract, the task must be split before coding.
+The standalone task specification is the source of truth for detailed scope, out-of-scope boundaries, data/API/UI contracts, business rules, edge cases, required tests, acceptance criteria, verification, commit, and push. The register is a high-level control table only. If a register row conflicts with a standalone task spec, stop and update the register or the spec before coding; do not let developers choose one interpretation silently.
 
 ## Global Task Contract
 

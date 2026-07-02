@@ -47,6 +47,18 @@ Baseline report records:
 - error count
 - timestamp
 
+## API Contract
+
+Benchmark scenarios use stable API payloads and seeded fixtures for learner home, Today plan, item payload, attempt submit, source inventory, and admin coverage. Performance endpoints or reports must not expose secrets.
+
+## UI Contract
+
+Playwright performance smoke covers major learner/admin screens when routes exist. UI budgets include first meaningful route render, not only API response time.
+
+## Business Rules
+
+Performance baselines must use realistic seeded data, not only an empty database. Regressions above the declared budget create follow-up tasks before market release.
+
 ## Edge Cases
 
 - Empty database.

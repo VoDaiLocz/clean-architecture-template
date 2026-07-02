@@ -23,6 +23,18 @@ Add CI/CD quality gates so broken or unsafe changes cannot be shipped accidental
 - Blue/green deployment automation.
 - Paid CI optimization.
 
+## Data Contract
+
+Release evidence records include commit sha, workflow run id, environment, artifact version, test status, migration status, deployment status, and approver where applicable.
+
+## API Contract
+
+No product API is required. Deployment health checks must call the documented health endpoints and fail the pipeline on unhealthy readiness.
+
+## UI Contract
+
+No learner UI changes. Build artifacts must be generated through the same frontend build used for production deployment.
+
 ## Business Rules
 
 1. Main branch release requires green pipeline.
@@ -38,7 +50,7 @@ Add CI/CD quality gates so broken or unsafe changes cannot be shipped accidental
 - Test DB unavailable.
 - Frontend/backend contract drift.
 
-## Required Tests/Checks
+## Required Tests
 
 - Workflow file exists.
 - Backend test command runs.

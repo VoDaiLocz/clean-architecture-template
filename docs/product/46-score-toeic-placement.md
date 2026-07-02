@@ -1,116 +1,97 @@
 # Score TOEIC Placement
 
+## Task
+
+P4.4 - Score TOEIC Placement
+
 ## Purpose
-P4.4 scores the submitted placement answers server-side, estimates the overall TOEIC score, and details the part and skill-tag weaknesses.
 
-## Domain Model
-- `PlacementResult`: represents the score summary of a diagnostic placement session.
-  - `ResultId` (string, UUID)
-  - `SessionId` (string, UUID)
-  - `LearnerId` (string, UUID)
-  - `CorrectCount` (int)
-  - `TotalCount` (int)
-  - `ScorePercent` (int, 0-100)
-  - `EstimatedScore` (int, 10-990)
-  - `CompletedAtUtc` (DateTimeOffset)
-- `PlacementResultBreakdown`: details accuracy per part/tag.
-  - `BreakdownId` (string, UUID)
-  - `ResultId` (string, UUID)
-  - `DimensionType` (Enum: `ToeicPart`, `SkillTag`)
-  - `DimensionKey` (string, e.g., "Part1", "grammar_tense")
-  - `CorrectCount` (int)
-  - `TotalCount` (int)
-  - `AccuracyPercent` (int)
-  - `WeaknessSeverity` (Enum: `None`, `Low`, `Medium`, `High`)
+Score a completed diagnostic placement submission server-side, produce a diagnostic score band, and record part/tag weaknesses that drive the first learning path.
 
-## Repository Contract
-- Interface: `IPlacementRepository`
-  - `Task SavePlacementResultAsync(PlacementResult result, IEnumerable<PlacementResultBreakdown> breakdowns, CancellationToken cancellationToken);`
-  - `Task<PlacementResult?> GetPlacementResultBySessionIdAsync(string sessionId, CancellationToken cancellationToken);`
-- Table: `placement_results`
-  ```sql
-  CREATE TABLE placement_results (
-      result_id TEXT PRIMARY KEY,
-      session_id TEXT NOT NULL UNIQUE,
-      learner_id TEXT NOT NULL,
-      correct_count INTEGER NOT NULL,
-      total_count INTEGER NOT NULL,
-      score_percent INTEGER NOT NULL,
-      estimated_score INTEGER NOT NULL,
-      completed_at_utc TEXT NOT NULL,
-      FOREIGN KEY (session_id) REFERENCES placement_sessions(session_id),
-      FOREIGN KEY (learner_id) REFERENCES learner_profiles(learner_id)
-  );
-  ```
-- Table: `placement_result_breakdowns`
-  ```sql
-  CREATE TABLE placement_result_breakdowns (
-      breakdown_id TEXT PRIMARY KEY,
-      result_id TEXT NOT NULL,
-      dimension_type TEXT NOT NULL,
-      dimension_key TEXT NOT NULL,
-      correct_count INTEGER NOT NULL,
-      total_count INTEGER NOT NULL,
-      accuracy_percent INTEGER NOT NULL,
-      weakness_severity TEXT NOT NULL,
-      FOREIGN KEY (result_id) REFERENCES placement_results(result_id)
-  );
-  ```
+## Detailed Scope
 
-## Application Contract
-- Handler: `ScorePlacementSessionHandler`
-- Command: `ScorePlacementSessionCommand`
-  - `SessionId` (string, UUID)
-  - `Answers` (List of `SubmittedAnswer`)
-- Response: `ScorePlacementSessionResponse`
-  - `ResultId` (string)
-  - `SessionId` (string)
-  - `CorrectCount` (int)
-  - `TotalCount` (int)
-  - `ScorePercent` (int)
-  - `EstimatedScore` (int)
-  - `NextAction` (`LearnerNextAction`)
+- Add `ScorePlacementSessionHandler` and typed command/response.
+- Persist one `PlacementResult` per placement session.
+- Persist `PlacementResultBreakdown` rows for TOEIC part and skill-tag dimensions.
+- Validate that submitted answers match the assigned placement question set.
+- Support explicit skipped answers.
+- Return a backend-owned `NextAction` for learning-path generation.
+- Add idempotency handling for repeated submit attempts.
+
+## Out Of Scope
+
+- Official TOEIC scaled score certification.
+- Full practice-test scoring tables.
+- Frontend placement screen.
+- Learning path generation.
+- Human review of placement items.
+
+## Data Contract
+
+Tables: `placement_results`, `placement_result_breakdowns`, and `placement_submission_fingerprints`.
+Required result fields: `result_id`, `session_id`, `learner_id`, `correct_count`, `total_count`, `score_percent`, `diagnostic_score_band`, `estimated_score_min`, `estimated_score_max`, `completed_at_utc`.
+`estimated_score_min/max` are diagnostic bands only until P6 score-table work exists; do not expose them as official TOEIC scores.
 
 ## API Contract
-- Endpoint: `POST /api/learner/placement/{sessionId}/submit`
-- Request JSON:
-  ```json
-  {
-    "answers": [
-      { "questionId": "q-1", "learnerAnswer": "A" },
-      { "questionId": "q-2", "learnerAnswer": "C" }
-    ]
-  }
-  ```
-- Response JSON (200 OK):
-  ```json
-  {
-    "resultId": "res-101",
-    "sessionId": "sess-202",
-    "correctCount": 18,
-    "totalCount": 20,
-    "scorePercent": 90,
-    "estimatedScore": 750,
-    "nextAction": {
-      "actionCode": "GeneratePath",
-      "route": "/api/learner/path/generate",
-      "description": "Generate your learning path."
-    }
-  }
-  ```
 
-## Rules
-1. Only `InProgress` placement sessions can be submitted. If status is `Completed`, return HTTP 400 with code `SESSION_ALREADY_COMPLETED`.
-2. All assigned questions must receive answers or explicit skip states.
-3. Repeating placement submission returns the cached result idempotently.
-4. Scorings, part accuracies, and tag weaknesses are strictly backend-owned.
-5. Estimated TOEIC score is calculated via: `EstimatedScore = Math.Clamp(Round(Percent * 9.9), 10, 990)`.
-6. Weakness severity threshold: Accuracy < 50% => High; < 75% => Medium; < 90% => Low; else None.
-7. Next action returned is always pointing to path generation.
+`POST /api/learner/placement/{sessionId}/submit` accepts `{ answers: [{ questionId, learnerAnswer | skipped }] }`.
+Success returns result id, counts, percent, diagnostic score band, part breakdown, skill-tag breakdown, and `NextAction = GenerateLearningPath`.
+Errors: `PLACEMENT_SESSION_NOT_FOUND`, `PLACEMENT_NOT_IN_PROGRESS`, `PLACEMENT_ANSWER_SET_INCOMPLETE`, `PLACEMENT_QUESTION_MISMATCH`, `PLACEMENT_IDEMPOTENCY_CONFLICT`.
+
+## UI Contract
+
+UI submits the assigned answers only once per active session and renders returned diagnostic feedback. UI must not calculate placement score, weakness severity, or next route locally.
+
+## Business Rules
+
+1. Only `InProgress` placement sessions accept a first submission.
+2. Repeating the same submission for the same session returns the cached result.
+3. Repeating with different answers after completion returns `PLACEMENT_IDEMPOTENCY_CONFLICT`.
+4. Completed sessions are immutable.
+5. TOEIC placement estimate uses declared diagnostic bands, not `percent * 9.9`.
+6. Weakness severity: `<50 High`, `<75 Medium`, `<90 Low`, otherwise `None`.
+7. Listening and Reading breakdowns must remain separate.
+
+## Edge Cases
+
+- Missing learner profile.
+- Session not found.
+- Duplicate identical submit.
+- Duplicate conflicting submit.
+- Skipped answers.
+- Question not assigned to session.
+- Empty placement question set.
+- All answers incorrect or all skipped.
+
+## Required Tests
+
+- Scores correct/skipped answers.
+- Persists exactly one result per session.
+- Same payload returns cached result.
+- Different payload after completion rejects.
+- Part and skill breakdowns are persisted.
+- Diagnostic score band mapping is tested with boundary values.
+- No frontend scoring logic exists.
+
+## Acceptance Criteria
+
+- Handler, repository methods, endpoint, and typed contracts exist.
+- Diagnostic score result is explicitly labelled as non-official estimate.
+- Idempotency behavior is unambiguous and tested.
+- Tests and build pass.
 
 ## Verification
+
 ```bash
 dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj
 dotnet build backend/ToeicSystem.sln
-rg -n "ScorePlacementSession|placement_results" backend/src backend/tests docs/product
+rg -n "ScorePlacementSession|placement_results|diagnostic_score_band|PLACEMENT_IDEMPOTENCY_CONFLICT" backend/src backend/tests docs/product
 ```
+
+## Commit
+
+`feat(p4.4): score TOEIC placement`
+
+## Push
+
+`git push origin main`

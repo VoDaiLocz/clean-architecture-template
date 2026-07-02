@@ -24,6 +24,18 @@ Provide safe staging/production configuration bindings for database, storage, au
 - Cloud resource purchase.
 - Autoscaling implementation.
 
+## Data Contract
+
+Deployment config declares database, object storage, background jobs, auth signing, logging, CORS, rate limits, backup targets, and environment identity. Secrets are referenced by environment variable or secret manager only.
+
+## API Contract
+
+Production config must expose configured liveness/readiness checks and preserve public API base URLs expected by the frontend. Missing required configuration fails startup.
+
+## UI Contract
+
+Frontend runtime configuration uses production API base URL and allowed origins. No environment-specific hardcoded localhost URL may remain in production build output.
+
 ## Business Rules
 
 1. SQLite fallback is forbidden outside Development.

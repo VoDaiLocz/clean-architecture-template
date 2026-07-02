@@ -24,6 +24,10 @@ Provide one stable API error contract for learner, admin, auth, content, and pla
 - Full localization.
 - Incident management workflow.
 
+## Data Contract
+
+Error logs store internal diagnostic detail with correlation id. Public API responses store only safe error code, message, correlation id, timestamp, and optional validation field details.
+
 ## API Contract
 
 All errors use:
@@ -41,6 +45,10 @@ All errors use:
 ```
 
 `details` is allowed only for safe validation fields.
+
+## UI Contract
+
+UI displays safe message and correlation id where useful. UI must branch on stable error codes, not raw exception strings or localized text.
 
 ## Business Rules
 

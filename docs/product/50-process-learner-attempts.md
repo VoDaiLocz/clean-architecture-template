@@ -1,71 +1,87 @@
 # Process Learner Attempts
 
+## Task
+
+P4.8 - Process Learner Attempts
+
 ## Purpose
-P4.8 scores learner submissions and persists attempt answers.
 
-## Domain Model
-- `LearnerAttempt`
-  - `AttemptId` (string, UUID)
-  - `SessionId` (string, UUID)
-  - `LearnerId` (string, UUID)
-  - `CorrectCount` (int)
-  - `TotalCount` (int)
-  - `ScorePercent` (int)
-  - `SubmittedAtUtc` (DateTimeOffset)
-- `AttemptAnswer`
-  - `AnswerId` (string, UUID)
-  - `AttemptId` (string, UUID)
-  - `QuestionId` (string, UUID)
-  - `LearnerAnswer` (string)
-  - `CorrectAnswer` (string)
-  - `IsCorrect` (bool)
+Score learner drill/mini-test submissions on the backend, persist answers, and produce attempt results for review and mastery workflows.
 
-## Repository Contract
-- Interface: `IAttemptRepository`
-  - `Task SaveAttemptAsync(LearnerAttempt attempt, IEnumerable<AttemptAnswer> answers, CancellationToken cancellationToken);`
-- Table: `learner_attempts`
-  ```sql
-  CREATE TABLE learner_attempts (
-      attempt_id TEXT PRIMARY KEY,
-      session_id TEXT NOT NULL,
-      learner_id TEXT NOT NULL,
-      correct_count INTEGER NOT NULL,
-      total_count INTEGER NOT NULL,
-      score_percent INTEGER NOT NULL,
-      submitted_at_utc TEXT NOT NULL,
-      FOREIGN KEY (session_id) REFERENCES activity_sessions(session_id),
-      FOREIGN KEY (learner_id) REFERENCES learner_profiles(learner_id)
-  );
-  ```
-- Table: `attempt_answers`
-  ```sql
-  CREATE TABLE attempt_answers (
-      answer_id TEXT PRIMARY KEY,
-      attempt_id TEXT NOT NULL,
-      question_id TEXT NOT NULL,
-      learner_answer TEXT NOT NULL,
-      correct_answer TEXT NOT NULL,
-      is_correct INTEGER NOT NULL,
-      FOREIGN KEY (attempt_id) REFERENCES learner_attempts(attempt_id)
-  );
-  ```
+## Detailed Scope
 
-## Application Contract
-- Handler: `SubmitAttemptHandler`
-- Command: `SubmitAttemptCommand`
-- Response: `SubmitAttemptResponse`
+- Add `SubmitAttemptHandler`.
+- Persist `LearnerAttempt` and `AttemptAnswer`.
+- Validate session is active and owned.
+- Score against published answer keys server-side.
+- Mark parent session complete when the attempt is final.
+- Emit data needed by review queue and mastery recalculation.
+
+## Out Of Scope
+
+- Placement scoring.
+- Full exam scoring.
+- Frontend answer-sheet UI.
+- Manual answer-key editing.
+
+## Data Contract
+
+Tables: `learner_attempts`, `attempt_answers`.
+Answers store learner answer, correct answer, correctness, skip state, skill tags, and source content ids. Correct answers are stored server-side and returned only in result/review mode.
 
 ## API Contract
-- Endpoint: `POST /api/learner/sessions/{sessionId}/attempts`
 
-## Rules
-1. Scoring and accuracy calculations are strictly backend-owned.
-2. Submitting an attempt marks the parent session Completed.
-3. Duplicate submissions for the same session ID return the cached attempt result.
+`POST /api/learner/sessions/{sessionId}/attempts` accepts submitted answers.
+Success returns attempt id, score percent, per-question result summary, review item count, and next action.
+Errors: `SESSION_NOT_ACTIVE`, `ATTEMPT_ALREADY_SUBMITTED`, `QUESTION_NOT_IN_SESSION`, `ANSWER_REQUIRED`.
+
+## UI Contract
+
+UI sends answers and displays returned result. UI must not access correct answers before submit.
+
+## Business Rules
+
+1. Backend owns scoring.
+2. Only one final attempt per final activity session unless activity type explicitly allows retries.
+3. Correct answers are hidden until submit/review mode.
+4. Wrong answers must be available for review queue creation.
+5. Submitted answers are immutable.
+
+## Edge Cases
+
+- Duplicate submit.
+- Partial answers where skips are not explicit.
+- Question removed from published set after session start.
+- Session already completed.
+- Mixed part payloads.
+- All skipped answers.
+
+## Required Tests
+
+- Correct scoring.
+- Duplicate submit cached/rejected according to idempotency rule.
+- Correct answer not exposed before submit.
+- Wrong answer event data is produced.
+- Parent session completes.
+
+## Acceptance Criteria
+
+- Attempts and answers persist.
+- Review/mastery workflows can consume result data.
+- Tests and build pass.
 
 ## Verification
+
 ```bash
 dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj
 dotnet build backend/ToeicSystem.sln
-rg -n "SubmitAttempt|learner_attempts" backend/src backend/tests docs/product
+rg -n "SubmitAttempt|learner_attempts|attempt_answers|ATTEMPT_ALREADY_SUBMITTED" backend/src backend/tests docs/product
 ```
+
+## Commit
+
+`feat(p4.8): process learner attempts`
+
+## Push
+
+`git push origin main`
