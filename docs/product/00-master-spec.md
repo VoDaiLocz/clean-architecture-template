@@ -79,6 +79,7 @@ Deferred:
 - [27-learner-profile-data-model.md](./27-learner-profile-data-model.md): learner identity, TOEIC goals, study settings, profile status, and persistence rules.
 - [28-learner-work-lifecycle-data-model.md](./28-learner-work-lifecycle-data-model.md): learner assignments, activity sessions, attempts, and attempt answers.
 - [29-review-mastery-data-model.md](./29-review-mastery-data-model.md): review items, repair attempts, mastery records, and unlock blocker state.
+- [30-data-integrity-indexes.md](./30-data-integrity-indexes.md): production FK rejection expectations and query indexes for TOEIC learner flows.
 
 ## Non-Negotiable Product Rules
 

@@ -17,6 +17,7 @@ using Infrastructure.Data;
 using Infrastructure.Health;
 using Infrastructure.Jobs;
 using Infrastructure.Storage;
+using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
 using System.Text;
@@ -50,6 +51,7 @@ var tests = new List<(string Name, Action Run)>
     ("repository persists learner profiles across restart", ApplicationTests.RepositoryPersistsLearnerProfilesAcrossRestart),
     ("repository persists learner assignments sessions attempts and answers", ApplicationTests.RepositoryPersistsLearnerAssignmentsSessionsAttemptsAndAnswers),
     ("repository persists review and mastery records", ApplicationTests.RepositoryPersistsReviewAndMasteryRecords),
+    ("repository enforces TOEIC data integrity and indexes", ApplicationTests.RepositoryEnforcesToeicDataIntegrityAndIndexes),
 };
 
 var failed = 0;
@@ -458,6 +460,14 @@ static class ApplicationTests
                 && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS repair_attempts", StringComparison.Ordinal)
                 && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS mastery_records", StringComparison.Ordinal)),
             "Review and mastery migration must create review, repair, and mastery tables."
+        );
+        Assert.True(
+            migrations.Any(migration =>
+                migration.Id == "011_toeic_data_integrity"
+                && migration.SqlStatements.Contains("idx_review_items_blocking_unlock", StringComparison.Ordinal)
+                && migration.SqlStatements.Contains("idx_attempt_answers_question", StringComparison.Ordinal)
+                && migration.SqlStatements.Contains("idx_published_questions_media", StringComparison.Ordinal)),
+            "Integrity migration must add production lookup indexes."
         );
     }
 
@@ -1108,6 +1118,50 @@ static class ApplicationTests
         Assert.Throws<InvalidOperationException>(
             () => repository.UpsertMasteryRecord(mastery with { MasteryRecordId = "invalid-mastery", MasteryPercent = 101 }),
             "Mastery percent must stay within 0-100."
+        );
+    }
+
+    public static void RepositoryEnforcesToeicDataIntegrityAndIndexes()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        SeedLearnerProfile(repository);
+
+        Assert.Throws<SqliteException>(
+            () => repository.UpsertLearnerAssignment(new LearnerAssignment(
+                AssignmentId: "invalid-assignment-missing-learner",
+                LearnerId: "missing-learner",
+                AssignmentType: LearnerAssignmentType.MiniTest,
+                ContentRefId: "test-full-toeic-001",
+                Status: LearnerAssignmentStatus.Assigned,
+                AssignedAtUtc: new DateTimeOffset(2026, 7, 2, 4, 0, 0, TimeSpan.Zero),
+                DueAtUtc: null
+            )),
+            "Assignment must reference an existing learner profile."
+        );
+        Assert.Throws<SqliteException>(
+            () => repository.UpsertLearnerAttempt(new LearnerAttempt(
+                AttemptId: "invalid-attempt-missing-session",
+                SessionId: "missing-session",
+                LearnerId: "learner-production-001",
+                Status: LearnerAttemptStatus.Submitted,
+                CorrectCount: 1,
+                TotalCount: 1,
+                ScorePercent: 100,
+                SubmittedAtUtc: new DateTimeOffset(2026, 7, 2, 4, 5, 0, TimeSpan.Zero)
+            )),
+            "Attempt must reference an existing activity session."
+        );
+        Assert.Throws<SqliteException>(
+            () => repository.UpsertRepairAttempt(new RepairAttempt(
+                RepairAttemptId: "invalid-repair-missing-review",
+                ReviewItemId: "missing-review",
+                LearnerId: "learner-production-001",
+                Answer: "B",
+                IsCorrect: true,
+                AttemptedAtUtc: new DateTimeOffset(2026, 7, 2, 4, 10, 0, TimeSpan.Zero)
+            )),
+            "Repair attempt must reference an existing review item."
         );
     }
 }

@@ -204,3 +204,23 @@ Create durable data structures for content, learners, assignments, attempts, rev
 **Definition Of Done:** Review and mastery model is committed and pushed.  
 **Commit:** `feat(p2.9): model review and mastery records`  
 **Push:** `git push origin main`
+
+## P2.10 - Enforce TOEIC Data Integrity
+
+**Context:** Data Foundation  
+**Purpose:** Protect production data quality and add query indexes for critical TOEIC learner/content paths.  
+**User/Business Value:** Prevents orphan learner work and keeps unlock, review, question media, and answer-analysis queries production-ready as data volume grows.  
+**Dependencies:** P2.1-P2.9.  
+**Detailed Scope:** Add integrity/index migration `011_toeic_data_integrity`; add tests proving invalid FK rows are rejected; add docs for integrity/index expectations.  
+**Out Of Scope:** query plan benchmarking with production data, online index rollout strategy, database migration runner execution against managed PostgreSQL.  
+**Data Contract:** Assignment rows must reference learner profiles; attempts must reference activity sessions; repair attempts must reference review items; production indexes must support review blocker lookup, attempt answer analysis, question media validation, learner attempt history, and mastery unlock lookup.  
+**API Contract:** none for P2.10.  
+**UI Contract:** none for P2.10.  
+**Business Rules:** Invalid orphan lifecycle rows are rejected; production migrations include lookup indexes for the highest-risk learner/content queries; integrity checks are part of the backend test suite.  
+**Edge Cases:** missing learner, missing session, and missing review rows fail before becoming durable data.  
+**Required Tests:** FK rejection tests for assignment, attempt, and repair attempt; migration test covers `011_toeic_data_integrity` indexes.  
+**Acceptance Criteria:** Integrity tests pass; migration catalog includes required indexes; tests and build pass; integrity doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "011_toeic_data_integrity|idx_review_items_blocking_unlock|RepositoryEnforcesToeicDataIntegrityAndIndexes" backend/src backend/tests docs/product`.  
+**Definition Of Done:** TOEIC data integrity model is committed and pushed.  
+**Commit:** `feat(p2.10): enforce TOEIC data integrity`  
+**Push:** `git push origin main`

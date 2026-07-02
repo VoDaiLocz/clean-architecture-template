@@ -343,6 +343,25 @@ public static class PostgresMigrationCatalog
                 ON mastery_records(learner_id, unit_id);
             """
         ),
+        new(
+            "011_toeic_data_integrity",
+            """
+            CREATE INDEX IF NOT EXISTS idx_review_items_blocking_unlock
+                ON review_items(learner_id, unit_id, is_blocking, status);
+
+            CREATE INDEX IF NOT EXISTS idx_attempt_answers_question
+                ON attempt_answers(question_id, is_correct);
+
+            CREATE INDEX IF NOT EXISTS idx_published_questions_media
+                ON published_questions(toeic_part, media_asset_id, passage_id, group_id);
+
+            CREATE INDEX IF NOT EXISTS idx_learner_attempts_learner_submitted
+                ON learner_attempts(learner_id, submitted_at_utc);
+
+            CREATE INDEX IF NOT EXISTS idx_mastery_records_unlock_lookup
+                ON mastery_records(learner_id, unit_id, is_unlocked, blocking_review_count);
+            """
+        ),
     ];
 }
 
