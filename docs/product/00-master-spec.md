@@ -87,6 +87,7 @@ Deferred:
 - [35-pdf-block-extraction.md](./35-pdf-block-extraction.md): PDF text block extraction handler, extractor contract, page/block persistence, and confidence rules.
 - [36-audio-metadata-extraction.md](./36-audio-metadata-extraction.md): audio metadata probe contract, duration/format persistence, and validation rules.
 - [37-answer-key-parsing.md](./37-answer-key-parsing.md): answer-key parser contract and draft answer mapping records.
+- [38-transcript-parsing.md](./38-transcript-parsing.md): transcript parser contract and draft transcript segments linked to audio/test groups.
 
 ## Non-Negotiable Product Rules
 

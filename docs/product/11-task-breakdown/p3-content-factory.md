@@ -162,3 +162,23 @@ No content reaches learner APIs unless it is published and passes validation.
 **Definition Of Done:** TOEIC answer key parsing is committed and pushed.  
 **Commit:** `feat(p3.7): parse TOEIC answer keys`  
 **Push:** `git push origin main`
+
+## P3.8 - Parse TOEIC Transcripts
+
+**Context:** Content Factory  
+**Purpose:** Parse transcript assets into draft transcript segments linked to listening audio/test groups.  
+**User/Business Value:** Enables future listening review, explanation, and validation workflows to use transcript evidence instead of raw transcript files.  
+**Dependencies:** P2.3, P3.6.  
+**Detailed Scope:** Add transcript parser contract; add transcript parsing handler; persist transcript segment draft content with linked audio asset id, group id, speaker, text, timing, source trace, and confidence; add tests and docs.  
+**Out Of Scope:** real speech-to-text, forced alignment, transcript editor UI, listening item publishing.  
+**Data Contract:** Transcript segments are stored as draft content with item type `TranscriptSegment`, payload JSON, source trace JSON, parser confidence, and pending validation status.  
+**API Contract:** none for P3.8.  
+**UI Contract:** none for P3.8.  
+**Business Rules:** Only `Transcript` source assets can be parsed; transcript segments remain draft content; each segment must preserve link to audio/test group evidence.  
+**Edge Cases:** multiple segments can come from one transcript asset; confidence persists for validation; non-transcript asset is rejected.  
+**Required Tests:** Application test covers fixture transcript parsing, draft persistence, group/audio links, item type, and confidence.  
+**Acceptance Criteria:** Handler exists; parser contract exists; transcript draft segments persist; tests and build pass; transcript parsing doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "ParseToeicTranscripts|TranscriptSegment|transcript parsing" backend/src backend/tests docs/product`.  
+**Definition Of Done:** TOEIC transcript parsing is committed and pushed.  
+**Commit:** `feat(p3.8): parse TOEIC transcripts`  
+**Push:** `git push origin main`

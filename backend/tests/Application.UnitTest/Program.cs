@@ -40,6 +40,7 @@ var tests = new List<(string Name, Action Run)>
     ("extracts TOEIC PDF pages and text blocks", ApplicationTests.ExtractsToeicPdfPagesAndTextBlocks),
     ("extracts TOEIC audio metadata", ApplicationTests.ExtractsToeicAudioMetadata),
     ("parses TOEIC answer keys into draft mappings", ApplicationTests.ParsesToeicAnswerKeysIntoDraftMappings),
+    ("parses TOEIC transcripts into draft segments", ApplicationTests.ParsesToeicTranscriptsIntoDraftSegments),
     ("dashboard includes normalized source manifest summary", ApplicationTests.DashboardIncludesNormalizedSourceManifestSummary),
     ("learner cannot unlock next unit until mastery gates pass", ApplicationTests.LearnerCannotUnlockNextUnitUntilMasteryGatesPass),
     ("demo learner session is marked legacy non-production", ApplicationTests.DemoLearnerSessionIsMarkedLegacyNonProduction),
@@ -528,6 +529,46 @@ static class ApplicationTests
         Assert.True(drafts.All(draft => draft.ItemType == "AnswerKeyMapping"), "Draft item type should identify answer key mappings.");
         Assert.True(drafts.Any(draft => draft.PayloadJson.Contains("\"correctAnswer\":\"A\"", StringComparison.Ordinal)), "Correct answer should persist in payload.");
         Assert.True(drafts.All(draft => draft.ParserConfidence >= 0.94m), "Parser confidence should persist.");
+    }
+
+    public static void ParsesToeicTranscriptsIntoDraftSegments()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var transcriptAsset = SeedSourceAsset(repository) with
+        {
+            AssetId = "asset-sparta-transcript",
+            FileName = "transcript-test-01.txt",
+            MimeType = "text/plain",
+            Extension = ".txt",
+            DetectedRole = SourceAssetRole.Transcript,
+            ProviderUrl = "https://drive.google.com/file/d/transcript",
+            ObjectKey = "source-assets/sparta/transcript-test-01.txt",
+            Checksum = "sha256-transcript",
+        };
+        repository.UpsertSourceAsset(transcriptAsset);
+        var parser = new FakeTranscriptParser([
+            new TranscriptSegmentResult(
+                TestGroupId: "sparta-test-01-part3-group-01",
+                LinkedAudioAssetId: "asset-sparta-test-01-audio",
+                SpeakerLabel: "Woman",
+                Text: "Could you send me the revised contract?",
+                StartSecond: 12,
+                EndSecond: 16,
+                Confidence: 0.93m
+            ),
+        ]);
+        var handler = new ParseToeicTranscriptsHandler(repository, parser);
+
+        var result = handler.Handle(new ParseToeicTranscriptsCommand(transcriptAsset.AssetId));
+
+        Assert.Equal(1, result.CreatedTranscriptSegmentCount, "One transcript segment should become draft content.");
+        Assert.Equal(1, repository.Count("draft_content_items"), "Transcript draft row should persist.");
+        var draft = repository.GetDraftContentItems(transcriptAsset.AssetId).Single();
+        Assert.Equal("TranscriptSegment", draft.ItemType, "Draft item type should identify transcript segment.");
+        Assert.True(draft.PayloadJson.Contains("sparta-test-01-part3-group-01", StringComparison.Ordinal), "Transcript should link to test group.");
+        Assert.True(draft.PayloadJson.Contains("asset-sparta-test-01-audio", StringComparison.Ordinal), "Transcript should link to audio asset.");
+        Assert.Equal(0.93m, draft.ParserConfidence, "Transcript parser confidence should persist.");
     }
 
     public static void DashboardIncludesNormalizedSourceManifestSummary()
@@ -1496,6 +1537,14 @@ sealed class FakeAnswerKeyParser(IReadOnlyList<AnswerKeyMappingResult> mappings)
     public IReadOnlyList<AnswerKeyMappingResult> Parse(SourceAsset asset)
     {
         return mappings;
+    }
+}
+
+sealed class FakeTranscriptParser(IReadOnlyList<TranscriptSegmentResult> segments) : ITranscriptParser
+{
+    public IReadOnlyList<TranscriptSegmentResult> Parse(SourceAsset asset)
+    {
+        return segments;
     }
 }
 
