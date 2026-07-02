@@ -12,6 +12,56 @@ Domain has no dependency on Application, Infrastructure, or Api
 
 Frontend must consume typed API contracts. It must not contain learner content, unlock logic, scoring logic, or fake production fallback data.
 
+### C4 System Context Diagram
+
+```mermaid
+graph TD
+    Learner["Learner<br/>(Prepares for TOEIC)"]
+    Operator["Content Operator<br/>(Manages source content & review)"]
+    
+    System["TOEIC Learning & Normalization Platform<br/>(Our System)"]
+    
+    GDrive["Google Drive / Google Sheets<br/>(Audited source manifests & files)"]
+    ObjStorage["Object Storage<br/>(Audio, images, and raw PDFs)"]
+    
+    Learner -->|Studies & practices on| System
+    Operator -->|Operates & reviews content in| System
+    System -->|Ingests manifests & files from| GDrive
+    System -->|Uploads & reads media assets from| ObjStorage
+```
+
+### C4 Container Diagram
+
+```mermaid
+graph TD
+    Learner["Learner"]
+    Operator["Content Operator"]
+    
+    subgraph Platform ["TOEIC Platform Boundary"]
+        WebApp["Vite React TS Web Application<br/>(Dashboard & Learner Workspace UI)"]
+        ApiApp["ASP.NET Core API Application<br/>(Clean Architecture Core Backend)"]
+        Worker["Background Job Worker<br/>(Text/media extraction & draft parsing)"]
+        
+        DB[("PostgreSQL Database<br/>(Durable domain state & inventory)")]
+        Storage[("Object Storage<br/>(Media & PDF container assets)")]
+    end
+    
+    ExternalGDrive["Google Drive / Sheets API"]
+    
+    Learner -->|Interacts with| WebApp
+    Operator -->|Interacts with| WebApp
+    
+    WebApp -->|Consumes typed contracts| ApiApp
+    ApiApp -->|Reads/Writes| DB
+    ApiApp -->|Manages storage keys| Storage
+    ApiApp -->|Enqueues jobs| Worker
+    
+    Worker -->|Reads raw manifest & assets| ExternalGDrive
+    Worker -->|Saves processed assets| Storage
+    Worker -->|Persists extracted blocks & drafts| DB
+```
+
+
 ## Runtime Components
 
 - React TypeScript web app
