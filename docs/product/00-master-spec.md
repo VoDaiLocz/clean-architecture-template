@@ -137,6 +137,7 @@ Deferred:
 - [85-build-content-publish-queue.md](./85-build-content-publish-queue.md): detailed product specification for build content publish queue.
 - [86-build-content-coverage-dashboard.md](./86-build-content-coverage-dashboard.md): detailed product specification for build content coverage dashboard.
 - [87-add-authentication.md](./87-add-authentication.md): detailed product specification for add authentication.
+- [88-enforce-learner-admin-authorization.md](./88-enforce-learner-admin-authorization.md): detailed product specification for enforce learner admin authorization.
 
 ## Non-Negotiable Product Rules
 
