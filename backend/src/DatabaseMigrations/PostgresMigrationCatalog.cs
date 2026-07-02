@@ -362,6 +362,22 @@ public static class PostgresMigrationCatalog
                 ON mastery_records(learner_id, unit_id, is_unlocked, blocking_review_count);
             """
         ),
+        new(
+            "012_source_discovery_issues",
+            """
+            CREATE TABLE IF NOT EXISTS source_discovery_issues (
+                issue_id varchar(160) PRIMARY KEY,
+                source_id varchar(160) NOT NULL REFERENCES source_manifest_entries(source_id),
+                issue_code varchar(120) NOT NULL,
+                message text NOT NULL,
+                status varchar(80) NOT NULL,
+                created_at_utc timestamptz NOT NULL
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_source_discovery_issues_source_status
+                ON source_discovery_issues(source_id, status);
+            """
+        ),
     ];
 }
 

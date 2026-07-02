@@ -95,6 +95,19 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             CREATE INDEX IF NOT EXISTS idx_source_assets_source_role
                 ON source_assets(source_id, detected_role);
 
+            CREATE TABLE IF NOT EXISTS source_discovery_issues (
+                issue_id TEXT PRIMARY KEY,
+                source_id TEXT NOT NULL,
+                issue_code TEXT NOT NULL,
+                message TEXT NOT NULL,
+                status TEXT NOT NULL,
+                created_at_utc TEXT NOT NULL,
+                FOREIGN KEY (source_id) REFERENCES source_manifest_entries(source_id)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_source_discovery_issues_source_status
+                ON source_discovery_issues(source_id, status);
+
             CREATE TABLE IF NOT EXISTS extracted_pages (
                 page_id TEXT PRIMARY KEY,
                 asset_id TEXT NOT NULL,
@@ -706,6 +719,55 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         }
 
         return assets;
+    }
+
+    public void UpsertSourceDiscoveryIssue(SourceDiscoveryIssue issue)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO source_discovery_issues (
+                issue_id, source_id, issue_code, message, status, created_at_utc
+            )
+            VALUES (
+                $issue_id, $source_id, $issue_code, $message, $status, $created_at_utc
+            )
+            ON CONFLICT(issue_id) DO UPDATE SET
+                source_id = excluded.source_id,
+                issue_code = excluded.issue_code,
+                message = excluded.message,
+                status = excluded.status,
+                created_at_utc = excluded.created_at_utc
+            """;
+        command.Parameters.AddWithValue("$issue_id", issue.IssueId);
+        command.Parameters.AddWithValue("$source_id", issue.SourceId);
+        command.Parameters.AddWithValue("$issue_code", issue.IssueCode);
+        command.Parameters.AddWithValue("$message", issue.Message);
+        command.Parameters.AddWithValue("$status", issue.Status.ToString());
+        command.Parameters.AddWithValue("$created_at_utc", issue.CreatedAtUtc.ToString("O"));
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<SourceDiscoveryIssue> GetSourceDiscoveryIssues(string sourceId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT issue_id, source_id, issue_code, message, status, created_at_utc
+            FROM source_discovery_issues
+            WHERE source_id = $source_id
+            ORDER BY created_at_utc, issue_id
+            """;
+        command.Parameters.AddWithValue("$source_id", sourceId);
+
+        var issues = new List<SourceDiscoveryIssue>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            issues.Add(ReadSourceDiscoveryIssue(reader));
+        }
+
+        return issues;
     }
 
     public void UpsertExtractedPage(ExtractedPage page)
@@ -1895,6 +1957,7 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             or "source_manifest_entries"
             or "source_containers"
             or "source_assets"
+            or "source_discovery_issues"
             or "extracted_pages"
             or "extracted_text_blocks"
             or "draft_content_items"
@@ -1977,6 +2040,18 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             reader.GetString(8),
             reader.GetString(9),
             reader.GetString(10)
+        );
+    }
+
+    private static SourceDiscoveryIssue ReadSourceDiscoveryIssue(SqliteDataReader reader)
+    {
+        return new SourceDiscoveryIssue(
+            reader.GetString(0),
+            reader.GetString(1),
+            reader.GetString(2),
+            reader.GetString(3),
+            Enum.Parse<SourceDiscoveryIssueStatus>(reader.GetString(4)),
+            DateTimeOffset.Parse(reader.GetString(5))
         );
     }
 

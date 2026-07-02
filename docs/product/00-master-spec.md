@@ -81,6 +81,7 @@ Deferred:
 - [29-review-mastery-data-model.md](./29-review-mastery-data-model.md): review items, repair attempts, mastery records, and unlock blocker state.
 - [30-data-integrity-indexes.md](./30-data-integrity-indexes.md): production FK rejection expectations and query indexes for TOEIC learner flows.
 - [31-source-manifest-import.md](./31-source-manifest-import.md): audited TOEIC source manifest import use case, summary counts, and idempotency rules.
+- [32-drive-source-discovery.md](./32-drive-source-discovery.md): Drive folder discovery gateway, source containers/assets, and blocked-source issues.
 
 ## Non-Negotiable Product Rules
 

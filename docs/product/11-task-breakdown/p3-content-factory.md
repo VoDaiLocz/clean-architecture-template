@@ -42,3 +42,23 @@ No content reaches learner APIs unless it is published and passes validation.
 **Definition Of Done:** TOEIC source manifest import is committed and pushed.  
 **Commit:** `feat(p3.1): import TOEIC source manifest`  
 **Push:** `git push origin main`
+
+## P3.2 - Discover Drive Source Assets
+
+**Context:** Content Factory  
+**Purpose:** Expand accessible Google Drive source folders into source containers and concrete source assets, while recording blocked source discovery issues.  
+**User/Business Value:** Converts the audited source manifest into machine-processable asset inventory for later PDF/audio/image extraction, without exposing Drive folders to learners.  
+**Dependencies:** P2.1, P3.1.  
+**Detailed Scope:** Add Drive discovery gateway contract; add Drive source discovery handler; persist source containers and source assets for accessible Drive folders; detect PDF/audio/image roles; persist source discovery issues for blocked Drive folders; add PostgreSQL migration `012_source_discovery_issues`; add tests and docs.  
+**Out Of Scope:** real Google Drive API adapter, OAuth/auth refresh, recursive folder traversal, object storage upload, extraction jobs, shortlink resolution.  
+**Data Contract:** Accessible Drive folder rows create `source_containers` and `source_assets`; blocked Drive folder rows create `source_discovery_issues` with stable source id and issue code.  
+**API Contract:** none for P3.2. Future admin API may trigger the handler with a real Drive adapter.  
+**UI Contract:** none for P3.2. Admin UI may later display discovery issues.  
+**Business Rules:** Only Google Drive folders are discovered in P3.2; blocked folders are not sent to the gateway; discovered assets store metadata/object keys only; repeated issue upsert is idempotent.  
+**Edge Cases:** blocked Drive folder creates issue instead of failing whole discovery; asset role is inferred from file metadata; fake gateway tests keep Google auth out of unit tests.  
+**Required Tests:** Application test covers accessible folder discovery into container/assets, blocked source issue, role detection, and counts; migration test covers `012_source_discovery_issues`.  
+**Acceptance Criteria:** Handler exists; gateway contract exists; source discovery issue model/table exists; tests and build pass; Drive discovery doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "DiscoverDriveSourceAssets|SourceDiscoveryIssue|012_source_discovery_issues" backend/src backend/tests docs/product`.  
+**Definition Of Done:** Drive source asset discovery is committed and pushed.  
+**Commit:** `feat(p3.2): discover Drive source assets`  
+**Push:** `git push origin main`

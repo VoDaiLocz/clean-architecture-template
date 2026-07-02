@@ -3,6 +3,7 @@ using Application.Common.Health;
 using Application.Features.Dashboard.Queries;
 using Application.Features.LearningItems.Commands;
 using Application.Features.Learner;
+using Application.Features.SourceDiscovery;
 using Application.Features.SourceManifests;
 using Application.Common.Interfaces.Jobs;
 using Application.Common.Interfaces.Storage;
@@ -32,6 +33,7 @@ var tests = new List<(string Name, Action Run)>
     ("source manifest classifier identifies provider material and access status", ApplicationTests.SourceManifestClassifierIdentifiesProviderMaterialAndAccessStatus),
     ("repository persists normalized source manifest entries", ApplicationTests.RepositoryPersistsNormalizedSourceManifestEntries),
     ("imports audited TOEIC source manifest into database", ApplicationTests.ImportsAuditedToeicSourceManifestIntoDatabase),
+    ("discovers Drive source assets and records blocked issues", ApplicationTests.DiscoversDriveSourceAssetsAndRecordsBlockedIssues),
     ("dashboard includes normalized source manifest summary", ApplicationTests.DashboardIncludesNormalizedSourceManifestSummary),
     ("learner cannot unlock next unit until mastery gates pass", ApplicationTests.LearnerCannotUnlockNextUnitUntilMasteryGatesPass),
     ("demo learner session is marked legacy non-production", ApplicationTests.DemoLearnerSessionIsMarkedLegacyNonProduction),
@@ -262,6 +264,69 @@ static class ApplicationTests
         Assert.Equal(4, summary.Shortlinks, "Expected shortlink count from audit.");
     }
 
+    public static void DiscoversDriveSourceAssetsAndRecordsBlockedIssues()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var accessible = SourceManifestClassifier.Classify(
+            7,
+            "SPARTA TOEIC ( quyển hồng - 10TEST )",
+            "https://drive.google.com/drive/folders/audit-source-7",
+            inaccessible: false,
+            hasPdf: true,
+            hasAudio: true,
+            hasTranscript: false,
+            hasAnswerKey: true,
+            hasImage: true
+        );
+        var blocked = SourceManifestClassifier.Classify(
+            36,
+            "Khóa tiếng anh giao tiếp file ZIP",
+            "https://drive.google.com/drive/folders/audit-source-36",
+            inaccessible: true,
+            hasPdf: false,
+            hasAudio: false,
+            hasTranscript: false,
+            hasAnswerKey: false,
+            hasImage: false
+        );
+        repository.UpsertSourceManifestEntry(accessible);
+        repository.UpsertSourceManifestEntry(blocked);
+        var gateway = new FakeDriveDiscoveryGateway([
+            new DriveDiscoveredAsset(
+                ExternalId: "drive-pdf-001",
+                FileName: "sparta-test-01.pdf",
+                MimeType: "application/pdf",
+                Extension: ".pdf",
+                SizeBytes: 1_200_000,
+                ProviderUrl: "https://drive.google.com/file/d/drive-pdf-001/view",
+                Checksum: "sha256-pdf-001"
+            ),
+            new DriveDiscoveredAsset(
+                ExternalId: "drive-audio-001",
+                FileName: "sparta-test-01.mp3",
+                MimeType: "audio/mpeg",
+                Extension: ".mp3",
+                SizeBytes: 540_000,
+                ProviderUrl: "https://drive.google.com/file/d/drive-audio-001/view",
+                Checksum: "sha256-audio-001"
+            ),
+        ]);
+        var handler = new DiscoverDriveSourceAssetsHandler(repository, gateway);
+
+        var result = handler.Handle(new DiscoverDriveSourceAssetsCommand());
+
+        Assert.Equal(1, result.DiscoveredContainerCount, "Only accessible Drive folder should become a discovered container.");
+        Assert.Equal(2, result.DiscoveredAssetCount, "Drive folder children should become source assets.");
+        Assert.Equal(1, result.BlockedIssueCount, "Blocked Drive source should create one discovery issue.");
+        Assert.Equal(1, repository.Count("source_containers"), "Expected one source container.");
+        Assert.Equal(2, repository.Count("source_assets"), "Expected two source assets.");
+        Assert.Equal(1, repository.Count("source_discovery_issues"), "Expected one blocked source issue.");
+        var pdfAsset = repository.GetSourceAssets("drive-folder-audit-source-7").Single(asset => asset.FileName.EndsWith(".pdf", StringComparison.Ordinal));
+        Assert.Equal(SourceAssetRole.Pdf, pdfAsset.DetectedRole, "PDF role should be detected.");
+        Assert.Equal(SourceDiscoveryIssueStatus.Open, repository.GetSourceDiscoveryIssues(blocked.SourceId).Single().Status, "Blocked issue should remain open.");
+    }
+
     public static void DashboardIncludesNormalizedSourceManifestSummary()
     {
         using var repository = SqliteKnowledgeRepository.InMemory();
@@ -472,6 +537,13 @@ static class ApplicationTests
                 && migration.SqlStatements.Contains("idx_attempt_answers_question", StringComparison.Ordinal)
                 && migration.SqlStatements.Contains("idx_published_questions_media", StringComparison.Ordinal)),
             "Integrity migration must add production lookup indexes."
+        );
+        Assert.True(
+            migrations.Any(migration =>
+                migration.Id == "012_source_discovery_issues"
+                && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS source_discovery_issues", StringComparison.Ordinal)
+                && migration.SqlStatements.Contains("idx_source_discovery_issues_source_status", StringComparison.Ordinal)),
+            "Source discovery issue migration must create issue table and lookup index."
         );
     }
 
@@ -1167,6 +1239,14 @@ static class ApplicationTests
             )),
             "Repair attempt must reference an existing review item."
         );
+    }
+}
+
+sealed class FakeDriveDiscoveryGateway(IReadOnlyList<DriveDiscoveredAsset> assets) : IDriveDiscoveryGateway
+{
+    public IReadOnlyList<DriveDiscoveredAsset> ListFolderAssets(SourceManifestEntry source)
+    {
+        return assets;
     }
 }
 

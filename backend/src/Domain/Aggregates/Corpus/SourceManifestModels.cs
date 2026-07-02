@@ -121,6 +121,21 @@ public sealed record SourceAsset(
     string Checksum
 );
 
+public enum SourceDiscoveryIssueStatus
+{
+    Open,
+    Resolved,
+}
+
+public sealed record SourceDiscoveryIssue(
+    string IssueId,
+    string SourceId,
+    string IssueCode,
+    string Message,
+    SourceDiscoveryIssueStatus Status,
+    DateTimeOffset CreatedAtUtc
+);
+
 public enum ExtractedBlockType
 {
     Heading,
