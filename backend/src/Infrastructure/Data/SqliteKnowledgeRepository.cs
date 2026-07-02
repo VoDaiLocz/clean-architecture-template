@@ -191,6 +191,45 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             CREATE INDEX IF NOT EXISTS idx_published_questions_lesson
                 ON published_questions(lesson_id);
 
+            CREATE TABLE IF NOT EXISTS published_tests (
+                test_id TEXT PRIMARY KEY,
+                test_mode TEXT NOT NULL,
+                title TEXT NOT NULL,
+                target_question_count INTEGER NOT NULL,
+                duration_minutes INTEGER NOT NULL,
+                source_trace_json TEXT NOT NULL,
+                status TEXT NOT NULL
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_published_tests_mode_status
+                ON published_tests(test_mode, status);
+
+            CREATE TABLE IF NOT EXISTS published_test_sections (
+                section_id TEXT PRIMARY KEY,
+                test_id TEXT NOT NULL,
+                section_type TEXT NOT NULL,
+                display_order INTEGER NOT NULL,
+                target_question_count INTEGER NOT NULL,
+                duration_minutes INTEGER NOT NULL,
+                FOREIGN KEY (test_id) REFERENCES published_tests(test_id)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_published_test_sections_test_order
+                ON published_test_sections(test_id, display_order);
+
+            CREATE TABLE IF NOT EXISTS published_test_items (
+                test_item_id TEXT PRIMARY KEY,
+                section_id TEXT NOT NULL,
+                question_id TEXT NOT NULL,
+                toeic_part INTEGER NOT NULL,
+                display_order INTEGER NOT NULL,
+                score_weight REAL NOT NULL,
+                FOREIGN KEY (section_id) REFERENCES published_test_sections(section_id)
+            );
+
+            CREATE UNIQUE INDEX IF NOT EXISTS idx_published_test_items_section_order
+                ON published_test_items(section_id, display_order);
+
             CREATE TABLE IF NOT EXISTS learning_items (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 item_type TEXT NOT NULL,
@@ -994,6 +1033,161 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         return questions;
     }
 
+    public void UpsertPublishedTest(PublishedTest test)
+    {
+        PublishedTestRules.EnsureValid(test);
+
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO published_tests (
+                test_id, test_mode, title, target_question_count, duration_minutes, source_trace_json, status
+            )
+            VALUES (
+                $test_id, $test_mode, $title, $target_question_count, $duration_minutes, $source_trace_json, $status
+            )
+            ON CONFLICT(test_id) DO UPDATE SET
+                test_mode = excluded.test_mode,
+                title = excluded.title,
+                target_question_count = excluded.target_question_count,
+                duration_minutes = excluded.duration_minutes,
+                source_trace_json = excluded.source_trace_json,
+                status = excluded.status
+            """;
+        command.Parameters.AddWithValue("$test_id", test.TestId);
+        command.Parameters.AddWithValue("$test_mode", test.TestMode.ToString());
+        command.Parameters.AddWithValue("$title", test.Title);
+        command.Parameters.AddWithValue("$target_question_count", test.TargetQuestionCount);
+        command.Parameters.AddWithValue("$duration_minutes", test.DurationMinutes);
+        command.Parameters.AddWithValue("$source_trace_json", test.SourceTraceJson);
+        command.Parameters.AddWithValue("$status", test.Status.ToString());
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<PublishedTest> GetPublishedTests(PublishedTestMode testMode)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT test_id, test_mode, title, target_question_count, duration_minutes, source_trace_json, status
+            FROM published_tests
+            WHERE test_mode = $test_mode
+            ORDER BY test_id
+            """;
+        command.Parameters.AddWithValue("$test_mode", testMode.ToString());
+
+        var tests = new List<PublishedTest>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            tests.Add(ReadPublishedTest(reader));
+        }
+
+        return tests;
+    }
+
+    public void UpsertPublishedTestSection(PublishedTestSection section)
+    {
+        PublishedTestRules.EnsureValid(section);
+
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO published_test_sections (
+                section_id, test_id, section_type, display_order, target_question_count, duration_minutes
+            )
+            VALUES (
+                $section_id, $test_id, $section_type, $display_order, $target_question_count, $duration_minutes
+            )
+            ON CONFLICT(section_id) DO UPDATE SET
+                test_id = excluded.test_id,
+                section_type = excluded.section_type,
+                display_order = excluded.display_order,
+                target_question_count = excluded.target_question_count,
+                duration_minutes = excluded.duration_minutes
+            """;
+        command.Parameters.AddWithValue("$section_id", section.SectionId);
+        command.Parameters.AddWithValue("$test_id", section.TestId);
+        command.Parameters.AddWithValue("$section_type", section.SectionType.ToString());
+        command.Parameters.AddWithValue("$display_order", section.DisplayOrder);
+        command.Parameters.AddWithValue("$target_question_count", section.TargetQuestionCount);
+        command.Parameters.AddWithValue("$duration_minutes", section.DurationMinutes);
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<PublishedTestSection> GetPublishedTestSections(string testId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT section_id, test_id, section_type, display_order, target_question_count, duration_minutes
+            FROM published_test_sections
+            WHERE test_id = $test_id
+            ORDER BY display_order, section_id
+            """;
+        command.Parameters.AddWithValue("$test_id", testId);
+
+        var sections = new List<PublishedTestSection>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            sections.Add(ReadPublishedTestSection(reader));
+        }
+
+        return sections;
+    }
+
+    public void UpsertPublishedTestItem(PublishedTestItem item)
+    {
+        PublishedTestRules.EnsureValid(item);
+
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO published_test_items (
+                test_item_id, section_id, question_id, toeic_part, display_order, score_weight
+            )
+            VALUES (
+                $test_item_id, $section_id, $question_id, $toeic_part, $display_order, $score_weight
+            )
+            ON CONFLICT(test_item_id) DO UPDATE SET
+                section_id = excluded.section_id,
+                question_id = excluded.question_id,
+                toeic_part = excluded.toeic_part,
+                display_order = excluded.display_order,
+                score_weight = excluded.score_weight
+            """;
+        command.Parameters.AddWithValue("$test_item_id", item.TestItemId);
+        command.Parameters.AddWithValue("$section_id", item.SectionId);
+        command.Parameters.AddWithValue("$question_id", item.QuestionId);
+        command.Parameters.AddWithValue("$toeic_part", item.ToeicPart);
+        command.Parameters.AddWithValue("$display_order", item.DisplayOrder);
+        command.Parameters.AddWithValue("$score_weight", item.ScoreWeight);
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<PublishedTestItem> GetPublishedTestItems(string sectionId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT test_item_id, section_id, question_id, toeic_part, display_order, score_weight
+            FROM published_test_items
+            WHERE section_id = $section_id
+            ORDER BY display_order, test_item_id
+            """;
+        command.Parameters.AddWithValue("$section_id", sectionId);
+
+        var items = new List<PublishedTestItem>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            items.Add(ReadPublishedTestItem(reader));
+        }
+
+        return items;
+    }
+
     public void UpsertCorpusManifest(CorpusManifest manifest)
     {
         using var command = connection.CreateCommand();
@@ -1165,6 +1359,9 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             or "published_lessons"
             or "guided_examples"
             or "published_questions"
+            or "published_tests"
+            or "published_test_sections"
+            or "published_test_items"
             or "learning_items"
             or "validation_issues"))
         {
@@ -1317,6 +1514,43 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             reader.GetString(12),
             reader.GetString(13),
             Enum.Parse<PublishedContentStatus>(reader.GetString(14))
+        );
+    }
+
+    private static PublishedTest ReadPublishedTest(SqliteDataReader reader)
+    {
+        return new PublishedTest(
+            reader.GetString(0),
+            Enum.Parse<PublishedTestMode>(reader.GetString(1)),
+            reader.GetString(2),
+            reader.GetInt32(3),
+            reader.GetInt32(4),
+            reader.GetString(5),
+            Enum.Parse<PublishedContentStatus>(reader.GetString(6))
+        );
+    }
+
+    private static PublishedTestSection ReadPublishedTestSection(SqliteDataReader reader)
+    {
+        return new PublishedTestSection(
+            reader.GetString(0),
+            reader.GetString(1),
+            Enum.Parse<ToeicTestSectionType>(reader.GetString(2)),
+            reader.GetInt32(3),
+            reader.GetInt32(4),
+            reader.GetInt32(5)
+        );
+    }
+
+    private static PublishedTestItem ReadPublishedTestItem(SqliteDataReader reader)
+    {
+        return new PublishedTestItem(
+            reader.GetString(0),
+            reader.GetString(1),
+            reader.GetString(2),
+            reader.GetInt32(3),
+            reader.GetInt32(4),
+            reader.GetDecimal(5)
         );
     }
 

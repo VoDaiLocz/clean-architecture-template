@@ -46,6 +46,7 @@ var tests = new List<(string Name, Action Run)>
     ("repository persists draft content safely away from learner contracts", ApplicationTests.RepositoryPersistsDraftContentSafelyAwayFromLearnerContracts),
     ("repository persists published lessons and guided examples", ApplicationTests.RepositoryPersistsPublishedLessonsAndGuidedExamples),
     ("repository persists published questions and enforces part rules", ApplicationTests.RepositoryPersistsPublishedQuestionsAndEnforcesPartRules),
+    ("repository persists TOEIC tests sections and ordered items", ApplicationTests.RepositoryPersistsToeicTestsSectionsAndOrderedItems),
 };
 
 var failed = 0;
@@ -423,6 +424,14 @@ static class ApplicationTests
                 && migration.SqlStatements.Contains("idx_published_questions_part_status", StringComparison.Ordinal)),
             "Published question migration must create question table and lookup index."
         );
+        Assert.True(
+            migrations.Any(migration =>
+                migration.Id == "007_published_tests"
+                && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS published_tests", StringComparison.Ordinal)
+                && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS published_test_sections", StringComparison.Ordinal)
+                && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS published_test_items", StringComparison.Ordinal)),
+            "Published test migration must create test, section, and ordered item tables."
+        );
     }
 
     public static void ObjectStorageTestDoubleStoresListsAndDeletesObjects()
@@ -791,6 +800,76 @@ static class ApplicationTests
                 PassageId = null,
             }),
             "Part 7 question must require passage context."
+        );
+    }
+
+    public static void RepositoryPersistsToeicTestsSectionsAndOrderedItems()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var test = new PublishedTest(
+            TestId: "test-full-toeic-001",
+            TestMode: PublishedTestMode.Full,
+            Title: "Full TOEIC Practice Test 01",
+            TargetQuestionCount: 200,
+            DurationMinutes: 120,
+            SourceTraceJson: """{"sourceId":"sheet-row-7"}""",
+            Status: PublishedContentStatus.Published
+        );
+        var listening = new PublishedTestSection(
+            SectionId: "section-full-001-listening",
+            TestId: test.TestId,
+            SectionType: ToeicTestSectionType.Listening,
+            DisplayOrder: 1,
+            TargetQuestionCount: 100,
+            DurationMinutes: 45
+        );
+        var reading = listening with
+        {
+            SectionId = "section-full-001-reading",
+            SectionType = ToeicTestSectionType.Reading,
+            DisplayOrder = 2,
+            TargetQuestionCount = 100,
+            DurationMinutes = 75,
+        };
+        var firstItem = new PublishedTestItem(
+            TestItemId: "test-item-full-001-001",
+            SectionId: listening.SectionId,
+            QuestionId: "question-part1-photo-001",
+            ToeicPart: 1,
+            DisplayOrder: 1,
+            ScoreWeight: 1
+        );
+        var secondItem = firstItem with
+        {
+            TestItemId = "test-item-full-001-002",
+            QuestionId = "question-part1-photo-002",
+            DisplayOrder = 2,
+        };
+
+        repository.UpsertPublishedTest(test);
+        repository.UpsertPublishedTest(test with { Title = "Full TOEIC Practice Test 01 - Revised" });
+        repository.UpsertPublishedTestSection(reading);
+        repository.UpsertPublishedTestSection(listening);
+        repository.UpsertPublishedTestItem(secondItem);
+        repository.UpsertPublishedTestItem(firstItem);
+
+        var tests = repository.GetPublishedTests(PublishedTestMode.Full);
+        var sections = repository.GetPublishedTestSections(test.TestId);
+        var items = repository.GetPublishedTestItems(listening.SectionId);
+
+        Assert.Equal(1, repository.Count("published_tests"), "Published test upsert must be idempotent.");
+        Assert.Equal(2, repository.Count("published_test_sections"), "Full test must represent Listening and Reading sections.");
+        Assert.Equal(2, repository.Count("published_test_items"), "Ordered test items should persist.");
+        Assert.Equal("Full TOEIC Practice Test 01 - Revised", tests.Single().Title, "Published test update should persist.");
+        Assert.Equal(200, tests.Single().TargetQuestionCount, "Full TOEIC question count should be representable.");
+        Assert.Equal(ToeicTestSectionType.Listening, sections[0].SectionType, "Sections should sort by display order.");
+        Assert.Equal(ToeicTestSectionType.Reading, sections[1].SectionType, "Reading section should sort after Listening.");
+        Assert.Equal("question-part1-photo-001", items[0].QuestionId, "Items should sort by display order.");
+        Assert.Equal("question-part1-photo-002", items[1].QuestionId, "Second ordered item should persist.");
+        Assert.Throws<InvalidOperationException>(
+            () => repository.UpsertPublishedTest(test with { TestId = "invalid-full-test", TargetQuestionCount = 199 }),
+            "Full TOEIC tests must represent 200 questions."
         );
     }
 }

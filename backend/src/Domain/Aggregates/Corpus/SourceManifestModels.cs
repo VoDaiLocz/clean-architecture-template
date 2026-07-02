@@ -266,3 +266,106 @@ public static class PublishedQuestionRules
         }
     }
 }
+
+public enum PublishedTestMode
+{
+    Mini,
+    Part,
+    Skill,
+    Full,
+}
+
+public enum ToeicTestSectionType
+{
+    Listening,
+    Reading,
+}
+
+public sealed record PublishedTest(
+    string TestId,
+    PublishedTestMode TestMode,
+    string Title,
+    int TargetQuestionCount,
+    int DurationMinutes,
+    string SourceTraceJson,
+    PublishedContentStatus Status
+);
+
+public sealed record PublishedTestSection(
+    string SectionId,
+    string TestId,
+    ToeicTestSectionType SectionType,
+    int DisplayOrder,
+    int TargetQuestionCount,
+    int DurationMinutes
+);
+
+public sealed record PublishedTestItem(
+    string TestItemId,
+    string SectionId,
+    string QuestionId,
+    int ToeicPart,
+    int DisplayOrder,
+    decimal ScoreWeight
+);
+
+public static class PublishedTestRules
+{
+    public static void EnsureValid(PublishedTest test)
+    {
+        RequireText(test.TestId, "Published test id is required.");
+        RequireText(test.Title, "Published test title is required.");
+        RequireText(test.SourceTraceJson, "Published test source trace is required.");
+
+        if (test.TargetQuestionCount <= 0)
+        {
+            throw new InvalidOperationException("Published test question count must be positive.");
+        }
+
+        if (test.DurationMinutes <= 0)
+        {
+            throw new InvalidOperationException("Published test duration must be positive.");
+        }
+
+        if (test.TestMode == PublishedTestMode.Full && test.TargetQuestionCount != 200)
+        {
+            throw new InvalidOperationException("Full TOEIC tests must represent 200 questions.");
+        }
+    }
+
+    public static void EnsureValid(PublishedTestSection section)
+    {
+        RequireText(section.SectionId, "Published test section id is required.");
+        RequireText(section.TestId, "Published test section test id is required.");
+
+        if (section.DisplayOrder <= 0 || section.TargetQuestionCount <= 0 || section.DurationMinutes <= 0)
+        {
+            throw new InvalidOperationException("Published test section order, question count, and duration must be positive.");
+        }
+    }
+
+    public static void EnsureValid(PublishedTestItem item)
+    {
+        RequireText(item.TestItemId, "Published test item id is required.");
+        RequireText(item.SectionId, "Published test item section id is required.");
+        RequireText(item.QuestionId, "Published test item question id is required.");
+
+        if (item.ToeicPart is < 1 or > 7)
+        {
+            throw new InvalidOperationException("Published test item TOEIC part must be between 1 and 7.");
+        }
+
+        if (item.DisplayOrder <= 0 || item.ScoreWeight <= 0)
+        {
+            throw new InvalidOperationException("Published test item order and score weight must be positive.");
+        }
+    }
+
+    private static void RequireText(string value, string message)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            throw new InvalidOperationException(message);
+        }
+    }
+}

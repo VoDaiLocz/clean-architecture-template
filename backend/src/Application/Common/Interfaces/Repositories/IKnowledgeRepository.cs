@@ -47,6 +47,18 @@ public interface IKnowledgeRepository
 
     IReadOnlyList<PublishedQuestion> GetPublishedQuestions(int toeicPart);
 
+    void UpsertPublishedTest(PublishedTest test);
+
+    IReadOnlyList<PublishedTest> GetPublishedTests(PublishedTestMode testMode);
+
+    void UpsertPublishedTestSection(PublishedTestSection section);
+
+    IReadOnlyList<PublishedTestSection> GetPublishedTestSections(string testId);
+
+    void UpsertPublishedTestItem(PublishedTestItem item);
+
+    IReadOnlyList<PublishedTestItem> GetPublishedTestItems(string sectionId);
+
     void UpsertCorpusManifest(CorpusManifest manifest);
 
     void UpsertNormalizationStage(NormalizationStageSnapshot stage);

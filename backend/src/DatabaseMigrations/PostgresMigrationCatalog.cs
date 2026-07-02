@@ -163,6 +163,53 @@ public static class PostgresMigrationCatalog
                 ON published_questions(lesson_id);
             """
         ),
+        new(
+            "007_published_tests",
+            """
+            CREATE TABLE IF NOT EXISTS published_tests (
+                test_id varchar(160) PRIMARY KEY,
+                test_mode varchar(80) NOT NULL,
+                title text NOT NULL,
+                target_question_count integer NOT NULL,
+                duration_minutes integer NOT NULL,
+                source_trace_json jsonb NOT NULL,
+                status varchar(80) NOT NULL,
+                CONSTRAINT ck_published_tests_positive_counts CHECK (target_question_count > 0 AND duration_minutes > 0),
+                CONSTRAINT ck_published_tests_full_count CHECK (test_mode <> 'Full' OR target_question_count = 200)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_published_tests_mode_status
+                ON published_tests(test_mode, status);
+
+            CREATE TABLE IF NOT EXISTS published_test_sections (
+                section_id varchar(160) PRIMARY KEY,
+                test_id varchar(160) NOT NULL REFERENCES published_tests(test_id),
+                section_type varchar(80) NOT NULL,
+                display_order integer NOT NULL,
+                target_question_count integer NOT NULL,
+                duration_minutes integer NOT NULL,
+                CONSTRAINT ck_published_test_sections_positive_counts
+                    CHECK (display_order > 0 AND target_question_count > 0 AND duration_minutes > 0)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_published_test_sections_test_order
+                ON published_test_sections(test_id, display_order);
+
+            CREATE TABLE IF NOT EXISTS published_test_items (
+                test_item_id varchar(160) PRIMARY KEY,
+                section_id varchar(160) NOT NULL REFERENCES published_test_sections(section_id),
+                question_id varchar(160) NOT NULL,
+                toeic_part integer NOT NULL,
+                display_order integer NOT NULL,
+                score_weight numeric(8,4) NOT NULL,
+                CONSTRAINT ck_published_test_items_toeic_part CHECK (toeic_part BETWEEN 1 AND 7),
+                CONSTRAINT ck_published_test_items_positive_order_weight CHECK (display_order > 0 AND score_weight > 0)
+            );
+
+            CREATE UNIQUE INDEX IF NOT EXISTS idx_published_test_items_section_order
+                ON published_test_items(section_id, display_order);
+            """
+        ),
     ];
 }
 

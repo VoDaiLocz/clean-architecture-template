@@ -75,6 +75,7 @@ Deferred:
 - [23-draft-content-data-model.md](./23-draft-content-data-model.md): parser draft content schema, source trace, validation status, and learner API safety rule.
 - [24-published-lesson-data-model.md](./24-published-lesson-data-model.md): learner-ready lesson and guided example schema, status, ordering, and migration model.
 - [25-published-question-data-model.md](./25-published-question-data-model.md): learner-ready TOEIC question schema, part-specific required fields, validation rules, and migration model.
+- [26-published-test-data-model.md](./26-published-test-data-model.md): TOEIC mini, part, skill, and full test schema with sections and ordered items.
 
 ## Non-Negotiable Product Rules
 

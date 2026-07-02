@@ -124,3 +124,23 @@ Create durable data structures for content, learners, assignments, attempts, rev
 **Definition Of Done:** Published question model is committed and pushed.  
 **Commit:** `feat(p2.5): model published TOEIC questions`  
 **Push:** `git push origin main`
+
+## P2.6 - Model TOEIC Test Structures
+
+**Context:** Learning Content  
+**Purpose:** Persist TOEIC mini, part, skill, and full practice test structures with sections and ordered question items.  
+**User/Business Value:** Enables production practice modes to be assembled from published DB content instead of frontend hardcoded quizzes, while preserving TOEIC section counts and item order.  
+**Dependencies:** P2.5.  
+**Detailed Scope:** Add published test, test section, and test item domain records; add test mode and section type enums; add repository upsert/query methods; add SQLite local/test tables and indexes; add PostgreSQL migration `007_published_tests`; add tests and docs.  
+**Out Of Scope:** attempt lifecycle, scoring conversion table, timer runtime behavior, learner assignment, review creation, frontend test player.  
+**Data Contract:** `published_tests` stores mode, title, target question count, duration, source trace, and status; `published_test_sections` belongs to a test and stores section type/order/count/duration; `published_test_items` belongs to a section and stores question id, TOEIC part, display order, and score weight.  
+**API Contract:** none for P2.6. Future learner test APIs must expose ordered sections/items from these tables.  
+**UI Contract:** none for P2.6. Future test UI must render by section order and item order.  
+**Business Rules:** Full TOEIC tests must represent 200 questions; counts/durations/order/score weight must be positive; test items must reference TOEIC part 1-7; upserts are idempotent; ordered items are stable by section/display order.  
+**Edge Cases:** repeated publish updates existing test row; sections inserted out of order still query in display order; items inserted out of order still query in display order; invalid full-test question count is rejected before persistence.  
+**Required Tests:** Repository integration test covers idempotent test upsert/readback, Listening/Reading sections, ordered items, and invalid full-test count rejection; migration test covers `007_published_tests`.  
+**Acceptance Criteria:** Domain records exist; repository methods exist; SQLite schema exists; PostgreSQL migration exists; tests and build pass; published test doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "PublishedTest|007_published_tests|published_test" backend/src backend/tests docs/product`.  
+**Definition Of Done:** TOEIC test structure model is committed and pushed.  
+**Commit:** `feat(p2.6): model TOEIC test structures`  
+**Push:** `git push origin main`
