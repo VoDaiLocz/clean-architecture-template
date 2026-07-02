@@ -99,6 +99,7 @@ Deferred:
 - [47-generate-learner-path-from-placement.md](./47-generate-learner-path-from-placement.md): detailed product specification for generate learner path from placement.
 - [48-assign-learner-today-plan.md](./48-assign-learner-today-plan.md): detailed product specification for assign learner today plan.
 - [49-manage-learner-activity-sessions.md](./49-manage-learner-activity-sessions.md): detailed product specification for manage learner activity sessions.
+- [50-process-learner-attempts.md](./50-process-learner-attempts.md): detailed product specification for process learner attempts.
 
 ## Non-Negotiable Product Rules
 
