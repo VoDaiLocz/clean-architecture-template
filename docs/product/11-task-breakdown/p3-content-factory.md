@@ -202,3 +202,23 @@ No content reaches learner APIs unless it is published and passes validation.
 **Definition Of Done:** TOEIC reading draft parsing is committed and pushed.  
 **Commit:** `feat(p3.9): parse TOEIC reading drafts`  
 **Push:** `git push origin main`
+
+## P3.10 - Parse TOEIC Listening Groups
+
+**Context:** Content Factory  
+**Purpose:** Parse audio/transcript evidence into Part 1-4 listening draft questions, preserving group relationships for Part 3/4.  
+**User/Business Value:** Creates structured listening draft content for later validation and publish workflows, including conversation/talk grouping needed for real TOEIC practice.  
+**Dependencies:** P2.3, P3.6, P3.8.  
+**Detailed Scope:** Add listening draft parser contract; add listening group parsing handler; persist `ListeningQuestion` draft items with TOEIC part, group id, question number, prompt, skill tags, parser payload, source trace, confidence, and pending validation status; add tests and docs.  
+**Out Of Scope:** real audio parser, transcript alignment, validation, publish workflow, frontend listening player.  
+**Data Contract:** Listening drafts are stored as `DraftContentItem` rows with item type `ListeningQuestion`; Part 3/4 payload/source trace must include group id.  
+**API Contract:** none for P3.10.  
+**UI Contract:** none for P3.10.  
+**Business Rules:** Listening parsing requires an audio source asset; Part 3/4 drafts require group id; parser confidence and audio source trace must persist; drafts are not learner-visible.  
+**Edge Cases:** multiple draft questions can share one group id; Part 3/4 group count is tracked by handler result; non-audio asset is rejected.  
+**Required Tests:** Application test covers grouped Part 3 draft creation, shared group id, item type, source trace, and count of created groups.  
+**Acceptance Criteria:** Handler exists; parser contract exists; grouped listening draft rows persist; tests and build pass; listening group parsing doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "ParseToeicListeningGroups|ListeningQuestion|listening draft" backend/src backend/tests docs/product`.  
+**Definition Of Done:** TOEIC listening group parsing is committed and pushed.  
+**Commit:** `feat(p3.10): parse TOEIC listening groups`  
+**Push:** `git push origin main`

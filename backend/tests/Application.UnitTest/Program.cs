@@ -42,6 +42,7 @@ var tests = new List<(string Name, Action Run)>
     ("parses TOEIC answer keys into draft mappings", ApplicationTests.ParsesToeicAnswerKeysIntoDraftMappings),
     ("parses TOEIC transcripts into draft segments", ApplicationTests.ParsesToeicTranscriptsIntoDraftSegments),
     ("parses TOEIC reading drafts with tags and source trace", ApplicationTests.ParsesToeicReadingDraftsWithTagsAndSourceTrace),
+    ("parses TOEIC listening draft groups", ApplicationTests.ParsesToeicListeningDraftGroups),
     ("dashboard includes normalized source manifest summary", ApplicationTests.DashboardIncludesNormalizedSourceManifestSummary),
     ("learner cannot unlock next unit until mastery gates pass", ApplicationTests.LearnerCannotUnlockNextUnitUntilMasteryGatesPass),
     ("demo learner session is marked legacy non-production", ApplicationTests.DemoLearnerSessionIsMarkedLegacyNonProduction),
@@ -627,6 +628,56 @@ static class ApplicationTests
         Assert.True(drafts.All(draft => draft.ItemType == "ReadingQuestion"), "Draft type should identify reading questions.");
         Assert.True(drafts.Any(draft => draft.PayloadJson.Contains("verb_tense", StringComparison.Ordinal)), "Skill tags should persist in payload.");
         Assert.True(drafts.All(draft => draft.SourceTraceJson.Contains("block-reading-001", StringComparison.Ordinal)), "Source trace should include extracted block.");
+    }
+
+    public static void ParsesToeicListeningDraftGroups()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var audioAsset = SeedSourceAsset(repository) with
+        {
+            AssetId = "asset-part3-audio",
+            FileName = "part3-conversation-01.mp3",
+            MimeType = "audio/mpeg",
+            Extension = ".mp3",
+            DetectedRole = SourceAssetRole.Audio,
+            ProviderUrl = "https://drive.google.com/file/d/part3-audio",
+            ObjectKey = "source-assets/sparta/part3-conversation-01.mp3",
+            Checksum = "sha256-part3-audio",
+        };
+        repository.UpsertSourceAsset(audioAsset);
+        var parser = new FakeListeningDraftParser([
+            new ListeningDraftQuestionResult(
+                ToeicPart: 3,
+                GroupId: "part3-conversation-001",
+                QuestionNumber: 32,
+                Prompt: "What does the woman ask the man to do?",
+                SkillTags: ["conversation_purpose", "request"],
+                PayloadJson: """{"options":{"A":"Call a client","B":"Send a contract"},"correctAnswer":"B"}""",
+                Confidence: 0.9m
+            ),
+            new ListeningDraftQuestionResult(
+                ToeicPart: 3,
+                GroupId: "part3-conversation-001",
+                QuestionNumber: 33,
+                Prompt: "What will the man probably do next?",
+                SkillTags: ["inference", "conversation"],
+                PayloadJson: """{"options":{"A":"Review a document","B":"Leave the office"},"correctAnswer":"A"}""",
+                Confidence: 0.88m
+            ),
+        ]);
+        var handler = new ParseToeicListeningGroupsHandler(repository, parser);
+
+        var result = handler.Handle(new ParseToeicListeningGroupsCommand(audioAsset.AssetId));
+
+        Assert.Equal(2, result.CreatedListeningDraftCount, "Two grouped listening questions should persist.");
+        Assert.Equal(1, result.CreatedGroupCount, "One Part 3 group relationship should be counted.");
+        Assert.Equal(2, repository.Count("draft_content_items"), "Listening draft rows should persist.");
+        var drafts = repository.GetDraftContentItems(audioAsset.AssetId);
+        Assert.True(drafts.All(draft => draft.ToeicPart == 3), "Part 3 should persist on listening drafts.");
+        Assert.True(drafts.All(draft => draft.ItemType == "ListeningQuestion"), "Draft type should identify listening questions.");
+        Assert.True(drafts.All(draft => draft.PayloadJson.Contains("part3-conversation-001", StringComparison.Ordinal)), "Group id should persist in payload.");
+        Assert.True(drafts.All(draft => draft.SourceTraceJson.Contains(audioAsset.AssetId, StringComparison.Ordinal)), "Source trace should include audio asset.");
     }
 
     public static void DashboardIncludesNormalizedSourceManifestSummary()
@@ -1609,6 +1660,14 @@ sealed class FakeTranscriptParser(IReadOnlyList<TranscriptSegmentResult> segment
 sealed class FakeReadingDraftParser(IReadOnlyList<ReadingDraftQuestionResult> questions) : IReadingDraftParser
 {
     public IReadOnlyList<ReadingDraftQuestionResult> Parse(SourceAsset asset, IReadOnlyList<ExtractedTextBlock> blocks)
+    {
+        return questions;
+    }
+}
+
+sealed class FakeListeningDraftParser(IReadOnlyList<ListeningDraftQuestionResult> questions) : IListeningDraftParser
+{
+    public IReadOnlyList<ListeningDraftQuestionResult> Parse(SourceAsset asset)
     {
         return questions;
     }

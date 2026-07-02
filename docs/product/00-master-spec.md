@@ -89,6 +89,7 @@ Deferred:
 - [37-answer-key-parsing.md](./37-answer-key-parsing.md): answer-key parser contract and draft answer mapping records.
 - [38-transcript-parsing.md](./38-transcript-parsing.md): transcript parser contract and draft transcript segments linked to audio/test groups.
 - [39-reading-draft-parsing.md](./39-reading-draft-parsing.md): Part 5/7 reading draft parser contract, skill tags, and source trace rules.
+- [40-listening-group-parsing.md](./40-listening-group-parsing.md): Part 1-4 listening draft parser contract and Part 3/4 group relationship rules.
 
 ## Non-Negotiable Product Rules
 
