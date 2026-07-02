@@ -140,6 +140,7 @@ Deferred:
 - [88-enforce-learner-admin-authorization.md](./88-enforce-learner-admin-authorization.md): detailed product specification for enforce learner admin authorization.
 - [89-add-production-observability.md](./89-add-production-observability.md): detailed product specification for add production observability.
 - [90-standardize-error-handling.md](./90-standardize-error-handling.md): detailed product specification for standardize error handling.
+- [91-establish-performance-baseline.md](./91-establish-performance-baseline.md): detailed product specification for establish performance baseline.
 
 ## Non-Negotiable Product Rules
 
