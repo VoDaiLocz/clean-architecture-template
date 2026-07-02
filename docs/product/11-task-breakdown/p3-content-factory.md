@@ -182,3 +182,23 @@ No content reaches learner APIs unless it is published and passes validation.
 **Definition Of Done:** TOEIC transcript parsing is committed and pushed.  
 **Commit:** `feat(p3.8): parse TOEIC transcripts`  
 **Push:** `git push origin main`
+
+## P3.9 - Parse TOEIC Reading Drafts
+
+**Context:** Content Factory  
+**Purpose:** Parse extracted PDF blocks into Part 5/7 reading draft questions with skill tags and source trace.  
+**User/Business Value:** Starts turning reading materials into structured reviewable content while keeping parser output away from learner APIs until validation/publish.  
+**Dependencies:** P2.3, P3.5.  
+**Detailed Scope:** Add reading draft parser contract; add reading draft parsing handler; consume extracted text blocks; persist `ReadingQuestion` draft items with TOEIC part, question type, prompt, skill tags, parser payload, source trace, confidence, and pending validation status; add tests and docs.  
+**Out Of Scope:** real NLP parser, answer-key linking, validation, publish workflow, frontend learner rendering.  
+**Data Contract:** Reading drafts are stored as `DraftContentItem` rows with `ToeicPart` 5 or 7, item type `ReadingQuestion`, payload JSON, source trace JSON, parser confidence, and status.  
+**API Contract:** none for P3.9.  
+**UI Contract:** none for P3.9.  
+**Business Rules:** Reading drafts require a PDF source asset and extracted text blocks; parser confidence and source block trace must persist; drafts are not learner-visible.  
+**Edge Cases:** one source PDF can produce multiple reading draft questions; Part 5 and Part 7 drafts can come from the same asset; skill tags must persist for future weakness/recommendation logic.  
+**Required Tests:** Application test covers Part 5 and Part 7 draft creation, item type, tags, source trace, and confidence.  
+**Acceptance Criteria:** Handler exists; parser contract exists; reading draft rows persist; tests and build pass; reading draft doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "ParseToeicReadingDrafts|ReadingQuestion|reading draft" backend/src backend/tests docs/product`.  
+**Definition Of Done:** TOEIC reading draft parsing is committed and pushed.  
+**Commit:** `feat(p3.9): parse TOEIC reading drafts`  
+**Push:** `git push origin main`

@@ -88,6 +88,7 @@ Deferred:
 - [36-audio-metadata-extraction.md](./36-audio-metadata-extraction.md): audio metadata probe contract, duration/format persistence, and validation rules.
 - [37-answer-key-parsing.md](./37-answer-key-parsing.md): answer-key parser contract and draft answer mapping records.
 - [38-transcript-parsing.md](./38-transcript-parsing.md): transcript parser contract and draft transcript segments linked to audio/test groups.
+- [39-reading-draft-parsing.md](./39-reading-draft-parsing.md): Part 5/7 reading draft parser contract, skill tags, and source trace rules.
 
 ## Non-Negotiable Product Rules
 

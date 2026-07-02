@@ -41,6 +41,7 @@ var tests = new List<(string Name, Action Run)>
     ("extracts TOEIC audio metadata", ApplicationTests.ExtractsToeicAudioMetadata),
     ("parses TOEIC answer keys into draft mappings", ApplicationTests.ParsesToeicAnswerKeysIntoDraftMappings),
     ("parses TOEIC transcripts into draft segments", ApplicationTests.ParsesToeicTranscriptsIntoDraftSegments),
+    ("parses TOEIC reading drafts with tags and source trace", ApplicationTests.ParsesToeicReadingDraftsWithTagsAndSourceTrace),
     ("dashboard includes normalized source manifest summary", ApplicationTests.DashboardIncludesNormalizedSourceManifestSummary),
     ("learner cannot unlock next unit until mastery gates pass", ApplicationTests.LearnerCannotUnlockNextUnitUntilMasteryGatesPass),
     ("demo learner session is marked legacy non-production", ApplicationTests.DemoLearnerSessionIsMarkedLegacyNonProduction),
@@ -569,6 +570,63 @@ static class ApplicationTests
         Assert.True(draft.PayloadJson.Contains("sparta-test-01-part3-group-01", StringComparison.Ordinal), "Transcript should link to test group.");
         Assert.True(draft.PayloadJson.Contains("asset-sparta-test-01-audio", StringComparison.Ordinal), "Transcript should link to audio asset.");
         Assert.Equal(0.93m, draft.ParserConfidence, "Transcript parser confidence should persist.");
+    }
+
+    public static void ParsesToeicReadingDraftsWithTagsAndSourceTrace()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var asset = SeedSourceAsset(repository);
+        repository.UpsertExtractedPage(new ExtractedPage(
+            PageId: "page-reading-001",
+            AssetId: asset.AssetId,
+            PageNumber: 1,
+            Width: 595,
+            Height: 842,
+            ExtractedAtUtc: new DateTimeOffset(2026, 7, 2, 5, 0, 0, TimeSpan.Zero)
+        ));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock(
+            BlockId: "block-reading-001",
+            AssetId: asset.AssetId,
+            PageId: "page-reading-001",
+            PageNumber: 1,
+            BlockType: ExtractedBlockType.Question,
+            Text: "The manager ____ the report yesterday.",
+            Confidence: 0.95m,
+            CoordinatesJson: """{"x":10,"y":60,"w":300,"h":30}"""
+        ));
+        var parser = new FakeReadingDraftParser([
+            new ReadingDraftQuestionResult(
+                ToeicPart: 5,
+                QuestionType: "IncompleteSentence",
+                Prompt: "The manager ____ the report yesterday.",
+                SkillTags: ["verb_tense", "grammar"],
+                PayloadJson: """{"options":{"A":"submit","B":"submitted"},"correctAnswer":"B"}""",
+                SourceBlockId: "block-reading-001",
+                Confidence: 0.91m
+            ),
+            new ReadingDraftQuestionResult(
+                ToeicPart: 7,
+                QuestionType: "ReadingComprehension",
+                Prompt: "What is the purpose of the notice?",
+                SkillTags: ["main_idea", "notice"],
+                PayloadJson: """{"passageId":"passage-001","correctAnswer":"A"}""",
+                SourceBlockId: "block-reading-001",
+                Confidence: 0.89m
+            ),
+        ]);
+        var handler = new ParseToeicReadingDraftsHandler(repository, parser);
+
+        var result = handler.Handle(new ParseToeicReadingDraftsCommand(asset.AssetId));
+
+        Assert.Equal(2, result.CreatedReadingDraftCount, "Two reading draft questions should persist.");
+        Assert.Equal(2, repository.Count("draft_content_items"), "Reading draft rows should persist.");
+        var drafts = repository.GetDraftContentItems(asset.AssetId);
+        Assert.True(drafts.Any(draft => draft.ToeicPart == 5), "Part 5 draft should persist.");
+        Assert.True(drafts.Any(draft => draft.ToeicPart == 7), "Part 7 draft should persist.");
+        Assert.True(drafts.All(draft => draft.ItemType == "ReadingQuestion"), "Draft type should identify reading questions.");
+        Assert.True(drafts.Any(draft => draft.PayloadJson.Contains("verb_tense", StringComparison.Ordinal)), "Skill tags should persist in payload.");
+        Assert.True(drafts.All(draft => draft.SourceTraceJson.Contains("block-reading-001", StringComparison.Ordinal)), "Source trace should include extracted block.");
     }
 
     public static void DashboardIncludesNormalizedSourceManifestSummary()
@@ -1545,6 +1603,14 @@ sealed class FakeTranscriptParser(IReadOnlyList<TranscriptSegmentResult> segment
     public IReadOnlyList<TranscriptSegmentResult> Parse(SourceAsset asset)
     {
         return segments;
+    }
+}
+
+sealed class FakeReadingDraftParser(IReadOnlyList<ReadingDraftQuestionResult> questions) : IReadingDraftParser
+{
+    public IReadOnlyList<ReadingDraftQuestionResult> Parse(SourceAsset asset, IReadOnlyList<ExtractedTextBlock> blocks)
+    {
+        return questions;
     }
 }
 
