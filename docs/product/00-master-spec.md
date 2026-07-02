@@ -115,6 +115,7 @@ Deferred:
 - [63-run-toeic-part-tests.md](./63-run-toeic-part-tests.md): detailed product specification for run toeic part tests.
 - [64-run-toeic-listening-tests.md](./64-run-toeic-listening-tests.md): detailed product specification for run toeic listening tests.
 - [65-run-toeic-reading-tests.md](./65-run-toeic-reading-tests.md): detailed product specification for run toeic reading tests.
+- [66-run-full-toeic-lr-tests.md](./66-run-full-toeic-lr-tests.md): detailed product specification for run full toeic lr tests.
 
 ## Non-Negotiable Product Rules
 
