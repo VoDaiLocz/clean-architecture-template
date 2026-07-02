@@ -85,6 +85,7 @@ Deferred:
 - [33-source-resolution.md](./33-source-resolution.md): shortlink/external source resolution records and resolver contract.
 - [34-source-asset-registration.md](./34-source-asset-registration.md): registration of PDF/audio/image source assets from audited evidence flags.
 - [35-pdf-block-extraction.md](./35-pdf-block-extraction.md): PDF text block extraction handler, extractor contract, page/block persistence, and confidence rules.
+- [36-audio-metadata-extraction.md](./36-audio-metadata-extraction.md): audio metadata probe contract, duration/format persistence, and validation rules.
 
 ## Non-Negotiable Product Rules
 

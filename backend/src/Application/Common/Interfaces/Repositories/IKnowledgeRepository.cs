@@ -34,6 +34,10 @@ public interface IKnowledgeRepository
 
     IReadOnlyList<SourceResolutionRecord> GetSourceResolutionRecords();
 
+    void UpsertSourceAudioMetadata(SourceAudioMetadata metadata);
+
+    SourceAudioMetadata? GetSourceAudioMetadata(string assetId);
+
     void UpsertExtractedPage(ExtractedPage page);
 
     IReadOnlyList<ExtractedPage> GetExtractedPages(string assetId);

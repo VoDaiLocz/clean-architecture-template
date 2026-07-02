@@ -38,6 +38,7 @@ var tests = new List<(string Name, Action Run)>
     ("resolves TOEIC external sources and shortlinks", ApplicationTests.ResolvesToeicExternalSourcesAndShortlinks),
     ("registers TOEIC source assets from audit evidence", ApplicationTests.RegistersToeicSourceAssetsFromAuditEvidence),
     ("extracts TOEIC PDF pages and text blocks", ApplicationTests.ExtractsToeicPdfPagesAndTextBlocks),
+    ("extracts TOEIC audio metadata", ApplicationTests.ExtractsToeicAudioMetadata),
     ("dashboard includes normalized source manifest summary", ApplicationTests.DashboardIncludesNormalizedSourceManifestSummary),
     ("learner cannot unlock next unit until mastery gates pass", ApplicationTests.LearnerCannotUnlockNextUnitUntilMasteryGatesPass),
     ("demo learner session is marked legacy non-production", ApplicationTests.DemoLearnerSessionIsMarkedLegacyNonProduction),
@@ -460,6 +461,44 @@ static class ApplicationTests
         Assert.True(blocks[1].Text.Contains("manager", StringComparison.Ordinal), "Extracted text should persist.");
     }
 
+    public static void ExtractsToeicAudioMetadata()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var audioAsset = SeedSourceAsset(repository) with
+        {
+            AssetId = "asset-sparta-test-01-audio",
+            FileName = "test-01.mp3",
+            MimeType = "audio/mpeg",
+            Extension = ".mp3",
+            DetectedRole = SourceAssetRole.Audio,
+            ProviderUrl = "https://drive.google.com/file/d/audio",
+            ObjectKey = "source-assets/sparta/test-01.mp3",
+            Checksum = "sha256-audio",
+        };
+        repository.UpsertSourceAsset(audioAsset);
+        var probe = new FakeAudioMetadataProbe(new AudioMetadataProbeResult(
+            DurationSeconds: 125,
+            Format: "mp3",
+            SampleRateHz: 44_100,
+            BitrateKbps: 192
+        ));
+        var handler = new ExtractToeicAudioMetadataHandler(repository, probe);
+
+        var result = handler.Handle(new ExtractToeicAudioMetadataCommand(audioAsset.AssetId));
+
+        Assert.Equal(1, result.ExtractedAudioMetadataCount, "Audio metadata should be extracted.");
+        Assert.Equal(1, repository.Count("source_audio_metadata"), "Audio metadata row should persist.");
+        var metadata = repository.GetSourceAudioMetadata(audioAsset.AssetId);
+        Assert.True(metadata is not null, "Audio metadata should be queryable by asset.");
+        if (metadata is null) return;
+
+        Assert.Equal(125, metadata.DurationSeconds, "Audio duration should persist.");
+        Assert.Equal("mp3", metadata.Format, "Audio format should persist.");
+        Assert.Equal(44_100, metadata.SampleRateHz, "Sample rate should persist.");
+        Assert.Equal(192, metadata.BitrateKbps, "Bitrate should persist.");
+    }
+
     public static void DashboardIncludesNormalizedSourceManifestSummary()
     {
         using var repository = SqliteKnowledgeRepository.InMemory();
@@ -684,6 +723,13 @@ static class ApplicationTests
                 && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS source_resolution_records", StringComparison.Ordinal)
                 && migration.SqlStatements.Contains("idx_source_resolution_records_source_status", StringComparison.Ordinal)),
             "Source resolution migration must create resolution table and lookup index."
+        );
+        Assert.True(
+            migrations.Any(migration =>
+                migration.Id == "014_source_audio_metadata"
+                && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS source_audio_metadata", StringComparison.Ordinal)
+                && migration.SqlStatements.Contains("idx_source_audio_metadata_asset", StringComparison.Ordinal)),
+            "Audio metadata migration must create metadata table and asset index."
         );
     }
 
@@ -1403,6 +1449,14 @@ sealed class FakePdfTextBlockExtractor(IReadOnlyList<PdfExtractedPageResult> pag
     public IReadOnlyList<PdfExtractedPageResult> Extract(SourceAsset asset)
     {
         return pages;
+    }
+}
+
+sealed class FakeAudioMetadataProbe(AudioMetadataProbeResult result) : IAudioMetadataProbe
+{
+    public AudioMetadataProbeResult Probe(SourceAsset asset)
+    {
+        return result;
     }
 }
 

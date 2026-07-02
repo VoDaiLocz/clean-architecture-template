@@ -122,3 +122,23 @@ No content reaches learner APIs unless it is published and passes validation.
 **Definition Of Done:** TOEIC PDF block extraction is committed and pushed.  
 **Commit:** `feat(p3.5): extract TOEIC PDF blocks`  
 **Push:** `git push origin main`
+
+## P3.6 - Extract TOEIC Audio Metadata
+
+**Context:** Content Factory  
+**Purpose:** Extract audio duration and technical metadata for listening assets.  
+**User/Business Value:** Enables Part 1-4 validation, timing, transcript alignment, and listening test preparation without relying on raw audio inspection in learner flows.  
+**Dependencies:** P3.4.  
+**Detailed Scope:** Add audio metadata domain record; add repository table/methods; add audio probe contract; add extraction handler for audio source assets; add PostgreSQL migration `014_source_audio_metadata`; add tests and docs.  
+**Out Of Scope:** waveform processing, speech-to-text, transcript parsing, audio download/upload, playback API.  
+**Data Contract:** `source_audio_metadata` belongs to a source asset and stores duration seconds, format, sample rate, bitrate, and extraction timestamp.  
+**API Contract:** none for P3.6. Future admin jobs may call the handler with a real media probe adapter.  
+**UI Contract:** none for P3.6.  
+**Business Rules:** Only audio source assets can be probed; duration/sample rate/bitrate must be positive; metadata is queryable by asset; upsert is idempotent.  
+**Edge Cases:** non-audio asset is rejected; missing audio metadata blocks later listening publication; fake probe keeps tests deterministic.  
+**Required Tests:** Application test covers audio metadata extraction and persistence; migration test covers `014_source_audio_metadata`.  
+**Acceptance Criteria:** Handler exists; probe contract exists; audio metadata persists; tests and build pass; audio metadata doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "ExtractToeicAudioMetadata|SourceAudioMetadata|014_source_audio_metadata" backend/src backend/tests docs/product`.  
+**Definition Of Done:** TOEIC audio metadata extraction is committed and pushed.  
+**Commit:** `feat(p3.6): extract TOEIC audio metadata`  
+**Push:** `git push origin main`

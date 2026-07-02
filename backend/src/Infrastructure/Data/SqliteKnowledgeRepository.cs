@@ -123,6 +123,20 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             CREATE INDEX IF NOT EXISTS idx_source_resolution_records_source_status
                 ON source_resolution_records(source_id, status);
 
+            CREATE TABLE IF NOT EXISTS source_audio_metadata (
+                audio_metadata_id TEXT PRIMARY KEY,
+                asset_id TEXT NOT NULL,
+                duration_seconds INTEGER NOT NULL,
+                format TEXT NOT NULL,
+                sample_rate_hz INTEGER NOT NULL,
+                bitrate_kbps INTEGER NOT NULL,
+                extracted_at_utc TEXT NOT NULL,
+                FOREIGN KEY (asset_id) REFERENCES source_assets(asset_id)
+            );
+
+            CREATE UNIQUE INDEX IF NOT EXISTS idx_source_audio_metadata_asset
+                ON source_audio_metadata(asset_id);
+
             CREATE TABLE IF NOT EXISTS extracted_pages (
                 page_id TEXT PRIMARY KEY,
                 asset_id TEXT NOT NULL,
@@ -860,6 +874,50 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         }
 
         return records;
+    }
+
+    public void UpsertSourceAudioMetadata(SourceAudioMetadata metadata)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO source_audio_metadata (
+                audio_metadata_id, asset_id, duration_seconds, format, sample_rate_hz, bitrate_kbps, extracted_at_utc
+            )
+            VALUES (
+                $audio_metadata_id, $asset_id, $duration_seconds, $format, $sample_rate_hz, $bitrate_kbps, $extracted_at_utc
+            )
+            ON CONFLICT(audio_metadata_id) DO UPDATE SET
+                asset_id = excluded.asset_id,
+                duration_seconds = excluded.duration_seconds,
+                format = excluded.format,
+                sample_rate_hz = excluded.sample_rate_hz,
+                bitrate_kbps = excluded.bitrate_kbps,
+                extracted_at_utc = excluded.extracted_at_utc
+            """;
+        command.Parameters.AddWithValue("$audio_metadata_id", metadata.AudioMetadataId);
+        command.Parameters.AddWithValue("$asset_id", metadata.AssetId);
+        command.Parameters.AddWithValue("$duration_seconds", metadata.DurationSeconds);
+        command.Parameters.AddWithValue("$format", metadata.Format);
+        command.Parameters.AddWithValue("$sample_rate_hz", metadata.SampleRateHz);
+        command.Parameters.AddWithValue("$bitrate_kbps", metadata.BitrateKbps);
+        command.Parameters.AddWithValue("$extracted_at_utc", metadata.ExtractedAtUtc.ToString("O"));
+        command.ExecuteNonQuery();
+    }
+
+    public SourceAudioMetadata? GetSourceAudioMetadata(string assetId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT audio_metadata_id, asset_id, duration_seconds, format, sample_rate_hz, bitrate_kbps, extracted_at_utc
+            FROM source_audio_metadata
+            WHERE asset_id = $asset_id
+            """;
+        command.Parameters.AddWithValue("$asset_id", assetId);
+
+        using var reader = command.ExecuteReader();
+        return reader.Read() ? ReadSourceAudioMetadata(reader) : null;
     }
 
     public void UpsertExtractedPage(ExtractedPage page)
@@ -2051,6 +2109,7 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             or "source_assets"
             or "source_discovery_issues"
             or "source_resolution_records"
+            or "source_audio_metadata"
             or "extracted_pages"
             or "extracted_text_blocks"
             or "draft_content_items"
@@ -2159,6 +2218,19 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             reader.GetInt32(5),
             Enum.Parse<SourceResolutionStatus>(reader.GetString(6)),
             DateTimeOffset.Parse(reader.GetString(7))
+        );
+    }
+
+    private static SourceAudioMetadata ReadSourceAudioMetadata(SqliteDataReader reader)
+    {
+        return new SourceAudioMetadata(
+            reader.GetString(0),
+            reader.GetString(1),
+            reader.GetInt32(2),
+            reader.GetString(3),
+            reader.GetInt32(4),
+            reader.GetInt32(5),
+            DateTimeOffset.Parse(reader.GetString(6))
         );
     }
 

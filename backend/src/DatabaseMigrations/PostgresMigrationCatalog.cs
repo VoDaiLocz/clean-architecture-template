@@ -396,6 +396,25 @@ public static class PostgresMigrationCatalog
                 ON source_resolution_records(source_id, status);
             """
         ),
+        new(
+            "014_source_audio_metadata",
+            """
+            CREATE TABLE IF NOT EXISTS source_audio_metadata (
+                audio_metadata_id varchar(160) PRIMARY KEY,
+                asset_id varchar(160) NOT NULL REFERENCES source_assets(asset_id),
+                duration_seconds integer NOT NULL,
+                format varchar(80) NOT NULL,
+                sample_rate_hz integer NOT NULL,
+                bitrate_kbps integer NOT NULL,
+                extracted_at_utc timestamptz NOT NULL,
+                CONSTRAINT ck_source_audio_metadata_positive
+                    CHECK (duration_seconds > 0 AND sample_rate_hz > 0 AND bitrate_kbps > 0)
+            );
+
+            CREATE UNIQUE INDEX IF NOT EXISTS idx_source_audio_metadata_asset
+                ON source_audio_metadata(asset_id);
+            """
+        ),
     ];
 }
 

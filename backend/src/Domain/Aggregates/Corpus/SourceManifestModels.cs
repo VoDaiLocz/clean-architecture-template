@@ -153,6 +153,16 @@ public sealed record SourceResolutionRecord(
     DateTimeOffset ResolvedAtUtc
 );
 
+public sealed record SourceAudioMetadata(
+    string AudioMetadataId,
+    string AssetId,
+    int DurationSeconds,
+    string Format,
+    int SampleRateHz,
+    int BitrateKbps,
+    DateTimeOffset ExtractedAtUtc
+);
+
 public enum ExtractedBlockType
 {
     Heading,
