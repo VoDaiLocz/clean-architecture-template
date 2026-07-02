@@ -132,6 +132,7 @@ Deferred:
 - [80-build-admin-source-inventory.md](./80-build-admin-source-inventory.md): detailed product specification for build admin source inventory.
 - [81-build-admin-asset-discovery.md](./81-build-admin-asset-discovery.md): detailed product specification for build admin asset discovery.
 - [82-build-extraction-operations-dashboard.md](./82-build-extraction-operations-dashboard.md): detailed product specification for build extraction operations dashboard.
+- [83-build-draft-review-queue.md](./83-build-draft-review-queue.md): detailed product specification for build draft review queue.
 
 ## Non-Negotiable Product Rules
 
