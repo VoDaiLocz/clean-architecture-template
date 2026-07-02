@@ -110,6 +110,7 @@ Deferred:
 - [58-implement-toeic-part-5-engine.md](./58-implement-toeic-part-5-engine.md): detailed product specification for implement toeic part 5 engine.
 - [59-implement-toeic-part-6-engine.md](./59-implement-toeic-part-6-engine.md): detailed product specification for implement toeic part 6 engine.
 - [60-implement-toeic-part-7-engine.md](./60-implement-toeic-part-7-engine.md): detailed product specification for implement toeic part 7 engine.
+- [61-tag-toeic-learner-weaknesses.md](./61-tag-toeic-learner-weaknesses.md): detailed product specification for tag toeic learner weaknesses.
 
 ## Non-Negotiable Product Rules
 
