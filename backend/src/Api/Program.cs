@@ -4,6 +4,7 @@ using Application.Common.Interfaces.Repositories;
 using Application.Features.Dashboard.Queries;
 using Application.Features.LearningItems.Commands;
 using Application.Features.Learner;
+using Application.Features.Learner.Home;
 using Application.Features.Learner.Onboarding;
 using Application.Features.SourceManifests;
 using Domain.Aggregates.Corpus;
@@ -121,9 +122,13 @@ learner.MapPost(
 
 learner.MapGet(
     "/home",
-    Ok<LearnerHomeResponse> (DemoLearnerSession session) =>
+    Ok<LearnerHomeResponse> (
+        string? learnerId,
+        IKnowledgeRepository repository
+    ) =>
     {
-        return TypedResults.Ok(session.GetHome());
+        var handler = new GetLearnerHomeHandler(repository);
+        return TypedResults.Ok(handler.Handle(new GetLearnerHomeQuery(learnerId ?? "demo-learner")));
     }
 );
 

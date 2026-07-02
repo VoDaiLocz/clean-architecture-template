@@ -93,6 +93,7 @@ Deferred:
 - [41-draft-content-validation.md](./41-draft-content-validation.md): TOEIC draft validation policies, validation issue recording, and status transitions.
 - [42-review-publish-workflow.md](./42-review-publish-workflow.md): human review decisions, approved draft publishing, and rejected draft hiding.
 - [43-learner-onboarding.md](./43-learner-onboarding.md): learner profile onboarding command, API contract, idempotent update, and next placement action.
+- [44-persisted-learner-home.md](./44-persisted-learner-home.md): repository-backed learner home state, onboarding CTA, placement CTA, and no memory-only home dependency.
 
 ## Non-Negotiable Product Rules
 

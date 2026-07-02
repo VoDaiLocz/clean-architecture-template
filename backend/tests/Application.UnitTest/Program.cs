@@ -3,6 +3,7 @@ using Application.Common.Health;
 using Application.Features.Dashboard.Queries;
 using Application.Features.LearningItems.Commands;
 using Application.Features.Learner;
+using Application.Features.Learner.Home;
 using Application.Features.Learner.Onboarding;
 using Application.Features.SourceDiscovery;
 using Application.Features.SourceExtraction;
@@ -49,6 +50,7 @@ var tests = new List<(string Name, Action Run)>
     ("validates TOEIC draft content and records issues", ApplicationTests.ValidatesToeicDraftContentAndRecordsIssues),
     ("reviews and publishes approved TOEIC draft content", ApplicationTests.ReviewsAndPublishesApprovedToeicDraftContent),
     ("onboards learner and returns next placement action", ApplicationTests.OnboardsLearnerAndReturnsNextPlacementAction),
+    ("learner home reads persisted profile after restart", ApplicationTests.LearnerHomeReadsPersistedProfileAfterRestart),
     ("dashboard includes normalized source manifest summary", ApplicationTests.DashboardIncludesNormalizedSourceManifestSummary),
     ("learner cannot unlock next unit until mastery gates pass", ApplicationTests.LearnerCannotUnlockNextUnitUntilMasteryGatesPass),
     ("demo learner session is marked legacy non-production", ApplicationTests.DemoLearnerSessionIsMarkedLegacyNonProduction),
@@ -832,6 +834,47 @@ static class ApplicationTests
 
         Assert.Equal(1, repository.Count("learner_profiles"), "Repeat onboarding should update profile idempotently.");
         Assert.Equal(900, repository.GetLearnerProfile("learner-onboarding-001")!.TargetScore, "Repeat onboarding should update goal.");
+    }
+
+    public static void LearnerHomeReadsPersistedProfileAfterRestart()
+    {
+        var dbPath = Path.Combine(Path.GetTempPath(), $"toeic-learner-home-{Guid.NewGuid():N}.db");
+        var connectionString = $"Data Source={dbPath}";
+        try
+        {
+            using (var repository = SqliteKnowledgeRepository.FromConnectionString(connectionString))
+            {
+                repository.Initialize();
+                new OnboardLearnerHandler(repository).Handle(new OnboardLearnerCommand(
+                    LearnerId: "learner-home-001",
+                    DisplayName: "Nguyen Van B",
+                    Email: "home@example.com",
+                    TargetScore: 800,
+                    CurrentEstimatedScore: 470,
+                    DailyStudyMinutes: 60,
+                    TimeZoneId: "Asia/Ho_Chi_Minh"
+                ));
+            }
+
+            using (var restartedRepository = SqliteKnowledgeRepository.FromConnectionString(connectionString))
+            {
+                restartedRepository.Initialize();
+                var home = new GetLearnerHomeHandler(restartedRepository).Handle(new GetLearnerHomeQuery("learner-home-001"));
+
+                Assert.Equal("learner-home-001", home.LearnerId, "Learner home must come from persisted profile.");
+                Assert.Equal("placement", home.CurrentUnitId, "Persisted learner without placement should be routed to placement.");
+                Assert.Equal("Placement", home.NextActivity.ActivityType, "Next activity should be placement, not demo lesson.");
+                Assert.Equal("toeic-placement-start", home.NextActivity.ActivityId, "Home CTA should be backend-owned placement start.");
+                Assert.Equal(0, home.ReviewCount, "New persisted profile should start with no review blockers.");
+            }
+        }
+        finally
+        {
+            if (File.Exists(dbPath))
+            {
+                File.Delete(dbPath);
+            }
+        }
     }
 
     public static void DashboardIncludesNormalizedSourceManifestSummary()
