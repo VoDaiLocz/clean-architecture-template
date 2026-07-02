@@ -138,6 +138,7 @@ Deferred:
 - [86-build-content-coverage-dashboard.md](./86-build-content-coverage-dashboard.md): detailed product specification for build content coverage dashboard.
 - [87-add-authentication.md](./87-add-authentication.md): detailed product specification for add authentication.
 - [88-enforce-learner-admin-authorization.md](./88-enforce-learner-admin-authorization.md): detailed product specification for enforce learner admin authorization.
+- [89-add-production-observability.md](./89-add-production-observability.md): detailed product specification for add production observability.
 
 ## Non-Negotiable Product Rules
 
