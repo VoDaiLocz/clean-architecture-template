@@ -45,6 +45,7 @@ var tests = new List<(string Name, Action Run)>
     ("repository persists extracted pages and text blocks idempotently", ApplicationTests.RepositoryPersistsExtractedPagesAndTextBlocksIdempotently),
     ("repository persists draft content safely away from learner contracts", ApplicationTests.RepositoryPersistsDraftContentSafelyAwayFromLearnerContracts),
     ("repository persists published lessons and guided examples", ApplicationTests.RepositoryPersistsPublishedLessonsAndGuidedExamples),
+    ("repository persists published questions and enforces part rules", ApplicationTests.RepositoryPersistsPublishedQuestionsAndEnforcesPartRules),
 };
 
 var failed = 0;
@@ -415,6 +416,13 @@ static class ApplicationTests
                 && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS guided_examples", StringComparison.Ordinal)),
             "Published lesson migration must create lesson and guided example tables."
         );
+        Assert.True(
+            migrations.Any(migration =>
+                migration.Id == "006_published_questions"
+                && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS published_questions", StringComparison.Ordinal)
+                && migration.SqlStatements.Contains("idx_published_questions_part_status", StringComparison.Ordinal)),
+            "Published question migration must create question table and lookup index."
+        );
     }
 
     public static void ObjectStorageTestDoubleStoresListsAndDeletesObjects()
@@ -723,6 +731,67 @@ static class ApplicationTests
         Assert.Equal("word_form,grammar", lessons.Single().SkillTags, "Skill tags should persist.");
         Assert.Equal(1, examples.Single().DisplayOrder, "Guided example order should persist.");
         Assert.True(examples.Single().Explanation.Contains("adjective", StringComparison.Ordinal), "Guided explanation should persist.");
+    }
+
+    public static void RepositoryPersistsPublishedQuestionsAndEnforcesPartRules()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        repository.UpsertPublishedLesson(new PublishedLesson(
+            LessonId: "lesson-part5-word-form",
+            UnitId: "part5-word-form",
+            ToeicPart: 5,
+            Title: "Word Form Foundations",
+            Objective: "Choose the correct part of speech from sentence position.",
+            SkillTags: "word_form,grammar",
+            SourceTraceJson: """{"sourceId":"sheet-row-8"}""",
+            Status: PublishedContentStatus.Published
+        ));
+        var part5Question = new PublishedQuestion(
+            QuestionId: "question-part5-word-form-001",
+            LessonId: "lesson-part5-word-form",
+            ToeicPart: 5,
+            QuestionType: PublishedQuestionType.SingleQuestion,
+            Prompt: "The marketing team needs a more ____ strategy.",
+            OptionsJson: """{"A":"effect","B":"effective","C":"effectively","D":"effectiveness"}""",
+            CorrectAnswer: "B",
+            Explanation: "Before strategy, the blank needs an adjective.",
+            MediaAssetId: null,
+            PassageId: null,
+            GroupId: null,
+            EvidenceJson: """{"sourceId":"sheet-row-8","blockId":"block-sparta-001"}""",
+            SkillTags: "word_form,grammar",
+            SourceTraceJson: """{"draftId":"draft-part5-001"}""",
+            Status: PublishedContentStatus.Published
+        );
+
+        repository.UpsertPublishedQuestion(part5Question);
+        repository.UpsertPublishedQuestion(part5Question with { Explanation = "A noun phrase needs the adjective effective." });
+
+        var questions = repository.GetPublishedQuestions(5);
+
+        Assert.Equal(1, repository.Count("published_questions"), "Published question upsert must be idempotent.");
+        Assert.Equal("question-part5-word-form-001", questions.Single().QuestionId, "Question id should persist.");
+        Assert.Equal(PublishedQuestionType.SingleQuestion, questions.Single().QuestionType, "Question type should persist.");
+        Assert.True(questions.Single().Explanation.Contains("adjective", StringComparison.Ordinal), "Updated explanation should persist.");
+        Assert.Throws<InvalidOperationException>(
+            () => repository.UpsertPublishedQuestion(part5Question with
+            {
+                QuestionId = "invalid-part1-no-media",
+                ToeicPart = 1,
+                MediaAssetId = null,
+            }),
+            "Part 1 question must require media."
+        );
+        Assert.Throws<InvalidOperationException>(
+            () => repository.UpsertPublishedQuestion(part5Question with
+            {
+                QuestionId = "invalid-part7-no-passage",
+                ToeicPart = 7,
+                PassageId = null,
+            }),
+            "Part 7 question must require passage context."
+        );
     }
 }
 

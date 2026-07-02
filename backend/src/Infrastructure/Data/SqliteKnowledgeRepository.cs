@@ -165,6 +165,32 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             CREATE INDEX IF NOT EXISTS idx_guided_examples_lesson_order
                 ON guided_examples(lesson_id, display_order);
 
+            CREATE TABLE IF NOT EXISTS published_questions (
+                question_id TEXT PRIMARY KEY,
+                lesson_id TEXT NOT NULL,
+                toeic_part INTEGER NOT NULL,
+                question_type TEXT NOT NULL,
+                prompt TEXT NOT NULL,
+                options_json TEXT NOT NULL,
+                correct_answer TEXT NOT NULL,
+                explanation TEXT NOT NULL,
+                media_asset_id TEXT,
+                passage_id TEXT,
+                group_id TEXT,
+                evidence_json TEXT NOT NULL,
+                skill_tags TEXT NOT NULL,
+                source_trace_json TEXT NOT NULL,
+                status TEXT NOT NULL,
+                FOREIGN KEY (lesson_id) REFERENCES published_lessons(lesson_id),
+                FOREIGN KEY (media_asset_id) REFERENCES source_assets(asset_id)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_published_questions_part_status
+                ON published_questions(toeic_part, status);
+
+            CREATE INDEX IF NOT EXISTS idx_published_questions_lesson
+                ON published_questions(lesson_id);
+
             CREATE TABLE IF NOT EXISTS learning_items (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 item_type TEXT NOT NULL,
@@ -856,6 +882,118 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         return examples;
     }
 
+    public void UpsertPublishedQuestion(PublishedQuestion question)
+    {
+        PublishedQuestionRules.EnsureValid(question);
+
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO published_questions (
+                question_id,
+                lesson_id,
+                toeic_part,
+                question_type,
+                prompt,
+                options_json,
+                correct_answer,
+                explanation,
+                media_asset_id,
+                passage_id,
+                group_id,
+                evidence_json,
+                skill_tags,
+                source_trace_json,
+                status
+            )
+            VALUES (
+                $question_id,
+                $lesson_id,
+                $toeic_part,
+                $question_type,
+                $prompt,
+                $options_json,
+                $correct_answer,
+                $explanation,
+                $media_asset_id,
+                $passage_id,
+                $group_id,
+                $evidence_json,
+                $skill_tags,
+                $source_trace_json,
+                $status
+            )
+            ON CONFLICT(question_id) DO UPDATE SET
+                lesson_id = excluded.lesson_id,
+                toeic_part = excluded.toeic_part,
+                question_type = excluded.question_type,
+                prompt = excluded.prompt,
+                options_json = excluded.options_json,
+                correct_answer = excluded.correct_answer,
+                explanation = excluded.explanation,
+                media_asset_id = excluded.media_asset_id,
+                passage_id = excluded.passage_id,
+                group_id = excluded.group_id,
+                evidence_json = excluded.evidence_json,
+                skill_tags = excluded.skill_tags,
+                source_trace_json = excluded.source_trace_json,
+                status = excluded.status
+            """;
+        command.Parameters.AddWithValue("$question_id", question.QuestionId);
+        command.Parameters.AddWithValue("$lesson_id", question.LessonId);
+        command.Parameters.AddWithValue("$toeic_part", question.ToeicPart);
+        command.Parameters.AddWithValue("$question_type", question.QuestionType.ToString());
+        command.Parameters.AddWithValue("$prompt", question.Prompt);
+        command.Parameters.AddWithValue("$options_json", question.OptionsJson);
+        command.Parameters.AddWithValue("$correct_answer", question.CorrectAnswer);
+        command.Parameters.AddWithValue("$explanation", question.Explanation);
+        command.Parameters.AddWithValue("$media_asset_id", (object?)question.MediaAssetId ?? DBNull.Value);
+        command.Parameters.AddWithValue("$passage_id", (object?)question.PassageId ?? DBNull.Value);
+        command.Parameters.AddWithValue("$group_id", (object?)question.GroupId ?? DBNull.Value);
+        command.Parameters.AddWithValue("$evidence_json", question.EvidenceJson);
+        command.Parameters.AddWithValue("$skill_tags", question.SkillTags);
+        command.Parameters.AddWithValue("$source_trace_json", question.SourceTraceJson);
+        command.Parameters.AddWithValue("$status", question.Status.ToString());
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<PublishedQuestion> GetPublishedQuestions(int toeicPart)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT
+                question_id,
+                lesson_id,
+                toeic_part,
+                question_type,
+                prompt,
+                options_json,
+                correct_answer,
+                explanation,
+                media_asset_id,
+                passage_id,
+                group_id,
+                evidence_json,
+                skill_tags,
+                source_trace_json,
+                status
+            FROM published_questions
+            WHERE toeic_part = $toeic_part
+            ORDER BY question_id
+            """;
+        command.Parameters.AddWithValue("$toeic_part", toeicPart);
+
+        var questions = new List<PublishedQuestion>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            questions.Add(ReadPublishedQuestion(reader));
+        }
+
+        return questions;
+    }
+
     public void UpsertCorpusManifest(CorpusManifest manifest)
     {
         using var command = connection.CreateCommand();
@@ -1026,6 +1164,7 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             or "draft_content_items"
             or "published_lessons"
             or "guided_examples"
+            or "published_questions"
             or "learning_items"
             or "validation_issues"))
         {
@@ -1157,6 +1296,27 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             reader.GetString(2),
             reader.GetString(3),
             reader.GetInt32(4)
+        );
+    }
+
+    private static PublishedQuestion ReadPublishedQuestion(SqliteDataReader reader)
+    {
+        return new PublishedQuestion(
+            reader.GetString(0),
+            reader.GetString(1),
+            reader.GetInt32(2),
+            Enum.Parse<PublishedQuestionType>(reader.GetString(3)),
+            reader.GetString(4),
+            reader.GetString(5),
+            reader.GetString(6),
+            reader.GetString(7),
+            reader.IsDBNull(8) ? null : reader.GetString(8),
+            reader.IsDBNull(9) ? null : reader.GetString(9),
+            reader.IsDBNull(10) ? null : reader.GetString(10),
+            reader.GetString(11),
+            reader.GetString(12),
+            reader.GetString(13),
+            Enum.Parse<PublishedContentStatus>(reader.GetString(14))
         );
     }
 

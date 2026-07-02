@@ -198,3 +198,71 @@ public sealed record GuidedExample(
     string Explanation,
     int DisplayOrder
 );
+
+public enum PublishedQuestionType
+{
+    SingleQuestion,
+    ConversationSet,
+    TalkSet,
+    PassageSet,
+}
+
+public sealed record PublishedQuestion(
+    string QuestionId,
+    string LessonId,
+    int ToeicPart,
+    PublishedQuestionType QuestionType,
+    string Prompt,
+    string OptionsJson,
+    string CorrectAnswer,
+    string Explanation,
+    string? MediaAssetId,
+    string? PassageId,
+    string? GroupId,
+    string EvidenceJson,
+    string SkillTags,
+    string SourceTraceJson,
+    PublishedContentStatus Status
+);
+
+public static class PublishedQuestionRules
+{
+    public static void EnsureValid(PublishedQuestion question)
+    {
+        if (question.ToeicPart is < 1 or > 7)
+        {
+            throw new InvalidOperationException("Published TOEIC question part must be between 1 and 7.");
+        }
+
+        RequireText(question.QuestionId, "Published question id is required.");
+        RequireText(question.Prompt, "Published question prompt is required.");
+        RequireText(question.OptionsJson, "Published question options are required.");
+        RequireText(question.CorrectAnswer, "Published question correct answer is required.");
+        RequireText(question.Explanation, "Published question explanation is required.");
+        RequireText(question.EvidenceJson, "Published question evidence is required.");
+        RequireText(question.SourceTraceJson, "Published question source trace is required.");
+
+        if (question.ToeicPart == 1 && string.IsNullOrWhiteSpace(question.MediaAssetId))
+        {
+            throw new InvalidOperationException("Part 1 questions require image/audio media.");
+        }
+
+        if (question.ToeicPart is 3 or 4 && string.IsNullOrWhiteSpace(question.GroupId))
+        {
+            throw new InvalidOperationException("Part 3 and Part 4 questions require a group relationship.");
+        }
+
+        if (question.ToeicPart is 6 or 7 && string.IsNullOrWhiteSpace(question.PassageId))
+        {
+            throw new InvalidOperationException("Part 6 and Part 7 questions require passage context.");
+        }
+    }
+
+    private static void RequireText(string value, string message)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            throw new InvalidOperationException(message);
+        }
+    }
+}

@@ -131,6 +131,38 @@ public static class PostgresMigrationCatalog
                 ON guided_examples(lesson_id, display_order);
             """
         ),
+        new(
+            "006_published_questions",
+            """
+            CREATE TABLE IF NOT EXISTS published_questions (
+                question_id varchar(160) PRIMARY KEY,
+                lesson_id varchar(160) NOT NULL REFERENCES published_lessons(lesson_id),
+                toeic_part integer NOT NULL,
+                question_type varchar(80) NOT NULL,
+                prompt text NOT NULL,
+                options_json jsonb NOT NULL,
+                correct_answer varchar(16) NOT NULL,
+                explanation text NOT NULL,
+                media_asset_id varchar(160) REFERENCES source_assets(asset_id),
+                passage_id varchar(160),
+                group_id varchar(160),
+                evidence_json jsonb NOT NULL,
+                skill_tags text NOT NULL,
+                source_trace_json jsonb NOT NULL,
+                status varchar(80) NOT NULL,
+                CONSTRAINT ck_published_questions_toeic_part CHECK (toeic_part BETWEEN 1 AND 7),
+                CONSTRAINT ck_published_questions_part1_media CHECK (toeic_part <> 1 OR media_asset_id IS NOT NULL),
+                CONSTRAINT ck_published_questions_part34_group CHECK (toeic_part NOT IN (3, 4) OR group_id IS NOT NULL),
+                CONSTRAINT ck_published_questions_part67_passage CHECK (toeic_part NOT IN (6, 7) OR passage_id IS NOT NULL)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_published_questions_part_status
+                ON published_questions(toeic_part, status);
+
+            CREATE INDEX IF NOT EXISTS idx_published_questions_lesson
+                ON published_questions(lesson_id);
+            """
+        ),
     ];
 }
 

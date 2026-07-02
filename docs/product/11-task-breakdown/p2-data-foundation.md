@@ -104,3 +104,23 @@ Create durable data structures for content, learners, assignments, attempts, rev
 **Definition Of Done:** Published lesson model is committed and pushed.  
 **Commit:** `feat(p2.4): model published TOEIC lessons`  
 **Push:** `git push origin main`
+
+## P2.5 - Model Published TOEIC Questions
+
+**Context:** Learning Content  
+**Purpose:** Persist learner-ready TOEIC questions with part-specific required fields after validation/review.  
+**User/Business Value:** Enables drills, mini tests, and future test modes to use validated DB-backed questions instead of hardcoded frontend data or raw extracted PDF content.  
+**Dependencies:** P2.4.  
+**Detailed Scope:** Add published question domain record; add question type enum; add part-specific validation rules; add repository upsert/query methods; add SQLite local/test table and indexes; add PostgreSQL migration `006_published_questions`; add tests and docs.  
+**Out Of Scope:** test section/item ordering, attempt scoring, review scheduling, frontend practice UI, parser-to-publish workflow, passage/group tables.  
+**Data Contract:** `published_questions` belongs to `published_lessons`; stores TOEIC part, question type, prompt, options JSON, correct answer, explanation, optional media asset id, optional passage id, optional group id, evidence JSON, skill tags, source trace JSON, and status.  
+**API Contract:** none for P2.5. Future learner APIs must read from `published_questions`, not draft parser output.  
+**UI Contract:** none for P2.5. Future learner screens must render media/passage/group context based on these persisted fields.  
+**Business Rules:** TOEIC part must be 1-7; every question needs prompt/options/correct answer/explanation/evidence/source trace; Part 1 requires media; Part 3 and Part 4 require group relationship; Part 6 and Part 7 require passage context; upserts are idempotent.  
+**Edge Cases:** repeated publish updates existing question row; invalid part-specific rows are rejected before persistence; questions are queryable by TOEIC part/status lookup index.  
+**Required Tests:** Repository integration test covers idempotent question upsert/readback; domain rule test rejects invalid Part 1 and Part 7 rows; migration test covers `006_published_questions`.  
+**Acceptance Criteria:** Domain records exist; part validation rules exist; repository methods exist; SQLite schema exists; PostgreSQL migration exists; tests and build pass; published question doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "PublishedQuestion|006_published_questions|published_questions" backend/src backend/tests docs/product`.  
+**Definition Of Done:** Published question model is committed and pushed.  
+**Commit:** `feat(p2.5): model published TOEIC questions`  
+**Push:** `git push origin main`

@@ -43,6 +43,10 @@ public interface IKnowledgeRepository
 
     IReadOnlyList<GuidedExample> GetGuidedExamples(string lessonId);
 
+    void UpsertPublishedQuestion(PublishedQuestion question);
+
+    IReadOnlyList<PublishedQuestion> GetPublishedQuestions(int toeicPart);
+
     void UpsertCorpusManifest(CorpusManifest manifest);
 
     void UpsertNormalizationStage(NormalizationStageSnapshot stage);
