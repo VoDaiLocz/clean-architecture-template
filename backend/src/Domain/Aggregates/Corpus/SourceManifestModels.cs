@@ -173,3 +173,28 @@ public sealed record DraftContentItem(
     decimal ParserConfidence,
     DraftContentStatus Status
 );
+
+public enum PublishedContentStatus
+{
+    Published,
+    Archived,
+}
+
+public sealed record PublishedLesson(
+    string LessonId,
+    string UnitId,
+    int ToeicPart,
+    string Title,
+    string Objective,
+    string SkillTags,
+    string SourceTraceJson,
+    PublishedContentStatus Status
+);
+
+public sealed record GuidedExample(
+    string ExampleId,
+    string LessonId,
+    string Prompt,
+    string Explanation,
+    int DisplayOrder
+);

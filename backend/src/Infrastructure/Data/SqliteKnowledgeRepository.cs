@@ -139,6 +139,32 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             CREATE INDEX IF NOT EXISTS idx_draft_content_items_asset_status
                 ON draft_content_items(asset_id, status);
 
+            CREATE TABLE IF NOT EXISTS published_lessons (
+                lesson_id TEXT PRIMARY KEY,
+                unit_id TEXT NOT NULL,
+                toeic_part INTEGER NOT NULL,
+                title TEXT NOT NULL,
+                objective TEXT NOT NULL,
+                skill_tags TEXT NOT NULL,
+                source_trace_json TEXT NOT NULL,
+                status TEXT NOT NULL
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_published_lessons_unit_status
+                ON published_lessons(unit_id, status);
+
+            CREATE TABLE IF NOT EXISTS guided_examples (
+                example_id TEXT PRIMARY KEY,
+                lesson_id TEXT NOT NULL,
+                prompt TEXT NOT NULL,
+                explanation TEXT NOT NULL,
+                display_order INTEGER NOT NULL,
+                FOREIGN KEY (lesson_id) REFERENCES published_lessons(lesson_id)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_guided_examples_lesson_order
+                ON guided_examples(lesson_id, display_order);
+
             CREATE TABLE IF NOT EXISTS learning_items (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 item_type TEXT NOT NULL,
@@ -708,6 +734,128 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         return drafts;
     }
 
+    public void UpsertPublishedLesson(PublishedLesson lesson)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO published_lessons (
+                lesson_id,
+                unit_id,
+                toeic_part,
+                title,
+                objective,
+                skill_tags,
+                source_trace_json,
+                status
+            )
+            VALUES (
+                $lesson_id,
+                $unit_id,
+                $toeic_part,
+                $title,
+                $objective,
+                $skill_tags,
+                $source_trace_json,
+                $status
+            )
+            ON CONFLICT(lesson_id) DO UPDATE SET
+                unit_id = excluded.unit_id,
+                toeic_part = excluded.toeic_part,
+                title = excluded.title,
+                objective = excluded.objective,
+                skill_tags = excluded.skill_tags,
+                source_trace_json = excluded.source_trace_json,
+                status = excluded.status
+            """;
+        command.Parameters.AddWithValue("$lesson_id", lesson.LessonId);
+        command.Parameters.AddWithValue("$unit_id", lesson.UnitId);
+        command.Parameters.AddWithValue("$toeic_part", lesson.ToeicPart);
+        command.Parameters.AddWithValue("$title", lesson.Title);
+        command.Parameters.AddWithValue("$objective", lesson.Objective);
+        command.Parameters.AddWithValue("$skill_tags", lesson.SkillTags);
+        command.Parameters.AddWithValue("$source_trace_json", lesson.SourceTraceJson);
+        command.Parameters.AddWithValue("$status", lesson.Status.ToString());
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<PublishedLesson> GetPublishedLessons(string unitId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT lesson_id, unit_id, toeic_part, title, objective, skill_tags, source_trace_json, status
+            FROM published_lessons
+            WHERE unit_id = $unit_id
+            ORDER BY lesson_id
+            """;
+        command.Parameters.AddWithValue("$unit_id", unitId);
+
+        var lessons = new List<PublishedLesson>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            lessons.Add(ReadPublishedLesson(reader));
+        }
+
+        return lessons;
+    }
+
+    public void UpsertGuidedExample(GuidedExample example)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO guided_examples (
+                example_id,
+                lesson_id,
+                prompt,
+                explanation,
+                display_order
+            )
+            VALUES (
+                $example_id,
+                $lesson_id,
+                $prompt,
+                $explanation,
+                $display_order
+            )
+            ON CONFLICT(example_id) DO UPDATE SET
+                lesson_id = excluded.lesson_id,
+                prompt = excluded.prompt,
+                explanation = excluded.explanation,
+                display_order = excluded.display_order
+            """;
+        command.Parameters.AddWithValue("$example_id", example.ExampleId);
+        command.Parameters.AddWithValue("$lesson_id", example.LessonId);
+        command.Parameters.AddWithValue("$prompt", example.Prompt);
+        command.Parameters.AddWithValue("$explanation", example.Explanation);
+        command.Parameters.AddWithValue("$display_order", example.DisplayOrder);
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<GuidedExample> GetGuidedExamples(string lessonId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT example_id, lesson_id, prompt, explanation, display_order
+            FROM guided_examples
+            WHERE lesson_id = $lesson_id
+            ORDER BY display_order, example_id
+            """;
+        command.Parameters.AddWithValue("$lesson_id", lessonId);
+
+        var examples = new List<GuidedExample>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            examples.Add(ReadGuidedExample(reader));
+        }
+
+        return examples;
+    }
+
     public void UpsertCorpusManifest(CorpusManifest manifest)
     {
         using var command = connection.CreateCommand();
@@ -876,6 +1024,8 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             or "extracted_pages"
             or "extracted_text_blocks"
             or "draft_content_items"
+            or "published_lessons"
+            or "guided_examples"
             or "learning_items"
             or "validation_issues"))
         {
@@ -982,6 +1132,31 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             reader.GetString(6),
             reader.GetDecimal(7),
             Enum.Parse<DraftContentStatus>(reader.GetString(8))
+        );
+    }
+
+    private static PublishedLesson ReadPublishedLesson(SqliteDataReader reader)
+    {
+        return new PublishedLesson(
+            reader.GetString(0),
+            reader.GetString(1),
+            reader.GetInt32(2),
+            reader.GetString(3),
+            reader.GetString(4),
+            reader.GetString(5),
+            reader.GetString(6),
+            Enum.Parse<PublishedContentStatus>(reader.GetString(7))
+        );
+    }
+
+    private static GuidedExample ReadGuidedExample(SqliteDataReader reader)
+    {
+        return new GuidedExample(
+            reader.GetString(0),
+            reader.GetString(1),
+            reader.GetString(2),
+            reader.GetString(3),
+            reader.GetInt32(4)
         );
     }
 

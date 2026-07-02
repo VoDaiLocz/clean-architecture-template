@@ -84,3 +84,23 @@ Create durable data structures for content, learners, assignments, attempts, rev
 **Definition Of Done:** Draft content model is committed and pushed.  
 **Commit:** `feat(p2.3): model TOEIC draft content`  
 **Push:** `git push origin main`
+
+## P2.4 - Model Published TOEIC Lessons
+
+**Context:** Learning Content  
+**Purpose:** Persist learner-ready lessons and guided examples after validation/review.  
+**User/Business Value:** Enables the platform to teach before testing, using DB-backed curriculum instead of frontend hardcoded content or draft parser output.  
+**Dependencies:** P2.3.  
+**Detailed Scope:** Add published lesson and guided example domain records; add published content status enum; add repository upsert/query methods; add SQLite local/test tables and indexes; add PostgreSQL migration `005_published_lessons`; add tests and docs.  
+**Out Of Scope:** question schema, tests schema, learner path assignment, frontend lesson UX, publish workflow implementation.  
+**Data Contract:** `published_lessons` stores unit id, TOEIC part, title, objective, skill tags, source trace JSON, and status; `guided_examples` belongs to a lesson and has display order.  
+**API Contract:** none for P2.4.  
+**UI Contract:** future learner UI must read published lesson content, not draft content.  
+**Business Rules:** Published lesson content is separate from draft content; guided examples are ordered; upserts are idempotent.  
+**Edge Cases:** repeated publish updates existing lesson/example rows; examples are queryable in display order; migration must index unit/status and lesson/order lookup.  
+**Required Tests:** Repository integration test covers idempotent lesson/example upsert and readback; migration test covers `005_published_lessons`.  
+**Acceptance Criteria:** Domain records exist; repository methods exist; SQLite schema exists; PostgreSQL migration exists; tests and build pass; published lesson doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "PublishedLesson|GuidedExample|005_published_lessons|published_lessons" backend/src backend/tests docs/product`.  
+**Definition Of Done:** Published lesson model is committed and pushed.  
+**Commit:** `feat(p2.4): model published TOEIC lessons`  
+**Push:** `git push origin main`

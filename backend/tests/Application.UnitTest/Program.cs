@@ -44,6 +44,7 @@ var tests = new List<(string Name, Action Run)>
     ("repository persists source containers and assets idempotently", ApplicationTests.RepositoryPersistsSourceContainersAndAssetsIdempotently),
     ("repository persists extracted pages and text blocks idempotently", ApplicationTests.RepositoryPersistsExtractedPagesAndTextBlocksIdempotently),
     ("repository persists draft content safely away from learner contracts", ApplicationTests.RepositoryPersistsDraftContentSafelyAwayFromLearnerContracts),
+    ("repository persists published lessons and guided examples", ApplicationTests.RepositoryPersistsPublishedLessonsAndGuidedExamples),
 };
 
 var failed = 0;
@@ -407,6 +408,13 @@ static class ApplicationTests
                 && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS draft_content_items", StringComparison.Ordinal)),
             "Draft content migration must create draft content table."
         );
+        Assert.True(
+            migrations.Any(migration =>
+                migration.Id == "005_published_lessons"
+                && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS published_lessons", StringComparison.Ordinal)
+                && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS guided_examples", StringComparison.Ordinal)),
+            "Published lesson migration must create lesson and guided example tables."
+        );
     }
 
     public static void ObjectStorageTestDoubleStoresListsAndDeletesObjects()
@@ -677,6 +685,44 @@ static class ApplicationTests
             learnerContracts.Any(contract => contract.Contains("Draft", StringComparison.OrdinalIgnoreCase)),
             "Learner API contracts must not expose draft content."
         );
+    }
+
+    public static void RepositoryPersistsPublishedLessonsAndGuidedExamples()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var lesson = new PublishedLesson(
+            LessonId: "lesson-part5-word-form",
+            UnitId: "part5-word-form",
+            ToeicPart: 5,
+            Title: "Word Form",
+            Objective: "Choose the correct part of speech from sentence position.",
+            SkillTags: "word_form,grammar",
+            SourceTraceJson: """{"sourceId":"sheet-row-8","draftId":"draft-part5-001"}""",
+            Status: PublishedContentStatus.Published
+        );
+        var example = new GuidedExample(
+            ExampleId: "example-part5-word-form-001",
+            LessonId: lesson.LessonId,
+            Prompt: "The marketing team needs a more ____ strategy.",
+            Explanation: "Before strategy, the blank needs an adjective: effective.",
+            DisplayOrder: 1
+        );
+
+        repository.UpsertPublishedLesson(lesson);
+        repository.UpsertPublishedLesson(lesson with { Title = "Word Form Foundations" });
+        repository.UpsertGuidedExample(example);
+        repository.UpsertGuidedExample(example with { Explanation = "The blank before a noun usually needs an adjective." });
+
+        var lessons = repository.GetPublishedLessons("part5-word-form");
+        var examples = repository.GetGuidedExamples(lesson.LessonId);
+
+        Assert.Equal(1, repository.Count("published_lessons"), "Lesson upsert must be idempotent.");
+        Assert.Equal(1, repository.Count("guided_examples"), "Guided example upsert must be idempotent.");
+        Assert.Equal("Word Form Foundations", lessons.Single().Title, "Lesson update should persist.");
+        Assert.Equal("word_form,grammar", lessons.Single().SkillTags, "Skill tags should persist.");
+        Assert.Equal(1, examples.Single().DisplayOrder, "Guided example order should persist.");
+        Assert.True(examples.Single().Explanation.Contains("adjective", StringComparison.Ordinal), "Guided explanation should persist.");
     }
 }
 

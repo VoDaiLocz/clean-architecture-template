@@ -35,6 +35,14 @@ public interface IKnowledgeRepository
 
     IReadOnlyList<DraftContentItem> GetDraftContentItems(string assetId);
 
+    void UpsertPublishedLesson(PublishedLesson lesson);
+
+    IReadOnlyList<PublishedLesson> GetPublishedLessons(string unitId);
+
+    void UpsertGuidedExample(GuidedExample example);
+
+    IReadOnlyList<GuidedExample> GetGuidedExamples(string lessonId);
+
     void UpsertCorpusManifest(CorpusManifest manifest);
 
     void UpsertNormalizationStage(NormalizationStageSnapshot stage);

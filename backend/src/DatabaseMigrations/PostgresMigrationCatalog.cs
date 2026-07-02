@@ -102,6 +102,35 @@ public static class PostgresMigrationCatalog
                 ON draft_content_items(asset_id, status);
             """
         ),
+        new(
+            "005_published_lessons",
+            """
+            CREATE TABLE IF NOT EXISTS published_lessons (
+                lesson_id varchar(160) PRIMARY KEY,
+                unit_id varchar(160) NOT NULL,
+                toeic_part integer NOT NULL,
+                title text NOT NULL,
+                objective text NOT NULL,
+                skill_tags text NOT NULL,
+                source_trace_json jsonb NOT NULL,
+                status varchar(80) NOT NULL
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_published_lessons_unit_status
+                ON published_lessons(unit_id, status);
+
+            CREATE TABLE IF NOT EXISTS guided_examples (
+                example_id varchar(160) PRIMARY KEY,
+                lesson_id varchar(160) NOT NULL REFERENCES published_lessons(lesson_id),
+                prompt text NOT NULL,
+                explanation text NOT NULL,
+                display_order integer NOT NULL
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_guided_examples_lesson_order
+                ON guided_examples(lesson_id, display_order);
+            """
+        ),
     ];
 }
 
