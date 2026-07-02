@@ -101,6 +101,7 @@ Deferred:
 - [49-manage-learner-activity-sessions.md](./49-manage-learner-activity-sessions.md): detailed product specification for manage learner activity sessions.
 - [50-process-learner-attempts.md](./50-process-learner-attempts.md): detailed product specification for process learner attempts.
 - [51-create-learner-review-queue.md](./51-create-learner-review-queue.md): detailed product specification for create learner review queue.
+- [52-enforce-mastery-unlocks.md](./52-enforce-mastery-unlocks.md): detailed product specification for enforce mastery unlocks.
 
 ## Non-Negotiable Product Rules
 
