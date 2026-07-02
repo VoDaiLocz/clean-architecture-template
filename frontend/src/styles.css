@@ -47,6 +47,12 @@ textarea {
   backdrop-filter: blur(18px);
 }
 
+.shell-actions {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+}
+
 .brand {
   display: inline-flex;
   gap: var(--space-3);
@@ -87,7 +93,8 @@ textarea {
 }
 
 .topnav a,
-.admin-link {
+.admin-link,
+.user-menu summary {
   padding: 10px 12px;
   color: var(--toeic-text-muted);
   border-radius: 999px;
@@ -99,15 +106,153 @@ textarea {
 
 .topnav a.active,
 .topnav a:hover,
-.admin-link:hover {
+.admin-link:hover,
+.user-menu[open] summary,
+.user-menu summary:hover {
   color: var(--toeic-primary);
   background: var(--toeic-primary-soft);
+}
+
+.user-menu {
+  position: relative;
+}
+
+.user-menu summary {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  list-style: none;
+  cursor: pointer;
+}
+
+.user-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.avatar {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  color: var(--toeic-primary-ink);
+  font-size: 12px;
+  font-weight: 760;
+  background: var(--toeic-primary);
+  border-radius: 999px;
+}
+
+.user-menu-panel {
+  position: absolute;
+  right: 0;
+  display: grid;
+  min-width: 180px;
+  padding: var(--space-2);
+  margin-top: var(--space-2);
+  background: var(--toeic-surface);
+  border: 1px solid var(--toeic-border);
+  border-radius: 14px;
+  box-shadow: 0 18px 50px rgba(7, 135, 200, 0.12);
+}
+
+.user-menu-panel a,
+.user-menu-panel button {
+  padding: 10px 12px;
+  color: var(--toeic-text-muted);
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-radius: 10px;
+}
+
+.user-menu-panel a:hover,
+.user-menu-panel button:hover {
+  color: var(--toeic-primary);
+  background: var(--toeic-primary-soft);
+}
+
+.global-error-banner {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+  width: min(1280px, calc(100vw - 32px));
+  margin: var(--space-4) auto 0;
+  padding: 10px 14px;
+  color: var(--toeic-navy);
+  background: var(--toeic-primary-soft);
+  border: 1px solid var(--toeic-border-strong);
+  border-radius: 999px;
+}
+
+.global-error-banner span {
+  color: var(--toeic-text-muted);
+  font-size: 13px;
 }
 
 .route-shell {
   width: min(1280px, calc(100vw - 32px));
   margin: 0 auto;
   padding: var(--space-10) 0 var(--space-12);
+}
+
+.route-loading-skeleton {
+  display: none;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.route-loading-skeleton span {
+  display: block;
+  height: 10px;
+  background: linear-gradient(90deg, var(--toeic-primary-soft), #ffffff, var(--toeic-primary-soft));
+  border-radius: 999px;
+}
+
+.route-loading-skeleton span:nth-child(1) {
+  width: 180px;
+}
+
+.route-loading-skeleton span:nth-child(2) {
+  width: 320px;
+}
+
+.route-loading-skeleton span:nth-child(3) {
+  width: 240px;
+}
+
+.mobile-nav {
+  position: fixed;
+  right: var(--space-4);
+  bottom: var(--space-4);
+  left: var(--space-4);
+  z-index: 20;
+  display: none;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-1);
+  padding: var(--space-2);
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--toeic-border);
+  border-radius: 18px;
+  box-shadow: 0 18px 50px rgba(7, 135, 200, 0.12);
+  backdrop-filter: blur(18px);
+}
+
+.mobile-nav a {
+  min-width: 0;
+  padding: 10px 4px;
+  overflow: hidden;
+  color: var(--toeic-text-muted);
+  font-size: 12px;
+  font-weight: 680;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-radius: 12px;
+}
+
+.mobile-nav a.active,
+.mobile-nav a:hover {
+  color: var(--toeic-primary);
+  background: var(--toeic-primary-soft);
 }
 
 .page-header {
@@ -243,9 +388,30 @@ p {
     overflow-x: auto;
   }
 
+  .shell-actions {
+    justify-content: flex-end;
+  }
+
+  .admin-link {
+    display: none;
+  }
+
+  .global-error-banner {
+    align-items: flex-start;
+    border-radius: 16px;
+  }
+
   .primary-panel,
   .grid.two,
   .part-grid {
     grid-template-columns: 1fr;
+  }
+
+  .mobile-nav {
+    display: grid;
+  }
+
+  .route-shell {
+    padding-bottom: 108px;
   }
 }
