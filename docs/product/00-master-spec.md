@@ -119,6 +119,7 @@ Deferred:
 - [67-manage-toeic-test-sessions.md](./67-manage-toeic-test-sessions.md): detailed product specification for manage toeic test sessions.
 - [68-calculate-toeic-score-breakdown.md](./68-calculate-toeic-score-breakdown.md): detailed product specification for calculate toeic score breakdown.
 - [69-generate-toeic-test-repair-plans.md](./69-generate-toeic-test-repair-plans.md): detailed product specification for generate toeic test repair plans.
+- [70-remove-frontend-demo-learner-content.md](./70-remove-frontend-demo-learner-content.md): detailed product specification for remove frontend demo learner content.
 
 ## Non-Negotiable Product Rules
 
