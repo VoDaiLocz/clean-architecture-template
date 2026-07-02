@@ -208,3 +208,84 @@ public static class LearnerWorkRules
         }
     }
 }
+
+public enum ReviewItemStatus
+{
+    Open,
+    Resolved,
+    Dismissed,
+}
+
+public sealed record ReviewItem(
+    string ReviewItemId,
+    string LearnerId,
+    string SourceAttemptId,
+    string QuestionId,
+    string UnitId,
+    string ErrorTag,
+    string LearnerAnswer,
+    string CorrectAnswer,
+    ReviewItemStatus Status,
+    bool IsBlocking,
+    DateTimeOffset CreatedAtUtc,
+    DateTimeOffset? ResolvedAtUtc
+);
+
+public sealed record RepairAttempt(
+    string RepairAttemptId,
+    string ReviewItemId,
+    string LearnerId,
+    string Answer,
+    bool IsCorrect,
+    DateTimeOffset AttemptedAtUtc
+);
+
+public sealed record MasteryRecord(
+    string MasteryRecordId,
+    string LearnerId,
+    string UnitId,
+    int MasteryPercent,
+    bool IsUnlocked,
+    int BlockingReviewCount,
+    DateTimeOffset UpdatedAtUtc
+);
+
+public static class ReviewMasteryRules
+{
+    public static void EnsureValid(ReviewItem item)
+    {
+        RequireText(item.ReviewItemId, "Review item id is required.");
+        RequireText(item.LearnerId, "Review item learner id is required.");
+        RequireText(item.QuestionId, "Review item question id is required.");
+        RequireText(item.UnitId, "Review item unit id is required.");
+        RequireText(item.CorrectAnswer, "Review item correct answer is required.");
+    }
+
+    public static void EnsureValid(RepairAttempt attempt)
+    {
+        RequireText(attempt.RepairAttemptId, "Repair attempt id is required.");
+        RequireText(attempt.ReviewItemId, "Repair attempt review item id is required.");
+        RequireText(attempt.LearnerId, "Repair attempt learner id is required.");
+        RequireText(attempt.Answer, "Repair attempt answer is required.");
+    }
+
+    public static void EnsureValid(MasteryRecord record)
+    {
+        RequireText(record.MasteryRecordId, "Mastery record id is required.");
+        RequireText(record.LearnerId, "Mastery record learner id is required.");
+        RequireText(record.UnitId, "Mastery record unit id is required.");
+
+        if (record.MasteryPercent is < 0 or > 100 || record.BlockingReviewCount < 0)
+        {
+            throw new InvalidOperationException("Mastery percent must be 0-100 and blocking review count cannot be negative.");
+        }
+    }
+
+    private static void RequireText(string value, string message)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            throw new InvalidOperationException(message);
+        }
+    }
+}

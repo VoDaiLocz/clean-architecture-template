@@ -78,6 +78,7 @@ Deferred:
 - [26-published-test-data-model.md](./26-published-test-data-model.md): TOEIC mini, part, skill, and full test schema with sections and ordered items.
 - [27-learner-profile-data-model.md](./27-learner-profile-data-model.md): learner identity, TOEIC goals, study settings, profile status, and persistence rules.
 - [28-learner-work-lifecycle-data-model.md](./28-learner-work-lifecycle-data-model.md): learner assignments, activity sessions, attempts, and attempt answers.
+- [29-review-mastery-data-model.md](./29-review-mastery-data-model.md): review items, repair attempts, mastery records, and unlock blocker state.
 
 ## Non-Negotiable Product Rules
 

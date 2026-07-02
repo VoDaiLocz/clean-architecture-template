@@ -80,6 +80,18 @@ public interface IKnowledgeRepository
 
     IReadOnlyList<AttemptAnswer> GetAttemptAnswers(string attemptId);
 
+    void UpsertReviewItem(ReviewItem item);
+
+    IReadOnlyList<ReviewItem> GetReviewItems(string learnerId);
+
+    void UpsertRepairAttempt(RepairAttempt attempt);
+
+    IReadOnlyList<RepairAttempt> GetRepairAttempts(string reviewItemId);
+
+    void UpsertMasteryRecord(MasteryRecord record);
+
+    MasteryRecord? GetMasteryRecord(string learnerId, string unitId);
+
     void UpsertCorpusManifest(CorpusManifest manifest);
 
     void UpsertNormalizationStage(NormalizationStageSnapshot stage);

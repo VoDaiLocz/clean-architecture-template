@@ -306,6 +306,53 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             CREATE INDEX IF NOT EXISTS idx_attempt_answers_attempt
                 ON attempt_answers(attempt_id);
 
+            CREATE TABLE IF NOT EXISTS review_items (
+                review_item_id TEXT PRIMARY KEY,
+                learner_id TEXT NOT NULL,
+                source_attempt_id TEXT NOT NULL,
+                question_id TEXT NOT NULL,
+                unit_id TEXT NOT NULL,
+                error_tag TEXT NOT NULL,
+                learner_answer TEXT NOT NULL,
+                correct_answer TEXT NOT NULL,
+                status TEXT NOT NULL,
+                is_blocking INTEGER NOT NULL,
+                created_at_utc TEXT NOT NULL,
+                resolved_at_utc TEXT,
+                FOREIGN KEY (learner_id) REFERENCES learner_profiles(learner_id)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_review_items_learner_status
+                ON review_items(learner_id, status, is_blocking);
+
+            CREATE TABLE IF NOT EXISTS repair_attempts (
+                repair_attempt_id TEXT PRIMARY KEY,
+                review_item_id TEXT NOT NULL,
+                learner_id TEXT NOT NULL,
+                answer TEXT NOT NULL,
+                is_correct INTEGER NOT NULL,
+                attempted_at_utc TEXT NOT NULL,
+                FOREIGN KEY (review_item_id) REFERENCES review_items(review_item_id),
+                FOREIGN KEY (learner_id) REFERENCES learner_profiles(learner_id)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_repair_attempts_review
+                ON repair_attempts(review_item_id, attempted_at_utc);
+
+            CREATE TABLE IF NOT EXISTS mastery_records (
+                mastery_record_id TEXT PRIMARY KEY,
+                learner_id TEXT NOT NULL,
+                unit_id TEXT NOT NULL,
+                mastery_percent INTEGER NOT NULL,
+                is_unlocked INTEGER NOT NULL,
+                blocking_review_count INTEGER NOT NULL,
+                updated_at_utc TEXT NOT NULL,
+                FOREIGN KEY (learner_id) REFERENCES learner_profiles(learner_id)
+            );
+
+            CREATE UNIQUE INDEX IF NOT EXISTS idx_mastery_records_learner_unit
+                ON mastery_records(learner_id, unit_id);
+
             CREATE TABLE IF NOT EXISTS learning_items (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 item_type TEXT NOT NULL,
@@ -1533,6 +1580,156 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         return answers;
     }
 
+    public void UpsertReviewItem(ReviewItem item)
+    {
+        ReviewMasteryRules.EnsureValid(item);
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO review_items (
+                review_item_id, learner_id, source_attempt_id, question_id, unit_id, error_tag,
+                learner_answer, correct_answer, status, is_blocking, created_at_utc, resolved_at_utc
+            )
+            VALUES (
+                $review_item_id, $learner_id, $source_attempt_id, $question_id, $unit_id, $error_tag,
+                $learner_answer, $correct_answer, $status, $is_blocking, $created_at_utc, $resolved_at_utc
+            )
+            ON CONFLICT(review_item_id) DO UPDATE SET
+                learner_id = excluded.learner_id,
+                source_attempt_id = excluded.source_attempt_id,
+                question_id = excluded.question_id,
+                unit_id = excluded.unit_id,
+                error_tag = excluded.error_tag,
+                learner_answer = excluded.learner_answer,
+                correct_answer = excluded.correct_answer,
+                status = excluded.status,
+                is_blocking = excluded.is_blocking,
+                created_at_utc = excluded.created_at_utc,
+                resolved_at_utc = excluded.resolved_at_utc
+            """;
+        command.Parameters.AddWithValue("$review_item_id", item.ReviewItemId);
+        command.Parameters.AddWithValue("$learner_id", item.LearnerId);
+        command.Parameters.AddWithValue("$source_attempt_id", item.SourceAttemptId);
+        command.Parameters.AddWithValue("$question_id", item.QuestionId);
+        command.Parameters.AddWithValue("$unit_id", item.UnitId);
+        command.Parameters.AddWithValue("$error_tag", item.ErrorTag);
+        command.Parameters.AddWithValue("$learner_answer", item.LearnerAnswer);
+        command.Parameters.AddWithValue("$correct_answer", item.CorrectAnswer);
+        command.Parameters.AddWithValue("$status", item.Status.ToString());
+        command.Parameters.AddWithValue("$is_blocking", item.IsBlocking ? 1 : 0);
+        command.Parameters.AddWithValue("$created_at_utc", item.CreatedAtUtc.ToString("O"));
+        command.Parameters.AddWithValue("$resolved_at_utc", item.ResolvedAtUtc?.ToString("O") ?? (object)DBNull.Value);
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<ReviewItem> GetReviewItems(string learnerId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT review_item_id, learner_id, source_attempt_id, question_id, unit_id, error_tag,
+                learner_answer, correct_answer, status, is_blocking, created_at_utc, resolved_at_utc
+            FROM review_items
+            WHERE learner_id = $learner_id
+            ORDER BY created_at_utc, review_item_id
+            """;
+        command.Parameters.AddWithValue("$learner_id", learnerId);
+        var items = new List<ReviewItem>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read()) items.Add(ReadReviewItem(reader));
+        return items;
+    }
+
+    public void UpsertRepairAttempt(RepairAttempt attempt)
+    {
+        ReviewMasteryRules.EnsureValid(attempt);
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO repair_attempts (
+                repair_attempt_id, review_item_id, learner_id, answer, is_correct, attempted_at_utc
+            )
+            VALUES (
+                $repair_attempt_id, $review_item_id, $learner_id, $answer, $is_correct, $attempted_at_utc
+            )
+            ON CONFLICT(repair_attempt_id) DO UPDATE SET
+                review_item_id = excluded.review_item_id,
+                learner_id = excluded.learner_id,
+                answer = excluded.answer,
+                is_correct = excluded.is_correct,
+                attempted_at_utc = excluded.attempted_at_utc
+            """;
+        command.Parameters.AddWithValue("$repair_attempt_id", attempt.RepairAttemptId);
+        command.Parameters.AddWithValue("$review_item_id", attempt.ReviewItemId);
+        command.Parameters.AddWithValue("$learner_id", attempt.LearnerId);
+        command.Parameters.AddWithValue("$answer", attempt.Answer);
+        command.Parameters.AddWithValue("$is_correct", attempt.IsCorrect ? 1 : 0);
+        command.Parameters.AddWithValue("$attempted_at_utc", attempt.AttemptedAtUtc.ToString("O"));
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<RepairAttempt> GetRepairAttempts(string reviewItemId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT repair_attempt_id, review_item_id, learner_id, answer, is_correct, attempted_at_utc
+            FROM repair_attempts
+            WHERE review_item_id = $review_item_id
+            ORDER BY attempted_at_utc, repair_attempt_id
+            """;
+        command.Parameters.AddWithValue("$review_item_id", reviewItemId);
+        var attempts = new List<RepairAttempt>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read()) attempts.Add(ReadRepairAttempt(reader));
+        return attempts;
+    }
+
+    public void UpsertMasteryRecord(MasteryRecord record)
+    {
+        ReviewMasteryRules.EnsureValid(record);
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO mastery_records (
+                mastery_record_id, learner_id, unit_id, mastery_percent, is_unlocked, blocking_review_count, updated_at_utc
+            )
+            VALUES (
+                $mastery_record_id, $learner_id, $unit_id, $mastery_percent, $is_unlocked, $blocking_review_count, $updated_at_utc
+            )
+            ON CONFLICT(mastery_record_id) DO UPDATE SET
+                learner_id = excluded.learner_id,
+                unit_id = excluded.unit_id,
+                mastery_percent = excluded.mastery_percent,
+                is_unlocked = excluded.is_unlocked,
+                blocking_review_count = excluded.blocking_review_count,
+                updated_at_utc = excluded.updated_at_utc
+            """;
+        command.Parameters.AddWithValue("$mastery_record_id", record.MasteryRecordId);
+        command.Parameters.AddWithValue("$learner_id", record.LearnerId);
+        command.Parameters.AddWithValue("$unit_id", record.UnitId);
+        command.Parameters.AddWithValue("$mastery_percent", record.MasteryPercent);
+        command.Parameters.AddWithValue("$is_unlocked", record.IsUnlocked ? 1 : 0);
+        command.Parameters.AddWithValue("$blocking_review_count", record.BlockingReviewCount);
+        command.Parameters.AddWithValue("$updated_at_utc", record.UpdatedAtUtc.ToString("O"));
+        command.ExecuteNonQuery();
+    }
+
+    public MasteryRecord? GetMasteryRecord(string learnerId, string unitId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT mastery_record_id, learner_id, unit_id, mastery_percent, is_unlocked, blocking_review_count, updated_at_utc
+            FROM mastery_records
+            WHERE learner_id = $learner_id AND unit_id = $unit_id
+            """;
+        command.Parameters.AddWithValue("$learner_id", learnerId);
+        command.Parameters.AddWithValue("$unit_id", unitId);
+        using var reader = command.ExecuteReader();
+        return reader.Read() ? ReadMasteryRecord(reader) : null;
+    }
+
     public void UpsertCorpusManifest(CorpusManifest manifest)
     {
         using var command = connection.CreateCommand();
@@ -1712,6 +1909,9 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             or "activity_sessions"
             or "learner_attempts"
             or "attempt_answers"
+            or "review_items"
+            or "repair_attempts"
+            or "mastery_records"
             or "learning_items"
             or "validation_issues"))
         {
@@ -1983,6 +2183,43 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             reader.GetString(3),
             reader.GetString(4),
             reader.GetInt32(5) == 1,
+            DateTimeOffset.Parse(reader.GetString(6))
+        );
+
+    private static ReviewItem ReadReviewItem(SqliteDataReader reader) =>
+        new(
+            reader.GetString(0),
+            reader.GetString(1),
+            reader.GetString(2),
+            reader.GetString(3),
+            reader.GetString(4),
+            reader.GetString(5),
+            reader.GetString(6),
+            reader.GetString(7),
+            Enum.Parse<ReviewItemStatus>(reader.GetString(8)),
+            reader.GetInt32(9) == 1,
+            DateTimeOffset.Parse(reader.GetString(10)),
+            reader.IsDBNull(11) ? null : DateTimeOffset.Parse(reader.GetString(11))
+        );
+
+    private static RepairAttempt ReadRepairAttempt(SqliteDataReader reader) =>
+        new(
+            reader.GetString(0),
+            reader.GetString(1),
+            reader.GetString(2),
+            reader.GetString(3),
+            reader.GetInt32(4) == 1,
+            DateTimeOffset.Parse(reader.GetString(5))
+        );
+
+    private static MasteryRecord ReadMasteryRecord(SqliteDataReader reader) =>
+        new(
+            reader.GetString(0),
+            reader.GetString(1),
+            reader.GetString(2),
+            reader.GetInt32(3),
+            reader.GetInt32(4) == 1,
+            reader.GetInt32(5),
             DateTimeOffset.Parse(reader.GetString(6))
         );
 

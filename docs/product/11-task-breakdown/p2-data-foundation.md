@@ -184,3 +184,23 @@ Create durable data structures for content, learners, assignments, attempts, rev
 **Definition Of Done:** Learner assignment and attempt model is committed and pushed.  
 **Commit:** `feat(p2.8): model learner assignments and attempts`  
 **Push:** `git push origin main`
+
+## P2.9 - Model Review And Mastery Records
+
+**Context:** Attempt And Review  
+**Purpose:** Persist wrong-answer review work, repair attempts, and unit mastery/unlock state.  
+**User/Business Value:** Ensures mistakes become durable repair work and mastery can be queried for unlock decisions instead of being transient frontend state.  
+**Dependencies:** P2.7, P2.8.  
+**Detailed Scope:** Add review item, repair attempt, and mastery record domain records; add review status enum and validation rules; add repository upsert/query methods; add SQLite local/test tables and indexes; add PostgreSQL migration `010_review_mastery_records`; add tests and docs.  
+**Out Of Scope:** automatic review creation from scoring, mastery calculation algorithm, spaced repetition scheduling, frontend review UI.  
+**Data Contract:** `review_items` belongs to learner profile and stores source attempt trace, question, unit, error tag, learner/correct answer, status, blocking flag, created/resolved timestamps; `repair_attempts` belongs to review item; `mastery_records` belongs to learner and unit with mastery percent, unlock flag, blocking review count, and updated timestamp.  
+**API Contract:** none for P2.9. Future review/mastery APIs must read and write these tables.  
+**UI Contract:** none for P2.9. Future learner UI must not unlock gated units while blocking review count remains positive.  
+**Business Rules:** Review/repair/mastery ids are required; mastery percent must be 0-100; blocking review count cannot be negative; resolved review can clear blocking flag; upserts are idempotent.  
+**Edge Cases:** repeated review update changes status/blocking flag; repair attempts remain auditable; mastery is queryable by learner and unit; invalid mastery values are rejected before persistence.  
+**Required Tests:** Repository integration test covers review update, repair persistence, mastery query, blocking count, and invalid mastery rejection; migration test covers `010_review_mastery_records`.  
+**Acceptance Criteria:** Domain records exist; repository methods exist; SQLite schema exists; PostgreSQL migration exists; tests and build pass; review/mastery doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "ReviewItem|RepairAttempt|MasteryRecord|010_review_mastery_records" backend/src backend/tests docs/product`.  
+**Definition Of Done:** Review and mastery model is committed and pushed.  
+**Commit:** `feat(p2.9): model review and mastery records`  
+**Push:** `git push origin main`

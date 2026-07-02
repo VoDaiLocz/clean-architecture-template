@@ -49,6 +49,7 @@ var tests = new List<(string Name, Action Run)>
     ("repository persists TOEIC tests sections and ordered items", ApplicationTests.RepositoryPersistsToeicTestsSectionsAndOrderedItems),
     ("repository persists learner profiles across restart", ApplicationTests.RepositoryPersistsLearnerProfilesAcrossRestart),
     ("repository persists learner assignments sessions attempts and answers", ApplicationTests.RepositoryPersistsLearnerAssignmentsSessionsAttemptsAndAnswers),
+    ("repository persists review and mastery records", ApplicationTests.RepositoryPersistsReviewAndMasteryRecords),
 };
 
 var failed = 0;
@@ -449,6 +450,14 @@ static class ApplicationTests
                 && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS learner_attempts", StringComparison.Ordinal)
                 && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS attempt_answers", StringComparison.Ordinal)),
             "Learner assignment migration must create lifecycle tables."
+        );
+        Assert.True(
+            migrations.Any(migration =>
+                migration.Id == "010_review_mastery_records"
+                && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS review_items", StringComparison.Ordinal)
+                && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS repair_attempts", StringComparison.Ordinal)
+                && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS mastery_records", StringComparison.Ordinal)),
+            "Review and mastery migration must create review, repair, and mastery tables."
         );
     }
 
@@ -1032,6 +1041,74 @@ static class ApplicationTests
             CreatedAtUtc: new DateTimeOffset(2026, 7, 2, 0, 0, 0, TimeSpan.Zero),
             UpdatedAtUtc: new DateTimeOffset(2026, 7, 2, 1, 0, 0, TimeSpan.Zero)
         ));
+    }
+
+    public static void RepositoryPersistsReviewAndMasteryRecords()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        SeedLearnerProfile(repository);
+        var review = new ReviewItem(
+            ReviewItemId: "review-learner-001-question-001",
+            LearnerId: "learner-production-001",
+            SourceAttemptId: "attempt-learner-001-mini-test-001",
+            QuestionId: "question-part5-word-form-001",
+            UnitId: "part5-word-form",
+            ErrorTag: "word_form",
+            LearnerAnswer: "A",
+            CorrectAnswer: "B",
+            Status: ReviewItemStatus.Open,
+            IsBlocking: true,
+            CreatedAtUtc: new DateTimeOffset(2026, 7, 2, 3, 0, 0, TimeSpan.Zero),
+            ResolvedAtUtc: null
+        );
+        var repair = new RepairAttempt(
+            RepairAttemptId: "repair-review-001",
+            ReviewItemId: review.ReviewItemId,
+            LearnerId: review.LearnerId,
+            Answer: "B",
+            IsCorrect: true,
+            AttemptedAtUtc: new DateTimeOffset(2026, 7, 2, 3, 10, 0, TimeSpan.Zero)
+        );
+        var mastery = new MasteryRecord(
+            MasteryRecordId: "mastery-learner-001-part5-word-form",
+            LearnerId: review.LearnerId,
+            UnitId: review.UnitId,
+            MasteryPercent: 82,
+            IsUnlocked: true,
+            BlockingReviewCount: 0,
+            UpdatedAtUtc: new DateTimeOffset(2026, 7, 2, 3, 15, 0, TimeSpan.Zero)
+        );
+
+        repository.UpsertReviewItem(review);
+        repository.UpsertReviewItem(review with
+        {
+            Status = ReviewItemStatus.Resolved,
+            IsBlocking = false,
+            ResolvedAtUtc = new DateTimeOffset(2026, 7, 2, 3, 12, 0, TimeSpan.Zero),
+        });
+        repository.UpsertRepairAttempt(repair);
+        repository.UpsertMasteryRecord(mastery);
+
+        var reviews = repository.GetReviewItems(review.LearnerId);
+        var repairs = repository.GetRepairAttempts(review.ReviewItemId);
+        var masteryRecord = repository.GetMasteryRecord(review.LearnerId, review.UnitId);
+
+        Assert.Equal(1, repository.Count("review_items"), "Review item upsert must be idempotent.");
+        Assert.Equal(1, repository.Count("repair_attempts"), "Repair attempt should persist.");
+        Assert.Equal(1, repository.Count("mastery_records"), "Mastery record should persist.");
+        Assert.Equal(ReviewItemStatus.Resolved, reviews.Single().Status, "Review status update should persist.");
+        Assert.False(reviews.Single().IsBlocking, "Resolved review should stop blocking.");
+        Assert.True(repairs.Single().IsCorrect, "Repair correctness should persist.");
+        Assert.True(masteryRecord is not null, "Mastery record should be queryable by learner and unit.");
+        if (masteryRecord is null) return;
+
+        Assert.Equal(82, masteryRecord.MasteryPercent, "Mastery percent should persist.");
+        Assert.Equal(0, masteryRecord.BlockingReviewCount, "Blocking review count should persist.");
+        Assert.Throws<InvalidOperationException>(
+            () => repository.UpsertMasteryRecord(mastery with { MasteryRecordId = "invalid-mastery", MasteryPercent = 101 }),
+            "Mastery percent must stay within 0-100."
+        );
     }
 }
 

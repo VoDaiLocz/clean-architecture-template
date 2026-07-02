@@ -294,6 +294,55 @@ public static class PostgresMigrationCatalog
                 ON attempt_answers(attempt_id);
             """
         ),
+        new(
+            "010_review_mastery_records",
+            """
+            CREATE TABLE IF NOT EXISTS review_items (
+                review_item_id varchar(160) PRIMARY KEY,
+                learner_id varchar(160) NOT NULL REFERENCES learner_profiles(learner_id),
+                source_attempt_id varchar(160) NOT NULL,
+                question_id varchar(160) NOT NULL,
+                unit_id varchar(160) NOT NULL,
+                error_tag varchar(120) NOT NULL,
+                learner_answer text NOT NULL,
+                correct_answer text NOT NULL,
+                status varchar(80) NOT NULL,
+                is_blocking boolean NOT NULL,
+                created_at_utc timestamptz NOT NULL,
+                resolved_at_utc timestamptz
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_review_items_learner_status
+                ON review_items(learner_id, status, is_blocking);
+
+            CREATE TABLE IF NOT EXISTS repair_attempts (
+                repair_attempt_id varchar(160) PRIMARY KEY,
+                review_item_id varchar(160) NOT NULL REFERENCES review_items(review_item_id),
+                learner_id varchar(160) NOT NULL REFERENCES learner_profiles(learner_id),
+                answer text NOT NULL,
+                is_correct boolean NOT NULL,
+                attempted_at_utc timestamptz NOT NULL
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_repair_attempts_review
+                ON repair_attempts(review_item_id, attempted_at_utc);
+
+            CREATE TABLE IF NOT EXISTS mastery_records (
+                mastery_record_id varchar(160) PRIMARY KEY,
+                learner_id varchar(160) NOT NULL REFERENCES learner_profiles(learner_id),
+                unit_id varchar(160) NOT NULL,
+                mastery_percent integer NOT NULL,
+                is_unlocked boolean NOT NULL,
+                blocking_review_count integer NOT NULL,
+                updated_at_utc timestamptz NOT NULL,
+                CONSTRAINT ck_mastery_records_percent CHECK (mastery_percent BETWEEN 0 AND 100),
+                CONSTRAINT ck_mastery_records_blocking_count CHECK (blocking_review_count >= 0)
+            );
+
+            CREATE UNIQUE INDEX IF NOT EXISTS idx_mastery_records_learner_unit
+                ON mastery_records(learner_id, unit_id);
+            """
+        ),
     ];
 }
 
