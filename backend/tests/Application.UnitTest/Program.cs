@@ -3,6 +3,7 @@ using Application.Common.Health;
 using Application.Features.Dashboard.Queries;
 using Application.Features.LearningItems.Commands;
 using Application.Features.Learner;
+using Application.Features.Learner.Onboarding;
 using Application.Features.SourceDiscovery;
 using Application.Features.SourceExtraction;
 using Application.Features.SourceManifests;
@@ -47,6 +48,7 @@ var tests = new List<(string Name, Action Run)>
     ("parses TOEIC listening draft groups", ApplicationTests.ParsesToeicListeningDraftGroups),
     ("validates TOEIC draft content and records issues", ApplicationTests.ValidatesToeicDraftContentAndRecordsIssues),
     ("reviews and publishes approved TOEIC draft content", ApplicationTests.ReviewsAndPublishesApprovedToeicDraftContent),
+    ("onboards learner and returns next placement action", ApplicationTests.OnboardsLearnerAndReturnsNextPlacementAction),
     ("dashboard includes normalized source manifest summary", ApplicationTests.DashboardIncludesNormalizedSourceManifestSummary),
     ("learner cannot unlock next unit until mastery gates pass", ApplicationTests.LearnerCannotUnlockNextUnitUntilMasteryGatesPass),
     ("demo learner session is marked legacy non-production", ApplicationTests.DemoLearnerSessionIsMarkedLegacyNonProduction),
@@ -781,6 +783,55 @@ static class ApplicationTests
         var drafts = repository.GetDraftContentItems(asset.AssetId);
         Assert.Equal(DraftContentStatus.Published, drafts.Single(draft => draft.DraftId == "draft-review-approved").Status, "Approved draft should be marked published.");
         Assert.Equal(DraftContentStatus.Rejected, drafts.Single(draft => draft.DraftId == "draft-review-rejected").Status, "Rejected draft should be marked rejected.");
+    }
+
+    public static void OnboardsLearnerAndReturnsNextPlacementAction()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var handler = new OnboardLearnerHandler(repository);
+
+        var result = handler.Handle(new OnboardLearnerCommand(
+            LearnerId: "learner-onboarding-001",
+            DisplayName: "Nguyen Van A",
+            Email: "learner@example.com",
+            TargetScore: 850,
+            CurrentEstimatedScore: 520,
+            DailyStudyMinutes: 75,
+            TimeZoneId: "Asia/Ho_Chi_Minh"
+        ));
+
+        var profile = repository.GetLearnerProfile("learner-onboarding-001");
+        Assert.True(profile is not null, "Onboarding must persist learner profile.");
+        if (profile is null) return;
+
+        Assert.Equal(850, profile.TargetScore, "Target score should persist from onboarding.");
+        Assert.Equal(520, profile.CurrentEstimatedScore, "Current estimate should persist from onboarding.");
+        Assert.Equal(75, profile.DailyStudyMinutes, "Daily study minutes should persist from onboarding.");
+        Assert.Equal(LearnerProfileStatus.Active, profile.Status, "Onboarded learner should be active.");
+        Assert.Equal("StartPlacement", result.NextAction.Code, "New learner should be sent to placement after onboarding.");
+        Assert.Equal("/api/learner/placement/start", result.NextAction.ApiRoute, "Next action should point to backend-owned placement start.");
+        Assert.True(
+            ApiContractCatalog.All.Any(contract =>
+                contract.Method == "POST"
+                && contract.Route == "/api/learner/onboarding"
+                && contract.Audience == ApiAudience.Learner
+                && contract.ResponseContract == "OnboardLearnerResponse"),
+            "Learner onboarding route contract must be typed."
+        );
+
+        handler.Handle(new OnboardLearnerCommand(
+            LearnerId: "learner-onboarding-001",
+            DisplayName: "Nguyen Van A",
+            Email: "learner@example.com",
+            TargetScore: 900,
+            CurrentEstimatedScore: 610,
+            DailyStudyMinutes: 90,
+            TimeZoneId: "Asia/Ho_Chi_Minh"
+        ));
+
+        Assert.Equal(1, repository.Count("learner_profiles"), "Repeat onboarding should update profile idempotently.");
+        Assert.Equal(900, repository.GetLearnerProfile("learner-onboarding-001")!.TargetScore, "Repeat onboarding should update goal.");
     }
 
     public static void DashboardIncludesNormalizedSourceManifestSummary()

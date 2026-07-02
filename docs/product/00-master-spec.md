@@ -92,6 +92,7 @@ Deferred:
 - [40-listening-group-parsing.md](./40-listening-group-parsing.md): Part 1-4 listening draft parser contract and Part 3/4 group relationship rules.
 - [41-draft-content-validation.md](./41-draft-content-validation.md): TOEIC draft validation policies, validation issue recording, and status transitions.
 - [42-review-publish-workflow.md](./42-review-publish-workflow.md): human review decisions, approved draft publishing, and rejected draft hiding.
+- [43-learner-onboarding.md](./43-learner-onboarding.md): learner profile onboarding command, API contract, idempotent update, and next placement action.
 
 ## Non-Negotiable Product Rules
 

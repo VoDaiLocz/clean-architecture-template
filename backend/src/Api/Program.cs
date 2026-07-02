@@ -4,6 +4,7 @@ using Application.Common.Interfaces.Repositories;
 using Application.Features.Dashboard.Queries;
 using Application.Features.LearningItems.Commands;
 using Application.Features.Learner;
+using Application.Features.Learner.Onboarding;
 using Application.Features.SourceManifests;
 using Domain.Aggregates.Corpus;
 using Domain.Aggregates.LearningItems;
@@ -94,6 +95,18 @@ api.MapPost(
         var response = handler.Handle(new PublishLearningItemCommand(request.ToDraftLearningItem()));
 
         return response.CanPublish ? TypedResults.Ok(response) : TypedResults.BadRequest(response);
+    }
+);
+
+learner.MapPost(
+    "/onboarding",
+    Ok<OnboardLearnerResponse> (
+        OnboardLearnerCommand request,
+        IKnowledgeRepository repository
+    ) =>
+    {
+        var handler = new OnboardLearnerHandler(repository);
+        return TypedResults.Ok(handler.Handle(request));
     }
 );
 

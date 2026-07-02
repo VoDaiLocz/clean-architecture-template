@@ -17,7 +17,26 @@ Replace demo learner flow with persisted production journey.
 | P4.9 Mistake review queue | Force repair | Wrong answer creates review item | `feat(p4.9): create learner review queue` |
 | P4.10 Mastery unlock engine | Enforce progression | Unit unlocks only after all gates pass | `feat(p4.10): enforce mastery unlocks` |
 
+## P4.1 - Implement Learner Onboarding
+
+**Context:** Learner Journey  
+**Purpose:** Create or update the learner's TOEIC learning profile and return the first backend-owned next action.  
+**User/Business Value:** Lets a real learner enter the product with durable goals, current level, daily study capacity, and a clear next step toward diagnosis instead of demo/static UI state.  
+**Dependencies:** P2.7, P1.6.  
+**Detailed Scope:** Add onboarding command/result models; add `OnboardLearnerHandler`; persist learner profile through `IKnowledgeRepository`; register typed API contract; map `POST /api/learner/onboarding`; add application/API-contract test; add docs.  
+**Out Of Scope:** authentication account creation, placement session creation, learning path generation, frontend onboarding screen, marketing profile fields, payments.  
+**Data Contract:** Onboarding writes one `learner_profiles` row keyed by `learner_id`; repeat onboarding updates the same row and preserves durable identity.  
+**API Contract:** `POST /api/learner/onboarding` accepts learner id, display name, email, target score, current estimated score, daily study minutes, and timezone; response is `OnboardLearnerResponse` with persisted profile summary and `NextAction`.  
+**UI Contract:** Future UI must display the returned next action and must not decide placement routing itself.  
+**Business Rules:** Learner profile must be active after onboarding; TOEIC score/minute validation remains repository/domain-owned; next action after onboarding is `StartPlacement` until placement flow is implemented.  
+**Edge Cases:** Repeat onboarding updates the profile idempotently; invalid score/minutes fail before persistence; timezone/name/email are required by repository validation.  
+**Required Tests:** Application test persists profile, checks next action, checks typed API contract, and checks repeated onboarding updates without duplicate profile rows.  
+**Acceptance Criteria:** Handler exists; endpoint is mapped; API contract is registered; profile persists; repeat onboarding updates; next action returned; tests and build pass.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "OnboardLearner|/api/learner/onboarding|StartPlacement" backend/src backend/tests docs/product`.  
+**Definition Of Done:** Learner onboarding workflow is committed and pushed.  
+**Commit:** `feat(p4.1): implement learner onboarding`  
+**Push:** `git push origin main`
+
 ## Required P4 Acceptance Standard
 
 `DemoLearnerSession` is not used by production endpoints after this phase.
-

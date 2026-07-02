@@ -13,6 +13,7 @@ public static class ApiContractCatalog
         new("POST", "/api/raw-sources", ApiAudience.Admin, "RawSourceResponse"),
         new("POST", "/api/learning-items", ApiAudience.Admin, "PublishLearningItemResponse"),
         new("POST", "/api/learner/demo/reset", ApiAudience.LegacyDemo, "NoContent"),
+        new("POST", "/api/learner/onboarding", ApiAudience.Learner, "OnboardLearnerResponse"),
         new("GET", "/api/learner/home", ApiAudience.Learner, "LearnerHomeResponse"),
         new("GET", "/api/learner/activities/{activityId}", ApiAudience.Learner, "LearnerActivityResponse"),
         new("POST", "/api/learner/activities/{activityId}/attempts", ApiAudience.Learner, "AttemptResponse"),
