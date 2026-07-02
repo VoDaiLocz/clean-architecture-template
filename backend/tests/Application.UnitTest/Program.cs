@@ -4,6 +4,7 @@ using Application.Features.Dashboard.Queries;
 using Application.Features.LearningItems.Commands;
 using Application.Features.Learner;
 using Application.Features.SourceDiscovery;
+using Application.Features.SourceExtraction;
 using Application.Features.SourceManifests;
 using Application.Common.Interfaces.Jobs;
 using Application.Common.Interfaces.Storage;
@@ -36,6 +37,7 @@ var tests = new List<(string Name, Action Run)>
     ("discovers Drive source assets and records blocked issues", ApplicationTests.DiscoversDriveSourceAssetsAndRecordsBlockedIssues),
     ("resolves TOEIC external sources and shortlinks", ApplicationTests.ResolvesToeicExternalSourcesAndShortlinks),
     ("registers TOEIC source assets from audit evidence", ApplicationTests.RegistersToeicSourceAssetsFromAuditEvidence),
+    ("extracts TOEIC PDF pages and text blocks", ApplicationTests.ExtractsToeicPdfPagesAndTextBlocks),
     ("dashboard includes normalized source manifest summary", ApplicationTests.DashboardIncludesNormalizedSourceManifestSummary),
     ("learner cannot unlock next unit until mastery gates pass", ApplicationTests.LearnerCannotUnlockNextUnitUntilMasteryGatesPass),
     ("demo learner session is marked legacy non-production", ApplicationTests.DemoLearnerSessionIsMarkedLegacyNonProduction),
@@ -425,6 +427,37 @@ static class ApplicationTests
         Assert.True(assets.Any(asset => asset.DetectedRole == SourceAssetRole.Pdf), "PDF role should be registered.");
         Assert.True(assets.Any(asset => asset.DetectedRole == SourceAssetRole.Image), "Image role should be registered.");
         Assert.False(assets.Any(asset => asset.DetectedRole == SourceAssetRole.Audio), "Missing audio evidence must not create audio asset.");
+    }
+
+    public static void ExtractsToeicPdfPagesAndTextBlocks()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var asset = SeedSourceAsset(repository);
+        var extractor = new FakePdfTextBlockExtractor([
+            new PdfExtractedPageResult(
+                PageNumber: 1,
+                Width: 595,
+                Height: 842,
+                Blocks:
+                [
+                    new PdfExtractedTextBlockResult(ExtractedBlockType.Heading, "TEST 01", 0.98m, """{"x":10,"y":10,"w":100,"h":20}"""),
+                    new PdfExtractedTextBlockResult(ExtractedBlockType.Question, "The manager ____ the report yesterday.", 0.94m, """{"x":10,"y":60,"w":300,"h":30}"""),
+                ]
+            ),
+        ]);
+        var handler = new ExtractToeicPdfBlocksHandler(repository, extractor);
+
+        var result = handler.Handle(new ExtractToeicPdfBlocksCommand(asset.AssetId));
+
+        Assert.Equal(1, result.ExtractedPageCount, "Fixture PDF should create one extracted page.");
+        Assert.Equal(2, result.ExtractedBlockCount, "Fixture PDF should create two extracted text blocks.");
+        Assert.Equal(1, repository.Count("extracted_pages"), "Extracted page should persist.");
+        Assert.Equal(2, repository.Count("extracted_text_blocks"), "Extracted blocks should persist.");
+        var blocks = repository.GetExtractedTextBlocks(asset.AssetId);
+        Assert.Equal(ExtractedBlockType.Heading, blocks[0].BlockType, "Heading block type should persist.");
+        Assert.Equal(0.94m, blocks[1].Confidence, "Block confidence should persist.");
+        Assert.True(blocks[1].Text.Contains("manager", StringComparison.Ordinal), "Extracted text should persist.");
     }
 
     public static void DashboardIncludesNormalizedSourceManifestSummary()
@@ -1362,6 +1395,14 @@ sealed class FakeExternalSourceResolver(IReadOnlyDictionary<string, ExternalSour
     public ExternalSourceResolutionResult Resolve(string url)
     {
         return results[url];
+    }
+}
+
+sealed class FakePdfTextBlockExtractor(IReadOnlyList<PdfExtractedPageResult> pages) : IPdfTextBlockExtractor
+{
+    public IReadOnlyList<PdfExtractedPageResult> Extract(SourceAsset asset)
+    {
+        return pages;
     }
 }
 

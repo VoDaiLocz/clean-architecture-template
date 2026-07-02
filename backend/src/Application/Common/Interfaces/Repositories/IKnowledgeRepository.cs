@@ -22,6 +22,8 @@ public interface IKnowledgeRepository
 
     void UpsertSourceAsset(SourceAsset asset);
 
+    SourceAsset? GetSourceAsset(string assetId);
+
     IReadOnlyList<SourceAsset> GetSourceAssets(string containerId);
 
     void UpsertSourceDiscoveryIssue(SourceDiscoveryIssue issue);

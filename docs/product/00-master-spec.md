@@ -84,6 +84,7 @@ Deferred:
 - [32-drive-source-discovery.md](./32-drive-source-discovery.md): Drive folder discovery gateway, source containers/assets, and blocked-source issues.
 - [33-source-resolution.md](./33-source-resolution.md): shortlink/external source resolution records and resolver contract.
 - [34-source-asset-registration.md](./34-source-asset-registration.md): registration of PDF/audio/image source assets from audited evidence flags.
+- [35-pdf-block-extraction.md](./35-pdf-block-extraction.md): PDF text block extraction handler, extractor contract, page/block persistence, and confidence rules.
 
 ## Non-Negotiable Product Rules
 

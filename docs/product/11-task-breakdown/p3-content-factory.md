@@ -102,3 +102,23 @@ No content reaches learner APIs unless it is published and passes validation.
 **Definition Of Done:** TOEIC source asset registration is committed and pushed.  
 **Commit:** `feat(p3.4): register TOEIC source assets`  
 **Push:** `git push origin main`
+
+## P3.5 - Extract TOEIC PDF Blocks
+
+**Context:** Content Factory  
+**Purpose:** Extract PDF pages and text blocks into durable extracted content tables.  
+**User/Business Value:** Makes TOEIC books machine-readable for later parser/validation/review workflows without re-opening PDFs during learner flows.  
+**Dependencies:** P2.2, P3.4.  
+**Detailed Scope:** Add PDF text block extractor contract; add extraction handler for PDF source assets; persist extracted pages and blocks with confidence and coordinates; add tests and docs.  
+**Out Of Scope:** real PDF parser implementation, OCR, table reconstruction, image extraction, draft content parsing, learner APIs.  
+**Data Contract:** `extracted_pages` belongs to a PDF source asset; `extracted_text_blocks` belongs to both source asset and page and stores block type, text, confidence, and coordinates JSON.  
+**API Contract:** none for P3.5. Future admin jobs may call the handler with a real PDF extractor adapter.  
+**UI Contract:** none for P3.5.  
+**Business Rules:** Only PDF source assets can use this handler; extractor confidence must persist; repeated extraction upserts stable page/block ids; extracted content is not learner-visible published content.  
+**Edge Cases:** non-PDF asset is rejected; multi-block pages preserve page relationship and block confidence; fixture extractor keeps tests deterministic.  
+**Required Tests:** Application test covers fixture PDF page/block extraction, persistence, block type, text, and confidence.  
+**Acceptance Criteria:** Handler exists; extractor contract exists; pages/blocks persist; tests and build pass; PDF extraction doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "ExtractToeicPdfBlocks|PdfExtractedPageResult|pdf block extraction" backend/src backend/tests docs/product`.  
+**Definition Of Done:** TOEIC PDF block extraction is committed and pushed.  
+**Commit:** `feat(p3.5): extract TOEIC PDF blocks`  
+**Push:** `git push origin main`

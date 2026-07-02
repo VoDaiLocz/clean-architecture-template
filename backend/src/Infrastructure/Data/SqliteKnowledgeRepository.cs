@@ -736,6 +736,32 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         return assets;
     }
 
+    public SourceAsset? GetSourceAsset(string assetId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT
+                asset_id,
+                container_id,
+                source_id,
+                file_name,
+                mime_type,
+                extension,
+                size_bytes,
+                detected_role,
+                provider_url,
+                object_key,
+                checksum
+            FROM source_assets
+            WHERE asset_id = $asset_id
+            """;
+        command.Parameters.AddWithValue("$asset_id", assetId);
+
+        using var reader = command.ExecuteReader();
+        return reader.Read() ? ReadSourceAsset(reader) : null;
+    }
+
     public void UpsertSourceDiscoveryIssue(SourceDiscoveryIssue issue)
     {
         using var command = connection.CreateCommand();
