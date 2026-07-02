@@ -1,6 +1,7 @@
 using System.Text.Json;
 using Application.Common.Interfaces.Repositories;
 using Domain.Aggregates.Corpus;
+using Domain.Aggregates.LearnerProgress;
 using Domain.Aggregates.LearningItems;
 using Microsoft.Data.Sqlite;
 
@@ -229,6 +230,22 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
 
             CREATE UNIQUE INDEX IF NOT EXISTS idx_published_test_items_section_order
                 ON published_test_items(section_id, display_order);
+
+            CREATE TABLE IF NOT EXISTS learner_profiles (
+                learner_id TEXT PRIMARY KEY,
+                display_name TEXT NOT NULL,
+                email TEXT NOT NULL,
+                target_score INTEGER NOT NULL,
+                current_estimated_score INTEGER NOT NULL,
+                daily_study_minutes INTEGER NOT NULL,
+                time_zone_id TEXT NOT NULL,
+                status TEXT NOT NULL,
+                created_at_utc TEXT NOT NULL,
+                updated_at_utc TEXT NOT NULL
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_learner_profiles_status
+                ON learner_profiles(status);
 
             CREATE TABLE IF NOT EXISTS learning_items (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -1188,6 +1205,85 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         return items;
     }
 
+    public void UpsertLearnerProfile(LearnerProfile profile)
+    {
+        ValidateLearnerProfile(profile);
+
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO learner_profiles (
+                learner_id,
+                display_name,
+                email,
+                target_score,
+                current_estimated_score,
+                daily_study_minutes,
+                time_zone_id,
+                status,
+                created_at_utc,
+                updated_at_utc
+            )
+            VALUES (
+                $learner_id,
+                $display_name,
+                $email,
+                $target_score,
+                $current_estimated_score,
+                $daily_study_minutes,
+                $time_zone_id,
+                $status,
+                $created_at_utc,
+                $updated_at_utc
+            )
+            ON CONFLICT(learner_id) DO UPDATE SET
+                display_name = excluded.display_name,
+                email = excluded.email,
+                target_score = excluded.target_score,
+                current_estimated_score = excluded.current_estimated_score,
+                daily_study_minutes = excluded.daily_study_minutes,
+                time_zone_id = excluded.time_zone_id,
+                status = excluded.status,
+                updated_at_utc = excluded.updated_at_utc
+            """;
+        command.Parameters.AddWithValue("$learner_id", profile.LearnerId);
+        command.Parameters.AddWithValue("$display_name", profile.DisplayName);
+        command.Parameters.AddWithValue("$email", profile.Email);
+        command.Parameters.AddWithValue("$target_score", profile.TargetScore);
+        command.Parameters.AddWithValue("$current_estimated_score", profile.CurrentEstimatedScore);
+        command.Parameters.AddWithValue("$daily_study_minutes", profile.DailyStudyMinutes);
+        command.Parameters.AddWithValue("$time_zone_id", profile.TimeZoneId);
+        command.Parameters.AddWithValue("$status", profile.Status.ToString());
+        command.Parameters.AddWithValue("$created_at_utc", profile.CreatedAtUtc.ToString("O"));
+        command.Parameters.AddWithValue("$updated_at_utc", profile.UpdatedAtUtc.ToString("O"));
+        command.ExecuteNonQuery();
+    }
+
+    public LearnerProfile? GetLearnerProfile(string learnerId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT
+                learner_id,
+                display_name,
+                email,
+                target_score,
+                current_estimated_score,
+                daily_study_minutes,
+                time_zone_id,
+                status,
+                created_at_utc,
+                updated_at_utc
+            FROM learner_profiles
+            WHERE learner_id = $learner_id
+            """;
+        command.Parameters.AddWithValue("$learner_id", learnerId);
+
+        using var reader = command.ExecuteReader();
+        return reader.Read() ? ReadLearnerProfile(reader) : null;
+    }
+
     public void UpsertCorpusManifest(CorpusManifest manifest)
     {
         using var command = connection.CreateCommand();
@@ -1362,6 +1458,7 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             or "published_tests"
             or "published_test_sections"
             or "published_test_items"
+            or "learner_profiles"
             or "learning_items"
             or "validation_issues"))
         {
@@ -1552,6 +1649,43 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             reader.GetInt32(4),
             reader.GetDecimal(5)
         );
+    }
+
+    private static LearnerProfile ReadLearnerProfile(SqliteDataReader reader)
+    {
+        return new LearnerProfile(
+            reader.GetString(0),
+            reader.GetString(1),
+            reader.GetString(2),
+            reader.GetInt32(3),
+            reader.GetInt32(4),
+            reader.GetInt32(5),
+            reader.GetString(6),
+            Enum.Parse<LearnerProfileStatus>(reader.GetString(7)),
+            DateTimeOffset.Parse(reader.GetString(8)),
+            DateTimeOffset.Parse(reader.GetString(9))
+        );
+    }
+
+    private static void ValidateLearnerProfile(LearnerProfile profile)
+    {
+        if (string.IsNullOrWhiteSpace(profile.LearnerId)
+            || string.IsNullOrWhiteSpace(profile.DisplayName)
+            || string.IsNullOrWhiteSpace(profile.Email)
+            || string.IsNullOrWhiteSpace(profile.TimeZoneId))
+        {
+            throw new InvalidOperationException("Learner profile identity, display name, email, and timezone are required.");
+        }
+
+        if (profile.TargetScore is < 10 or > 990 || profile.CurrentEstimatedScore is < 0 or > 990)
+        {
+            throw new InvalidOperationException("Learner TOEIC scores must be within TOEIC score bounds.");
+        }
+
+        if (profile.DailyStudyMinutes <= 0)
+        {
+            throw new InvalidOperationException("Learner daily study minutes must be positive.");
+        }
     }
 
     private void RecordIssues(DraftLearningItem item, ValidationResult result)

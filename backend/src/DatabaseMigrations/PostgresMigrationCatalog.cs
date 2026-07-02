@@ -210,6 +210,29 @@ public static class PostgresMigrationCatalog
                 ON published_test_items(section_id, display_order);
             """
         ),
+        new(
+            "008_learner_profiles",
+            """
+            CREATE TABLE IF NOT EXISTS learner_profiles (
+                learner_id varchar(160) PRIMARY KEY,
+                display_name text NOT NULL,
+                email text NOT NULL,
+                target_score integer NOT NULL,
+                current_estimated_score integer NOT NULL,
+                daily_study_minutes integer NOT NULL,
+                time_zone_id varchar(120) NOT NULL,
+                status varchar(80) NOT NULL,
+                created_at_utc timestamptz NOT NULL,
+                updated_at_utc timestamptz NOT NULL,
+                CONSTRAINT ck_learner_profiles_target_score CHECK (target_score BETWEEN 10 AND 990),
+                CONSTRAINT ck_learner_profiles_estimated_score CHECK (current_estimated_score BETWEEN 0 AND 990),
+                CONSTRAINT ck_learner_profiles_daily_minutes CHECK (daily_study_minutes > 0)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_learner_profiles_status
+                ON learner_profiles(status);
+            """
+        ),
     ];
 }
 

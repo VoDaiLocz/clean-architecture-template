@@ -76,6 +76,7 @@ Deferred:
 - [24-published-lesson-data-model.md](./24-published-lesson-data-model.md): learner-ready lesson and guided example schema, status, ordering, and migration model.
 - [25-published-question-data-model.md](./25-published-question-data-model.md): learner-ready TOEIC question schema, part-specific required fields, validation rules, and migration model.
 - [26-published-test-data-model.md](./26-published-test-data-model.md): TOEIC mini, part, skill, and full test schema with sections and ordered items.
+- [27-learner-profile-data-model.md](./27-learner-profile-data-model.md): learner identity, TOEIC goals, study settings, profile status, and persistence rules.
 
 ## Non-Negotiable Product Rules
 

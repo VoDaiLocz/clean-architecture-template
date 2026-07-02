@@ -144,3 +144,23 @@ Create durable data structures for content, learners, assignments, attempts, rev
 **Definition Of Done:** TOEIC test structure model is committed and pushed.  
 **Commit:** `feat(p2.6): model TOEIC test structures`  
 **Push:** `git push origin main`
+
+## P2.7 - Model Learner Profiles
+
+**Context:** Learner Journey  
+**Purpose:** Persist learner identity, TOEIC score goals, current estimated score, study minutes, timezone, and lifecycle status.  
+**User/Business Value:** Gives the platform durable learner state across sessions and restarts so onboarding, Today Plan, assignment, and mastery logic can be personalized.  
+**Dependencies:** P1.3.  
+**Detailed Scope:** Add learner profile domain record and status enum; add repository upsert/read methods; add SQLite local/test table and index; add PostgreSQL migration `008_learner_profiles`; add restart persistence test and docs.  
+**Out Of Scope:** authentication, password/session management, placement test results, learning path assignment, subscription, frontend onboarding UI.  
+**Data Contract:** `learner_profiles` stores learner id, display name, email, target TOEIC score, current estimated score, daily study minutes, timezone, status, created timestamp, and updated timestamp.  
+**API Contract:** none for P2.7. Future learner APIs must derive personalization from `learner_profiles`, not `DemoLearnerSession`.  
+**UI Contract:** none for P2.7. Future onboarding/profile UI must write to this model.  
+**Business Rules:** Learner id/display name/email/timezone are required; target score must be within TOEIC score bounds; current estimated score must be within TOEIC score bounds; daily study minutes must be positive; upserts are idempotent; profile must survive repository restart.  
+**Edge Cases:** repeated onboarding updates an existing profile; persisted file-backed repository can be reopened and still read the learner; invalid score/minutes are rejected before persistence.  
+**Required Tests:** Repository restart test covers profile insert, update, idempotent count, close/reopen, and readback; migration test covers `008_learner_profiles`.  
+**Acceptance Criteria:** Domain record exists; repository methods exist; SQLite schema exists; PostgreSQL migration exists; tests and build pass; learner profile doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "LearnerProfile|008_learner_profiles|learner_profiles" backend/src backend/tests docs/product`.  
+**Definition Of Done:** Learner profile model is committed and pushed.  
+**Commit:** `feat(p2.7): model learner profiles`  
+**Push:** `git push origin main`

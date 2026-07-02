@@ -65,3 +65,23 @@ public sealed record MiniTestAttemptResult(
     bool UnitCompleted,
     IReadOnlyList<string> CreatedReviewItemIds
 );
+
+public enum LearnerProfileStatus
+{
+    Active,
+    Suspended,
+    Deleted,
+}
+
+public sealed record LearnerProfile(
+    string LearnerId,
+    string DisplayName,
+    string Email,
+    int TargetScore,
+    int CurrentEstimatedScore,
+    int DailyStudyMinutes,
+    string TimeZoneId,
+    LearnerProfileStatus Status,
+    DateTimeOffset CreatedAtUtc,
+    DateTimeOffset UpdatedAtUtc
+);

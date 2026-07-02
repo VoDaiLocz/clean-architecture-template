@@ -1,4 +1,5 @@
 using Domain.Aggregates.Corpus;
+using Domain.Aggregates.LearnerProgress;
 using Domain.Aggregates.LearningItems;
 
 namespace Application.Common.Interfaces.Repositories;
@@ -58,6 +59,10 @@ public interface IKnowledgeRepository
     void UpsertPublishedTestItem(PublishedTestItem item);
 
     IReadOnlyList<PublishedTestItem> GetPublishedTestItems(string sectionId);
+
+    void UpsertLearnerProfile(LearnerProfile profile);
+
+    LearnerProfile? GetLearnerProfile(string learnerId);
 
     void UpsertCorpusManifest(CorpusManifest manifest);
 

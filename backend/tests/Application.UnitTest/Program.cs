@@ -47,6 +47,7 @@ var tests = new List<(string Name, Action Run)>
     ("repository persists published lessons and guided examples", ApplicationTests.RepositoryPersistsPublishedLessonsAndGuidedExamples),
     ("repository persists published questions and enforces part rules", ApplicationTests.RepositoryPersistsPublishedQuestionsAndEnforcesPartRules),
     ("repository persists TOEIC tests sections and ordered items", ApplicationTests.RepositoryPersistsToeicTestsSectionsAndOrderedItems),
+    ("repository persists learner profiles across restart", ApplicationTests.RepositoryPersistsLearnerProfilesAcrossRestart),
 };
 
 var failed = 0;
@@ -431,6 +432,13 @@ static class ApplicationTests
                 && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS published_test_sections", StringComparison.Ordinal)
                 && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS published_test_items", StringComparison.Ordinal)),
             "Published test migration must create test, section, and ordered item tables."
+        );
+        Assert.True(
+            migrations.Any(migration =>
+                migration.Id == "008_learner_profiles"
+                && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS learner_profiles", StringComparison.Ordinal)
+                && migration.SqlStatements.Contains("idx_learner_profiles_status", StringComparison.Ordinal)),
+            "Learner profile migration must create profile table and status index."
         );
     }
 
@@ -871,6 +879,60 @@ static class ApplicationTests
             () => repository.UpsertPublishedTest(test with { TestId = "invalid-full-test", TargetQuestionCount = 199 }),
             "Full TOEIC tests must represent 200 questions."
         );
+    }
+
+    public static void RepositoryPersistsLearnerProfilesAcrossRestart()
+    {
+        var dbPath = Path.Combine(Path.GetTempPath(), $"toeic-learner-profile-{Guid.NewGuid():N}.db");
+        var connectionString = $"Data Source={dbPath}";
+        try
+        {
+            using (var repository = SqliteKnowledgeRepository.FromConnectionString(connectionString))
+            {
+                repository.Initialize();
+                repository.UpsertLearnerProfile(new LearnerProfile(
+                    LearnerId: "learner-production-001",
+                    DisplayName: "Nguyen Van A",
+                    Email: "learner@example.com",
+                    TargetScore: 850,
+                    CurrentEstimatedScore: 620,
+                    DailyStudyMinutes: 60,
+                    TimeZoneId: "Asia/Ho_Chi_Minh",
+                    Status: LearnerProfileStatus.Active,
+                    CreatedAtUtc: new DateTimeOffset(2026, 7, 2, 0, 0, 0, TimeSpan.Zero),
+                    UpdatedAtUtc: new DateTimeOffset(2026, 7, 2, 1, 0, 0, TimeSpan.Zero)
+                ));
+                repository.UpsertLearnerProfile(repository.GetLearnerProfile("learner-production-001")! with
+                {
+                    CurrentEstimatedScore = 650,
+                    DailyStudyMinutes = 75,
+                });
+
+                Assert.Equal(1, repository.Count("learner_profiles"), "Learner profile upsert must be idempotent.");
+            }
+
+            using (var restartedRepository = SqliteKnowledgeRepository.FromConnectionString(connectionString))
+            {
+                restartedRepository.Initialize();
+                var profile = restartedRepository.GetLearnerProfile("learner-production-001");
+
+                Assert.True(profile is not null, "Learner profile must survive repository restart.");
+                if (profile is null) return;
+
+                Assert.Equal(850, profile.TargetScore, "Target TOEIC score should persist.");
+                Assert.Equal(650, profile.CurrentEstimatedScore, "Estimated score update should persist.");
+                Assert.Equal(75, profile.DailyStudyMinutes, "Daily study goal update should persist.");
+                Assert.Equal("Asia/Ho_Chi_Minh", profile.TimeZoneId, "Learner timezone should persist.");
+                Assert.Equal(LearnerProfileStatus.Active, profile.Status, "Profile status should persist.");
+            }
+        }
+        finally
+        {
+            if (File.Exists(dbPath))
+            {
+                File.Delete(dbPath);
+            }
+        }
     }
 }
 
