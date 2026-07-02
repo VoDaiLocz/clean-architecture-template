@@ -114,6 +114,7 @@ Deferred:
 - [62-run-toeic-mini-tests.md](./62-run-toeic-mini-tests.md): detailed product specification for run toeic mini tests.
 - [63-run-toeic-part-tests.md](./63-run-toeic-part-tests.md): detailed product specification for run toeic part tests.
 - [64-run-toeic-listening-tests.md](./64-run-toeic-listening-tests.md): detailed product specification for run toeic listening tests.
+- [65-run-toeic-reading-tests.md](./65-run-toeic-reading-tests.md): detailed product specification for run toeic reading tests.
 
 ## Non-Negotiable Product Rules
 
