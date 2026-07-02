@@ -103,6 +103,7 @@ Deferred:
 - [51-create-learner-review-queue.md](./51-create-learner-review-queue.md): detailed product specification for create learner review queue.
 - [52-enforce-mastery-unlocks.md](./52-enforce-mastery-unlocks.md): detailed product specification for enforce mastery unlocks.
 - [53-define-toeic-item-contracts.md](./53-define-toeic-item-contracts.md): detailed product specification for define toeic item contracts.
+- [54-implement-toeic-part-1-engine.md](./54-implement-toeic-part-1-engine.md): detailed product specification for implement toeic part 1 engine.
 
 ## Non-Negotiable Product Rules
 
