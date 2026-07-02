@@ -96,6 +96,7 @@ Deferred:
 - [44-persisted-learner-home.md](./44-persisted-learner-home.md): repository-backed learner home state, onboarding CTA, placement CTA, and no memory-only home dependency.
 - [45-placement-session-start.md](./45-placement-session-start.md): placement session model, start/resume behavior, typed API contract, and duplicate active session handling.
 - [46-score-toeic-placement.md](./46-score-toeic-placement.md): detailed product specification for score toeic placement.
+- [47-generate-learner-path-from-placement.md](./47-generate-learner-path-from-placement.md): detailed product specification for generate learner path from placement.
 
 ## Non-Negotiable Product Rules
 
