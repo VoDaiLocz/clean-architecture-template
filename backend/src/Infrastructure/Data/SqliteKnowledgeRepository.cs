@@ -289,6 +289,18 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             CREATE INDEX IF NOT EXISTS idx_learner_profiles_status
                 ON learner_profiles(status);
 
+            CREATE TABLE IF NOT EXISTS placement_sessions (
+                session_id TEXT PRIMARY KEY,
+                learner_id TEXT NOT NULL,
+                status TEXT NOT NULL,
+                started_at_utc TEXT NOT NULL,
+                completed_at_utc TEXT,
+                FOREIGN KEY (learner_id) REFERENCES learner_profiles(learner_id)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_placement_sessions_learner_status
+                ON placement_sessions(learner_id, status);
+
             CREATE TABLE IF NOT EXISTS learner_assignments (
                 assignment_id TEXT PRIMARY KEY,
                 learner_id TEXT NOT NULL,
@@ -1602,6 +1614,49 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         return reader.Read() ? ReadLearnerProfile(reader) : null;
     }
 
+    public void UpsertPlacementSession(PlacementSession session)
+    {
+        PlacementRules.EnsureValid(session);
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO placement_sessions (
+                session_id, learner_id, status, started_at_utc, completed_at_utc
+            )
+            VALUES (
+                $session_id, $learner_id, $status, $started_at_utc, $completed_at_utc
+            )
+            ON CONFLICT(session_id) DO UPDATE SET
+                learner_id = excluded.learner_id,
+                status = excluded.status,
+                started_at_utc = excluded.started_at_utc,
+                completed_at_utc = excluded.completed_at_utc
+            """;
+        command.Parameters.AddWithValue("$session_id", session.SessionId);
+        command.Parameters.AddWithValue("$learner_id", session.LearnerId);
+        command.Parameters.AddWithValue("$status", session.Status.ToString());
+        command.Parameters.AddWithValue("$started_at_utc", session.StartedAtUtc.ToString("O"));
+        command.Parameters.AddWithValue("$completed_at_utc", session.CompletedAtUtc?.ToString("O") ?? (object)DBNull.Value);
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<PlacementSession> GetPlacementSessions(string learnerId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT session_id, learner_id, status, started_at_utc, completed_at_utc
+            FROM placement_sessions
+            WHERE learner_id = $learner_id
+            ORDER BY started_at_utc, session_id
+            """;
+        command.Parameters.AddWithValue("$learner_id", learnerId);
+        var sessions = new List<PlacementSession>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read()) sessions.Add(ReadPlacementSession(reader));
+        return sessions;
+    }
+
     public void UpsertLearnerAssignment(LearnerAssignment assignment)
     {
         LearnerWorkRules.EnsureValid(assignment);
@@ -2135,6 +2190,7 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             or "published_test_sections"
             or "published_test_items"
             or "learner_profiles"
+            or "placement_sessions"
             or "learner_assignments"
             or "activity_sessions"
             or "learner_attempts"
@@ -2409,6 +2465,15 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             throw new InvalidOperationException("Learner daily study minutes must be positive.");
         }
     }
+
+    private static PlacementSession ReadPlacementSession(SqliteDataReader reader) =>
+        new(
+            reader.GetString(0),
+            reader.GetString(1),
+            Enum.Parse<PlacementSessionStatus>(reader.GetString(2)),
+            DateTimeOffset.Parse(reader.GetString(3)),
+            reader.IsDBNull(4) ? null : DateTimeOffset.Parse(reader.GetString(4))
+        );
 
     private static LearnerAssignment ReadLearnerAssignment(SqliteDataReader reader) =>
         new(

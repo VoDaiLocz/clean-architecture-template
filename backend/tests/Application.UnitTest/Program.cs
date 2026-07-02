@@ -5,6 +5,7 @@ using Application.Features.LearningItems.Commands;
 using Application.Features.Learner;
 using Application.Features.Learner.Home;
 using Application.Features.Learner.Onboarding;
+using Application.Features.Learner.Placement;
 using Application.Features.SourceDiscovery;
 using Application.Features.SourceExtraction;
 using Application.Features.SourceManifests;
@@ -51,6 +52,7 @@ var tests = new List<(string Name, Action Run)>
     ("reviews and publishes approved TOEIC draft content", ApplicationTests.ReviewsAndPublishesApprovedToeicDraftContent),
     ("onboards learner and returns next placement action", ApplicationTests.OnboardsLearnerAndReturnsNextPlacementAction),
     ("learner home reads persisted profile after restart", ApplicationTests.LearnerHomeReadsPersistedProfileAfterRestart),
+    ("starts placement session and resumes active duplicate", ApplicationTests.StartsPlacementSessionAndResumesActiveDuplicate),
     ("dashboard includes normalized source manifest summary", ApplicationTests.DashboardIncludesNormalizedSourceManifestSummary),
     ("learner cannot unlock next unit until mastery gates pass", ApplicationTests.LearnerCannotUnlockNextUnitUntilMasteryGatesPass),
     ("demo learner session is marked legacy non-production", ApplicationTests.DemoLearnerSessionIsMarkedLegacyNonProduction),
@@ -875,6 +877,39 @@ static class ApplicationTests
                 File.Delete(dbPath);
             }
         }
+    }
+
+    public static void StartsPlacementSessionAndResumesActiveDuplicate()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        new OnboardLearnerHandler(repository).Handle(new OnboardLearnerCommand(
+            LearnerId: "learner-placement-001",
+            DisplayName: "Nguyen Van C",
+            Email: "placement@example.com",
+            TargetScore: 820,
+            CurrentEstimatedScore: 510,
+            DailyStudyMinutes: 80,
+            TimeZoneId: "Asia/Ho_Chi_Minh"
+        ));
+        var handler = new StartPlacementSessionHandler(repository);
+
+        var first = handler.Handle(new StartPlacementSessionCommand("learner-placement-001"));
+        var duplicate = handler.Handle(new StartPlacementSessionCommand("learner-placement-001"));
+
+        Assert.Equal(first.SessionId, duplicate.SessionId, "Duplicate active placement start should resume existing session.");
+        Assert.Equal(PlacementSessionStatus.InProgress, first.Status, "Started placement should be in progress.");
+        Assert.Equal("ResumePlacement", duplicate.NextAction.Code, "Duplicate start should return resume action.");
+        Assert.Equal(1, repository.Count("placement_sessions"), "Active duplicate must not create a second session.");
+        Assert.Equal(1, repository.GetPlacementSessions("learner-placement-001").Count, "Placement session should persist in repository.");
+        Assert.True(
+            ApiContractCatalog.All.Any(contract =>
+                contract.Method == "POST"
+                && contract.Route == "/api/learner/placement/start"
+                && contract.Audience == ApiAudience.Learner
+                && contract.ResponseContract == "StartPlacementSessionResponse"),
+            "Placement start route contract must be typed."
+        );
     }
 
     public static void DashboardIncludesNormalizedSourceManifestSummary()

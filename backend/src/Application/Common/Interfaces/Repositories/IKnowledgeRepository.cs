@@ -78,6 +78,10 @@ public interface IKnowledgeRepository
 
     LearnerProfile? GetLearnerProfile(string learnerId);
 
+    void UpsertPlacementSession(PlacementSession session);
+
+    IReadOnlyList<PlacementSession> GetPlacementSessions(string learnerId);
+
     void UpsertLearnerAssignment(LearnerAssignment assignment);
 
     IReadOnlyList<LearnerAssignment> GetLearnerAssignments(string learnerId);

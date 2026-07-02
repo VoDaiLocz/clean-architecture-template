@@ -6,6 +6,7 @@ using Application.Features.LearningItems.Commands;
 using Application.Features.Learner;
 using Application.Features.Learner.Home;
 using Application.Features.Learner.Onboarding;
+using Application.Features.Learner.Placement;
 using Application.Features.SourceManifests;
 using Domain.Aggregates.Corpus;
 using Domain.Aggregates.LearningItems;
@@ -107,6 +108,18 @@ learner.MapPost(
     ) =>
     {
         var handler = new OnboardLearnerHandler(repository);
+        return TypedResults.Ok(handler.Handle(request));
+    }
+);
+
+learner.MapPost(
+    "/placement/start",
+    Ok<StartPlacementSessionResponse> (
+        StartPlacementSessionCommand request,
+        IKnowledgeRepository repository
+    ) =>
+    {
+        var handler = new StartPlacementSessionHandler(repository);
         return TypedResults.Ok(handler.Handle(request));
     }
 );

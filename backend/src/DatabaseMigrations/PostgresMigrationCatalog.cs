@@ -415,6 +415,21 @@ public static class PostgresMigrationCatalog
                 ON source_audio_metadata(asset_id);
             """
         ),
+        new(
+            "015_placement_sessions",
+            """
+            CREATE TABLE IF NOT EXISTS placement_sessions (
+                session_id varchar(160) PRIMARY KEY,
+                learner_id varchar(160) NOT NULL REFERENCES learner_profiles(learner_id),
+                status varchar(80) NOT NULL,
+                started_at_utc timestamptz NOT NULL,
+                completed_at_utc timestamptz
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_placement_sessions_learner_status
+                ON placement_sessions(learner_id, status);
+            """
+        ),
     ];
 }
 

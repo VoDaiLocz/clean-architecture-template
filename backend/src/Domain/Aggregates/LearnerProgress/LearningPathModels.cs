@@ -86,6 +86,43 @@ public sealed record LearnerProfile(
     DateTimeOffset UpdatedAtUtc
 );
 
+public enum PlacementSessionStatus
+{
+    InProgress,
+    Completed,
+    Cancelled,
+}
+
+public sealed record PlacementSession(
+    string SessionId,
+    string LearnerId,
+    PlacementSessionStatus Status,
+    DateTimeOffset StartedAtUtc,
+    DateTimeOffset? CompletedAtUtc
+);
+
+public static class PlacementRules
+{
+    public static void EnsureValid(PlacementSession session)
+    {
+        RequireText(session.SessionId, "Placement session id is required.");
+        RequireText(session.LearnerId, "Placement session learner id is required.");
+
+        if (session.Status != PlacementSessionStatus.Completed && session.CompletedAtUtc is not null)
+        {
+            throw new InvalidOperationException("Only completed placement sessions can have completed timestamp.");
+        }
+    }
+
+    private static void RequireText(string value, string message)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            throw new InvalidOperationException(message);
+        }
+    }
+}
+
 public enum LearnerAssignmentType
 {
     Lesson,

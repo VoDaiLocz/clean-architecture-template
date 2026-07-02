@@ -57,6 +57,26 @@ Replace demo learner flow with persisted production journey.
 **Commit:** `feat(p4.2): persist learner profile state`  
 **Push:** `git push origin main`
 
+## P4.3 - Start TOEIC Placement Session
+
+**Context:** Learner Journey  
+**Purpose:** Start or resume the learner's active TOEIC placement diagnosis session.  
+**User/Business Value:** A learner can begin diagnosis after onboarding without duplicate active placement state or frontend-owned flow decisions.  
+**Dependencies:** P4.1, P4.2.  
+**Detailed Scope:** Add placement session domain model/status; add repository persistence; add `StartPlacementSessionHandler`; add `POST /api/learner/placement/start`; register API contract; add tests and docs.  
+**Out Of Scope:** placement question assignment, answer submission, scoring, part breakdown, placement result creation, frontend placement UX.  
+**Data Contract:** `placement_sessions` stores session id, learner id, status, started timestamp, completed timestamp; active duplicate starts must reuse the existing `InProgress` session.  
+**API Contract:** `POST /api/learner/placement/start` accepts learner id and returns `StartPlacementSessionResponse` with session id, status, and next action.  
+**UI Contract:** Future UI must use the returned session id/action and must not create local placement sessions.  
+**Business Rules:** Learner profile is required before placement; only one active `InProgress` placement session exists per learner; duplicate start resumes active session.  
+**Edge Cases:** Missing learner profile fails; duplicate active placement returns resume action; persisted session can be queried by learner; completed/cancelled future sessions do not block a new active session.  
+**Required Tests:** Application/API-contract test covers profile prerequisite, first start, duplicate active resume, repository count, and typed endpoint contract.  
+**Acceptance Criteria:** Domain model exists; repository persists sessions; handler starts/resumes correctly; endpoint and API contract exist; tests/build pass.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "StartPlacementSession|placement_sessions|/api/learner/placement/start" backend/src backend/tests docs/product`.  
+**Definition Of Done:** Placement session start workflow is committed and pushed.  
+**Commit:** `feat(p4.3): start TOEIC placement session`  
+**Push:** `git push origin main`
+
 ## Required P4 Acceptance Standard
 
 `DemoLearnerSession` is not used by production endpoints after this phase.
