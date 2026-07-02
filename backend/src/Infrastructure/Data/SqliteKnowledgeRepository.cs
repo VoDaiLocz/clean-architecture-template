@@ -123,6 +123,22 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             CREATE INDEX IF NOT EXISTS idx_extracted_text_blocks_asset_page
                 ON extracted_text_blocks(asset_id, page_number);
 
+            CREATE TABLE IF NOT EXISTS draft_content_items (
+                draft_id TEXT PRIMARY KEY,
+                asset_id TEXT NOT NULL,
+                material_class TEXT NOT NULL,
+                toeic_part INTEGER,
+                item_type TEXT NOT NULL,
+                payload_json TEXT NOT NULL,
+                source_trace_json TEXT NOT NULL,
+                parser_confidence REAL NOT NULL,
+                status TEXT NOT NULL,
+                FOREIGN KEY (asset_id) REFERENCES source_assets(asset_id)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_draft_content_items_asset_status
+                ON draft_content_items(asset_id, status);
+
             CREATE TABLE IF NOT EXISTS learning_items (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 item_type TEXT NOT NULL,
@@ -612,6 +628,86 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         return blocks;
     }
 
+    public void UpsertDraftContentItem(DraftContentItem draft)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO draft_content_items (
+                draft_id,
+                asset_id,
+                material_class,
+                toeic_part,
+                item_type,
+                payload_json,
+                source_trace_json,
+                parser_confidence,
+                status
+            )
+            VALUES (
+                $draft_id,
+                $asset_id,
+                $material_class,
+                $toeic_part,
+                $item_type,
+                $payload_json,
+                $source_trace_json,
+                $parser_confidence,
+                $status
+            )
+            ON CONFLICT(draft_id) DO UPDATE SET
+                asset_id = excluded.asset_id,
+                material_class = excluded.material_class,
+                toeic_part = excluded.toeic_part,
+                item_type = excluded.item_type,
+                payload_json = excluded.payload_json,
+                source_trace_json = excluded.source_trace_json,
+                parser_confidence = excluded.parser_confidence,
+                status = excluded.status
+            """;
+        command.Parameters.AddWithValue("$draft_id", draft.DraftId);
+        command.Parameters.AddWithValue("$asset_id", draft.AssetId);
+        command.Parameters.AddWithValue("$material_class", draft.MaterialClass.ToString());
+        command.Parameters.AddWithValue("$toeic_part", (object?)draft.ToeicPart ?? DBNull.Value);
+        command.Parameters.AddWithValue("$item_type", draft.ItemType);
+        command.Parameters.AddWithValue("$payload_json", draft.PayloadJson);
+        command.Parameters.AddWithValue("$source_trace_json", draft.SourceTraceJson);
+        command.Parameters.AddWithValue("$parser_confidence", draft.ParserConfidence);
+        command.Parameters.AddWithValue("$status", draft.Status.ToString());
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<DraftContentItem> GetDraftContentItems(string assetId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT
+                draft_id,
+                asset_id,
+                material_class,
+                toeic_part,
+                item_type,
+                payload_json,
+                source_trace_json,
+                parser_confidence,
+                status
+            FROM draft_content_items
+            WHERE asset_id = $asset_id
+            ORDER BY draft_id
+            """;
+        command.Parameters.AddWithValue("$asset_id", assetId);
+
+        var drafts = new List<DraftContentItem>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            drafts.Add(ReadDraftContentItem(reader));
+        }
+
+        return drafts;
+    }
+
     public void UpsertCorpusManifest(CorpusManifest manifest)
     {
         using var command = connection.CreateCommand();
@@ -779,6 +875,7 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             or "source_assets"
             or "extracted_pages"
             or "extracted_text_blocks"
+            or "draft_content_items"
             or "learning_items"
             or "validation_issues"))
         {
@@ -870,6 +967,21 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             reader.GetString(5),
             reader.GetDecimal(6),
             reader.GetString(7)
+        );
+    }
+
+    private static DraftContentItem ReadDraftContentItem(SqliteDataReader reader)
+    {
+        return new DraftContentItem(
+            reader.GetString(0),
+            reader.GetString(1),
+            Enum.Parse<MaterialClass>(reader.GetString(2)),
+            reader.IsDBNull(3) ? null : reader.GetInt32(3),
+            reader.GetString(4),
+            reader.GetString(5),
+            reader.GetString(6),
+            reader.GetDecimal(7),
+            Enum.Parse<DraftContentStatus>(reader.GetString(8))
         );
     }
 

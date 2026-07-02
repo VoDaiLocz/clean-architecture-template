@@ -64,3 +64,23 @@ Create durable data structures for content, learners, assignments, attempts, rev
 **Definition Of Done:** Extracted content model is committed and pushed.  
 **Commit:** `feat(p2.2): model extracted TOEIC content`  
 **Push:** `git push origin main`
+
+## P2.3 - Model TOEIC Draft Content
+
+**Context:** Content Factory  
+**Purpose:** Persist parser output safely before validation, review, and publishing.  
+**User/Business Value:** Prevents low-confidence or invalid parser output from leaking to learners while keeping source trace for content operations.  
+**Dependencies:** P2.1, P2.2.  
+**Detailed Scope:** Add draft content domain record and status enum; add repository upsert/query methods; add SQLite local/test table and index; add PostgreSQL migration `004_draft_content`; add tests proving idempotent persistence and learner API safety; add docs.  
+**Out Of Scope:** validation workflow, publish workflow, admin review UI, parser implementation, learner APIs.  
+**Data Contract:** `draft_content_items` belongs to `source_assets`; stores material class, optional TOEIC part, item type, payload JSON, source trace JSON, parser confidence, and status.  
+**API Contract:** learner API contracts must not expose draft content.  
+**UI Contract:** none for P2.3.  
+**Business Rules:** Draft content is not learner-visible curriculum; parser confidence and source trace must persist; draft status is explicit.  
+**Edge Cases:** repeated parser runs update existing draft row; drafts are queryable by asset; migration must index asset/status workflow lookup.  
+**Required Tests:** Repository integration test covers idempotent draft upsert/readback; migration test covers `004_draft_content`; API contract test verifies learner contracts do not expose drafts.  
+**Acceptance Criteria:** Domain records exist; repository methods exist; SQLite schema exists; PostgreSQL migration exists; tests and build pass; draft content doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "DraftContentItem|DraftContentStatus|004_draft_content|draft_content_items" backend/src backend/tests docs/product`.  
+**Definition Of Done:** Draft content model is committed and pushed.  
+**Commit:** `feat(p2.3): model TOEIC draft content`  
+**Push:** `git push origin main`

@@ -151,3 +151,25 @@ public sealed record ExtractedTextBlock(
     decimal Confidence,
     string CoordinatesJson
 );
+
+public enum DraftContentStatus
+{
+    PendingValidation,
+    ValidationFailed,
+    ReadyForReview,
+    Approved,
+    Rejected,
+    Published,
+}
+
+public sealed record DraftContentItem(
+    string DraftId,
+    string AssetId,
+    MaterialClass MaterialClass,
+    int? ToeicPart,
+    string ItemType,
+    string PayloadJson,
+    string SourceTraceJson,
+    decimal ParserConfidence,
+    DraftContentStatus Status
+);

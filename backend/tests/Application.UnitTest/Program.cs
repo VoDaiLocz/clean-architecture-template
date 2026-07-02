@@ -43,6 +43,7 @@ var tests = new List<(string Name, Action Run)>
     ("platform health reports dependency readiness", ApplicationTests.PlatformHealthReportsDependencyReadiness),
     ("repository persists source containers and assets idempotently", ApplicationTests.RepositoryPersistsSourceContainersAndAssetsIdempotently),
     ("repository persists extracted pages and text blocks idempotently", ApplicationTests.RepositoryPersistsExtractedPagesAndTextBlocksIdempotently),
+    ("repository persists draft content safely away from learner contracts", ApplicationTests.RepositoryPersistsDraftContentSafelyAwayFromLearnerContracts),
 };
 
 var failed = 0;
@@ -400,6 +401,12 @@ static class ApplicationTests
                 && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS extracted_text_blocks", StringComparison.Ordinal)),
             "Extracted content migration must create extracted page and text block tables."
         );
+        Assert.True(
+            migrations.Any(migration =>
+                migration.Id == "004_draft_content"
+                && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS draft_content_items", StringComparison.Ordinal)),
+            "Draft content migration must create draft content table."
+        );
     }
 
     public static void ObjectStorageTestDoubleStoresListsAndDeletesObjects()
@@ -631,6 +638,45 @@ static class ApplicationTests
         repository.UpsertSourceContainer(container);
         repository.UpsertSourceAsset(asset);
         return asset;
+    }
+
+    public static void RepositoryPersistsDraftContentSafelyAwayFromLearnerContracts()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var asset = SeedSourceAsset(repository);
+        var draft = new DraftContentItem(
+            DraftId: "draft-part5-001",
+            AssetId: asset.AssetId,
+            MaterialClass: MaterialClass.TestBook,
+            ToeicPart: 5,
+            ItemType: "Question",
+            PayloadJson: """{"prompt":"The manager ____ the report yesterday."}""",
+            SourceTraceJson: """{"assetId":"asset-sparta-test-01-pdf","page":1,"blockId":"block-sparta-001"}""",
+            ParserConfidence: 0.88m,
+            Status: DraftContentStatus.PendingValidation
+        );
+
+        repository.UpsertDraftContentItem(draft);
+        repository.UpsertDraftContentItem(draft with
+        {
+            ParserConfidence = 0.91m,
+            Status = DraftContentStatus.ReadyForReview,
+        });
+
+        var drafts = repository.GetDraftContentItems(asset.AssetId);
+        var learnerContracts = ApiContractCatalog.All
+            .Where(contract => contract.Audience == ApiAudience.Learner)
+            .Select(contract => contract.ResponseContract);
+
+        Assert.Equal(1, repository.Count("draft_content_items"), "Draft upsert must be idempotent.");
+        Assert.Equal(DraftContentStatus.ReadyForReview, drafts.Single().Status, "Draft status update should persist.");
+        Assert.Equal(0.91m, drafts.Single().ParserConfidence, "Parser confidence update should persist.");
+        Assert.True(drafts.Single().SourceTraceJson.Contains("block-sparta-001", StringComparison.Ordinal), "Source trace should persist.");
+        Assert.False(
+            learnerContracts.Any(contract => contract.Contains("Draft", StringComparison.OrdinalIgnoreCase)),
+            "Learner API contracts must not expose draft content."
+        );
     }
 }
 

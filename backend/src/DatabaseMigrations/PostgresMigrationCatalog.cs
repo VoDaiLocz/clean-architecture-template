@@ -83,6 +83,25 @@ public static class PostgresMigrationCatalog
                 ON extracted_text_blocks(asset_id, page_number);
             """
         ),
+        new(
+            "004_draft_content",
+            """
+            CREATE TABLE IF NOT EXISTS draft_content_items (
+                draft_id varchar(160) PRIMARY KEY,
+                asset_id varchar(160) NOT NULL REFERENCES source_assets(asset_id),
+                material_class varchar(80) NOT NULL,
+                toeic_part integer,
+                item_type varchar(80) NOT NULL,
+                payload_json jsonb NOT NULL,
+                source_trace_json jsonb NOT NULL,
+                parser_confidence numeric(5,4) NOT NULL,
+                status varchar(80) NOT NULL
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_draft_content_items_asset_status
+                ON draft_content_items(asset_id, status);
+            """
+        ),
     ];
 }
 

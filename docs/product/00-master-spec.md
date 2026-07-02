@@ -72,6 +72,7 @@ Deferred:
 - [20-platform-health-checks.md](./20-platform-health-checks.md): platform health endpoint, dependency readiness checks, and operations contract.
 - [21-source-asset-data-model.md](./21-source-asset-data-model.md): source container and source asset domain, repository, migration, and indexing model.
 - [22-extracted-content-data-model.md](./22-extracted-content-data-model.md): extracted page/block schema, confidence, coordinates, and migration model.
+- [23-draft-content-data-model.md](./23-draft-content-data-model.md): parser draft content schema, source trace, validation status, and learner API safety rule.
 
 ## Non-Negotiable Product Rules
 

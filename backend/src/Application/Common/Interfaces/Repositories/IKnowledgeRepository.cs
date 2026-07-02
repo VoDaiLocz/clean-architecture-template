@@ -31,6 +31,10 @@ public interface IKnowledgeRepository
 
     IReadOnlyList<ExtractedTextBlock> GetExtractedTextBlocks(string assetId);
 
+    void UpsertDraftContentItem(DraftContentItem draft);
+
+    IReadOnlyList<DraftContentItem> GetDraftContentItems(string assetId);
+
     void UpsertCorpusManifest(CorpusManifest manifest);
 
     void UpsertNormalizationStage(NormalizationStageSnapshot stage);
