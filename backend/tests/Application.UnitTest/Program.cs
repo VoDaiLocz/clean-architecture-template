@@ -35,6 +35,7 @@ var tests = new List<(string Name, Action Run)>
     ("imports audited TOEIC source manifest into database", ApplicationTests.ImportsAuditedToeicSourceManifestIntoDatabase),
     ("discovers Drive source assets and records blocked issues", ApplicationTests.DiscoversDriveSourceAssetsAndRecordsBlockedIssues),
     ("resolves TOEIC external sources and shortlinks", ApplicationTests.ResolvesToeicExternalSourcesAndShortlinks),
+    ("registers TOEIC source assets from audit evidence", ApplicationTests.RegistersToeicSourceAssetsFromAuditEvidence),
     ("dashboard includes normalized source manifest summary", ApplicationTests.DashboardIncludesNormalizedSourceManifestSummary),
     ("learner cannot unlock next unit until mastery gates pass", ApplicationTests.LearnerCannotUnlockNextUnitUntilMasteryGatesPass),
     ("demo learner session is marked legacy non-production", ApplicationTests.DemoLearnerSessionIsMarkedLegacyNonProduction),
@@ -381,6 +382,49 @@ static class ApplicationTests
         var resolutions = repository.GetSourceResolutionRecords();
         Assert.True(resolutions.Any(record => record.ResolvedUrl.Contains("youtube.com", StringComparison.Ordinal)), "Shortlink final URL should persist.");
         Assert.True(resolutions.All(record => record.Status == SourceResolutionStatus.Resolved), "All resolver successes should be marked resolved.");
+    }
+
+    public static void RegistersToeicSourceAssetsFromAuditEvidence()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var source = SourceManifestClassifier.Classify(
+            46,
+            "1000 câu giải đề Format mới",
+            "https://drive.google.com/file/d/audit-source-46/view",
+            inaccessible: false,
+            hasPdf: true,
+            hasAudio: false,
+            hasTranscript: true,
+            hasAnswerKey: false,
+            hasImage: true
+        );
+        var blocked = SourceManifestClassifier.Classify(
+            62,
+            "Advanced Grammar in Use",
+            "https://drive.google.com/file/d/audit-source-62/view",
+            inaccessible: true,
+            hasPdf: true,
+            hasAudio: true,
+            hasTranscript: false,
+            hasAnswerKey: false,
+            hasImage: true
+        );
+        repository.UpsertSourceManifestEntry(source);
+        repository.UpsertSourceManifestEntry(blocked);
+        var handler = new RegisterToeicSourceAssetsHandler(repository);
+
+        var result = handler.Handle(new RegisterToeicSourceAssetsCommand());
+
+        Assert.Equal(1, result.RegisteredContainerCount, "Accessible evidence source should create one registration container.");
+        Assert.Equal(2, result.RegisteredAssetCount, "PDF and image evidence should become registered assets.");
+        Assert.Equal(1, result.SkippedBlockedSourceCount, "Blocked source should be skipped.");
+        Assert.Equal(1, repository.Count("source_containers"), "Expected one source container.");
+        Assert.Equal(2, repository.Count("source_assets"), "Expected two registered assets.");
+        var assets = repository.GetSourceAssets("registered-source-sheet-row-46");
+        Assert.True(assets.Any(asset => asset.DetectedRole == SourceAssetRole.Pdf), "PDF role should be registered.");
+        Assert.True(assets.Any(asset => asset.DetectedRole == SourceAssetRole.Image), "Image role should be registered.");
+        Assert.False(assets.Any(asset => asset.DetectedRole == SourceAssetRole.Audio), "Missing audio evidence must not create audio asset.");
     }
 
     public static void DashboardIncludesNormalizedSourceManifestSummary()

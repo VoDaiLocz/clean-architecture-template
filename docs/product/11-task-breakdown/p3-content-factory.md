@@ -82,3 +82,23 @@ No content reaches learner APIs unless it is published and passes validation.
 **Definition Of Done:** TOEIC external source resolution is committed and pushed.  
 **Commit:** `feat(p3.3): resolve TOEIC external sources`  
 **Push:** `git push origin main`
+
+## P3.4 - Register TOEIC Source Assets
+
+**Context:** Content Factory  
+**Purpose:** Register PDF, audio, and image asset placeholders from audited source evidence flags.  
+**User/Business Value:** Prepares source materials for extraction jobs by creating explicit DB asset rows with stable roles, without exposing raw files to learners or requiring downloads in this task.  
+**Dependencies:** P2.1, P3.1.  
+**Detailed Scope:** Add source asset registration handler; create source container rows for accessible evidence sources; create source asset rows for PDF/audio/image evidence; skip blocked sources; add tests and docs.  
+**Out Of Scope:** file download, checksum calculation from bytes, object storage upload, transcript/answer-key registration, PDF/audio parsing.  
+**Data Contract:** `source_containers` stores a registration container per source; `source_assets` stores one row per evidence role with role, mime type, extension, provider URL, object key, and pending checksum.  
+**API Contract:** none for P3.4. Future admin API may trigger registration after source manifest import/resolution.  
+**UI Contract:** none for P3.4. Admin UI may later show registered assets.  
+**Business Rules:** Only accessible sources create containers/assets; blocked sources are counted and skipped; PDF/audio/image evidence creates explicit roles; missing evidence must not create fake asset rows; upserts are idempotent.  
+**Edge Cases:** one source can register multiple assets; zero-byte/pending checksum is allowed before object storage upload; role-specific extension and MIME type are assigned deterministically.  
+**Required Tests:** Application test covers PDF/image asset registration, blocked source skip, missing audio not registered, and role persistence.  
+**Acceptance Criteria:** Handler exists; source asset roles persist; tests and build pass; asset registration doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "RegisterToeicSourceAssets|RegisteredAssetCount|source asset registration" backend/src backend/tests docs/product`.  
+**Definition Of Done:** TOEIC source asset registration is committed and pushed.  
+**Commit:** `feat(p3.4): register TOEIC source assets`  
+**Push:** `git push origin main`
