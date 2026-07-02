@@ -39,6 +39,7 @@ var tests = new List<(string Name, Action Run)>
     ("registers TOEIC source assets from audit evidence", ApplicationTests.RegistersToeicSourceAssetsFromAuditEvidence),
     ("extracts TOEIC PDF pages and text blocks", ApplicationTests.ExtractsToeicPdfPagesAndTextBlocks),
     ("extracts TOEIC audio metadata", ApplicationTests.ExtractsToeicAudioMetadata),
+    ("parses TOEIC answer keys into draft mappings", ApplicationTests.ParsesToeicAnswerKeysIntoDraftMappings),
     ("dashboard includes normalized source manifest summary", ApplicationTests.DashboardIncludesNormalizedSourceManifestSummary),
     ("learner cannot unlock next unit until mastery gates pass", ApplicationTests.LearnerCannotUnlockNextUnitUntilMasteryGatesPass),
     ("demo learner session is marked legacy non-production", ApplicationTests.DemoLearnerSessionIsMarkedLegacyNonProduction),
@@ -497,6 +498,36 @@ static class ApplicationTests
         Assert.Equal("mp3", metadata.Format, "Audio format should persist.");
         Assert.Equal(44_100, metadata.SampleRateHz, "Sample rate should persist.");
         Assert.Equal(192, metadata.BitrateKbps, "Bitrate should persist.");
+    }
+
+    public static void ParsesToeicAnswerKeysIntoDraftMappings()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var answerKeyAsset = SeedSourceAsset(repository) with
+        {
+            AssetId = "asset-sparta-answer-key",
+            FileName = "answer-key.pdf",
+            DetectedRole = SourceAssetRole.AnswerKey,
+            ProviderUrl = "https://drive.google.com/file/d/answer-key",
+            ObjectKey = "source-assets/sparta/answer-key.pdf",
+            Checksum = "sha256-answer-key",
+        };
+        repository.UpsertSourceAsset(answerKeyAsset);
+        var parser = new FakeAnswerKeyParser([
+            new AnswerKeyMappingResult(TestId: "sparta-test-01", QuestionNumber: 1, CorrectAnswer: "A", Confidence: 0.96m),
+            new AnswerKeyMappingResult(TestId: "sparta-test-01", QuestionNumber: 2, CorrectAnswer: "C", Confidence: 0.94m),
+        ]);
+        var handler = new ParseToeicAnswerKeysHandler(repository, parser);
+
+        var result = handler.Handle(new ParseToeicAnswerKeysCommand(answerKeyAsset.AssetId));
+
+        Assert.Equal(2, result.CreatedDraftMappingCount, "Two answer mappings should become draft records.");
+        Assert.Equal(2, repository.Count("draft_content_items"), "Answer key draft rows should persist.");
+        var drafts = repository.GetDraftContentItems(answerKeyAsset.AssetId);
+        Assert.True(drafts.All(draft => draft.ItemType == "AnswerKeyMapping"), "Draft item type should identify answer key mappings.");
+        Assert.True(drafts.Any(draft => draft.PayloadJson.Contains("\"correctAnswer\":\"A\"", StringComparison.Ordinal)), "Correct answer should persist in payload.");
+        Assert.True(drafts.All(draft => draft.ParserConfidence >= 0.94m), "Parser confidence should persist.");
     }
 
     public static void DashboardIncludesNormalizedSourceManifestSummary()
@@ -1457,6 +1488,14 @@ sealed class FakeAudioMetadataProbe(AudioMetadataProbeResult result) : IAudioMet
     public AudioMetadataProbeResult Probe(SourceAsset asset)
     {
         return result;
+    }
+}
+
+sealed class FakeAnswerKeyParser(IReadOnlyList<AnswerKeyMappingResult> mappings) : IAnswerKeyParser
+{
+    public IReadOnlyList<AnswerKeyMappingResult> Parse(SourceAsset asset)
+    {
+        return mappings;
     }
 }
 

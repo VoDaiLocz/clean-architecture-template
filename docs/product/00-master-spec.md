@@ -86,6 +86,7 @@ Deferred:
 - [34-source-asset-registration.md](./34-source-asset-registration.md): registration of PDF/audio/image source assets from audited evidence flags.
 - [35-pdf-block-extraction.md](./35-pdf-block-extraction.md): PDF text block extraction handler, extractor contract, page/block persistence, and confidence rules.
 - [36-audio-metadata-extraction.md](./36-audio-metadata-extraction.md): audio metadata probe contract, duration/format persistence, and validation rules.
+- [37-answer-key-parsing.md](./37-answer-key-parsing.md): answer-key parser contract and draft answer mapping records.
 
 ## Non-Negotiable Product Rules
 

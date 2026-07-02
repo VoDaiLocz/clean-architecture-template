@@ -142,3 +142,23 @@ No content reaches learner APIs unless it is published and passes validation.
 **Definition Of Done:** TOEIC audio metadata extraction is committed and pushed.  
 **Commit:** `feat(p3.6): extract TOEIC audio metadata`  
 **Push:** `git push origin main`
+
+## P3.7 - Parse TOEIC Answer Keys
+
+**Context:** Content Factory  
+**Purpose:** Parse answer key assets into draft answer mapping records.  
+**User/Business Value:** Creates durable answer evidence for later scoring and validation without directly publishing parser output to learners.  
+**Dependencies:** P2.3, P3.4.  
+**Detailed Scope:** Add answer key parser contract; add answer key parsing handler; persist one `DraftContentItem` per answer mapping with payload, source trace, confidence, and pending validation status; add tests and docs.  
+**Out Of Scope:** real answer key OCR/parser implementation, question linking, scoring service, validation/publish workflow.  
+**Data Contract:** Answer mappings are stored as draft content with item type `AnswerKeyMapping`, JSON payload containing test id/question number/correct answer, source trace JSON, parser confidence, and draft status.  
+**API Contract:** none for P3.7.  
+**UI Contract:** none for P3.7.  
+**Business Rules:** Only `AnswerKey` source assets can be parsed; parser confidence must persist; draft mappings remain non-learner-visible until validation and publishing.  
+**Edge Cases:** multiple mappings can come from one asset; stable draft ids make repeated parser runs idempotent; non-answer-key asset is rejected.  
+**Required Tests:** Application test covers fixture answer key mappings, draft persistence, payload, item type, and confidence.  
+**Acceptance Criteria:** Handler exists; parser contract exists; draft mappings persist; tests and build pass; answer-key parsing doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "ParseToeicAnswerKeys|AnswerKeyMapping|answer key parsing" backend/src backend/tests docs/product`.  
+**Definition Of Done:** TOEIC answer key parsing is committed and pushed.  
+**Commit:** `feat(p3.7): parse TOEIC answer keys`  
+**Push:** `git push origin main`
