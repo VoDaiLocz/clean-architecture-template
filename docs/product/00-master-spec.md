@@ -143,6 +143,7 @@ Deferred:
 - [91-establish-performance-baseline.md](./91-establish-performance-baseline.md): detailed product specification for establish performance baseline.
 - [92-add-security-baseline.md](./92-add-security-baseline.md): detailed product specification for add security baseline.
 - [93-add-backup-and-migration-strategy.md](./93-add-backup-and-migration-strategy.md): detailed product specification for add backup and migration strategy.
+- [94-add-release-pipeline.md](./94-add-release-pipeline.md): detailed product specification for add release pipeline.
 
 ## Non-Negotiable Product Rules
 
