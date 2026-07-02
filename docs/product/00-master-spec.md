@@ -117,6 +117,7 @@ Deferred:
 - [65-run-toeic-reading-tests.md](./65-run-toeic-reading-tests.md): detailed product specification for run toeic reading tests.
 - [66-run-full-toeic-lr-tests.md](./66-run-full-toeic-lr-tests.md): detailed product specification for run full toeic lr tests.
 - [67-manage-toeic-test-sessions.md](./67-manage-toeic-test-sessions.md): detailed product specification for manage toeic test sessions.
+- [68-calculate-toeic-score-breakdown.md](./68-calculate-toeic-score-breakdown.md): detailed product specification for calculate toeic score breakdown.
 
 ## Non-Negotiable Product Rules
 
