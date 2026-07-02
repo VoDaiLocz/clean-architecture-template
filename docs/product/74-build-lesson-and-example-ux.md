@@ -10,7 +10,7 @@ Build lesson and guided-example screens that teach before practice while reading
 
 ## Detailed Scope
 
-- Build React/TypeScript UI against real typed API clients.
+- Build Angular TypeScript UI against real typed API services, route guards, interceptors, and feature-level lazy loading.
 - Implement loading, empty, error, unauthorized, and success states.
 - Keep business decisions in backend responses.
 - Add accessible controls and responsive layouts.
@@ -34,6 +34,18 @@ Consumes typed backend APIs from the corresponding P4-P6 tasks. All failure stat
 ## UI Contract
 
 UI must be production-user focused: clear primary action, no internal build/admin wording in learner screens, no fake content, responsive desktop/mobile, and no answer leaks before submit.
+
+Lesson and example requirements:
+
+- learning objective and TOEIC part context
+- concept explanation from published lesson API
+- guided example with controlled reveal
+- common trap or exam note when content provides it
+- media/passage context when relevant
+- complete lesson action through backend session API
+- next action after lesson completion
+- reader layout that handles long passage text without overlap
+- Angular component split for lesson header, content body, example, and next-action footer
 
 ## Business Rules
 
@@ -66,13 +78,14 @@ UI must be production-user focused: clear primary action, no internal build/admi
 - UI uses real APIs and no frontend-owned learning logic.
 - Core user path works in Playwright.
 - Build/tests pass.
+- Learner receives teaching context before being sent into drill or mini test.
 
 ## Verification
 
 ```bash
 npm --prefix frontend run build
-npm --prefix frontend run test -- --run
-npx playwright test --config frontend/playwright.config.ts
+npm --prefix frontend run test
+npm --prefix frontend run test:e2e:browser
 rg -n "Lesson|GuidedExample|activitySession" frontend/src frontend/tests docs/product
 ```
 

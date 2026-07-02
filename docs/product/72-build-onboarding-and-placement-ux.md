@@ -10,7 +10,7 @@ Build onboarding and placement screens that follow backend next actions instead 
 
 ## Detailed Scope
 
-- Build React/TypeScript UI against real typed API clients.
+- Build Angular TypeScript UI against real typed API services, route guards, interceptors, and feature-level lazy loading.
 - Implement loading, empty, error, unauthorized, and success states.
 - Keep business decisions in backend responses.
 - Add accessible controls and responsive layouts.
@@ -34,6 +34,17 @@ Consumes typed backend APIs from the corresponding P4-P6 tasks. All failure stat
 ## UI Contract
 
 UI must be production-user focused: clear primary action, no internal build/admin wording in learner screens, no fake content, responsive desktop/mobile, and no answer leaks before submit.
+
+Onboarding and placement requirements:
+
+- reactive onboarding form with target score, current estimate, daily minutes, timezone, and study goal
+- inline validation with backend error-code handling
+- backend `NextAction` controls whether the learner starts placement, resumes placement, or goes to Today
+- placement question layout supports progress, explicit skip, question navigation, and submit confirmation
+- diagnostic result screen clearly labels score as estimate/band, not official TOEIC score
+- result screen shows part weaknesses and next learning-path action
+- refresh during placement resumes active session instead of losing answers
+- no correct answers or explanations are visible before placement submit
 
 ## Business Rules
 
@@ -66,13 +77,14 @@ UI must be production-user focused: clear primary action, no internal build/admi
 - UI uses real APIs and no frontend-owned learning logic.
 - Core user path works in Playwright.
 - Build/tests pass.
+- Learner can complete onboarding, start/resume placement, submit, and understand next action.
 
 ## Verification
 
 ```bash
 npm --prefix frontend run build
-npm --prefix frontend run test -- --run
-npx playwright test --config frontend/playwright.config.ts
+npm --prefix frontend run test
+npm --prefix frontend run test:e2e:browser
 rg -n "Onboarding|Placement|StartPlacement" frontend/src frontend/tests docs/product
 ```
 

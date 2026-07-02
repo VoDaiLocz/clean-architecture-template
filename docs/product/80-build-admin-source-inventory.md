@@ -10,7 +10,7 @@ Build the operator inventory view for audited TOEIC source rows, including the 7
 
 ## Detailed Scope
 
-- Build admin/operator UI against real admin APIs.
+- Build Angular admin/operator UI against real admin APIs, route guards, typed services, interceptors, and feature-level lazy loading.
 - Include filters, search, pagination or virtualized list where data can grow.
 - Show loading/error/empty states.
 - Add operator-safe actions with confirmation where mutations exist.
@@ -72,8 +72,8 @@ Admin UI is dense, operational, and task-focused: sortable tables, filters, stat
 
 ```bash
 npm --prefix frontend run build
-npm --prefix frontend run test -- --run
-npx playwright test --config frontend/playwright.config.ts
+npm --prefix frontend run test
+npm --prefix frontend run test:e2e:browser
 rg -n "AdminSourceInventory|source_manifest_entries|blocked" frontend/src frontend/tests docs/product
 ```
 

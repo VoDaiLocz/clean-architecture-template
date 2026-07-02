@@ -2,7 +2,7 @@
 
 ## Phase Goal
 
-Build learner UI on real APIs with no fake content and no frontend-owned learning logic.
+Build Angular learner UI on real APIs with no fake content and no frontend-owned learning logic.
 
 ## Source Of Truth
 
@@ -24,5 +24,6 @@ Detailed implementation contracts live in the standalone task specs below. This 
 ## Required P7 Acceptance Standard
 
 - Learner UI uses real APIs only.
+- Angular is the production frontend framework for P7 learner UX.
 - No frontend-owned placement, scoring, unlock, answer-key, review, or assignment logic.
 - Every learner route has loading, error, empty, unauthorized, desktop, and mobile coverage.

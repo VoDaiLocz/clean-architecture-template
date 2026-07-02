@@ -10,7 +10,7 @@ Build progress dashboard showing target progress, score trends, part weakness, a
 
 ## Detailed Scope
 
-- Build React/TypeScript UI against real typed API clients.
+- Build Angular TypeScript UI against real typed API services, route guards, interceptors, and feature-level lazy loading.
 - Implement loading, empty, error, unauthorized, and success states.
 - Keep business decisions in backend responses.
 - Add accessible controls and responsive layouts.
@@ -34,6 +34,19 @@ Consumes typed backend APIs from the corresponding P4-P6 tasks. All failure stat
 ## UI Contract
 
 UI must be production-user focused: clear primary action, no internal build/admin wording in learner screens, no fake content, responsive desktop/mobile, and no answer leaks before submit.
+
+Progress requirements:
+
+- target score and diagnostic band history
+- part accuracy trend
+- weakness tag breakdown
+- review completion trend
+- test history list
+- unlocked/completed unit count
+- upcoming blocker summary
+- chart labels explain interpretation and next action
+- empty state explains what activity creates progress data
+- no decorative chart without learning value
 
 ## Business Rules
 
@@ -66,13 +79,14 @@ UI must be production-user focused: clear primary action, no internal build/admi
 - UI uses real APIs and no frontend-owned learning logic.
 - Core user path works in Playwright.
 - Build/tests pass.
+- Learner can understand whether they are improving and what to study next.
 
 ## Verification
 
 ```bash
 npm --prefix frontend run build
-npm --prefix frontend run test -- --run
-npx playwright test --config frontend/playwright.config.ts
+npm --prefix frontend run test
+npm --prefix frontend run test:e2e:browser
 rg -n "Progress|Weakness|scoreTrend" frontend/src frontend/tests docs/product
 ```
 

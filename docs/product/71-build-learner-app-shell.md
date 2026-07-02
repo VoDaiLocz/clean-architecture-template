@@ -10,7 +10,7 @@ Build the production learner navigation shell for Today, Learn, Practice, Review
 
 ## Detailed Scope
 
-- Build React/TypeScript UI against real typed API clients.
+- Build Angular TypeScript UI against real typed API services, route guards, interceptors, and feature-level lazy loading.
 - Implement loading, empty, error, unauthorized, and success states.
 - Keep business decisions in backend responses.
 - Add accessible controls and responsive layouts.
@@ -34,6 +34,19 @@ Consumes typed backend APIs from the corresponding P4-P6 tasks. All failure stat
 ## UI Contract
 
 UI must be production-user focused: clear primary action, no internal build/admin wording in learner screens, no fake content, responsive desktop/mobile, and no answer leaks before submit.
+
+App shell requirements:
+
+- persistent learner navigation: Today, Learn, Practice, Review, Tests, Progress
+- secondary entry to the 7-part overview
+- authenticated user menu with profile/settings/logout
+- route-level loading skeletons
+- global API error banner with correlation id when available
+- mobile bottom navigation or compact drawer
+- desktop layout that keeps the primary study area visually dominant
+- no landing-page hero inside authenticated app
+- Angular route guards for authenticated learner routes
+- lazy-loaded learner feature routes
 
 ## Business Rules
 
@@ -66,13 +79,14 @@ UI must be production-user focused: clear primary action, no internal build/admi
 - UI uses real APIs and no frontend-owned learning logic.
 - Core user path works in Playwright.
 - Build/tests pass.
+- Learner can navigate all primary routes on desktop and mobile without placeholder pages.
 
 ## Verification
 
 ```bash
 npm --prefix frontend run build
-npm --prefix frontend run test -- --run
-npx playwright test --config frontend/playwright.config.ts
+npm --prefix frontend run test
+npm --prefix frontend run test:e2e:browser
 rg -n "AppShell|LearnerNavigation|ProtectedRoute" frontend/src frontend/tests docs/product
 ```
 

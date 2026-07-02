@@ -6,11 +6,13 @@ P7.1 - Remove Frontend Demo Learner Content
 
 ## Purpose
 
-Remove hardcoded learner demo content so the UI cannot hide missing backend flow behind fake TOEIC questions.
+Remove hardcoded learner demo content and establish the Angular production frontend baseline so the UI cannot hide missing backend flow behind fake TOEIC questions.
 
 ## Detailed Scope
 
-- Build React/TypeScript UI against real typed API clients.
+- Build Angular TypeScript UI against real typed API services, route guards, interceptors, and feature-level lazy loading.
+- Replace the legacy Vite TypeScript learner surface with an Angular application baseline if Angular has not already been scaffolded.
+- Add Angular app shell wiring, environment configuration, API base URL configuration, and route-level lazy loading.
 - Implement loading, empty, error, unauthorized, and success states.
 - Keep business decisions in backend responses.
 - Add accessible controls and responsive layouts.
@@ -34,6 +36,14 @@ Consumes typed backend APIs from the corresponding P4-P6 tasks. All failure stat
 ## UI Contract
 
 UI must be production-user focused: clear primary action, no internal build/admin wording in learner screens, no fake content, responsive desktop/mobile, and no answer leaks before submit.
+
+Angular baseline requirements:
+
+- `angular.json`, Angular build scripts, and TypeScript configuration exist.
+- `src/app/core`, `src/app/shared`, `src/app/features/learner`, `src/app/features/admin`, and `src/app/features/auth` boundaries exist.
+- API interceptor handles auth/correlation/error basics.
+- Router has learner/admin/auth route groups.
+- Existing demo-only frontend data is removed or quarantined outside production routes.
 
 ## Business Rules
 
@@ -66,13 +76,14 @@ UI must be production-user focused: clear primary action, no internal build/admi
 - UI uses real APIs and no frontend-owned learning logic.
 - Core user path works in Playwright.
 - Build/tests pass.
+- Angular baseline exists and production learner routes do not depend on legacy Vite demo fallback.
 
 ## Verification
 
 ```bash
 npm --prefix frontend run build
-npm --prefix frontend run test -- --run
-npx playwright test --config frontend/playwright.config.ts
+npm --prefix frontend run test
+npm --prefix frontend run test:e2e:browser
 rg -n "DemoLearner|mockLearner|hardcoded question|static fallback" frontend/src frontend/tests docs/product
 ```
 

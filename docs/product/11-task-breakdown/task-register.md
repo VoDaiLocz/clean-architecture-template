@@ -149,7 +149,7 @@ These fields apply to every task unless the phase contract explicitly narrows th
 **Context Owner:** Learner experience.
 **Data Contract:** UI reads only learner-facing API/read-model data. No hardcoded production questions, vocabulary, progress, lock state, or score.
 **API Contract:** Every screen must declare the API it consumes and the loading/error/empty states it supports.
-**UI Contract:** Navigation is centered on Today, Learn, Practice, Review, Tests, and Progress. The 7 parts are entry points into structured work, not empty cards.
+**UI Contract:** Angular is the production frontend framework. Navigation is centered on Today, Learn, Practice, Review, Tests, and Progress. The 7 parts are entry points into structured work, not empty cards.
 **Business Rules:** UI displays backend decisions; it does not invent unlocks, mastery, fake progress, or recommendations.
 **Edge Cases:** No published content, locked unit, pending review blocker, failed API, slow media load, mobile viewport, keyboard-only use.
 **Required Tests:** Frontend build, Playwright smoke/user-flow tests, accessibility checks for core workflows, visual sanity for desktop and mobile when layout changes.

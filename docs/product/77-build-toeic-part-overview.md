@@ -10,7 +10,7 @@ Build a 7-part overview that shows progress, locks, and next allowed action from
 
 ## Detailed Scope
 
-- Build React/TypeScript UI against real typed API clients.
+- Build Angular TypeScript UI against real typed API services, route guards, interceptors, and feature-level lazy loading.
 - Implement loading, empty, error, unauthorized, and success states.
 - Keep business decisions in backend responses.
 - Add accessible controls and responsive layouts.
@@ -34,6 +34,17 @@ Consumes typed backend APIs from the corresponding P4-P6 tasks. All failure stat
 ## UI Contract
 
 UI must be production-user focused: clear primary action, no internal build/admin wording in learner screens, no fake content, responsive desktop/mobile, and no answer leaks before submit.
+
+Seven-part overview requirements:
+
+- one structured row/card per TOEIC part with part name, skill type, progress, current unit, lock state, and next action
+- lock reason shown from backend when locked
+- available tests shown by part
+- weakness tags shown without exposing admin/source data
+- progress is real API data only
+- no empty placeholder cards
+- desktop layout supports scanning all 7 parts
+- mobile layout keeps each part actionable without horizontal scrolling
 
 ## Business Rules
 
@@ -66,13 +77,14 @@ UI must be production-user focused: clear primary action, no internal build/admi
 - UI uses real APIs and no frontend-owned learning logic.
 - Core user path works in Playwright.
 - Build/tests pass.
+- Learner can enter each of the 7 parts through a meaningful backend-owned route or see a clear locked reason.
 
 ## Verification
 
 ```bash
 npm --prefix frontend run build
-npm --prefix frontend run test -- --run
-npx playwright test --config frontend/playwright.config.ts
+npm --prefix frontend run test
+npm --prefix frontend run test:e2e:browser
 rg -n "PartOverview|lockedReason|toeicPart" frontend/src frontend/tests docs/product
 ```
 

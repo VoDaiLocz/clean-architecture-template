@@ -10,7 +10,7 @@ Build exam-like practice-test UI with timer, navigation, audio/passage layout, a
 
 ## Detailed Scope
 
-- Build React/TypeScript UI against real typed API clients.
+- Build Angular TypeScript UI against real typed API services, route guards, interceptors, and feature-level lazy loading.
 - Implement loading, empty, error, unauthorized, and success states.
 - Keep business decisions in backend responses.
 - Add accessible controls and responsive layouts.
@@ -34,6 +34,19 @@ Consumes typed backend APIs from the corresponding P4-P6 tasks. All failure stat
 ## UI Contract
 
 UI must be production-user focused: clear primary action, no internal build/admin wording in learner screens, no fake content, responsive desktop/mobile, and no answer leaks before submit.
+
+Practice test requirements:
+
+- exam shell with backend timer display
+- question palette with answered, unanswered, flagged, current, and invalid states
+- section boundary display for listening/reading tests
+- audio controls for listening sections
+- passage pane for reading sections
+- autosave/checkpoint status from backend when available
+- submit confirmation with unanswered count
+- expired session handling
+- result route after final submit
+- no hints, explanations, or answer keys in exam mode
 
 ## Business Rules
 
@@ -66,13 +79,14 @@ UI must be production-user focused: clear primary action, no internal build/admi
 - UI uses real APIs and no frontend-owned learning logic.
 - Core user path works in Playwright.
 - Build/tests pass.
+- Learner can start, navigate, refresh, submit, and view result for a practice test without local timer/scoring authority.
 
 ## Verification
 
 ```bash
 npm --prefix frontend run build
-npm --prefix frontend run test -- --run
-npx playwright test --config frontend/playwright.config.ts
+npm --prefix frontend run test
+npm --prefix frontend run test:e2e:browser
 rg -n "PracticeTest|answerSheet|timer" frontend/src frontend/tests docs/product
 ```
 

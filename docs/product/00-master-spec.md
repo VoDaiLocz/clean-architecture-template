@@ -57,7 +57,7 @@ Deferred:
 - [05-technical-architecture.md](./05-technical-architecture.md): production architecture, tech standards, boundaries.
 - [06-data-model.md](./06-data-model.md): database entities and required relationships.
 - [07-api-contracts.md](./07-api-contracts.md): API groups and contract rules.
-- [08-ux-specs.md](./08-ux-specs.md): screen-level learner/admin UX requirements.
+- [08-ux-specs.md](./08-ux-specs.md): Angular frontend standard, design system, and screen-level learner/admin UX requirements.
 - [09-quality-strategy.md](./09-quality-strategy.md): testing, validation, observability, acceptance gates.
 - [10-release-plan.md](./10-release-plan.md): alpha, beta, market release gates.
 - [11-task-breakdown](./11-task-breakdown): phase-by-phase task execution specs.

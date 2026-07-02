@@ -10,7 +10,7 @@ Build review/repair workspace for wrong answers with explanation, evidence, medi
 
 ## Detailed Scope
 
-- Build React/TypeScript UI against real typed API clients.
+- Build Angular TypeScript UI against real typed API services, route guards, interceptors, and feature-level lazy loading.
 - Implement loading, empty, error, unauthorized, and success states.
 - Keep business decisions in backend responses.
 - Add accessible controls and responsive layouts.
@@ -34,6 +34,17 @@ Consumes typed backend APIs from the corresponding P4-P6 tasks. All failure stat
 ## UI Contract
 
 UI must be production-user focused: clear primary action, no internal build/admin wording in learner screens, no fake content, responsive desktop/mobile, and no answer leaks before submit.
+
+Mistake repair requirements:
+
+- review queue grouped by blocker, unit, TOEIC part, and skill tag
+- repair detail shows original question context, learner answer, correct answer, explanation, and evidence
+- listening repair can replay relevant audio
+- reading repair highlights passage evidence when supplied by API
+- blocker reason is visible before repair action
+- repair submission uses backend result to resolve or keep blocker
+- resolved animation/status update is allowed but must not hide failed repair
+- empty review state directs learner back to Today
 
 ## Business Rules
 
@@ -66,13 +77,14 @@ UI must be production-user focused: clear primary action, no internal build/admi
 - UI uses real APIs and no frontend-owned learning logic.
 - Core user path works in Playwright.
 - Build/tests pass.
+- Learner can understand a mistake, attempt repair, and see whether the blocker is resolved.
 
 ## Verification
 
 ```bash
 npm --prefix frontend run build
-npm --prefix frontend run test -- --run
-npx playwright test --config frontend/playwright.config.ts
+npm --prefix frontend run test
+npm --prefix frontend run test:e2e:browser
 rg -n "MistakeRepair|ReviewQueue|repair" frontend/src frontend/tests docs/product
 ```
 

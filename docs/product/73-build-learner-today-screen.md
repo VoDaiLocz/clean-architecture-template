@@ -10,7 +10,7 @@ Build the main daily workflow screen around backend-assigned primary work and bl
 
 ## Detailed Scope
 
-- Build React/TypeScript UI against real typed API clients.
+- Build Angular TypeScript UI against real typed API services, route guards, interceptors, and feature-level lazy loading.
 - Implement loading, empty, error, unauthorized, and success states.
 - Keep business decisions in backend responses.
 - Add accessible controls and responsive layouts.
@@ -34,6 +34,19 @@ Consumes typed backend APIs from the corresponding P4-P6 tasks. All failure stat
 ## UI Contract
 
 UI must be production-user focused: clear primary action, no internal build/admin wording in learner screens, no fake content, responsive desktop/mobile, and no answer leaks before submit.
+
+Today screen requirements:
+
+- primary assignment area with one dominant CTA
+- current TOEIC part, unit, and activity type
+- reason why this task is next
+- blocker panel for review items and locked units
+- path progress and daily target progress
+- weakest part/skill summary
+- active session resume state
+- onboarding/placement/generate-path empty states
+- content-unavailable state that does not fake questions
+- mobile order: primary CTA, blocker, progress, weakness
 
 ## Business Rules
 
@@ -66,13 +79,14 @@ UI must be production-user focused: clear primary action, no internal build/admi
 - UI uses real APIs and no frontend-owned learning logic.
 - Core user path works in Playwright.
 - Build/tests pass.
+- Learner can tell what to do next and why within the first viewport.
 
 ## Verification
 
 ```bash
 npm --prefix frontend run build
-npm --prefix frontend run test -- --run
-npx playwright test --config frontend/playwright.config.ts
+npm --prefix frontend run test
+npm --prefix frontend run test:e2e:browser
 rg -n "TodayScreen|primaryAssignment|blockers" frontend/src frontend/tests docs/product
 ```
 

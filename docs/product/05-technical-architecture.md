@@ -38,7 +38,7 @@ graph TD
     Operator["Content Operator"]
     
     subgraph Platform ["TOEIC Platform Boundary"]
-        WebApp["Vite React TS Web Application<br/>(Dashboard & Learner Workspace UI)"]
+        WebApp["Angular TypeScript Web Application<br/>(Learner Workspace & Admin Operations UI)"]
         ApiApp["ASP.NET Core API Application<br/>(Clean Architecture Core Backend)"]
         Worker["Background Job Worker<br/>(Text/media extraction & draft parsing)"]
         
@@ -64,7 +64,7 @@ graph TD
 
 ## Runtime Components
 
-- React TypeScript web app
+- Angular TypeScript web app
 - ASP.NET Core API
 - Application use-case layer
 - Domain model and policies
