@@ -6,6 +6,7 @@ using Application.Features.Learner;
 using Application.Features.SourceDiscovery;
 using Application.Features.SourceExtraction;
 using Application.Features.SourceManifests;
+using Application.Features.SourceReview;
 using Application.Features.SourceValidation;
 using Application.Common.Interfaces.Jobs;
 using Application.Common.Interfaces.Storage;
@@ -45,6 +46,7 @@ var tests = new List<(string Name, Action Run)>
     ("parses TOEIC reading drafts with tags and source trace", ApplicationTests.ParsesToeicReadingDraftsWithTagsAndSourceTrace),
     ("parses TOEIC listening draft groups", ApplicationTests.ParsesToeicListeningDraftGroups),
     ("validates TOEIC draft content and records issues", ApplicationTests.ValidatesToeicDraftContentAndRecordsIssues),
+    ("reviews and publishes approved TOEIC draft content", ApplicationTests.ReviewsAndPublishesApprovedToeicDraftContent),
     ("dashboard includes normalized source manifest summary", ApplicationTests.DashboardIncludesNormalizedSourceManifestSummary),
     ("learner cannot unlock next unit until mastery gates pass", ApplicationTests.LearnerCannotUnlockNextUnitUntilMasteryGatesPass),
     ("demo learner session is marked legacy non-production", ApplicationTests.DemoLearnerSessionIsMarkedLegacyNonProduction),
@@ -719,6 +721,66 @@ static class ApplicationTests
         var drafts = repository.GetDraftContentItems(asset.AssetId);
         Assert.Equal(DraftContentStatus.ReadyForReview, drafts.Single(draft => draft.DraftId == "draft-valid-part5").Status, "Valid draft should be ready for review.");
         Assert.Equal(DraftContentStatus.ValidationFailed, drafts.Single(draft => draft.DraftId == "draft-invalid-part7").Status, "Invalid draft should be marked failed.");
+    }
+
+    public static void ReviewsAndPublishesApprovedToeicDraftContent()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var asset = SeedSourceAsset(repository);
+        repository.UpsertPublishedLesson(new PublishedLesson(
+            LessonId: "lesson-part5-word-form",
+            UnitId: "part5-word-form",
+            ToeicPart: 5,
+            Title: "Word Form",
+            Objective: "Choose the correct part of speech.",
+            SkillTags: "word_form,grammar",
+            SourceTraceJson: """{"sourceId":"sheet-row-8"}""",
+            Status: PublishedContentStatus.Published
+        ));
+        repository.UpsertDraftContentItem(new DraftContentItem(
+            DraftId: "draft-review-approved",
+            AssetId: asset.AssetId,
+            MaterialClass: MaterialClass.TestBook,
+            ToeicPart: 5,
+            ItemType: "ReadingQuestion",
+            PayloadJson: """{"prompt":"The manager ____ the report.","options":{"A":"submit","B":"submitted"},"correctAnswer":"B","explanation":"Past tense is required.","skillTags":["verb_tense"]}""",
+            SourceTraceJson: """{"assetId":"asset-sparta-test-01-pdf","sourceBlockId":"block-reading-001"}""",
+            ParserConfidence: 0.91m,
+            Status: DraftContentStatus.ReadyForReview
+        ));
+        repository.UpsertDraftContentItem(new DraftContentItem(
+            DraftId: "draft-review-rejected",
+            AssetId: asset.AssetId,
+            MaterialClass: MaterialClass.TestBook,
+            ToeicPart: 5,
+            ItemType: "ReadingQuestion",
+            PayloadJson: """{"prompt":"Bad OCR row","options":{"A":"x"},"correctAnswer":"A","skillTags":["ocr"]}""",
+            SourceTraceJson: """{"assetId":"asset-sparta-test-01-pdf","sourceBlockId":"block-reading-002"}""",
+            ParserConfidence: 0.86m,
+            Status: DraftContentStatus.ReadyForReview
+        ));
+        var handler = new ReviewAndPublishToeicContentHandler(repository);
+
+        var result = handler.Handle(new ReviewAndPublishToeicContentCommand(
+            AssetId: asset.AssetId,
+            LessonId: "lesson-part5-word-form",
+            Decisions:
+            [
+                new ReviewDecision("draft-review-approved", ReviewDecisionAction.Approve),
+                new ReviewDecision("draft-review-rejected", ReviewDecisionAction.Reject),
+            ]
+        ));
+
+        Assert.Equal(1, result.PublishedCount, "Approved draft should publish.");
+        Assert.Equal(1, result.RejectedCount, "Rejected draft should be hidden.");
+        Assert.Equal(1, repository.Count("published_questions"), "Only approved draft should become published question.");
+        var question = repository.GetPublishedQuestions(5).Single();
+        Assert.Equal("published-question-draft-review-approved", question.QuestionId, "Published question id should trace draft id.");
+        Assert.Equal("B", question.CorrectAnswer, "Correct answer should publish.");
+        var drafts = repository.GetDraftContentItems(asset.AssetId);
+        Assert.Equal(DraftContentStatus.Published, drafts.Single(draft => draft.DraftId == "draft-review-approved").Status, "Approved draft should be marked published.");
+        Assert.Equal(DraftContentStatus.Rejected, drafts.Single(draft => draft.DraftId == "draft-review-rejected").Status, "Rejected draft should be marked rejected.");
     }
 
     public static void DashboardIncludesNormalizedSourceManifestSummary()

@@ -242,3 +242,23 @@ No content reaches learner APIs unless it is published and passes validation.
 **Definition Of Done:** TOEIC draft validation is committed and pushed.  
 **Commit:** `feat(p3.11): validate TOEIC draft content`  
 **Push:** `git push origin main`
+
+## P3.12 - Publish Reviewed TOEIC Content
+
+**Context:** Content Factory / Learning Content  
+**Purpose:** Apply human review decisions to validated drafts and publish approved learner-ready questions.  
+**User/Business Value:** Creates the first safe path from source material to learner-ready DB content while ensuring rejected or unreviewed draft output stays hidden.  
+**Dependencies:** P2.4, P2.5, P3.11.  
+**Detailed Scope:** Add review decision command/result; add review-and-publish handler; approve `ReadyForReview` drafts into `PublishedQuestion`; mark approved drafts `Published`; mark rejected drafts `Rejected`; add tests and docs.  
+**Out Of Scope:** admin review UI, reviewer identity/audit log, bulk publish API, publishing lessons/tests, full enrichment workflow.  
+**Data Contract:** Approved question drafts create `published_questions` rows linked to a published lesson; rejected drafts remain in `draft_content_items` with `Rejected` status and do not create learner content.  
+**API Contract:** none for P3.12. Future admin APIs will wrap this use case.  
+**UI Contract:** none for P3.12.  
+**Business Rules:** Only `ReadyForReview` drafts can be approved/rejected; approved drafts become published content; rejected drafts stay hidden; published question keeps source trace/evidence.  
+**Edge Cases:** Mixed approve/reject decisions in one command; rejected draft must not create published row; missing TOEIC part blocks publishing.  
+**Required Tests:** Application test covers approved draft publishing, rejected draft hiding, published question fields, and draft status transitions.  
+**Acceptance Criteria:** Handler exists; approved draft publishes; rejected draft hides; tests and build pass; review/publish doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "ReviewAndPublishToeicContent|ReviewDecision|review publish" backend/src backend/tests docs/product`.  
+**Definition Of Done:** Reviewed TOEIC content publish workflow is committed and pushed.  
+**Commit:** `feat(p3.12): publish reviewed TOEIC content`  
+**Push:** `git push origin main`
