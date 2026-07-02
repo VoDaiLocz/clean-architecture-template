@@ -126,6 +126,7 @@ Deferred:
 - [74-build-lesson-and-example-ux.md](./74-build-lesson-and-example-ux.md): detailed product specification for build lesson and example ux.
 - [75-build-drill-and-mini-test-ux.md](./75-build-drill-and-mini-test-ux.md): detailed product specification for build drill and mini test ux.
 - [76-build-mistake-repair-ux.md](./76-build-mistake-repair-ux.md): detailed product specification for build mistake repair ux.
+- [77-build-toeic-part-overview.md](./77-build-toeic-part-overview.md): detailed product specification for build toeic part overview.
 
 ## Non-Negotiable Product Rules
 
