@@ -130,6 +130,7 @@ Deferred:
 - [78-build-toeic-practice-test-ux.md](./78-build-toeic-practice-test-ux.md): detailed product specification for build toeic practice test ux.
 - [79-build-learner-progress-ux.md](./79-build-learner-progress-ux.md): detailed product specification for build learner progress ux.
 - [80-build-admin-source-inventory.md](./80-build-admin-source-inventory.md): detailed product specification for build admin source inventory.
+- [81-build-admin-asset-discovery.md](./81-build-admin-asset-discovery.md): detailed product specification for build admin asset discovery.
 
 ## Non-Negotiable Product Rules
 
