@@ -144,6 +144,7 @@ Deferred:
 - [92-add-security-baseline.md](./92-add-security-baseline.md): detailed product specification for add security baseline.
 - [93-add-backup-and-migration-strategy.md](./93-add-backup-and-migration-strategy.md): detailed product specification for add backup and migration strategy.
 - [94-add-release-pipeline.md](./94-add-release-pipeline.md): detailed product specification for add release pipeline.
+- [95-add-production-deployment-config.md](./95-add-production-deployment-config.md): detailed product specification for add production deployment config.
 
 ## Non-Negotiable Product Rules
 
