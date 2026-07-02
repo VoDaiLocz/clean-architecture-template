@@ -128,6 +128,7 @@ Deferred:
 - [76-build-mistake-repair-ux.md](./76-build-mistake-repair-ux.md): detailed product specification for build mistake repair ux.
 - [77-build-toeic-part-overview.md](./77-build-toeic-part-overview.md): detailed product specification for build toeic part overview.
 - [78-build-toeic-practice-test-ux.md](./78-build-toeic-practice-test-ux.md): detailed product specification for build toeic practice test ux.
+- [79-build-learner-progress-ux.md](./79-build-learner-progress-ux.md): detailed product specification for build learner progress ux.
 
 ## Non-Negotiable Product Rules
 
