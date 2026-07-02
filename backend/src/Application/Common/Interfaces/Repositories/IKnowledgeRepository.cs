@@ -116,5 +116,7 @@ public interface IKnowledgeRepository
 
     ValidationResult Publish(DraftLearningItem item);
 
+    void RecordValidationIssue(ValidationIssue issue, string itemType, string? sourceId);
+
     int Count(string tableName);
 }

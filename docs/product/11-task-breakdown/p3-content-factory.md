@@ -222,3 +222,23 @@ No content reaches learner APIs unless it is published and passes validation.
 **Definition Of Done:** TOEIC listening group parsing is committed and pushed.  
 **Commit:** `feat(p3.10): parse TOEIC listening groups`  
 **Push:** `git push origin main`
+
+## P3.11 - Validate TOEIC Draft Content
+
+**Context:** Content Factory  
+**Purpose:** Validate parser draft content before any review/publish step.  
+**User/Business Value:** Blocks unsafe or incomplete parser output from becoming learner content and gives content operators explicit issue records to fix.  
+**Dependencies:** P2.3, P3.7-P3.10.  
+**Detailed Scope:** Add draft validation handler; enforce parser confidence, source trace, prompt, group relationship, and passage context policies; update draft status to `ReadyForReview` or `ValidationFailed`; record validation issues; add tests and docs.  
+**Out Of Scope:** human review UI, automatic issue resolution, publish workflow, full part-engine validation matrix.  
+**Data Contract:** Valid drafts remain in `draft_content_items` with `ReadyForReview`; invalid drafts are updated to `ValidationFailed`; validation issues are written to `validation_issues`.  
+**API Contract:** none for P3.11.  
+**UI Contract:** none for P3.11. Admin UI may later list validation issues.  
+**Business Rules:** Draft confidence must meet threshold; source trace is required; questions require prompt; Part 3/4 require group relationship; Part 6/7 require passage context; failed drafts must not publish.  
+**Edge Cases:** One handler run can produce both valid and invalid outcomes; issue records include draft id as source id; validation is deterministic and testable without parser dependencies.  
+**Required Tests:** Application test covers valid Part 5 ready-for-review transition, invalid Part 7 failure, and validation issue recording.  
+**Acceptance Criteria:** Handler exists; policies exist; statuses update; issues persist; tests and build pass; validation doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "ValidateToeicDraftContent|ValidationFailed|draft content validation" backend/src backend/tests docs/product`.  
+**Definition Of Done:** TOEIC draft validation is committed and pushed.  
+**Commit:** `feat(p3.11): validate TOEIC draft content`  
+**Push:** `git push origin main`

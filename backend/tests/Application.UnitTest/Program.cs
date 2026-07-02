@@ -6,6 +6,7 @@ using Application.Features.Learner;
 using Application.Features.SourceDiscovery;
 using Application.Features.SourceExtraction;
 using Application.Features.SourceManifests;
+using Application.Features.SourceValidation;
 using Application.Common.Interfaces.Jobs;
 using Application.Common.Interfaces.Storage;
 using Application.ModuleBoundaries;
@@ -43,6 +44,7 @@ var tests = new List<(string Name, Action Run)>
     ("parses TOEIC transcripts into draft segments", ApplicationTests.ParsesToeicTranscriptsIntoDraftSegments),
     ("parses TOEIC reading drafts with tags and source trace", ApplicationTests.ParsesToeicReadingDraftsWithTagsAndSourceTrace),
     ("parses TOEIC listening draft groups", ApplicationTests.ParsesToeicListeningDraftGroups),
+    ("validates TOEIC draft content and records issues", ApplicationTests.ValidatesToeicDraftContentAndRecordsIssues),
     ("dashboard includes normalized source manifest summary", ApplicationTests.DashboardIncludesNormalizedSourceManifestSummary),
     ("learner cannot unlock next unit until mastery gates pass", ApplicationTests.LearnerCannotUnlockNextUnitUntilMasteryGatesPass),
     ("demo learner session is marked legacy non-production", ApplicationTests.DemoLearnerSessionIsMarkedLegacyNonProduction),
@@ -678,6 +680,45 @@ static class ApplicationTests
         Assert.True(drafts.All(draft => draft.ItemType == "ListeningQuestion"), "Draft type should identify listening questions.");
         Assert.True(drafts.All(draft => draft.PayloadJson.Contains("part3-conversation-001", StringComparison.Ordinal)), "Group id should persist in payload.");
         Assert.True(drafts.All(draft => draft.SourceTraceJson.Contains(audioAsset.AssetId, StringComparison.Ordinal)), "Source trace should include audio asset.");
+    }
+
+    public static void ValidatesToeicDraftContentAndRecordsIssues()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var asset = SeedSourceAsset(repository);
+        repository.UpsertDraftContentItem(new DraftContentItem(
+            DraftId: "draft-valid-part5",
+            AssetId: asset.AssetId,
+            MaterialClass: MaterialClass.TestBook,
+            ToeicPart: 5,
+            ItemType: "ReadingQuestion",
+            PayloadJson: """{"prompt":"The manager ____ the report.","skillTags":["verb_tense"],"parserPayload":{"correctAnswer":"B"}}""",
+            SourceTraceJson: """{"assetId":"asset-sparta-test-01-pdf","sourceBlockId":"block-reading-001"}""",
+            ParserConfidence: 0.91m,
+            Status: DraftContentStatus.PendingValidation
+        ));
+        repository.UpsertDraftContentItem(new DraftContentItem(
+            DraftId: "draft-invalid-part7",
+            AssetId: asset.AssetId,
+            MaterialClass: MaterialClass.TestBook,
+            ToeicPart: 7,
+            ItemType: "ReadingQuestion",
+            PayloadJson: """{"prompt":"What is the purpose?","skillTags":["main_idea"]}""",
+            SourceTraceJson: """{"assetId":"asset-sparta-test-01-pdf","sourceBlockId":"block-reading-001"}""",
+            ParserConfidence: 0.9m,
+            Status: DraftContentStatus.PendingValidation
+        ));
+        var handler = new ValidateToeicDraftContentHandler(repository);
+
+        var result = handler.Handle(new ValidateToeicDraftContentCommand(asset.AssetId));
+
+        Assert.Equal(1, result.ValidDraftCount, "Valid draft should pass validation.");
+        Assert.Equal(1, result.InvalidDraftCount, "Invalid draft should fail validation.");
+        Assert.Equal(1, repository.Count("validation_issues"), "Invalid draft should create one validation issue.");
+        var drafts = repository.GetDraftContentItems(asset.AssetId);
+        Assert.Equal(DraftContentStatus.ReadyForReview, drafts.Single(draft => draft.DraftId == "draft-valid-part5").Status, "Valid draft should be ready for review.");
+        Assert.Equal(DraftContentStatus.ValidationFailed, drafts.Single(draft => draft.DraftId == "draft-invalid-part7").Status, "Invalid draft should be marked failed.");
     }
 
     public static void DashboardIncludesNormalizedSourceManifestSummary()

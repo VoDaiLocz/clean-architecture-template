@@ -2100,6 +2100,21 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         return result;
     }
 
+    public void RecordValidationIssue(ValidationIssue issue, string itemType, string? sourceId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO validation_issues (issue_code, message, item_type, source_id)
+            VALUES ($issue_code, $message, $item_type, $source_id)
+            """;
+        command.Parameters.AddWithValue("$issue_code", issue.Code);
+        command.Parameters.AddWithValue("$message", issue.Message);
+        command.Parameters.AddWithValue("$item_type", itemType);
+        command.Parameters.AddWithValue("$source_id", (object?)sourceId ?? DBNull.Value);
+        command.ExecuteNonQuery();
+    }
+
     public int Count(string tableName)
     {
         if (tableName is not (
@@ -2481,17 +2496,7 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
     {
         foreach (var issue in result.Issues)
         {
-            using var command = connection.CreateCommand();
-            command.CommandText =
-                """
-                INSERT INTO validation_issues (issue_code, message, item_type, source_id)
-                VALUES ($issue_code, $message, $item_type, $source_id)
-                """;
-            command.Parameters.AddWithValue("$issue_code", issue.Code);
-            command.Parameters.AddWithValue("$message", issue.Message);
-            command.Parameters.AddWithValue("$item_type", item.ItemType.ToString());
-            command.Parameters.AddWithValue("$source_id", (object?)item.SourceRef?.SourceId ?? DBNull.Value);
-            command.ExecuteNonQuery();
+            RecordValidationIssue(issue, item.ItemType.ToString(), item.SourceRef?.SourceId);
         }
     }
 
