@@ -38,6 +38,11 @@ export const routes: Routes = [
     loadComponent: () => import('./features/learner/learn-page.component').then((m) => m.LearnPageComponent),
   },
   {
+    path: 'learn/:lessonId',
+    canMatch: [ProtectedRouteGuard],
+    loadComponent: () => import('./features/learner/lesson-page.component').then((m) => m.LessonPageComponent),
+  },
+  {
     path: 'practice',
     canMatch: [ProtectedRouteGuard],
     loadComponent: () => import('./features/learner/practice-page.component').then((m) => m.PracticePageComponent),

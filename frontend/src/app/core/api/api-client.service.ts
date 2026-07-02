@@ -133,6 +133,43 @@ export type PlacementResultResponse = {
   nextAction: LearnerNextAction;
 };
 
+export type LessonConcept = {
+  heading: string;
+  body: string;
+};
+
+export type GuidedExample = {
+  prompt: string;
+  question: string;
+  answer: string;
+  rationale: string;
+};
+
+export type LessonMedia = {
+  audioUrl: string | null;
+  imageUrl: string | null;
+};
+
+export type LessonResponse = {
+  lessonId: string;
+  activitySessionId: string;
+  title: string;
+  objective: string;
+  part: number;
+  skill: string;
+  concept: LessonConcept;
+  example: GuidedExample;
+  trap: string | null;
+  passage: string | null;
+  media: LessonMedia | null;
+  nextAction: LearnerNextAction;
+};
+
+export type CompleteLessonResponse = {
+  activitySessionId: string;
+  nextAction: LearnerNextAction;
+};
+
 @Injectable({ providedIn: 'root' })
 export class ApiClientService {
   private readonly http = inject(HttpClient);
@@ -156,5 +193,16 @@ export class ApiClientService {
 
   submitPlacement(sessionId: string, request: PlacementSubmitRequest): Observable<PlacementResultResponse> {
     return this.http.post<PlacementResultResponse>(`${this.baseUrl}/learner/placement/${sessionId}/submit`, request);
+  }
+
+  getLesson(lessonId: string): Observable<LessonResponse> {
+    return this.http.get<LessonResponse>(`${this.baseUrl}/learner/lessons/${lessonId}`);
+  }
+
+  completeLesson(activitySessionId: string): Observable<CompleteLessonResponse> {
+    return this.http.post<CompleteLessonResponse>(
+      `${this.baseUrl}/learner/lessons/${activitySessionId}/complete`,
+      {},
+    );
   }
 }
