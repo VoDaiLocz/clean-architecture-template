@@ -142,6 +142,7 @@ Deferred:
 - [90-standardize-error-handling.md](./90-standardize-error-handling.md): detailed product specification for standardize error handling.
 - [91-establish-performance-baseline.md](./91-establish-performance-baseline.md): detailed product specification for establish performance baseline.
 - [92-add-security-baseline.md](./92-add-security-baseline.md): detailed product specification for add security baseline.
+- [93-add-backup-and-migration-strategy.md](./93-add-backup-and-migration-strategy.md): detailed product specification for add backup and migration strategy.
 
 ## Non-Negotiable Product Rules
 
