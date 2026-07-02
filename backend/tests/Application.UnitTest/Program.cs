@@ -42,6 +42,7 @@ var tests = new List<(string Name, Action Run)>
     ("api contract catalog defines stable typed routes", ApplicationTests.ApiContractCatalogDefinesStableTypedRoutes),
     ("platform health reports dependency readiness", ApplicationTests.PlatformHealthReportsDependencyReadiness),
     ("repository persists source containers and assets idempotently", ApplicationTests.RepositoryPersistsSourceContainersAndAssetsIdempotently),
+    ("repository persists extracted pages and text blocks idempotently", ApplicationTests.RepositoryPersistsExtractedPagesAndTextBlocksIdempotently),
 };
 
 var failed = 0;
@@ -392,6 +393,13 @@ static class ApplicationTests
                 && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS source_assets", StringComparison.Ordinal)),
             "Source asset migration must create source container and asset tables."
         );
+        Assert.True(
+            migrations.Any(migration =>
+                migration.Id == "003_extracted_content"
+                && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS extracted_pages", StringComparison.Ordinal)
+                && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS extracted_text_blocks", StringComparison.Ordinal)),
+            "Extracted content migration must create extracted page and text block tables."
+        );
     }
 
     public static void ObjectStorageTestDoubleStoresListsAndDeletesObjects()
@@ -542,6 +550,87 @@ static class ApplicationTests
         Assert.Equal(SourceAssetRole.Audio, assets.Single().DetectedRole, "Asset role should persist.");
         Assert.Equal(346_000L, assets.Single().SizeBytes, "Asset update should persist.");
         Assert.Equal("sha256-audio", assets.Single().Checksum, "Asset checksum should persist.");
+    }
+
+    public static void RepositoryPersistsExtractedPagesAndTextBlocksIdempotently()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var asset = SeedSourceAsset(repository);
+        var page = new ExtractedPage(
+            PageId: "page-sparta-001",
+            AssetId: asset.AssetId,
+            PageNumber: 1,
+            Width: 595,
+            Height: 842,
+            ExtractedAtUtc: new DateTimeOffset(2026, 7, 2, 1, 0, 0, TimeSpan.Zero)
+        );
+        var block = new ExtractedTextBlock(
+            BlockId: "block-sparta-001",
+            AssetId: asset.AssetId,
+            PageId: page.PageId,
+            PageNumber: 1,
+            BlockType: ExtractedBlockType.Question,
+            Text: "The manager ____ the report yesterday.",
+            Confidence: 0.94m,
+            CoordinatesJson: """{"x":10,"y":20,"w":300,"h":40}"""
+        );
+
+        repository.UpsertExtractedPage(page);
+        repository.UpsertExtractedPage(page with { Width = 596 });
+        repository.UpsertExtractedTextBlock(block);
+        repository.UpsertExtractedTextBlock(block with { Confidence = 0.95m });
+
+        var pages = repository.GetExtractedPages(asset.AssetId);
+        var blocks = repository.GetExtractedTextBlocks(asset.AssetId);
+
+        Assert.Equal(1, repository.Count("extracted_pages"), "Page upsert must be idempotent.");
+        Assert.Equal(1, repository.Count("extracted_text_blocks"), "Block upsert must be idempotent.");
+        Assert.Equal(596, pages.Single().Width, "Page update should persist.");
+        Assert.Equal(ExtractedBlockType.Question, blocks.Single().BlockType, "Block type should persist.");
+        Assert.Equal(0.95m, blocks.Single().Confidence, "Block confidence should persist.");
+        Assert.Equal(page.PageId, blocks.Single().PageId, "Block should reference extracted page.");
+    }
+
+    private static SourceAsset SeedSourceAsset(SqliteKnowledgeRepository repository)
+    {
+        var source = SourceManifestClassifier.Classify(
+            8,
+            "SPARTA TOEIC PDF",
+            "https://drive.google.com/drive/folders/example-pdf",
+            inaccessible: false,
+            hasPdf: true,
+            hasAudio: false,
+            hasTranscript: false,
+            hasAnswerKey: true,
+            hasImage: false
+        );
+        repository.UpsertSourceManifestEntry(source);
+        var container = new SourceContainer(
+            "container-drive-sparta-pdf",
+            source.SourceId,
+            SourceProvider.GoogleDrive,
+            "drive-folder-example-pdf",
+            "SPARTA PDF folder",
+            SourceAccessStatus.Accessible,
+            new DateTimeOffset(2026, 7, 2, 0, 0, 0, TimeSpan.Zero)
+        );
+        var asset = new SourceAsset(
+            "asset-sparta-test-01-pdf",
+            container.ContainerId,
+            source.SourceId,
+            "test-01.pdf",
+            "application/pdf",
+            ".pdf",
+            1_200_000,
+            SourceAssetRole.Pdf,
+            "https://drive.google.com/file/d/pdf",
+            "source-assets/sparta/test-01.pdf",
+            "sha256-pdf"
+        );
+        repository.UpsertSourceContainer(container);
+        repository.UpsertSourceAsset(asset);
+        return asset;
     }
 }
 

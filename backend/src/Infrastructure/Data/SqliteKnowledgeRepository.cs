@@ -94,6 +94,35 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             CREATE INDEX IF NOT EXISTS idx_source_assets_source_role
                 ON source_assets(source_id, detected_role);
 
+            CREATE TABLE IF NOT EXISTS extracted_pages (
+                page_id TEXT PRIMARY KEY,
+                asset_id TEXT NOT NULL,
+                page_number INTEGER NOT NULL,
+                width INTEGER NOT NULL,
+                height INTEGER NOT NULL,
+                extracted_at_utc TEXT NOT NULL,
+                FOREIGN KEY (asset_id) REFERENCES source_assets(asset_id)
+            );
+
+            CREATE UNIQUE INDEX IF NOT EXISTS idx_extracted_pages_asset_page
+                ON extracted_pages(asset_id, page_number);
+
+            CREATE TABLE IF NOT EXISTS extracted_text_blocks (
+                block_id TEXT PRIMARY KEY,
+                asset_id TEXT NOT NULL,
+                page_id TEXT NOT NULL,
+                page_number INTEGER NOT NULL,
+                block_type TEXT NOT NULL,
+                text TEXT NOT NULL,
+                confidence REAL NOT NULL,
+                coordinates_json TEXT NOT NULL,
+                FOREIGN KEY (asset_id) REFERENCES source_assets(asset_id),
+                FOREIGN KEY (page_id) REFERENCES extracted_pages(page_id)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_extracted_text_blocks_asset_page
+                ON extracted_text_blocks(asset_id, page_number);
+
             CREATE TABLE IF NOT EXISTS learning_items (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 item_type TEXT NOT NULL,
@@ -449,6 +478,140 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         return assets;
     }
 
+    public void UpsertExtractedPage(ExtractedPage page)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO extracted_pages (
+                page_id,
+                asset_id,
+                page_number,
+                width,
+                height,
+                extracted_at_utc
+            )
+            VALUES (
+                $page_id,
+                $asset_id,
+                $page_number,
+                $width,
+                $height,
+                $extracted_at_utc
+            )
+            ON CONFLICT(page_id) DO UPDATE SET
+                asset_id = excluded.asset_id,
+                page_number = excluded.page_number,
+                width = excluded.width,
+                height = excluded.height,
+                extracted_at_utc = excluded.extracted_at_utc
+            """;
+        command.Parameters.AddWithValue("$page_id", page.PageId);
+        command.Parameters.AddWithValue("$asset_id", page.AssetId);
+        command.Parameters.AddWithValue("$page_number", page.PageNumber);
+        command.Parameters.AddWithValue("$width", page.Width);
+        command.Parameters.AddWithValue("$height", page.Height);
+        command.Parameters.AddWithValue("$extracted_at_utc", page.ExtractedAtUtc.ToString("O"));
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<ExtractedPage> GetExtractedPages(string assetId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT page_id, asset_id, page_number, width, height, extracted_at_utc
+            FROM extracted_pages
+            WHERE asset_id = $asset_id
+            ORDER BY page_number
+            """;
+        command.Parameters.AddWithValue("$asset_id", assetId);
+
+        var pages = new List<ExtractedPage>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            pages.Add(ReadExtractedPage(reader));
+        }
+
+        return pages;
+    }
+
+    public void UpsertExtractedTextBlock(ExtractedTextBlock block)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO extracted_text_blocks (
+                block_id,
+                asset_id,
+                page_id,
+                page_number,
+                block_type,
+                text,
+                confidence,
+                coordinates_json
+            )
+            VALUES (
+                $block_id,
+                $asset_id,
+                $page_id,
+                $page_number,
+                $block_type,
+                $text,
+                $confidence,
+                $coordinates_json
+            )
+            ON CONFLICT(block_id) DO UPDATE SET
+                asset_id = excluded.asset_id,
+                page_id = excluded.page_id,
+                page_number = excluded.page_number,
+                block_type = excluded.block_type,
+                text = excluded.text,
+                confidence = excluded.confidence,
+                coordinates_json = excluded.coordinates_json
+            """;
+        command.Parameters.AddWithValue("$block_id", block.BlockId);
+        command.Parameters.AddWithValue("$asset_id", block.AssetId);
+        command.Parameters.AddWithValue("$page_id", block.PageId);
+        command.Parameters.AddWithValue("$page_number", block.PageNumber);
+        command.Parameters.AddWithValue("$block_type", block.BlockType.ToString());
+        command.Parameters.AddWithValue("$text", block.Text);
+        command.Parameters.AddWithValue("$confidence", block.Confidence);
+        command.Parameters.AddWithValue("$coordinates_json", block.CoordinatesJson);
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<ExtractedTextBlock> GetExtractedTextBlocks(string assetId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT
+                block_id,
+                asset_id,
+                page_id,
+                page_number,
+                block_type,
+                text,
+                confidence,
+                coordinates_json
+            FROM extracted_text_blocks
+            WHERE asset_id = $asset_id
+            ORDER BY page_number, block_id
+            """;
+        command.Parameters.AddWithValue("$asset_id", assetId);
+
+        var blocks = new List<ExtractedTextBlock>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            blocks.Add(ReadExtractedTextBlock(reader));
+        }
+
+        return blocks;
+    }
+
     public void UpsertCorpusManifest(CorpusManifest manifest)
     {
         using var command = connection.CreateCommand();
@@ -614,6 +777,8 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             or "source_manifest_entries"
             or "source_containers"
             or "source_assets"
+            or "extracted_pages"
+            or "extracted_text_blocks"
             or "learning_items"
             or "validation_issues"))
         {
@@ -679,6 +844,32 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             reader.GetString(8),
             reader.GetString(9),
             reader.GetString(10)
+        );
+    }
+
+    private static ExtractedPage ReadExtractedPage(SqliteDataReader reader)
+    {
+        return new ExtractedPage(
+            reader.GetString(0),
+            reader.GetString(1),
+            reader.GetInt32(2),
+            reader.GetInt32(3),
+            reader.GetInt32(4),
+            DateTimeOffset.Parse(reader.GetString(5))
+        );
+    }
+
+    private static ExtractedTextBlock ReadExtractedTextBlock(SqliteDataReader reader)
+    {
+        return new ExtractedTextBlock(
+            reader.GetString(0),
+            reader.GetString(1),
+            reader.GetString(2),
+            reader.GetInt32(3),
+            Enum.Parse<ExtractedBlockType>(reader.GetString(4)),
+            reader.GetString(5),
+            reader.GetDecimal(6),
+            reader.GetString(7)
         );
     }
 

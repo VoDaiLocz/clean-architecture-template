@@ -44,3 +44,23 @@ Create durable data structures for content, learners, assignments, attempts, rev
 **Definition Of Done:** Source asset model is committed and pushed.  
 **Commit:** `feat(p2.1): model TOEIC source assets`  
 **Push:** `git push origin main`
+
+## P2.2 - Model Extracted TOEIC Content
+
+**Context:** Content Factory  
+**Purpose:** Persist extracted pages and text blocks from source assets before parser normalization.  
+**User/Business Value:** Gives the content factory reliable evidence for parsing, validation, and human review instead of re-reading PDFs or web pages repeatedly.  
+**Dependencies:** P2.1.  
+**Detailed Scope:** Add extracted page and extracted text block domain records; add block type enum; add repository upsert/query methods; add SQLite local/test tables and indexes; add PostgreSQL migration `003_extracted_content`; add tests and docs.  
+**Out Of Scope:** PDF parser implementation, audio transcript extraction, OCR, draft item parsing, learner APIs, admin UI.  
+**Data Contract:** `extracted_pages` belongs to `source_assets`; `extracted_text_blocks` belongs to both source asset and extracted page; blocks include type, text, confidence, and coordinates JSON.  
+**API Contract:** none for P2.2.  
+**UI Contract:** none for P2.2.  
+**Business Rules:** Extraction output is evidence/draft data, not learner-facing curriculum; confidence and coordinates must be preserved.  
+**Edge Cases:** repeated extraction updates existing page/block rows; blocks are queryable by asset and ordered by page/block; migration must create indexes for asset/page lookup.  
+**Required Tests:** Repository integration test covers idempotent page/block upsert and readback; migration test covers `003_extracted_content`.  
+**Acceptance Criteria:** Domain records exist; repository methods exist; SQLite schema exists; PostgreSQL migration exists; tests and build pass; extracted content doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "ExtractedPage|ExtractedTextBlock|003_extracted_content|extracted_text_blocks" backend/src backend/tests docs/product`.  
+**Definition Of Done:** Extracted content model is committed and pushed.  
+**Commit:** `feat(p2.2): model extracted TOEIC content`  
+**Push:** `git push origin main`

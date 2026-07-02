@@ -53,6 +53,36 @@ public static class PostgresMigrationCatalog
                 ON source_assets(source_id, detected_role);
             """
         ),
+        new(
+            "003_extracted_content",
+            """
+            CREATE TABLE IF NOT EXISTS extracted_pages (
+                page_id varchar(160) PRIMARY KEY,
+                asset_id varchar(160) NOT NULL REFERENCES source_assets(asset_id),
+                page_number integer NOT NULL,
+                width integer NOT NULL,
+                height integer NOT NULL,
+                extracted_at_utc timestamptz NOT NULL
+            );
+
+            CREATE UNIQUE INDEX IF NOT EXISTS idx_extracted_pages_asset_page
+                ON extracted_pages(asset_id, page_number);
+
+            CREATE TABLE IF NOT EXISTS extracted_text_blocks (
+                block_id varchar(160) PRIMARY KEY,
+                asset_id varchar(160) NOT NULL REFERENCES source_assets(asset_id),
+                page_id varchar(160) NOT NULL REFERENCES extracted_pages(page_id),
+                page_number integer NOT NULL,
+                block_type varchar(80) NOT NULL,
+                text text NOT NULL,
+                confidence numeric(5,4) NOT NULL,
+                coordinates_json jsonb NOT NULL
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_extracted_text_blocks_asset_page
+                ON extracted_text_blocks(asset_id, page_number);
+            """
+        ),
     ];
 }
 

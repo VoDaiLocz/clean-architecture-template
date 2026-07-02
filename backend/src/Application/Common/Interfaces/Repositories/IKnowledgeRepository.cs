@@ -23,6 +23,14 @@ public interface IKnowledgeRepository
 
     IReadOnlyList<SourceAsset> GetSourceAssets(string containerId);
 
+    void UpsertExtractedPage(ExtractedPage page);
+
+    IReadOnlyList<ExtractedPage> GetExtractedPages(string assetId);
+
+    void UpsertExtractedTextBlock(ExtractedTextBlock block);
+
+    IReadOnlyList<ExtractedTextBlock> GetExtractedTextBlocks(string assetId);
+
     void UpsertCorpusManifest(CorpusManifest manifest);
 
     void UpsertNormalizationStage(NormalizationStageSnapshot stage);

@@ -120,3 +120,34 @@ public sealed record SourceAsset(
     string ObjectKey,
     string Checksum
 );
+
+public enum ExtractedBlockType
+{
+    Heading,
+    Paragraph,
+    Question,
+    AnswerOption,
+    Table,
+    Caption,
+    Unknown,
+}
+
+public sealed record ExtractedPage(
+    string PageId,
+    string AssetId,
+    int PageNumber,
+    int Width,
+    int Height,
+    DateTimeOffset ExtractedAtUtc
+);
+
+public sealed record ExtractedTextBlock(
+    string BlockId,
+    string AssetId,
+    string PageId,
+    int PageNumber,
+    ExtractedBlockType BlockType,
+    string Text,
+    decimal Confidence,
+    string CoordinatesJson
+);
