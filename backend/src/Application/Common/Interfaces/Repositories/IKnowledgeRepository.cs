@@ -15,6 +15,14 @@ public interface IKnowledgeRepository
 
     SourceManifestSummary GetSourceManifestSummary();
 
+    void UpsertSourceContainer(SourceContainer container);
+
+    IReadOnlyList<SourceContainer> GetSourceContainers(string sourceId);
+
+    void UpsertSourceAsset(SourceAsset asset);
+
+    IReadOnlyList<SourceAsset> GetSourceAssets(string containerId);
+
     void UpsertCorpusManifest(CorpusManifest manifest);
 
     void UpsertNormalizationStage(NormalizationStageSnapshot stage);

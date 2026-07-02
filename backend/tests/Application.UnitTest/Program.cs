@@ -41,6 +41,7 @@ var tests = new List<(string Name, Action Run)>
     ("background job queue retries then records failure", ApplicationTests.BackgroundJobQueueRetriesThenRecordsFailure),
     ("api contract catalog defines stable typed routes", ApplicationTests.ApiContractCatalogDefinesStableTypedRoutes),
     ("platform health reports dependency readiness", ApplicationTests.PlatformHealthReportsDependencyReadiness),
+    ("repository persists source containers and assets idempotently", ApplicationTests.RepositoryPersistsSourceContainersAndAssetsIdempotently),
 };
 
 var failed = 0;
@@ -384,6 +385,13 @@ static class ApplicationTests
             migrations.Any(migration => migration.SqlStatements.Contains("sqlite", StringComparison.OrdinalIgnoreCase)),
             "Production migrations must not use SQLite syntax."
         );
+        Assert.True(
+            migrations.Any(migration =>
+                migration.Id == "002_source_assets"
+                && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS source_containers", StringComparison.Ordinal)
+                && migration.SqlStatements.Contains("CREATE TABLE IF NOT EXISTS source_assets", StringComparison.Ordinal)),
+            "Source asset migration must create source container and asset tables."
+        );
     }
 
     public static void ObjectStorageTestDoubleStoresListsAndDeletesObjects()
@@ -479,6 +487,61 @@ static class ApplicationTests
             snapshot.Dependencies.All(dependency => dependency.Status == PlatformHealthStatus.Healthy),
             "All configured dependencies should be healthy."
         );
+    }
+
+    public static void RepositoryPersistsSourceContainersAndAssetsIdempotently()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var source = SourceManifestClassifier.Classify(
+            7,
+            "SPARTA TOEIC ( quyển hồng - 10TEST )",
+            "https://drive.google.com/drive/folders/example",
+            inaccessible: false,
+            hasPdf: true,
+            hasAudio: true,
+            hasTranscript: true,
+            hasAnswerKey: true,
+            hasImage: false
+        );
+        repository.UpsertSourceManifestEntry(source);
+        var container = new SourceContainer(
+            ContainerId: "container-drive-sparta",
+            SourceId: source.SourceId,
+            Provider: SourceProvider.GoogleDrive,
+            ExternalId: "drive-folder-example",
+            Title: "SPARTA TOEIC source folder",
+            AccessStatus: SourceAccessStatus.Accessible,
+            DiscoveredAtUtc: new DateTimeOffset(2026, 7, 2, 0, 0, 0, TimeSpan.Zero)
+        );
+        var asset = new SourceAsset(
+            AssetId: "asset-sparta-test-01-audio",
+            ContainerId: container.ContainerId,
+            SourceId: source.SourceId,
+            FileName: "test-01.mp3",
+            MimeType: "audio/mpeg",
+            Extension: ".mp3",
+            SizeBytes: 345_000,
+            DetectedRole: SourceAssetRole.Audio,
+            ProviderUrl: "https://drive.google.com/file/d/audio",
+            ObjectKey: "source-assets/sparta/test-01.mp3",
+            Checksum: "sha256-audio"
+        );
+
+        repository.UpsertSourceContainer(container);
+        repository.UpsertSourceContainer(container with { Title = "SPARTA TOEIC source folder updated" });
+        repository.UpsertSourceAsset(asset);
+        repository.UpsertSourceAsset(asset with { SizeBytes = 346_000 });
+
+        var containers = repository.GetSourceContainers(source.SourceId);
+        var assets = repository.GetSourceAssets(container.ContainerId);
+
+        Assert.Equal(1, repository.Count("source_containers"), "Container upsert must be idempotent.");
+        Assert.Equal(1, repository.Count("source_assets"), "Asset upsert must be idempotent.");
+        Assert.Equal("SPARTA TOEIC source folder updated", containers.Single().Title, "Container update should persist.");
+        Assert.Equal(SourceAssetRole.Audio, assets.Single().DetectedRole, "Asset role should persist.");
+        Assert.Equal(346_000L, assets.Single().SizeBytes, "Asset update should persist.");
+        Assert.Equal("sha256-audio", assets.Single().Checksum, "Asset checksum should persist.");
     }
 }
 

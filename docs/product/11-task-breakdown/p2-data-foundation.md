@@ -25,3 +25,22 @@ Create durable data structures for content, learners, assignments, attempts, rev
 - idempotent write test where applicable
 - domain rule test for required relationships
 
+## P2.1 - Model TOEIC Source Assets
+
+**Context:** Content Factory  
+**Purpose:** Represent real source inventory containers and concrete media/document assets before extraction.  
+**User/Business Value:** Enables the platform to track PDFs, audio, images, transcripts, and answer keys from the user's TOEIC corpus without exposing raw Drive/PDF navigation to learners.  
+**Dependencies:** P1.3, P1.4.  
+**Detailed Scope:** Add source container and source asset domain records; add asset role enum; add repository upsert/query methods; add SQLite local/test tables and indexes; add PostgreSQL migration `002_source_assets`; add tests and docs.  
+**Out Of Scope:** Drive discovery adapter, object upload, extraction, parser jobs, learner APIs, admin UI.  
+**Data Contract:** `source_containers` belongs to `source_manifest_entries`; `source_assets` belongs to both source container and source manifest entry; asset metadata includes role, mime type, extension, size, provider URL, object key, and checksum.  
+**API Contract:** none for P2.1.  
+**UI Contract:** none for P2.1.  
+**Business Rules:** Source assets store metadata/object key only, not raw bytes; upserts are idempotent; asset role is explicit.  
+**Edge Cases:** repeated discovery updates existing rows; assets are queryable by container; migration must create indexes for source/container/role lookup.  
+**Required Tests:** Repository integration test covers idempotent container/asset upsert and readback; migration test covers `002_source_assets`.  
+**Acceptance Criteria:** Domain records exist; repository methods exist; SQLite schema exists; PostgreSQL migration exists; tests and build pass; data model doc exists.  
+**Verification Commands:** `dotnet run --project backend/tests/Application.UnitTest/Application.UnitTest.csproj`; `dotnet build backend/ToeicSystem.sln`; `rg -n "SourceContainer|SourceAsset|002_source_assets|source_assets" backend/src backend/tests docs/product`.  
+**Definition Of Done:** Source asset model is committed and pushed.  
+**Commit:** `feat(p2.1): model TOEIC source assets`  
+**Push:** `git push origin main`

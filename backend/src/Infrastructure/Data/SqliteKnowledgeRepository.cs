@@ -58,6 +58,42 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
                 audit_notes TEXT NOT NULL
             );
 
+            CREATE TABLE IF NOT EXISTS source_containers (
+                container_id TEXT PRIMARY KEY,
+                source_id TEXT NOT NULL,
+                provider TEXT NOT NULL,
+                external_id TEXT NOT NULL,
+                title TEXT NOT NULL,
+                access_status TEXT NOT NULL,
+                discovered_at_utc TEXT NOT NULL,
+                FOREIGN KEY (source_id) REFERENCES source_manifest_entries(source_id)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_source_containers_source_id
+                ON source_containers(source_id);
+
+            CREATE TABLE IF NOT EXISTS source_assets (
+                asset_id TEXT PRIMARY KEY,
+                container_id TEXT NOT NULL,
+                source_id TEXT NOT NULL,
+                file_name TEXT NOT NULL,
+                mime_type TEXT NOT NULL,
+                extension TEXT NOT NULL,
+                size_bytes INTEGER NOT NULL,
+                detected_role TEXT NOT NULL,
+                provider_url TEXT NOT NULL,
+                object_key TEXT NOT NULL,
+                checksum TEXT NOT NULL,
+                FOREIGN KEY (container_id) REFERENCES source_containers(container_id),
+                FOREIGN KEY (source_id) REFERENCES source_manifest_entries(source_id)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_source_assets_container_id
+                ON source_assets(container_id);
+
+            CREATE INDEX IF NOT EXISTS idx_source_assets_source_role
+                ON source_assets(source_id, detected_role);
+
             CREATE TABLE IF NOT EXISTS learning_items (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 item_type TEXT NOT NULL,
@@ -253,6 +289,166 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         );
     }
 
+    public void UpsertSourceContainer(SourceContainer container)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO source_containers (
+                container_id,
+                source_id,
+                provider,
+                external_id,
+                title,
+                access_status,
+                discovered_at_utc
+            )
+            VALUES (
+                $container_id,
+                $source_id,
+                $provider,
+                $external_id,
+                $title,
+                $access_status,
+                $discovered_at_utc
+            )
+            ON CONFLICT(container_id) DO UPDATE SET
+                source_id = excluded.source_id,
+                provider = excluded.provider,
+                external_id = excluded.external_id,
+                title = excluded.title,
+                access_status = excluded.access_status,
+                discovered_at_utc = excluded.discovered_at_utc
+            """;
+        command.Parameters.AddWithValue("$container_id", container.ContainerId);
+        command.Parameters.AddWithValue("$source_id", container.SourceId);
+        command.Parameters.AddWithValue("$provider", container.Provider.ToString());
+        command.Parameters.AddWithValue("$external_id", container.ExternalId);
+        command.Parameters.AddWithValue("$title", container.Title);
+        command.Parameters.AddWithValue("$access_status", container.AccessStatus.ToString());
+        command.Parameters.AddWithValue("$discovered_at_utc", container.DiscoveredAtUtc.ToString("O"));
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<SourceContainer> GetSourceContainers(string sourceId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT
+                container_id,
+                source_id,
+                provider,
+                external_id,
+                title,
+                access_status,
+                discovered_at_utc
+            FROM source_containers
+            WHERE source_id = $source_id
+            ORDER BY container_id
+            """;
+        command.Parameters.AddWithValue("$source_id", sourceId);
+
+        var containers = new List<SourceContainer>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            containers.Add(ReadSourceContainer(reader));
+        }
+
+        return containers;
+    }
+
+    public void UpsertSourceAsset(SourceAsset asset)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO source_assets (
+                asset_id,
+                container_id,
+                source_id,
+                file_name,
+                mime_type,
+                extension,
+                size_bytes,
+                detected_role,
+                provider_url,
+                object_key,
+                checksum
+            )
+            VALUES (
+                $asset_id,
+                $container_id,
+                $source_id,
+                $file_name,
+                $mime_type,
+                $extension,
+                $size_bytes,
+                $detected_role,
+                $provider_url,
+                $object_key,
+                $checksum
+            )
+            ON CONFLICT(asset_id) DO UPDATE SET
+                container_id = excluded.container_id,
+                source_id = excluded.source_id,
+                file_name = excluded.file_name,
+                mime_type = excluded.mime_type,
+                extension = excluded.extension,
+                size_bytes = excluded.size_bytes,
+                detected_role = excluded.detected_role,
+                provider_url = excluded.provider_url,
+                object_key = excluded.object_key,
+                checksum = excluded.checksum
+            """;
+        command.Parameters.AddWithValue("$asset_id", asset.AssetId);
+        command.Parameters.AddWithValue("$container_id", asset.ContainerId);
+        command.Parameters.AddWithValue("$source_id", asset.SourceId);
+        command.Parameters.AddWithValue("$file_name", asset.FileName);
+        command.Parameters.AddWithValue("$mime_type", asset.MimeType);
+        command.Parameters.AddWithValue("$extension", asset.Extension);
+        command.Parameters.AddWithValue("$size_bytes", asset.SizeBytes);
+        command.Parameters.AddWithValue("$detected_role", asset.DetectedRole.ToString());
+        command.Parameters.AddWithValue("$provider_url", asset.ProviderUrl);
+        command.Parameters.AddWithValue("$object_key", asset.ObjectKey);
+        command.Parameters.AddWithValue("$checksum", asset.Checksum);
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<SourceAsset> GetSourceAssets(string containerId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT
+                asset_id,
+                container_id,
+                source_id,
+                file_name,
+                mime_type,
+                extension,
+                size_bytes,
+                detected_role,
+                provider_url,
+                object_key,
+                checksum
+            FROM source_assets
+            WHERE container_id = $container_id
+            ORDER BY asset_id
+            """;
+        command.Parameters.AddWithValue("$container_id", containerId);
+
+        var assets = new List<SourceAsset>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            assets.Add(ReadSourceAsset(reader));
+        }
+
+        return assets;
+    }
+
     public void UpsertCorpusManifest(CorpusManifest manifest)
     {
         using var command = connection.CreateCommand();
@@ -413,7 +609,13 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
 
     public int Count(string tableName)
     {
-        if (tableName is not ("raw_sources" or "source_manifest_entries" or "learning_items" or "validation_issues"))
+        if (tableName is not (
+            "raw_sources"
+            or "source_manifest_entries"
+            or "source_containers"
+            or "source_assets"
+            or "learning_items"
+            or "validation_issues"))
         {
             throw new ArgumentException($"Unsupported table: {tableName}", nameof(tableName));
         }
@@ -447,6 +649,36 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
                 reader.GetInt32(12) == 1
             ),
             reader.GetString(13)
+        );
+    }
+
+    private static SourceContainer ReadSourceContainer(SqliteDataReader reader)
+    {
+        return new SourceContainer(
+            reader.GetString(0),
+            reader.GetString(1),
+            Enum.Parse<SourceProvider>(reader.GetString(2)),
+            reader.GetString(3),
+            reader.GetString(4),
+            Enum.Parse<SourceAccessStatus>(reader.GetString(5)),
+            DateTimeOffset.Parse(reader.GetString(6))
+        );
+    }
+
+    private static SourceAsset ReadSourceAsset(SqliteDataReader reader)
+    {
+        return new SourceAsset(
+            reader.GetString(0),
+            reader.GetString(1),
+            reader.GetString(2),
+            reader.GetString(3),
+            reader.GetString(4),
+            reader.GetString(5),
+            reader.GetInt64(6),
+            Enum.Parse<SourceAssetRole>(reader.GetString(7)),
+            reader.GetString(8),
+            reader.GetString(9),
+            reader.GetString(10)
         );
     }
 

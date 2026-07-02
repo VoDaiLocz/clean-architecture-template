@@ -84,3 +84,39 @@ public sealed record SourceManifestSummary(
     int SourcesWithTranscript,
     int SourcesWithAnswerKey
 );
+
+public enum SourceAssetRole
+{
+    Pdf,
+    Audio,
+    Image,
+    Transcript,
+    AnswerKey,
+    Document,
+    WebPage,
+    Unknown,
+}
+
+public sealed record SourceContainer(
+    string ContainerId,
+    string SourceId,
+    SourceProvider Provider,
+    string ExternalId,
+    string Title,
+    SourceAccessStatus AccessStatus,
+    DateTimeOffset DiscoveredAtUtc
+);
+
+public sealed record SourceAsset(
+    string AssetId,
+    string ContainerId,
+    string SourceId,
+    string FileName,
+    string MimeType,
+    string Extension,
+    long SizeBytes,
+    SourceAssetRole DetectedRole,
+    string ProviderUrl,
+    string ObjectKey,
+    string Checksum
+);
