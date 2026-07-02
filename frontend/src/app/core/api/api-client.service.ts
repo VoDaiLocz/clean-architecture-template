@@ -1,12 +1,61 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable, catchError, of } from 'rxjs';
+import { Observable } from 'rxjs';
+
+export type LearnerActivitySummary = {
+  activityId: string;
+  activityType: string;
+  title: string;
+  description: string;
+};
+
+export type LockedUnit = {
+  unitId: string;
+  title: string;
+  reasonCodes: string[];
+  learnerMessage: string;
+};
+
+export type TodayPrimaryAssignment = {
+  ctaLabel: string;
+  route: string;
+  reason: string;
+};
+
+export type TodayPathProgress = {
+  completedUnits: number;
+  totalUnits: number;
+  percent: number;
+};
+
+export type TodayDailyTarget = {
+  completedMinutes: number;
+  targetMinutes: number;
+};
+
+export type TodayWeakestArea = {
+  part: number;
+  skill: string;
+};
+
+export type TodayActiveSession = {
+  label: string;
+  route: string;
+};
 
 export type LearnerHome = {
-  nextAction: string;
-  currentUnit: string;
-  blocker: string | null;
-  progressPercent: number;
+  learnerId: string;
+  currentPart: number;
+  currentUnitId: string;
+  currentUnitTitle: string;
+  nextActivity: LearnerActivitySummary;
+  reviewCount: number;
+  lockedNextUnit: LockedUnit | null;
+  primaryAssignment?: TodayPrimaryAssignment | null;
+  pathProgress?: TodayPathProgress | null;
+  dailyTarget?: TodayDailyTarget | null;
+  weakestAreas?: TodayWeakestArea[];
+  activeSession?: TodayActiveSession | null;
 };
 
 export type LearnerNextAction = {
@@ -90,16 +139,7 @@ export class ApiClientService {
   private readonly baseUrl = '/api';
 
   getLearnerHome(): Observable<LearnerHome> {
-    return this.http.get<LearnerHome>(`${this.baseUrl}/learner/home`).pipe(
-      catchError(() =>
-        of({
-          nextAction: 'Start placement',
-          currentUnit: 'Placement required',
-          blocker: null,
-          progressPercent: 0,
-        }),
-      ),
-    );
+    return this.http.get<LearnerHome>(`${this.baseUrl}/learner/home`);
   }
 
   onboardLearner(request: OnboardingRequest): Observable<OnboardingResponse> {

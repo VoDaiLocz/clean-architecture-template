@@ -3,6 +3,37 @@ import { expect, test } from '@playwright/test';
 const appUrl = process.env.TOEIC_APP_URL ?? 'http://localhost:4200';
 
 test.describe('Angular TOEIC learner routes', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.route('**/api/learner/home', async (route) => {
+      await route.fulfill({
+        contentType: 'application/json',
+        body: JSON.stringify({
+          learnerId: 'smoke-learner',
+          currentPart: 0,
+          currentUnitId: 'placement',
+          currentUnitTitle: 'Placement required',
+          nextActivity: {
+            activityId: 'toeic-placement-start',
+            activityType: 'Placement',
+            title: 'Start TOEIC placement',
+            description: 'Diagnose your current level before the path is generated.',
+          },
+          reviewCount: 0,
+          lockedNextUnit: null,
+          primaryAssignment: {
+            ctaLabel: 'Start placement',
+            route: '/onboarding',
+            reason: 'Placement is required before the system can generate your TOEIC path.',
+          },
+          pathProgress: null,
+          dailyTarget: null,
+          weakestAreas: [],
+          activeSession: null,
+        }),
+      });
+    });
+  });
+
   test('renders the Ocean Classroom app shell without learner demo content', async ({ page }) => {
     await page.goto(`${appUrl}/today`);
 

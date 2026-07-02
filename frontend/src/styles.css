@@ -534,6 +534,69 @@ p {
   border-radius: 10px;
 }
 
+.today-screen {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.today-primary {
+  margin-bottom: 0;
+}
+
+.assignment-context {
+  color: var(--toeic-navy);
+  font-weight: 700;
+}
+
+.active-session-panel {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.today-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr) minmax(0, 0.9fr);
+  gap: var(--space-5);
+  align-items: stretch;
+}
+
+.reason-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.reason-list span {
+  padding: 7px 9px;
+  color: var(--toeic-primary);
+  font-size: 12px;
+  font-weight: 760;
+  background: var(--toeic-primary-soft);
+  border-radius: 999px;
+}
+
+.metric {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-4);
+  margin-bottom: var(--space-3);
+  background: var(--toeic-primary-soft);
+  border-radius: 14px;
+}
+
+.metric strong {
+  color: var(--toeic-navy);
+  font-size: 28px;
+}
+
+.metric span {
+  color: var(--toeic-text-muted);
+  font-weight: 700;
+}
+
 @keyframes surface-in {
   from {
     opacity: 0;
@@ -574,6 +637,7 @@ p {
   .primary-panel,
   .grid.two,
   .part-grid,
+  .today-grid,
   .journey-layout,
   .placement-layout,
   .form-panel {
@@ -587,6 +651,10 @@ p {
   .primary-panel {
     gap: var(--space-4);
     padding: var(--space-5);
+  }
+
+  .active-session-panel {
+    display: grid;
   }
 
   .control-row {
