@@ -6,6 +6,8 @@ This document defines the production UX contract for the TOEIC learner and admin
 
 The frontend stack is Angular with TypeScript. Angular is selected as the production frontend framework for route structure, form-heavy workflows, typed services, dependency injection, guards, interceptors, and scalable feature modules.
 
+The visual design source of truth is [08a-angular-design-system.md](./08a-angular-design-system.md). Feature screens must follow that white and sea-blue `Ocean Classroom` system.
+
 ## UX Principles
 
 - The learner always knows the next required action.
