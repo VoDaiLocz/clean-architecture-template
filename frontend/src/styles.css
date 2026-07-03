@@ -749,6 +749,47 @@ p {
   border-left: 4px solid var(--toeic-primary);
 }
 
+.part-overview {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.part-row {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.1fr) 140px minmax(180px, 0.8fr) auto;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.compact-metric {
+  margin-bottom: 0;
+}
+
+.compact-metric strong {
+  font-size: 24px;
+}
+
+.part-meta-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.part-meta-list span,
+.locked-reason {
+  padding: 8px 10px;
+  color: var(--toeic-text-muted);
+  font-size: 12px;
+  font-weight: 720;
+  background: var(--toeic-locked-soft);
+  border-radius: 999px;
+}
+
+.locked-reason {
+  color: var(--toeic-navy);
+  border-radius: 12px;
+}
+
 @keyframes surface-in {
   from {
     opacity: 0;
@@ -794,6 +835,7 @@ p {
   .practice-layout,
   .repair-layout,
   .repair-grid,
+  .part-row,
   .journey-layout,
   .placement-layout,
   .form-panel {

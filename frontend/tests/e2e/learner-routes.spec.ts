@@ -32,6 +32,28 @@ test.describe('Angular TOEIC learner routes', () => {
         }),
       });
     });
+
+    await page.route('**/api/learner/toeic-parts', async (route) => {
+      await route.fulfill({
+        contentType: 'application/json',
+        body: JSON.stringify({
+          parts: [
+            {
+              toeicPart: 1,
+              name: 'Photographs',
+              skillType: 'Listening',
+              progressPercent: 10,
+              currentUnitTitle: 'Photo foundations',
+              isLocked: false,
+              lockedReason: null,
+              nextAction: { label: 'Open Part 1', route: '/practice/part-1-next' },
+              availableTests: ['Mini test'],
+              weaknessTags: [],
+            },
+          ],
+        }),
+      });
+    });
   });
 
   test('renders the Ocean Classroom app shell without learner demo content', async ({ page }) => {

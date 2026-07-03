@@ -243,6 +243,28 @@ export type RepairReviewResponse = {
   nextAction: LearnerNextAction;
 };
 
+export type ToeicPartNextAction = {
+  label: string;
+  route: string;
+};
+
+export type ToeicPartOverviewItem = {
+  toeicPart: number;
+  name: string;
+  skillType: 'Listening' | 'Reading' | string;
+  progressPercent: number;
+  currentUnitTitle: string;
+  isLocked: boolean;
+  lockedReason: string | null;
+  nextAction: ToeicPartNextAction;
+  availableTests: string[];
+  weaknessTags: string[];
+};
+
+export type ToeicPartOverviewResponse = {
+  parts: ToeicPartOverviewItem[];
+};
+
 @Injectable({ providedIn: 'root' })
 export class ApiClientService {
   private readonly http = inject(HttpClient);
@@ -296,5 +318,9 @@ export class ApiClientService {
 
   repairReviewItem(reviewItemId: string): Observable<RepairReviewResponse> {
     return this.http.post<RepairReviewResponse>(`${this.baseUrl}/learner/review/${reviewItemId}/repair`, {});
+  }
+
+  getToeicPartOverview(): Observable<ToeicPartOverviewResponse> {
+    return this.http.get<ToeicPartOverviewResponse>(`${this.baseUrl}/learner/toeic-parts`);
   }
 }
