@@ -440,6 +440,18 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             CREATE UNIQUE INDEX IF NOT EXISTS idx_mastery_records_learner_unit
                 ON mastery_records(learner_id, unit_id);
 
+            CREATE TABLE IF NOT EXISTS unlock_blockers (
+                blocker_id TEXT PRIMARY KEY,
+                learner_id TEXT NOT NULL,
+                unit_id TEXT NOT NULL,
+                reason TEXT NOT NULL,
+                created_at_utc TEXT NOT NULL,
+                FOREIGN KEY (learner_id) REFERENCES learner_profiles(learner_id)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_unlock_blockers_learner_unit
+                ON unlock_blockers(learner_id, unit_id);
+
             CREATE TABLE IF NOT EXISTS learning_items (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 item_type TEXT NOT NULL,
@@ -2462,6 +2474,61 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         command.Parameters.AddWithValue("$unit_id", unitId);
         using var reader = command.ExecuteReader();
         return reader.Read() ? ReadMasteryRecord(reader) : null;
+    }
+
+    public void DeleteUnlockBlockers(string learnerId, string unitId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText = "DELETE FROM unlock_blockers WHERE learner_id = $learner_id AND unit_id = $unit_id";
+        command.Parameters.AddWithValue("$learner_id", learnerId);
+        command.Parameters.AddWithValue("$unit_id", unitId);
+        command.ExecuteNonQuery();
+    }
+
+    public void UpsertUnlockBlocker(UnlockBlocker blocker)
+    {
+        ReviewMasteryRules.EnsureValid(blocker);
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO unlock_blockers (blocker_id, learner_id, unit_id, reason, created_at_utc)
+            VALUES ($blocker_id, $learner_id, $unit_id, $reason, $created_at_utc)
+            ON CONFLICT(blocker_id) DO UPDATE SET
+                reason = excluded.reason
+            """;
+        command.Parameters.AddWithValue("$blocker_id", blocker.BlockerId);
+        command.Parameters.AddWithValue("$learner_id", blocker.LearnerId);
+        command.Parameters.AddWithValue("$unit_id", blocker.UnitId);
+        command.Parameters.AddWithValue("$reason", blocker.Reason);
+        command.Parameters.AddWithValue("$created_at_utc", blocker.CreatedAtUtc.ToString("O"));
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<UnlockBlocker> GetUnlockBlockers(string learnerId, string unitId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT blocker_id, learner_id, unit_id, reason, created_at_utc
+            FROM unlock_blockers
+            WHERE learner_id = $learner_id AND unit_id = $unit_id
+            ORDER BY created_at_utc ASC
+            """;
+        command.Parameters.AddWithValue("$learner_id", learnerId);
+        command.Parameters.AddWithValue("$unit_id", unitId);
+        using var reader = command.ExecuteReader();
+        var results = new List<UnlockBlocker>();
+        while (reader.Read())
+        {
+            results.Add(new UnlockBlocker(
+                reader.GetString(0),
+                reader.GetString(1),
+                reader.GetString(2),
+                reader.GetString(3),
+                DateTimeOffset.Parse(reader.GetString(4))
+            ));
+        }
+        return results;
     }
 
     public void UpsertCorpusManifest(CorpusManifest manifest)

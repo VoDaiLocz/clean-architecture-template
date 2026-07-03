@@ -136,6 +136,12 @@ public interface IKnowledgeRepository
 
     MasteryRecord? GetMasteryRecord(string learnerId, string unitId);
 
+    void DeleteUnlockBlockers(string learnerId, string unitId);
+
+    void UpsertUnlockBlocker(UnlockBlocker blocker);
+
+    IReadOnlyList<UnlockBlocker> GetUnlockBlockers(string learnerId, string unitId);
+
     void UpsertCorpusManifest(CorpusManifest manifest);
 
     void UpsertNormalizationStage(NormalizationStageSnapshot stage);

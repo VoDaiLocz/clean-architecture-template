@@ -59,6 +59,9 @@ public sealed class ResolveReviewItemHandler(IKnowledgeRepository repository)
         };
         repository.UpsertReviewItem(updatedItem);
 
+        var masteryService = new Application.Features.Learner.Mastery.MasteryCalculationService(repository);
+        masteryService.RecalculateMastery(command.LearnerId, item.UnitId);
+
         return new ResolveReviewItemResponse(isCorrect, "Resolved");
     }
 }

@@ -14,6 +14,7 @@ using Application.Features.SourceManifests;
 using Application.Features.SourceReview;
 using Application.Features.SourceValidation;
 using Application.Features.Learner.Review;
+using Application.Features.Learner.Mastery;
 using Domain.Aggregates.Corpus;
 using Domain.Aggregates.LearningItems;
 using Infrastructure;
@@ -442,6 +443,27 @@ learner.MapGet(
     {
         var response = handler.Handle(new GetLearnerReviewQueueQuery(learnerId));
         return TypedResults.Ok(response);
+    }
+);
+
+learner.MapGet(
+    "/units/{unitId}/mastery",
+    Results<Ok<LearnerMasteryResponse>, NotFound, BadRequest<string>> (
+        string learnerId,
+        string unitId,
+        IKnowledgeRepository repository
+    ) =>
+    {
+        try
+        {
+            var handler = new Application.Features.Learner.Mastery.GetLearnerMasteryHandler(repository);
+            return TypedResults.Ok(handler.Handle(new Application.Features.Learner.Mastery.GetLearnerMasteryQuery(learnerId, unitId)));
+        }
+        catch (ArgumentException e)
+        {
+            if (e.Message == "MASTERY_RECORD_NOT_FOUND" || e.Message == "UNIT_NOT_IN_PATH") return TypedResults.NotFound();
+            return TypedResults.BadRequest(e.Message);
+        }
     }
 );
 

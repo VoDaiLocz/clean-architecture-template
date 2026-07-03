@@ -311,6 +311,14 @@ public sealed record MasteryRecord(
     DateTimeOffset UpdatedAtUtc
 );
 
+public sealed record UnlockBlocker(
+    string BlockerId,
+    string LearnerId,
+    string UnitId,
+    string Reason,
+    DateTimeOffset CreatedAtUtc
+);
+
 public static class ReviewMasteryRules
 {
     public static void EnsureValid(ReviewItem item)
@@ -340,6 +348,14 @@ public static class ReviewMasteryRules
         {
             throw new InvalidOperationException("Mastery percent must be 0-100 and blocking review count cannot be negative.");
         }
+    }
+
+    public static void EnsureValid(UnlockBlocker blocker)
+    {
+        RequireText(blocker.BlockerId, "Blocker id is required.");
+        RequireText(blocker.LearnerId, "Blocker learner id is required.");
+        RequireText(blocker.UnitId, "Blocker unit id is required.");
+        RequireText(blocker.Reason, "Blocker reason is required.");
     }
 
     private static void RequireText(string value, string message)

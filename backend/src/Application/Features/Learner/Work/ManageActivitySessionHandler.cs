@@ -106,6 +106,15 @@ public sealed class ManageActivitySessionHandler(IKnowledgeRepository repository
         
         repository.UpsertActivitySession(updatedSession);
 
+        var assignments = repository.GetLearnerAssignments(command.LearnerId);
+        var assignment = assignments.FirstOrDefault(a => a.AssignmentId == session.AssignmentId);
+        if (assignment != null)
+        {
+            repository.UpsertLearnerAssignment(assignment with { Status = LearnerAssignmentStatus.Completed });
+            var masteryService = new Application.Features.Learner.Mastery.MasteryCalculationService(repository);
+            masteryService.RecalculateMastery(command.LearnerId, assignment.ContentRefId);
+        }
+
         return new ActivitySessionResponse(
             updatedSession.SessionId,
             updatedSession.AssignmentId,
