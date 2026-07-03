@@ -45,6 +45,31 @@ public sealed class ImportLocalToeicDownloadsHandler(IKnowledgeRepository reposi
             if (!IsValidPdf(path))
             {
                 rejected++;
+                var rejectedRelativePath = NormalizeRelativePath(Path.GetRelativePath(root, path));
+                var rejectedPathHash = ShortHash(rejectedRelativePath);
+                var rejectedFileInfo = new FileInfo(path);
+                var extension = rejectedFileInfo.Extension.ToLowerInvariant();
+
+                var reason = RejectedReason.UnsupportedMime;
+                if (extension == ".pdf")
+                {
+                    reason = RejectedReason.InvalidPdfHeader;
+                }
+                else if (rejectedFileInfo.Length < 10000 && !extension.Contains("mp4") && !extension.Contains("zip"))
+                {
+                    reason = RejectedReason.DriveHtmlPlaceholder;
+                }
+
+                repository.UpsertRejectedLocalSourceFile(new RejectedLocalSourceFile(
+                    RejectionId: $"local-rejected-{rejectedPathHash}",
+                    FilePath: rejectedRelativePath,
+                    Extension: extension,
+                    SizeBytes: rejectedFileInfo.Length,
+                    Reason: reason,
+                    AuditNotes: "Failed IsValidPdf check.",
+                    RejectedAtUtc: DateTimeOffset.UtcNow
+                ));
+
                 continue;
             }
 
