@@ -622,6 +622,9 @@ static class ApplicationTests
         var drafts = repository.GetDraftContentItems(answerKeyAsset.AssetId);
         Assert.True(drafts.All(draft => draft.ItemType == "AnswerKeyMapping"), "Draft item type should identify answer key mappings.");
         Assert.True(drafts.Any(draft => draft.PayloadJson.Contains("\"correctAnswer\":\"A\"", StringComparison.Ordinal)), "Correct answer should persist in payload.");
+        Assert.True(drafts.All(draft => draft.PayloadJson.Contains("\"schemaVersion\":\"toeic-draft.v1\"", StringComparison.Ordinal)), "Draft payload should be versioned.");
+        Assert.True(drafts.All(draft => draft.PayloadJson.Contains("\"kind\":\"AnswerKeyMapping\"", StringComparison.Ordinal)), "Draft payload should declare its canonical kind.");
+        Assert.True(drafts.All(draft => draft.PayloadJson.Contains("\"data\":", StringComparison.Ordinal)), "Draft payload should wrap parser data.");
         Assert.True(drafts.All(draft => draft.ParserConfidence >= 0.94m), "Parser confidence should persist.");
     }
 
@@ -660,6 +663,9 @@ static class ApplicationTests
         Assert.Equal(1, repository.Count("draft_content_items"), "Transcript draft row should persist.");
         var draft = repository.GetDraftContentItems(transcriptAsset.AssetId).Single();
         Assert.Equal("TranscriptSegment", draft.ItemType, "Draft item type should identify transcript segment.");
+        Assert.True(draft.PayloadJson.Contains("\"schemaVersion\":\"toeic-draft.v1\"", StringComparison.Ordinal), "Draft payload should be versioned.");
+        Assert.True(draft.PayloadJson.Contains("\"kind\":\"TranscriptSegment\"", StringComparison.Ordinal), "Draft payload should declare its canonical kind.");
+        Assert.True(draft.PayloadJson.Contains("\"data\":", StringComparison.Ordinal), "Draft payload should wrap parser data.");
         Assert.True(draft.PayloadJson.Contains("sparta-test-01-part3-group-01", StringComparison.Ordinal), "Transcript should link to test group.");
         Assert.True(draft.PayloadJson.Contains("asset-sparta-test-01-audio", StringComparison.Ordinal), "Transcript should link to audio asset.");
         Assert.Equal(0.93m, draft.ParserConfidence, "Transcript parser confidence should persist.");

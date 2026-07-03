@@ -44,7 +44,7 @@ public sealed class ParseToeicAnswerKeysHandler(
                 MaterialClass: MaterialClass.TestBook,
                 ToeicPart: null,
                 ItemType: "AnswerKeyMapping",
-                PayloadJson: JsonSerializer.Serialize(new
+                PayloadJson: DraftPayloadEnvelope.Serialize("AnswerKeyMapping", new
                 {
                     testId = mapping.TestId,
                     questionNumber = mapping.QuestionNumber,

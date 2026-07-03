@@ -48,7 +48,7 @@ public sealed class ParseToeicTranscriptsHandler(
                 MaterialClass: MaterialClass.TestBook,
                 ToeicPart: null,
                 ItemType: "TranscriptSegment",
-                PayloadJson: JsonSerializer.Serialize(new
+                PayloadJson: DraftPayloadEnvelope.Serialize("TranscriptSegment", new
                 {
                     testGroupId = segment.TestGroupId,
                     linkedAudioAssetId = segment.LinkedAudioAssetId,
