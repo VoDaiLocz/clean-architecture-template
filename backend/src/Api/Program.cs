@@ -168,6 +168,32 @@ admin.MapPost(
     }
 );
 
+admin.MapPost(
+    "/source-assets/{assetId}/parse-reading-drafts",
+    Ok<ParseToeicReadingDraftsResult> (
+        string assetId,
+        IKnowledgeRepository repository,
+        IReadingDraftParser parser
+    ) =>
+    {
+        var handler = new ParseToeicReadingDraftsHandler(repository, parser);
+        return TypedResults.Ok(handler.Handle(new ParseToeicReadingDraftsCommand(assetId)));
+    }
+);
+
+admin.MapPost(
+    "/source-assets/{assetId}/parse-listening-groups",
+    Ok<ParseToeicListeningGroupsResult> (
+        string assetId,
+        IKnowledgeRepository repository,
+        IListeningDraftParser parser
+    ) =>
+    {
+        var handler = new ParseToeicListeningGroupsHandler(repository, parser);
+        return TypedResults.Ok(handler.Handle(new ParseToeicListeningGroupsCommand(assetId)));
+    }
+);
+
 api.MapPost(
     "/raw-sources",
     Created<RawSourceResponse> (

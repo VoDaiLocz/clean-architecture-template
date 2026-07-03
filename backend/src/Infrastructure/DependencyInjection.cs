@@ -38,6 +38,8 @@ public static class DependencyInjection
         services.AddSingleton<IAudioMetadataProbe, TagLibAudioMetadataProbe>();
         services.AddSingleton<IAnswerKeyParser, CsvAnswerKeyParser>();
         services.AddSingleton<ITranscriptParser, CsvTranscriptParser>();
+        services.AddSingleton<IReadingDraftParser, RegexReadingDraftParser>();
+        services.AddSingleton<IListeningDraftParser, CsvListeningDraftParser>();
 
         return services;
     }
