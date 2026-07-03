@@ -30,6 +30,8 @@ public interface IKnowledgeRepository
 
     IReadOnlyList<RejectedLocalSourceFile> GetRejectedLocalSourceFiles();
 
+    DuplicateAssetReport GetDuplicateAssets();
+
     void UpsertSourceDiscoveryIssue(SourceDiscoveryIssue issue);
 
     IReadOnlyList<SourceDiscoveryIssue> GetSourceDiscoveryIssues(string sourceId);

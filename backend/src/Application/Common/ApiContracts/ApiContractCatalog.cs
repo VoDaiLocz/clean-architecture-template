@@ -12,6 +12,8 @@ public static class ApiContractCatalog
         new("POST", "/api/source-manifest/toeic-audit", ApiAudience.Admin, "ImportToeicSourceManifestResult"),
         new("POST", "/api/source-manifest/local-downloads", ApiAudience.Admin, "ImportLocalToeicDownloadsResult"),
         new("GET", "/api/source-manifest/summary", ApiAudience.Admin, "SourceManifestSummary"),
+        new("GET", "/api/admin/duplicate-assets", ApiAudience.Admin, "DuplicateAssetReport"),
+        new("GET", "/api/admin/rejected-files", ApiAudience.Admin, "RejectedFilesReport"),
         new("POST", "/api/raw-sources", ApiAudience.Admin, "RawSourceResponse"),
         new("POST", "/api/learning-items", ApiAudience.Admin, "PublishLearningItemResponse"),
         new("POST", "/api/learner/demo/reset", ApiAudience.LegacyDemo, "NoContent"),

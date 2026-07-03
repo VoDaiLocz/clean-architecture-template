@@ -85,6 +85,24 @@ api.MapGet(
     }
 );
 
+api.MapGet(
+    "/admin/duplicate-assets",
+    Ok<DuplicateAssetReport> (IKnowledgeRepository repository) =>
+    {
+        var handler = new GetDuplicateAssetsHandler(repository);
+        return TypedResults.Ok(handler.Handle());
+    }
+);
+
+api.MapGet(
+    "/admin/rejected-files",
+    Ok<RejectedFilesReport> (IKnowledgeRepository repository) =>
+    {
+        var handler = new GetRejectedFilesHandler(repository);
+        return TypedResults.Ok(handler.Handle());
+    }
+);
+
 api.MapPost(
     "/source-manifest/local-downloads",
     Ok<ImportLocalToeicDownloadsResult> (

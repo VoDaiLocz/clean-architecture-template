@@ -40,6 +40,18 @@ public sealed record RejectedLocalSourceFile(
     DateTimeOffset RejectedAtUtc
 );
 
+public sealed record DuplicateAssetGroup(
+    string Checksum,
+    int Count,
+    IReadOnlyList<string> ObjectKeys
+);
+
+public sealed record DuplicateAssetReport(
+    int TotalDuplicateGroups,
+    int TotalDuplicateFiles,
+    IReadOnlyList<DuplicateAssetGroup> Groups
+);
+
 public enum SourceAccessStatus
 {
     Accessible,

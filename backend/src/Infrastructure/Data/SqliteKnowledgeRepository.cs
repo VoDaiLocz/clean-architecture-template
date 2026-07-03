@@ -860,6 +860,38 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         return files;
     }
 
+    public DuplicateAssetReport GetDuplicateAssets()
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT checksum, COUNT(*) as c, GROUP_CONCAT(object_key, '|') as keys
+            FROM source_assets
+            WHERE checksum IS NOT NULL AND checksum != ''
+            GROUP BY checksum
+            HAVING c > 1
+            ORDER BY c DESC
+            """;
+
+        var groups = new List<DuplicateAssetGroup>();
+        var totalDuplicateGroups = 0;
+        var totalDuplicateFiles = 0;
+
+        using var reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            var checksum = reader.GetString(0);
+            var count = reader.GetInt32(1);
+            var keys = reader.GetString(2).Split('|').ToList();
+
+            groups.Add(new DuplicateAssetGroup(checksum, count, keys));
+            totalDuplicateGroups++;
+            totalDuplicateFiles += count;
+        }
+
+        return new DuplicateAssetReport(totalDuplicateGroups, totalDuplicateFiles, groups);
+    }
+
 
     public void UpsertSourceDiscoveryIssue(SourceDiscoveryIssue issue)
     {
