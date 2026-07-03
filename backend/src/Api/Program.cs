@@ -142,6 +142,19 @@ admin.MapPost(
     }
 );
 
+admin.MapPost(
+    "/source-assets/{assetId}/parse-answer-keys",
+    Ok<ParseToeicAnswerKeysResult> (
+        string assetId,
+        IKnowledgeRepository repository,
+        IAnswerKeyParser parser
+    ) =>
+    {
+        var handler = new ParseToeicAnswerKeysHandler(repository, parser);
+        return TypedResults.Ok(handler.Handle(new ParseToeicAnswerKeysCommand(assetId)));
+    }
+);
+
 api.MapPost(
     "/raw-sources",
     Created<RawSourceResponse> (

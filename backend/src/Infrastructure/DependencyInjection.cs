@@ -36,6 +36,7 @@ public static class DependencyInjection
         services.AddSingleton<IPlatformHealthService, PlatformHealthService>();
         services.AddSingleton<IPdfTextBlockExtractor, PdfPigTextBlockExtractor>();
         services.AddSingleton<IAudioMetadataProbe, TagLibAudioMetadataProbe>();
+        services.AddSingleton<IAnswerKeyParser, CsvAnswerKeyParser>();
 
         return services;
     }
