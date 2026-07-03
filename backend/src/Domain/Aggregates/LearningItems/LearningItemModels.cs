@@ -36,6 +36,8 @@ public sealed record DraftLearningItem(
 
 public sealed record ValidationIssue(string Code, string Message);
 
+public sealed record ValidationIssueCodeCount(string Code, int Count);
+
 public sealed record ValidationResult(
     IReadOnlyList<ValidationIssue> Issues,
     bool NeedsReview

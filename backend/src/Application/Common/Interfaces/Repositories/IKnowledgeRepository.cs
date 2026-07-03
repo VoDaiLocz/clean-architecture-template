@@ -68,6 +68,8 @@ public interface IKnowledgeRepository
 
     int CountPublishedQuestions(int toeicPart);
 
+    IReadOnlyList<ValidationIssueCodeCount> CountValidationIssuesByCode();
+
     void UpsertPublishedTest(PublishedTest test);
 
     IReadOnlyList<PublishedTest> GetPublishedTests(PublishedTestMode testMode);

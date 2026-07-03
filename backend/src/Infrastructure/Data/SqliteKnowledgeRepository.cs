@@ -2213,6 +2213,30 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         command.ExecuteNonQuery();
     }
 
+    public IReadOnlyList<ValidationIssueCodeCount> CountValidationIssuesByCode()
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT issue_code, COUNT(*)
+            FROM validation_issues
+            GROUP BY issue_code
+            ORDER BY COUNT(*) DESC, issue_code ASC
+            """;
+
+        using var reader = command.ExecuteReader();
+        var breakdown = new List<ValidationIssueCodeCount>();
+        while (reader.Read())
+        {
+            breakdown.Add(new ValidationIssueCodeCount(
+                reader.GetString(0),
+                reader.GetInt32(1)
+            ));
+        }
+
+        return breakdown;
+    }
+
     public int Count(string tableName)
     {
         if (tableName is not (

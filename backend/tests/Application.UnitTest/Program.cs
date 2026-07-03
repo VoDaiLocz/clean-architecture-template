@@ -225,6 +225,16 @@ static class ApplicationTests
             "ReadingQuestion",
             "sheet-row-7"
         );
+        repository.RecordValidationIssue(
+            new ValidationIssue("missing_passage", "Second Part 7 draft must include passage evidence."),
+            "ReadingQuestion",
+            "sheet-row-9"
+        );
+        repository.RecordValidationIssue(
+            new ValidationIssue("invalid_answer_options", "Correct answer must exist in options."),
+            "ReadingQuestion",
+            "sheet-row-11"
+        );
         repository.UpsertPublishedLesson(new PublishedLesson(
             LessonId: "lesson-part5-word-form",
             UnitId: "part5-word-form",
@@ -260,7 +270,9 @@ static class ApplicationTests
         Assert.Equal(2, coverage.Draft.TotalDraftItems, "Draft count must stay separate from published content.");
         Assert.Equal(1, coverage.Draft.ReadyForReviewDraftItems, "Ready draft count should be explicit.");
         Assert.Equal(1, coverage.Draft.ValidationFailedDraftItems, "Validation failed draft count should be explicit.");
-        Assert.Equal(1, coverage.Validation.ValidationIssueCount, "Validation issue count should be separate.");
+        Assert.Equal(3, coverage.Validation.ValidationIssueCount, "Validation issue count should be separate.");
+        Assert.Equal(2, coverage.Validation.IssueBreakdown.Single(issue => issue.Code == "missing_passage").Count, "Coverage should group repeated validation issues.");
+        Assert.Equal(1, coverage.Validation.IssueBreakdown.Single(issue => issue.Code == "invalid_answer_options").Count, "Coverage should expose each validation issue code.");
         Assert.Equal(1, coverage.Published.PublishedQuestions, "Only approved published rows count as learner content.");
         Assert.Equal(0, coverage.Published.PublishedTests, "Missing test data must not be faked.");
         var part5 = coverage.ToeicParts.Single(part => part.ToeicPart == 5);

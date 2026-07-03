@@ -46,7 +46,12 @@ public sealed record DraftCoverage(
     int RejectedDraftItems
 );
 
-public sealed record ValidationCoverage(int ValidationIssueCount);
+public sealed record ValidationCoverage(
+    int ValidationIssueCount,
+    IReadOnlyList<ValidationIssueBreakdown> IssueBreakdown
+);
+
+public sealed record ValidationIssueBreakdown(string Code, int Count);
 
 public sealed record PublishedCoverage(
     int PublishedLessons,
@@ -98,7 +103,12 @@ public sealed class GetContentCoverageHandler(IKnowledgeRepository repository)
                 repository.CountDraftContentItems(DraftContentStatus.Published),
                 repository.CountDraftContentItems(DraftContentStatus.Rejected)
             ),
-            Validation: new ValidationCoverage(repository.Count("validation_issues")),
+            Validation: new ValidationCoverage(
+                repository.Count("validation_issues"),
+                repository.CountValidationIssuesByCode()
+                    .Select(issue => new ValidationIssueBreakdown(issue.Code, issue.Count))
+                    .ToArray()
+            ),
             Published: new PublishedCoverage(
                 repository.Count("published_lessons"),
                 repository.Count("guided_examples"),
