@@ -68,6 +68,8 @@ var tests = new List<(string Name, Action Run)>
     ("dashboard includes normalized source manifest summary", ApplicationTests.DashboardIncludesNormalizedSourceManifestSummary),
     ("learner cannot unlock next unit until mastery gates pass", ApplicationTests.LearnerCannotUnlockNextUnitUntilMasteryGatesPass),
     ("mastery calculation service updates blockers and mastery record", ApplicationTests.MasteryCalculationServiceUpdatesBlockers),
+    ("failed mini test keeps next unit locked", ApplicationTests.FailedMiniTestKeepsNextUnitLocked),
+    ("passed mini test unlocks next unit", ApplicationTests.PassedMiniTestUnlocksNextUnit),
     ("demo learner session is marked legacy non-production", ApplicationTests.DemoLearnerSessionIsMarkedLegacyNonProduction),
     ("backend module boundaries are explicit", ApplicationTests.BackendModuleBoundariesAreExplicit),
     ("production configuration requires explicit database", ApplicationTests.ProductionConfigurationRequiresExplicitDatabase),
@@ -154,6 +156,82 @@ static class ApplicationTests
         Assert.True(record is not null, "Mastery record should be created");
         Assert.True(record!.IsUnlocked, "Unit should be unlocked");
         Assert.True(record.MasteryPercent == 100, "Mastery should be 100%");
+    }
+
+    public static void FailedMiniTestKeepsNextUnitLocked()
+    {
+        var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        
+        var learnerId = "learner-fail-test";
+        var pathId = "path-1";
+        
+        repository.UpsertLearnerProfile(new Domain.Aggregates.LearnerProgress.LearnerProfile(learnerId, "Fail Learner", "fail@test.com", 500, 0, 30, "UTC", Domain.Aggregates.LearnerProgress.LearnerProfileStatus.Active, DateTimeOffset.UtcNow, DateTimeOffset.UtcNow));
+        repository.UpsertLearningPath(new Domain.Aggregates.LearnerProgress.LearningPath(pathId, learnerId, Domain.Aggregates.LearnerProgress.LearningPathStatus.Active, null, DateTimeOffset.UtcNow, DateTimeOffset.UtcNow));
+        
+        var unit1 = new Domain.Aggregates.LearnerProgress.LearningPathUnit("u1", pathId, "key1", 5, "tag", 1, Domain.Aggregates.LearnerProgress.LearningPathUnitStatus.Unlocked, null, null);
+        var unit2 = new Domain.Aggregates.LearnerProgress.LearningPathUnit("u2", pathId, "key2", 5, "tag", 2, Domain.Aggregates.LearnerProgress.LearningPathUnitStatus.Locked, null, null);
+        repository.UpsertLearningPathUnit(unit1);
+        repository.UpsertLearningPathUnit(unit2);
+
+        repository.UpsertLearnerAssignment(new Domain.Aggregates.LearnerProgress.LearnerAssignment("a1", learnerId, Domain.Aggregates.LearnerProgress.LearnerAssignmentType.Lesson, "u1", Domain.Aggregates.LearnerProgress.LearnerAssignmentStatus.Completed, DateTimeOffset.UtcNow, null));
+        
+        repository.UpsertLearnerAssignment(new Domain.Aggregates.LearnerProgress.LearnerAssignment("a2", learnerId, Domain.Aggregates.LearnerProgress.LearnerAssignmentType.Drill, "u1", Domain.Aggregates.LearnerProgress.LearnerAssignmentStatus.Completed, DateTimeOffset.UtcNow, null));
+        repository.UpsertActivitySession(new Domain.Aggregates.LearnerProgress.ActivitySession("s2", "a2", learnerId, Domain.Aggregates.LearnerProgress.LearnerAssignmentType.Drill, Domain.Aggregates.LearnerProgress.ActivitySessionStatus.Completed, DateTimeOffset.UtcNow, DateTimeOffset.UtcNow));
+        repository.UpsertLearnerAttempt(new Domain.Aggregates.LearnerProgress.LearnerAttempt("att2", "s2", learnerId, Domain.Aggregates.LearnerProgress.LearnerAttemptStatus.Scored, 10, 10, 100, DateTimeOffset.UtcNow));
+
+        repository.UpsertLearnerAssignment(new Domain.Aggregates.LearnerProgress.LearnerAssignment("a3", learnerId, Domain.Aggregates.LearnerProgress.LearnerAssignmentType.MiniTest, "u1", Domain.Aggregates.LearnerProgress.LearnerAssignmentStatus.Completed, DateTimeOffset.UtcNow, null));
+        repository.UpsertActivitySession(new Domain.Aggregates.LearnerProgress.ActivitySession("s3", "a3", learnerId, Domain.Aggregates.LearnerProgress.LearnerAssignmentType.MiniTest, Domain.Aggregates.LearnerProgress.ActivitySessionStatus.Completed, DateTimeOffset.UtcNow, DateTimeOffset.UtcNow));
+        // Failed with 70%
+        repository.UpsertLearnerAttempt(new Domain.Aggregates.LearnerProgress.LearnerAttempt("att3", "s3", learnerId, Domain.Aggregates.LearnerProgress.LearnerAttemptStatus.Scored, 7, 10, 70, DateTimeOffset.UtcNow));
+
+        var service = new Application.Features.Learner.Mastery.MasteryCalculationService(repository);
+        service.RecalculateMastery(learnerId, "u1");
+
+        var blockers = repository.GetUnlockBlockers(learnerId, "u1");
+        Assert.True(blockers.Any(b => b.Reason == "MINI_TEST_NOT_PASSED"), "Mini test not passed blocker should exist");
+
+        var updatedUnit2 = repository.GetLearningPathUnits(pathId).FirstOrDefault(u => u.UnitId == "u2");
+        Assert.True(updatedUnit2?.Status == Domain.Aggregates.LearnerProgress.LearningPathUnitStatus.Locked, "Unit 2 should remain locked");
+    }
+
+    public static void PassedMiniTestUnlocksNextUnit()
+    {
+        var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        
+        var learnerId = "learner-pass-test";
+        var pathId = "path-1";
+        
+        repository.UpsertLearnerProfile(new Domain.Aggregates.LearnerProgress.LearnerProfile(learnerId, "Pass Learner", "pass@test.com", 500, 0, 30, "UTC", Domain.Aggregates.LearnerProgress.LearnerProfileStatus.Active, DateTimeOffset.UtcNow, DateTimeOffset.UtcNow));
+        repository.UpsertLearningPath(new Domain.Aggregates.LearnerProgress.LearningPath(pathId, learnerId, Domain.Aggregates.LearnerProgress.LearningPathStatus.Active, null, DateTimeOffset.UtcNow, DateTimeOffset.UtcNow));
+        
+        var unit1 = new Domain.Aggregates.LearnerProgress.LearningPathUnit("u1", pathId, "key1", 5, "tag", 1, Domain.Aggregates.LearnerProgress.LearningPathUnitStatus.Unlocked, null, null);
+        var unit2 = new Domain.Aggregates.LearnerProgress.LearningPathUnit("u2", pathId, "key2", 5, "tag", 2, Domain.Aggregates.LearnerProgress.LearningPathUnitStatus.Locked, null, null);
+        repository.UpsertLearningPathUnit(unit1);
+        repository.UpsertLearningPathUnit(unit2);
+
+        repository.UpsertLearnerAssignment(new Domain.Aggregates.LearnerProgress.LearnerAssignment("a1", learnerId, Domain.Aggregates.LearnerProgress.LearnerAssignmentType.Lesson, "u1", Domain.Aggregates.LearnerProgress.LearnerAssignmentStatus.Completed, DateTimeOffset.UtcNow, null));
+        
+        repository.UpsertLearnerAssignment(new Domain.Aggregates.LearnerProgress.LearnerAssignment("a2", learnerId, Domain.Aggregates.LearnerProgress.LearnerAssignmentType.Drill, "u1", Domain.Aggregates.LearnerProgress.LearnerAssignmentStatus.Completed, DateTimeOffset.UtcNow, null));
+        repository.UpsertActivitySession(new Domain.Aggregates.LearnerProgress.ActivitySession("s2", "a2", learnerId, Domain.Aggregates.LearnerProgress.LearnerAssignmentType.Drill, Domain.Aggregates.LearnerProgress.ActivitySessionStatus.Completed, DateTimeOffset.UtcNow, DateTimeOffset.UtcNow));
+        repository.UpsertLearnerAttempt(new Domain.Aggregates.LearnerProgress.LearnerAttempt("att2", "s2", learnerId, Domain.Aggregates.LearnerProgress.LearnerAttemptStatus.Scored, 10, 10, 100, DateTimeOffset.UtcNow));
+
+        repository.UpsertLearnerAssignment(new Domain.Aggregates.LearnerProgress.LearnerAssignment("a3", learnerId, Domain.Aggregates.LearnerProgress.LearnerAssignmentType.MiniTest, "u1", Domain.Aggregates.LearnerProgress.LearnerAssignmentStatus.Completed, DateTimeOffset.UtcNow, null));
+        repository.UpsertActivitySession(new Domain.Aggregates.LearnerProgress.ActivitySession("s3", "a3", learnerId, Domain.Aggregates.LearnerProgress.LearnerAssignmentType.MiniTest, Domain.Aggregates.LearnerProgress.ActivitySessionStatus.Completed, DateTimeOffset.UtcNow, DateTimeOffset.UtcNow));
+        // Passed with 85%
+        repository.UpsertLearnerAttempt(new Domain.Aggregates.LearnerProgress.LearnerAttempt("att3", "s3", learnerId, Domain.Aggregates.LearnerProgress.LearnerAttemptStatus.Scored, 8, 10, 85, DateTimeOffset.UtcNow));
+
+        var service = new Application.Features.Learner.Mastery.MasteryCalculationService(repository);
+        service.RecalculateMastery(learnerId, "u1");
+
+        var blockers = repository.GetUnlockBlockers(learnerId, "u1");
+        Assert.True(blockers.Count == 0, "All assignments completed and passed should remove blockers");
+
+        var updatedUnit1 = repository.GetLearningPathUnits(pathId).FirstOrDefault(u => u.UnitId == "u1");
+        var updatedUnit2 = repository.GetLearningPathUnits(pathId).FirstOrDefault(u => u.UnitId == "u2");
+        Assert.True(updatedUnit1?.Status == Domain.Aggregates.LearnerProgress.LearningPathUnitStatus.Completed, "Unit 1 should be completed");
+        Assert.True(updatedUnit2?.Status == Domain.Aggregates.LearnerProgress.LearningPathUnitStatus.Unlocked, "Unit 2 should be unlocked");
     }
 
     public static void ValidPart5ItemPublishes()

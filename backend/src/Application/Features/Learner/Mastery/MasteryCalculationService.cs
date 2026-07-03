@@ -112,6 +112,12 @@ public sealed class MasteryCalculationService(IKnowledgeRepository repository)
             repository.UpsertUnlockBlocker(blocker);
         }
 
+        if (isUnlocked && targetUnit.Status == LearningPathUnitStatus.Locked)
+        {
+            targetUnit = targetUnit with { Status = LearningPathUnitStatus.Unlocked };
+            repository.UpsertLearningPathUnit(targetUnit);
+        }
+
         // Update learning path unit status if fully complete
         var isUnitCompleted = lessonComplete && drillComplete && minitestComplete && blockingReviewCount == 0;
         if (isUnitCompleted && targetUnit.Status != LearningPathUnitStatus.Completed)
