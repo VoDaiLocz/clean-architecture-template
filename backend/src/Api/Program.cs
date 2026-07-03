@@ -129,6 +129,19 @@ admin.MapPost(
     }
 );
 
+admin.MapPost(
+    "/source-assets/{assetId}/extract-audio-metadata",
+    Ok<ExtractToeicAudioMetadataResult> (
+        string assetId,
+        IKnowledgeRepository repository,
+        IAudioMetadataProbe probe
+    ) =>
+    {
+        var handler = new ExtractToeicAudioMetadataHandler(repository, probe);
+        return TypedResults.Ok(handler.Handle(new ExtractToeicAudioMetadataCommand(assetId)));
+    }
+);
+
 api.MapPost(
     "/raw-sources",
     Created<RawSourceResponse> (

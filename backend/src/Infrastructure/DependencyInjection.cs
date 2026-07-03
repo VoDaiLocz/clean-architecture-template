@@ -35,6 +35,7 @@ public static class DependencyInjection
         services.AddSingleton<IBackgroundJobQueue, InMemoryBackgroundJobQueue>();
         services.AddSingleton<IPlatformHealthService, PlatformHealthService>();
         services.AddSingleton<IPdfTextBlockExtractor, PdfPigTextBlockExtractor>();
+        services.AddSingleton<IAudioMetadataProbe, TagLibAudioMetadataProbe>();
 
         return services;
     }
