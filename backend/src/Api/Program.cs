@@ -10,6 +10,8 @@ using Application.Features.Learner.Onboarding;
 using Application.Features.Learner.Placement;
 using Application.Features.SourceExtraction;
 using Application.Features.SourceManifests;
+using Application.Features.SourceReview;
+using Application.Features.SourceValidation;
 using Domain.Aggregates.Corpus;
 using Domain.Aggregates.LearningItems;
 using Infrastructure;
@@ -191,6 +193,31 @@ admin.MapPost(
     {
         var handler = new ParseToeicListeningGroupsHandler(repository, parser);
         return TypedResults.Ok(handler.Handle(new ParseToeicListeningGroupsCommand(assetId)));
+    }
+);
+
+admin.MapPost(
+    "/source-assets/{assetId}/validate-drafts",
+    Ok<ValidateToeicDraftContentResult> (
+        string assetId,
+        IKnowledgeRepository repository
+    ) =>
+    {
+        var handler = new ValidateToeicDraftContentHandler(repository);
+        return TypedResults.Ok(handler.Handle(new ValidateToeicDraftContentCommand(assetId)));
+    }
+);
+
+admin.MapPost(
+    "/source-assets/{assetId}/review-and-publish",
+    Ok<ReviewAndPublishToeicContentResult> (
+        string assetId,
+        ReviewAndPublishRequest request,
+        IKnowledgeRepository repository
+    ) =>
+    {
+        var handler = new ReviewAndPublishToeicContentHandler(repository);
+        return TypedResults.Ok(handler.Handle(new ReviewAndPublishToeicContentCommand(assetId, request.LessonId, request.Decisions)));
     }
 );
 
@@ -384,3 +411,5 @@ public sealed record SourceRefRequest(
 {
     public SourceRef ToSourceRef() => new(SourceId, FileId, Page, BlockId);
 }
+
+public sealed record ReviewAndPublishRequest(string LessonId, IReadOnlyList<ReviewDecision> Decisions);
