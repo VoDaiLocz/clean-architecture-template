@@ -42,13 +42,19 @@ public sealed class RegisterToeicSourceAssetsHandler(IKnowledgeRepository reposi
     }
 
     private static bool HasRegisterableEvidence(SourceManifestEntry source) =>
-        source.Evidence.HasPdf || source.Evidence.HasAudio || source.Evidence.HasImage;
+        source.Evidence.HasPdf
+        || source.Evidence.HasAudio
+        || source.Evidence.HasImage
+        || source.Evidence.HasTranscript
+        || source.Evidence.HasAnswerKey;
 
     private static IEnumerable<SourceAssetRole> EvidenceRoles(SourceManifestEntry source)
     {
         if (source.Evidence.HasPdf) yield return SourceAssetRole.Pdf;
         if (source.Evidence.HasAudio) yield return SourceAssetRole.Audio;
         if (source.Evidence.HasImage) yield return SourceAssetRole.Image;
+        if (source.Evidence.HasTranscript) yield return SourceAssetRole.Transcript;
+        if (source.Evidence.HasAnswerKey) yield return SourceAssetRole.AnswerKey;
     }
 
     private static SourceContainer CreateContainer(SourceManifestEntry source) =>
@@ -87,6 +93,8 @@ public sealed class RegisterToeicSourceAssetsHandler(IKnowledgeRepository reposi
             SourceAssetRole.Pdf => ".pdf",
             SourceAssetRole.Audio => ".mp3",
             SourceAssetRole.Image => ".jpg",
+            SourceAssetRole.Transcript => ".txt",
+            SourceAssetRole.AnswerKey => ".csv",
             _ => ".bin",
         };
 
@@ -96,6 +104,8 @@ public sealed class RegisterToeicSourceAssetsHandler(IKnowledgeRepository reposi
             SourceAssetRole.Pdf => "application/pdf",
             SourceAssetRole.Audio => "audio/mpeg",
             SourceAssetRole.Image => "image/jpeg",
+            SourceAssetRole.Transcript => "text/plain",
+            SourceAssetRole.AnswerKey => "text/csv",
             _ => "application/octet-stream",
         };
 }

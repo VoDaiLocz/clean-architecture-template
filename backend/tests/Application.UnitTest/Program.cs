@@ -493,7 +493,7 @@ static class ApplicationTests
             hasPdf: true,
             hasAudio: false,
             hasTranscript: true,
-            hasAnswerKey: false,
+            hasAnswerKey: true,
             hasImage: true
         );
         var blocked = SourceManifestClassifier.Classify(
@@ -514,13 +514,15 @@ static class ApplicationTests
         var result = handler.Handle(new RegisterToeicSourceAssetsCommand());
 
         Assert.Equal(1, result.RegisteredContainerCount, "Accessible evidence source should create one registration container.");
-        Assert.Equal(2, result.RegisteredAssetCount, "PDF and image evidence should become registered assets.");
+        Assert.Equal(4, result.RegisteredAssetCount, "PDF, image, transcript, and answer key evidence should become registered assets.");
         Assert.Equal(1, result.SkippedBlockedSourceCount, "Blocked source should be skipped.");
         Assert.Equal(1, repository.Count("source_containers"), "Expected one source container.");
-        Assert.Equal(2, repository.Count("source_assets"), "Expected two registered assets.");
+        Assert.Equal(4, repository.Count("source_assets"), "Expected all registered evidence assets.");
         var assets = repository.GetSourceAssets("registered-source-sheet-row-46");
         Assert.True(assets.Any(asset => asset.DetectedRole == SourceAssetRole.Pdf), "PDF role should be registered.");
         Assert.True(assets.Any(asset => asset.DetectedRole == SourceAssetRole.Image), "Image role should be registered.");
+        Assert.True(assets.Any(asset => asset.DetectedRole == SourceAssetRole.Transcript), "Transcript role should be registered.");
+        Assert.True(assets.Any(asset => asset.DetectedRole == SourceAssetRole.AnswerKey), "Answer key role should be registered.");
         Assert.False(assets.Any(asset => asset.DetectedRole == SourceAssetRole.Audio), "Missing audio evidence must not create audio asset.");
     }
 
