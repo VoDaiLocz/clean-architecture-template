@@ -52,9 +52,13 @@ public sealed class ValidateToeicDraftContentHandler(IKnowledgeRepository reposi
         }
 
         ValidatePayloadEnvelope(draft, issues);
+        if (!HasVersionedData(draft))
+        {
+            return issues;
+        }
 
         if (draft.ItemType is "ReadingQuestion" or "ListeningQuestion"
-            && !draft.PayloadJson.Contains("prompt", StringComparison.OrdinalIgnoreCase))
+            && !HasNonEmptyDataString(draft, "prompt"))
         {
             issues.Add(new ValidationIssue("missing_prompt", "Draft question prompt is required."));
         }
@@ -62,13 +66,13 @@ public sealed class ValidateToeicDraftContentHandler(IKnowledgeRepository reposi
         ValidateQuestionAnswerContract(draft, issues);
 
         if (draft.ToeicPart is 3 or 4
-            && !draft.PayloadJson.Contains("groupId", StringComparison.OrdinalIgnoreCase))
+            && !HasNonEmptyDataOrPayloadString(draft, "groupId"))
         {
             issues.Add(new ValidationIssue("missing_group_ref", "Part 3 and Part 4 drafts require group relationship."));
         }
 
         if (draft.ToeicPart is 6 or 7
-            && !draft.PayloadJson.Contains("passage", StringComparison.OrdinalIgnoreCase))
+            && !HasPassageContext(draft))
         {
             issues.Add(new ValidationIssue("missing_passage_context", "Part 6 and Part 7 drafts require passage context."));
         }
@@ -142,5 +146,80 @@ public sealed class ValidateToeicDraftContentHandler(IKnowledgeRepository reposi
         {
             return;
         }
+    }
+
+    private static bool HasNonEmptyDataString(DraftContentItem draft, string propertyName)
+    {
+        try
+        {
+            using var document = JsonDocument.Parse(draft.PayloadJson);
+            return TryGetVersionedData(document.RootElement, out var data)
+                && data.TryGetProperty(propertyName, out var value)
+                && value.ValueKind == JsonValueKind.String
+                && !string.IsNullOrWhiteSpace(value.GetString());
+        }
+        catch (JsonException)
+        {
+            return false;
+        }
+    }
+
+    private static bool HasVersionedData(DraftContentItem draft)
+    {
+        try
+        {
+            using var document = JsonDocument.Parse(draft.PayloadJson);
+            return TryGetVersionedData(document.RootElement, out _);
+        }
+        catch (JsonException)
+        {
+            return false;
+        }
+    }
+
+    private static bool HasNonEmptyDataOrPayloadString(DraftContentItem draft, string propertyName)
+    {
+        try
+        {
+            using var document = JsonDocument.Parse(draft.PayloadJson);
+            if (!TryGetVersionedData(document.RootElement, out var data))
+            {
+                return false;
+            }
+
+            if (HasNonEmptyString(data, propertyName))
+            {
+                return true;
+            }
+
+            return data.TryGetProperty("parserPayload", out var payload)
+                && HasNonEmptyString(payload, propertyName);
+        }
+        catch (JsonException)
+        {
+            return false;
+        }
+    }
+
+    private static bool HasPassageContext(DraftContentItem draft)
+    {
+        return HasNonEmptyDataOrPayloadString(draft, "passageId")
+            || HasNonEmptyDataOrPayloadString(draft, "passage")
+            || HasNonEmptyDataOrPayloadString(draft, "passageText");
+    }
+
+    private static bool TryGetVersionedData(JsonElement root, out JsonElement data)
+    {
+        data = default;
+        return root.TryGetProperty("schemaVersion", out var schemaVersion)
+            && schemaVersion.GetString() == "toeic-draft.v1"
+            && root.TryGetProperty("data", out data);
+    }
+
+    private static bool HasNonEmptyString(JsonElement element, string propertyName)
+    {
+        return element.TryGetProperty(propertyName, out var value)
+            && value.ValueKind == JsonValueKind.String
+            && !string.IsNullOrWhiteSpace(value.GetString());
     }
 }
