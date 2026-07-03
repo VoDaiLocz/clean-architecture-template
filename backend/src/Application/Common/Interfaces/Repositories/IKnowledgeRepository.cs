@@ -64,6 +64,8 @@ public interface IKnowledgeRepository
 
     int CountDraftContentItems(DraftContentStatus status);
 
+    int CountDraftContentItems(int toeicPart, DraftContentStatus status);
+
     int CountPublishedLessons(int toeicPart);
 
     int CountPublishedQuestions(int toeicPart);

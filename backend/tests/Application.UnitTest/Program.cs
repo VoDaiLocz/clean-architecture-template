@@ -277,8 +277,12 @@ static class ApplicationTests
         Assert.Equal(0, coverage.Published.PublishedTests, "Missing test data must not be faked.");
         var part5 = coverage.ToeicParts.Single(part => part.ToeicPart == 5);
         var part7 = coverage.ToeicParts.Single(part => part.ToeicPart == 7);
+        Assert.Equal(1, part5.ReadyForReviewDraftItems, "Part 5 should expose ready draft backlog.");
+        Assert.Equal(0, part5.ValidationFailedDraftItems, "Part 5 should not report Part 7 failures.");
         Assert.Equal(1, part5.PublishedQuestions, "Part 5 should report real published question count.");
         Assert.Equal(1, part5.PublishedLessons, "Part 5 should report real published lesson count.");
+        Assert.Equal(0, part7.ReadyForReviewDraftItems, "Part 7 should not inherit Part 5 ready drafts.");
+        Assert.Equal(1, part7.ValidationFailedDraftItems, "Part 7 should expose failed draft backlog.");
         Assert.Equal(0, part7.PublishedQuestions, "Part 7 source backlog must not appear as published.");
     }
 

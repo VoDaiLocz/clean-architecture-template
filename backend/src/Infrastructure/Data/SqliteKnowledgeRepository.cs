@@ -1393,6 +1393,21 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         return Convert.ToInt32(command.ExecuteScalar());
     }
 
+    public int CountDraftContentItems(int toeicPart, DraftContentStatus status)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT COUNT(*)
+            FROM draft_content_items
+            WHERE toeic_part = $toeic_part
+                AND status = $status
+            """;
+        command.Parameters.AddWithValue("$toeic_part", toeicPart);
+        command.Parameters.AddWithValue("$status", status.ToString());
+        return Convert.ToInt32(command.ExecuteScalar());
+    }
+
     public int CountPublishedLessons(int toeicPart)
     {
         using var command = connection.CreateCommand();
