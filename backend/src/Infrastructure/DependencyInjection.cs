@@ -37,6 +37,7 @@ public static class DependencyInjection
         services.AddSingleton<IPdfTextBlockExtractor, PdfPigTextBlockExtractor>();
         services.AddSingleton<IAudioMetadataProbe, TagLibAudioMetadataProbe>();
         services.AddSingleton<IAnswerKeyParser, CsvAnswerKeyParser>();
+        services.AddSingleton<ITranscriptParser, CsvTranscriptParser>();
 
         return services;
     }

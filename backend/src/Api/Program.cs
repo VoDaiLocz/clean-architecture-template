@@ -155,6 +155,19 @@ admin.MapPost(
     }
 );
 
+admin.MapPost(
+    "/source-assets/{assetId}/parse-transcripts",
+    Ok<ParseToeicTranscriptsResult> (
+        string assetId,
+        IKnowledgeRepository repository,
+        ITranscriptParser parser
+    ) =>
+    {
+        var handler = new ParseToeicTranscriptsHandler(repository, parser);
+        return TypedResults.Ok(handler.Handle(new ParseToeicTranscriptsCommand(assetId)));
+    }
+);
+
 api.MapPost(
     "/raw-sources",
     Created<RawSourceResponse> (
