@@ -7,6 +7,7 @@ using Application.Features.Learner;
 using Application.Features.Learner.Home;
 using Application.Features.Learner.Onboarding;
 using Application.Features.Learner.Placement;
+using Application.Features.Learner.Work;
 using Application.Features.SourceDiscovery;
 using Application.Features.SourceExtraction;
 using Application.Features.SourceManifests;
@@ -56,6 +57,11 @@ var tests = new List<(string Name, Action Run)>
     ("onboards learner and returns next placement action", ApplicationTests.OnboardsLearnerAndReturnsNextPlacementAction),
     ("learner home reads persisted profile after restart", ApplicationTests.LearnerHomeReadsPersistedProfileAfterRestart),
     ("starts placement session and resumes active duplicate", ApplicationTests.StartsPlacementSessionAndResumesActiveDuplicate),
+    ("scores placement session and persists result", ApplicationTests.ScoresPlacementSessionAndPersistsResult),
+    ("generates learner path from placement result", ApplicationTests.GeneratesLearnerPathFromPlacementResult),
+    ("assigns learner today plan", ApplicationTests.AssignsLearnerTodayPlan),
+    ("manages learner activity sessions", ApplicationTests.ManagesActivitySessions),
+    ("processes learner attempts", ApplicationTests.ProcessesLearnerAttempts),
     ("dashboard includes normalized source manifest summary", ApplicationTests.DashboardIncludesNormalizedSourceManifestSummary),
     ("learner cannot unlock next unit until mastery gates pass", ApplicationTests.LearnerCannotUnlockNextUnitUntilMasteryGatesPass),
     ("demo learner session is marked legacy non-production", ApplicationTests.DemoLearnerSessionIsMarkedLegacyNonProduction),
@@ -2070,6 +2076,286 @@ static class ApplicationTests
             "Repair attempt must reference an existing review item."
         );
     }
+    public static void ScoresPlacementSessionAndPersistsResult()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        
+        new OnboardLearnerHandler(repository).Handle(new OnboardLearnerCommand(
+            "learner-score-001", "C", "c@example.com", 820, 510, 80, "Asia/Ho_Chi_Minh"
+        ));
+        
+        var startResult = new StartPlacementSessionHandler(repository).Handle(new StartPlacementSessionCommand("learner-score-001"));
+        
+        // Mock assigned questions
+        repository.UpsertPublishedLesson(new PublishedLesson("lesson1", "unit1", 5, "Title", "Obj", "[]", "[]", PublishedContentStatus.Published));
+        
+        var q1 = new PublishedQuestion("q1", "lesson1", 5, PublishedQuestionType.SingleQuestion, "Prompt 1", "{}", "A", "Expl", null, null, null, "[]", "[]", "[]", PublishedContentStatus.Published);
+        var q2 = new PublishedQuestion("q2", "lesson1", 5, PublishedQuestionType.SingleQuestion, "Prompt 2", "{}", "B", "Expl", null, null, null, "[]", "[]", "[]", PublishedContentStatus.Published);
+        repository.UpsertPublishedQuestion(q1);
+        repository.UpsertPublishedQuestion(q2);
+        
+        repository.InsertPlacementSessionQuestions(startResult.SessionId, new[] { "q1", "q2" });
+
+        var handler = new ScorePlacementSessionHandler(repository);
+        var answers = new[]
+        {
+            new PlacementAnswerSubmission("q1", "A", Skipped: false),
+            new PlacementAnswerSubmission("q2", null, Skipped: true)
+        };
+
+        var result = handler.Handle(new ScorePlacementSessionCommand(startResult.SessionId, answers));
+
+        Assert.Equal(startResult.SessionId, result.SessionId, "Result must match session id.");
+        Assert.Equal(1, result.CorrectCount, "One correct answer should yield 1 correct count.");
+        Assert.Equal(2, result.TotalCount, "Two assigned questions yield 2 total count.");
+        Assert.Equal(50, result.ScorePercent, "1/2 correct should be 50 percent.");
+        Assert.True(result.DiagnosticScoreBand != null, "Diagnostic score band must be assigned.");
+        Assert.Equal("GenerateLearningPath", result.NextAction.Code, "Next action must be path generation.");
+        
+        var persistedResult = repository.GetPlacementResultBySessionId(startResult.SessionId);
+        Assert.True(persistedResult != null, "Placement result must be persisted.");
+        Assert.Equal(50, persistedResult!.ScorePercent, "Persisted result must match calculated score.");
+        
+        var breakdowns = repository.GetPlacementResultBreakdowns(result.ResultId);
+        Assert.True(breakdowns.Count > 0, "Part and skill breakdowns must be persisted.");
+    }
+
+    public static void AssignsLearnerTodayPlan()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+
+        var learnerId = Guid.NewGuid().ToString();
+        repository.UpsertLearnerProfile(new LearnerProfile(
+            learnerId,
+            "Test",
+            "test@test.com",
+            500,
+            0,
+            30,
+            "UTC",
+            LearnerProfileStatus.Active,
+            DateTimeOffset.UtcNow,
+            DateTimeOffset.UtcNow
+        ));
+
+        // Create learning path
+        var pathId = Guid.NewGuid().ToString();
+        repository.UpsertLearningPath(new LearningPath(
+            pathId,
+            learnerId,
+            LearningPathStatus.Active,
+            null,
+            DateTimeOffset.UtcNow,
+            DateTimeOffset.UtcNow
+        ));
+
+        repository.UpsertLearningPathUnit(new LearningPathUnit(
+            "unit1",
+            pathId,
+            "part5-word-form",
+            5,
+            "[]",
+            1,
+            LearningPathUnitStatus.Unlocked,
+            null,
+            null
+        ));
+
+        var handler = new GetLearnerTodayPlanHandler(repository);
+        var plan = handler.Handle(new GetLearnerTodayPlanQuery(learnerId));
+
+        Assert.True(plan.PrimaryAssignment != null, "Should generate a primary assignment if none exists.");
+    }
+
+    public static void ManagesActivitySessions()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+
+        var learnerId = Guid.NewGuid().ToString();
+        var assignmentId = Guid.NewGuid().ToString();
+
+        repository.UpsertLearnerProfile(new LearnerProfile(
+            learnerId,
+            "Test Session Learner",
+            "test_session@test.com",
+            500,
+            0,
+            30,
+            "UTC",
+            LearnerProfileStatus.Active,
+            DateTimeOffset.UtcNow,
+            DateTimeOffset.UtcNow
+        ));
+        
+        repository.UpsertLearnerAssignment(new LearnerAssignment(
+            assignmentId,
+            learnerId,
+            LearnerAssignmentType.Lesson,
+            "unit1",
+            LearnerAssignmentStatus.Assigned,
+            DateTimeOffset.UtcNow,
+            null
+        ));
+
+        var handler = new ManageActivitySessionHandler(repository);
+        
+        // 1. Start creates session
+        var startResult = handler.Handle(new StartActivitySessionCommand(assignmentId, learnerId));
+        Assert.True(startResult.SessionId != null, "Start must return a session id.");
+        Assert.Equal("InProgress", startResult.Status, "Session must be InProgress.");
+
+        // 2. Duplicate start resumes (returns same session)
+        var startResult2 = handler.Handle(new StartActivitySessionCommand(assignmentId, learnerId));
+        Assert.Equal(startResult.SessionId, startResult2.SessionId, "Duplicate start must return same session.");
+
+        // 3. Ownership is enforced
+        Assert.Throws<ArgumentException>(() => 
+            handler.Handle(new CompleteActivitySessionCommand(startResult.SessionId!, "wrong_learner")),
+            "Ownership must be enforced."
+        );
+
+        // 4. Completion persists timestamp
+        var completeResult = handler.Handle(new CompleteActivitySessionCommand(startResult.SessionId!, learnerId));
+        Assert.Equal("Completed", completeResult.Status, "Completion must update status.");
+
+        // 5. Invalid transition rejects
+        Assert.Throws<ArgumentException>(() => 
+            handler.Handle(new AbandonActivitySessionCommand(startResult.SessionId!, learnerId)),
+            "Cannot abandon a completed session."
+        );
+    }
+
+    public static void ProcessesLearnerAttempts()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+
+        var learnerId = Guid.NewGuid().ToString();
+        var assignmentId = Guid.NewGuid().ToString();
+        var sessionId = Guid.NewGuid().ToString();
+        var questionId1 = Guid.NewGuid().ToString();
+        var questionId2 = Guid.NewGuid().ToString();
+
+        repository.UpsertLearnerProfile(new LearnerProfile(
+            learnerId, "Test Learner", "test@test.com", 500, 0, 30, "UTC", LearnerProfileStatus.Active, DateTimeOffset.UtcNow, DateTimeOffset.UtcNow
+        ));
+
+        repository.UpsertLearnerAssignment(new LearnerAssignment(
+            assignmentId, learnerId, LearnerAssignmentType.Lesson, "unit1", LearnerAssignmentStatus.Started, DateTimeOffset.UtcNow, null
+        ));
+
+        repository.UpsertActivitySession(new ActivitySession(
+            sessionId, assignmentId, learnerId, LearnerAssignmentType.Lesson, ActivitySessionStatus.InProgress, DateTimeOffset.UtcNow, null
+        ));
+
+        repository.UpsertPublishedLesson(new PublishedLesson(
+            "lesson1", "unit1", 5, "Title", "Obj", "{}", "{}", PublishedContentStatus.Published
+        ));
+
+        repository.UpsertPublishedQuestion(new PublishedQuestion(
+            questionId1, "lesson1", 5, PublishedQuestionType.SingleQuestion, "{}", "{}", "A", "{}", null, null, null, "{}", "{}", "{}", PublishedContentStatus.Published
+        ));
+
+        repository.UpsertPublishedQuestion(new PublishedQuestion(
+            questionId2, "lesson1", 5, PublishedQuestionType.SingleQuestion, "{}", "{}", "C", "{}", null, null, null, "{}", "{}", "{}", PublishedContentStatus.Published
+        ));
+
+        var handler = new SubmitAttemptHandler(repository);
+
+        var command = new SubmitAttemptCommand(sessionId, learnerId, new Dictionary<string, string>
+        {
+            { questionId1, "A" }, // Correct
+            { questionId2, "A" }  // Incorrect
+        });
+
+        var response = handler.Handle(command);
+
+        Assert.Equal(50, response.ScorePercent, "Score should be 50%.");
+        Assert.Equal(1, response.CorrectCount, "One correct answer.");
+        Assert.Equal(2, response.TotalCount, "Two total answers.");
+
+        var session = repository.GetActivitySession(sessionId);
+        Assert.True(session != null, "Session should exist");
+        Assert.Equal(ActivitySessionStatus.Completed, session!.Status, "Session should be completed after attempt submission.");
+
+        Assert.Throws<ArgumentException>(() => handler.Handle(command), "Should throw on duplicate submit");
+    }
+
+    public static void GeneratesLearnerPathFromPlacementResult()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+
+        var learnerId = Guid.NewGuid().ToString();
+        repository.UpsertLearnerProfile(new LearnerProfile(
+            learnerId,
+            "Test",
+            "test@test.com",
+            500,
+            0,
+            30,
+            "UTC",
+            LearnerProfileStatus.Active,
+            DateTimeOffset.UtcNow,
+            DateTimeOffset.UtcNow
+        ));
+
+        var sessionId = Guid.NewGuid().ToString();
+        var resultId = Guid.NewGuid().ToString();
+
+        repository.UpsertPlacementSession(new PlacementSession(
+            sessionId,
+            learnerId,
+            PlacementSessionStatus.Completed,
+            DateTimeOffset.UtcNow,
+            DateTimeOffset.UtcNow
+        ));
+
+        var placementResult = new PlacementResult(
+            resultId,
+            sessionId,
+            learnerId,
+            10,
+            20,
+            50,
+            "Band 2",
+            200,
+            300,
+            DateTimeOffset.UtcNow
+        );
+
+        var breakdown = new PlacementResultBreakdown(
+            resultId,
+            "Topic",
+            "Word Form",
+            1,
+            5,
+            20
+        );
+
+        repository.InsertPlacementResult(placementResult, [breakdown]);
+
+        var handler = new GenerateLearningPathHandler(repository);
+        var result = handler.Handle(new GenerateLearningPathCommand(learnerId, resultId));
+
+        Assert.True(result.GeneratedReasonSummary.Contains(resultId), "Should include result id in reason.");
+        Assert.True(result.PathId != null, "Path must be generated.");
+        Assert.Equal("part5-word-form", result.FirstUnlockedUnitId, "Word form should be unlocked due to weakness.");
+        Assert.True(result.TotalUnits > 0, "Catalog must be populated.");
+
+        var activePath = repository.GetActiveLearningPath(learnerId);
+        Assert.True(activePath != null, "Path must be persisted.");
+        Assert.Equal(result.PathId, activePath!.PathId, "Persisted path must match result.");
+
+        var units = repository.GetLearningPathUnits(activePath.PathId);
+        Assert.Equal(result.TotalUnits, units.Count, "Persisted units must match total count.");
+        
+        var firstUnit = units.First(u => u.UnitId == result.FirstUnlockedUnitId);
+        Assert.Equal(LearningPathUnitStatus.Unlocked, firstUnit.Status, "First unit must be unlocked.");
+    }
 }
 
 sealed class FakeDriveDiscoveryGateway(IReadOnlyList<DriveDiscoveredAsset> assets) : IDriveDiscoveryGateway
@@ -2128,6 +2414,7 @@ sealed class FakeReadingDraftParser(IReadOnlyList<ReadingDraftQuestionResult> qu
     }
 }
 
+
 sealed class FakeListeningDraftParser(IReadOnlyList<ListeningDraftQuestionResult> questions) : IListeningDraftParser
 {
     public IReadOnlyList<ListeningDraftQuestionResult> Parse(SourceAsset asset)
@@ -2158,6 +2445,8 @@ static class TestItems
         Word: "",
         Meaning: ""
     );
+
+
 }
 
 static class Assert

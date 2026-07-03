@@ -67,6 +67,7 @@ public interface IKnowledgeRepository
     void UpsertPublishedQuestion(PublishedQuestion question);
 
     IReadOnlyList<PublishedQuestion> GetPublishedQuestions(int toeicPart);
+    PublishedQuestion? GetPublishedQuestion(string questionId);
 
     int CountDraftContentItems(int toeicPart);
 
@@ -97,14 +98,20 @@ public interface IKnowledgeRepository
     LearnerProfile? GetLearnerProfile(string learnerId);
 
     void UpsertPlacementSession(PlacementSession session);
-
+    PlacementSession? GetPlacementSessionById(string sessionId);
     IReadOnlyList<PlacementSession> GetPlacementSessions(string learnerId);
+    void InsertPlacementSessionQuestions(string sessionId, IReadOnlyList<string> questionIds);
+    IReadOnlyList<string> GetPlacementSessionAssignedQuestions(string sessionId);
+    void InsertPlacementResult(PlacementResult result, IReadOnlyList<PlacementResultBreakdown> breakdowns);
+    PlacementResult? GetPlacementResultBySessionId(string sessionId);
+    IReadOnlyList<PlacementResultBreakdown> GetPlacementResultBreakdowns(string resultId);
 
     void UpsertLearnerAssignment(LearnerAssignment assignment);
 
     IReadOnlyList<LearnerAssignment> GetLearnerAssignments(string learnerId);
 
     void UpsertActivitySession(ActivitySession session);
+    ActivitySession? GetActivitySession(string sessionId);
 
     IReadOnlyList<ActivitySession> GetActivitySessions(string assignmentId);
 
@@ -139,6 +146,14 @@ public interface IKnowledgeRepository
     ValidationResult Publish(DraftLearningItem item);
 
     void RecordValidationIssue(ValidationIssue issue, string itemType, string? sourceId);
+
+    void UpsertLearningPath(LearningPath path);
+    LearningPath? GetActiveLearningPath(string learnerId);
+    
+    void UpsertLearningPathUnit(LearningPathUnit unit);
+    IReadOnlyList<LearningPathUnit> GetLearningPathUnits(string pathId);
+
+    void UpsertLearnerPathGenerationRun(LearnerPathGenerationRun run);
 
     int Count(string tableName);
 }

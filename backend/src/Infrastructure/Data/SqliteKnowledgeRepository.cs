@@ -295,7 +295,40 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
                 status TEXT NOT NULL,
                 started_at_utc TEXT NOT NULL,
                 completed_at_utc TEXT,
-                FOREIGN KEY (learner_id) REFERENCES learner_profiles(learner_id)
+                FOREIGN KEY(learner_id) REFERENCES learner_profiles(learner_id)
+            );
+
+            CREATE TABLE IF NOT EXISTS placement_session_questions (
+                session_id TEXT NOT NULL,
+                question_id TEXT NOT NULL,
+                display_order INTEGER NOT NULL,
+                PRIMARY KEY (session_id, question_id),
+                FOREIGN KEY(session_id) REFERENCES placement_sessions(session_id)
+            );
+
+            CREATE TABLE IF NOT EXISTS placement_results (
+                result_id TEXT PRIMARY KEY,
+                session_id TEXT NOT NULL UNIQUE,
+                learner_id TEXT NOT NULL,
+                correct_count INTEGER NOT NULL,
+                total_count INTEGER NOT NULL,
+                score_percent INTEGER NOT NULL,
+                diagnostic_score_band TEXT NOT NULL,
+                estimated_score_min INTEGER NOT NULL,
+                estimated_score_max INTEGER NOT NULL,
+                completed_at_utc TEXT NOT NULL,
+                FOREIGN KEY(session_id) REFERENCES placement_sessions(session_id)
+            );
+
+            CREATE TABLE IF NOT EXISTS placement_result_breakdowns (
+                result_id TEXT NOT NULL,
+                dimension_type TEXT NOT NULL,
+                dimension_value TEXT NOT NULL,
+                correct_count INTEGER NOT NULL,
+                total_count INTEGER NOT NULL,
+                score_percent INTEGER NOT NULL,
+                PRIMARY KEY (result_id, dimension_type, dimension_value),
+                FOREIGN KEY(result_id) REFERENCES placement_results(result_id)
             );
 
             CREATE INDEX IF NOT EXISTS idx_placement_sessions_learner_status
@@ -455,6 +488,36 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
                 reason TEXT NOT NULL,
                 audit_notes TEXT NOT NULL,
                 rejected_at_utc TEXT NOT NULL
+            );
+
+            CREATE TABLE IF NOT EXISTS learning_paths (
+                path_id TEXT PRIMARY KEY,
+                learner_id TEXT NOT NULL,
+                status TEXT NOT NULL,
+                archive_reason TEXT,
+                created_at_utc TEXT NOT NULL,
+                updated_at_utc TEXT NOT NULL
+            );
+
+            CREATE TABLE IF NOT EXISTS learning_path_units (
+                unit_id TEXT PRIMARY KEY,
+                path_id TEXT NOT NULL,
+                unit_key TEXT NOT NULL,
+                toeic_part INTEGER NOT NULL,
+                skill_tags TEXT NOT NULL,
+                display_order INTEGER NOT NULL,
+                status TEXT NOT NULL,
+                unlock_reason TEXT,
+                source_result_id TEXT
+            );
+
+            CREATE TABLE IF NOT EXISTS learner_path_generation_runs (
+                run_id TEXT PRIMARY KEY,
+                learner_id TEXT NOT NULL,
+                placement_result_id TEXT NOT NULL,
+                catalog_version TEXT NOT NULL,
+                generated_path_id TEXT NOT NULL,
+                created_at_utc TEXT NOT NULL
             );
             """;
         command.ExecuteNonQuery();
@@ -1485,6 +1548,35 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         return questions;
     }
 
+    public PublishedQuestion? GetPublishedQuestion(string questionId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT
+                question_id,
+                lesson_id,
+                toeic_part,
+                question_type,
+                prompt,
+                options_json,
+                correct_answer,
+                explanation,
+                media_asset_id,
+                passage_id,
+                group_id,
+                evidence_json,
+                skill_tags,
+                source_trace_json,
+                status
+            FROM published_questions
+            WHERE question_id = $question_id
+            """;
+        command.Parameters.AddWithValue("$question_id", questionId);
+        using var reader = command.ExecuteReader();
+        return reader.Read() ? ReadPublishedQuestion(reader) : null;
+    }
+
     public int CountDraftContentItems(int toeicPart)
     {
         using var command = connection.CreateCommand();
@@ -1833,6 +1925,145 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         return sessions;
     }
 
+    public PlacementSession? GetPlacementSessionById(string sessionId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText = "SELECT session_id, learner_id, status, started_at_utc, completed_at_utc FROM placement_sessions WHERE session_id = $session_id";
+        command.Parameters.AddWithValue("$session_id", sessionId);
+        using var reader = command.ExecuteReader();
+        return reader.Read() ? ReadPlacementSession(reader) : null;
+    }
+
+    public void InsertPlacementSessionQuestions(string sessionId, IReadOnlyList<string> questionIds)
+    {
+        using var transaction = connection.BeginTransaction();
+        using var command = connection.CreateCommand();
+        command.CommandText = "INSERT INTO placement_session_questions (session_id, question_id, display_order) VALUES ($session_id, $question_id, $display_order) ON CONFLICT DO NOTHING";
+        var pSession = command.Parameters.Add("$session_id", Microsoft.Data.Sqlite.SqliteType.Text);
+        var pQuestion = command.Parameters.Add("$question_id", Microsoft.Data.Sqlite.SqliteType.Text);
+        var pOrder = command.Parameters.Add("$display_order", Microsoft.Data.Sqlite.SqliteType.Integer);
+        
+        for (int i = 0; i < questionIds.Count; i++)
+        {
+            pSession.Value = sessionId;
+            pQuestion.Value = questionIds[i];
+            pOrder.Value = i;
+            command.ExecuteNonQuery();
+        }
+        transaction.Commit();
+    }
+
+    public IReadOnlyList<string> GetPlacementSessionAssignedQuestions(string sessionId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText = "SELECT question_id FROM placement_session_questions WHERE session_id = $session_id ORDER BY display_order";
+        command.Parameters.AddWithValue("$session_id", sessionId);
+        var list = new List<string>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read()) list.Add(reader.GetString(0));
+        return list;
+    }
+
+    public void InsertPlacementResult(PlacementResult result, IReadOnlyList<PlacementResultBreakdown> breakdowns)
+    {
+        using var transaction = connection.BeginTransaction();
+        using var cmd = connection.CreateCommand();
+        cmd.CommandText = """
+            INSERT INTO placement_results (
+                result_id, session_id, learner_id, correct_count, total_count, score_percent,
+                diagnostic_score_band, estimated_score_min, estimated_score_max, completed_at_utc
+            ) VALUES (
+                $result_id, $session_id, $learner_id, $correct_count, $total_count, $score_percent,
+                $diagnostic_score_band, $estimated_score_min, $estimated_score_max, $completed_at_utc
+            ) ON CONFLICT DO NOTHING
+            """;
+        cmd.Parameters.AddWithValue("$result_id", result.ResultId);
+        cmd.Parameters.AddWithValue("$session_id", result.SessionId);
+        cmd.Parameters.AddWithValue("$learner_id", result.LearnerId);
+        cmd.Parameters.AddWithValue("$correct_count", result.CorrectCount);
+        cmd.Parameters.AddWithValue("$total_count", result.TotalCount);
+        cmd.Parameters.AddWithValue("$score_percent", result.ScorePercent);
+        cmd.Parameters.AddWithValue("$diagnostic_score_band", result.DiagnosticScoreBand);
+        cmd.Parameters.AddWithValue("$estimated_score_min", result.EstimatedScoreMin);
+        cmd.Parameters.AddWithValue("$estimated_score_max", result.EstimatedScoreMax);
+        cmd.Parameters.AddWithValue("$completed_at_utc", result.CompletedAtUtc.ToString("O"));
+        cmd.ExecuteNonQuery();
+
+        using var cmdB = connection.CreateCommand();
+        cmdB.CommandText = """
+            INSERT INTO placement_result_breakdowns (
+                result_id, dimension_type, dimension_value, correct_count, total_count, score_percent
+            ) VALUES (
+                $result_id, $dimension_type, $dimension_value, $correct_count, $total_count, $score_percent
+            ) ON CONFLICT DO NOTHING
+            """;
+        var pbResult = cmdB.Parameters.Add("$result_id", Microsoft.Data.Sqlite.SqliteType.Text);
+        var pbDimType = cmdB.Parameters.Add("$dimension_type", Microsoft.Data.Sqlite.SqliteType.Text);
+        var pbDimVal = cmdB.Parameters.Add("$dimension_value", Microsoft.Data.Sqlite.SqliteType.Text);
+        var pbCorrect = cmdB.Parameters.Add("$correct_count", Microsoft.Data.Sqlite.SqliteType.Integer);
+        var pbTotal = cmdB.Parameters.Add("$total_count", Microsoft.Data.Sqlite.SqliteType.Integer);
+        var pbScore = cmdB.Parameters.Add("$score_percent", Microsoft.Data.Sqlite.SqliteType.Integer);
+
+        foreach (var b in breakdowns)
+        {
+            pbResult.Value = b.ResultId;
+            pbDimType.Value = b.DimensionType;
+            pbDimVal.Value = b.DimensionValue;
+            pbCorrect.Value = b.CorrectCount;
+            pbTotal.Value = b.TotalCount;
+            pbScore.Value = b.ScorePercent;
+            cmdB.ExecuteNonQuery();
+        }
+        transaction.Commit();
+    }
+
+    public PlacementResult? GetPlacementResultBySessionId(string sessionId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText = """
+            SELECT result_id, session_id, learner_id, correct_count, total_count, score_percent,
+                   diagnostic_score_band, estimated_score_min, estimated_score_max, completed_at_utc
+            FROM placement_results
+            WHERE session_id = $session_id
+            """;
+        command.Parameters.AddWithValue("$session_id", sessionId);
+        using var reader = command.ExecuteReader();
+        if (!reader.Read()) return null;
+        return new PlacementResult(
+            reader.GetString(0),
+            reader.GetString(1),
+            reader.GetString(2),
+            reader.GetInt32(3),
+            reader.GetInt32(4),
+            reader.GetInt32(5),
+            reader.GetString(6),
+            reader.GetInt32(7),
+            reader.GetInt32(8),
+            DateTimeOffset.Parse(reader.GetString(9))
+        );
+    }
+
+    public IReadOnlyList<PlacementResultBreakdown> GetPlacementResultBreakdowns(string resultId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText = "SELECT result_id, dimension_type, dimension_value, correct_count, total_count, score_percent FROM placement_result_breakdowns WHERE result_id = $result_id";
+        command.Parameters.AddWithValue("$result_id", resultId);
+        var list = new List<PlacementResultBreakdown>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            list.Add(new PlacementResultBreakdown(
+                reader.GetString(0),
+                reader.GetString(1),
+                reader.GetString(2),
+                reader.GetInt32(3),
+                reader.GetInt32(4),
+                reader.GetInt32(5)
+            ));
+        }
+        return list;
+    }
+
     public void UpsertLearnerAssignment(LearnerAssignment assignment)
     {
         LearnerWorkRules.EnsureValid(assignment);
@@ -1878,6 +2109,21 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         using var reader = command.ExecuteReader();
         while (reader.Read()) assignments.Add(ReadLearnerAssignment(reader));
         return assignments;
+    }
+
+    public ActivitySession? GetActivitySession(string sessionId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT session_id, assignment_id, learner_id, activity_type, status, started_at_utc, completed_at_utc
+            FROM activity_sessions
+            WHERE session_id = $session_id
+            """;
+        command.Parameters.AddWithValue("$session_id", sessionId);
+        using var reader = command.ExecuteReader();
+        if (!reader.Read()) return null;
+        return ReadActivitySession(reader);
     }
 
     public void UpsertActivitySession(ActivitySession session)
@@ -2835,5 +3081,116 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
                 item.Word,
                 item.Meaning
             );
+    }
+
+    public void UpsertLearningPath(LearningPath path)
+    {
+        LearningPathRules.EnsureValid(path);
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO learning_paths (path_id, learner_id, status, archive_reason, created_at_utc, updated_at_utc)
+            VALUES ($path_id, $learner_id, $status, $archive_reason, $created_at_utc, $updated_at_utc)
+            ON CONFLICT(path_id) DO UPDATE SET
+                status = excluded.status,
+                archive_reason = excluded.archive_reason,
+                updated_at_utc = excluded.updated_at_utc
+            """;
+        command.Parameters.AddWithValue("$path_id", path.PathId);
+        command.Parameters.AddWithValue("$learner_id", path.LearnerId);
+        command.Parameters.AddWithValue("$status", path.Status.ToString());
+        command.Parameters.AddWithValue("$archive_reason", path.ArchiveReason ?? (object)DBNull.Value);
+        command.Parameters.AddWithValue("$created_at_utc", path.CreatedAtUtc.ToString("O"));
+        command.Parameters.AddWithValue("$updated_at_utc", path.UpdatedAtUtc.ToString("O"));
+        command.ExecuteNonQuery();
+    }
+
+    public LearningPath? GetActiveLearningPath(string learnerId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText = "SELECT * FROM learning_paths WHERE learner_id = $learner_id AND status = 'Active'";
+        command.Parameters.AddWithValue("$learner_id", learnerId);
+        using var reader = command.ExecuteReader();
+        if (!reader.Read())
+        {
+            return null;
+        }
+
+        return new LearningPath(
+            reader.GetString(0),
+            reader.GetString(1),
+            Enum.Parse<LearningPathStatus>(reader.GetString(2)),
+            reader.IsDBNull(3) ? null : reader.GetString(3),
+            DateTimeOffset.Parse(reader.GetString(4)),
+            DateTimeOffset.Parse(reader.GetString(5))
+        );
+    }
+
+    public void UpsertLearningPathUnit(LearningPathUnit unit)
+    {
+        LearningPathRules.EnsureValid(unit);
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO learning_path_units (unit_id, path_id, unit_key, toeic_part, skill_tags, display_order, status, unlock_reason, source_result_id)
+            VALUES ($unit_id, $path_id, $unit_key, $toeic_part, $skill_tags, $display_order, $status, $unlock_reason, $source_result_id)
+            ON CONFLICT(unit_id) DO UPDATE SET
+                status = excluded.status,
+                unlock_reason = excluded.unlock_reason
+            """;
+        command.Parameters.AddWithValue("$unit_id", unit.UnitId);
+        command.Parameters.AddWithValue("$path_id", unit.PathId);
+        command.Parameters.AddWithValue("$unit_key", unit.UnitKey);
+        command.Parameters.AddWithValue("$toeic_part", unit.ToeicPart);
+        command.Parameters.AddWithValue("$skill_tags", unit.SkillTags);
+        command.Parameters.AddWithValue("$display_order", unit.DisplayOrder);
+        command.Parameters.AddWithValue("$status", unit.Status.ToString());
+        command.Parameters.AddWithValue("$unlock_reason", unit.UnlockReason ?? (object)DBNull.Value);
+        command.Parameters.AddWithValue("$source_result_id", unit.SourceResultId ?? (object)DBNull.Value);
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<LearningPathUnit> GetLearningPathUnits(string pathId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText = "SELECT * FROM learning_path_units WHERE path_id = $path_id ORDER BY display_order ASC";
+        command.Parameters.AddWithValue("$path_id", pathId);
+        using var reader = command.ExecuteReader();
+        var units = new List<LearningPathUnit>();
+        while (reader.Read())
+        {
+            units.Add(new LearningPathUnit(
+                reader.GetString(0),
+                reader.GetString(1),
+                reader.GetString(2),
+                reader.GetInt32(3),
+                reader.GetString(4),
+                reader.GetInt32(5),
+                Enum.Parse<LearningPathUnitStatus>(reader.GetString(6)),
+                reader.IsDBNull(7) ? null : reader.GetString(7),
+                reader.IsDBNull(8) ? null : reader.GetString(8)
+            ));
+        }
+
+        return units;
+    }
+
+    public void UpsertLearnerPathGenerationRun(LearnerPathGenerationRun run)
+    {
+        LearningPathRules.EnsureValid(run);
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO learner_path_generation_runs (run_id, learner_id, placement_result_id, catalog_version, generated_path_id, created_at_utc)
+            VALUES ($run_id, $learner_id, $placement_result_id, $catalog_version, $generated_path_id, $created_at_utc)
+            ON CONFLICT(run_id) DO NOTHING
+            """;
+        command.Parameters.AddWithValue("$run_id", run.RunId);
+        command.Parameters.AddWithValue("$learner_id", run.LearnerId);
+        command.Parameters.AddWithValue("$placement_result_id", run.PlacementResultId);
+        command.Parameters.AddWithValue("$catalog_version", run.CatalogVersion);
+        command.Parameters.AddWithValue("$generated_path_id", run.GeneratedPathId);
+        command.Parameters.AddWithValue("$created_at_utc", run.CreatedAtUtc.ToString("O"));
+        command.ExecuteNonQuery();
     }
 }

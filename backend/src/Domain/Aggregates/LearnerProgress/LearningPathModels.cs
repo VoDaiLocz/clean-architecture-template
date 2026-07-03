@@ -1,9 +1,10 @@
 namespace Domain.Aggregates.LearnerProgress;
 
-public sealed record LearningPathCatalog(IReadOnlyList<LearningUnitDefinition> Units)
+public sealed record LearningPathCatalog(string Version, IReadOnlyList<LearningUnitDefinition> Units)
 {
     public static LearningPathCatalog CreateDefault() =>
         new(
+            "v1.0",
             [
                 new LearningUnitDefinition("part5-word-form", 5, "Word Form", null, 80),
                 new LearningUnitDefinition("part5-verb-tense", 5, "Verb Tense", "part5-word-form", 80),
@@ -100,6 +101,29 @@ public sealed record PlacementSession(
     DateTimeOffset StartedAtUtc,
     DateTimeOffset? CompletedAtUtc
 );
+
+public sealed record PlacementResult(
+    string ResultId,
+    string SessionId,
+    string LearnerId,
+    int CorrectCount,
+    int TotalCount,
+    int ScorePercent,
+    string DiagnosticScoreBand,
+    int EstimatedScoreMin,
+    int EstimatedScoreMax,
+    DateTimeOffset CompletedAtUtc
+);
+
+public sealed record PlacementResultBreakdown(
+    string ResultId,
+    string DimensionType,
+    string DimensionValue,
+    int CorrectCount,
+    int TotalCount,
+    int ScorePercent
+);
+
 
 public static class PlacementRules
 {
@@ -316,6 +340,82 @@ public static class ReviewMasteryRules
         {
             throw new InvalidOperationException("Mastery percent must be 0-100 and blocking review count cannot be negative.");
         }
+    }
+
+    private static void RequireText(string value, string message)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            throw new InvalidOperationException(message);
+        }
+    }
+}
+
+public enum LearningPathStatus
+{
+    Active,
+    Archived
+}
+
+public sealed record LearningPath(
+    string PathId,
+    string LearnerId,
+    LearningPathStatus Status,
+    string? ArchiveReason,
+    DateTimeOffset CreatedAtUtc,
+    DateTimeOffset UpdatedAtUtc
+);
+
+public enum LearningPathUnitStatus
+{
+    Locked,
+    Unlocked,
+    Completed
+}
+
+public sealed record LearningPathUnit(
+    string UnitId,
+    string PathId,
+    string UnitKey,
+    int ToeicPart,
+    string SkillTags,
+    int DisplayOrder,
+    LearningPathUnitStatus Status,
+    string? UnlockReason,
+    string? SourceResultId
+);
+
+public sealed record LearnerPathGenerationRun(
+    string RunId,
+    string LearnerId,
+    string PlacementResultId,
+    string CatalogVersion,
+    string GeneratedPathId,
+    DateTimeOffset CreatedAtUtc
+);
+
+public static class LearningPathRules
+{
+    public static void EnsureValid(LearningPath path)
+    {
+        RequireText(path.PathId, "Path id is required.");
+        RequireText(path.LearnerId, "Learner id is required.");
+    }
+    
+    public static void EnsureValid(LearningPathUnit unit)
+    {
+        RequireText(unit.UnitId, "Unit id is required.");
+        RequireText(unit.PathId, "Path id is required.");
+        RequireText(unit.UnitKey, "Unit key is required.");
+    }
+
+    public static void EnsureValid(LearnerPathGenerationRun run)
+    {
+        RequireText(run.RunId, "Run id is required.");
+        RequireText(run.LearnerId, "Learner id is required.");
+        RequireText(run.PlacementResultId, "Placement result id is required.");
+        RequireText(run.CatalogVersion, "Catalog version is required.");
+        RequireText(run.GeneratedPathId, "Generated path id is required.");
     }
 
     private static void RequireText(string value, string message)

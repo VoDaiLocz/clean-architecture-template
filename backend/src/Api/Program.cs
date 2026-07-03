@@ -8,6 +8,7 @@ using Application.Features.Learner;
 using Application.Features.Learner.Home;
 using Application.Features.Learner.Onboarding;
 using Application.Features.Learner.Placement;
+using Application.Features.Learner.Work;
 using Application.Features.SourceExtraction;
 using Application.Features.SourceManifests;
 using Application.Features.SourceReview;
@@ -272,11 +273,113 @@ learner.MapPost(
 );
 
 learner.MapPost(
+    "/placement/score",
+    Ok<ScorePlacementSessionResponse> (
+        ScorePlacementSessionCommand request,
+        IKnowledgeRepository repository
+    ) =>
+    {
+        var handler = new ScorePlacementSessionHandler(repository);
+        return TypedResults.Ok(handler.Handle(request));
+    }
+);
+
+learner.MapPost(
+    "/path/generate",
+    Ok<GenerateLearningPathResponse> (
+        GenerateLearningPathCommand request,
+        IKnowledgeRepository repository
+    ) =>
+    {
+        var handler = new GenerateLearningPathHandler(repository);
+        return TypedResults.Ok(handler.Handle(request));
+    }
+);
+
+learner.MapPost(
     "/demo/reset",
     NoContent (DemoLearnerSession session) =>
     {
         session.Reset();
         return TypedResults.NoContent();
+    }
+);
+
+learner.MapGet(
+    "/today",
+    Ok<LearnerTodayPlanResponse> (
+        string learnerId,
+        IKnowledgeRepository repository
+    ) =>
+    {
+        var handler = new GetLearnerTodayPlanHandler(repository);
+        return TypedResults.Ok(handler.Handle(new GetLearnerTodayPlanQuery(learnerId)));
+    }
+);
+
+learner.MapPost(
+    "/assignments/{assignmentId}/sessions/start",
+    Ok<ActivitySessionResponse> (
+        string assignmentId,
+        string learnerId,
+        IKnowledgeRepository repository
+    ) =>
+    {
+        var handler = new ManageActivitySessionHandler(repository);
+        return TypedResults.Ok(handler.Handle(new StartActivitySessionCommand(assignmentId, learnerId)));
+    }
+);
+
+learner.MapGet(
+    "/sessions/{sessionId}",
+    Ok<ActivitySessionResponse> (
+        string sessionId,
+        string learnerId,
+        IKnowledgeRepository repository
+    ) =>
+    {
+        var handler = new ManageActivitySessionHandler(repository);
+        return TypedResults.Ok(handler.Handle(new GetActivitySessionQuery(sessionId, learnerId)));
+    }
+);
+
+learner.MapPost(
+    "/sessions/{sessionId}/complete",
+    Ok<ActivitySessionResponse> (
+        string sessionId,
+        string learnerId,
+        IKnowledgeRepository repository
+    ) =>
+    {
+        var handler = new ManageActivitySessionHandler(repository);
+        return TypedResults.Ok(handler.Handle(new CompleteActivitySessionCommand(sessionId, learnerId)));
+    }
+);
+
+learner.MapPost(
+    "/sessions/{sessionId}/abandon",
+    Ok<ActivitySessionResponse> (
+        string sessionId,
+        string learnerId,
+        IKnowledgeRepository repository
+    ) =>
+    {
+        var handler = new ManageActivitySessionHandler(repository);
+        return TypedResults.Ok(handler.Handle(new AbandonActivitySessionCommand(sessionId, learnerId)));
+    }
+);
+
+learner.MapPost(
+    "/sessions/{sessionId}/attempts",
+    Ok<SubmitAttemptResponse> (
+        string sessionId,
+        string learnerId,
+        SubmitAttemptCommand command,
+        IKnowledgeRepository repository
+    ) =>
+    {
+        var handler = new SubmitAttemptHandler(repository);
+        return TypedResults.Ok(handler.Handle(command with { SessionId = sessionId, LearnerId = learnerId }));
     }
 );
 
