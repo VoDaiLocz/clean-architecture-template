@@ -22,6 +22,24 @@ public enum SourceType
     Other,
 }
 
+public enum RejectedReason
+{
+    InvalidPdfHeader,
+    UnsupportedMime,
+    DriveHtmlPlaceholder,
+    Unknown,
+}
+
+public sealed record RejectedLocalSourceFile(
+    string RejectionId,
+    string FilePath,
+    string Extension,
+    long SizeBytes,
+    RejectedReason Reason,
+    string AuditNotes,
+    DateTimeOffset RejectedAtUtc
+);
+
 public enum SourceAccessStatus
 {
     Accessible,

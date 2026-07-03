@@ -446,6 +446,16 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
                 completed_count INTEGER NOT NULL,
                 rejected_count INTEGER NOT NULL
             );
+
+            CREATE TABLE IF NOT EXISTS rejected_local_source_files (
+                rejection_id TEXT PRIMARY KEY,
+                file_path TEXT NOT NULL,
+                extension TEXT NOT NULL,
+                size_bytes INTEGER NOT NULL,
+                reason TEXT NOT NULL,
+                audit_notes TEXT NOT NULL,
+                rejected_at_utc TEXT NOT NULL
+            );
             """;
         command.ExecuteNonQuery();
         EnsureDefaultCorpusManifest();
@@ -787,6 +797,69 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         using var reader = command.ExecuteReader();
         return reader.Read() ? ReadSourceAsset(reader) : null;
     }
+
+    public void UpsertRejectedLocalSourceFile(RejectedLocalSourceFile file)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO rejected_local_source_files (
+                rejection_id, file_path, extension, size_bytes,
+                reason, audit_notes, rejected_at_utc
+            ) VALUES (
+                $rejection_id, $file_path, $extension, $size_bytes,
+                $reason, $audit_notes, $rejected_at_utc
+            )
+            ON CONFLICT(rejection_id) DO UPDATE SET
+                file_path = excluded.file_path,
+                extension = excluded.extension,
+                size_bytes = excluded.size_bytes,
+                reason = excluded.reason,
+                audit_notes = excluded.audit_notes,
+                rejected_at_utc = excluded.rejected_at_utc
+            """;
+
+        command.Parameters.AddWithValue("$rejection_id", file.RejectionId);
+        command.Parameters.AddWithValue("$file_path", file.FilePath);
+        command.Parameters.AddWithValue("$extension", file.Extension);
+        command.Parameters.AddWithValue("$size_bytes", file.SizeBytes);
+        command.Parameters.AddWithValue("$reason", file.Reason.ToString());
+        command.Parameters.AddWithValue("$audit_notes", file.AuditNotes);
+        command.Parameters.AddWithValue("$rejected_at_utc", file.RejectedAtUtc.ToString("O"));
+
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<RejectedLocalSourceFile> GetRejectedLocalSourceFiles()
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT
+                rejection_id, file_path, extension, size_bytes,
+                reason, audit_notes, rejected_at_utc
+            FROM rejected_local_source_files
+            ORDER BY rejected_at_utc DESC
+            """;
+
+        var files = new List<RejectedLocalSourceFile>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            files.Add(new RejectedLocalSourceFile(
+                reader.GetString(0),
+                reader.GetString(1),
+                reader.GetString(2),
+                reader.GetInt64(3),
+                Enum.Parse<RejectedReason>(reader.GetString(4)),
+                reader.GetString(5),
+                DateTimeOffset.Parse(reader.GetString(6))
+            ));
+        }
+
+        return files;
+    }
+
 
     public void UpsertSourceDiscoveryIssue(SourceDiscoveryIssue issue)
     {
