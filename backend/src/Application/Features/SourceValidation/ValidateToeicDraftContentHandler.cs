@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Application.Common.Interfaces.Repositories;
 using Domain.Aggregates.Corpus;
 using Domain.Aggregates.LearningItems;
@@ -50,6 +51,8 @@ public sealed class ValidateToeicDraftContentHandler(IKnowledgeRepository reposi
             issues.Add(new ValidationIssue("missing_source_trace", "Draft content must keep source trace."));
         }
 
+        ValidatePayloadEnvelope(draft, issues);
+
         if (draft.ItemType is "ReadingQuestion" or "ListeningQuestion"
             && !draft.PayloadJson.Contains("prompt", StringComparison.OrdinalIgnoreCase))
         {
@@ -69,5 +72,36 @@ public sealed class ValidateToeicDraftContentHandler(IKnowledgeRepository reposi
         }
 
         return issues;
+    }
+
+    private static void ValidatePayloadEnvelope(DraftContentItem draft, List<ValidationIssue> issues)
+    {
+        try
+        {
+            using var document = JsonDocument.Parse(draft.PayloadJson);
+            var root = document.RootElement;
+
+            if (!root.TryGetProperty("schemaVersion", out var schemaVersion)
+                || schemaVersion.GetString() != "toeic-draft.v1")
+            {
+                issues.Add(new ValidationIssue("missing_draft_schema_version", "Draft payload must use schemaVersion toeic-draft.v1."));
+                return;
+            }
+
+            if (!root.TryGetProperty("kind", out var kind)
+                || kind.GetString() != draft.ItemType)
+            {
+                issues.Add(new ValidationIssue("draft_kind_mismatch", "Draft payload kind must match item type."));
+            }
+
+            if (!root.TryGetProperty("data", out _))
+            {
+                issues.Add(new ValidationIssue("missing_draft_data", "Draft payload must wrap parser output in data."));
+            }
+        }
+        catch (JsonException)
+        {
+            issues.Add(new ValidationIssue("malformed_draft_payload", "Draft payload must be valid JSON."));
+        }
     }
 }
