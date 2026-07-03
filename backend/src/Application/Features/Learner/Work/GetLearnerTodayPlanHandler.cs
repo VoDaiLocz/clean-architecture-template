@@ -41,14 +41,25 @@ public sealed class GetLearnerTodayPlanHandler(IKnowledgeRepository repository)
             throw new ArgumentException("Active learning path not found.");
         }
 
+        var masteryService = new Application.Features.Learner.Mastery.MasteryCalculationService(repository);
+
         var pathUnits = repository.GetLearningPathUnits(path.PathId);
-        var completedUnits = pathUnits.Count(u => u.Status == LearningPathUnitStatus.Completed);
-        
         var currentUnit = pathUnits
             .Where(u => u.Status == LearningPathUnitStatus.Unlocked)
             .OrderBy(u => u.DisplayOrder)
             .FirstOrDefault();
 
+        if (currentUnit != null)
+        {
+            masteryService.RecalculateMastery(query.LearnerId, currentUnit.UnitId);
+            pathUnits = repository.GetLearningPathUnits(path.PathId);
+            currentUnit = pathUnits
+                .Where(u => u.Status == LearningPathUnitStatus.Unlocked)
+                .OrderBy(u => u.DisplayOrder)
+                .FirstOrDefault();
+        }
+
+        var completedUnits = pathUnits.Count(u => u.Status == LearningPathUnitStatus.Completed);
         var pathProgress = new LearnerPathProgressResponse(
             pathUnits.Count,
             completedUnits,
@@ -82,11 +93,42 @@ public sealed class GetLearnerTodayPlanHandler(IKnowledgeRepository repository)
         // 2. Generate new assignment if unit is available
         if (currentUnit != null)
         {
+            var blockers = repository.GetUnlockBlockers(query.LearnerId, currentUnit.UnitId)
+                .Select(b => b.Reason).ToList();
+
+            LearnerAssignmentType nextActivity = LearnerAssignmentType.Lesson;
+            
+            if (blockers.Contains("REVIEWS_PENDING"))
+            {
+                nextActivity = LearnerAssignmentType.Review;
+            }
+            else if (blockers.Contains("LESSON_NOT_COMPLETED"))
+            {
+                nextActivity = LearnerAssignmentType.Lesson;
+            }
+            else if (blockers.Contains("DRILL_NOT_COMPLETED"))
+            {
+                nextActivity = LearnerAssignmentType.Drill;
+            }
+            else if (blockers.Contains("MINI_TEST_NOT_PASSED"))
+            {
+                nextActivity = LearnerAssignmentType.MiniTest;
+            }
+            else if (blockers.Contains("PREREQUISITE_NOT_COMPLETED"))
+            {
+                return new LearnerTodayPlanResponse(
+                    null,
+                    blockers,
+                    pathProgress,
+                    openReviews
+                );
+            }
+
             var assignmentId = Guid.NewGuid().ToString();
             var assignment = new LearnerAssignment(
                 assignmentId,
                 query.LearnerId,
-                LearnerAssignmentType.Lesson,
+                nextActivity,
                 currentUnit.UnitId,
                 LearnerAssignmentStatus.Assigned,
                 DateTimeOffset.UtcNow,
