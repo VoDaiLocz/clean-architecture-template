@@ -697,6 +697,58 @@ p {
   border-radius: 10px;
 }
 
+.repair-layout {
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1fr);
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.review-queue {
+  position: sticky;
+  top: 104px;
+  display: grid;
+  gap: var(--space-3);
+}
+
+.queue-item {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-4);
+  color: var(--toeic-text-muted);
+  text-align: left;
+  background: var(--toeic-primary-soft);
+  border: 1px solid var(--toeic-border);
+  border-radius: 12px;
+}
+
+.queue-item strong {
+  color: var(--toeic-navy);
+}
+
+.mistake-repair {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.repair-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.repair-grid section,
+.evidence-box,
+.result-panel {
+  padding: var(--space-4);
+  background: var(--toeic-primary-soft);
+  border-radius: 14px;
+}
+
+.evidence-box {
+  border-left: 4px solid var(--toeic-primary);
+}
+
 @keyframes surface-in {
   from {
     opacity: 0;
@@ -740,6 +792,8 @@ p {
   .today-grid,
   .lesson-layout,
   .practice-layout,
+  .repair-layout,
+  .repair-grid,
   .journey-layout,
   .placement-layout,
   .form-panel {
@@ -755,6 +809,10 @@ p {
   }
 
   .sticky-controls {
+    position: static;
+  }
+
+  .review-queue {
     position: static;
   }
 

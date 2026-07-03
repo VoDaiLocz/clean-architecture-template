@@ -211,6 +211,38 @@ export type SubmitAttemptResponse = {
   nextAction: LearnerNextAction;
 };
 
+export type ReviewQueueItem = {
+  reviewItemId: string;
+  questionContext: string;
+  learnerAnswer: string;
+  correctAnswer: string;
+  explanation: string;
+  evidence: string;
+  audioUrl: string | null;
+  passage: string | null;
+};
+
+export type ReviewQueueGroup = {
+  blockerId: string;
+  unitTitle: string;
+  part: number;
+  skill: string;
+  blockerReason: string;
+  items: ReviewQueueItem[];
+};
+
+export type ReviewQueueResponse = {
+  groups: ReviewQueueGroup[];
+};
+
+export type RepairReviewResponse = {
+  reviewItemId: string;
+  status: string;
+  blockerResolved: boolean;
+  learnerMessage: string;
+  nextAction: LearnerNextAction;
+};
+
 @Injectable({ providedIn: 'root' })
 export class ApiClientService {
   private readonly http = inject(HttpClient);
@@ -256,5 +288,13 @@ export class ApiClientService {
       `${this.baseUrl}/learner/practice/${activitySessionId}/attempts`,
       request,
     );
+  }
+
+  getReviewQueue(): Observable<ReviewQueueResponse> {
+    return this.http.get<ReviewQueueResponse>(`${this.baseUrl}/learner/review-queue`);
+  }
+
+  repairReviewItem(reviewItemId: string): Observable<RepairReviewResponse> {
+    return this.http.post<RepairReviewResponse>(`${this.baseUrl}/learner/review/${reviewItemId}/repair`, {});
   }
 }
