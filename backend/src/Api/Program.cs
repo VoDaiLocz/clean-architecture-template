@@ -1,6 +1,7 @@
 using Application;
 using Application.Common.Health;
 using Application.Common.Interfaces.Repositories;
+using Application.Features.ContentCoverage;
 using Application.Features.Dashboard.Queries;
 using Application.Features.LearningItems.Commands;
 using Application.Features.Learner;
@@ -38,6 +39,7 @@ app.UseCors("frontend");
 
 var api = app.MapGroup("/api");
 var learner = api.MapGroup("/learner");
+var admin = api.MapGroup("/admin");
 
 api.MapGet(
     "/health",
@@ -52,6 +54,15 @@ api.MapGet(
     Ok<DashboardResponse> (IKnowledgeRepository repository) =>
     {
         var handler = new GetDashboardHandler(repository);
+        return TypedResults.Ok(handler.Handle());
+    }
+);
+
+admin.MapGet(
+    "/content-coverage",
+    Ok<ContentCoverageSnapshot> (IKnowledgeRepository repository) =>
+    {
+        var handler = new GetContentCoverageHandler(repository);
         return TypedResults.Ok(handler.Handle());
     }
 );

@@ -1380,6 +1380,49 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         return questions;
     }
 
+    public int CountDraftContentItems(DraftContentStatus status)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT COUNT(*)
+            FROM draft_content_items
+            WHERE status = $status
+            """;
+        command.Parameters.AddWithValue("$status", status.ToString());
+        return Convert.ToInt32(command.ExecuteScalar());
+    }
+
+    public int CountPublishedLessons(int toeicPart)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT COUNT(*)
+            FROM published_lessons
+            WHERE toeic_part = $toeic_part
+                AND status = $status
+            """;
+        command.Parameters.AddWithValue("$toeic_part", toeicPart);
+        command.Parameters.AddWithValue("$status", PublishedContentStatus.Published.ToString());
+        return Convert.ToInt32(command.ExecuteScalar());
+    }
+
+    public int CountPublishedQuestions(int toeicPart)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT COUNT(*)
+            FROM published_questions
+            WHERE toeic_part = $toeic_part
+                AND status = $status
+            """;
+        command.Parameters.AddWithValue("$toeic_part", toeicPart);
+        command.Parameters.AddWithValue("$status", PublishedContentStatus.Published.ToString());
+        return Convert.ToInt32(command.ExecuteScalar());
+    }
+
     public void UpsertPublishedTest(PublishedTest test)
     {
         PublishedTestRules.EnsureValid(test);

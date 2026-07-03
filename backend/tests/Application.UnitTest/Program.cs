@@ -1,6 +1,7 @@
 using Application.Common.ApiContracts;
 using Application.Common.Health;
 using Application.Features.Dashboard.Queries;
+using Application.Features.ContentCoverage;
 using Application.Features.LearningItems.Commands;
 using Application.Features.Learner;
 using Application.Features.Learner.Home;
@@ -36,6 +37,7 @@ var tests = new List<(string Name, Action Run)>
     ("low confidence goes to review issues", ApplicationTests.LowConfidenceGoesToReview),
     ("dashboard reports raw learning and issue counts", ApplicationTests.DashboardReportsCounts),
     ("dashboard reports corpus coverage without pretending backlog is published", ApplicationTests.DashboardReportsCorpusCoverage),
+    ("content coverage baseline separates source draft validation and published layers", ApplicationTests.ContentCoverageBaselineSeparatesSourceDraftValidationAndPublishedLayers),
     ("source manifest classifier identifies provider material and access status", ApplicationTests.SourceManifestClassifierIdentifiesProviderMaterialAndAccessStatus),
     ("repository persists normalized source manifest entries", ApplicationTests.RepositoryPersistsNormalizedSourceManifestEntries),
     ("imports audited TOEIC source manifest into database", ApplicationTests.ImportsAuditedToeicSourceManifestIntoDatabase),
@@ -188,6 +190,84 @@ static class ApplicationTests
         Assert.True(response.NormalizationStages.Count >= 5, "Expected full stage coverage rows.");
         var inventoryStage = response.NormalizationStages.Single(stage => stage.StageKey == "inventory");
         Assert.Equal(932, inventoryStage.CompletedCount, "Expected completed inventory count.");
+    }
+
+    public static void ContentCoverageBaselineSeparatesSourceDraftValidationAndPublishedLayers()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        new ImportToeicSourceManifestHandler(repository).Handle();
+        var asset = SeedSourceAsset(repository);
+        repository.UpsertDraftContentItem(new DraftContentItem(
+            DraftId: "draft-ready-part5",
+            AssetId: asset.AssetId,
+            MaterialClass: MaterialClass.TestBook,
+            ToeicPart: 5,
+            ItemType: "ReadingQuestion",
+            PayloadJson: """{"prompt":"The team needs a more ____ plan.","options":{"A":"effect","B":"effective","C":"effectively","D":"effectiveness"},"correctAnswer":"B","skillTags":["word_form"]}""",
+            SourceTraceJson: """{"sourceId":"sheet-row-7","assetId":"asset-sparta-test-01-pdf"}""",
+            ParserConfidence: 0.94m,
+            Status: DraftContentStatus.ReadyForReview
+        ));
+        repository.UpsertDraftContentItem(new DraftContentItem(
+            DraftId: "draft-invalid-part7",
+            AssetId: asset.AssetId,
+            MaterialClass: MaterialClass.TestBook,
+            ToeicPart: 7,
+            ItemType: "ReadingQuestion",
+            PayloadJson: """{"prompt":"Missing passage","options":{"A":"x"},"correctAnswer":"A","skillTags":["inference"]}""",
+            SourceTraceJson: """{"sourceId":"sheet-row-7","assetId":"asset-sparta-test-01-pdf"}""",
+            ParserConfidence: 0.62m,
+            Status: DraftContentStatus.ValidationFailed
+        ));
+        repository.RecordValidationIssue(
+            new ValidationIssue("missing_passage", "Part 7 draft must include passage evidence."),
+            "ReadingQuestion",
+            "sheet-row-7"
+        );
+        repository.UpsertPublishedLesson(new PublishedLesson(
+            LessonId: "lesson-part5-word-form",
+            UnitId: "part5-word-form",
+            ToeicPart: 5,
+            Title: "Word Form Foundations",
+            Objective: "Choose the correct part of speech from sentence position.",
+            SkillTags: "word_form,grammar",
+            SourceTraceJson: """{"sourceId":"sheet-row-7","draftId":"draft-ready-part5"}""",
+            Status: PublishedContentStatus.Published
+        ));
+        repository.UpsertPublishedQuestion(new PublishedQuestion(
+            QuestionId: "question-part5-word-form-001",
+            LessonId: "lesson-part5-word-form",
+            ToeicPart: 5,
+            QuestionType: PublishedQuestionType.SingleQuestion,
+            Prompt: "The team needs a more ____ plan.",
+            OptionsJson: """{"A":"effect","B":"effective","C":"effectively","D":"effectiveness"}""",
+            CorrectAnswer: "B",
+            Explanation: "The blank before a noun needs an adjective.",
+            MediaAssetId: null,
+            PassageId: null,
+            GroupId: null,
+            EvidenceJson: """{"sourceId":"sheet-row-7","draftId":"draft-ready-part5"}""",
+            SkillTags: "word_form,grammar",
+            SourceTraceJson: """{"assetId":"asset-sparta-test-01-pdf"}""",
+            Status: PublishedContentStatus.Published
+        ));
+
+        var coverage = new GetContentCoverageHandler(repository).Handle();
+
+        Assert.Equal(73, coverage.Source.TotalSources, "Coverage must include audited source manifest count.");
+        Assert.Equal(60, coverage.Source.AccessibleSources, "Coverage must preserve accessible source count.");
+        Assert.Equal(2, coverage.Draft.TotalDraftItems, "Draft count must stay separate from published content.");
+        Assert.Equal(1, coverage.Draft.ReadyForReviewDraftItems, "Ready draft count should be explicit.");
+        Assert.Equal(1, coverage.Draft.ValidationFailedDraftItems, "Validation failed draft count should be explicit.");
+        Assert.Equal(1, coverage.Validation.ValidationIssueCount, "Validation issue count should be separate.");
+        Assert.Equal(1, coverage.Published.PublishedQuestions, "Only approved published rows count as learner content.");
+        Assert.Equal(0, coverage.Published.PublishedTests, "Missing test data must not be faked.");
+        var part5 = coverage.ToeicParts.Single(part => part.ToeicPart == 5);
+        var part7 = coverage.ToeicParts.Single(part => part.ToeicPart == 7);
+        Assert.Equal(1, part5.PublishedQuestions, "Part 5 should report real published question count.");
+        Assert.Equal(1, part5.PublishedLessons, "Part 5 should report real published lesson count.");
+        Assert.Equal(0, part7.PublishedQuestions, "Part 7 source backlog must not appear as published.");
     }
 
     public static void SourceManifestClassifierIdentifiesProviderMaterialAndAccessStatus()
@@ -1214,6 +1294,14 @@ static class ApplicationTests
                 && contract.Audience == ApiAudience.Admin
                 && contract.ResponseContract == "ImportToeicSourceManifestResult"),
             "Source manifest import route contract must be typed."
+        );
+        Assert.True(
+            contracts.Any(contract =>
+                contract.Method == "GET"
+                && contract.Route == "/api/admin/content-coverage"
+                && contract.Audience == ApiAudience.Admin
+                && contract.ResponseContract == "ContentCoverageSnapshot"),
+            "Content coverage route contract must be typed."
         );
 
         var duplicateRoute = contracts

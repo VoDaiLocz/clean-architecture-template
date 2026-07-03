@@ -8,6 +8,7 @@ public static class ApiContractCatalog
     [
         new("GET", "/api/health", ApiAudience.Operations, "PlatformHealthSnapshot"),
         new("GET", "/api/dashboard", ApiAudience.Admin, "DashboardResponse"),
+        new("GET", "/api/admin/content-coverage", ApiAudience.Admin, "ContentCoverageSnapshot"),
         new("POST", "/api/source-manifest/toeic-audit", ApiAudience.Admin, "ImportToeicSourceManifestResult"),
         new("GET", "/api/source-manifest/summary", ApiAudience.Admin, "SourceManifestSummary"),
         new("POST", "/api/raw-sources", ApiAudience.Admin, "RawSourceResponse"),
