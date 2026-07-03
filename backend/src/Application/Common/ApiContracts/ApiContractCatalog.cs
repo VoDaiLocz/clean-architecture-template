@@ -24,6 +24,7 @@ public static class ApiContractCatalog
         new("POST", "/api/learner/activities/{activityId}/attempts", ApiAudience.Learner, "AttemptResponse"),
         new("GET", "/api/learner/review", ApiAudience.Learner, "LearnerReviewItemResponse[]"),
         new("POST", "/api/learner/review/{reviewItemId}/attempts", ApiAudience.Learner, "AttemptResponse"),
+        new("GET", "/api/learner/mastery/{unitId}", ApiAudience.Learner, "LearnerMasteryResponse"),
     ];
 }
 
