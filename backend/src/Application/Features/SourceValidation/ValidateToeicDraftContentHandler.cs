@@ -59,6 +59,8 @@ public sealed class ValidateToeicDraftContentHandler(IKnowledgeRepository reposi
             issues.Add(new ValidationIssue("missing_prompt", "Draft question prompt is required."));
         }
 
+        ValidateQuestionAnswerContract(draft, issues);
+
         if (draft.ToeicPart is 3 or 4
             && !draft.PayloadJson.Contains("groupId", StringComparison.OrdinalIgnoreCase))
         {
@@ -102,6 +104,43 @@ public sealed class ValidateToeicDraftContentHandler(IKnowledgeRepository reposi
         catch (JsonException)
         {
             issues.Add(new ValidationIssue("malformed_draft_payload", "Draft payload must be valid JSON."));
+        }
+    }
+
+    private static void ValidateQuestionAnswerContract(DraftContentItem draft, List<ValidationIssue> issues)
+    {
+        if (draft.ItemType is not ("ReadingQuestion" or "ListeningQuestion"))
+        {
+            return;
+        }
+
+        try
+        {
+            using var document = JsonDocument.Parse(draft.PayloadJson);
+            var root = document.RootElement;
+            if (!root.TryGetProperty("schemaVersion", out var schemaVersion)
+                || schemaVersion.GetString() != "toeic-draft.v1"
+                || !root.TryGetProperty("data", out var data))
+            {
+                return;
+            }
+
+            var payload = data.TryGetProperty("parserPayload", out var parserPayload)
+                ? parserPayload
+                : data;
+
+            if (!payload.TryGetProperty("options", out var options)
+                || options.ValueKind != JsonValueKind.Object
+                || !payload.TryGetProperty("correctAnswer", out var correctAnswer)
+                || string.IsNullOrWhiteSpace(correctAnswer.GetString())
+                || !options.TryGetProperty(correctAnswer.GetString()!, out _))
+            {
+                issues.Add(new ValidationIssue("invalid_answer_options", "Question draft must include options and a correct answer that exists in options."));
+            }
+        }
+        catch (JsonException)
+        {
+            return;
         }
     }
 }

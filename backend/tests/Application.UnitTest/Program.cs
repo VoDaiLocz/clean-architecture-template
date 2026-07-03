@@ -795,7 +795,7 @@ static class ApplicationTests
             MaterialClass: MaterialClass.TestBook,
             ToeicPart: 5,
             ItemType: "ReadingQuestion",
-            PayloadJson: """{"schemaVersion":"toeic-draft.v1","kind":"ReadingQuestion","data":{"prompt":"The manager ____ the report.","skillTags":["verb_tense"],"parserPayload":{"correctAnswer":"B"}}}""",
+            PayloadJson: """{"schemaVersion":"toeic-draft.v1","kind":"ReadingQuestion","data":{"prompt":"The manager ____ the report.","skillTags":["verb_tense"],"parserPayload":{"options":{"A":"submit","B":"submitted"},"correctAnswer":"B"}}}""",
             SourceTraceJson: """{"assetId":"asset-sparta-test-01-pdf","sourceBlockId":"block-reading-001"}""",
             ParserConfidence: 0.91m,
             Status: DraftContentStatus.PendingValidation
@@ -812,12 +812,23 @@ static class ApplicationTests
             Status: DraftContentStatus.PendingValidation
         ));
         repository.UpsertDraftContentItem(new DraftContentItem(
+            DraftId: "draft-missing-answer-options-part5",
+            AssetId: asset.AssetId,
+            MaterialClass: MaterialClass.TestBook,
+            ToeicPart: 5,
+            ItemType: "ReadingQuestion",
+            PayloadJson: """{"schemaVersion":"toeic-draft.v1","kind":"ReadingQuestion","data":{"prompt":"The manager ____ the report.","skillTags":["verb_tense"],"parserPayload":{"correctAnswer":"B"}}}""",
+            SourceTraceJson: """{"assetId":"asset-sparta-test-01-pdf","sourceBlockId":"block-reading-001"}""",
+            ParserConfidence: 0.91m,
+            Status: DraftContentStatus.PendingValidation
+        ));
+        repository.UpsertDraftContentItem(new DraftContentItem(
             DraftId: "draft-invalid-part7",
             AssetId: asset.AssetId,
             MaterialClass: MaterialClass.TestBook,
             ToeicPart: 7,
             ItemType: "ReadingQuestion",
-            PayloadJson: """{"schemaVersion":"toeic-draft.v1","kind":"ReadingQuestion","data":{"prompt":"What is the purpose?","skillTags":["main_idea"]}}""",
+            PayloadJson: """{"schemaVersion":"toeic-draft.v1","kind":"ReadingQuestion","data":{"prompt":"What is the purpose?","skillTags":["main_idea"],"parserPayload":{"options":{"A":"To announce a policy","B":"To request feedback"},"correctAnswer":"A"}}}""",
             SourceTraceJson: """{"assetId":"asset-sparta-test-01-pdf","sourceBlockId":"block-reading-001"}""",
             ParserConfidence: 0.9m,
             Status: DraftContentStatus.PendingValidation
@@ -827,11 +838,12 @@ static class ApplicationTests
         var result = handler.Handle(new ValidateToeicDraftContentCommand(asset.AssetId));
 
         Assert.Equal(1, result.ValidDraftCount, "Valid draft should pass validation.");
-        Assert.Equal(2, result.InvalidDraftCount, "Invalid drafts should fail validation.");
-        Assert.Equal(2, repository.Count("validation_issues"), "Invalid drafts should create validation issues.");
+        Assert.Equal(3, result.InvalidDraftCount, "Invalid drafts should fail validation.");
+        Assert.Equal(3, repository.Count("validation_issues"), "Invalid drafts should create validation issues.");
         var drafts = repository.GetDraftContentItems(asset.AssetId);
         Assert.Equal(DraftContentStatus.ReadyForReview, drafts.Single(draft => draft.DraftId == "draft-valid-part5").Status, "Valid draft should be ready for review.");
         Assert.Equal(DraftContentStatus.ValidationFailed, drafts.Single(draft => draft.DraftId == "draft-unversioned-part5").Status, "Unversioned draft should be marked failed.");
+        Assert.Equal(DraftContentStatus.ValidationFailed, drafts.Single(draft => draft.DraftId == "draft-missing-answer-options-part5").Status, "Question draft without answer options should be marked failed.");
         Assert.Equal(DraftContentStatus.ValidationFailed, drafts.Single(draft => draft.DraftId == "draft-invalid-part7").Status, "Invalid draft should be marked failed.");
     }
 
