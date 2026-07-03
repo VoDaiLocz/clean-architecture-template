@@ -430,6 +430,21 @@ public static class PostgresMigrationCatalog
                 ON placement_sessions(learner_id, status);
             """
         ),
+        new(
+            "016_unlock_blockers",
+            """
+            CREATE TABLE IF NOT EXISTS unlock_blockers (
+                blocker_id varchar(160) PRIMARY KEY,
+                learner_id varchar(160) NOT NULL REFERENCES learner_profiles(learner_id),
+                unit_id varchar(160) NOT NULL,
+                reason text NOT NULL,
+                created_at_utc timestamptz NOT NULL
+            );
+            
+            CREATE INDEX IF NOT EXISTS idx_unlock_blockers_learner_unit
+                ON unlock_blockers(learner_id, unit_id);
+            """
+        ),
     ];
 }
 
