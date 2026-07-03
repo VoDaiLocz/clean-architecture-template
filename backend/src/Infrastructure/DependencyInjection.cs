@@ -9,6 +9,8 @@ using Infrastructure.Jobs;
 using Infrastructure.Storage;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Application.Features.SourceExtraction;
+using Infrastructure.Extraction;
 
 namespace Infrastructure;
 
@@ -32,6 +34,7 @@ public static class DependencyInjection
         services.AddSingleton(new BackgroundJobRetryPolicy(maxAttempts: 3));
         services.AddSingleton<IBackgroundJobQueue, InMemoryBackgroundJobQueue>();
         services.AddSingleton<IPlatformHealthService, PlatformHealthService>();
+        services.AddSingleton<IPdfTextBlockExtractor, PdfPigTextBlockExtractor>();
 
         return services;
     }

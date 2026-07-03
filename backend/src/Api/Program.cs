@@ -8,6 +8,7 @@ using Application.Features.Learner;
 using Application.Features.Learner.Home;
 using Application.Features.Learner.Onboarding;
 using Application.Features.Learner.Placement;
+using Application.Features.SourceExtraction;
 using Application.Features.SourceManifests;
 using Domain.Aggregates.Corpus;
 using Domain.Aggregates.LearningItems;
@@ -112,6 +113,19 @@ api.MapPost(
     {
         var handler = new ImportLocalToeicDownloadsHandler(repository);
         return TypedResults.Ok(handler.Handle(request));
+    }
+);
+
+admin.MapPost(
+    "/source-assets/{assetId}/extract-blocks",
+    Ok<ExtractToeicPdfBlocksResult> (
+        string assetId,
+        IKnowledgeRepository repository,
+        IPdfTextBlockExtractor extractor
+    ) =>
+    {
+        var handler = new ExtractToeicPdfBlocksHandler(repository, extractor);
+        return TypedResults.Ok(handler.Handle(new ExtractToeicPdfBlocksCommand(assetId)));
     }
 );
 
