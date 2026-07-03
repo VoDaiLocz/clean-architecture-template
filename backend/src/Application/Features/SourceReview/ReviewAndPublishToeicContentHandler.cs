@@ -54,7 +54,10 @@ public sealed class ReviewAndPublishToeicContentHandler(IKnowledgeRepository rep
     private static PublishedQuestion CreatePublishedQuestion(DraftContentItem draft, string lessonId)
     {
         using var document = JsonDocument.Parse(draft.PayloadJson);
-        var root = document.RootElement;
+        var data = GetDraftData(document.RootElement);
+        var parserPayload = data.TryGetProperty("parserPayload", out var nestedPayload)
+            ? nestedPayload
+            : data;
         var toeicPart = draft.ToeicPart ?? throw new InvalidOperationException("Published draft requires TOEIC part.");
 
         return new PublishedQuestion(
@@ -62,17 +65,38 @@ public sealed class ReviewAndPublishToeicContentHandler(IKnowledgeRepository rep
             LessonId: lessonId,
             ToeicPart: toeicPart,
             QuestionType: PublishedQuestionType.SingleQuestion,
-            Prompt: root.GetProperty("prompt").GetString() ?? "",
-            OptionsJson: root.GetProperty("options").GetRawText(),
-            CorrectAnswer: root.GetProperty("correctAnswer").GetString() ?? "",
-            Explanation: root.TryGetProperty("explanation", out var explanation) ? explanation.GetString() ?? "" : "Reviewed TOEIC explanation pending enrichment.",
+            Prompt: data.GetProperty("prompt").GetString() ?? "",
+            OptionsJson: parserPayload.GetProperty("options").GetRawText(),
+            CorrectAnswer: parserPayload.GetProperty("correctAnswer").GetString() ?? "",
+            Explanation: parserPayload.TryGetProperty("explanation", out var explanation) ? explanation.GetString() ?? "" : "Reviewed TOEIC explanation pending enrichment.",
             MediaAssetId: null,
-            PassageId: root.TryGetProperty("passageId", out var passageId) ? passageId.GetString() : null,
-            GroupId: root.TryGetProperty("groupId", out var groupId) ? groupId.GetString() : null,
+            PassageId: GetOptionalString(data, parserPayload, "passageId"),
+            GroupId: GetOptionalString(data, parserPayload, "groupId"),
             EvidenceJson: draft.SourceTraceJson,
-            SkillTags: root.TryGetProperty("skillTags", out var tags) ? tags.GetRawText() : "[]",
+            SkillTags: data.TryGetProperty("skillTags", out var tags) ? tags.GetRawText() : "[]",
             SourceTraceJson: draft.SourceTraceJson,
             Status: PublishedContentStatus.Published
         );
+    }
+
+    private static JsonElement GetDraftData(JsonElement root)
+    {
+        if (root.TryGetProperty("schemaVersion", out _)
+            && root.TryGetProperty("data", out var data))
+        {
+            return data;
+        }
+
+        return root;
+    }
+
+    private static string? GetOptionalString(JsonElement data, JsonElement parserPayload, string propertyName)
+    {
+        if (data.TryGetProperty(propertyName, out var dataValue))
+        {
+            return dataValue.GetString();
+        }
+
+        return parserPayload.TryGetProperty(propertyName, out var payloadValue) ? payloadValue.GetString() : null;
     }
 }

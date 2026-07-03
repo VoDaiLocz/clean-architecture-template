@@ -65,7 +65,7 @@ public sealed class ParseToeicReadingDraftsHandler(
     }
 
     private static string MergePayload(ReadingDraftQuestionResult question) =>
-        JsonSerializer.Serialize(new
+        DraftPayloadEnvelope.Serialize("ReadingQuestion", new
         {
             questionType = question.QuestionType,
             prompt = question.Prompt,

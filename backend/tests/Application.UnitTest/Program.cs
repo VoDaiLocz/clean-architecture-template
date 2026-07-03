@@ -724,6 +724,9 @@ static class ApplicationTests
         Assert.True(drafts.Any(draft => draft.ToeicPart == 5), "Part 5 draft should persist.");
         Assert.True(drafts.Any(draft => draft.ToeicPart == 7), "Part 7 draft should persist.");
         Assert.True(drafts.All(draft => draft.ItemType == "ReadingQuestion"), "Draft type should identify reading questions.");
+        Assert.True(drafts.All(draft => draft.PayloadJson.Contains("\"schemaVersion\":\"toeic-draft.v1\"", StringComparison.Ordinal)), "Reading draft payload should be versioned.");
+        Assert.True(drafts.All(draft => draft.PayloadJson.Contains("\"kind\":\"ReadingQuestion\"", StringComparison.Ordinal)), "Reading draft payload should declare its canonical kind.");
+        Assert.True(drafts.All(draft => draft.PayloadJson.Contains("\"data\":", StringComparison.Ordinal)), "Reading draft payload should wrap parser data.");
         Assert.True(drafts.Any(draft => draft.PayloadJson.Contains("verb_tense", StringComparison.Ordinal)), "Skill tags should persist in payload.");
         Assert.True(drafts.All(draft => draft.SourceTraceJson.Contains("block-reading-001", StringComparison.Ordinal)), "Source trace should include extracted block.");
     }
@@ -774,6 +777,9 @@ static class ApplicationTests
         var drafts = repository.GetDraftContentItems(audioAsset.AssetId);
         Assert.True(drafts.All(draft => draft.ToeicPart == 3), "Part 3 should persist on listening drafts.");
         Assert.True(drafts.All(draft => draft.ItemType == "ListeningQuestion"), "Draft type should identify listening questions.");
+        Assert.True(drafts.All(draft => draft.PayloadJson.Contains("\"schemaVersion\":\"toeic-draft.v1\"", StringComparison.Ordinal)), "Listening draft payload should be versioned.");
+        Assert.True(drafts.All(draft => draft.PayloadJson.Contains("\"kind\":\"ListeningQuestion\"", StringComparison.Ordinal)), "Listening draft payload should declare its canonical kind.");
+        Assert.True(drafts.All(draft => draft.PayloadJson.Contains("\"data\":", StringComparison.Ordinal)), "Listening draft payload should wrap parser data.");
         Assert.True(drafts.All(draft => draft.PayloadJson.Contains("part3-conversation-001", StringComparison.Ordinal)), "Group id should persist in payload.");
         Assert.True(drafts.All(draft => draft.SourceTraceJson.Contains(audioAsset.AssetId, StringComparison.Ordinal)), "Source trace should include audio asset.");
     }
@@ -838,7 +844,7 @@ static class ApplicationTests
             MaterialClass: MaterialClass.TestBook,
             ToeicPart: 5,
             ItemType: "ReadingQuestion",
-            PayloadJson: """{"prompt":"The manager ____ the report.","options":{"A":"submit","B":"submitted"},"correctAnswer":"B","explanation":"Past tense is required.","skillTags":["verb_tense"]}""",
+            PayloadJson: """{"schemaVersion":"toeic-draft.v1","kind":"ReadingQuestion","data":{"prompt":"The manager ____ the report.","skillTags":["verb_tense"],"parserPayload":{"options":{"A":"submit","B":"submitted"},"correctAnswer":"B","explanation":"Past tense is required."}}}""",
             SourceTraceJson: """{"assetId":"asset-sparta-test-01-pdf","sourceBlockId":"block-reading-001"}""",
             ParserConfidence: 0.91m,
             Status: DraftContentStatus.ReadyForReview

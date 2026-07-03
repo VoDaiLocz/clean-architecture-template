@@ -75,7 +75,7 @@ public sealed class ParseToeicListeningGroupsHandler(
     }
 
     private static string MergePayload(ListeningDraftQuestionResult question) =>
-        JsonSerializer.Serialize(new
+        DraftPayloadEnvelope.Serialize("ListeningQuestion", new
         {
             groupId = question.GroupId,
             questionNumber = question.QuestionNumber,
