@@ -25,3 +25,11 @@ test-results/
 .env
 .env.*
 !.env.example
+
+downloads/
+raw-data/
+google_auth_state.json
+.playwright-cli/
+animation-assets/
+streamrows_751.txt
+

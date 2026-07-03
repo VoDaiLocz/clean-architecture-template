@@ -86,6 +86,18 @@ api.MapGet(
 );
 
 api.MapPost(
+    "/source-manifest/local-downloads",
+    Ok<ImportLocalToeicDownloadsResult> (
+        ImportLocalToeicDownloadsCommand request,
+        IKnowledgeRepository repository
+    ) =>
+    {
+        var handler = new ImportLocalToeicDownloadsHandler(repository);
+        return TypedResults.Ok(handler.Handle(request));
+    }
+);
+
+api.MapPost(
     "/raw-sources",
     Created<RawSourceResponse> (
         RawSourceRequest request,

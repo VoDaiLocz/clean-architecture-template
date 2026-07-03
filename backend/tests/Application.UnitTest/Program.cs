@@ -41,6 +41,7 @@ var tests = new List<(string Name, Action Run)>
     ("source manifest classifier identifies provider material and access status", ApplicationTests.SourceManifestClassifierIdentifiesProviderMaterialAndAccessStatus),
     ("repository persists normalized source manifest entries", ApplicationTests.RepositoryPersistsNormalizedSourceManifestEntries),
     ("imports audited TOEIC source manifest into database", ApplicationTests.ImportsAuditedToeicSourceManifestIntoDatabase),
+    ("imports local TOEIC downloads and rejects fake PDFs", ApplicationTests.ImportsLocalToeicDownloadsAndRejectsFakePdfs),
     ("discovers Drive source assets and records blocked issues", ApplicationTests.DiscoversDriveSourceAssetsAndRecordsBlockedIssues),
     ("resolves TOEIC external sources and shortlinks", ApplicationTests.ResolvesToeicExternalSourcesAndShortlinks),
     ("registers TOEIC source assets from audit evidence", ApplicationTests.RegistersToeicSourceAssetsFromAuditEvidence),
@@ -407,6 +408,44 @@ static class ApplicationTests
         Assert.Equal(36, summary.DriveFolders, "Expected Drive folder count from audit.");
         Assert.Equal(14, summary.DriveFiles, "Expected Drive file count from audit.");
         Assert.Equal(4, summary.Shortlinks, "Expected shortlink count from audit.");
+    }
+
+    public static void ImportsLocalToeicDownloadsAndRejectsFakePdfs()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var root = Path.Combine(Path.GetTempPath(), $"toeic-local-downloads-{Guid.NewGuid():N}");
+        Directory.CreateDirectory(Path.Combine(root, "folders", "Sparta Toeic"));
+        var validPdfPath = Path.Combine(root, "folders", "Sparta Toeic", "Đáp án (answer key) Sách Sparta TOEIC.pdf");
+        var fakePdfPath = Path.Combine(root, "folders", "Sparta Toeic", "video-1.pdf");
+        var notePath = Path.Combine(root, "folders", "Sparta Toeic", "note.txt");
+        File.WriteAllBytes(validPdfPath, Encoding.ASCII.GetBytes("%PDF-1.7\n1 0 obj\n<<>>\nendobj\n"));
+        File.WriteAllText(fakePdfPath, "<html>Google Drive sign in</html>");
+        File.WriteAllText(notePath, "not a pdf");
+
+        try
+        {
+            var handler = new ImportLocalToeicDownloadsHandler(repository);
+            var result = handler.Handle(new ImportLocalToeicDownloadsCommand(root));
+            var secondResult = handler.Handle(new ImportLocalToeicDownloadsCommand(root));
+
+            Assert.Equal(3, result.ScannedFileCount, "Importer should scan files recursively.");
+            Assert.Equal(1, result.ImportedPdfCount, "Only valid PDF bytes should be imported.");
+            Assert.Equal(2, result.RejectedFileCount, "Fake PDF and non-PDF files must be rejected.");
+            Assert.Equal(1, secondResult.ImportedPdfCount, "Repeated import should still report the valid source.");
+            Assert.Equal(1, repository.Count("source_manifest_entries"), "Repeated import must not duplicate local source rows.");
+            Assert.Equal(1, repository.Count("source_containers"), "Repeated import must not duplicate containers.");
+            Assert.Equal(1, repository.Count("source_assets"), "Repeated import must not duplicate assets.");
+            var source = repository.GetSourceManifestEntries().Single();
+            Assert.Equal(MaterialClass.TestBook, source.PrimaryMaterialClass, "Local TOEIC PDF should be classified by title.");
+            Assert.True(source.Evidence.HasPdf, "Local PDF source must record PDF evidence.");
+            Assert.True(source.Evidence.HasAnswerKey, "Answer key PDFs should be flagged for later parsing.");
+            Assert.True(source.AuditNotes.Contains("downloads local corpus", StringComparison.Ordinal), "Audit note should identify local corpus origin.");
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
     }
 
     public static void DiscoversDriveSourceAssetsAndRecordsBlockedIssues()
@@ -1390,6 +1429,14 @@ static class ApplicationTests
                 && contract.Audience == ApiAudience.Admin
                 && contract.ResponseContract == "ImportToeicSourceManifestResult"),
             "Source manifest import route contract must be typed."
+        );
+        Assert.True(
+            contracts.Any(contract =>
+                contract.Method == "POST"
+                && contract.Route == "/api/source-manifest/local-downloads"
+                && contract.Audience == ApiAudience.Admin
+                && contract.ResponseContract == "ImportLocalToeicDownloadsResult"),
+            "Local downloads import route contract must be typed."
         );
         Assert.True(
             contracts.Any(contract =>

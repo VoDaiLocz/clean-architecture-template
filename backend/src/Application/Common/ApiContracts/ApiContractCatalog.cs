@@ -10,6 +10,7 @@ public static class ApiContractCatalog
         new("GET", "/api/dashboard", ApiAudience.Admin, "DashboardResponse"),
         new("GET", "/api/admin/content-coverage", ApiAudience.Admin, "ContentCoverageSnapshot"),
         new("POST", "/api/source-manifest/toeic-audit", ApiAudience.Admin, "ImportToeicSourceManifestResult"),
+        new("POST", "/api/source-manifest/local-downloads", ApiAudience.Admin, "ImportLocalToeicDownloadsResult"),
         new("GET", "/api/source-manifest/summary", ApiAudience.Admin, "SourceManifestSummary"),
         new("POST", "/api/raw-sources", ApiAudience.Admin, "RawSourceResponse"),
         new("POST", "/api/learning-items", ApiAudience.Admin, "PublishLearningItemResponse"),
