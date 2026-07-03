@@ -62,6 +62,9 @@ var tests = new List<(string Name, Action Run)>
     ("assigns learner today plan", ApplicationTests.AssignsLearnerTodayPlan),
     ("manages learner activity sessions", ApplicationTests.ManagesActivitySessions),
     ("processes learner attempts", ApplicationTests.ProcessesLearnerAttempts),
+    ("review queue creates and updates items", ApplicationTests.ReviewQueueCreatesAndUpdatesReviewItems),
+    ("review queue resolves review items", ApplicationTests.ReviewQueueResolvesReviewItems),
+    ("review queue orders correctly", ApplicationTests.ReviewQueueOrdersCorrectly),
     ("dashboard includes normalized source manifest summary", ApplicationTests.DashboardIncludesNormalizedSourceManifestSummary),
     ("learner cannot unlock next unit until mastery gates pass", ApplicationTests.LearnerCannotUnlockNextUnitUntilMasteryGatesPass),
     ("demo learner session is marked legacy non-production", ApplicationTests.DemoLearnerSessionIsMarkedLegacyNonProduction),
@@ -2282,6 +2285,112 @@ static class ApplicationTests
         Assert.Equal(ActivitySessionStatus.Completed, session!.Status, "Session should be completed after attempt submission.");
 
         Assert.Throws<ArgumentException>(() => handler.Handle(command), "Should throw on duplicate submit");
+    }
+
+    public static void ReviewQueueCreatesAndUpdatesReviewItems()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+
+        var learnerId = Guid.NewGuid().ToString();
+        var assignmentId = Guid.NewGuid().ToString();
+        var sessionId = Guid.NewGuid().ToString();
+        var questionId1 = Guid.NewGuid().ToString();
+
+        repository.UpsertLearnerProfile(new LearnerProfile(learnerId, "Test Learner", "test@test.com", 500, 0, 30, "UTC", LearnerProfileStatus.Active, DateTimeOffset.UtcNow, DateTimeOffset.UtcNow));
+        repository.UpsertLearnerAssignment(new LearnerAssignment(assignmentId, learnerId, LearnerAssignmentType.Lesson, "unit1", LearnerAssignmentStatus.Started, DateTimeOffset.UtcNow, null));
+        repository.UpsertActivitySession(new ActivitySession(sessionId, assignmentId, learnerId, LearnerAssignmentType.Lesson, ActivitySessionStatus.InProgress, DateTimeOffset.UtcNow, null));
+        repository.UpsertPublishedLesson(new PublishedLesson("lesson1", "unit1", 5, "Title", "Obj", "{}", "{}", PublishedContentStatus.Published));
+        repository.UpsertPublishedQuestion(new PublishedQuestion(questionId1, "lesson1", 5, PublishedQuestionType.SingleQuestion, "{}", "{\"topic\":\"grammar\"}", "A", "{}", null, null, null, "{}", "{}", "{}", PublishedContentStatus.Published));
+
+        var handler = new SubmitAttemptHandler(repository);
+
+        // Attempt 1: wrong answer
+        var command1 = new SubmitAttemptCommand(sessionId, learnerId, new Dictionary<string, string> { { questionId1, "B" } });
+        var response1 = handler.Handle(command1);
+
+        var reviewItems = repository.GetReviewItems(learnerId);
+        Assert.Equal(1, reviewItems.Count, "Should create one review item");
+        var item1 = reviewItems[0];
+        Assert.Equal("B", item1.LearnerAnswer, "Should record learner answer");
+        Assert.Equal(ReviewItemStatus.Open, item1.Status, "Status should be Open");
+        Assert.False(item1.IsBlocking, "Lesson drill mistakes should not be blocking by default");
+
+        // We need a new session for attempt 2, or reset session status
+        var sessionId2 = Guid.NewGuid().ToString();
+        repository.UpsertActivitySession(new ActivitySession(sessionId2, assignmentId, learnerId, LearnerAssignmentType.MiniTest, ActivitySessionStatus.InProgress, DateTimeOffset.UtcNow, null));
+
+        // Attempt 2: wrong answer again, but from a MiniTest (which makes it blocking)
+        var command2 = new SubmitAttemptCommand(sessionId2, learnerId, new Dictionary<string, string> { { questionId1, "C" } });
+        handler.Handle(command2);
+
+        reviewItems = repository.GetReviewItems(learnerId);
+        Assert.Equal(1, reviewItems.Count, "Should not duplicate review item");
+        var item2 = reviewItems[0];
+        Assert.Equal("C", item2.LearnerAnswer, "Should update to latest wrong answer");
+        Assert.Equal(ReviewItemStatus.Open, item2.Status, "Status should be Open");
+        Assert.True(item2.IsBlocking, "MiniTest mistakes should be blocking");
+    }
+
+    public static void ReviewQueueResolvesReviewItems()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+
+        var learnerId = Guid.NewGuid().ToString();
+        var reviewItemId = Guid.NewGuid().ToString();
+
+        repository.UpsertLearnerProfile(new LearnerProfile(learnerId, "Test Learner", "test@test.com", 500, 0, 30, "UTC", LearnerProfileStatus.Active, DateTimeOffset.UtcNow, DateTimeOffset.UtcNow));
+        
+        var reviewItem = new ReviewItem(
+            reviewItemId, learnerId, "attempt1", "question1", "unit1", "{}", "B", "A", ReviewItemStatus.Open, true, DateTimeOffset.UtcNow, null
+        );
+        repository.UpsertReviewItem(reviewItem);
+
+        var handler = new Application.Features.Learner.Review.ResolveReviewItemHandler(repository);
+
+        // Wrong repair
+        Assert.Throws<ArgumentException>(() => handler.Handle(new Application.Features.Learner.Review.ResolveReviewItemCommand(learnerId, reviewItemId, "C")), "Should throw if repair not passed");
+
+        var item = repository.GetReviewItem(reviewItemId);
+        Assert.Equal(ReviewItemStatus.Open, item!.Status, "Item should remain open");
+
+        // Correct repair
+        var response = handler.Handle(new Application.Features.Learner.Review.ResolveReviewItemCommand(learnerId, reviewItemId, "A"));
+        Assert.True(response.IsCorrect, "Repair should be correct");
+
+        item = repository.GetReviewItem(reviewItemId);
+        Assert.Equal(ReviewItemStatus.Resolved, item!.Status, "Item should be resolved");
+        Assert.True(item.ResolvedAtUtc != null, "ResolvedAtUtc should be set");
+    }
+
+    public static void ReviewQueueOrdersCorrectly()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+
+        var learnerId = Guid.NewGuid().ToString();
+        repository.UpsertLearnerProfile(new LearnerProfile(learnerId, "Test Learner", "test@test.com", 500, 0, 30, "UTC", LearnerProfileStatus.Active, DateTimeOffset.UtcNow, DateTimeOffset.UtcNow));
+
+        var time1 = DateTimeOffset.UtcNow.AddMinutes(-10);
+        var time2 = DateTimeOffset.UtcNow.AddMinutes(-5);
+
+        // Group 1, Unit A
+        repository.UpsertReviewItem(new ReviewItem("item1", learnerId, "attempt", "q1", "unitA", "{}", "B", "A", ReviewItemStatus.Open, false, time1, null));
+        repository.UpsertReviewItem(new ReviewItem("item2", learnerId, "attempt", "q2", "unitA", "{}", "C", "A", ReviewItemStatus.Open, true, time2, null));
+        
+        // Group 2, Unit B
+        repository.UpsertReviewItem(new ReviewItem("item3", learnerId, "attempt", "q3", "unitB", "{}", "D", "A", ReviewItemStatus.Open, false, time1, null));
+
+        var handler = new Application.Features.Learner.Review.GetLearnerReviewQueueHandler(repository);
+        var response = handler.Handle(new Application.Features.Learner.Review.GetLearnerReviewQueueQuery(learnerId));
+
+        Assert.Equal(2, response.Groups.Count, "Should have 2 groups");
+        var unitAGroup = response.Groups.Single(g => g.UnitId == "unitA");
+        
+        Assert.Equal(2, unitAGroup.Items.Count, "Unit A should have 2 items");
+        Assert.Equal("item2", unitAGroup.Items[0].ReviewItemId, "Blocking item should be first");
+        Assert.Equal("item1", unitAGroup.Items[1].ReviewItemId, "Non-blocking item should be second");
     }
 
     public static void GeneratesLearnerPathFromPlacementResult()

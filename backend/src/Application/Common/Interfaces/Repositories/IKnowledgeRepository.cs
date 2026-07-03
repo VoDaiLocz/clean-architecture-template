@@ -59,6 +59,7 @@ public interface IKnowledgeRepository
     void UpsertPublishedLesson(PublishedLesson lesson);
 
     IReadOnlyList<PublishedLesson> GetPublishedLessons(string unitId);
+    PublishedLesson? GetPublishedLesson(string lessonId);
 
     void UpsertGuidedExample(GuidedExample example);
 
@@ -124,7 +125,7 @@ public interface IKnowledgeRepository
     IReadOnlyList<AttemptAnswer> GetAttemptAnswers(string attemptId);
 
     void UpsertReviewItem(ReviewItem item);
-
+    ReviewItem? GetReviewItem(string reviewItemId);
     IReadOnlyList<ReviewItem> GetReviewItems(string learnerId);
 
     void UpsertRepairAttempt(RepairAttempt attempt);

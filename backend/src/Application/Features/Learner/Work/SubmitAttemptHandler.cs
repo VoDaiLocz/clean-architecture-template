@@ -53,6 +53,8 @@ public sealed class SubmitAttemptHandler(IKnowledgeRepository repository)
         var totalCount = command.Answers.Count;
         var attemptAnswers = new List<AttemptAnswer>();
 
+        var existingReviewItems = repository.GetReviewItems(command.LearnerId);
+
         foreach (var (questionId, learnerAnswer) in command.Answers)
         {
             var question = repository.GetPublishedQuestion(questionId);
@@ -61,10 +63,53 @@ public sealed class SubmitAttemptHandler(IKnowledgeRepository repository)
                 throw new ArgumentException("QUESTION_NOT_IN_SESSION");
             }
 
+            var lesson = repository.GetPublishedLesson(question.LessonId);
+            if (lesson is null)
+            {
+                throw new ArgumentException("LESSON_NOT_FOUND");
+            }
+
             var isCorrect = question.CorrectAnswer == learnerAnswer;
+
             if (isCorrect)
             {
                 correctCount++;
+            }
+            else
+            {
+                var isBlocking = session.ActivityType == LearnerAssignmentType.MiniTest || session.ActivityType == LearnerAssignmentType.PartTest || session.ActivityType == LearnerAssignmentType.FullTest;
+                
+                var existingItem = existingReviewItems.FirstOrDefault(r => r.QuestionId == questionId);
+                if (existingItem != null)
+                {
+                    var updatedItem = existingItem with
+                    {
+                        SourceAttemptId = attemptId,
+                        LearnerAnswer = learnerAnswer,
+                        Status = ReviewItemStatus.Open,
+                        IsBlocking = isBlocking,
+                        ResolvedAtUtc = null
+                    };
+                    repository.UpsertReviewItem(updatedItem);
+                }
+                else
+                {
+                    var newItem = new ReviewItem(
+                        Guid.NewGuid().ToString(),
+                        command.LearnerId,
+                        attemptId,
+                        questionId,
+                        lesson.UnitId,
+                        question.SkillTags,
+                        learnerAnswer,
+                        question.CorrectAnswer ?? "",
+                        ReviewItemStatus.Open,
+                        isBlocking,
+                        DateTimeOffset.UtcNow,
+                        null
+                    );
+                    repository.UpsertReviewItem(newItem);
+                }
             }
 
             var attemptAnswer = new AttemptAnswer(

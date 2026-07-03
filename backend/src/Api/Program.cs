@@ -13,6 +13,7 @@ using Application.Features.SourceExtraction;
 using Application.Features.SourceManifests;
 using Application.Features.SourceReview;
 using Application.Features.SourceValidation;
+using Application.Features.Learner.Review;
 using Domain.Aggregates.Corpus;
 using Domain.Aggregates.LearningItems;
 using Infrastructure;
@@ -434,26 +435,40 @@ learner.MapPost(
 
 learner.MapGet(
     "/review",
-    Ok<IReadOnlyList<LearnerReviewItemResponse>> (DemoLearnerSession session) =>
+    Results<Ok<GetLearnerReviewQueueResponse>, NotFound> (
+        string learnerId,
+        GetLearnerReviewQueueHandler handler
+    ) =>
     {
-        return TypedResults.Ok(session.GetReview());
+        var response = handler.Handle(new GetLearnerReviewQueueQuery(learnerId));
+        return TypedResults.Ok(response);
     }
 );
 
 learner.MapPost(
-    "/review/{reviewItemId}/attempts",
-    Results<Ok<AttemptResponse>, NotFound> (
+    "/review/{reviewItemId}/resolve",
+    Results<Ok<ResolveReviewItemResponse>, NotFound, BadRequest<string>> (
         string reviewItemId,
-        DemoLearnerSession session
+        [Microsoft.AspNetCore.Mvc.FromBody] ResolveReviewItemRequest request,
+        ResolveReviewItemHandler handler
     ) =>
     {
         try
         {
-            return TypedResults.Ok(session.SubmitReviewAttempt(reviewItemId));
+            var response = handler.Handle(new ResolveReviewItemCommand(request.LearnerId, reviewItemId, request.Answer));
+            return TypedResults.Ok(response);
         }
-        catch (InvalidOperationException)
+        catch (ArgumentException ex) when (ex.Message is "REVIEW_ITEM_NOT_FOUND" or "REVIEW_ITEM_NOT_OWNED")
         {
             return TypedResults.NotFound();
+        }
+        catch (ArgumentException ex) when (ex.Message == "REPAIR_NOT_PASSED")
+        {
+            return TypedResults.BadRequest("REPAIR_NOT_PASSED");
+        }
+        catch (ArgumentException ex) when (ex.Message == "ALREADY_RESOLVED")
+        {
+            return TypedResults.BadRequest("ALREADY_RESOLVED");
         }
     }
 );
@@ -461,6 +476,10 @@ learner.MapPost(
 app.MapGet("/", () => Results.Redirect("/api/dashboard"));
 
 app.Run();
+
+#pragma warning restore CS0618
+
+public sealed record ResolveReviewItemRequest(string LearnerId, string Answer);
 
 #pragma warning restore CS0618
 

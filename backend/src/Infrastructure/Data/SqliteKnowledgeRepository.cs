@@ -1320,24 +1320,9 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         command.CommandText =
             """
             INSERT INTO published_lessons (
-                lesson_id,
-                unit_id,
-                toeic_part,
-                title,
-                objective,
-                skill_tags,
-                source_trace_json,
-                status
-            )
-            VALUES (
-                $lesson_id,
-                $unit_id,
-                $toeic_part,
-                $title,
-                $objective,
-                $skill_tags,
-                $source_trace_json,
-                $status
+                lesson_id, unit_id, toeic_part, title, objective, skill_tags, source_trace_json, status
+            ) VALUES (
+                $lesson_id, $unit_id, $toeic_part, $title, $objective, $skill_tags, $source_trace_json, $status
             )
             ON CONFLICT(lesson_id) DO UPDATE SET
                 unit_id = excluded.unit_id,
@@ -1346,7 +1331,7 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
                 objective = excluded.objective,
                 skill_tags = excluded.skill_tags,
                 source_trace_json = excluded.source_trace_json,
-                status = excluded.status
+                status = excluded.status;
             """;
         command.Parameters.AddWithValue("$lesson_id", lesson.LessonId);
         command.Parameters.AddWithValue("$unit_id", lesson.UnitId);
@@ -1357,6 +1342,34 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         command.Parameters.AddWithValue("$source_trace_json", lesson.SourceTraceJson);
         command.Parameters.AddWithValue("$status", lesson.Status.ToString());
         command.ExecuteNonQuery();
+    }
+
+    public PublishedLesson? GetPublishedLesson(string lessonId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT lesson_id, unit_id, toeic_part, title, objective, skill_tags, source_trace_json, status
+            FROM published_lessons
+            WHERE lesson_id = $lesson_id
+            """;
+        command.Parameters.AddWithValue("$lesson_id", lessonId);
+
+        using var reader = command.ExecuteReader();
+        if (reader.Read())
+        {
+            return new PublishedLesson(
+                reader.GetString(0),
+                reader.GetString(1),
+                reader.GetInt32(2),
+                reader.GetString(3),
+                reader.GetString(4),
+                reader.GetString(5),
+                reader.GetString(6),
+                Enum.Parse<PublishedContentStatus>(reader.GetString(7))
+            );
+        }
+        return null;
     }
 
     public IReadOnlyList<PublishedLesson> GetPublishedLessons(string unitId)
@@ -2309,6 +2322,38 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         command.Parameters.AddWithValue("$created_at_utc", item.CreatedAtUtc.ToString("O"));
         command.Parameters.AddWithValue("$resolved_at_utc", item.ResolvedAtUtc?.ToString("O") ?? (object)DBNull.Value);
         command.ExecuteNonQuery();
+    }
+
+    public ReviewItem? GetReviewItem(string reviewItemId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT review_item_id, learner_id, source_attempt_id, question_id, unit_id, error_tag, learner_answer, correct_answer, status, is_blocking, created_at_utc, resolved_at_utc
+            FROM review_items
+            WHERE review_item_id = $review_item_id
+            """;
+        command.Parameters.AddWithValue("$review_item_id", reviewItemId);
+
+        using var reader = command.ExecuteReader();
+        if (reader.Read())
+        {
+            return new ReviewItem(
+                reader.GetString(0),
+                reader.GetString(1),
+                reader.GetString(2),
+                reader.GetString(3),
+                reader.GetString(4),
+                reader.GetString(5),
+                reader.GetString(6),
+                reader.GetString(7),
+                Enum.Parse<ReviewItemStatus>(reader.GetString(8)),
+                reader.GetBoolean(9),
+                DateTimeOffset.Parse(reader.GetString(10)),
+                reader.IsDBNull(11) ? null : DateTimeOffset.Parse(reader.GetString(11))
+            );
+        }
+        return null;
     }
 
     public IReadOnlyList<ReviewItem> GetReviewItems(string learnerId)
