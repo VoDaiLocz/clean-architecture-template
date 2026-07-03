@@ -220,6 +220,28 @@ static class ApplicationTests
             ParserConfidence: 0.62m,
             Status: DraftContentStatus.ValidationFailed
         ));
+        repository.UpsertDraftContentItem(new DraftContentItem(
+            DraftId: "draft-pending-part3",
+            AssetId: asset.AssetId,
+            MaterialClass: MaterialClass.TestBook,
+            ToeicPart: 3,
+            ItemType: "ListeningQuestion",
+            PayloadJson: """{"prompt":"What does the woman imply?","options":{"A":"x"},"correctAnswer":"A","skillTags":["inference"]}""",
+            SourceTraceJson: """{"sourceId":"sheet-row-12","assetId":"asset-sparta-test-01-pdf"}""",
+            ParserConfidence: 0.89m,
+            Status: DraftContentStatus.PendingValidation
+        ));
+        repository.UpsertDraftContentItem(new DraftContentItem(
+            DraftId: "draft-rejected-part3",
+            AssetId: asset.AssetId,
+            MaterialClass: MaterialClass.TestBook,
+            ToeicPart: 3,
+            ItemType: "ListeningQuestion",
+            PayloadJson: """{"prompt":"Rejected OCR row","options":{"A":"x"},"correctAnswer":"A","skillTags":["ocr"]}""",
+            SourceTraceJson: """{"sourceId":"sheet-row-12","assetId":"asset-sparta-test-01-pdf"}""",
+            ParserConfidence: 0.86m,
+            Status: DraftContentStatus.Rejected
+        ));
         repository.RecordValidationIssue(
             new ValidationIssue("missing_passage", "Part 7 draft must include passage evidence."),
             "ReadingQuestion",
@@ -267,20 +289,28 @@ static class ApplicationTests
 
         Assert.Equal(73, coverage.Source.TotalSources, "Coverage must include audited source manifest count.");
         Assert.Equal(60, coverage.Source.AccessibleSources, "Coverage must preserve accessible source count.");
-        Assert.Equal(2, coverage.Draft.TotalDraftItems, "Draft count must stay separate from published content.");
+        Assert.Equal(4, coverage.Draft.TotalDraftItems, "Draft count must stay separate from published content.");
+        Assert.Equal(1, coverage.Draft.PendingValidationDraftItems, "Pending draft count should be explicit.");
         Assert.Equal(1, coverage.Draft.ReadyForReviewDraftItems, "Ready draft count should be explicit.");
         Assert.Equal(1, coverage.Draft.ValidationFailedDraftItems, "Validation failed draft count should be explicit.");
+        Assert.Equal(1, coverage.Draft.RejectedDraftItems, "Rejected draft count should be explicit.");
         Assert.Equal(3, coverage.Validation.ValidationIssueCount, "Validation issue count should be separate.");
         Assert.Equal(2, coverage.Validation.IssueBreakdown.Single(issue => issue.Code == "missing_passage").Count, "Coverage should group repeated validation issues.");
         Assert.Equal(1, coverage.Validation.IssueBreakdown.Single(issue => issue.Code == "invalid_answer_options").Count, "Coverage should expose each validation issue code.");
         Assert.Equal(1, coverage.Published.PublishedQuestions, "Only approved published rows count as learner content.");
         Assert.Equal(0, coverage.Published.PublishedTests, "Missing test data must not be faked.");
+        var part3 = coverage.ToeicParts.Single(part => part.ToeicPart == 3);
         var part5 = coverage.ToeicParts.Single(part => part.ToeicPart == 5);
         var part7 = coverage.ToeicParts.Single(part => part.ToeicPart == 7);
+        Assert.Equal(2, part3.TotalDraftItems, "Part 3 should expose total draft backlog.");
+        Assert.Equal(1, part3.PendingValidationDraftItems, "Part 3 should expose pending draft backlog.");
+        Assert.Equal(1, part3.RejectedDraftItems, "Part 3 should expose rejected draft backlog.");
+        Assert.Equal(1, part5.TotalDraftItems, "Part 5 should expose total draft backlog.");
         Assert.Equal(1, part5.ReadyForReviewDraftItems, "Part 5 should expose ready draft backlog.");
         Assert.Equal(0, part5.ValidationFailedDraftItems, "Part 5 should not report Part 7 failures.");
         Assert.Equal(1, part5.PublishedQuestions, "Part 5 should report real published question count.");
         Assert.Equal(1, part5.PublishedLessons, "Part 5 should report real published lesson count.");
+        Assert.Equal(1, part7.TotalDraftItems, "Part 7 should expose total draft backlog.");
         Assert.Equal(0, part7.ReadyForReviewDraftItems, "Part 7 should not inherit Part 5 ready drafts.");
         Assert.Equal(1, part7.ValidationFailedDraftItems, "Part 7 should expose failed draft backlog.");
         Assert.Equal(0, part7.PublishedQuestions, "Part 7 source backlog must not appear as published.");

@@ -64,8 +64,12 @@ public sealed record PublishedCoverage(
 
 public sealed record ToeicPartCoverage(
     int ToeicPart,
+    int TotalDraftItems,
+    int PendingValidationDraftItems,
     int ReadyForReviewDraftItems,
     int ValidationFailedDraftItems,
+    int PublishedDraftItems,
+    int RejectedDraftItems,
     int PublishedLessons,
     int PublishedQuestions
 );
@@ -122,8 +126,12 @@ public sealed class GetContentCoverageHandler(IKnowledgeRepository repository)
             ToeicParts: Enumerable.Range(1, 7)
                 .Select(part => new ToeicPartCoverage(
                     part,
+                    repository.CountDraftContentItems(part),
+                    repository.CountDraftContentItems(part, DraftContentStatus.PendingValidation),
                     repository.CountDraftContentItems(part, DraftContentStatus.ReadyForReview),
                     repository.CountDraftContentItems(part, DraftContentStatus.ValidationFailed),
+                    repository.CountDraftContentItems(part, DraftContentStatus.Published),
+                    repository.CountDraftContentItems(part, DraftContentStatus.Rejected),
                     repository.CountPublishedLessons(part),
                     repository.CountPublishedQuestions(part)
                 ))

@@ -62,6 +62,8 @@ public interface IKnowledgeRepository
 
     IReadOnlyList<PublishedQuestion> GetPublishedQuestions(int toeicPart);
 
+    int CountDraftContentItems(int toeicPart);
+
     int CountDraftContentItems(DraftContentStatus status);
 
     int CountDraftContentItems(int toeicPart, DraftContentStatus status);
