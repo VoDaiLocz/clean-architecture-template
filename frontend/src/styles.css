@@ -670,6 +670,33 @@ p {
   margin-top: var(--space-5);
 }
 
+.practice-answer-screen {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.practice-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.sticky-controls {
+  position: sticky;
+  top: 104px;
+  display: grid;
+  gap: var(--space-4);
+}
+
+.unanswered-indicator {
+  padding: 10px 12px;
+  color: var(--toeic-navy);
+  font-weight: 760;
+  background: var(--toeic-primary-soft);
+  border-radius: 10px;
+}
+
 @keyframes surface-in {
   from {
     opacity: 0;
@@ -712,6 +739,7 @@ p {
   .part-grid,
   .today-grid,
   .lesson-layout,
+  .practice-layout,
   .journey-layout,
   .placement-layout,
   .form-panel {
@@ -723,6 +751,10 @@ p {
   }
 
   .lesson-header {
+    position: static;
+  }
+
+  .sticky-controls {
     position: static;
   }
 

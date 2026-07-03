@@ -48,6 +48,12 @@ export const routes: Routes = [
     loadComponent: () => import('./features/learner/practice-page.component').then((m) => m.PracticePageComponent),
   },
   {
+    path: 'practice/:activityId',
+    canMatch: [ProtectedRouteGuard],
+    loadComponent: () =>
+      import('./features/learner/drill-mini-test-page.component').then((m) => m.DrillMiniTestPageComponent),
+  },
+  {
     path: 'review',
     canMatch: [ProtectedRouteGuard],
     loadComponent: () => import('./features/learner/review-page.component').then((m) => m.ReviewPageComponent),
@@ -56,6 +62,12 @@ export const routes: Routes = [
     path: 'tests',
     canMatch: [ProtectedRouteGuard],
     loadComponent: () => import('./features/learner/tests-page.component').then((m) => m.TestsPageComponent),
+  },
+  {
+    path: 'tests/:activityId',
+    canMatch: [ProtectedRouteGuard],
+    loadComponent: () =>
+      import('./features/learner/drill-mini-test-page.component').then((m) => m.DrillMiniTestPageComponent),
   },
   {
     path: 'progress',

@@ -170,6 +170,47 @@ export type CompleteLessonResponse = {
   nextAction: LearnerNextAction;
 };
 
+export type PracticeQuestion = {
+  id: string;
+  prompt: string;
+  choices: string[];
+  audioUrl: string | null;
+  passage: string | null;
+};
+
+export type PracticeActivityResponse = {
+  activityId: string;
+  activitySessionId: string | null;
+  mode: 'Drill' | 'MiniTest' | string;
+  title: string;
+  part: number;
+  skill: string;
+  isLocked: boolean;
+  lockReason: string | null;
+  allowSkip: boolean;
+  questions: PracticeQuestion[];
+};
+
+export type SubmitAttemptAnswer = {
+  questionId: string;
+  selectedChoice: string | null;
+  skipped: boolean;
+};
+
+export type SubmitAttemptRequest = {
+  answers: SubmitAttemptAnswer[];
+};
+
+export type SubmitAttemptResponse = {
+  activitySessionId: string;
+  resultLabel: string;
+  answeredCount: number;
+  totalCount: number;
+  scorePercent: number;
+  reviewCreated: boolean;
+  nextAction: LearnerNextAction;
+};
+
 @Injectable({ providedIn: 'root' })
 export class ApiClientService {
   private readonly http = inject(HttpClient);
@@ -203,6 +244,17 @@ export class ApiClientService {
     return this.http.post<CompleteLessonResponse>(
       `${this.baseUrl}/learner/lessons/${activitySessionId}/complete`,
       {},
+    );
+  }
+
+  getPracticeActivity(activityId: string): Observable<PracticeActivityResponse> {
+    return this.http.get<PracticeActivityResponse>(`${this.baseUrl}/learner/practice/${activityId}`);
+  }
+
+  submitPracticeAttempt(activitySessionId: string, request: SubmitAttemptRequest): Observable<SubmitAttemptResponse> {
+    return this.http.post<SubmitAttemptResponse>(
+      `${this.baseUrl}/learner/practice/${activitySessionId}/attempts`,
+      request,
     );
   }
 }
