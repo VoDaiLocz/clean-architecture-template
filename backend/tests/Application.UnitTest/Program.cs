@@ -94,6 +94,7 @@ var tests = new List<(string Name, Action Run)>
     ("ToeicTranscriptParser extracts dialogs", ApplicationTests.ToeicTranscriptParserExtractsDialogs),
     ("LinkSourceAssetsHandler pairs assets", ApplicationTests.LinkSourceAssetsHandlerPairsAssets),
     ("Today plan read does not mutate DB", ApplicationTests.TodayPlanReadDoesNotMutateDb),
+    ("mastery recalculates on attempt submit and review", ApplicationTests.MasteryRecalculatesOnAttemptSubmitAndReview),
 };
 
 var failed = 0;
@@ -238,6 +239,41 @@ static class ApplicationTests
         var updatedUnit2 = repository.GetLearningPathUnits(pathId).FirstOrDefault(u => u.UnitId == "u2");
         Assert.True(updatedUnit1?.Status == Domain.Aggregates.LearnerProgress.LearningPathUnitStatus.Completed, "Unit 1 should be completed");
         Assert.True(updatedUnit2?.Status == Domain.Aggregates.LearnerProgress.LearningPathUnitStatus.Unlocked, "Unit 2 should be unlocked");
+    }
+
+    public static void MasteryRecalculatesOnAttemptSubmitAndReview()
+    {
+        var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        
+        var learnerId = "learner-submit-mastery";
+        var pathId = "path-1";
+        
+        repository.UpsertLearnerProfile(new Domain.Aggregates.LearnerProgress.LearnerProfile(learnerId, "Mastery Submitter", "test@test.com", 500, 0, 30, "UTC", Domain.Aggregates.LearnerProgress.LearnerProfileStatus.Active, DateTimeOffset.UtcNow, DateTimeOffset.UtcNow));
+        repository.UpsertLearningPath(new Domain.Aggregates.LearnerProgress.LearningPath(pathId, learnerId, Domain.Aggregates.LearnerProgress.LearningPathStatus.Active, null, DateTimeOffset.UtcNow, DateTimeOffset.UtcNow));
+        
+        var unit1 = new Domain.Aggregates.LearnerProgress.LearningPathUnit("u1", pathId, "key1", 5, "tag", 1, Domain.Aggregates.LearnerProgress.LearningPathUnitStatus.Unlocked, null, null);
+        repository.UpsertLearningPathUnit(unit1);
+
+        // Pre-requisites for passing mini test: Lesson, Drill completed
+        repository.UpsertLearnerAssignment(new Domain.Aggregates.LearnerProgress.LearnerAssignment("a1", learnerId, Domain.Aggregates.LearnerProgress.LearnerAssignmentType.Lesson, "u1", Domain.Aggregates.LearnerProgress.LearnerAssignmentStatus.Completed, DateTimeOffset.UtcNow, null));
+        repository.UpsertLearnerAssignment(new Domain.Aggregates.LearnerProgress.LearnerAssignment("a2", learnerId, Domain.Aggregates.LearnerProgress.LearnerAssignmentType.Drill, "u1", Domain.Aggregates.LearnerProgress.LearnerAssignmentStatus.Completed, DateTimeOffset.UtcNow, null));
+        repository.UpsertActivitySession(new Domain.Aggregates.LearnerProgress.ActivitySession("s2", "a2", learnerId, Domain.Aggregates.LearnerProgress.LearnerAssignmentType.Drill, Domain.Aggregates.LearnerProgress.ActivitySessionStatus.Completed, DateTimeOffset.UtcNow, DateTimeOffset.UtcNow));
+        repository.UpsertLearnerAttempt(new Domain.Aggregates.LearnerProgress.LearnerAttempt("att2", "s2", learnerId, Domain.Aggregates.LearnerProgress.LearnerAttemptStatus.Scored, 10, 10, 100, DateTimeOffset.UtcNow));
+
+        // Now setup the MiniTest to be submitted
+        repository.UpsertLearnerAssignment(new Domain.Aggregates.LearnerProgress.LearnerAssignment("a3", learnerId, Domain.Aggregates.LearnerProgress.LearnerAssignmentType.MiniTest, "u1", Domain.Aggregates.LearnerProgress.LearnerAssignmentStatus.Started, DateTimeOffset.UtcNow, null));
+        repository.UpsertActivitySession(new Domain.Aggregates.LearnerProgress.ActivitySession("s3", "a3", learnerId, Domain.Aggregates.LearnerProgress.LearnerAssignmentType.MiniTest, Domain.Aggregates.LearnerProgress.ActivitySessionStatus.InProgress, DateTimeOffset.UtcNow, null));
+        
+        repository.UpsertPublishedLesson(new PublishedLesson("l1", "u1", 5, "lesson title", "obj", "tags", "{}", PublishedContentStatus.Published));
+        repository.UpsertPublishedQuestion(new PublishedQuestion("q1", "l1", 5, PublishedQuestionType.SingleQuestion, "prompt", "{}", "A", "exp", null, null, null, "{}", "tags", "{}", PublishedContentStatus.Published));
+
+        var handler = new Application.Features.Learner.Work.SubmitAttemptHandler(repository);
+        handler.Handle(new Application.Features.Learner.Work.SubmitAttemptCommand("s3", learnerId, new Dictionary<string, string> { { "q1", "A" } }));
+
+        var record = repository.GetMasteryRecord(learnerId, "u1");
+        Assert.True(record is not null, "Mastery record should be updated upon submit attempt");
+        Assert.True(record!.IsUnlocked, "Mastery should be updated to unlocked");
     }
 
     public static void ValidPart5ItemPublishes()
