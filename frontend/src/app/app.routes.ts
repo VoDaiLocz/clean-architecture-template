@@ -9,6 +9,8 @@ export const routes: Routes = [
   { path: 'learner/today', loadComponent: () => import('./features/learner/today/today.component').then(m => m.TodayComponent) },
   { path: 'learner/lesson', redirectTo: 'learner/lesson/demo', pathMatch: 'full' },
   { path: 'learner/lesson/:unitId', loadComponent: () => import('./features/learner/lesson/lesson.component').then(m => m.LessonComponent) },
+  { path: 'learner/practice', redirectTo: 'learner/practice/demo', pathMatch: 'full' },
+  { path: 'learner/practice/:sessionId', loadComponent: () => import('./features/learner/practice/practice.component').then(m => m.PracticeComponent) },
   { 
     path: 'learner', 
     component: AppShellComponent,

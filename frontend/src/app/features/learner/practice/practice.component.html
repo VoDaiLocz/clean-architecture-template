@@ -1,0 +1,129 @@
+<div class="min-h-screen bg-blue-50 text-slate-800 flex flex-col font-sans">
+  
+  <!-- Top Bar -->
+  <header class="bg-white shadow-sm border-b border-blue-100 p-4 sticky top-0 z-10">
+    <div class="max-w-3xl mx-auto">
+      <div class="flex justify-between items-center mb-2">
+        <h1 class="text-xl font-bold text-blue-900">Practice Session</h1>
+        <span class="text-sm font-medium text-slate-500" *ngIf="sessionData">
+          Question {{ currentIndex + 1 }} of {{ sessionData.questions.length }}
+        </span>
+      </div>
+      <!-- Progress Bar -->
+      <div class="w-full bg-blue-100 rounded-full h-1.5" *ngIf="sessionData">
+        <div class="bg-blue-600 h-1.5 rounded-full transition-all duration-300"
+             [style.width.%]="((currentIndex + 1) / sessionData.questions.length) * 100">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow p-4 md:p-8 max-w-3xl mx-auto w-full flex flex-col justify-center">
+    
+    <div *ngIf="isLoading" class="flex justify-center items-center py-20">
+      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+    </div>
+
+    <div *ngIf="!isLoading && currentQuestion" class="space-y-6">
+      
+      <!-- Passage box -->
+      <div *ngIf="currentQuestion.passage" class="bg-white p-6 rounded-2xl shadow-sm border border-blue-100">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-blue-500 mb-3 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          Reading Passage
+        </h3>
+        <p class="text-slate-700 leading-relaxed text-lg">{{ currentQuestion.passage }}</p>
+      </div>
+
+      <!-- Audio player -->
+      <div *ngIf="currentQuestion.audioUrl" class="bg-white p-6 rounded-2xl shadow-sm border border-blue-100 flex flex-col items-center justify-center space-y-4">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-blue-500 w-full flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+          </svg>
+          Audio Clip
+        </h3>
+        <audio controls class="w-full max-w-md mt-2">
+          <source [src]="currentQuestion.audioUrl" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+
+      <!-- Question Prompt -->
+      <h2 class="text-2xl font-bold text-slate-800 my-4">{{ currentQuestion.prompt }}</h2>
+
+      <!-- Answer Choices -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <button *ngFor="let choice of currentQuestion.choices" 
+                (click)="selectChoice(choice.id)"
+                class="relative text-left p-6 rounded-2xl border-2 transition-all duration-200 overflow-hidden group"
+                [ngClass]="{
+                  'border-blue-500 bg-blue-50 ring-2 ring-blue-200': answers[currentQuestion.id] === choice.id,
+                  'border-slate-200 bg-white hover:border-blue-300 hover:bg-slate-50': answers[currentQuestion.id] !== choice.id
+                }">
+          
+          <div class="flex items-center">
+            <!-- Option letter circle -->
+            <span class="flex items-center justify-center w-8 h-8 rounded-full font-bold mr-4 transition-colors"
+                  [ngClass]="{
+                    'bg-blue-600 text-white': answers[currentQuestion.id] === choice.id,
+                    'bg-slate-100 text-slate-500 group-hover:bg-blue-100 group-hover:text-blue-600': answers[currentQuestion.id] !== choice.id
+                  }">
+              {{ choice.id }}
+            </span>
+            <span class="text-lg font-medium"
+                  [ngClass]="{
+                    'text-blue-900': answers[currentQuestion.id] === choice.id,
+                    'text-slate-700': answers[currentQuestion.id] !== choice.id
+                  }">
+              {{ choice.text }}
+            </span>
+          </div>
+
+          <!-- Selected indicator (check icon) -->
+          <svg *ngIf="answers[currentQuestion.id] === choice.id" 
+               xmlns="http://www.w3.org/2000/svg" 
+               class="h-6 w-6 text-blue-600 absolute right-4 top-1/2 transform -translate-y-1/2" 
+               fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Bottom Bar -->
+  <footer class="bg-white border-t border-slate-200 p-4 sticky bottom-0 z-10 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+    <div class="max-w-3xl mx-auto flex justify-between items-center">
+      <!-- Empty space to push button to the right, or could add back button if needed -->
+      <div></div>
+      
+      <button 
+        (click)="nextOrSubmit()"
+        [disabled]="!currentQuestion || !answers[currentQuestion.id]"
+        class="px-8 py-3 rounded-xl font-bold text-white transition-all duration-200 flex items-center justify-center min-w-[120px]"
+        [ngClass]="{
+          'bg-slate-300 cursor-not-allowed': !currentQuestion || !answers[currentQuestion.id],
+          'bg-blue-600 hover:bg-blue-700 hover:shadow-md transform hover:-translate-y-0.5': currentQuestion && answers[currentQuestion.id]
+        }">
+        <ng-container *ngIf="!isLastQuestion">
+          Next
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 -mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </ng-container>
+        <ng-container *ngIf="isLastQuestion">
+          Submit
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 -mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+        </ng-container>
+      </button>
+    </div>
+  </footer>
+
+</div>

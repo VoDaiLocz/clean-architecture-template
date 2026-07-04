@@ -53,4 +53,12 @@ export class LearnerApiService {
   completeLesson(unitId: string): Observable<any> {
     return this.http.post(`${this.baseUrl}/lessons/${unitId}/complete`, {});
   }
+
+  getPracticeSession(sessionId: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/practice/${sessionId}`);
+  }
+
+  submitPracticeSession(sessionId: string, answers: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/practice/${sessionId}/submit`, answers);
+  }
 }
