@@ -164,6 +164,7 @@ var tests = new List<(string Name, Action Run)>
     ("ToeicScoreBreakdown: Rejects unsubmitted", () => Application.UnitTest.CalculateToeicScoreBreakdownTests.TestCalculateToeicScoreBreakdown_RejectsNotSubmitted().Wait()),
     ("ToeicRepairPlan: Can be instantiated and persisted", Application.UnitTest.ToeicRepairPlanTests.TestToeicRepairPlan_InstantiatedAndPersisted),
     ("GenerateToeicRepairPlanHandler: Creates Plan", () => Application.UnitTest.GenerateToeicRepairPlanHandlerTests.TestGenerateToeicRepairPlan_CreatesPlan().Wait()),
+    ("ToeicRepairPlanFlow: Start, Checkpoint, Submit", () => Application.UnitTest.ToeicRepairPlanFlowTests.TestRepairPlanFlow_StartCheckpointSubmit().Wait()),
 };
 
 var failed = 0;
