@@ -176,4 +176,7 @@ public interface IKnowledgeRepository
     IReadOnlyList<LearnerWeaknessSummary> GetWeaknessSummaries(string learnerId);
 
     int Count(string tableName);
+
+    void UpsertMiniTestSession(MiniTestSession session);
+    MiniTestSession? GetMiniTestSession(string sessionId);
 }

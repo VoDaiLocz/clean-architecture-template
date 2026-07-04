@@ -136,6 +136,10 @@ var tests = new List<(string Name, Action Run)>
     ("Attempt event creates weakness summary", Application.UnitTest.LearnerWeaknessTests.AttemptEventCreatesWeaknessSummary),
     ("Duplicate event is idempotent", Application.UnitTest.LearnerWeaknessTests.DuplicateEventIsIdempotent),
     ("Repair reduces severity", Application.UnitTest.LearnerWeaknessTests.RepairReducesSeverity),
+    ("Starts session with correct assigned questions", Application.UnitTest.MiniTestSessionTests.StartsSessionWithCorrectAssignedQuestions),
+    ("Rejects insufficient content", Application.UnitTest.MiniTestSessionTests.RejectsInsufficientContent),
+    ("Enforces expiration", Application.UnitTest.MiniTestSessionTests.EnforcesExpiration),
+    ("Persists answers and final submit", Application.UnitTest.MiniTestSessionTests.PersistsAnswersAndFinalSubmit),
 };
 
 var failed = 0;

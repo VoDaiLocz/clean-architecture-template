@@ -565,6 +565,33 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
                 PRIMARY KEY (learner_id, toeic_part, skill_tag),
                 FOREIGN KEY (learner_id) REFERENCES learner_profiles(learner_id)
             );
+            CREATE TABLE IF NOT EXISTS mini_test_sessions (
+                session_id TEXT PRIMARY KEY,
+                learner_id TEXT NOT NULL,
+                unit_id TEXT NOT NULL,
+                status TEXT NOT NULL,
+                started_at_utc TEXT NOT NULL,
+                submitted_at_utc TEXT,
+                expired_at_utc TEXT NOT NULL,
+                result_id TEXT,
+                FOREIGN KEY (learner_id) REFERENCES learner_profiles(learner_id)
+            );
+
+            CREATE TABLE IF NOT EXISTS mini_test_session_questions (
+                session_id TEXT NOT NULL,
+                question_id TEXT NOT NULL,
+                display_order INTEGER NOT NULL,
+                PRIMARY KEY (session_id, question_id),
+                FOREIGN KEY(session_id) REFERENCES mini_test_sessions(session_id)
+            );
+
+            CREATE TABLE IF NOT EXISTS mini_test_session_answers (
+                session_id TEXT NOT NULL,
+                question_id TEXT NOT NULL,
+                answer TEXT NOT NULL,
+                PRIMARY KEY (session_id, question_id),
+                FOREIGN KEY(session_id) REFERENCES mini_test_sessions(session_id)
+            );
             """;
         command.ExecuteNonQuery();
         EnsureDefaultCorpusManifest();
@@ -3483,5 +3510,170 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         }
         return summaries;
     }
-}
+    public void UpsertMiniTestSession(MiniTestSession session)
+    {
+        using var transaction = connection.BeginTransaction();
+        try
+        {
+            using (var command = connection.CreateCommand())
+            {
+                command.Transaction = transaction;
+                command.CommandText =
+                    """
+                    INSERT INTO mini_test_sessions (
+                        session_id, learner_id, unit_id, status, started_at_utc, submitted_at_utc, expired_at_utc, result_id
+                    ) VALUES (
+                        $session_id, $learner_id, $unit_id, $status, $started_at_utc, $submitted_at_utc, $expired_at_utc, $result_id
+                    ) ON CONFLICT(session_id) DO UPDATE SET
+                        status = excluded.status,
+                        submitted_at_utc = excluded.submitted_at_utc,
+                        expired_at_utc = excluded.expired_at_utc,
+                        result_id = excluded.result_id
+                    """;
+                command.Parameters.AddWithValue("$session_id", session.SessionId);
+                command.Parameters.AddWithValue("$learner_id", session.LearnerId);
+                command.Parameters.AddWithValue("$unit_id", session.UnitId);
+                command.Parameters.AddWithValue("$status", session.Status.ToString());
+                command.Parameters.AddWithValue("$started_at_utc", session.StartedAtUtc.ToString("O"));
+                command.Parameters.AddWithValue("$submitted_at_utc", session.SubmittedAtUtc?.ToString("O") ?? (object)DBNull.Value);
+                command.Parameters.AddWithValue("$expired_at_utc", session.ExpiredAtUtc.ToString("O"));
+                command.Parameters.AddWithValue("$result_id", session.ResultId ?? (object)DBNull.Value);
+                command.ExecuteNonQuery();
+            }
 
+            using (var command = connection.CreateCommand())
+            {
+                command.Transaction = transaction;
+                command.CommandText = "DELETE FROM mini_test_session_questions WHERE session_id = $session_id";
+                command.Parameters.AddWithValue("$session_id", session.SessionId);
+                command.ExecuteNonQuery();
+            }
+
+            for (int i = 0; i < session.AssignedQuestionIds.Count; i++)
+            {
+                using var command = connection.CreateCommand();
+                command.Transaction = transaction;
+                command.CommandText =
+                    """
+                    INSERT INTO mini_test_session_questions (session_id, question_id, display_order)
+                    VALUES ($session_id, $question_id, $display_order)
+                    """;
+                command.Parameters.AddWithValue("$session_id", session.SessionId);
+                command.Parameters.AddWithValue("$question_id", session.AssignedQuestionIds[i]);
+                command.Parameters.AddWithValue("$display_order", i);
+                command.ExecuteNonQuery();
+            }
+
+            using (var command = connection.CreateCommand())
+            {
+                command.Transaction = transaction;
+                command.CommandText = "DELETE FROM mini_test_session_answers WHERE session_id = $session_id";
+                command.Parameters.AddWithValue("$session_id", session.SessionId);
+                command.ExecuteNonQuery();
+            }
+
+            foreach (var kvp in session.Answers)
+            {
+                using var command = connection.CreateCommand();
+                command.Transaction = transaction;
+                command.CommandText =
+                    """
+                    INSERT INTO mini_test_session_answers (session_id, question_id, answer)
+                    VALUES ($session_id, $question_id, $answer)
+                    """;
+                command.Parameters.AddWithValue("$session_id", session.SessionId);
+                command.Parameters.AddWithValue("$question_id", kvp.Key);
+                command.Parameters.AddWithValue("$answer", kvp.Value);
+                command.ExecuteNonQuery();
+            }
+
+            transaction.Commit();
+        }
+        catch
+        {
+            transaction.Rollback();
+            throw;
+        }
+    }
+
+    public MiniTestSession? GetMiniTestSession(string sessionId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT
+                learner_id, unit_id, status, started_at_utc, submitted_at_utc, expired_at_utc, result_id
+            FROM mini_test_sessions
+            WHERE session_id = $session_id
+            """;
+        command.Parameters.AddWithValue("$session_id", sessionId);
+
+        string? learnerId = null;
+        string? unitId = null;
+        string? statusStr = null;
+        string? startedAtStr = null;
+        string? submittedAtStr = null;
+        string? expiredAtStr = null;
+        string? resultId = null;
+
+        using (var reader = command.ExecuteReader())
+        {
+            if (!reader.Read()) return null;
+            learnerId = reader.GetString(0);
+            unitId = reader.GetString(1);
+            statusStr = reader.GetString(2);
+            startedAtStr = reader.GetString(3);
+            submittedAtStr = reader.IsDBNull(4) ? null : reader.GetString(4);
+            expiredAtStr = reader.GetString(5);
+            resultId = reader.IsDBNull(6) ? null : reader.GetString(6);
+        }
+
+        var assignedQuestionIds = new List<string>();
+        using (var qCommand = connection.CreateCommand())
+        {
+            qCommand.CommandText =
+                """
+                SELECT question_id
+                FROM mini_test_session_questions
+                WHERE session_id = $session_id
+                ORDER BY display_order
+                """;
+            qCommand.Parameters.AddWithValue("$session_id", sessionId);
+            using var qReader = qCommand.ExecuteReader();
+            while (qReader.Read())
+            {
+                assignedQuestionIds.Add(qReader.GetString(0));
+            }
+        }
+
+        var answers = new Dictionary<string, string>();
+        using (var aCommand = connection.CreateCommand())
+        {
+            aCommand.CommandText =
+                """
+                SELECT question_id, answer
+                FROM mini_test_session_answers
+                WHERE session_id = $session_id
+                """;
+            aCommand.Parameters.AddWithValue("$session_id", sessionId);
+            using var aReader = aCommand.ExecuteReader();
+            while (aReader.Read())
+            {
+                answers[aReader.GetString(0)] = aReader.GetString(1);
+            }
+        }
+
+        return new MiniTestSession(
+            SessionId: sessionId,
+            LearnerId: learnerId,
+            UnitId: unitId,
+            Status: Enum.Parse<MiniTestSessionStatus>(statusStr),
+            StartedAtUtc: DateTimeOffset.Parse(startedAtStr),
+            SubmittedAtUtc: submittedAtStr == null ? null : DateTimeOffset.Parse(submittedAtStr),
+            ExpiredAtUtc: DateTimeOffset.Parse(expiredAtStr),
+            AssignedQuestionIds: assignedQuestionIds,
+            Answers: answers,
+            ResultId: resultId
+        );
+    }
+}
