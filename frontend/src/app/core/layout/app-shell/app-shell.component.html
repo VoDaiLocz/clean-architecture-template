@@ -1,0 +1,9 @@
+<div class="flex h-screen w-full bg-toeic-canvas p-4 gap-6 overflow-hidden">
+  <!-- Floating Sidebar -->
+  <app-sidebar class="w-64 flex-shrink-0"></app-sidebar>
+  
+  <!-- Main Content Area with glassmorphism card -->
+  <main class="flex-1 bg-toeic-surface rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-toeic-border overflow-y-auto">
+    <router-outlet></router-outlet>
+  </main>
+</div>

@@ -1,0 +1,23 @@
+<aside class="h-full flex flex-col pt-6 px-2">
+  <div class="px-4 mb-10">
+    <h1 class="text-2xl font-bold text-toeic-primary tracking-tight">TOEIC<span class="text-toeic-text">Ocean</span></h1>
+  </div>
+  
+  <nav class="flex-1 space-y-2">
+    <a routerLink="/learner/today" routerLinkActive="bg-toeic-primary/10 text-toeic-primary font-medium" 
+       class="flex items-center gap-3 px-4 py-3 rounded-xl text-toeic-text-muted hover:bg-toeic-canvas-strong transition-colors duration-200">
+      <lucide-icon [img]="HomeIcon" class="w-5 h-5"></lucide-icon>
+      Hôm nay
+    </a>
+    <a routerLink="/learner/practice" routerLinkActive="bg-toeic-primary/10 text-toeic-primary font-medium"
+       class="flex items-center gap-3 px-4 py-3 rounded-xl text-toeic-text-muted hover:bg-toeic-canvas-strong transition-colors duration-200">
+      <lucide-icon [img]="BookIcon" class="w-5 h-5"></lucide-icon>
+      Luyện tập
+    </a>
+    <a routerLink="/learner/progress" routerLinkActive="bg-toeic-primary/10 text-toeic-primary font-medium"
+       class="flex items-center gap-3 px-4 py-3 rounded-xl text-toeic-text-muted hover:bg-toeic-canvas-strong transition-colors duration-200">
+      <lucide-icon [img]="ChartIcon" class="w-5 h-5"></lucide-icon>
+      Tiến độ
+    </a>
+  </nav>
+</aside>
