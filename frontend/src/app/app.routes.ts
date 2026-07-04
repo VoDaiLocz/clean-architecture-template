@@ -6,6 +6,9 @@ export const routes: Routes = [
   { path: 'learner/onboarding', loadComponent: () => import('./features/learner/onboarding/onboarding.component').then(m => m.OnboardingComponent) },
   { path: 'learner/placement', loadComponent: () => import('./features/learner/placement/placement.component').then(m => m.PlacementComponent) },
   { path: 'learner/placement-result', loadComponent: () => import('./features/learner/placement-result/placement-result.component').then(m => m.PlacementResultComponent) },
+  { path: 'learner/today', loadComponent: () => import('./features/learner/today/today.component').then(m => m.TodayComponent) },
+  { path: 'learner/lesson', redirectTo: 'learner/lesson/demo', pathMatch: 'full' },
+  { path: 'learner/lesson/:unitId', loadComponent: () => import('./features/learner/lesson/lesson.component').then(m => m.LessonComponent) },
   { 
     path: 'learner', 
     component: AppShellComponent,

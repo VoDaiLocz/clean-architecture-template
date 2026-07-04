@@ -41,4 +41,16 @@ export class LearnerApiService {
   generatePath(request: PathGenerateRequest | any): Observable<any> {
     return this.http.post(`${this.baseUrl}/path/generate`, request);
   }
+
+  getTodayPlan(learnerId: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${learnerId}/today`);
+  }
+
+  getLesson(unitId: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/lessons/${unitId}`);
+  }
+
+  completeLesson(unitId: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/lessons/${unitId}/complete`, {});
+  }
 }

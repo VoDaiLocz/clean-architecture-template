@@ -1,0 +1,71 @@
+<div class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 p-4 md:p-8">
+  <div class="max-w-6xl mx-auto h-full flex flex-col">
+    <!-- Header -->
+    <header class="mb-8 flex-shrink-0">
+      <h1 class="text-3xl font-extrabold text-blue-900 tracking-tight">Lesson: {{ lessonData?.title || 'Loading...' }}</h1>
+      <p class="text-blue-600 mt-2 font-medium">{{ lessonData?.learningObjective }}</p>
+    </header>
+
+    <div *ngIf="isLoading" class="flex justify-center items-center py-20 flex-grow">
+      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+    </div>
+
+    <div *ngIf="!isLoading && lessonData" class="grid grid-cols-1 lg:grid-cols-2 gap-6 flex-grow pb-8">
+      <!-- Left Pane (Theory) -->
+      <div class="bg-white/70 backdrop-blur-md rounded-2xl shadow-xl border border-white/50 p-6 md:p-8 flex flex-col h-full">
+        <h2 class="text-2xl font-bold text-slate-800 mb-6">Concept</h2>
+        <div class="prose prose-blue max-w-none text-slate-700 leading-relaxed mb-8">
+          <p>{{ lessonData.conceptExplanation }}</p>
+        </div>
+
+        <div *ngIf="lessonData.commonTrap" class="bg-yellow-50 rounded-xl p-5 border border-yellow-200 mt-auto">
+          <div class="flex items-start">
+            <svg class="w-6 h-6 text-yellow-600 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+            </svg>
+            <div>
+              <h4 class="text-yellow-800 font-semibold mb-1">Common Trap</h4>
+              <p class="text-yellow-700 text-sm">{{ lessonData.commonTrap }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Pane (Guided Example) -->
+      <div class="bg-white/70 backdrop-blur-md rounded-2xl shadow-xl border border-white/50 p-6 md:p-8 flex flex-col h-full">
+        <h2 class="text-2xl font-bold text-slate-800 mb-6">Guided Example</h2>
+        
+        <div class="bg-blue-50 rounded-xl p-6 mb-6">
+          <p class="text-lg text-slate-800 font-medium mb-4">{{ lessonData.guidedExample?.prompt }}</p>
+          <div class="space-y-3">
+            <div *ngFor="let choice of lessonData.guidedExample?.choices" 
+                 class="p-4 rounded-lg border border-blue-100 bg-white shadow-sm transition-all duration-200"
+                 [ngClass]="{'ring-2 ring-green-500 border-green-500': showAnswer && choice === lessonData.guidedExample?.correctAnswer, 'opacity-60': showAnswer && choice !== lessonData.guidedExample?.correctAnswer}">
+              <span class="text-slate-700 font-medium">{{ choice }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-auto pt-6 flex flex-col space-y-4">
+          <button *ngIf="!showAnswer" (click)="onShowAnswer()" 
+                  class="w-full py-4 rounded-xl bg-blue-100 hover:bg-blue-200 text-blue-700 font-bold transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+            Show Answer & Explanation
+          </button>
+
+          <div *ngIf="showAnswer" class="bg-green-50 rounded-xl p-5 border border-green-200 animate-fade-in">
+            <h4 class="text-green-800 font-bold mb-2 flex items-center">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              Correct Answer: {{ lessonData.guidedExample?.correctAnswer }}
+            </h4>
+            <p class="text-green-700 text-sm leading-relaxed">{{ lessonData.guidedExample?.explanation }}</p>
+          </div>
+
+          <button *ngIf="showAnswer" (click)="onCompleteLesson()" 
+                  class="w-full py-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold transition-all shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transform hover:-translate-y-0.5">
+            Complete Lesson & Start Practice
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
