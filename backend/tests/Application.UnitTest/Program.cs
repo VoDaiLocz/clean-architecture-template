@@ -90,6 +90,7 @@ var tests = new List<(string Name, Action Run)>
     ("repository enforces TOEIC data integrity and indexes", ApplicationTests.RepositoryEnforcesToeicDataIntegrityAndIndexes),
     ("performance baseline get learner today plan", ApplicationTests.PerformanceBaselineGetLearnerTodayPlan),
     ("repository persists source asset links", ApplicationTests.RepositoryPersistsSourceAssetLinks),
+    ("ToeicAnswerKeyParser extracts keys", ApplicationTests.ToeicAnswerKeyParserExtractsKeys),
 };
 
 var failed = 0;
@@ -2703,6 +2704,30 @@ static class ApplicationTests
         var links = repository.GetSourceAssetLinks("asset-book-1");
         Assert.Equal(1, links.Count, "Should persist link");
         Assert.Equal("asset-key-1", links[0].SourceAssetId, "Should match source id");
+    }
+
+    public static void ToeicAnswerKeyParserExtractsKeys()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        
+        var asset = SeedSourceAsset(repository) with { DetectedRole = SourceAssetRole.AnswerKey };
+        repository.UpsertSourceAsset(asset); // Update role if needed
+        
+        repository.UpsertExtractedPage(new ExtractedPage("page-1", asset.AssetId, 1, 500, 500, DateTimeOffset.UtcNow));
+        
+        // Simulate some blocks
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock("b1", asset.AssetId, "page-1", 1, ExtractedBlockType.Paragraph, "1. A  2. B", 1m, "{}"));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock("b2", asset.AssetId, "page-1", 1, ExtractedBlockType.Paragraph, "3.C", 1m, "{}"));
+        
+        var parser = new Infrastructure.Extraction.ToeicAnswerKeyParser(repository);
+        var results = parser.Parse(asset);
+        
+        Assert.True(results.Count == 3, $"Should extract 3 answers, got {results.Count}");
+        Assert.Equal("A", results[0].CorrectAnswer, "Q1 should be A");
+        Assert.Equal("B", results[1].CorrectAnswer, "Q2 should be B");
+        Assert.Equal("C", results[2].CorrectAnswer, "Q3 should be C");
+        Assert.True(results[0].Confidence < 0.9m, "Should flag low confidence because total isn't 100 or 200");
     }
 }
 
