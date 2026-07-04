@@ -11,6 +11,7 @@ export const routes: Routes = [
   { path: 'learner/lesson/:unitId', loadComponent: () => import('./features/learner/lesson/lesson.component').then(m => m.LessonComponent) },
   { path: 'learner/practice', redirectTo: 'learner/practice/demo', pathMatch: 'full' },
   { path: 'learner/practice/:sessionId', loadComponent: () => import('./features/learner/practice/practice.component').then(m => m.PracticeComponent) },
+  { path: 'learner/repair', loadComponent: () => import('./features/learner/mistake-repair/mistake-repair.component').then(m => m.MistakeRepairComponent) },
   { 
     path: 'learner', 
     component: AppShellComponent,
