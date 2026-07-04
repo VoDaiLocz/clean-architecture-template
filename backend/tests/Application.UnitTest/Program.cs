@@ -152,6 +152,10 @@ var tests = new List<(string Name, Action Run)>
     ("ReadingTest: Rejects insufficient content", Application.UnitTest.ReadingTestSessionTests.RejectsInsufficientContent),
     ("ReadingTest: Enforces expiration", Application.UnitTest.ReadingTestSessionTests.EnforcesExpiration),
     ("ReadingTest: Persists answers and final submit", Application.UnitTest.ReadingTestSessionTests.PersistsAnswersAndFinalSubmit),
+    ("FullTest: Starts session with correct assigned questions", Application.UnitTest.FullTestSessionTests.StartsSessionWithCorrectAssignedQuestions),
+    ("FullTest: Rejects insufficient content", Application.UnitTest.FullTestSessionTests.RejectsInsufficientContent),
+    ("FullTest: Enforces expiration", Application.UnitTest.FullTestSessionTests.EnforcesExpiration),
+    ("FullTest: Persists answers and final submit", Application.UnitTest.FullTestSessionTests.PersistsAnswersAndFinalSubmit),
 };
 
 var failed = 0;

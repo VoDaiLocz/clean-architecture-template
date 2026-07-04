@@ -188,4 +188,7 @@ public interface IKnowledgeRepository
 
     void UpsertReadingTestSession(ReadingTestSession session);
     ReadingTestSession? GetReadingTestSession(string sessionId);
+
+    void UpsertFullTestSession(FullToeicTestSession session);
+    FullToeicTestSession? GetFullTestSession(string sessionId);
 }
