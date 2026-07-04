@@ -91,6 +91,7 @@ var tests = new List<(string Name, Action Run)>
     ("performance baseline get learner today plan", ApplicationTests.PerformanceBaselineGetLearnerTodayPlan),
     ("repository persists source asset links", ApplicationTests.RepositoryPersistsSourceAssetLinks),
     ("ToeicAnswerKeyParser extracts keys", ApplicationTests.ToeicAnswerKeyParserExtractsKeys),
+    ("ToeicTranscriptParser extracts dialogs", ApplicationTests.ToeicTranscriptParserExtractsDialogs),
 };
 
 var failed = 0;
@@ -2728,6 +2729,25 @@ static class ApplicationTests
         Assert.Equal("B", results[1].CorrectAnswer, "Q2 should be B");
         Assert.Equal("C", results[2].CorrectAnswer, "Q3 should be C");
         Assert.True(results[0].Confidence < 0.9m, "Should flag low confidence because total isn't 100 or 200");
+    }
+
+    public static void ToeicTranscriptParserExtractsDialogs()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        
+        var asset = SeedSourceAsset(repository) with { DetectedRole = SourceAssetRole.Transcript };
+        repository.UpsertSourceAsset(asset);
+        
+        repository.UpsertExtractedPage(new ExtractedPage("page-1", asset.AssetId, 1, 500, 500, DateTimeOffset.UtcNow));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock("b1", asset.AssetId, "page-1", 1, ExtractedBlockType.Paragraph, "M: Hello there.\nW: Hi.", 1m, "{}"));
+        
+        var parser = new Infrastructure.Extraction.ToeicTranscriptParser(repository);
+        var results = parser.Parse(asset);
+        
+        Assert.True(results.Count == 2, $"Should extract 2 segments, got {results.Count}");
+        Assert.Equal("M", results[0].SpeakerLabel, "First speaker should be M");
+        Assert.Equal("W", results[1].SpeakerLabel, "Second speaker should be W");
     }
 }
 
