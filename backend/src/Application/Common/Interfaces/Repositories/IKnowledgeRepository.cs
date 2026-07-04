@@ -1,6 +1,7 @@
 using Domain.Aggregates.Corpus;
 using Domain.Aggregates.LearnerProgress;
 using Domain.Aggregates.LearningItems;
+using Domain.Aggregates.Learner;
 
 namespace Application.Common.Interfaces.Repositories;
 
@@ -167,6 +168,12 @@ public interface IKnowledgeRepository
     IReadOnlyList<LearningPathUnit> GetLearningPathUnits(string pathId);
 
     void UpsertLearnerPathGenerationRun(LearnerPathGenerationRun run);
+
+    bool UpsertWeaknessEvent(LearnerWeaknessEvent @event);
+
+    void UpsertWeaknessSummary(LearnerWeaknessSummary summary);
+
+    IReadOnlyList<LearnerWeaknessSummary> GetWeaknessSummaries(string learnerId);
 
     int Count(string tableName);
 }

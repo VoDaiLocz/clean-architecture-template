@@ -3,6 +3,7 @@ using Application.Common.Interfaces.Repositories;
 using Domain.Aggregates.Corpus;
 using Domain.Aggregates.LearnerProgress;
 using Domain.Aggregates.LearningItems;
+using Domain.Aggregates.Learner;
 using Microsoft.Data.Sqlite;
 
 namespace Infrastructure.Data;
@@ -537,6 +538,32 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
                 catalog_version TEXT NOT NULL,
                 generated_path_id TEXT NOT NULL,
                 created_at_utc TEXT NOT NULL
+            );
+
+            CREATE TABLE IF NOT EXISTS learner_weakness_events (
+                event_id TEXT PRIMARY KEY,
+                learner_id TEXT NOT NULL,
+                source_activity_id TEXT NOT NULL,
+                toeic_part INTEGER NOT NULL,
+                skill_tag TEXT NOT NULL,
+                weight REAL NOT NULL,
+                is_correct INTEGER NOT NULL,
+                created_at_utc TEXT NOT NULL,
+                FOREIGN KEY (learner_id) REFERENCES learner_profiles(learner_id)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_learner_weakness_events_learner
+                ON learner_weakness_events(learner_id);
+
+            CREATE TABLE IF NOT EXISTS learner_weakness_summaries (
+                learner_id TEXT NOT NULL,
+                toeic_part INTEGER NOT NULL,
+                skill_tag TEXT NOT NULL,
+                severity_score REAL NOT NULL,
+                evidence_count INTEGER NOT NULL,
+                last_updated_at_utc TEXT NOT NULL,
+                PRIMARY KEY (learner_id, toeic_part, skill_tag),
+                FOREIGN KEY (learner_id) REFERENCES learner_profiles(learner_id)
             );
             """;
         command.ExecuteNonQuery();
@@ -3393,4 +3420,68 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         command.Parameters.AddWithValue("$created_at_utc", run.CreatedAtUtc.ToString("O"));
         command.ExecuteNonQuery();
     }
+
+    public bool UpsertWeaknessEvent(LearnerWeaknessEvent @event)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO learner_weakness_events (event_id, learner_id, source_activity_id, toeic_part, skill_tag, weight, is_correct, created_at_utc)
+            VALUES ($event_id, $learner_id, $source_activity_id, $toeic_part, $skill_tag, $weight, $is_correct, $created_at_utc)
+            ON CONFLICT(event_id) DO NOTHING
+            """;
+        command.Parameters.AddWithValue("$event_id", @event.EventId);
+        command.Parameters.AddWithValue("$learner_id", @event.LearnerId);
+        command.Parameters.AddWithValue("$source_activity_id", @event.SourceActivityId);
+        command.Parameters.AddWithValue("$toeic_part", @event.ToeicPart);
+        command.Parameters.AddWithValue("$skill_tag", @event.SkillTag);
+        command.Parameters.AddWithValue("$weight", @event.Weight);
+        command.Parameters.AddWithValue("$is_correct", @event.IsCorrect ? 1 : 0);
+        command.Parameters.AddWithValue("$created_at_utc", @event.CreatedAtUtc.ToString("O"));
+        return command.ExecuteNonQuery() > 0;
+    }
+
+    public void UpsertWeaknessSummary(LearnerWeaknessSummary summary)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO learner_weakness_summaries (learner_id, toeic_part, skill_tag, severity_score, evidence_count, last_updated_at_utc)
+            VALUES ($learner_id, $toeic_part, $skill_tag, $severity_score, $evidence_count, $last_updated_at_utc)
+            ON CONFLICT(learner_id, toeic_part, skill_tag) DO UPDATE SET
+                severity_score = excluded.severity_score,
+                evidence_count = excluded.evidence_count,
+                last_updated_at_utc = excluded.last_updated_at_utc
+            """;
+        command.Parameters.AddWithValue("$learner_id", summary.LearnerId);
+        command.Parameters.AddWithValue("$toeic_part", summary.ToeicPart);
+        command.Parameters.AddWithValue("$skill_tag", summary.SkillTag);
+        command.Parameters.AddWithValue("$severity_score", summary.SeverityScore);
+        command.Parameters.AddWithValue("$evidence_count", summary.EvidenceCount);
+        command.Parameters.AddWithValue("$last_updated_at_utc", summary.LastUpdatedAtUtc.ToString("O"));
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<LearnerWeaknessSummary> GetWeaknessSummaries(string learnerId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText = "SELECT learner_id, toeic_part, skill_tag, severity_score, evidence_count, last_updated_at_utc FROM learner_weakness_summaries WHERE learner_id = $learner_id ORDER BY severity_score DESC";
+        command.Parameters.AddWithValue("$learner_id", learnerId);
+        
+        var summaries = new List<LearnerWeaknessSummary>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            summaries.Add(new LearnerWeaknessSummary(
+                reader.GetString(0),
+                reader.GetInt32(1),
+                reader.GetString(2),
+                reader.GetDecimal(3),
+                reader.GetInt32(4),
+                DateTimeOffset.Parse(reader.GetString(5))
+            ));
+        }
+        return summaries;
+    }
 }
+

@@ -133,6 +133,9 @@ var tests = new List<(string Name, Action Run)>
     ("LinkSourceAssetsHandler pairs assets", ApplicationTests.LinkSourceAssetsHandlerPairsAssets),
     ("Today plan read does not mutate DB", ApplicationTests.TodayPlanReadDoesNotMutateDb),
     ("mastery recalculates on attempt submit and review", ApplicationTests.MasteryRecalculatesOnAttemptSubmitAndReview),
+    ("Attempt event creates weakness summary", Application.UnitTest.LearnerWeaknessTests.AttemptEventCreatesWeaknessSummary),
+    ("Duplicate event is idempotent", Application.UnitTest.LearnerWeaknessTests.DuplicateEventIsIdempotent),
+    ("Repair reduces severity", Application.UnitTest.LearnerWeaknessTests.RepairReducesSeverity),
 };
 
 var failed = 0;
