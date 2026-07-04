@@ -1,3 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-toeic-canvas text-toeic-text font-sans antialiased;
+}
+
 * {
   box-sizing: border-box;
 }
