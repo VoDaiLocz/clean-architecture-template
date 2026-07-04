@@ -182,4 +182,7 @@ public interface IKnowledgeRepository
 
     void UpsertPartTestSession(PartTestSession session);
     PartTestSession? GetPartTestSession(string sessionId);
+
+    void UpsertListeningTestSession(ListeningTestSession session);
+    ListeningTestSession? GetListeningTestSession(string sessionId);
 }
