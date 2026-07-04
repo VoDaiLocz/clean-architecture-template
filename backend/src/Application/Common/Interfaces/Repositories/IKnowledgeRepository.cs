@@ -183,6 +183,10 @@ public interface IKnowledgeRepository
     void UpsertPartTestSession(PartTestSession session);
     PartTestSession? GetPartTestSession(string sessionId);
 
+    void UpsertToeicRepairPlan(ToeicRepairPlan plan);
+    ToeicRepairPlan? GetToeicRepairPlan(string planId);
+    ToeicRepairPlan? GetActiveRepairPlan(string learnerId);
+
     void UpsertListeningTestSession(ListeningTestSession session);
     ListeningTestSession? GetListeningTestSession(string sessionId);
 

@@ -162,6 +162,7 @@ var tests = new List<(string Name, Action Run)>
     ("ToeicTestSessionState: CheckpointPracticeTestSessionHandler rejects expired", () => Application.UnitTest.ToeicTestSessionStateTests.TestCheckpointPracticeTestSessionHandler_RejectsExpired().Wait()),
     ("ToeicScoreBreakdown: Calculates score properly", () => Application.UnitTest.CalculateToeicScoreBreakdownTests.TestCalculateToeicScoreBreakdown_CalculatesCorrectly().Wait()),
     ("ToeicScoreBreakdown: Rejects unsubmitted", () => Application.UnitTest.CalculateToeicScoreBreakdownTests.TestCalculateToeicScoreBreakdown_RejectsNotSubmitted().Wait()),
+    ("ToeicRepairPlan: Can be instantiated and persisted", Application.UnitTest.ToeicRepairPlanTests.TestToeicRepairPlan_InstantiatedAndPersisted),
 };
 
 var failed = 0;

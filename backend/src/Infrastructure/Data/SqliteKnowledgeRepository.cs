@@ -36,6 +36,20 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         using var command = connection.CreateCommand();
         command.CommandText =
             """
+            CREATE TABLE IF NOT EXISTS toeic_repair_plans (
+                repair_plan_id TEXT PRIMARY KEY,
+                source_session_id TEXT NOT NULL,
+                learner_id TEXT NOT NULL,
+                status TEXT NOT NULL,
+                review_question_ids TEXT NOT NULL,
+                drill_question_ids TEXT NOT NULL,
+                answers TEXT NOT NULL,
+                created_at_utc TEXT NOT NULL,
+                started_at_utc TEXT,
+                submitted_at_utc TEXT,
+                expired_at_utc TEXT
+            );
+
             CREATE TABLE IF NOT EXISTS raw_sources (
                 source_id TEXT PRIMARY KEY,
                 title TEXT NOT NULL,
@@ -4567,5 +4581,116 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             answers,
             resultId
         );
+    }
+
+    public void UpsertToeicRepairPlan(ToeicRepairPlan plan)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO toeic_repair_plans (
+                repair_plan_id, source_session_id, learner_id, status, review_question_ids, drill_question_ids, answers,
+                created_at_utc, started_at_utc, submitted_at_utc, expired_at_utc
+            )
+            VALUES (
+                @id, @source_session_id, @learner_id, @status, @review_question_ids, @drill_question_ids, @answers,
+                @created_at_utc, @started_at_utc, @submitted_at_utc, @expired_at_utc
+            )
+            ON CONFLICT(repair_plan_id) DO UPDATE SET
+                source_session_id = excluded.source_session_id,
+                learner_id = excluded.learner_id,
+                status = excluded.status,
+                review_question_ids = excluded.review_question_ids,
+                drill_question_ids = excluded.drill_question_ids,
+                answers = excluded.answers,
+                created_at_utc = excluded.created_at_utc,
+                started_at_utc = excluded.started_at_utc,
+                submitted_at_utc = excluded.submitted_at_utc,
+                expired_at_utc = excluded.expired_at_utc;
+            """;
+
+        command.Parameters.AddWithValue("@id", plan.RepairPlanId);
+        command.Parameters.AddWithValue("@source_session_id", plan.SourceSessionId);
+        command.Parameters.AddWithValue("@learner_id", plan.LearnerId);
+        command.Parameters.AddWithValue("@status", plan.Status.ToString());
+        command.Parameters.AddWithValue("@review_question_ids", JsonSerializer.Serialize(plan.ReviewQuestionIds));
+        command.Parameters.AddWithValue("@drill_question_ids", JsonSerializer.Serialize(plan.DrillQuestionIds));
+        command.Parameters.AddWithValue("@answers", JsonSerializer.Serialize(plan.Answers));
+        command.Parameters.AddWithValue("@created_at_utc", plan.CreatedAtUtc.ToString("o"));
+        command.Parameters.AddWithValue("@started_at_utc", plan.StartedAtUtc?.ToString("o") ?? (object)DBNull.Value);
+        command.Parameters.AddWithValue("@submitted_at_utc", plan.SubmittedAtUtc?.ToString("o") ?? (object)DBNull.Value);
+        command.Parameters.AddWithValue("@expired_at_utc", plan.ExpiredAtUtc?.ToString("o") ?? (object)DBNull.Value);
+
+        command.ExecuteNonQuery();
+    }
+
+    public ToeicRepairPlan? GetToeicRepairPlan(string planId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT repair_plan_id, source_session_id, learner_id, status, review_question_ids, drill_question_ids, answers,
+                   created_at_utc, started_at_utc, submitted_at_utc, expired_at_utc
+            FROM toeic_repair_plans
+            WHERE repair_plan_id = @id;
+            """;
+
+        command.Parameters.AddWithValue("@id", planId);
+
+        using var reader = command.ExecuteReader();
+        if (reader.Read())
+        {
+            return new ToeicRepairPlan(
+                reader.GetString(0),
+                reader.GetString(1),
+                reader.GetString(2),
+                Enum.Parse<RepairPlanStatus>(reader.GetString(3)),
+                JsonSerializer.Deserialize<IReadOnlyList<string>>(reader.GetString(4))!,
+                JsonSerializer.Deserialize<IReadOnlyList<string>>(reader.GetString(5))!,
+                JsonSerializer.Deserialize<IReadOnlyDictionary<string, string>>(reader.GetString(6))!,
+                DateTimeOffset.Parse(reader.GetString(7)),
+                reader.IsDBNull(8) ? null : DateTimeOffset.Parse(reader.GetString(8)),
+                reader.IsDBNull(9) ? null : DateTimeOffset.Parse(reader.GetString(9)),
+                reader.IsDBNull(10) ? null : DateTimeOffset.Parse(reader.GetString(10))
+            );
+        }
+
+        return null;
+    }
+
+    public ToeicRepairPlan? GetActiveRepairPlan(string learnerId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT repair_plan_id, source_session_id, learner_id, status, review_question_ids, drill_question_ids, answers,
+                   created_at_utc, started_at_utc, submitted_at_utc, expired_at_utc
+            FROM toeic_repair_plans
+            WHERE learner_id = @learner_id AND status != 'Submitted' AND status != 'Expired'
+            ORDER BY created_at_utc DESC
+            LIMIT 1;
+            """;
+
+        command.Parameters.AddWithValue("@learner_id", learnerId);
+
+        using var reader = command.ExecuteReader();
+        if (reader.Read())
+        {
+            return new ToeicRepairPlan(
+                reader.GetString(0),
+                reader.GetString(1),
+                reader.GetString(2),
+                Enum.Parse<RepairPlanStatus>(reader.GetString(3)),
+                JsonSerializer.Deserialize<IReadOnlyList<string>>(reader.GetString(4))!,
+                JsonSerializer.Deserialize<IReadOnlyList<string>>(reader.GetString(5))!,
+                JsonSerializer.Deserialize<IReadOnlyDictionary<string, string>>(reader.GetString(6))!,
+                DateTimeOffset.Parse(reader.GetString(7)),
+                reader.IsDBNull(8) ? null : DateTimeOffset.Parse(reader.GetString(8)),
+                reader.IsDBNull(9) ? null : DateTimeOffset.Parse(reader.GetString(9)),
+                reader.IsDBNull(10) ? null : DateTimeOffset.Parse(reader.GetString(10))
+            );
+        }
+
+        return null;
     }
 }
