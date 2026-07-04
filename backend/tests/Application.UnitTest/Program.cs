@@ -163,6 +163,7 @@ var tests = new List<(string Name, Action Run)>
     ("ToeicScoreBreakdown: Calculates score properly", () => Application.UnitTest.CalculateToeicScoreBreakdownTests.TestCalculateToeicScoreBreakdown_CalculatesCorrectly().Wait()),
     ("ToeicScoreBreakdown: Rejects unsubmitted", () => Application.UnitTest.CalculateToeicScoreBreakdownTests.TestCalculateToeicScoreBreakdown_RejectsNotSubmitted().Wait()),
     ("ToeicRepairPlan: Can be instantiated and persisted", Application.UnitTest.ToeicRepairPlanTests.TestToeicRepairPlan_InstantiatedAndPersisted),
+    ("GenerateToeicRepairPlanHandler: Creates Plan", () => Application.UnitTest.GenerateToeicRepairPlanHandlerTests.TestGenerateToeicRepairPlan_CreatesPlan().Wait()),
 };
 
 var failed = 0;
