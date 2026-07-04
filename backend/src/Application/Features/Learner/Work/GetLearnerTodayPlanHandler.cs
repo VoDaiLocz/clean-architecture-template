@@ -7,6 +7,7 @@ public sealed record GetLearnerTodayPlanQuery(string LearnerId);
 
 public sealed record LearnerTodayPlanResponse(
     LearnerAssignmentResponse? PrimaryAssignment,
+    bool ReadyForNewAssignment,
     IReadOnlyList<string> Blockers,
     LearnerPathProgressResponse PathProgress,
     int ReviewCount
@@ -41,23 +42,11 @@ public sealed class GetLearnerTodayPlanHandler(IKnowledgeRepository repository)
             throw new ArgumentException("Active learning path not found.");
         }
 
-        var masteryService = new Application.Features.Learner.Mastery.MasteryCalculationService(repository);
-
         var pathUnits = repository.GetLearningPathUnits(path.PathId);
         var currentUnit = pathUnits
             .Where(u => u.Status == LearningPathUnitStatus.Unlocked)
             .OrderBy(u => u.DisplayOrder)
             .FirstOrDefault();
-
-        if (currentUnit != null)
-        {
-            masteryService.RecalculateMastery(query.LearnerId, currentUnit.UnitId);
-            pathUnits = repository.GetLearningPathUnits(path.PathId);
-            currentUnit = pathUnits
-                .Where(u => u.Status == LearningPathUnitStatus.Unlocked)
-                .OrderBy(u => u.DisplayOrder)
-                .FirstOrDefault();
-        }
 
         var completedUnits = pathUnits.Count(u => u.Status == LearningPathUnitStatus.Completed);
         var pathProgress = new LearnerPathProgressResponse(
@@ -84,67 +73,34 @@ public sealed class GetLearnerTodayPlanHandler(IKnowledgeRepository repository)
                     primary.AssignmentType.ToString(),
                     primary.Status.ToString()
                 ),
+                false,
                 [],
                 pathProgress,
                 openReviews
             );
         }
 
-        // 2. Generate new assignment if unit is available
+        // 2. Check blockers and readiness
         if (currentUnit != null)
         {
             var blockers = repository.GetUnlockBlockers(query.LearnerId, currentUnit.UnitId)
                 .Select(b => b.Reason).ToList();
 
-            LearnerAssignmentType nextActivity = LearnerAssignmentType.Lesson;
-            
-            if (blockers.Contains("REVIEWS_PENDING"))
-            {
-                nextActivity = LearnerAssignmentType.Review;
-            }
-            else if (blockers.Contains("LESSON_NOT_COMPLETED"))
-            {
-                nextActivity = LearnerAssignmentType.Lesson;
-            }
-            else if (blockers.Contains("DRILL_NOT_COMPLETED"))
-            {
-                nextActivity = LearnerAssignmentType.Drill;
-            }
-            else if (blockers.Contains("MINI_TEST_NOT_PASSED"))
-            {
-                nextActivity = LearnerAssignmentType.MiniTest;
-            }
-            else if (blockers.Contains("PREREQUISITE_NOT_COMPLETED"))
+            if (blockers.Contains("PREREQUISITE_NOT_COMPLETED"))
             {
                 return new LearnerTodayPlanResponse(
                     null,
+                    false,
                     blockers,
                     pathProgress,
                     openReviews
                 );
             }
 
-            var assignmentId = Guid.NewGuid().ToString();
-            var assignment = new LearnerAssignment(
-                assignmentId,
-                query.LearnerId,
-                nextActivity,
-                currentUnit.UnitId,
-                LearnerAssignmentStatus.Assigned,
-                DateTimeOffset.UtcNow,
-                null
-            );
-            
-            repository.UpsertLearnerAssignment(assignment);
-
             return new LearnerTodayPlanResponse(
-                new LearnerAssignmentResponse(
-                    assignment.AssignmentId,
-                    assignment.ContentRefId,
-                    assignment.AssignmentType.ToString(),
-                    assignment.Status.ToString()
-                ),
-                [],
+                null,
+                true,
+                blockers,
                 pathProgress,
                 openReviews
             );
@@ -152,6 +108,7 @@ public sealed class GetLearnerTodayPlanHandler(IKnowledgeRepository repository)
 
         return new LearnerTodayPlanResponse(
             null,
+            false,
             ["ContentUnavailable"],
             pathProgress,
             openReviews

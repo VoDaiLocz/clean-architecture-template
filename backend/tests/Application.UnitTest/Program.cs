@@ -93,6 +93,7 @@ var tests = new List<(string Name, Action Run)>
     ("ToeicAnswerKeyParser extracts keys", ApplicationTests.ToeicAnswerKeyParserExtractsKeys),
     ("ToeicTranscriptParser extracts dialogs", ApplicationTests.ToeicTranscriptParserExtractsDialogs),
     ("LinkSourceAssetsHandler pairs assets", ApplicationTests.LinkSourceAssetsHandlerPairsAssets),
+    ("Today plan read does not mutate DB", ApplicationTests.TodayPlanReadDoesNotMutateDb),
 };
 
 var failed = 0;
@@ -2395,10 +2396,15 @@ static class ApplicationTests
             null
         ));
 
-        var handler = new GetLearnerTodayPlanHandler(repository);
-        var plan = handler.Handle(new GetLearnerTodayPlanQuery(learnerId));
+        var getHandler = new GetLearnerTodayPlanHandler(repository);
+        var plan1 = getHandler.Handle(new GetLearnerTodayPlanQuery(learnerId));
+        Assert.True(plan1.ReadyForNewAssignment, "Should be ready for new assignment");
+        Assert.Null(plan1.PrimaryAssignment, "Should not generate assignment on GET");
 
-        Assert.True(plan.PrimaryAssignment != null, "Should generate a primary assignment if none exists.");
+        var handler = new GenerateNextAssignmentHandler(repository);
+        var plan = handler.Handle(new GenerateNextAssignmentCommand(learnerId));
+
+        Assert.NotNull(plan.PrimaryAssignment, "Should generate a primary assignment if none exists.");
     }
 
     public static void ManagesActivitySessions()
@@ -2770,6 +2776,27 @@ static class ApplicationTests
         var links = repository.GetSourceAssetLinks(book.AssetId);
         Assert.Equal(2, links.Count, "Should link both key and transcript");
     }
+
+    public static void TodayPlanReadDoesNotMutateDb()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var learnerId = "l1";
+        repository.UpsertLearnerProfile(new Domain.Aggregates.LearnerProgress.LearnerProfile(learnerId, "abc", "abc@test.com", 500, 0, 30, "UTC", Domain.Aggregates.LearnerProgress.LearnerProfileStatus.Active, DateTimeOffset.UtcNow, DateTimeOffset.UtcNow));
+        repository.UpsertLearningPath(new Domain.Aggregates.LearnerProgress.LearningPath("p1", learnerId, Domain.Aggregates.LearnerProgress.LearningPathStatus.Active, null, DateTimeOffset.UtcNow, DateTimeOffset.UtcNow));
+        repository.UpsertLearningPathUnit(new Domain.Aggregates.LearnerProgress.LearningPathUnit("u1", "p1", "key1", 1, "tag", 1, Domain.Aggregates.LearnerProgress.LearningPathUnitStatus.Unlocked, null, null));
+        
+        // Test GET (should not create assignment)
+        var getHandler = new Application.Features.Learner.Work.GetLearnerTodayPlanHandler(repository);
+        var res1 = getHandler.Handle(new Application.Features.Learner.Work.GetLearnerTodayPlanQuery(learnerId));
+        Assert.True(res1.ReadyForNewAssignment, "Should be ready");
+        Assert.Null(res1.PrimaryAssignment, "Should not create assignment");
+        
+        // Test POST (should create assignment)
+        var postHandler = new Application.Features.Learner.Work.GenerateNextAssignmentHandler(repository);
+        var res2 = postHandler.Handle(new Application.Features.Learner.Work.GenerateNextAssignmentCommand(learnerId));
+        Assert.NotNull(res2.PrimaryAssignment, "Should create assignment");
+    }
 }
 
 sealed class FakeDriveDiscoveryGateway(IReadOnlyList<DriveDiscoveredAsset> assets) : IDriveDiscoveryGateway
@@ -2860,7 +2887,6 @@ static class TestItems
         Meaning: ""
     );
 
-
 }
 
 static class Assert
@@ -2868,6 +2894,16 @@ static class Assert
     public static void True(bool condition, string message)
     {
         if (!condition) throw new InvalidOperationException(message);
+    }
+
+    public static void Null(object? obj, string message)
+    {
+        if (obj is not null) throw new InvalidOperationException(message);
+    }
+
+    public static void NotNull(object? obj, string message)
+    {
+        if (obj is null) throw new InvalidOperationException(message);
     }
 
     public static void False(bool condition, string message)
