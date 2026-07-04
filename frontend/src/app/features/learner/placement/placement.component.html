@@ -1,0 +1,57 @@
+<div class="min-h-screen bg-toeic-canvas flex flex-col items-center justify-center p-4">
+  @if (loading) {
+    <div class="text-toeic-primary font-semibold text-lg">Loading placement...</div>
+  } @else if (submitting) {
+    <div class="text-toeic-primary font-semibold text-lg">Scoring your answers...</div>
+  } @else if (questions.length > 0) {
+    <div class="w-full max-w-2xl bg-white/60 backdrop-blur-md rounded-xl shadow-xl p-8 border border-white/20">
+      
+      <!-- Progress Bar -->
+      <div class="w-full bg-gray-200 rounded-full h-2.5 mb-8">
+        <div class="bg-toeic-primary h-2.5 rounded-full transition-all duration-300" [style.width]="progress + '%'"></div>
+      </div>
+
+      <div class="mb-4 text-sm font-medium text-gray-500">
+        Question {{ currentIndex + 1 }} of {{ questions.length }}
+      </div>
+
+      <h2 class="text-2xl font-bold text-toeic-primary mb-8">{{ currentQuestion.text }}</h2>
+
+      <div class="flex flex-col space-y-4 mb-8">
+        @for (option of currentQuestion.options; track option.id) {
+          <button
+            (click)="selectOption(option.id)"
+            [class.bg-toeic-primary]="selectedOptionId === option.id"
+            [class.text-white]="selectedOptionId === option.id"
+            [class.bg-white]="selectedOptionId !== option.id"
+            [class.text-gray-700]="selectedOptionId !== option.id"
+            [class.border-toeic-primary]="selectedOptionId === option.id"
+            [class.border-transparent]="selectedOptionId !== option.id"
+            class="text-left w-full px-6 py-4 rounded-xl shadow-sm border-2 transition-all duration-200 hover:shadow-md font-medium">
+            {{ option.text }}
+          </button>
+        }
+      </div>
+
+      <div class="flex justify-between items-center mt-8">
+        <button 
+          (click)="skipQuestion()"
+          class="px-6 py-2 text-gray-500 hover:text-gray-700 font-medium transition-colors">
+          Skip
+        </button>
+        
+        <button 
+          (click)="nextQuestion()"
+          [disabled]="!selectedOptionId"
+          [class.opacity-50]="!selectedOptionId"
+          [class.cursor-not-allowed]="!selectedOptionId"
+          class="px-8 py-3 bg-toeic-primary text-white font-bold rounded-xl shadow hover:bg-opacity-90 transition-all">
+          {{ currentIndex === questions.length - 1 ? 'Finish' : 'Next' }}
+        </button>
+      </div>
+
+    </div>
+  } @else {
+    <div class="text-toeic-primary font-semibold text-lg">No questions available.</div>
+  }
+</div>

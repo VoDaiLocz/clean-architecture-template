@@ -1,0 +1,63 @@
+<div class="min-h-screen bg-toeic-canvas flex items-center justify-center p-4">
+  <div class="bg-white/80 backdrop-blur-md shadow-xl rounded-xl p-8 max-w-md w-full border border-white/50">
+    <h2 class="text-3xl font-bold text-toeic-primary mb-6 text-center">Welcome to TOEIC Learner</h2>
+    
+    <!-- Step 1 -->
+    <div *ngIf="currentStep === 1">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">What is your target score?</h3>
+      <div class="space-y-3">
+        <button 
+          *ngFor="let score of scores"
+          (click)="targetScore = score"
+          [class.bg-toeic-primary]="targetScore === score"
+          [class.text-white]="targetScore === score"
+          [class.bg-white]="targetScore !== score"
+          [class.text-gray-700]="targetScore !== score"
+          class="w-full py-3 px-4 rounded-lg border border-gray-200 shadow-sm transition-all duration-200 font-medium hover:bg-blue-50"
+        >
+          {{ score }}
+        </button>
+      </div>
+      <div class="mt-8 flex justify-end">
+        <button 
+          (click)="nextStep()"
+          class="bg-toeic-primary text-white px-6 py-2 rounded-lg font-semibold shadow-md hover:bg-blue-700 transition-colors"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div *ngIf="currentStep === 2">
+      <h3 class="text-xl font-semibold mb-4 text-gray-800">How many minutes can you study daily?</h3>
+      <div class="space-y-3">
+        <button 
+          *ngFor="let min of minutesList"
+          (click)="dailyMinutes = min"
+          [class.bg-toeic-primary]="dailyMinutes === min"
+          [class.text-white]="dailyMinutes === min"
+          [class.bg-white]="dailyMinutes !== min"
+          [class.text-gray-700]="dailyMinutes !== min"
+          class="w-full py-3 px-4 rounded-lg border border-gray-200 shadow-sm transition-all duration-200 font-medium hover:bg-blue-50"
+        >
+          {{ min }} minutes
+        </button>
+      </div>
+      <div class="mt-8 flex justify-between">
+        <button 
+          (click)="prevStep()"
+          class="text-gray-600 hover:text-gray-800 font-medium px-4 py-2"
+        >
+          Back
+        </button>
+        <button 
+          (click)="finish()"
+          class="bg-toeic-primary text-white px-6 py-2 rounded-lg font-semibold shadow-md hover:bg-blue-700 transition-colors"
+        >
+          Finish
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
