@@ -140,6 +140,10 @@ var tests = new List<(string Name, Action Run)>
     ("Rejects insufficient content", Application.UnitTest.MiniTestSessionTests.RejectsInsufficientContent),
     ("Enforces expiration", Application.UnitTest.MiniTestSessionTests.EnforcesExpiration),
     ("Persists answers and final submit", Application.UnitTest.MiniTestSessionTests.PersistsAnswersAndFinalSubmit),
+    ("PartTest: Starts session with correct assigned questions", Application.UnitTest.PartTestSessionTests.StartsSessionWithCorrectAssignedQuestions),
+    ("PartTest: Rejects insufficient content", Application.UnitTest.PartTestSessionTests.RejectsInsufficientContent),
+    ("PartTest: Enforces expiration", Application.UnitTest.PartTestSessionTests.EnforcesExpiration),
+    ("PartTest: Persists answers and final submit", Application.UnitTest.PartTestSessionTests.PersistsAnswersAndFinalSubmit),
 };
 
 var failed = 0;

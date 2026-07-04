@@ -179,4 +179,7 @@ public interface IKnowledgeRepository
 
     void UpsertMiniTestSession(MiniTestSession session);
     MiniTestSession? GetMiniTestSession(string sessionId);
+
+    void UpsertPartTestSession(PartTestSession session);
+    PartTestSession? GetPartTestSession(string sessionId);
 }
