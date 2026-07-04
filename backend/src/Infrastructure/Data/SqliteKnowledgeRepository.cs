@@ -854,6 +854,37 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         return assets;
     }
 
+    public IReadOnlyList<SourceAsset> GetAllSourceAssets()
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT
+                asset_id,
+                container_id,
+                source_id,
+                file_name,
+                mime_type,
+                extension,
+                size_bytes,
+                detected_role,
+                provider_url,
+                object_key,
+                checksum
+            FROM source_assets
+            ORDER BY asset_id
+            """;
+
+        var assets = new List<SourceAsset>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            assets.Add(ReadSourceAsset(reader));
+        }
+
+        return assets;
+    }
+
     public void UpsertSourceAssetLink(SourceAssetLink link)
     {
         using var command = connection.CreateCommand();

@@ -92,6 +92,7 @@ var tests = new List<(string Name, Action Run)>
     ("repository persists source asset links", ApplicationTests.RepositoryPersistsSourceAssetLinks),
     ("ToeicAnswerKeyParser extracts keys", ApplicationTests.ToeicAnswerKeyParserExtractsKeys),
     ("ToeicTranscriptParser extracts dialogs", ApplicationTests.ToeicTranscriptParserExtractsDialogs),
+    ("LinkSourceAssetsHandler pairs assets", ApplicationTests.LinkSourceAssetsHandlerPairsAssets),
 };
 
 var failed = 0;
@@ -2748,6 +2749,26 @@ static class ApplicationTests
         Assert.True(results.Count == 2, $"Should extract 2 segments, got {results.Count}");
         Assert.Equal("M", results[0].SpeakerLabel, "First speaker should be M");
         Assert.Equal("W", results[1].SpeakerLabel, "Second speaker should be W");
+    }
+    public static void LinkSourceAssetsHandlerPairsAssets()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        
+        var book = SeedSourceAsset(repository);
+        // Key in same container
+        var key = book with { AssetId = "key-1", DetectedRole = SourceAssetRole.AnswerKey };
+        // Transcript in same container
+        var trans = book with { AssetId = "trans-1", DetectedRole = SourceAssetRole.Transcript };
+        
+        repository.UpsertSourceAsset(key);
+        repository.UpsertSourceAsset(trans);
+        
+        var handler = new Application.Features.SourceClassification.LinkSourceAssetsHandler(repository);
+        handler.Handle();
+        
+        var links = repository.GetSourceAssetLinks(book.AssetId);
+        Assert.Equal(2, links.Count, "Should link both key and transcript");
     }
 }
 

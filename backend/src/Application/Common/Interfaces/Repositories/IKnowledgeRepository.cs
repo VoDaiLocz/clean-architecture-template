@@ -26,6 +26,8 @@ public interface IKnowledgeRepository
 
     IReadOnlyList<SourceAsset> GetSourceAssets(string containerId);
 
+    IReadOnlyList<SourceAsset> GetAllSourceAssets();
+
     void UpsertSourceAssetLink(SourceAssetLink link);
 
     IReadOnlyList<SourceAssetLink> GetSourceAssetLinks(string targetAssetId);
