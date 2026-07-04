@@ -35,6 +35,11 @@ var tests = new List<(string Name, Action Run)>
 {
     ("ToeicPlayableItem does not leak answer", ToeicItemContractsTests.ToeicPlayableItemDoesNotLeakAnswer),
     ("ToeicReviewItem contains answer keys", ToeicItemContractsTests.ToeicReviewItemContainsAnswer),
+    ("Engine supports Part 1 only", ToeicPart1EngineTests.EngineSupportsPart1Only),
+    ("Missing MediaAssetId throws", ToeicPart1EngineTests.MissingMediaAssetIdThrows),
+    ("Invalid options throws", ToeicPart1EngineTests.InvalidOptionsThrows),
+    ("Playable item hides answer", ToeicPart1EngineTests.PlayableItemHidesAnswer),
+    ("Review item includes answer", ToeicPart1EngineTests.ReviewItemIncludesAnswer),
     ("valid Part 5 item publishes", ApplicationTests.ValidPart5ItemPublishes),
     ("invalid answer is rejected before persistence", ApplicationTests.InvalidAnswerIsRejectedBeforePersistence),
     ("low confidence goes to review issues", ApplicationTests.LowConfidenceGoesToReview),
