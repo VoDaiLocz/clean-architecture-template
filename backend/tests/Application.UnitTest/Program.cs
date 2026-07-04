@@ -160,6 +160,8 @@ var tests = new List<(string Name, Action Run)>
     ("ToeicTestSessionState: GetPracticeTestSessionHandler rejects unauthorized", () => Application.UnitTest.ToeicTestSessionStateTests.TestGetPracticeTestSessionHandler_RejectsUnauthorized().Wait()),
     ("ToeicTestSessionState: CheckpointPracticeTestSessionHandler persists partial answers", () => Application.UnitTest.ToeicTestSessionStateTests.TestCheckpointPracticeTestSessionHandler_PersistsPartialAnswers().Wait()),
     ("ToeicTestSessionState: CheckpointPracticeTestSessionHandler rejects expired", () => Application.UnitTest.ToeicTestSessionStateTests.TestCheckpointPracticeTestSessionHandler_RejectsExpired().Wait()),
+    ("ToeicScoreBreakdown: Calculates score properly", () => Application.UnitTest.CalculateToeicScoreBreakdownTests.TestCalculateToeicScoreBreakdown_CalculatesCorrectly().Wait()),
+    ("ToeicScoreBreakdown: Rejects unsubmitted", () => Application.UnitTest.CalculateToeicScoreBreakdownTests.TestCalculateToeicScoreBreakdown_RejectsNotSubmitted().Wait()),
 };
 
 var failed = 0;
