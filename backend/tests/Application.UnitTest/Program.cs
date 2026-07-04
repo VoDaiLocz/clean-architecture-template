@@ -33,6 +33,8 @@ using System.Text;
 
 var tests = new List<(string Name, Action Run)>
 {
+    ("ToeicPlayableItem does not leak answer", ToeicItemContractsTests.ToeicPlayableItemDoesNotLeakAnswer),
+    ("ToeicReviewItem contains answer keys", ToeicItemContractsTests.ToeicReviewItemContainsAnswer),
     ("valid Part 5 item publishes", ApplicationTests.ValidPart5ItemPublishes),
     ("invalid answer is rejected before persistence", ApplicationTests.InvalidAnswerIsRejectedBeforePersistence),
     ("low confidence goes to review issues", ApplicationTests.LowConfidenceGoesToReview),

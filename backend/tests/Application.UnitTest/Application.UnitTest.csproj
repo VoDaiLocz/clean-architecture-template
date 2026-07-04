@@ -10,4 +10,7 @@
     <ProjectReference Include="../../src/DatabaseMigrations/DatabaseMigrations.csproj" />
     <ProjectReference Include="../../src/Infrastructure/Infrastructure.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="xunit.extensibility.core" Version="2.9.3" />
+  </ItemGroup>
 </Project>
