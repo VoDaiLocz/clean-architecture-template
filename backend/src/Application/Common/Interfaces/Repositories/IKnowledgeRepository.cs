@@ -185,4 +185,7 @@ public interface IKnowledgeRepository
 
     void UpsertListeningTestSession(ListeningTestSession session);
     ListeningTestSession? GetListeningTestSession(string sessionId);
+
+    void UpsertReadingTestSession(ReadingTestSession session);
+    ReadingTestSession? GetReadingTestSession(string sessionId);
 }
