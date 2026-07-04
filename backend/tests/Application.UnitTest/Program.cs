@@ -91,6 +91,7 @@ var tests = new List<(string Name, Action Run)>
     ("performance baseline get learner today plan", ApplicationTests.PerformanceBaselineGetLearnerTodayPlan),
     ("repository persists source asset links", ApplicationTests.RepositoryPersistsSourceAssetLinks),
     ("ToeicAnswerKeyParser extracts keys", ApplicationTests.ToeicAnswerKeyParserExtractsKeys),
+    ("ToeicAnswerKeyParser uses profiles", ApplicationTests.ToeicAnswerKeyParserUsesProfiles),
     ("ToeicTranscriptParser extracts dialogs", ApplicationTests.ToeicTranscriptParserExtractsDialogs),
     ("LinkSourceAssetsHandler pairs assets", ApplicationTests.LinkSourceAssetsHandlerPairsAssets),
     ("Today plan read does not mutate DB", ApplicationTests.TodayPlanReadDoesNotMutateDb),
@@ -2764,7 +2765,7 @@ static class ApplicationTests
         repository.UpsertExtractedTextBlock(new ExtractedTextBlock("b1", asset.AssetId, "page-1", 1, ExtractedBlockType.Paragraph, "1. A  2. B", 1m, "{}"));
         repository.UpsertExtractedTextBlock(new ExtractedTextBlock("b2", asset.AssetId, "page-1", 1, ExtractedBlockType.Paragraph, "3.C", 1m, "{}"));
         
-        var parser = new Infrastructure.Extraction.ToeicAnswerKeyParser(repository);
+        var parser = new Infrastructure.Extraction.ToeicAnswerKeyParser(repository, new[] { new Infrastructure.Extraction.Profiles.DefaultToeicParserProfile() });
         var results = parser.Parse(asset);
         
         Assert.True(results.Count == 3, $"Should extract 3 answers, got {results.Count}");
@@ -2772,6 +2773,35 @@ static class ApplicationTests
         Assert.Equal("B", results[1].CorrectAnswer, "Q2 should be B");
         Assert.Equal("C", results[2].CorrectAnswer, "Q3 should be C");
         Assert.True(results[0].Confidence < 0.9m, "Should flag low confidence because total isn't 100 or 200");
+    }
+
+    public static void ToeicAnswerKeyParserUsesProfiles()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        
+        var asset = SeedSourceAsset(repository) with { DetectedRole = SourceAssetRole.AnswerKey };
+        repository.UpsertSourceAsset(asset);
+        
+        repository.UpsertExtractedPage(new ExtractedPage("page-1", asset.AssetId, 1, 500, 500, DateTimeOffset.UtcNow));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock("b1", asset.AssetId, "page-1", 1, ExtractedBlockType.Paragraph, "GARBAGE", 1m, "{}"));
+        
+        var mockProfile = new MockHighConfidenceProfile();
+        var parser = new Infrastructure.Extraction.ToeicAnswerKeyParser(repository, new[] { mockProfile });
+        var results = parser.Parse(asset);
+        
+        Assert.True(results.Count == 1, "Should use the mock profile which returns 1 mapping");
+        Assert.Equal("Z", results[0].CorrectAnswer, "Should use mock answer");
+        Assert.Equal(0.99m, results[0].Confidence, "Should use mock confidence");
+    }
+
+    private class MockHighConfidenceProfile : Application.Features.SourceExtraction.IToeicParserProfile
+    {
+        public bool CanParse(SourceAsset asset) => true;
+        public IReadOnlyList<Application.Features.SourceExtraction.AnswerKeyMappingResult> ParseAnswerKeys(IReadOnlyList<ExtractedTextBlock> blocks)
+        {
+            return new[] { new Application.Features.SourceExtraction.AnswerKeyMappingResult("mock-test", 1, "Z", 0.99m) };
+        }
     }
 
     public static void ToeicTranscriptParserExtractsDialogs()
