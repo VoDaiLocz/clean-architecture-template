@@ -58,6 +58,24 @@ public sealed class GetLearnerTodayPlanHandler(IKnowledgeRepository repository)
         var reviews = repository.GetReviewItems(query.LearnerId);
         var openReviews = reviews.Count(r => r.Status == ReviewItemStatus.Open);
 
+        // 0. Check for active repair plan
+        var activeRepairPlan = repository.GetActiveRepairPlan(query.LearnerId);
+        if (activeRepairPlan != null)
+        {
+            return new LearnerTodayPlanResponse(
+                new LearnerAssignmentResponse(
+                    activeRepairPlan.RepairPlanId,
+                    "REPAIR",
+                    "RepairPlan",
+                    activeRepairPlan.Status.ToString()
+                ),
+                false,
+                [],
+                pathProgress,
+                openReviews
+            );
+        }
+
         // 1. Check for active assignments
         var activeAssignments = repository.GetLearnerAssignments(query.LearnerId)
             .Where(a => a.Status == LearnerAssignmentStatus.Assigned || a.Status == LearnerAssignmentStatus.Started)
