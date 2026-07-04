@@ -88,6 +88,7 @@ var tests = new List<(string Name, Action Run)>
     ("repository persists learner assignments sessions attempts and answers", ApplicationTests.RepositoryPersistsLearnerAssignmentsSessionsAttemptsAndAnswers),
     ("repository persists review and mastery records", ApplicationTests.RepositoryPersistsReviewAndMasteryRecords),
     ("repository enforces TOEIC data integrity and indexes", ApplicationTests.RepositoryEnforcesToeicDataIntegrityAndIndexes),
+    ("performance baseline get learner today plan", ApplicationTests.PerformanceBaselineGetLearnerTodayPlan),
 };
 
 var failed = 0;
@@ -2155,6 +2156,109 @@ static class ApplicationTests
             () => repository.UpsertMasteryRecord(mastery with { MasteryRecordId = "invalid-mastery", MasteryPercent = 101 }),
             "Mastery percent must stay within 0-100."
         );
+    }
+
+    public static void PerformanceBaselineGetLearnerTodayPlan()
+    {
+        Console.WriteLine("--- BENCHMARK: GetLearnerTodayPlanHandler ---");
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+
+        var learnerId = "benchmark-learner";
+        var pathId = "benchmark-path";
+
+        repository.UpsertLearnerProfile(new LearnerProfile(
+            learnerId,
+            "Benchmark Learner",
+            "benchmark@test.com",
+            500,
+            0,
+            30,
+            "UTC",
+            LearnerProfileStatus.Active,
+            DateTimeOffset.UtcNow,
+            DateTimeOffset.UtcNow
+        ));
+
+        repository.UpsertLearningPath(new LearningPath(
+            pathId,
+            learnerId,
+            LearningPathStatus.Active,
+            null,
+            DateTimeOffset.UtcNow,
+            DateTimeOffset.UtcNow
+        ));
+
+        // Insert 5000 units
+        for (int i = 0; i < 5000; i++)
+        {
+            repository.UpsertLearningPathUnit(new LearningPathUnit(
+                $"unit-{i}",
+                pathId,
+                $"part{i % 7 + 1}-concept-{i}",
+                i % 7 + 1,
+                "[]",
+                i + 1,
+                i < 100 ? LearningPathUnitStatus.Unlocked : LearningPathUnitStatus.Locked,
+                null,
+                null
+            ));
+        }
+
+        // Insert 1000 review items
+        for (int i = 0; i < 1000; i++)
+        {
+            repository.UpsertReviewItem(new Domain.Aggregates.LearnerProgress.ReviewItem(
+                $"review-{i}",
+                learnerId,
+                $"attempt-{i}",
+                $"question-{i}",
+                $"unit-{i % 100}",
+                "tag",
+                "A",
+                "B",
+                Domain.Aggregates.LearnerProgress.ReviewItemStatus.Open,
+                false,
+                DateTimeOffset.UtcNow.AddDays(-1),
+                null
+            ));
+        }
+
+        // Insert some assignments history
+        for (int i = 0; i < 500; i++)
+        {
+            repository.UpsertLearnerAssignment(new LearnerAssignment(
+                $"assign-{i}",
+                learnerId,
+                LearnerAssignmentType.Lesson,
+                $"unit-{i % 100}",
+                LearnerAssignmentStatus.Completed,
+                DateTimeOffset.UtcNow.AddDays(-1),
+                DateTimeOffset.UtcNow.AddHours(-1)
+            ));
+        }
+
+        var handler = new GetLearnerTodayPlanHandler(repository);
+        var query = new GetLearnerTodayPlanQuery(learnerId);
+
+        // Warm up
+        handler.Handle(query);
+
+        int iterations = 10;
+        var sw = System.Diagnostics.Stopwatch.StartNew();
+
+        for (int i = 0; i < iterations; i++)
+        {
+            handler.Handle(query);
+        }
+
+        sw.Stop();
+
+        double avgMs = sw.Elapsed.TotalMilliseconds / iterations;
+        Console.WriteLine($"Average execution time over {iterations} runs: {avgMs:F2} ms");
+        
+        // Assert generous baseline
+        Assert.True(avgMs < 200, $"Performance baseline exceeded. Avg: {avgMs}ms. Expected < 200ms");
     }
 
     public static void RepositoryEnforcesToeicDataIntegrityAndIndexes()
