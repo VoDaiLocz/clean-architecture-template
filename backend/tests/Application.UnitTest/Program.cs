@@ -89,6 +89,7 @@ var tests = new List<(string Name, Action Run)>
     ("repository persists review and mastery records", ApplicationTests.RepositoryPersistsReviewAndMasteryRecords),
     ("repository enforces TOEIC data integrity and indexes", ApplicationTests.RepositoryEnforcesToeicDataIntegrityAndIndexes),
     ("performance baseline get learner today plan", ApplicationTests.PerformanceBaselineGetLearnerTodayPlan),
+    ("repository persists source asset links", ApplicationTests.RepositoryPersistsSourceAssetLinks),
 };
 
 var failed = 0;
@@ -2689,6 +2690,19 @@ static class ApplicationTests
         
         var firstUnit = units.First(u => u.UnitId == result.FirstUnlockedUnitId);
         Assert.Equal(LearningPathUnitStatus.Unlocked, firstUnit.Status, "First unit must be unlocked.");
+    }
+
+    public static void RepositoryPersistsSourceAssetLinks()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        
+        var link = new SourceAssetLink("asset-key-1", "asset-book-1", SourceAssetRelationType.ProvidesAnswerKeyFor);
+        repository.UpsertSourceAssetLink(link);
+        
+        var links = repository.GetSourceAssetLinks("asset-book-1");
+        Assert.Equal(1, links.Count, "Should persist link");
+        Assert.Equal("asset-key-1", links[0].SourceAssetId, "Should match source id");
     }
 }
 

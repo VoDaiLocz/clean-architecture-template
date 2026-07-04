@@ -95,6 +95,13 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
             CREATE INDEX IF NOT EXISTS idx_source_assets_source_role
                 ON source_assets(source_id, detected_role);
 
+            CREATE TABLE IF NOT EXISTS source_asset_links (
+                source_asset_id TEXT NOT NULL,
+                target_asset_id TEXT NOT NULL,
+                relation_type INTEGER NOT NULL,
+                PRIMARY KEY(source_asset_id, target_asset_id, relation_type)
+            );
+
             CREATE TABLE IF NOT EXISTS source_discovery_issues (
                 issue_id TEXT PRIMARY KEY,
                 source_id TEXT NOT NULL,
@@ -845,6 +852,56 @@ public sealed class SqliteKnowledgeRepository : IKnowledgeRepository, IDisposabl
         }
 
         return assets;
+    }
+
+    public void UpsertSourceAssetLink(SourceAssetLink link)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO source_asset_links (
+                source_asset_id,
+                target_asset_id,
+                relation_type
+            ) VALUES (
+                $source_asset_id,
+                $target_asset_id,
+                $relation_type
+            )
+            ON CONFLICT(source_asset_id, target_asset_id, relation_type) DO NOTHING
+            """;
+        command.Parameters.AddWithValue("$source_asset_id", link.SourceAssetId);
+        command.Parameters.AddWithValue("$target_asset_id", link.TargetAssetId);
+        command.Parameters.AddWithValue("$relation_type", (int)link.RelationType);
+        command.ExecuteNonQuery();
+    }
+
+    public IReadOnlyList<SourceAssetLink> GetSourceAssetLinks(string targetAssetId)
+    {
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            SELECT
+                source_asset_id,
+                target_asset_id,
+                relation_type
+            FROM source_asset_links
+            WHERE target_asset_id = $target_asset_id
+            """;
+        command.Parameters.AddWithValue("$target_asset_id", targetAssetId);
+
+        var links = new List<SourceAssetLink>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            links.Add(new SourceAssetLink(
+                reader.GetString(0),
+                reader.GetString(1),
+                (SourceAssetRelationType)reader.GetInt32(2)
+            ));
+        }
+
+        return links;
     }
 
     public SourceAsset? GetSourceAsset(string assetId)

@@ -26,6 +26,10 @@ public interface IKnowledgeRepository
 
     IReadOnlyList<SourceAsset> GetSourceAssets(string containerId);
 
+    void UpsertSourceAssetLink(SourceAssetLink link);
+
+    IReadOnlyList<SourceAssetLink> GetSourceAssetLinks(string targetAssetId);
+
     void UpsertRejectedLocalSourceFile(RejectedLocalSourceFile file);
 
     IReadOnlyList<RejectedLocalSourceFile> GetRejectedLocalSourceFiles();

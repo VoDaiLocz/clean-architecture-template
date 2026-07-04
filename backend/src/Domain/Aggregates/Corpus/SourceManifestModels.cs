@@ -151,6 +151,14 @@ public sealed record SourceAsset(
     string Checksum
 );
 
+public enum SourceAssetRelationType { ProvidesAnswerKeyFor, ProvidesTranscriptFor }
+
+public sealed record SourceAssetLink(
+    string SourceAssetId,
+    string TargetAssetId,
+    SourceAssetRelationType RelationType
+);
+
 public enum SourceDiscoveryIssueStatus
 {
     Open,
