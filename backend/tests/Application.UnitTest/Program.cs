@@ -156,6 +156,10 @@ var tests = new List<(string Name, Action Run)>
     ("FullTest: Rejects insufficient content", Application.UnitTest.FullTestSessionTests.RejectsInsufficientContent),
     ("FullTest: Enforces expiration", Application.UnitTest.FullTestSessionTests.EnforcesExpiration),
     ("FullTest: Persists answers and final submit", Application.UnitTest.FullTestSessionTests.PersistsAnswersAndFinalSubmit),
+    ("ToeicTestSessionState: GetPracticeTestSessionHandler returns unified state", () => Application.UnitTest.ToeicTestSessionStateTests.TestGetPracticeTestSessionHandler_ReturnsUnifiedState().Wait()),
+    ("ToeicTestSessionState: GetPracticeTestSessionHandler rejects unauthorized", () => Application.UnitTest.ToeicTestSessionStateTests.TestGetPracticeTestSessionHandler_RejectsUnauthorized().Wait()),
+    ("ToeicTestSessionState: CheckpointPracticeTestSessionHandler persists partial answers", () => Application.UnitTest.ToeicTestSessionStateTests.TestCheckpointPracticeTestSessionHandler_PersistsPartialAnswers().Wait()),
+    ("ToeicTestSessionState: CheckpointPracticeTestSessionHandler rejects expired", () => Application.UnitTest.ToeicTestSessionStateTests.TestCheckpointPracticeTestSessionHandler_RejectsExpired().Wait()),
 };
 
 var failed = 0;
