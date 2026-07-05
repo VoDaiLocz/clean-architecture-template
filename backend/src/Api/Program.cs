@@ -21,6 +21,7 @@ using Infrastructure;
 using Microsoft.AspNetCore.Http.HttpResults;
 using System.Text.Json.Serialization;
 using Api.Endpoints;
+using Domain.Constants;
 
 #pragma warning disable CS0618
 
@@ -44,7 +45,10 @@ builder.Services.AddAuthentication(Microsoft.AspNetCore.Authentication.JwtBearer
             IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(secret))
         };
     });
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options => {
+    options.AddPolicy(Policies.RequireAdminRole, policy => policy.RequireRole(Roles.Admin, Roles.SuperAdmin));
+    options.AddPolicy(Policies.RequireOperatorRole, policy => policy.RequireRole(Roles.Operator, Roles.Admin, Roles.SuperAdmin));
+});
 
 builder.Services.ConfigureHttpJsonOptions(options =>
 {
@@ -69,7 +73,7 @@ app.MapAuthEndpoints();
 
 var api = app.MapGroup("/api");
 var learner = api.MapGroup("/learner");
-var admin = api.MapGroup("/admin");
+var admin = api.MapGroup("/admin").RequireAuthorization(Policies.RequireOperatorRole);
 
 api.MapGet(
     "/health",
