@@ -35,6 +35,9 @@ builder.Host.UseSerilog((context, services, configuration) => configuration
     .Enrich.FromLogContext()
     .WriteTo.Console());
 
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
+
 builder.Services.AddApplicationDependencies(builder.Configuration);
 builder.Services.AddInfrastructureDependencies(builder.Configuration, builder.Environment.EnvironmentName);
 
@@ -72,6 +75,7 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+app.UseExceptionHandler();
 app.UseMiddleware<CorrelationIdMiddleware>();
 
 app.UseCors("frontend");
