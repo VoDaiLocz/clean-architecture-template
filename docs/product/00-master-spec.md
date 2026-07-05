@@ -61,7 +61,7 @@ Deferred:
 - [08a-angular-design-system.md](./08a-angular-design-system.md): Ocean Classroom visual system with white/sea-blue palette, component rules, motion, and visual QA gates.
 - [09-quality-strategy.md](./09-quality-strategy.md): testing, validation, observability, acceptance gates.
 - [10-release-plan.md](./10-release-plan.md): alpha, beta, market release gates.
-- [11-task-breakdown](./11-task-breakdown): phase-by-phase task execution specs.
+- [11-task-breakdown](./11-task-breakdown): phase-by-phase task execution specs, including the current [production completion todo](./11-task-breakdown/production-completion-todo.md).
 - [12-development-workflow.md](./12-development-workflow.md): TDD, Clean Architecture, SOLID, verification, commit, and push standard.
 - [13-backend-module-boundaries.md](./13-backend-module-boundaries.md): backend context catalog, dependency direction, namespace target, and enforcement.
 - [14-production-configuration.md](./14-production-configuration.md): environment rules, required configuration keys, secret handling, and production DB validation.

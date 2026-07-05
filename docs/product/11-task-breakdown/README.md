@@ -8,6 +8,7 @@ Execution standard:
 
 Task files:
 
+- [production-completion-todo.md](./production-completion-todo.md): current execution checklist for finishing the product from the verified DB/repo state.
 - [p0-product-reset.md](./p0-product-reset.md)
 - [p1-architecture-infrastructure.md](./p1-architecture-infrastructure.md)
 - [p2-data-foundation.md](./p2-data-foundation.md)
