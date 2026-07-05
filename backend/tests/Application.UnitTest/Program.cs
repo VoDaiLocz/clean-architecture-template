@@ -102,6 +102,7 @@ var tests = new List<(string Name, Action Run)>
     ("parses TOEIC reading drafts with tags and source trace", ApplicationTests.ParsesToeicReadingDraftsWithTagsAndSourceTrace),
     ("reading draft parser import is idempotent and preserves reviewed status", ApplicationTests.ReadingDraftParserImportIsIdempotentAndPreservesReviewedStatus),
     ("regex reading parser creates valid Part 5 drafts from extracted text and answer key", ApplicationTests.RegexReadingParserCreatesValidPart5DraftsFromExtractedTextAndAnswerKey),
+    ("regex reading parser creates valid Part 6 cloze drafts from split OCR blocks", ApplicationTests.RegexReadingParserCreatesValidPart6ClozeDraftsFromSplitOcrBlocks),
     ("regex reading parser creates valid Part 6 and Part 7 drafts with passage context", ApplicationTests.RegexReadingParserCreatesValidPart6AndPart7DraftsWithPassageContext),
     ("parses TOEIC listening draft groups", ApplicationTests.ParsesToeicListeningDraftGroups),
     ("validates TOEIC draft content and records issues", ApplicationTests.ValidatesToeicDraftContentAndRecordsIssues),
@@ -1540,6 +1541,95 @@ static class ApplicationTests
         Assert.True(drafts.All(draft => draft.PayloadJson.Contains("\"passageText\"", StringComparison.Ordinal)), "Part 6/7 draft payloads must preserve passage text.");
         Assert.True(drafts.Any(draft => draft.PayloadJson.Contains("\"correctAnswer\":\"B\"", StringComparison.Ordinal)), "Part 6 answer key evidence should persist.");
         Assert.True(drafts.Any(draft => draft.PayloadJson.Contains("\"correctAnswer\":\"C\"", StringComparison.Ordinal)), "Part 7 answer key evidence should persist.");
+    }
+
+    public static void RegexReadingParserCreatesValidPart6ClozeDraftsFromSplitOcrBlocks()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var asset = SeedSourceAsset(repository) with
+        {
+            AssetId = "asset-realistic-part6-pdf",
+            FileName = "Giải chi tiết ĐỀ 2.pdf",
+            ObjectKey = "source-assets/reading/giai-chi-tiet-de-2.pdf",
+            Checksum = "sha256-realistic-part6"
+        };
+        repository.UpsertSourceAsset(asset);
+        repository.UpsertExtractedPage(new ExtractedPage(
+            PageId: "page-realistic-part6-38",
+            AssetId: asset.AssetId,
+            PageNumber: 38,
+            Width: 595,
+            Height: 842,
+            ExtractedAtUtc: new DateTimeOffset(2026, 7, 5, 0, 0, 0, TimeSpan.Zero)
+        ));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock(
+            BlockId: "extracted-block-realistic-part6-38-7",
+            AssetId: asset.AssetId,
+            PageId: "page-realistic-part6-38",
+            PageNumber: 38,
+            BlockType: ExtractedBlockType.Paragraph,
+            Text: "With Global Strength Gym's 30-day trial period, you get the opportunity to try out our classes, equipment, and facilities (131)-----. It's completely risk-free!",
+            Confidence: 0.96m,
+            CoordinatesJson: "{}"
+        ));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock(
+            BlockId: "extracted-block-realistic-part6-38-8",
+            AssetId: asset.AssetId,
+            PageId: "page-realistic-part6-38",
+            PageNumber: 38,
+            BlockType: ExtractedBlockType.Paragraph,
+            Text: "131. \"Với thời gian dùng thử 30 ngày, bạn có cơ hội thử những lớp học, thiết bị và cơ sở. Trong suốt quá trình dùng thử này, bạn không cần phải trả phí và cũng không phải ký hợp đồng.\"",
+            Confidence: 0.96m,
+            CoordinatesJson: "{}"
+        ));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock(
+            BlockId: "extracted-block-realistic-part6-38-12",
+            AssetId: asset.AssetId,
+            PageId: "page-realistic-part6-38",
+            PageNumber: 38,
+            BlockType: ExtractedBlockType.Paragraph,
+            Text: "--------------- 131.",
+            Confidence: 0.96m,
+            CoordinatesJson: "{}"
+        ));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock(
+            BlockId: "extracted-block-realistic-part6-38-13",
+            AssetId: asset.AssetId,
+            PageId: "page-realistic-part6-38",
+            PageNumber: 38,
+            BlockType: ExtractedBlockType.Paragraph,
+            Text: "A",
+            Confidence: 0.96m,
+            CoordinatesJson: "{}"
+        ));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock(
+            BlockId: "extracted-block-realistic-part6-38-15",
+            AssetId: asset.AssetId,
+            PageId: "page-realistic-part6-38",
+            PageNumber: 38,
+            BlockType: ExtractedBlockType.Paragraph,
+            Text: "(A) Throughout the trial, you pay nothing and sign no contract. (B) Weight-lifting classes are not currently available. (C) A cash deposit is required when you sign up for membership. (D) All questions should be e-mailed to customer service.",
+            Confidence: 0.96m,
+            CoordinatesJson: "{}"
+        ));
+
+        var handler = new ParseToeicReadingDraftsHandler(
+            repository,
+            new Infrastructure.Extraction.RegexReadingDraftParser()
+        );
+
+        var result = handler.Handle(new ParseToeicReadingDraftsCommand(asset.AssetId));
+        var validation = new ValidateToeicDraftContentHandler(repository)
+            .Handle(new ValidateToeicDraftContentCommand(asset.AssetId));
+
+        Assert.Equal(1, result.CreatedReadingDraftCount, "Split OCR Part 6 cloze block should become one draft.");
+        Assert.Equal(1, validation.ValidDraftCount, "Split OCR Part 6 cloze draft should pass validation.");
+        var draft = repository.GetDraftContentItems(asset.AssetId).Single();
+        Assert.Equal(6, draft.ToeicPart, "Question 131 belongs to TOEIC Part 6.");
+        Assert.True(draft.PayloadJson.Contains("\"correctAnswer\":\"A\"", StringComparison.Ordinal), "Draft payload must include answer evidence.");
+        Assert.True(draft.PayloadJson.Contains("Throughout the trial", StringComparison.Ordinal), "Draft payload must preserve option text.");
+        Assert.True(draft.PayloadJson.Contains("\"passageText\"", StringComparison.Ordinal), "Draft payload must include passage text.");
     }
 
     public static void ParsesToeicListeningDraftGroups()
