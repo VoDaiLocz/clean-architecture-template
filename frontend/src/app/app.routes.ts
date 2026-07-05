@@ -15,6 +15,7 @@ export const routes: Routes = [
   { path: 'learner/parts', loadComponent: () => import('./features/learner/part-overview/part-overview.component').then(m => m.PartOverviewComponent) },
   { path: 'learner/exam', loadComponent: () => import('./features/learner/exam/exam.component').then(m => m.ExamComponent) },
   { path: 'learner/progress', loadComponent: () => import('./features/learner/progress/progress.component').then(m => m.ProgressComponent) },
+  { path: 'admin/inventory', loadComponent: () => import('./features/admin/source-inventory/source-inventory.component').then(m => m.SourceInventoryComponent) },
   { 
     path: 'learner', 
     component: AppShellComponent,
