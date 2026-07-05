@@ -9,6 +9,8 @@ TestResults/
 node_modules/
 dist/
 .vite/
+frontend/.angular/
+playwright-report/
 
 # Python prototype/cache
 __pycache__/
@@ -17,6 +19,7 @@ __pycache__/
 # Local browser/debug artifacts
 .playwright-mcp/
 test-results/
+*.log
 
 # Local databases and environment
 *.db
