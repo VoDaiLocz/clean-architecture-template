@@ -31,6 +31,11 @@ using Microsoft.Extensions.Configuration;
 using System.Reflection;
 using System.Text;
 
+if (args.Contains("--import-real-part5-drafts", StringComparer.Ordinal))
+{
+    return ImportRealPart5Drafts();
+}
+
 var tests = new List<(string Name, Action Run)>
 {
     ("ToeicPlayableItem does not leak answer", ToeicItemContractsTests.ToeicPlayableItemDoesNotLeakAnswer),
@@ -89,6 +94,7 @@ var tests = new List<(string Name, Action Run)>
     ("parses TOEIC answer keys into draft mappings", ApplicationTests.ParsesToeicAnswerKeysIntoDraftMappings),
     ("parses TOEIC transcripts into draft segments", ApplicationTests.ParsesToeicTranscriptsIntoDraftSegments),
     ("parses TOEIC reading drafts with tags and source trace", ApplicationTests.ParsesToeicReadingDraftsWithTagsAndSourceTrace),
+    ("regex reading parser creates valid Part 5 drafts from extracted text and answer key", ApplicationTests.RegexReadingParserCreatesValidPart5DraftsFromExtractedTextAndAnswerKey),
     ("parses TOEIC listening draft groups", ApplicationTests.ParsesToeicListeningDraftGroups),
     ("validates TOEIC draft content and records issues", ApplicationTests.ValidatesToeicDraftContentAndRecordsIssues),
     ("reviews and publishes approved TOEIC draft content", ApplicationTests.ReviewsAndPublishesApprovedToeicDraftContent),
@@ -191,6 +197,52 @@ if (failed > 0)
 
 Console.WriteLine($"{tests.Count} tests passed.");
 return 0;
+
+static int ImportRealPart5Drafts()
+{
+    var dbPath = Path.GetFullPath("backend/src/Api/toeic-normalization.db");
+    if (!File.Exists(dbPath))
+    {
+        Console.Error.WriteLine($"Real normalization DB not found: {dbPath}");
+        return 1;
+    }
+
+    using var repository = SqliteKnowledgeRepository.FromConnectionString($"Data Source={dbPath}");
+    repository.Initialize();
+
+    var parser = new Infrastructure.Extraction.RegexReadingDraftParser();
+    var parseHandler = new ParseToeicReadingDraftsHandler(repository, parser);
+    var validationHandler = new ValidateToeicDraftContentHandler(repository);
+    var parsedAssets = 0;
+    var createdDrafts = 0;
+    var validDrafts = 0;
+    var invalidDrafts = 0;
+
+    foreach (var asset in repository.GetAllSourceAssets().Where(asset => asset.DetectedRole == SourceAssetRole.Pdf))
+    {
+        if (repository.GetExtractedTextBlocks(asset.AssetId).Count == 0)
+        {
+            continue;
+        }
+
+        var parseResult = parseHandler.Handle(new ParseToeicReadingDraftsCommand(asset.AssetId));
+        if (parseResult.CreatedReadingDraftCount == 0)
+        {
+            continue;
+        }
+
+        var validationResult = validationHandler.Handle(new ValidateToeicDraftContentCommand(asset.AssetId));
+        parsedAssets++;
+        createdDrafts += parseResult.CreatedReadingDraftCount;
+        validDrafts += validationResult.ValidDraftCount;
+        invalidDrafts += validationResult.InvalidDraftCount;
+        Console.WriteLine($"{asset.AssetId} | {asset.FileName} | drafts={parseResult.CreatedReadingDraftCount} valid={validationResult.ValidDraftCount} invalid={validationResult.InvalidDraftCount}");
+    }
+
+    Console.WriteLine($"REAL_PART5_IMPORT parsedAssets={parsedAssets} createdDrafts={createdDrafts} validDrafts={validDrafts} invalidDrafts={invalidDrafts}");
+    Console.WriteLine($"DB_COUNTS draft_content_items={repository.Count("draft_content_items")} ready_for_review_part5={repository.CountDraftContentItems(5, DraftContentStatus.ReadyForReview)} validation_issues={repository.Count("validation_issues")}");
+    return validDrafts > 0 ? 0 : 2;
+}
 
 static class ApplicationTests
 {
@@ -1154,6 +1206,76 @@ static class ApplicationTests
         Assert.True(drafts.All(draft => draft.PayloadJson.Contains("\"data\":", StringComparison.Ordinal)), "Reading draft payload should wrap parser data.");
         Assert.True(drafts.Any(draft => draft.PayloadJson.Contains("verb_tense", StringComparison.Ordinal)), "Skill tags should persist in payload.");
         Assert.True(drafts.All(draft => draft.SourceTraceJson.Contains("block-reading-001", StringComparison.Ordinal)), "Source trace should include extracted block.");
+    }
+
+    public static void RegexReadingParserCreatesValidPart5DraftsFromExtractedTextAndAnswerKey()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var asset = SeedSourceAsset(repository) with
+        {
+            AssetId = "asset-fire-part5-pdf",
+            FileName = "FIRE TOEIC PART 5.pdf",
+            ObjectKey = "source-assets/fire/part5.pdf",
+            Checksum = "sha256-fire-part5"
+        };
+        repository.UpsertSourceAsset(asset);
+        repository.UpsertExtractedPage(new ExtractedPage(
+            PageId: "page-fire-part5-1",
+            AssetId: asset.AssetId,
+            PageNumber: 1,
+            Width: 595,
+            Height: 842,
+            ExtractedAtUtc: new DateTimeOffset(2026, 7, 5, 0, 0, 0, TimeSpan.Zero)
+        ));
+        repository.UpsertExtractedPage(new ExtractedPage(
+            PageId: "page-fire-part5-2",
+            AssetId: asset.AssetId,
+            PageNumber: 2,
+            Width: 595,
+            Height: 842,
+            ExtractedAtUtc: new DateTimeOffset(2026, 7, 5, 0, 1, 0, TimeSpan.Zero)
+        ));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock(
+            BlockId: "block-fire-part5-question-101",
+            AssetId: asset.AssetId,
+            PageId: "page-fire-part5-1",
+            PageNumber: 1,
+            BlockType: ExtractedBlockType.Question,
+            Text: "101. The marketing team needs a more ____ proposal. (A) effect (B) effective (C) effectively (D) effectiveness",
+            Confidence: 0.96m,
+            CoordinatesJson: "{}"
+        ));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock(
+            BlockId: "block-fire-part5-answer-101",
+            AssetId: asset.AssetId,
+            PageId: "page-fire-part5-2",
+            PageNumber: 2,
+            BlockType: ExtractedBlockType.Paragraph,
+            Text: "Câu này kiểm tra dạng từ. Ta chọn đáp án B vì cần tính từ đứng trước danh từ proposal.",
+            Confidence: 0.98m,
+            CoordinatesJson: "{}"
+        ));
+
+        var handler = new ParseToeicReadingDraftsHandler(
+            repository,
+            new Infrastructure.Extraction.RegexReadingDraftParser()
+        );
+
+        var result = handler.Handle(new ParseToeicReadingDraftsCommand(asset.AssetId));
+        var validation = new ValidateToeicDraftContentHandler(repository)
+            .Handle(new ValidateToeicDraftContentCommand(asset.AssetId));
+
+        Assert.Equal(1, result.CreatedReadingDraftCount, "Only complete Part 5 question with answer key should become a draft.");
+        Assert.Equal(1, validation.ValidDraftCount, "Complete Part 5 parser output should pass draft validation.");
+        Assert.Equal(0, validation.InvalidDraftCount, "Complete Part 5 parser output must not create validation failures.");
+        var draft = repository.GetDraftContentItems(asset.AssetId).Single();
+        Assert.Equal(5, draft.ToeicPart, "Question number 101 belongs to TOEIC Part 5.");
+        Assert.Equal(DraftContentStatus.ReadyForReview, draft.Status, "Validated Part 5 draft should be ready for review.");
+        Assert.True(draft.ParserConfidence >= 0.9m, "Complete parser output should exceed validation confidence threshold.");
+        Assert.True(draft.PayloadJson.Contains("\"options\"", StringComparison.Ordinal), "Draft payload must include parsed options.");
+        Assert.True(draft.PayloadJson.Contains("\"correctAnswer\":\"B\"", StringComparison.Ordinal), "Draft payload must include answer key evidence.");
+        Assert.True(draft.PayloadJson.Contains("word_form", StringComparison.Ordinal), "Parser should tag obvious Part 5 word-form questions.");
     }
 
     public static void ParsesToeicListeningDraftGroups()

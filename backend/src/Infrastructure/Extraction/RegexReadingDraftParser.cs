@@ -7,36 +7,179 @@ namespace Infrastructure.Extraction;
 
 public sealed class RegexReadingDraftParser : IReadingDraftParser
 {
-    private static readonly Regex QuestionRegex = new(@"^\s*(1[0-9]{2}|200)\.\s+(.*)", RegexOptions.Compiled);
+    private static readonly Regex QuestionRegex = new(
+        @"(?<number>1[0-9]{2}|200)\.\s*(?<prompt>.+?)\s*(?:\(?A\)|A[.)])\s*(?<a>.+?)\s*(?:\(?B\)|B[.)])\s*(?<b>.+?)\s*(?:\(?C\)|C[.)])\s*(?<c>.+?)\s*(?:\(?D\)|D[.)])\s*(?<d>.+?)(?=(?:\s+1[0-9]{2}\.|\s+200\.|$))",
+        RegexOptions.Compiled | RegexOptions.Singleline);
+
+    private static readonly Regex AnswerKeyRegex = new(
+        @"\b(?<number>1[0-9]{2}|200)\s*[\).:-]?\s*(?<answer>[ABCD])\b",
+        RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+    private static readonly Regex QuestionNumberRegex = new(
+        @"\b(?<number>1[0-9]{2}|200)\.",
+        RegexOptions.Compiled);
+
+    private static readonly Regex VietnameseAnswerRegex = new(
+        @"(?:(?:chọn\s+)?(?:đáp\s*án|dap\s*an)\s*(?:là)?|chọn)\s*[""“”']?(?<answer>[ABCD])\b",
+        RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
     public IReadOnlyList<ReadingDraftQuestionResult> Parse(SourceAsset asset, IReadOnlyList<ExtractedTextBlock> blocks)
     {
         var results = new List<ReadingDraftQuestionResult>();
+        var orderedBlocks = blocks
+            .OrderBy(block => block.PageNumber)
+            .ThenBy(block => ExtractBlockOrdinal(block.BlockId))
+            .ThenBy(block => block.BlockId, StringComparer.Ordinal)
+            .ToArray();
 
-        foreach (var block in blocks)
+        for (var blockIndex = 0; blockIndex < orderedBlocks.Length; blockIndex++)
         {
-            var lines = block.Text.Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries);
-            foreach (var line in lines)
+            var block = orderedBlocks[blockIndex];
+            var normalized = NormalizeWhitespace(block.Text);
+            foreach (Match match in QuestionRegex.Matches(normalized))
             {
-                var match = QuestionRegex.Match(line);
-                if (match.Success)
+                var questionNumber = int.Parse(match.Groups["number"].Value);
+                if (!IsPart5(questionNumber))
                 {
-                    int qNum = int.Parse(match.Groups[1].Value);
-                    int part = (qNum >= 101 && qNum <= 130) ? 5 : ((qNum >= 131 && qNum <= 146) ? 6 : 7);
-                    
-                    results.Add(new ReadingDraftQuestionResult(
-                        ToeicPart: part,
-                        QuestionType: "MultipleChoice",
-                        Prompt: match.Groups[2].Value.Trim(),
-                        SkillTags: Array.Empty<string>(),
-                        PayloadJson: JsonSerializer.Serialize(new { extractedNumber = qNum }),
-                        SourceBlockId: block.BlockId,
-                        Confidence: 0.8m
-                    ));
+                    continue;
                 }
+
+                var correctAnswer = FindNearbyAnswer(questionNumber, blockIndex, orderedBlocks);
+                if (correctAnswer is null)
+                {
+                    continue;
+                }
+
+                var options = new Dictionary<string, string>
+                {
+                    ["A"] = CleanOption(match.Groups["a"].Value),
+                    ["B"] = CleanOption(match.Groups["b"].Value),
+                    ["C"] = CleanOption(match.Groups["c"].Value),
+                    ["D"] = CleanOption(match.Groups["d"].Value),
+                };
+
+                if (options.Values.Any(string.IsNullOrWhiteSpace))
+                {
+                    continue;
+                }
+
+                var prompt = CleanPrompt(match.Groups["prompt"].Value);
+                results.Add(new ReadingDraftQuestionResult(
+                    ToeicPart: 5,
+                    QuestionType: "IncompleteSentence",
+                    Prompt: prompt,
+                    SkillTags: InferSkillTags(prompt, options),
+                    PayloadJson: JsonSerializer.Serialize(new
+                    {
+                        extractedNumber = questionNumber,
+                        options,
+                        correctAnswer,
+                    }),
+                    SourceBlockId: block.BlockId,
+                    Confidence: Math.Min(0.95m, Math.Max(0.9m, block.Confidence))
+                ));
             }
         }
         
         return results;
+    }
+
+    private static string? FindNearbyAnswer(
+        int questionNumber,
+        int questionBlockIndex,
+        IReadOnlyList<ExtractedTextBlock> blocks
+    )
+    {
+        var questionPage = blocks[questionBlockIndex].PageNumber;
+        for (var index = questionBlockIndex; index < blocks.Count && index <= questionBlockIndex + 6; index++)
+        {
+            var block = blocks[index];
+            if (block.PageNumber > questionPage + 2)
+            {
+                break;
+            }
+
+            var text = NormalizeWhitespace(block.Text);
+            if (index > questionBlockIndex
+                && StartsDifferentQuestion(text, questionNumber))
+            {
+                break;
+            }
+
+            if (ContainsAnswerKeyMarker(text))
+            {
+                foreach (Match match in AnswerKeyRegex.Matches(text))
+                {
+                    if (int.Parse(match.Groups["number"].Value) == questionNumber)
+                    {
+                        return match.Groups["answer"].Value.ToUpperInvariant();
+                    }
+                }
+            }
+
+            var vietnameseAnswer = VietnameseAnswerRegex.Match(text);
+            if (vietnameseAnswer.Success)
+            {
+                return vietnameseAnswer.Groups["answer"].Value.ToUpperInvariant();
+            }
+        }
+
+        return null;
+    }
+
+    private static bool StartsDifferentQuestion(string text, int questionNumber)
+    {
+        var match = QuestionNumberRegex.Match(text);
+        return match.Success && int.Parse(match.Groups["number"].Value) != questionNumber;
+    }
+
+    private static bool ContainsAnswerKeyMarker(string text) =>
+        text.Contains("answer", StringComparison.OrdinalIgnoreCase)
+        || text.Contains("key", StringComparison.OrdinalIgnoreCase)
+        || text.Contains("đáp", StringComparison.OrdinalIgnoreCase)
+        || text.Contains("dap", StringComparison.OrdinalIgnoreCase);
+
+    private static bool IsPart5(int questionNumber) => questionNumber is >= 101 and <= 130;
+
+    private static string NormalizeWhitespace(string value) =>
+        Regex.Replace(value, @"\s+", " ").Trim();
+
+    private static string CleanPrompt(string value) =>
+        NormalizeWhitespace(value);
+
+    private static string CleanOption(string value)
+    {
+        var cleaned = NormalizeWhitespace(value);
+        return Regex.Replace(cleaned, @"\s+$", string.Empty);
+    }
+
+    private static IReadOnlyList<string> InferSkillTags(string prompt, IReadOnlyDictionary<string, string> options)
+    {
+        var tags = new List<string> { "part5", "grammar" };
+        if (prompt.Contains("____", StringComparison.Ordinal)
+            && LooksLikeWordFormSet(options.Values))
+        {
+            tags.Add("word_form");
+        }
+
+        return tags;
+    }
+
+    private static bool LooksLikeWordFormSet(IEnumerable<string> options)
+    {
+        var normalized = options
+            .Select(option => Regex.Replace(option.ToLowerInvariant(), @"(ly|ive|ion|ness|ment|ed|ing|s)$", string.Empty))
+            .Where(option => option.Length >= 4)
+            .ToArray();
+
+        return normalized
+            .GroupBy(option => option)
+            .Any(group => group.Count() >= 2);
+    }
+
+    private static int ExtractBlockOrdinal(string blockId)
+    {
+        var match = Regex.Match(blockId, @"-(?<ordinal>\d+)$");
+        return match.Success ? int.Parse(match.Groups["ordinal"].Value) : int.MaxValue;
     }
 }
