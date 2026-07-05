@@ -273,7 +273,13 @@ static int PublishRealReadingSlices()
         [7] = "lesson-real-part7-reading-comprehension-foundations",
     };
 
-    foreach (var part in lessonIdsByPart.Keys)
+    var partsWithReadyOrPublishedContent = lessonIdsByPart.Keys
+        .Where(part =>
+            repository.CountPublishedQuestions(part) > 0
+            || repository.CountDraftContentItems(part, DraftContentStatus.ReadyForReview) > 0)
+        .ToArray();
+
+    foreach (var part in partsWithReadyOrPublishedContent)
     {
         repository.UpsertPublishedLesson(CreateRealReadingLesson(part, lessonIdsByPart[part]));
     }

@@ -567,7 +567,7 @@ learner.MapGet(
             {
                 var publishedLessons = repository.CountPublishedLessons(part);
                 var publishedQuestions = repository.CountPublishedQuestions(part);
-                var hasContent = publishedLessons > 0 || publishedQuestions > 0;
+                var hasContent = publishedQuestions > 0;
                 return new ToeicPartOverviewItem(
                     ToeicPart: part,
                     Name: ToeicPartNames.Name(part),
