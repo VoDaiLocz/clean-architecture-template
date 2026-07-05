@@ -747,6 +747,26 @@ static class ApplicationTests
             Confidence: 0.98m,
             CoordinatesJson: "{}"
         ));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock(
+            BlockId: "block-part1-question",
+            AssetId: pdf.AssetId,
+            PageId: "page-part5-1",
+            PageNumber: 1,
+            BlockType: ExtractedBlockType.Question,
+            Text: "1. Look at the picture marked number 1 in your test book.",
+            Confidence: 0.95m,
+            CoordinatesJson: "{}"
+        ));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock(
+            BlockId: "block-part6-question",
+            AssetId: pdf.AssetId,
+            PageId: "page-part5-1",
+            PageNumber: 1,
+            BlockType: ExtractedBlockType.Question,
+            Text: "Questions 131-134 refer to the following notice. 131. What is the purpose of the notice?",
+            Confidence: 0.95m,
+            CoordinatesJson: "{}"
+        ));
 
         var coverage = new GetContentCoverageHandler(repository).Handle();
 
@@ -755,11 +775,28 @@ static class ApplicationTests
         Assert.Equal(1, coverage.CorpusAudit.AssetRoles.Single(role => role.Role == "Audio").Count, "Audio assets must be counted by role.");
         Assert.Equal(1, coverage.CorpusAudit.AssetRoles.Single(role => role.Role == "AnswerKey").Count, "Answer key assets must be counted by role.");
         Assert.Equal(1, coverage.CorpusAudit.HtmlPlaceholderAssets, "HTML placeholder files must be visible as unusable corpus risk.");
-        Assert.Equal(2, coverage.CorpusAudit.ExtractedTextBlocks, "Audit must count extracted text blocks.");
+        Assert.Equal(4, coverage.CorpusAudit.ExtractedTextBlocks, "Audit must count extracted text blocks.");
         Assert.Equal(pdf.AssetId, coverage.CorpusAudit.TopExtractedAssets[0].AssetId, "Top extracted asset should identify where parser work can start.");
-        Assert.Equal(1, coverage.CorpusAudit.TopExtractedAssets[0].TextBlockCount, "Text block distribution must be per asset.");
+        Assert.Equal(3, coverage.CorpusAudit.TopExtractedAssets[0].TextBlockCount, "Text block distribution must be per asset.");
         Assert.Equal("Part5Reading", coverage.CorpusAudit.FirstPublishSlice.CandidateKey, "Part 5 should be the first slice when PDF, answer key, and text blocks exist.");
         Assert.True(coverage.CorpusAudit.FirstPublishSlice.IsReadyForDraftParsing, "Part 5 slice should be parser-ready with text blocks and answer key evidence.");
+        Assert.Equal(7, coverage.CorpusAudit.ToeicPartReadiness.Count, "Audit must cover all TOEIC parts, not only Part 5.");
+        var part1 = coverage.CorpusAudit.ToeicPartReadiness.Single(part => part.ToeicPart == 1);
+        var part5 = coverage.CorpusAudit.ToeicPartReadiness.Single(part => part.ToeicPart == 5);
+        var part6 = coverage.CorpusAudit.ToeicPartReadiness.Single(part => part.ToeicPart == 6);
+        Assert.Equal("1-6", part1.QuestionRange, "Part 1 audit must expose the real TOEIC question range.");
+        Assert.Equal(1, part1.EvidenceTextBlockCount, "Part 1 range evidence must be counted independently.");
+        Assert.Contains(part1.BlockerCodes, "MISSING_IMAGE_ASSET");
+        Assert.Contains(part1.BlockerCodes, "PARSER_NOT_IMPLEMENTED");
+        Assert.False(part1.CanPublish, "Part 1 cannot publish without image/audio-linked validated drafts.");
+        Assert.True(part5.CanParseDrafts, "Part 5 can draft-parse when extracted question text and answer key evidence exist.");
+        Assert.False(part5.CanPublish, "Part 5 still cannot be called publish-ready until reviewed drafts become published questions.");
+        Assert.Contains(part5.BlockerCodes, "NO_DRAFT_ITEMS");
+        Assert.Contains(part5.BlockerCodes, "NO_PUBLISHED_QUESTIONS");
+        Assert.Equal("131-146", part6.QuestionRange, "Part 6 audit must expose the real TOEIC question range.");
+        Assert.Contains(part6.BlockerCodes, "PARSER_NOT_IMPLEMENTED");
+        Assert.Contains(part6.BlockerCodes, "NO_DRAFT_ITEMS");
+        Assert.False(part6.CanPublish, "Part 6 cannot publish from raw passage evidence without a parser and reviewed drafts.");
         Assert.True(
             coverage.CorpusAudit.ProductionWarnings.Any(warning => warning.Code == "NO_PUBLISHED_CONTENT"),
             "Audit must warn when extracted corpus evidence has not become learner-ready published content."

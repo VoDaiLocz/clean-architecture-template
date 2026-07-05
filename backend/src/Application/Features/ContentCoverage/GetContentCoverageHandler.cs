@@ -1,5 +1,6 @@
 using Application.Common.Interfaces.Repositories;
 using Domain.Aggregates.Corpus;
+using System.Text.RegularExpressions;
 
 namespace Application.Features.ContentCoverage;
 
@@ -82,6 +83,7 @@ public sealed record CorpusReadinessAudit(
     IReadOnlyList<AssetRoleCount> AssetRoles,
     IReadOnlyList<ExtractedAssetBlockCount> TopExtractedAssets,
     FirstPublishSliceCandidate FirstPublishSlice,
+    IReadOnlyList<ToeicPartCorpusReadiness> ToeicPartReadiness,
     IReadOnlyList<ProductionWarning> ProductionWarnings
 );
 
@@ -103,7 +105,21 @@ public sealed record FirstPublishSliceCandidate(
 
 public sealed record ProductionWarning(string Code, string Message);
 
-public sealed class GetContentCoverageHandler(IKnowledgeRepository repository)
+public sealed record ToeicPartCorpusReadiness(
+    int ToeicPart,
+    string Name,
+    string QuestionRange,
+    string RequiredEvidence,
+    int EvidenceAssetCount,
+    int EvidenceTextBlockCount,
+    int DraftItemCount,
+    int PublishedQuestionCount,
+    bool CanParseDrafts,
+    bool CanPublish,
+    IReadOnlyList<string> BlockerCodes
+);
+
+public sealed partial class GetContentCoverageHandler(IKnowledgeRepository repository)
 {
     public ContentCoverageSnapshot Handle()
     {
@@ -178,11 +194,12 @@ public sealed class GetContentCoverageHandler(IKnowledgeRepository repository)
                     repository.CountPublishedQuestions(part)
                 ))
                 .ToArray(),
-            CorpusAudit: BuildCorpusAudit(assets, extractedCounts, publishedLessons, publishedQuestions, publishedTests)
+            CorpusAudit: BuildCorpusAudit(repository, assets, extractedCounts, publishedLessons, publishedQuestions, publishedTests)
         );
     }
 
     private static CorpusReadinessAudit BuildCorpusAudit(
+        IKnowledgeRepository repository,
         IReadOnlyList<SourceAsset> assets,
         IReadOnlyList<ExtractedAssetBlockCount> extractedCounts,
         int publishedLessons,
@@ -213,6 +230,7 @@ public sealed class GetContentCoverageHandler(IKnowledgeRepository repository)
             .ToArray();
 
         var totalExtractedTextBlocks = extractedCounts.Sum(asset => asset.TextBlockCount);
+        var partReadiness = BuildPartReadiness(repository, assets);
         var hasPdfText = extractedCounts.Any(asset =>
             asset.Role == SourceAssetRole.Pdf && asset.TextBlockCount > 0
         );
@@ -262,9 +280,147 @@ public sealed class GetContentCoverageHandler(IKnowledgeRepository repository)
                     ? "PDF text blocks and answer-key evidence exist; this is the safest first real draft parser slice."
                     : "Missing PDF text blocks or answer-key evidence."
             ),
+            ToeicPartReadiness: partReadiness,
             ProductionWarnings: warnings
         );
     }
+
+    private static IReadOnlyList<ToeicPartCorpusReadiness> BuildPartReadiness(
+        IKnowledgeRepository repository,
+        IReadOnlyList<SourceAsset> assets
+    )
+    {
+        return ToeicPartReadinessRules.All
+            .Select(rule =>
+            {
+                var evidence = CountQuestionRangeEvidence(repository, assets, rule.QuestionStart, rule.QuestionEnd);
+                var hasPdfText = evidence.TextBlockCount > 0;
+                var hasAudio = assets.Any(asset => asset.DetectedRole == SourceAssetRole.Audio);
+                var hasImage = assets.Any(asset => asset.DetectedRole == SourceAssetRole.Image);
+                var hasAnswerKey = assets.Any(asset => asset.DetectedRole == SourceAssetRole.AnswerKey);
+                var hasTranscript = assets.Any(asset => asset.DetectedRole == SourceAssetRole.Transcript);
+                var hasPassageEvidence = rule.Part is 6 or 7 && hasPdfText;
+                var draftCount = repository.CountDraftContentItems(rule.Part);
+                var publishedQuestionCount = repository.CountPublishedQuestions(rule.Part);
+
+                var blockers = new List<string>();
+                if (!hasPdfText)
+                {
+                    blockers.Add("MISSING_EXTRACTED_TEXT_RANGE");
+                }
+
+                if (rule.RequiresAudio && !hasAudio)
+                {
+                    blockers.Add("MISSING_AUDIO_ASSET");
+                }
+
+                if (rule.RequiresImage && !hasImage)
+                {
+                    blockers.Add("MISSING_IMAGE_ASSET");
+                }
+
+                if (rule.RequiresTranscript && !hasTranscript)
+                {
+                    blockers.Add("MISSING_TRANSCRIPT_ASSET");
+                }
+
+                if (rule.RequiresPassage && !hasPassageEvidence)
+                {
+                    blockers.Add("MISSING_PASSAGE_CONTEXT");
+                }
+
+                if (!hasAnswerKey)
+                {
+                    blockers.Add("MISSING_ANSWER_KEY_ASSET");
+                }
+
+                if (!rule.ParserImplemented)
+                {
+                    blockers.Add("PARSER_NOT_IMPLEMENTED");
+                }
+
+                if (draftCount == 0)
+                {
+                    blockers.Add("NO_DRAFT_ITEMS");
+                }
+
+                if (publishedQuestionCount == 0)
+                {
+                    blockers.Add("NO_PUBLISHED_QUESTIONS");
+                }
+
+                var canParseDrafts = blockers.All(code =>
+                    code is "NO_DRAFT_ITEMS" or "NO_PUBLISHED_QUESTIONS"
+                );
+                var canPublish = blockers.Count == 0;
+
+                return new ToeicPartCorpusReadiness(
+                    ToeicPart: rule.Part,
+                    Name: rule.Name,
+                    QuestionRange: $"{rule.QuestionStart}-{rule.QuestionEnd}",
+                    RequiredEvidence: rule.RequiredEvidence,
+                    EvidenceAssetCount: evidence.AssetCount,
+                    EvidenceTextBlockCount: evidence.TextBlockCount,
+                    DraftItemCount: draftCount,
+                    PublishedQuestionCount: publishedQuestionCount,
+                    CanParseDrafts: canParseDrafts,
+                    CanPublish: canPublish,
+                    BlockerCodes: blockers
+                );
+            })
+            .ToArray();
+    }
+
+    private static QuestionRangeEvidence CountQuestionRangeEvidence(
+        IKnowledgeRepository repository,
+        IReadOnlyList<SourceAsset> assets,
+        int questionStart,
+        int questionEnd
+    )
+    {
+        var assetCount = 0;
+        var textBlockCount = 0;
+
+        foreach (var asset in assets)
+        {
+            var assetHasEvidence = false;
+            foreach (var block in repository.GetExtractedTextBlocks(asset.AssetId))
+            {
+                if (!ContainsQuestionNumber(block.Text, questionStart, questionEnd))
+                {
+                    continue;
+                }
+
+                textBlockCount++;
+                assetHasEvidence = true;
+            }
+
+            if (assetHasEvidence)
+            {
+                assetCount++;
+            }
+        }
+
+        return new QuestionRangeEvidence(assetCount, textBlockCount);
+    }
+
+    private static bool ContainsQuestionNumber(string text, int questionStart, int questionEnd)
+    {
+        foreach (Match match in QuestionNumberPattern().Matches(text))
+        {
+            if (int.TryParse(match.Groups["number"].Value, out var number)
+                && number >= questionStart
+                && number <= questionEnd)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    [GeneratedRegex(@"(?<!\d)(?<number>\d{1,3})\s*[\.)]", RegexOptions.CultureInvariant)]
+    private static partial Regex QuestionNumberPattern();
 
     private static int AssetRolePriority(SourceAssetRole role) => role switch
     {
@@ -276,5 +432,34 @@ public sealed class GetContentCoverageHandler(IKnowledgeRepository repository)
         SourceAssetRole.Audio => 5,
         SourceAssetRole.Image => 6,
         _ => 7,
+    };
+}
+
+internal sealed record ToeicPartReadinessRule(
+    int Part,
+    string Name,
+    int QuestionStart,
+    int QuestionEnd,
+    string RequiredEvidence,
+    bool RequiresAudio,
+    bool RequiresImage,
+    bool RequiresTranscript,
+    bool RequiresPassage,
+    bool ParserImplemented
+);
+
+internal sealed record QuestionRangeEvidence(int AssetCount, int TextBlockCount);
+
+internal static class ToeicPartReadinessRules
+{
+    public static readonly IReadOnlyList<ToeicPartReadinessRule> All = new ToeicPartReadinessRule[]
+    {
+        new(1, "Photographs", 1, 6, "image + audio + answer key", RequiresAudio: true, RequiresImage: true, RequiresTranscript: false, RequiresPassage: false, ParserImplemented: false),
+        new(2, "Question-Response", 7, 31, "audio + answer key", RequiresAudio: true, RequiresImage: false, RequiresTranscript: true, RequiresPassage: false, ParserImplemented: false),
+        new(3, "Conversations", 32, 70, "audio + transcript + grouped questions + answer key", RequiresAudio: true, RequiresImage: false, RequiresTranscript: true, RequiresPassage: false, ParserImplemented: false),
+        new(4, "Talks", 71, 100, "audio + transcript + grouped questions + answer key", RequiresAudio: true, RequiresImage: false, RequiresTranscript: true, RequiresPassage: false, ParserImplemented: false),
+        new(5, "Incomplete Sentences", 101, 130, "question text + options + answer key", RequiresAudio: false, RequiresImage: false, RequiresTranscript: false, RequiresPassage: false, ParserImplemented: true),
+        new(6, "Text Completion", 131, 146, "passage + grouped questions + answer key", RequiresAudio: false, RequiresImage: false, RequiresTranscript: false, RequiresPassage: true, ParserImplemented: false),
+        new(7, "Reading Comprehension", 147, 200, "passage + grouped questions + answer key", RequiresAudio: false, RequiresImage: false, RequiresTranscript: false, RequiresPassage: true, ParserImplemented: false),
     };
 }
