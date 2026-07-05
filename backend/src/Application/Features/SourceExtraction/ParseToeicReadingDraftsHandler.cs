@@ -39,12 +39,22 @@ public sealed class ParseToeicReadingDraftsHandler(
         }
 
         var blocks = repository.GetExtractedTextBlocks(asset.AssetId);
+        var existingDraftIds = repository.GetDraftContentItems(asset.AssetId)
+            .Select(draft => draft.DraftId)
+            .ToHashSet(StringComparer.Ordinal);
         var count = 0;
+        var created = 0;
         foreach (var question in parser.Parse(asset, blocks))
         {
             count++;
+            var draftId = $"draft-reading-{asset.AssetId}-{count}";
+            if (existingDraftIds.Contains(draftId))
+            {
+                continue;
+            }
+
             repository.UpsertDraftContentItem(new DraftContentItem(
-                DraftId: $"draft-reading-{asset.AssetId}-{count}",
+                DraftId: draftId,
                 AssetId: asset.AssetId,
                 MaterialClass: MaterialClass.TestBook,
                 ToeicPart: question.ToeicPart,
@@ -59,9 +69,11 @@ public sealed class ParseToeicReadingDraftsHandler(
                 ParserConfidence: question.Confidence,
                 Status: DraftContentStatus.PendingValidation
             ));
+            existingDraftIds.Add(draftId);
+            created++;
         }
 
-        return new ParseToeicReadingDraftsResult(count);
+        return new ParseToeicReadingDraftsResult(created);
     }
 
     private static string MergePayload(ReadingDraftQuestionResult question) =>

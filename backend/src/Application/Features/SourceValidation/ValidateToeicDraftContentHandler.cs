@@ -18,6 +18,11 @@ public sealed class ValidateToeicDraftContentHandler(IKnowledgeRepository reposi
 
         foreach (var draft in repository.GetDraftContentItems(command.AssetId))
         {
+            if (draft.Status != DraftContentStatus.PendingValidation)
+            {
+                continue;
+            }
+
             var issues = Validate(draft);
             if (issues.Count == 0)
             {

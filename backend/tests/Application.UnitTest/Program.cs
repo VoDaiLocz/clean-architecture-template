@@ -99,6 +99,7 @@ var tests = new List<(string Name, Action Run)>
     ("parses TOEIC answer keys into draft mappings", ApplicationTests.ParsesToeicAnswerKeysIntoDraftMappings),
     ("parses TOEIC transcripts into draft segments", ApplicationTests.ParsesToeicTranscriptsIntoDraftSegments),
     ("parses TOEIC reading drafts with tags and source trace", ApplicationTests.ParsesToeicReadingDraftsWithTagsAndSourceTrace),
+    ("reading draft parser import is idempotent and preserves reviewed status", ApplicationTests.ReadingDraftParserImportIsIdempotentAndPreservesReviewedStatus),
     ("regex reading parser creates valid Part 5 drafts from extracted text and answer key", ApplicationTests.RegexReadingParserCreatesValidPart5DraftsFromExtractedTextAndAnswerKey),
     ("regex reading parser creates valid Part 6 and Part 7 drafts with passage context", ApplicationTests.RegexReadingParserCreatesValidPart6AndPart7DraftsWithPassageContext),
     ("parses TOEIC listening draft groups", ApplicationTests.ParsesToeicListeningDraftGroups),
@@ -1302,6 +1303,59 @@ static class ApplicationTests
         Assert.True(drafts.All(draft => draft.PayloadJson.Contains("\"data\":", StringComparison.Ordinal)), "Reading draft payload should wrap parser data.");
         Assert.True(drafts.Any(draft => draft.PayloadJson.Contains("verb_tense", StringComparison.Ordinal)), "Skill tags should persist in payload.");
         Assert.True(drafts.All(draft => draft.SourceTraceJson.Contains("block-reading-001", StringComparison.Ordinal)), "Source trace should include extracted block.");
+    }
+
+    public static void ReadingDraftParserImportIsIdempotentAndPreservesReviewedStatus()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var asset = SeedSourceAsset(repository);
+        repository.UpsertPublishedLesson(new PublishedLesson(
+            LessonId: "lesson-idempotent-reading",
+            UnitId: "unit-idempotent-reading",
+            ToeicPart: 5,
+            Title: "Idempotent Reading",
+            Objective: "Keep already reviewed drafts stable when parser import is rerun.",
+            SkillTags: "part5",
+            SourceTraceJson: "{}",
+            Status: PublishedContentStatus.Published
+        ));
+        var parser = new FakeReadingDraftParser([
+            new ReadingDraftQuestionResult(
+                ToeicPart: 5,
+                QuestionType: "IncompleteSentence",
+                Prompt: "The team needs a more ____ plan.",
+                SkillTags: ["part5", "word_form"],
+                PayloadJson: """{"options":{"A":"effect","B":"effective","C":"effectively","D":"effectiveness"},"correctAnswer":"B"}""",
+                SourceBlockId: "block-reading-001",
+                Confidence: 0.95m
+            )
+        ]);
+        var parseHandler = new ParseToeicReadingDraftsHandler(repository, parser);
+
+        var firstParse = parseHandler.Handle(new ParseToeicReadingDraftsCommand(asset.AssetId));
+        new ValidateToeicDraftContentHandler(repository)
+            .Handle(new ValidateToeicDraftContentCommand(asset.AssetId));
+        var draft = repository.GetDraftContentItems(asset.AssetId).Single();
+        new ReviewAndPublishToeicContentHandler(repository)
+            .Handle(new ReviewAndPublishToeicContentCommand(
+                asset.AssetId,
+                "lesson-idempotent-reading",
+                [new ReviewDecision(draft.DraftId, ReviewDecisionAction.Approve)]
+            ));
+
+        var secondParse = parseHandler.Handle(new ParseToeicReadingDraftsCommand(asset.AssetId));
+        var secondValidation = new ValidateToeicDraftContentHandler(repository)
+            .Handle(new ValidateToeicDraftContentCommand(asset.AssetId));
+        var drafts = repository.GetDraftContentItems(asset.AssetId);
+
+        Assert.Equal(1, firstParse.CreatedReadingDraftCount, "First parser import should create the draft.");
+        Assert.Equal(0, secondParse.CreatedReadingDraftCount, "Rerunning parser import must not duplicate or overwrite existing drafts.");
+        Assert.Equal(0, secondValidation.ValidDraftCount, "Rerunning validation must skip already reviewed drafts.");
+        Assert.Equal(0, secondValidation.InvalidDraftCount, "Rerunning validation must not create issues for already reviewed drafts.");
+        Assert.Equal(1, drafts.Count, "Rerunning parser import must not create duplicate draft rows.");
+        Assert.Equal(DraftContentStatus.Published, drafts.Single().Status, "Rerunning parser import must preserve reviewed/published status.");
+        Assert.Equal(1, repository.CountPublishedQuestions(5), "Published learner content must remain published after parser rerun.");
     }
 
     public static void RegexReadingParserCreatesValidPart5DraftsFromExtractedTextAndAnswerKey()
