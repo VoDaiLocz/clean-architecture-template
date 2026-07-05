@@ -139,3 +139,14 @@ Must support:
 - Review item must reference attempt or content item.
 - Mastery record must reference learner and learning unit.
 
+## Local Runtime Database Rule
+
+Local development must use `backend/src/Api/toeic-normalization.db` as the active SQLite database until a dedicated corpus promotion job exists. This database currently contains the real source inventory and extracted block evidence. `toeic_knowledge.db` is not the content source of truth because it has learner demo state but no source assets, extracted blocks, drafts, published lessons, published questions, or published tests.
+
+The local API configuration must therefore point `ConnectionStrings:ToeicDb` to:
+
+```text
+Data Source=toeic-normalization.db
+```
+
+If a future task introduces a promotion process into another runtime DB, that task must prove the promoted DB has non-zero source inventory and published content counts before changing this rule.
