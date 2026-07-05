@@ -38,6 +38,11 @@ public static class DependencyInjection
             return repository;
         });
         
+        services.AddOptions<Infrastructure.Security.JwtSettings>()
+            .BindConfiguration("JwtSettings")
+            .ValidateDataAnnotations()
+            .ValidateOnStart();
+
         services.AddSingleton<Application.Common.Interfaces.Security.IPasswordHasher, Infrastructure.Security.PasswordHasherService>();
         services.AddSingleton<Application.Common.Interfaces.Security.IJwtTokenGenerator, Infrastructure.Security.JwtTokenGenerator>();
 
