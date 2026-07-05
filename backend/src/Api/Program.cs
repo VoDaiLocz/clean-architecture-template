@@ -28,6 +28,9 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 #pragma warning disable CS0618
 
+using Microsoft.AspNetCore.RateLimiting;
+using System.Threading.RateLimiting;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseSerilog((context, services, configuration) => configuration
@@ -67,18 +70,41 @@ builder.Services.ConfigureHttpJsonOptions(options =>
 });
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(
-        "frontend",
-        policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()
-    );
+    options.AddDefaultPolicy(policy => 
+        policy.WithOrigins("http://localhost:4200", "https://your-production-domain.com")
+              .AllowAnyHeader()
+              .AllowAnyMethod());
+});
+
+builder.Services.AddRateLimiter(options =>
+{
+    options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(context =>
+        RateLimitPartition.GetFixedWindowLimiter(
+            partitionKey: context.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+            factory: partition => new FixedWindowRateLimiterOptions
+            {
+                AutoReplenishment = true,
+                PermitLimit = 100,
+                QueueLimit = 0,
+                Window = TimeSpan.FromSeconds(10)
+            }));
+    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
 });
 
 var app = builder.Build();
 
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHsts();
+}
+
+app.UseHttpsRedirection();
+
 app.UseExceptionHandler();
 app.UseMiddleware<CorrelationIdMiddleware>();
 
-app.UseCors("frontend");
+app.UseRateLimiter();
+app.UseCors();
 
 app.UseAuthentication();
 app.UseAuthorization();
