@@ -31,9 +31,10 @@ using Microsoft.Extensions.Configuration;
 using System.Reflection;
 using System.Text;
 
-if (args.Contains("--import-real-part5-drafts", StringComparer.Ordinal))
+if (args.Contains("--import-real-reading-drafts", StringComparer.Ordinal)
+    || args.Contains("--import-real-part5-drafts", StringComparer.Ordinal))
 {
-    return ImportRealPart5Drafts();
+    return ImportRealReadingDrafts();
 }
 
 if (args.Contains("--publish-real-part5-slice", StringComparer.Ordinal))
@@ -205,7 +206,7 @@ if (failed > 0)
 Console.WriteLine($"{tests.Count} tests passed.");
 return 0;
 
-static int ImportRealPart5Drafts()
+static int ImportRealReadingDrafts()
 {
     var dbPath = Path.GetFullPath("backend/src/Api/toeic-normalization.db");
     if (!File.Exists(dbPath))
@@ -246,8 +247,8 @@ static int ImportRealPart5Drafts()
         Console.WriteLine($"{asset.AssetId} | {asset.FileName} | drafts={parseResult.CreatedReadingDraftCount} valid={validationResult.ValidDraftCount} invalid={validationResult.InvalidDraftCount}");
     }
 
-    Console.WriteLine($"REAL_PART5_IMPORT parsedAssets={parsedAssets} createdDrafts={createdDrafts} validDrafts={validDrafts} invalidDrafts={invalidDrafts}");
-    Console.WriteLine($"DB_COUNTS draft_content_items={repository.Count("draft_content_items")} ready_for_review_part5={repository.CountDraftContentItems(5, DraftContentStatus.ReadyForReview)} validation_issues={repository.Count("validation_issues")}");
+    Console.WriteLine($"REAL_READING_IMPORT parsedAssets={parsedAssets} createdDrafts={createdDrafts} validDrafts={validDrafts} invalidDrafts={invalidDrafts}");
+    Console.WriteLine($"DB_COUNTS draft_content_items={repository.Count("draft_content_items")} ready_for_review_part5={repository.CountDraftContentItems(5, DraftContentStatus.ReadyForReview)} ready_for_review_part6={repository.CountDraftContentItems(6, DraftContentStatus.ReadyForReview)} ready_for_review_part7={repository.CountDraftContentItems(7, DraftContentStatus.ReadyForReview)} validation_issues={repository.Count("validation_issues")}");
     return validDrafts > 0 ? 0 : 2;
 }
 
