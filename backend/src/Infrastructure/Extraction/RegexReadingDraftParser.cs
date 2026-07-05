@@ -39,7 +39,8 @@ public sealed class RegexReadingDraftParser : IReadingDraftParser
             foreach (Match match in QuestionRegex.Matches(normalized))
             {
                 var questionNumber = int.Parse(match.Groups["number"].Value);
-                if (!IsPart5(questionNumber))
+                var toeicPart = GetReadingPart(questionNumber);
+                if (toeicPart is null)
                 {
                     continue;
                 }
@@ -64,18 +65,24 @@ public sealed class RegexReadingDraftParser : IReadingDraftParser
                 }
 
                 var prompt = CleanPrompt(match.Groups["prompt"].Value);
+                var passageEvidence = FindNearbyPassage(questionNumber, blockIndex, orderedBlocks);
+                if (toeicPart is 6 or 7 && passageEvidence is null)
+                {
+                    continue;
+                }
+
                 results.Add(new ReadingDraftQuestionResult(
-                    ToeicPart: 5,
-                    QuestionType: "IncompleteSentence",
+                    ToeicPart: toeicPart.Value,
+                    QuestionType: GetQuestionType(toeicPart.Value),
                     Prompt: prompt,
-                    SkillTags: InferSkillTags(prompt, options),
-                    PayloadJson: JsonSerializer.Serialize(new
-                    {
-                        extractedNumber = questionNumber,
+                    SkillTags: InferSkillTags(toeicPart.Value, prompt, options),
+                    PayloadJson: SerializeParserPayload(
+                        asset,
+                        questionNumber,
                         options,
-                        correctAnswer = answerEvidence.Answer,
-                        explanation = answerEvidence.Explanation,
-                    }),
+                        answerEvidence,
+                        passageEvidence
+                    ),
                     SourceBlockId: block.BlockId,
                     Confidence: Math.Min(0.95m, Math.Max(0.9m, block.Confidence))
                 ));
@@ -86,6 +93,8 @@ public sealed class RegexReadingDraftParser : IReadingDraftParser
     }
 
     private sealed record AnswerEvidence(string Answer, string Explanation);
+
+    private sealed record PassageEvidence(string PassageId, string PassageText);
 
     private static AnswerEvidence? FindNearbyAnswer(
         int questionNumber,
@@ -136,6 +145,41 @@ public sealed class RegexReadingDraftParser : IReadingDraftParser
         return null;
     }
 
+    private static PassageEvidence? FindNearbyPassage(
+        int questionNumber,
+        int questionBlockIndex,
+        IReadOnlyList<ExtractedTextBlock> blocks
+    )
+    {
+        for (var index = questionBlockIndex - 1; index >= 0 && index >= questionBlockIndex - 6; index--)
+        {
+            var block = blocks[index];
+            var text = NormalizeWhitespace(block.Text);
+            if (string.IsNullOrWhiteSpace(text))
+            {
+                continue;
+            }
+
+            if (StartsDifferentQuestion(text, questionNumber)
+                || ContainsAnswerKeyMarker(text))
+            {
+                continue;
+            }
+
+            if (!LooksLikePassage(text, questionNumber))
+            {
+                continue;
+            }
+
+            return new PassageEvidence(
+                PassageId: $"passage-{SanitizeId(block.AssetId)}-{SanitizeId(block.BlockId)}",
+                PassageText: text
+            );
+        }
+
+        return null;
+    }
+
     private static bool StartsDifferentQuestion(string text, int questionNumber)
     {
         var match = QuestionNumberRegex.Match(text);
@@ -148,7 +192,75 @@ public sealed class RegexReadingDraftParser : IReadingDraftParser
         || text.Contains("đáp", StringComparison.OrdinalIgnoreCase)
         || text.Contains("dap", StringComparison.OrdinalIgnoreCase);
 
-    private static bool IsPart5(int questionNumber) => questionNumber is >= 101 and <= 130;
+    private static int? GetReadingPart(int questionNumber) => questionNumber switch
+    {
+        >= 101 and <= 130 => 5,
+        >= 131 and <= 146 => 6,
+        >= 147 and <= 200 => 7,
+        _ => null,
+    };
+
+    private static string GetQuestionType(int toeicPart) => toeicPart switch
+    {
+        5 => "IncompleteSentence",
+        6 => "TextCompletion",
+        7 => "ReadingComprehension",
+        _ => throw new ArgumentOutOfRangeException(nameof(toeicPart), toeicPart, "Unsupported TOEIC reading part."),
+    };
+
+    private static string SerializeParserPayload(
+        SourceAsset asset,
+        int questionNumber,
+        IReadOnlyDictionary<string, string> options,
+        AnswerEvidence answerEvidence,
+        PassageEvidence? passageEvidence
+    )
+    {
+        if (passageEvidence is null)
+        {
+            return JsonSerializer.Serialize(new
+            {
+                extractedNumber = questionNumber,
+                options,
+                correctAnswer = answerEvidence.Answer,
+                explanation = answerEvidence.Explanation,
+            });
+        }
+
+        return JsonSerializer.Serialize(new
+        {
+            extractedNumber = questionNumber,
+            passageId = passageEvidence.PassageId,
+            passageText = passageEvidence.PassageText,
+            options,
+            correctAnswer = answerEvidence.Answer,
+            explanation = answerEvidence.Explanation,
+            sourceAssetId = asset.AssetId,
+        });
+    }
+
+    private static bool LooksLikePassage(string text, int questionNumber)
+    {
+        if (text.Length < 40)
+        {
+            return false;
+        }
+
+        if (text.Contains("refer to the following", StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
+
+        var questionRange = Regex.Match(text, @"Questions?\s+(?<start>\d{1,3})\s*[-–]\s*(?<end>\d{1,3})", RegexOptions.IgnoreCase);
+        return questionRange.Success
+            && int.TryParse(questionRange.Groups["start"].Value, out var start)
+            && int.TryParse(questionRange.Groups["end"].Value, out var end)
+            && questionNumber >= start
+            && questionNumber <= end;
+    }
+
+    private static string SanitizeId(string value) =>
+        Regex.Replace(value, @"[^A-Za-z0-9_-]+", "-").Trim('-');
 
     private static string NormalizeWhitespace(string value) =>
         Regex.Replace(value, @"\s+", " ").Trim();
@@ -162,10 +274,20 @@ public sealed class RegexReadingDraftParser : IReadingDraftParser
         return Regex.Replace(cleaned, @"\s+$", string.Empty);
     }
 
-    private static IReadOnlyList<string> InferSkillTags(string prompt, IReadOnlyDictionary<string, string> options)
+    private static IReadOnlyList<string> InferSkillTags(int toeicPart, string prompt, IReadOnlyDictionary<string, string> options)
     {
-        var tags = new List<string> { "part5", "grammar" };
-        if (prompt.Contains("____", StringComparison.Ordinal)
+        var tags = new List<string> { $"part{toeicPart}" };
+        if (toeicPart == 5)
+        {
+            tags.Add("grammar");
+        }
+        else
+        {
+            tags.Add("reading");
+        }
+
+        if (toeicPart == 5
+            && prompt.Contains("____", StringComparison.Ordinal)
             && LooksLikeWordFormSet(options.Values))
         {
             tags.Add("word_form");

@@ -297,7 +297,7 @@ public sealed partial class GetContentCoverageHandler(IKnowledgeRepository repos
                 var hasPdfText = evidence.TextBlockCount > 0;
                 var hasAudio = assets.Any(asset => asset.DetectedRole == SourceAssetRole.Audio);
                 var hasImage = assets.Any(asset => asset.DetectedRole == SourceAssetRole.Image);
-                var hasAnswerKey = assets.Any(asset => asset.DetectedRole == SourceAssetRole.AnswerKey);
+                var hasAnswerKey = HasAnswerKeyEvidence(repository, assets);
                 var hasTranscript = assets.Any(asset => asset.DetectedRole == SourceAssetRole.Transcript);
                 var hasPassageEvidence = rule.Part is 6 or 7 && hasPdfText;
                 var draftCount = repository.CountDraftContentItems(rule.Part);
@@ -404,6 +404,29 @@ public sealed partial class GetContentCoverageHandler(IKnowledgeRepository repos
         return new QuestionRangeEvidence(assetCount, textBlockCount);
     }
 
+    private static bool HasAnswerKeyEvidence(IKnowledgeRepository repository, IReadOnlyList<SourceAsset> assets)
+    {
+        foreach (var asset in assets)
+        {
+            if (asset.DetectedRole == SourceAssetRole.AnswerKey
+                || asset.FileName.Contains("answer", StringComparison.OrdinalIgnoreCase)
+                || asset.FileName.Contains("key", StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+
+            if (repository.GetExtractedTextBlocks(asset.AssetId).Any(block =>
+                block.Text.Contains("answer", StringComparison.OrdinalIgnoreCase)
+                || block.Text.Contains("đáp", StringComparison.OrdinalIgnoreCase)
+                || block.Text.Contains("dap", StringComparison.OrdinalIgnoreCase)))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private static bool ContainsQuestionNumber(string text, int questionStart, int questionEnd)
     {
         foreach (Match match in QuestionNumberPattern().Matches(text))
@@ -459,7 +482,7 @@ internal static class ToeicPartReadinessRules
         new(3, "Conversations", 32, 70, "audio + transcript + grouped questions + answer key", RequiresAudio: true, RequiresImage: false, RequiresTranscript: true, RequiresPassage: false, ParserImplemented: false),
         new(4, "Talks", 71, 100, "audio + transcript + grouped questions + answer key", RequiresAudio: true, RequiresImage: false, RequiresTranscript: true, RequiresPassage: false, ParserImplemented: false),
         new(5, "Incomplete Sentences", 101, 130, "question text + options + answer key", RequiresAudio: false, RequiresImage: false, RequiresTranscript: false, RequiresPassage: false, ParserImplemented: true),
-        new(6, "Text Completion", 131, 146, "passage + grouped questions + answer key", RequiresAudio: false, RequiresImage: false, RequiresTranscript: false, RequiresPassage: true, ParserImplemented: false),
-        new(7, "Reading Comprehension", 147, 200, "passage + grouped questions + answer key", RequiresAudio: false, RequiresImage: false, RequiresTranscript: false, RequiresPassage: true, ParserImplemented: false),
+        new(6, "Text Completion", 131, 146, "passage + grouped questions + answer key", RequiresAudio: false, RequiresImage: false, RequiresTranscript: false, RequiresPassage: true, ParserImplemented: true),
+        new(7, "Reading Comprehension", 147, 200, "passage + grouped questions + answer key", RequiresAudio: false, RequiresImage: false, RequiresTranscript: false, RequiresPassage: true, ParserImplemented: true),
     };
 }

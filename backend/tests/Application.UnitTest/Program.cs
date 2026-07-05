@@ -100,6 +100,7 @@ var tests = new List<(string Name, Action Run)>
     ("parses TOEIC transcripts into draft segments", ApplicationTests.ParsesToeicTranscriptsIntoDraftSegments),
     ("parses TOEIC reading drafts with tags and source trace", ApplicationTests.ParsesToeicReadingDraftsWithTagsAndSourceTrace),
     ("regex reading parser creates valid Part 5 drafts from extracted text and answer key", ApplicationTests.RegexReadingParserCreatesValidPart5DraftsFromExtractedTextAndAnswerKey),
+    ("regex reading parser creates valid Part 6 and Part 7 drafts with passage context", ApplicationTests.RegexReadingParserCreatesValidPart6AndPart7DraftsWithPassageContext),
     ("parses TOEIC listening draft groups", ApplicationTests.ParsesToeicListeningDraftGroups),
     ("validates TOEIC draft content and records issues", ApplicationTests.ValidatesToeicDraftContentAndRecordsIssues),
     ("reviews and publishes approved TOEIC draft content", ApplicationTests.ReviewsAndPublishesApprovedToeicDraftContent),
@@ -794,9 +795,10 @@ static class ApplicationTests
         Assert.Contains(part5.BlockerCodes, "NO_DRAFT_ITEMS");
         Assert.Contains(part5.BlockerCodes, "NO_PUBLISHED_QUESTIONS");
         Assert.Equal("131-146", part6.QuestionRange, "Part 6 audit must expose the real TOEIC question range.");
-        Assert.Contains(part6.BlockerCodes, "PARSER_NOT_IMPLEMENTED");
+        Assert.False(part6.BlockerCodes.Contains("PARSER_NOT_IMPLEMENTED"), "Part 6 should not be blocked once a passage-aware parser exists.");
         Assert.Contains(part6.BlockerCodes, "NO_DRAFT_ITEMS");
-        Assert.False(part6.CanPublish, "Part 6 cannot publish from raw passage evidence without a parser and reviewed drafts.");
+        Assert.True(part6.CanParseDrafts, "Part 6 can draft-parse when passage text and answer evidence exist.");
+        Assert.False(part6.CanPublish, "Part 6 cannot publish from raw passage evidence without reviewed drafts.");
         Assert.True(
             coverage.CorpusAudit.ProductionWarnings.Any(warning => warning.Code == "NO_PUBLISHED_CONTENT"),
             "Audit must warn when extracted corpus evidence has not become learner-ready published content."
@@ -1372,6 +1374,117 @@ static class ApplicationTests
         Assert.True(draft.PayloadJson.Contains("\"explanation\"", StringComparison.Ordinal), "Draft payload must preserve explanation evidence.");
         Assert.True(draft.PayloadJson.Contains("proposal", StringComparison.Ordinal), "Draft explanation should keep source explanation text.");
         Assert.True(draft.PayloadJson.Contains("word_form", StringComparison.Ordinal), "Parser should tag obvious Part 5 word-form questions.");
+    }
+
+    public static void RegexReadingParserCreatesValidPart6AndPart7DraftsWithPassageContext()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var asset = SeedSourceAsset(repository) with
+        {
+            AssetId = "asset-reading-passage-pdf",
+            FileName = "TOEIC reading passage set.pdf",
+            ObjectKey = "source-assets/reading/passage-set.pdf",
+            Checksum = "sha256-reading-passage"
+        };
+        repository.UpsertSourceAsset(asset);
+        repository.UpsertExtractedPage(new ExtractedPage(
+            PageId: "page-reading-1",
+            AssetId: asset.AssetId,
+            PageNumber: 1,
+            Width: 595,
+            Height: 842,
+            ExtractedAtUtc: new DateTimeOffset(2026, 7, 5, 0, 0, 0, TimeSpan.Zero)
+        ));
+        repository.UpsertExtractedPage(new ExtractedPage(
+            PageId: "page-reading-2",
+            AssetId: asset.AssetId,
+            PageNumber: 2,
+            Width: 595,
+            Height: 842,
+            ExtractedAtUtc: new DateTimeOffset(2026, 7, 5, 0, 1, 0, TimeSpan.Zero)
+        ));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock(
+            BlockId: "block-part6-001",
+            AssetId: asset.AssetId,
+            PageId: "page-reading-1",
+            PageNumber: 1,
+            BlockType: ExtractedBlockType.Paragraph,
+            Text: "Questions 131-134 refer to the following notice. Employees must submit travel receipts before Friday to receive reimbursement.",
+            Confidence: 0.96m,
+            CoordinatesJson: "{}"
+        ));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock(
+            BlockId: "block-part6-002",
+            AssetId: asset.AssetId,
+            PageId: "page-reading-1",
+            PageNumber: 1,
+            BlockType: ExtractedBlockType.Question,
+            Text: "131. What is the purpose of the notice? (A) To announce a holiday (B) To request receipts (C) To introduce a manager (D) To cancel a trip",
+            Confidence: 0.95m,
+            CoordinatesJson: "{}"
+        ));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock(
+            BlockId: "block-part6-003",
+            AssetId: asset.AssetId,
+            PageId: "page-reading-1",
+            PageNumber: 1,
+            BlockType: ExtractedBlockType.Paragraph,
+            Text: "Answer key: 131. B",
+            Confidence: 0.98m,
+            CoordinatesJson: "{}"
+        ));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock(
+            BlockId: "block-part7-001",
+            AssetId: asset.AssetId,
+            PageId: "page-reading-2",
+            PageNumber: 2,
+            BlockType: ExtractedBlockType.Paragraph,
+            Text: "Questions 147-148 refer to the following e-mail. The conference registration deadline has been extended until June 12.",
+            Confidence: 0.96m,
+            CoordinatesJson: "{}"
+        ));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock(
+            BlockId: "block-part7-002",
+            AssetId: asset.AssetId,
+            PageId: "page-reading-2",
+            PageNumber: 2,
+            BlockType: ExtractedBlockType.Question,
+            Text: "147. What is mentioned about the conference? (A) It was canceled (B) Registration has closed (C) The deadline changed (D) It will be online",
+            Confidence: 0.95m,
+            CoordinatesJson: "{}"
+        ));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock(
+            BlockId: "block-part7-003",
+            AssetId: asset.AssetId,
+            PageId: "page-reading-2",
+            PageNumber: 2,
+            BlockType: ExtractedBlockType.Paragraph,
+            Text: "Answer key: 147. C",
+            Confidence: 0.98m,
+            CoordinatesJson: "{}"
+        ));
+
+        var handler = new ParseToeicReadingDraftsHandler(
+            repository,
+            new Infrastructure.Extraction.RegexReadingDraftParser()
+        );
+
+        var result = handler.Handle(new ParseToeicReadingDraftsCommand(asset.AssetId));
+        var validation = new ValidateToeicDraftContentHandler(repository)
+            .Handle(new ValidateToeicDraftContentCommand(asset.AssetId));
+
+        Assert.Equal(2, result.CreatedReadingDraftCount, "Part 6 and Part 7 passage-backed questions should become drafts.");
+        Assert.Equal(2, validation.ValidDraftCount, "Passage-backed Part 6 and Part 7 drafts should pass validation.");
+        Assert.Equal(0, validation.InvalidDraftCount, "Passage-backed reading drafts must not create validation failures.");
+        var drafts = repository.GetDraftContentItems(asset.AssetId);
+        Assert.True(drafts.Any(draft => draft.ToeicPart == 6), "Question 131 belongs to TOEIC Part 6.");
+        Assert.True(drafts.Any(draft => draft.ToeicPart == 7), "Question 147 belongs to TOEIC Part 7.");
+        Assert.True(drafts.All(draft => draft.Status == DraftContentStatus.ReadyForReview), "Validated Part 6/7 drafts should be ready for review.");
+        Assert.True(drafts.All(draft => draft.PayloadJson.Contains("\"passageId\"", StringComparison.Ordinal)), "Part 6/7 draft payloads must include a passage id.");
+        Assert.True(drafts.All(draft => draft.PayloadJson.Contains("\"passageText\"", StringComparison.Ordinal)), "Part 6/7 draft payloads must preserve passage text.");
+        Assert.True(drafts.Any(draft => draft.PayloadJson.Contains("\"correctAnswer\":\"B\"", StringComparison.Ordinal)), "Part 6 answer key evidence should persist.");
+        Assert.True(drafts.Any(draft => draft.PayloadJson.Contains("\"correctAnswer\":\"C\"", StringComparison.Ordinal)), "Part 7 answer key evidence should persist.");
     }
 
     public static void ParsesToeicListeningDraftGroups()
