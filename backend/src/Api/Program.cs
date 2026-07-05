@@ -20,6 +20,7 @@ using Domain.Aggregates.LearningItems;
 using Infrastructure;
 using Microsoft.AspNetCore.Http.HttpResults;
 using System.Text.Json.Serialization;
+using Api.Endpoints;
 
 #pragma warning disable CS0618
 
@@ -42,6 +43,8 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 app.UseCors("frontend");
+
+app.MapAuthEndpoints();
 
 var api = app.MapGroup("/api");
 var learner = api.MapGroup("/learner");

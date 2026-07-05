@@ -30,6 +30,16 @@ public static class DependencyInjection
             repository.Initialize();
             return repository;
         });
+        services.AddSingleton<IAuthRepository>(_ =>
+        {
+            var repository = SqliteAuthRepository.FromConnectionString(options.Database.ConnectionString);
+            repository.Initialize();
+            return repository;
+        });
+        
+        services.AddSingleton<Application.Common.Interfaces.Security.IPasswordHasher, Infrastructure.Security.PasswordHasherService>();
+        services.AddSingleton<Application.Common.Interfaces.Security.IJwtTokenGenerator, Infrastructure.Security.JwtTokenGenerator>();
+
         services.AddSingleton<IObjectStorage, InMemoryObjectStorage>();
         services.AddSingleton(new BackgroundJobRetryPolicy(maxAttempts: 3));
         services.AddSingleton<IBackgroundJobQueue, InMemoryBackgroundJobQueue>();
