@@ -1,0 +1,85 @@
+<div class="min-h-screen bg-slate-50 py-10 px-4 sm:px-6 font-sans">
+  <div class="max-w-xl mx-auto">
+    
+    <header class="text-center mb-10">
+      <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Your TOEIC Journey</h1>
+      <p class="mt-3 text-slate-500">Master all 7 parts to reach your target score.</p>
+    </header>
+
+    <div *ngIf="isLoading" class="flex justify-center py-12">
+      <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-cyan-600"></div>
+    </div>
+
+    <div *ngIf="!isLoading" class="space-y-4">
+      <div *ngFor="let part of parts" 
+           class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden transition-all duration-200"
+           [ngClass]="part.isLocked ? 'opacity-60 bg-slate-50/50' : 'hover:shadow-md hover:border-cyan-100'">
+        
+        <div class="p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center gap-4">
+          
+          <!-- Left Icon/Part Indicator -->
+          <div class="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-2xl border-2"
+               [ngClass]="part.isLocked ? 'bg-slate-100 border-slate-200' : 'bg-cyan-50 border-cyan-100'">
+            <svg *ngIf="part.isLocked" class="w-6 h-6 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+            <div *ngIf="!part.isLocked" class="text-center">
+              <span class="block text-xs font-bold text-cyan-600 uppercase tracking-widest leading-none mb-1">Part</span>
+              <span class="block text-xl font-black text-cyan-700 leading-none">{{ part.part }}</span>
+            </div>
+          </div>
+
+          <!-- Middle Content -->
+          <div class="flex-grow">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-xs font-bold tracking-wider uppercase px-2 py-0.5 rounded-full"
+                    [ngClass]="part.skill === 'Listening' ? 'bg-blue-50 text-blue-600' : 'bg-emerald-50 text-emerald-600'">
+                {{ part.skill }}
+              </span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-800">Part {{ part.part }}: {{ part.name }}</h3>
+
+            <!-- Progress or Lock Reason -->
+            <div class="mt-3">
+              <ng-container *ngIf="!part.isLocked">
+                <div class="flex justify-between text-xs mb-1.5">
+                  <span class="font-medium text-slate-500">Progress</span>
+                  <span class="font-bold text-slate-700">{{ part.progress }}%</span>
+                </div>
+                <div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+                  <div class="bg-gradient-to-r from-cyan-500 to-blue-500 h-full rounded-full" [style.width.%]="part.progress"></div>
+                </div>
+              </ng-container>
+
+              <ng-container *ngIf="part.isLocked">
+                <p class="text-sm text-slate-500 flex items-center gap-1.5">
+                  <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {{ part.lockReason }}
+                </p>
+              </ng-container>
+            </div>
+          </div>
+
+          <!-- Right Action -->
+          <div class="flex-shrink-0 sm:ml-4 mt-4 sm:mt-0">
+            <button *ngIf="!part.isLocked" 
+                    (click)="handleAction(part)"
+                    class="w-full sm:w-auto px-5 py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:scale-105 active:scale-95 shadow-sm hover:shadow"
+                    [ngClass]="part.progress === 100 ? 'bg-green-600 hover:bg-green-700' : 'bg-cyan-600 hover:bg-cyan-700'">
+              {{ part.nextAction }}
+            </button>
+            <div *ngIf="part.isLocked" class="hidden sm:flex items-center justify-center w-10 h-10 rounded-full bg-slate-100">
+              <svg class="w-5 h-5 text-slate-300" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+              </svg>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>

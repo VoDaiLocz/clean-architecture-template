@@ -69,4 +69,8 @@ export class LearnerApiService {
   submitRepair(repairId: string, answer: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/reviews/${repairId}/submit`, { answer });
   }
+
+  getPartOverview(learnerId: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${learnerId}/parts`);
+  }
 }
