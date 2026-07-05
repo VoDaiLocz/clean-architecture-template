@@ -25,6 +25,7 @@ using Domain.Constants;
 using Serilog;
 using Api.Middleware;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using System.Text.Json;
 
 #pragma warning disable CS0618
 
@@ -357,6 +358,93 @@ learner.MapPost(
     }
 );
 
+learner.MapGet(
+    "/placement/{sessionId}",
+    Results<Ok<PlacementSessionContentResponse>, NotFound> (
+        string sessionId,
+        IKnowledgeRepository repository
+    ) =>
+    {
+        var session = repository.GetPlacementSessionById(sessionId);
+        if (session is null)
+        {
+            return TypedResults.NotFound();
+        }
+
+        var assignedQuestionIds = repository.GetPlacementSessionAssignedQuestions(sessionId);
+        if (assignedQuestionIds.Count == 0)
+        {
+            var generatedQuestionIds = Enumerable.Range(1, 7)
+                .SelectMany(part => repository.GetPublishedQuestions(part)
+                    .Where(question => question.Status == PublishedContentStatus.Published)
+                    .Take(1)
+                    .Select(question => question.QuestionId))
+                .ToList();
+
+            if (generatedQuestionIds.Count > 0)
+            {
+                repository.InsertPlacementSessionQuestions(sessionId, generatedQuestionIds);
+                assignedQuestionIds = generatedQuestionIds;
+            }
+        }
+
+        var questions = assignedQuestionIds
+            .Select(repository.GetPublishedQuestion)
+            .Where(question => question is not null && question.Status == PublishedContentStatus.Published)
+            .Select(question => new PlacementQuestionResponse(
+                Id: question!.QuestionId,
+                Part: question.ToeicPart,
+                Prompt: question.Prompt,
+                Choices: PlacementResponseMapping.ReadChoiceValues(question.OptionsJson)
+            ))
+            .ToList();
+
+        return TypedResults.Ok(new PlacementSessionContentResponse(
+            SessionId: session.SessionId,
+            Status: session.Status.ToString(),
+            AnsweredCount: 0,
+            TotalCount: questions.Count,
+            Questions: questions
+        ));
+    }
+);
+
+learner.MapPost(
+    "/placement/{sessionId}/submit",
+    Ok<PlacementSubmitResponse> (
+        string sessionId,
+        PlacementSubmitRequest request,
+        IKnowledgeRepository repository
+    ) =>
+    {
+        var handler = new ScorePlacementSessionHandler(repository);
+        var response = handler.Handle(new ScorePlacementSessionCommand(
+            sessionId,
+            request.Answers.Select(answer => new PlacementAnswerSubmission(
+                answer.QuestionId,
+                answer.SelectedChoice,
+                answer.Skipped
+            )).ToList()
+        ));
+
+        var weaknesses = repository.GetPlacementResultBreakdowns(response.ResultId)
+            .Where(breakdown => breakdown.ScorePercent < 80)
+            .Select(breakdown => new PlacementWeaknessResponse(
+                Part: int.TryParse(breakdown.DimensionValue, out var part) ? part : 0,
+                Skill: $"Part {breakdown.DimensionValue}"
+            ))
+            .ToList();
+
+        return TypedResults.Ok(new PlacementSubmitResponse(
+            SessionId: response.SessionId,
+            EstimateBand: response.DiagnosticScoreBand,
+            Label: "Kết quả chẩn đoán",
+            Weaknesses: weaknesses,
+            NextAction: response.NextAction
+        ));
+    }
+);
+
 learner.MapPost(
     "/path/generate",
     Ok<GenerateLearningPathResponse> (
@@ -379,7 +467,7 @@ learner.MapPost(
 );
 
 learner.MapGet(
-    "/today",
+    "/{learnerId}/today",
     Ok<LearnerTodayPlanResponse> (
         string learnerId,
         IKnowledgeRepository repository
@@ -469,6 +557,39 @@ learner.MapGet(
 );
 
 learner.MapGet(
+    "/toeic-parts",
+    Ok<ToeicPartOverviewResponse> (
+        IKnowledgeRepository repository
+    ) =>
+    {
+        var parts = Enumerable.Range(1, 7)
+            .Select(part =>
+            {
+                var publishedLessons = repository.CountPublishedLessons(part);
+                var publishedQuestions = repository.CountPublishedQuestions(part);
+                var hasContent = publishedLessons > 0 || publishedQuestions > 0;
+                return new ToeicPartOverviewItem(
+                    ToeicPart: part,
+                    Name: ToeicPartNames.Name(part),
+                    SkillType: part <= 4 ? "Listening" : "Reading",
+                    ProgressPercent: hasContent ? 1 : 0,
+                    CurrentUnitTitle: hasContent
+                        ? $"{publishedLessons} lessons · {publishedQuestions} questions published"
+                        : "No published learning content yet",
+                    IsLocked: !hasContent,
+                    LockedReason: hasContent ? null : "Admin must publish validated TOEIC content for this part before learner practice opens.",
+                    NextAction: new ToeicPartNextAction("Open part", $"/practice/part-{part}-next"),
+                    AvailableTests: hasContent ? ["Mini test", "Part test"] : [],
+                    WeaknessTags: []
+                );
+            })
+            .ToList();
+
+        return TypedResults.Ok(new ToeicPartOverviewResponse(parts));
+    }
+);
+
+learner.MapGet(
     "/activities/{activityId}",
     Results<Ok<LearnerActivityResponse>, NotFound> (
         string activityId,
@@ -509,7 +630,7 @@ learner.MapGet(
     "/review",
     Results<Ok<GetLearnerReviewQueueResponse>, NotFound> (
         string learnerId,
-        GetLearnerReviewQueueHandler handler
+        [Microsoft.AspNetCore.Mvc.FromServices] GetLearnerReviewQueueHandler handler
     ) =>
     {
         var response = handler.Handle(new GetLearnerReviewQueueQuery(learnerId));
@@ -543,7 +664,7 @@ learner.MapPost(
     Results<Ok<ResolveReviewItemResponse>, NotFound, BadRequest<string>> (
         string reviewItemId,
         [Microsoft.AspNetCore.Mvc.FromBody] ResolveReviewItemRequest request,
-        ResolveReviewItemHandler handler
+        [Microsoft.AspNetCore.Mvc.FromServices] ResolveReviewItemHandler handler
     ) =>
     {
         try
@@ -573,6 +694,92 @@ app.Run();
 #pragma warning restore CS0618
 
 public sealed record ResolveReviewItemRequest(string LearnerId, string Answer);
+
+public sealed record PlacementSessionContentResponse(
+    string SessionId,
+    string Status,
+    int AnsweredCount,
+    int TotalCount,
+    IReadOnlyList<PlacementQuestionResponse> Questions
+);
+
+public sealed record PlacementQuestionResponse(
+    string Id,
+    int Part,
+    string Prompt,
+    IReadOnlyList<string> Choices
+);
+
+public sealed record PlacementSubmitRequest(IReadOnlyList<PlacementSubmitAnswer> Answers);
+
+public sealed record PlacementSubmitAnswer(string QuestionId, string? SelectedChoice, bool Skipped);
+
+public sealed record PlacementSubmitResponse(
+    string SessionId,
+    string EstimateBand,
+    string Label,
+    IReadOnlyList<PlacementWeaknessResponse> Weaknesses,
+    Application.Features.Learner.Onboarding.LearnerNextAction NextAction
+);
+
+public sealed record PlacementWeaknessResponse(int Part, string Skill);
+
+public sealed record ToeicPartOverviewResponse(IReadOnlyList<ToeicPartOverviewItem> Parts);
+
+public sealed record ToeicPartOverviewItem(
+    int ToeicPart,
+    string Name,
+    string SkillType,
+    int ProgressPercent,
+    string CurrentUnitTitle,
+    bool IsLocked,
+    string? LockedReason,
+    ToeicPartNextAction NextAction,
+    IReadOnlyList<string> AvailableTests,
+    IReadOnlyList<string> WeaknessTags
+);
+
+public sealed record ToeicPartNextAction(string Label, string Route);
+
+public static class ToeicPartNames
+{
+    public static string Name(int part) => part switch
+    {
+        1 => "Photographs",
+        2 => "Question Response",
+        3 => "Conversations",
+        4 => "Talks",
+        5 => "Incomplete Sentences",
+        6 => "Text Completion",
+        7 => "Reading Comprehension",
+        _ => "Unknown TOEIC part"
+    };
+}
+
+public static class PlacementResponseMapping
+{
+    public static IReadOnlyList<string> ReadChoiceValues(string optionsJson)
+    {
+        if (string.IsNullOrWhiteSpace(optionsJson))
+        {
+            return [];
+        }
+
+        try
+        {
+            var options = JsonSerializer.Deserialize<Dictionary<string, string>>(optionsJson);
+            return options?
+                .OrderBy(option => option.Key, StringComparer.Ordinal)
+                .Select(option => option.Value)
+                .Where(value => !string.IsNullOrWhiteSpace(value))
+                .ToList() ?? [];
+        }
+        catch (JsonException)
+        {
+            return [];
+        }
+    }
+}
 
 #pragma warning restore CS0618
 

@@ -14,31 +14,31 @@ public static class AuthEndpoints
     {
         var group = app.MapGroup("/api/auth").WithTags("Auth");
 
-        group.MapPost("/register", async (ISender sender, [FromBody] RegisterUserCommand command) =>
+        group.MapPost("/register", async ([FromServices] ISender sender, [FromBody] RegisterUserCommand command) =>
         {
             var userId = await sender.Send(command);
             return Results.Ok(new { UserId = userId });
         });
 
-        group.MapPost("/login", async (ISender sender, [FromBody] LoginUserCommand command) =>
+        group.MapPost("/login", async ([FromServices] ISender sender, [FromBody] LoginUserCommand command) =>
         {
             var result = await sender.Send(command);
             return Results.Ok(result);
         });
 
-        group.MapPost("/refresh", async (ISender sender, [FromBody] Application.Features.Identity.Refresh.RefreshAuthCommand command) =>
+        group.MapPost("/refresh", async ([FromServices] ISender sender, [FromBody] Application.Features.Identity.Refresh.RefreshAuthCommand command) =>
         {
             var result = await sender.Send(command);
             return Results.Ok(result);
         });
 
-        group.MapPost("/logout", async (ISender sender, [FromBody] Application.Features.Identity.Logout.LogoutCommand command) =>
+        group.MapPost("/logout", async ([FromServices] ISender sender, [FromBody] Application.Features.Identity.Logout.LogoutCommand command) =>
         {
             await sender.Send(command);
             return Results.Ok();
         });
 
-        group.MapGet("/me", async (ISender sender, System.Security.Claims.ClaimsPrincipal user) =>
+        group.MapGet("/me", async ([FromServices] ISender sender, System.Security.Claims.ClaimsPrincipal user) =>
         {
             var userId = user.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value 
                          ?? user.FindFirst(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Sub)?.Value;
