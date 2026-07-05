@@ -1,0 +1,123 @@
+<div class="min-h-screen bg-slate-50 p-6 font-sans text-slate-800">
+  <div class="max-w-4xl mx-auto space-y-8">
+    <!-- Header -->
+    <header class="flex justify-between items-center">
+      <h1 class="text-3xl font-extrabold tracking-tight text-slate-900">Your Progress</h1>
+      <button class="px-4 py-2 bg-white rounded-full shadow-sm text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors" (click)="router.navigate(['/learner/today'])">
+        Back to Today
+      </button>
+    </header>
+
+    <div *ngIf="loading" class="flex justify-center py-20">
+      <div class="w-10 h-10 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin"></div>
+    </div>
+
+    <ng-container *ngIf="!loading && data">
+      <!-- Hero Section (Fitness Dashboard Style) -->
+      <section class="bg-gradient-to-br from-cyan-500 to-blue-600 rounded-3xl p-8 text-white shadow-lg flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+        <!-- Decorative bg elements -->
+        <div class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-white opacity-10 blur-3xl"></div>
+        
+        <div class="flex-1 z-10">
+          <h2 class="text-2xl font-bold mb-2">Keep going, you're doing great!</h2>
+          <p class="text-cyan-50 text-lg opacity-90">
+            You are {{ data.targetScore - data.estimatedScore }} points away from your goal!
+          </p>
+        </div>
+
+        <!-- Circular gauge -->
+        <div class="relative w-40 h-40 flex-shrink-0 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md border-4 border-white/30 z-10">
+          <svg class="absolute inset-0 w-full h-full transform -rotate-90">
+            <circle cx="80" cy="80" r="70" stroke="rgba(255,255,255,0.2)" stroke-width="12" fill="none" />
+            <circle cx="80" cy="80" r="70" stroke="white" stroke-width="12" fill="none" stroke-dasharray="440" [attr.stroke-dashoffset]="440 - (440 * data.estimatedScore / data.targetScore)" stroke-linecap="round" class="transition-all duration-1000 ease-out" />
+          </svg>
+          <div class="text-center z-10">
+            <div class="text-3xl font-extrabold">{{ data.estimatedScore }}</div>
+            <div class="text-xs uppercase tracking-wider opacity-80 mt-1">Est. Score</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Metrics Grid -->
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Units Completed -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-shadow">
+          <div class="absolute top-0 left-0 w-1 h-full bg-teal-400"></div>
+          <div class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-2">Units</div>
+          <div class="flex items-baseline gap-2">
+            <span class="text-4xl font-black text-slate-800">{{ data.unitsCompleted }}</span>
+            <span class="text-sm text-slate-400 font-medium">/ {{ data.totalUnits }}</span>
+          </div>
+        </div>
+
+        <!-- Accuracy -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-shadow">
+          <div class="absolute top-0 left-0 w-1 h-full bg-blue-400"></div>
+          <div class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-2">Accuracy</div>
+          <div class="flex items-baseline gap-2">
+            <span class="text-4xl font-black text-slate-800">{{ data.accuracy }}%</span>
+          </div>
+        </div>
+
+        <!-- Streak -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-shadow">
+          <div class="absolute top-0 left-0 w-1 h-full bg-orange-400"></div>
+          <div class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-2">Learning Streak</div>
+          <div class="flex items-baseline gap-2">
+            <span class="text-4xl font-black text-slate-800">{{ data.streak }}</span>
+            <span class="text-sm text-slate-400 font-medium">days</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Strengths & Weaknesses -->
+        <section class="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 flex flex-col">
+          <h3 class="text-xl font-bold text-slate-800 mb-6">Strengths & Weaknesses</h3>
+          
+          <div class="mb-6">
+            <h4 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3">Strengths</h4>
+            <div class="flex flex-wrap gap-2">
+              <span *ngFor="let item of data.strengths" class="px-3 py-1.5 bg-emerald-50 text-emerald-700 rounded-lg text-sm font-medium border border-emerald-100">
+                {{ item }}
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3">Areas to Improve</h4>
+            <div class="flex flex-wrap gap-2">
+              <span *ngFor="let item of data.weaknesses" class="px-3 py-1.5 bg-orange-50 text-orange-700 rounded-lg text-sm font-medium border border-orange-100">
+                {{ item }}
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Recent Tests -->
+        <section class="bg-white rounded-3xl p-8 shadow-sm border border-slate-100">
+          <h3 class="text-xl font-bold text-slate-800 mb-6">Recent Tests</h3>
+          
+          <div class="space-y-4">
+            <div *ngFor="let test of data.testHistory" class="flex items-center justify-between p-4 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors border border-transparent hover:border-slate-200">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">
+                  T
+                </div>
+                <div>
+                  <div class="font-semibold text-slate-800">Mock Test</div>
+                  <div class="text-sm text-slate-500">{{ test.date }}</div>
+                </div>
+              </div>
+              <div class="text-right">
+                <div class="text-xl font-black text-slate-800">{{ test.score }}</div>
+                <div class="text-xs text-slate-400 font-medium uppercase tracking-wide">Score</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+    </ng-container>
+  </div>
+</div>

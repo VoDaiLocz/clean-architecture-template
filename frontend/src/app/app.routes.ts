@@ -14,6 +14,7 @@ export const routes: Routes = [
   { path: 'learner/repair', loadComponent: () => import('./features/learner/mistake-repair/mistake-repair.component').then(m => m.MistakeRepairComponent) },
   { path: 'learner/parts', loadComponent: () => import('./features/learner/part-overview/part-overview.component').then(m => m.PartOverviewComponent) },
   { path: 'learner/exam', loadComponent: () => import('./features/learner/exam/exam.component').then(m => m.ExamComponent) },
+  { path: 'learner/progress', loadComponent: () => import('./features/learner/progress/progress.component').then(m => m.ProgressComponent) },
   { 
     path: 'learner', 
     component: AppShellComponent,

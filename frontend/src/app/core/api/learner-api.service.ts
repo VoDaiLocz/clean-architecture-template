@@ -81,4 +81,8 @@ export class LearnerApiService {
   submitExamSession(sessionId: string, answers: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/exams/${sessionId}/submit`, answers);
   }
+
+  getProgress(learnerId: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${learnerId}/progress`);
+  }
 }
