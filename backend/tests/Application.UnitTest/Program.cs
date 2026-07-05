@@ -76,6 +76,7 @@ var tests = new List<(string Name, Action Run)>
     ("dashboard reports raw learning and issue counts", ApplicationTests.DashboardReportsCounts),
     ("dashboard reports corpus coverage without pretending backlog is published", ApplicationTests.DashboardReportsCorpusCoverage),
     ("content coverage baseline separates source draft validation and published layers", ApplicationTests.ContentCoverageBaselineSeparatesSourceDraftValidationAndPublishedLayers),
+    ("content coverage audits corpus readiness and first publish slice", ApplicationTests.ContentCoverageAuditsCorpusReadinessAndFirstPublishSlice),
     ("source manifest classifier identifies provider material and access status", ApplicationTests.SourceManifestClassifierIdentifiesProviderMaterialAndAccessStatus),
     ("repository persists normalized source manifest entries", ApplicationTests.RepositoryPersistsNormalizedSourceManifestEntries),
     ("imports audited TOEIC source manifest into database", ApplicationTests.ImportsAuditedToeicSourceManifestIntoDatabase),
@@ -557,6 +558,103 @@ static class ApplicationTests
         Assert.Equal(0, part7.ReadyForReviewDraftItems, "Part 7 should not inherit Part 5 ready drafts.");
         Assert.Equal(1, part7.ValidationFailedDraftItems, "Part 7 should expose failed draft backlog.");
         Assert.Equal(0, part7.PublishedQuestions, "Part 7 source backlog must not appear as published.");
+    }
+
+    public static void ContentCoverageAuditsCorpusReadinessAndFirstPublishSlice()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+
+        var pdf = SeedSourceAsset(repository);
+        repository.UpsertSourceAsset(pdf with
+        {
+            FileName = "fire-toeic-part-5.pdf",
+            DetectedRole = SourceAssetRole.Pdf,
+            Checksum = "sha256-part5-book"
+        });
+        repository.UpsertSourceAsset(pdf with
+        {
+            AssetId = "asset-answer-key-01",
+            FileName = "answer-key.pdf",
+            DetectedRole = SourceAssetRole.AnswerKey,
+            ObjectKey = "source-assets/answer-key.pdf",
+            Checksum = "sha256-answer-key"
+        });
+        repository.UpsertSourceAsset(pdf with
+        {
+            AssetId = "asset-audio-01",
+            FileName = "part-1-audio.mp3",
+            MimeType = "audio/mpeg",
+            Extension = ".mp3",
+            DetectedRole = SourceAssetRole.Audio,
+            ObjectKey = "source-assets/part-1-audio.mp3",
+            Checksum = "sha256-audio"
+        });
+        repository.UpsertSourceAsset(pdf with
+        {
+            AssetId = "asset-html-placeholder",
+            FileName = "download-error.pdf",
+            MimeType = "text/html",
+            Extension = ".pdf",
+            SizeBytes = 1_700,
+            DetectedRole = SourceAssetRole.Unknown,
+            ObjectKey = "source-assets/download-error.pdf",
+            Checksum = "sha256-html-placeholder"
+        });
+
+        repository.UpsertExtractedPage(new ExtractedPage(
+            PageId: "page-part5-1",
+            AssetId: pdf.AssetId,
+            PageNumber: 1,
+            Width: 1200,
+            Height: 1800,
+            ExtractedAtUtc: new DateTimeOffset(2026, 7, 5, 0, 0, 0, TimeSpan.Zero)
+        ));
+        repository.UpsertExtractedPage(new ExtractedPage(
+            PageId: "page-key-1",
+            AssetId: "asset-answer-key-01",
+            PageNumber: 1,
+            Width: 1200,
+            Height: 1800,
+            ExtractedAtUtc: new DateTimeOffset(2026, 7, 5, 0, 0, 0, TimeSpan.Zero)
+        ));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock(
+            BlockId: "block-part5-question",
+            AssetId: pdf.AssetId,
+            PageId: "page-part5-1",
+            PageNumber: 1,
+            BlockType: ExtractedBlockType.Question,
+            Text: "101. The team needs a more ____ plan. (A) effect (B) effective (C) effectively (D) effectiveness",
+            Confidence: 0.95m,
+            CoordinatesJson: "{}"
+        ));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock(
+            BlockId: "block-part5-answer",
+            AssetId: "asset-answer-key-01",
+            PageId: "page-key-1",
+            PageNumber: 1,
+            BlockType: ExtractedBlockType.Paragraph,
+            Text: "101. B",
+            Confidence: 0.98m,
+            CoordinatesJson: "{}"
+        ));
+
+        var coverage = new GetContentCoverageHandler(repository).Handle();
+
+        Assert.Equal(4, coverage.CorpusAudit.TotalAssets, "Audit must count concrete assets.");
+        Assert.Equal(1, coverage.CorpusAudit.AssetRoles.Single(role => role.Role == "Pdf").Count, "PDF assets must be counted by role.");
+        Assert.Equal(1, coverage.CorpusAudit.AssetRoles.Single(role => role.Role == "Audio").Count, "Audio assets must be counted by role.");
+        Assert.Equal(1, coverage.CorpusAudit.AssetRoles.Single(role => role.Role == "AnswerKey").Count, "Answer key assets must be counted by role.");
+        Assert.Equal(1, coverage.CorpusAudit.HtmlPlaceholderAssets, "HTML placeholder files must be visible as unusable corpus risk.");
+        Assert.Equal(2, coverage.CorpusAudit.ExtractedTextBlocks, "Audit must count extracted text blocks.");
+        Assert.Equal(pdf.AssetId, coverage.CorpusAudit.TopExtractedAssets[0].AssetId, "Top extracted asset should identify where parser work can start.");
+        Assert.Equal(1, coverage.CorpusAudit.TopExtractedAssets[0].TextBlockCount, "Text block distribution must be per asset.");
+        Assert.Equal("Part5Reading", coverage.CorpusAudit.FirstPublishSlice.CandidateKey, "Part 5 should be the first slice when PDF, answer key, and text blocks exist.");
+        Assert.True(coverage.CorpusAudit.FirstPublishSlice.IsReadyForDraftParsing, "Part 5 slice should be parser-ready with text blocks and answer key evidence.");
+        Assert.True(
+            coverage.CorpusAudit.ProductionWarnings.Any(warning => warning.Code == "NO_PUBLISHED_CONTENT"),
+            "Audit must warn when extracted corpus evidence has not become learner-ready published content."
+        );
     }
 
     public static void SourceManifestClassifierIdentifiesProviderMaterialAndAccessStatus()

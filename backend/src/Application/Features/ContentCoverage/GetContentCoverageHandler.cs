@@ -10,7 +10,8 @@ public sealed record ContentCoverageSnapshot(
     DraftCoverage Draft,
     ValidationCoverage Validation,
     PublishedCoverage Published,
-    IReadOnlyList<ToeicPartCoverage> ToeicParts
+    IReadOnlyList<ToeicPartCoverage> ToeicParts,
+    CorpusReadinessAudit CorpusAudit
 );
 
 public sealed record SourceCoverage(
@@ -74,11 +75,52 @@ public sealed record ToeicPartCoverage(
     int PublishedQuestions
 );
 
+public sealed record CorpusReadinessAudit(
+    int TotalAssets,
+    int HtmlPlaceholderAssets,
+    int ExtractedTextBlocks,
+    IReadOnlyList<AssetRoleCount> AssetRoles,
+    IReadOnlyList<ExtractedAssetBlockCount> TopExtractedAssets,
+    FirstPublishSliceCandidate FirstPublishSlice,
+    IReadOnlyList<ProductionWarning> ProductionWarnings
+);
+
+public sealed record AssetRoleCount(string Role, int Count);
+
+public sealed record ExtractedAssetBlockCount(
+    string AssetId,
+    string FileName,
+    SourceAssetRole Role,
+    int TextBlockCount
+);
+
+public sealed record FirstPublishSliceCandidate(
+    string CandidateKey,
+    string DisplayName,
+    bool IsReadyForDraftParsing,
+    string Reason
+);
+
+public sealed record ProductionWarning(string Code, string Message);
+
 public sealed class GetContentCoverageHandler(IKnowledgeRepository repository)
 {
     public ContentCoverageSnapshot Handle()
     {
         var sourceManifest = repository.GetSourceManifestSummary();
+        var assets = repository.GetAllSourceAssets();
+        var extractedCounts = assets
+            .Select(asset => new ExtractedAssetBlockCount(
+                asset.AssetId,
+                asset.FileName,
+                asset.DetectedRole,
+                repository.GetExtractedTextBlocks(asset.AssetId).Count
+            ))
+            .ToArray();
+        var publishedLessons = repository.Count("published_lessons");
+        var publishedQuestions = repository.Count("published_questions");
+        var publishedTests = repository.Count("published_tests");
+
         return new ContentCoverageSnapshot(
             Source: new SourceCoverage(
                 sourceManifest.TotalSources,
@@ -116,10 +158,10 @@ public sealed class GetContentCoverageHandler(IKnowledgeRepository repository)
                     .ToArray()
             ),
             Published: new PublishedCoverage(
-                repository.Count("published_lessons"),
+                publishedLessons,
                 repository.Count("guided_examples"),
-                repository.Count("published_questions"),
-                repository.Count("published_tests"),
+                publishedQuestions,
+                publishedTests,
                 repository.Count("published_test_sections"),
                 repository.Count("published_test_items")
             ),
@@ -135,7 +177,104 @@ public sealed class GetContentCoverageHandler(IKnowledgeRepository repository)
                     repository.CountPublishedLessons(part),
                     repository.CountPublishedQuestions(part)
                 ))
-                .ToArray()
+                .ToArray(),
+            CorpusAudit: BuildCorpusAudit(assets, extractedCounts, publishedLessons, publishedQuestions, publishedTests)
         );
     }
+
+    private static CorpusReadinessAudit BuildCorpusAudit(
+        IReadOnlyList<SourceAsset> assets,
+        IReadOnlyList<ExtractedAssetBlockCount> extractedCounts,
+        int publishedLessons,
+        int publishedQuestions,
+        int publishedTests
+    )
+    {
+        var roleCounts = assets
+            .GroupBy(asset => asset.DetectedRole)
+            .OrderBy(group => group.Key.ToString(), StringComparer.Ordinal)
+            .Select(group => new AssetRoleCount(group.Key.ToString(), group.Count()))
+            .ToArray();
+
+        var htmlPlaceholderAssets = assets.Count(asset =>
+            string.Equals(asset.MimeType, "text/html", StringComparison.OrdinalIgnoreCase)
+            || (
+                string.Equals(asset.Extension, ".pdf", StringComparison.OrdinalIgnoreCase)
+                && !string.Equals(asset.MimeType, "application/pdf", StringComparison.OrdinalIgnoreCase)
+            )
+        );
+
+        var topExtractedAssets = extractedCounts
+            .Where(asset => asset.TextBlockCount > 0)
+            .OrderByDescending(asset => asset.TextBlockCount)
+            .ThenBy(asset => AssetRolePriority(asset.Role))
+            .ThenBy(asset => asset.AssetId, StringComparer.Ordinal)
+            .Take(10)
+            .ToArray();
+
+        var totalExtractedTextBlocks = extractedCounts.Sum(asset => asset.TextBlockCount);
+        var hasPdfText = extractedCounts.Any(asset =>
+            asset.Role == SourceAssetRole.Pdf && asset.TextBlockCount > 0
+        );
+        var hasAnswerKeyEvidence = assets.Any(asset => asset.DetectedRole == SourceAssetRole.AnswerKey)
+            || extractedCounts.Any(asset =>
+                asset.TextBlockCount > 0
+                && asset.FileName.Contains("answer", StringComparison.OrdinalIgnoreCase)
+            );
+        var part5Ready = hasPdfText && hasAnswerKeyEvidence;
+
+        var warnings = new List<ProductionWarning>();
+        if (publishedLessons == 0 && publishedQuestions == 0 && publishedTests == 0)
+        {
+            warnings.Add(new ProductionWarning(
+                "NO_PUBLISHED_CONTENT",
+                "Runtime corpus has source/extraction evidence but no learner-ready published lessons, questions, or tests."
+            ));
+        }
+
+        if (htmlPlaceholderAssets > 0)
+        {
+            warnings.Add(new ProductionWarning(
+                "HTML_PLACEHOLDER_ASSETS",
+                "Some downloaded files are HTML placeholders or failed downloads and cannot be used as TOEIC source assets."
+            ));
+        }
+
+        if (!part5Ready)
+        {
+            warnings.Add(new ProductionWarning(
+                "FIRST_SLICE_NOT_READY",
+                "Part 5 reading cannot be draft-parsed until PDF text and answer-key evidence are both available."
+            ));
+        }
+
+        return new CorpusReadinessAudit(
+            TotalAssets: assets.Count,
+            HtmlPlaceholderAssets: htmlPlaceholderAssets,
+            ExtractedTextBlocks: totalExtractedTextBlocks,
+            AssetRoles: roleCounts,
+            TopExtractedAssets: topExtractedAssets,
+            FirstPublishSlice: new FirstPublishSliceCandidate(
+                "Part5Reading",
+                "Part 5 reading questions from extracted PDF text and answer key evidence",
+                part5Ready,
+                part5Ready
+                    ? "PDF text blocks and answer-key evidence exist; this is the safest first real draft parser slice."
+                    : "Missing PDF text blocks or answer-key evidence."
+            ),
+            ProductionWarnings: warnings
+        );
+    }
+
+    private static int AssetRolePriority(SourceAssetRole role) => role switch
+    {
+        SourceAssetRole.Pdf => 0,
+        SourceAssetRole.Document => 1,
+        SourceAssetRole.WebPage => 2,
+        SourceAssetRole.Transcript => 3,
+        SourceAssetRole.AnswerKey => 4,
+        SourceAssetRole.Audio => 5,
+        SourceAssetRole.Image => 6,
+        _ => 7,
+    };
 }
