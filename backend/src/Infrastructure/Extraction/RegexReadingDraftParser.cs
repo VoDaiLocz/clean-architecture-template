@@ -44,8 +44,8 @@ public sealed class RegexReadingDraftParser : IReadingDraftParser
                     continue;
                 }
 
-                var correctAnswer = FindNearbyAnswer(questionNumber, blockIndex, orderedBlocks);
-                if (correctAnswer is null)
+                var answerEvidence = FindNearbyAnswer(questionNumber, blockIndex, orderedBlocks);
+                if (answerEvidence is null)
                 {
                     continue;
                 }
@@ -73,7 +73,8 @@ public sealed class RegexReadingDraftParser : IReadingDraftParser
                     {
                         extractedNumber = questionNumber,
                         options,
-                        correctAnswer,
+                        correctAnswer = answerEvidence.Answer,
+                        explanation = answerEvidence.Explanation,
                     }),
                     SourceBlockId: block.BlockId,
                     Confidence: Math.Min(0.95m, Math.Max(0.9m, block.Confidence))
@@ -84,7 +85,9 @@ public sealed class RegexReadingDraftParser : IReadingDraftParser
         return results;
     }
 
-    private static string? FindNearbyAnswer(
+    private sealed record AnswerEvidence(string Answer, string Explanation);
+
+    private static AnswerEvidence? FindNearbyAnswer(
         int questionNumber,
         int questionBlockIndex,
         IReadOnlyList<ExtractedTextBlock> blocks
@@ -112,7 +115,10 @@ public sealed class RegexReadingDraftParser : IReadingDraftParser
                 {
                     if (int.Parse(match.Groups["number"].Value) == questionNumber)
                     {
-                        return match.Groups["answer"].Value.ToUpperInvariant();
+                        return new AnswerEvidence(
+                            match.Groups["answer"].Value.ToUpperInvariant(),
+                            text
+                        );
                     }
                 }
             }
@@ -120,7 +126,10 @@ public sealed class RegexReadingDraftParser : IReadingDraftParser
             var vietnameseAnswer = VietnameseAnswerRegex.Match(text);
             if (vietnameseAnswer.Success)
             {
-                return vietnameseAnswer.Groups["answer"].Value.ToUpperInvariant();
+                return new AnswerEvidence(
+                    vietnameseAnswer.Groups["answer"].Value.ToUpperInvariant(),
+                    text
+                );
             }
         }
 

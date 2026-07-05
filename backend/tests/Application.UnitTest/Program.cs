@@ -36,6 +36,11 @@ if (args.Contains("--import-real-part5-drafts", StringComparer.Ordinal))
     return ImportRealPart5Drafts();
 }
 
+if (args.Contains("--publish-real-part5-slice", StringComparer.Ordinal))
+{
+    return PublishRealPart5Slice();
+}
+
 var tests = new List<(string Name, Action Run)>
 {
     ("ToeicPlayableItem does not leak answer", ToeicItemContractsTests.ToeicPlayableItemDoesNotLeakAnswer),
@@ -242,6 +247,58 @@ static int ImportRealPart5Drafts()
     Console.WriteLine($"REAL_PART5_IMPORT parsedAssets={parsedAssets} createdDrafts={createdDrafts} validDrafts={validDrafts} invalidDrafts={invalidDrafts}");
     Console.WriteLine($"DB_COUNTS draft_content_items={repository.Count("draft_content_items")} ready_for_review_part5={repository.CountDraftContentItems(5, DraftContentStatus.ReadyForReview)} validation_issues={repository.Count("validation_issues")}");
     return validDrafts > 0 ? 0 : 2;
+}
+
+static int PublishRealPart5Slice()
+{
+    var dbPath = Path.GetFullPath("backend/src/Api/toeic-normalization.db");
+    if (!File.Exists(dbPath))
+    {
+        Console.Error.WriteLine($"Real normalization DB not found: {dbPath}");
+        return 1;
+    }
+
+    using var repository = SqliteKnowledgeRepository.FromConnectionString($"Data Source={dbPath}");
+    repository.Initialize();
+
+    const string lessonId = "lesson-real-part5-grammar-foundations";
+    repository.UpsertPublishedLesson(new PublishedLesson(
+        LessonId: lessonId,
+        UnitId: "unit-real-part5-grammar-foundations",
+        ToeicPart: 5,
+        Title: "Part 5 Grammar Foundations",
+        Objective: "Practice real TOEIC Part 5 incomplete-sentence questions with reviewed explanations.",
+        SkillTags: "part5,grammar,word_form",
+        SourceTraceJson: """{"source":"toeic-normalization.db","pipeline":"real-part5-draft-parser"}""",
+        Status: PublishedContentStatus.Published
+    ));
+
+    var reviewHandler = new ReviewAndPublishToeicContentHandler(repository);
+    var published = 0;
+    foreach (var assetGroup in repository.GetAllSourceAssets()
+        .Select(asset => new
+        {
+            Asset = asset,
+            Drafts = repository.GetDraftContentItems(asset.AssetId)
+                .Where(draft => draft.ToeicPart == 5 && draft.Status == DraftContentStatus.ReadyForReview)
+                .ToArray()
+        })
+        .Where(group => group.Drafts.Length > 0))
+    {
+        var result = reviewHandler.Handle(new ReviewAndPublishToeicContentCommand(
+            assetGroup.Asset.AssetId,
+            lessonId,
+            assetGroup.Drafts
+                .Select(draft => new ReviewDecision(draft.DraftId, ReviewDecisionAction.Approve))
+                .ToArray()
+        ));
+        published += result.PublishedCount;
+        Console.WriteLine($"{assetGroup.Asset.AssetId} | {assetGroup.Asset.FileName} | published={result.PublishedCount}");
+    }
+
+    Console.WriteLine($"REAL_PART5_PUBLISH published={published}");
+    Console.WriteLine($"DB_COUNTS published_lessons={repository.Count("published_lessons")} published_questions={repository.Count("published_questions")} ready_for_review_part5={repository.CountDraftContentItems(5, DraftContentStatus.ReadyForReview)}");
+    return repository.Count("published_questions") > 0 ? 0 : 2;
 }
 
 static class ApplicationTests
@@ -1275,6 +1332,8 @@ static class ApplicationTests
         Assert.True(draft.ParserConfidence >= 0.9m, "Complete parser output should exceed validation confidence threshold.");
         Assert.True(draft.PayloadJson.Contains("\"options\"", StringComparison.Ordinal), "Draft payload must include parsed options.");
         Assert.True(draft.PayloadJson.Contains("\"correctAnswer\":\"B\"", StringComparison.Ordinal), "Draft payload must include answer key evidence.");
+        Assert.True(draft.PayloadJson.Contains("\"explanation\"", StringComparison.Ordinal), "Draft payload must preserve explanation evidence.");
+        Assert.True(draft.PayloadJson.Contains("proposal", StringComparison.Ordinal), "Draft explanation should keep source explanation text.");
         Assert.True(draft.PayloadJson.Contains("word_form", StringComparison.Ordinal), "Parser should tag obvious Part 5 word-form questions.");
     }
 
@@ -1461,6 +1520,7 @@ static class ApplicationTests
         var question = repository.GetPublishedQuestions(5).Single();
         Assert.Equal("published-question-draft-review-approved", question.QuestionId, "Published question id should trace draft id.");
         Assert.Equal("B", question.CorrectAnswer, "Correct answer should publish.");
+        Assert.Equal("Past tense is required.", question.Explanation, "Published question must keep reviewed explanation.");
         var drafts = repository.GetDraftContentItems(asset.AssetId);
         Assert.Equal(DraftContentStatus.Published, drafts.Single(draft => draft.DraftId == "draft-review-approved").Status, "Approved draft should be marked published.");
         Assert.Equal(DraftContentStatus.Rejected, drafts.Single(draft => draft.DraftId == "draft-review-rejected").Status, "Rejected draft should be marked rejected.");
