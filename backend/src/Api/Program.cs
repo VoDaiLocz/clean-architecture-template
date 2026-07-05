@@ -22,10 +22,18 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using System.Text.Json.Serialization;
 using Api.Endpoints;
 using Domain.Constants;
+using Serilog;
+using Api.Middleware;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 #pragma warning disable CS0618
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog((context, services, configuration) => configuration
+    .ReadFrom.Configuration(context.Configuration)
+    .Enrich.FromLogContext()
+    .WriteTo.Console());
 
 builder.Services.AddApplicationDependencies(builder.Configuration);
 builder.Services.AddInfrastructureDependencies(builder.Configuration, builder.Environment.EnvironmentName);
@@ -64,6 +72,8 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+app.UseMiddleware<CorrelationIdMiddleware>();
+
 app.UseCors("frontend");
 
 app.UseAuthentication();
@@ -74,6 +84,9 @@ app.MapAuthEndpoints();
 var api = app.MapGroup("/api");
 var learner = api.MapGroup("/learner");
 var admin = api.MapGroup("/admin").RequireAuthorization(Policies.RequireOperatorRole);
+
+app.MapHealthChecks("/api/health/live", new HealthCheckOptions { Predicate = _ => false });
+app.MapHealthChecks("/api/health/ready");
 
 api.MapGet(
     "/health",

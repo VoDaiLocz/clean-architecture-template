@@ -22,6 +22,7 @@ public static class DependencyInjection
         string environmentName = "Development"
     )
     {
+        services.AddHealthChecks();
         var options = ToeicPlatformOptions.FromConfiguration(configuration, environmentName);
 
         services.AddSingleton<IKnowledgeRepository>(_ =>
