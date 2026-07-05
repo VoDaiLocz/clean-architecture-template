@@ -37,9 +37,10 @@ if (args.Contains("--import-real-reading-drafts", StringComparer.Ordinal)
     return ImportRealReadingDrafts();
 }
 
-if (args.Contains("--publish-real-part5-slice", StringComparer.Ordinal))
+if (args.Contains("--publish-real-reading-slices", StringComparer.Ordinal)
+    || args.Contains("--publish-real-part5-slice", StringComparer.Ordinal))
 {
-    return PublishRealPart5Slice();
+    return PublishRealReadingSlices();
 }
 
 var tests = new List<(string Name, Action Run)>
@@ -253,7 +254,7 @@ static int ImportRealReadingDrafts()
     return validDrafts > 0 ? 0 : 2;
 }
 
-static int PublishRealPart5Slice()
+static int PublishRealReadingSlices()
 {
     var dbPath = Path.GetFullPath("backend/src/Api/toeic-normalization.db");
     if (!File.Exists(dbPath))
@@ -265,17 +266,17 @@ static int PublishRealPart5Slice()
     using var repository = SqliteKnowledgeRepository.FromConnectionString($"Data Source={dbPath}");
     repository.Initialize();
 
-    const string lessonId = "lesson-real-part5-grammar-foundations";
-    repository.UpsertPublishedLesson(new PublishedLesson(
-        LessonId: lessonId,
-        UnitId: "unit-real-part5-grammar-foundations",
-        ToeicPart: 5,
-        Title: "Part 5 Grammar Foundations",
-        Objective: "Practice real TOEIC Part 5 incomplete-sentence questions with reviewed explanations.",
-        SkillTags: "part5,grammar,word_form",
-        SourceTraceJson: """{"source":"toeic-normalization.db","pipeline":"real-part5-draft-parser"}""",
-        Status: PublishedContentStatus.Published
-    ));
+    var lessonIdsByPart = new Dictionary<int, string>
+    {
+        [5] = "lesson-real-part5-grammar-foundations",
+        [6] = "lesson-real-part6-text-completion-foundations",
+        [7] = "lesson-real-part7-reading-comprehension-foundations",
+    };
+
+    foreach (var part in lessonIdsByPart.Keys)
+    {
+        repository.UpsertPublishedLesson(CreateRealReadingLesson(part, lessonIdsByPart[part]));
+    }
 
     var reviewHandler = new ReviewAndPublishToeicContentHandler(repository);
     var published = 0;
@@ -284,25 +285,66 @@ static int PublishRealPart5Slice()
         {
             Asset = asset,
             Drafts = repository.GetDraftContentItems(asset.AssetId)
-                .Where(draft => draft.ToeicPart == 5 && draft.Status == DraftContentStatus.ReadyForReview)
+                .Where(draft => draft.ToeicPart is 5 or 6 or 7 && draft.Status == DraftContentStatus.ReadyForReview)
                 .ToArray()
         })
         .Where(group => group.Drafts.Length > 0))
     {
-        var result = reviewHandler.Handle(new ReviewAndPublishToeicContentCommand(
+        foreach (var partGroup in assetGroup.Drafts.GroupBy(draft => draft.ToeicPart!.Value))
+        {
+            var result = reviewHandler.Handle(new ReviewAndPublishToeicContentCommand(
             assetGroup.Asset.AssetId,
-            lessonId,
-            assetGroup.Drafts
+            lessonIdsByPart[partGroup.Key],
+            partGroup
                 .Select(draft => new ReviewDecision(draft.DraftId, ReviewDecisionAction.Approve))
                 .ToArray()
-        ));
-        published += result.PublishedCount;
-        Console.WriteLine($"{assetGroup.Asset.AssetId} | {assetGroup.Asset.FileName} | published={result.PublishedCount}");
+            ));
+            published += result.PublishedCount;
+            Console.WriteLine($"{assetGroup.Asset.AssetId} | {assetGroup.Asset.FileName} | part={partGroup.Key} published={result.PublishedCount}");
+        }
     }
 
-    Console.WriteLine($"REAL_PART5_PUBLISH published={published}");
-    Console.WriteLine($"DB_COUNTS published_lessons={repository.Count("published_lessons")} published_questions={repository.Count("published_questions")} ready_for_review_part5={repository.CountDraftContentItems(5, DraftContentStatus.ReadyForReview)}");
+    Console.WriteLine($"REAL_READING_PUBLISH published={published}");
+    Console.WriteLine($"DB_COUNTS published_lessons={repository.Count("published_lessons")} published_questions={repository.Count("published_questions")} published_part5={repository.CountPublishedQuestions(5)} published_part6={repository.CountPublishedQuestions(6)} published_part7={repository.CountPublishedQuestions(7)} ready_for_review_part5={repository.CountDraftContentItems(5, DraftContentStatus.ReadyForReview)} ready_for_review_part6={repository.CountDraftContentItems(6, DraftContentStatus.ReadyForReview)} ready_for_review_part7={repository.CountDraftContentItems(7, DraftContentStatus.ReadyForReview)}");
     return repository.Count("published_questions") > 0 ? 0 : 2;
+}
+
+static PublishedLesson CreateRealReadingLesson(int toeicPart, string lessonId)
+{
+    return toeicPart switch
+    {
+        5 => new PublishedLesson(
+            LessonId: lessonId,
+            UnitId: "unit-real-part5-grammar-foundations",
+            ToeicPart: 5,
+            Title: "Part 5 Grammar Foundations",
+            Objective: "Practice real TOEIC Part 5 incomplete-sentence questions with reviewed explanations.",
+            SkillTags: "part5,grammar,word_form",
+            SourceTraceJson: """{"source":"toeic-normalization.db","pipeline":"real-reading-draft-parser"}""",
+            Status: PublishedContentStatus.Published
+        ),
+        6 => new PublishedLesson(
+            LessonId: lessonId,
+            UnitId: "unit-real-part6-text-completion-foundations",
+            ToeicPart: 6,
+            Title: "Part 6 Text Completion Foundations",
+            Objective: "Practice real TOEIC Part 6 passage completion questions with passage context and reviewed answer evidence.",
+            SkillTags: "part6,reading,text_completion",
+            SourceTraceJson: """{"source":"toeic-normalization.db","pipeline":"real-reading-draft-parser"}""",
+            Status: PublishedContentStatus.Published
+        ),
+        7 => new PublishedLesson(
+            LessonId: lessonId,
+            UnitId: "unit-real-part7-reading-comprehension-foundations",
+            ToeicPart: 7,
+            Title: "Part 7 Reading Comprehension Foundations",
+            Objective: "Practice real TOEIC Part 7 reading comprehension questions with passage context and reviewed answer evidence.",
+            SkillTags: "part7,reading,comprehension",
+            SourceTraceJson: """{"source":"toeic-normalization.db","pipeline":"real-reading-draft-parser"}""",
+            Status: PublishedContentStatus.Published
+        ),
+        _ => throw new ArgumentOutOfRangeException(nameof(toeicPart), toeicPart, "Only TOEIC reading parts can be published by this utility."),
+    };
 }
 
 static class ApplicationTests
