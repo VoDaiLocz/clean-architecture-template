@@ -571,15 +571,15 @@ learner.MapGet(
                 return new ToeicPartOverviewItem(
                     ToeicPart: part,
                     Name: ToeicPartNames.Name(part),
-                    SkillType: part <= 4 ? "Listening" : "Reading",
+                    SkillType: part <= 4 ? "Nghe" : "Đọc",
                     ProgressPercent: hasContent ? 1 : 0,
                     CurrentUnitTitle: hasContent
-                        ? $"{publishedLessons} lessons · {publishedQuestions} questions published"
-                        : "No published learning content yet",
+                        ? $"{publishedLessons} bài học · {publishedQuestions} câu hỏi đã xuất bản"
+                        : "Chưa có nội dung học đã xuất bản",
                     IsLocked: !hasContent,
-                    LockedReason: hasContent ? null : "Admin must publish validated TOEIC content for this part before learner practice opens.",
-                    NextAction: new ToeicPartNextAction("Open part", $"/practice/part-{part}-next"),
-                    AvailableTests: hasContent ? ["Mini test", "Part test"] : [],
+                    LockedReason: hasContent ? null : "Phần này chỉ mở khi hệ thống đã có câu hỏi TOEIC thật được validate và xuất bản.",
+                    NextAction: new ToeicPartNextAction("Mở phần học", $"/practice/part-{part}-next"),
+                    AvailableTests: hasContent ? ["Mini test", "Đề theo part"] : [],
                     WeaknessTags: []
                 );
             })
@@ -745,14 +745,14 @@ public static class ToeicPartNames
 {
     public static string Name(int part) => part switch
     {
-        1 => "Photographs",
-        2 => "Question Response",
-        3 => "Conversations",
-        4 => "Talks",
-        5 => "Incomplete Sentences",
-        6 => "Text Completion",
-        7 => "Reading Comprehension",
-        _ => "Unknown TOEIC part"
+        1 => "Part 1 - Mô tả tranh",
+        2 => "Part 2 - Hỏi đáp",
+        3 => "Part 3 - Hội thoại",
+        4 => "Part 4 - Bài nói ngắn",
+        5 => "Part 5 - Hoàn thành câu",
+        6 => "Part 6 - Hoàn thành đoạn văn",
+        7 => "Part 7 - Đọc hiểu",
+        _ => "Part TOEIC không xác định"
     };
 }
 
