@@ -27,3 +27,4 @@ Each JSONL row must include:
 - Rows without a real PDF page trace stay out of publishable drafts.
 - Part 6 and Part 7 rows must preserve their passage/group context.
 - Listening items must not be manually created from reading PDFs.
+- Auto-parsed text blocks must be sample-audited before publish; text extraction is not the same as validated learning content.

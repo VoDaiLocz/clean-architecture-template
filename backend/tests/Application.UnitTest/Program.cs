@@ -50,6 +50,11 @@ if (args.Contains("--import-manual-extraction", StringComparer.Ordinal))
     return ImportManualExtractionDrafts(args);
 }
 
+if (args.Contains("--extract-local-pdf-blocks", StringComparer.Ordinal))
+{
+    return ExtractLocalPdfBlocksFromQueue(args);
+}
+
 var tests = new List<(string Name, Action Run)>
 {
     ("ToeicPlayableItem does not leak answer", ToeicItemContractsTests.ToeicPlayableItemDoesNotLeakAnswer),
@@ -445,6 +450,111 @@ static int ImportManualExtractionDrafts(string[] args)
     return created > 0 && invalid == 0 ? 0 : 2;
 }
 
+static int ExtractLocalPdfBlocksFromQueue(string[] args)
+{
+    var dbPath = Path.GetFullPath("backend/src/Api/toeic-normalization.db");
+    if (!File.Exists(dbPath))
+    {
+        Console.Error.WriteLine($"Real normalization DB not found: {dbPath}");
+        return 1;
+    }
+
+    var queuePath = args
+        .FirstOrDefault(arg => arg.StartsWith("--pdf-queue-file=", StringComparison.Ordinal))
+        ?.Split('=', 2)[1]
+        ?? "data/pdf-processing/pdf-processing-queue.json";
+    queuePath = Path.GetFullPath(queuePath);
+    if (!File.Exists(queuePath))
+    {
+        Console.Error.WriteLine($"PDF processing queue not found: {queuePath}");
+        return 1;
+    }
+
+    using var repository = SqliteKnowledgeRepository.FromConnectionString($"Data Source={dbPath}");
+    repository.Initialize();
+
+    var queueEntries = JsonSerializer.Deserialize<PdfProcessingQueueEntry[]>(
+        File.ReadAllText(queuePath),
+        new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
+    ) ?? [];
+    var maxAssets = args
+        .FirstOrDefault(arg => arg.StartsWith("--max-assets=", StringComparison.Ordinal))
+        ?.Split('=', 2)[1];
+    var maxAssetsToExtract = int.TryParse(maxAssets, out var parsedMaxAssets)
+        ? parsedMaxAssets
+        : int.MaxValue;
+    var storage = new InMemoryObjectStorage();
+    var extractor = new Infrastructure.Extraction.PdfPigTextBlockExtractor(storage);
+    var handler = new ExtractToeicPdfBlocksHandler(repository, extractor);
+    var extractedAssets = 0;
+    var extractedPages = 0;
+    var extractedBlocks = 0;
+    var failed = 0;
+
+    foreach (var entry in queueEntries.Where(entry => entry.NextAction == "run_pdf_block_extraction"))
+    {
+        if (extractedAssets >= maxAssetsToExtract)
+        {
+            Console.WriteLine($"STOP max-assets reached | maxAssets={maxAssetsToExtract}");
+            break;
+        }
+
+        if (string.IsNullOrWhiteSpace(entry.SourceAssetId))
+        {
+            Console.WriteLine($"SKIP no-db-asset | {entry.RelativePath}");
+            continue;
+        }
+
+        var asset = repository.GetSourceAsset(entry.SourceAssetId);
+        if (asset is null)
+        {
+            Console.WriteLine($"SKIP missing-asset | {entry.SourceAssetId} | {entry.RelativePath}");
+            continue;
+        }
+
+        var existingPages = repository.GetExtractedPages(asset.AssetId).Count;
+        var existingBlocks = repository.GetExtractedTextBlocks(asset.AssetId).Count;
+        if (existingPages >= entry.PageCount && existingBlocks > 0)
+        {
+            Console.WriteLine($"SKIP already-has-text | {asset.AssetId} | {asset.FileName}");
+            continue;
+        }
+
+        var physicalPath = Path.GetFullPath(entry.RelativePath);
+        if (!File.Exists(physicalPath))
+        {
+            Console.WriteLine($"FAIL missing-file | {entry.RelativePath}");
+            failed++;
+            continue;
+        }
+
+        storage.Put(new PutObjectRequest(
+            new ObjectKey(asset.ObjectKey),
+            asset.MimeType,
+            File.ReadAllBytes(physicalPath)
+        ));
+
+        try
+        {
+            Console.WriteLine($"START extract | order={entry.Order} | {asset.AssetId} | {asset.FileName} | expectedPages={entry.PageCount}");
+            var result = handler.Handle(new ExtractToeicPdfBlocksCommand(asset.AssetId));
+            extractedAssets++;
+            extractedPages += result.ExtractedPageCount;
+            extractedBlocks += result.ExtractedBlockCount;
+            Console.WriteLine($"{asset.AssetId} | {asset.FileName} | pages={result.ExtractedPageCount} blocks={result.ExtractedBlockCount}");
+        }
+        catch (Exception ex)
+        {
+            failed++;
+            Console.WriteLine($"FAIL extract | {asset.AssetId} | {asset.FileName} | {ex.GetType().Name}: {ex.Message}");
+        }
+    }
+
+    Console.WriteLine($"LOCAL_PDF_BLOCK_EXTRACTION assets={extractedAssets} pages={extractedPages} blocks={extractedBlocks} failed={failed}");
+    Console.WriteLine($"DB_COUNTS extracted_pages={repository.Count("extracted_pages")} extracted_text_blocks={repository.Count("extracted_text_blocks")}");
+    return failed == 0 ? 0 : 2;
+}
+
 static SourceAsset ResolveManualExtractionAsset(IKnowledgeRepository repository, ManualExtractedItem item)
 {
     var expectedFileName = Path.GetFileName(item.SourceFileOriginalName);
@@ -545,6 +655,16 @@ sealed record ManualExtractedItem(
     string GroupId = "",
     string PassageType = "",
     string PassageText = ""
+);
+
+sealed record PdfProcessingQueueEntry(
+    int Order,
+    string RelativePath,
+    string FileName,
+    int PageCount,
+    string ExtractionClass,
+    string SourceAssetId,
+    string NextAction
 );
 
 static class ApplicationTests
