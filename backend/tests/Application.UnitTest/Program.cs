@@ -253,7 +253,11 @@ static int ImportRealReadingDrafts()
 
     Console.WriteLine($"REAL_READING_IMPORT parsedAssets={parsedAssets} createdDrafts={createdDrafts} validDrafts={validDrafts} invalidDrafts={invalidDrafts}");
     Console.WriteLine($"DB_COUNTS draft_content_items={repository.Count("draft_content_items")} ready_for_review_part5={repository.CountDraftContentItems(5, DraftContentStatus.ReadyForReview)} ready_for_review_part6={repository.CountDraftContentItems(6, DraftContentStatus.ReadyForReview)} ready_for_review_part7={repository.CountDraftContentItems(7, DraftContentStatus.ReadyForReview)} validation_issues={repository.Count("validation_issues")}");
-    return validDrafts > 0 ? 0 : 2;
+    var publishedReadingQuestions =
+        repository.CountPublishedQuestions(5)
+        + repository.CountPublishedQuestions(6)
+        + repository.CountPublishedQuestions(7);
+    return validDrafts > 0 || publishedReadingQuestions > 0 ? 0 : 2;
 }
 
 static int PublishRealReadingSlices()
