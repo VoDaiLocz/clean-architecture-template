@@ -1,5 +1,6 @@
 using Application.Common.ApiContracts;
 using Application.Common.Health;
+using Application.Common.Interfaces.Repositories;
 using Application.Features.Dashboard.Queries;
 using Application.Features.ContentCoverage;
 using Application.Features.LearningItems.Commands;
@@ -30,6 +31,7 @@ using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
 using System.Text;
+using System.Text.Json;
 
 if (args.Contains("--import-real-reading-drafts", StringComparer.Ordinal)
     || args.Contains("--import-real-part5-drafts", StringComparer.Ordinal))
@@ -41,6 +43,11 @@ if (args.Contains("--publish-real-reading-slices", StringComparer.Ordinal)
     || args.Contains("--publish-real-part5-slice", StringComparer.Ordinal))
 {
     return PublishRealReadingSlices();
+}
+
+if (args.Contains("--import-manual-extraction", StringComparer.Ordinal))
+{
+    return ImportManualExtractionDrafts(args);
 }
 
 var tests = new List<(string Name, Action Run)>
@@ -321,6 +328,168 @@ static int PublishRealReadingSlices()
     return repository.Count("published_questions") > 0 ? 0 : 2;
 }
 
+static int ImportManualExtractionDrafts(string[] args)
+{
+    var dbPath = Path.GetFullPath("backend/src/Api/toeic-normalization.db");
+    if (!File.Exists(dbPath))
+    {
+        Console.Error.WriteLine($"Real normalization DB not found: {dbPath}");
+        return 1;
+    }
+
+    var inputPath = args
+        .FirstOrDefault(arg => arg.StartsWith("--manual-extraction-file=", StringComparison.Ordinal))
+        ?.Split('=', 2)[1]
+        ?? "data/manual-extraction/de-doc-1-test01-part5-6.jsonl";
+    inputPath = Path.GetFullPath(inputPath);
+    if (!File.Exists(inputPath))
+    {
+        Console.Error.WriteLine($"Manual extraction file not found: {inputPath}");
+        return 1;
+    }
+
+    using var repository = SqliteKnowledgeRepository.FromConnectionString($"Data Source={dbPath}");
+    repository.Initialize();
+
+    var items = File.ReadAllLines(inputPath)
+        .Where(line => !string.IsNullOrWhiteSpace(line))
+        .Select(line => JsonSerializer.Deserialize<ManualExtractedItem>(line, new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true,
+        }) ?? throw new InvalidOperationException("Manual extraction row cannot be empty."))
+        .ToArray();
+
+    var fullPassagesByGroup = items
+        .Where(item => !string.IsNullOrWhiteSpace(item.GroupId)
+            && !item.PassageText.StartsWith("See group", StringComparison.OrdinalIgnoreCase))
+        .GroupBy(item => item.GroupId)
+        .ToDictionary(group => group.Key, group => group.First().PassageText);
+
+    var validationHandler = new ValidateToeicDraftContentHandler(repository);
+    var created = 0;
+    var touchedAssets = new HashSet<string>(StringComparer.Ordinal);
+    foreach (var item in items)
+    {
+        var asset = ResolveManualExtractionAsset(repository, item);
+        var draftId = $"draft-manual-{asset.AssetId}-{SanitizeManualId(item.SourceTest)}-q{item.QuestionNumber}";
+        var prompt = item.ToeicPart is 6 or 7
+            ? ResolveManualPassageText(item, fullPassagesByGroup)
+            : item.Prompt;
+        var passageText = item.ToeicPart is 6 or 7
+            ? ResolveManualPassageText(item, fullPassagesByGroup)
+            : "";
+
+        repository.UpsertDraftContentItem(new DraftContentItem(
+            DraftId: draftId,
+            AssetId: asset.AssetId,
+            MaterialClass: MaterialClass.TestBook,
+            ToeicPart: item.ToeicPart,
+            ItemType: "ReadingQuestion",
+            PayloadJson: JsonSerializer.Serialize(new
+            {
+                schemaVersion = "toeic-draft.v1",
+                kind = "ReadingQuestion",
+                data = new
+                {
+                    questionType = item.ToeicPart switch
+                    {
+                        5 => "IncompleteSentence",
+                        6 => "TextCompletion",
+                        7 => "ReadingComprehension",
+                        _ => "ReadingQuestion",
+                    },
+                    prompt,
+                    skillTags = BuildManualSkillTags(item),
+                    passageId = string.IsNullOrWhiteSpace(item.GroupId) ? null : $"passage-{item.GroupId}",
+                    groupId = string.IsNullOrWhiteSpace(item.GroupId) ? null : item.GroupId,
+                    parserPayload = new
+                    {
+                        extractedNumber = item.QuestionNumber,
+                        options = item.Options,
+                        correctAnswer = item.CorrectAnswer,
+                        passageText,
+                        explanation = "Manual extraction validated against source answer key. Explanation enrichment pending.",
+                    },
+                },
+            }),
+            SourceTraceJson: JsonSerializer.Serialize(new
+            {
+                asset.AssetId,
+                asset.SourceId,
+                item.SourceFileOriginalName,
+                item.SourcePdfPage,
+                item.SourcePrintedPage,
+                item.AnswerEvidencePdfPage,
+                item.SourceTest,
+                item.ExtractionMethod,
+            }),
+            ParserConfidence: item.Confidence.Equals("high", StringComparison.OrdinalIgnoreCase) ? 0.98m : 0.86m,
+            Status: DraftContentStatus.PendingValidation
+        ));
+        touchedAssets.Add(asset.AssetId);
+        created++;
+    }
+
+    var valid = 0;
+    var invalid = 0;
+    foreach (var assetId in touchedAssets)
+    {
+        var result = validationHandler.Handle(new ValidateToeicDraftContentCommand(assetId));
+        valid += result.ValidDraftCount;
+        invalid += result.InvalidDraftCount;
+    }
+
+    Console.WriteLine($"MANUAL_EXTRACTION_IMPORT file={inputPath}");
+    Console.WriteLine($"createdOrUpdated={created} valid={valid} invalid={invalid}");
+    Console.WriteLine($"DB_COUNTS draft_content_items={repository.Count("draft_content_items")} ready_part5={repository.CountDraftContentItems(5, DraftContentStatus.ReadyForReview)} ready_part6={repository.CountDraftContentItems(6, DraftContentStatus.ReadyForReview)} ready_part7={repository.CountDraftContentItems(7, DraftContentStatus.ReadyForReview)}");
+    return created > 0 && invalid == 0 ? 0 : 2;
+}
+
+static SourceAsset ResolveManualExtractionAsset(IKnowledgeRepository repository, ManualExtractedItem item)
+{
+    var expectedFileName = Path.GetFileName(item.SourceFileOriginalName);
+    var asset = repository.GetAllSourceAssets()
+        .SingleOrDefault(candidate => string.Equals(candidate.FileName, expectedFileName, StringComparison.Ordinal));
+    if (asset is null)
+    {
+        throw new InvalidOperationException($"Could not resolve source asset for manual extraction file: {item.SourceFileOriginalName}");
+    }
+
+    return asset;
+}
+
+static string ResolveManualPassageText(ManualExtractedItem item, IReadOnlyDictionary<string, string> fullPassagesByGroup)
+{
+    if (string.IsNullOrWhiteSpace(item.GroupId))
+    {
+        return item.PassageText;
+    }
+
+    return fullPassagesByGroup.TryGetValue(item.GroupId, out var passageText)
+        ? passageText
+        : item.PassageText;
+}
+
+static string[] BuildManualSkillTags(ManualExtractedItem item) =>
+    item.ToeicPart switch
+    {
+        5 => ["part5", "grammar", "incomplete_sentence"],
+        6 => ["part6", "reading", "text_completion"],
+        7 => ["part7", "reading", "comprehension"],
+        _ => ["reading"],
+    };
+
+static string SanitizeManualId(string value)
+{
+    var builder = new StringBuilder(value.Length);
+    foreach (var character in value)
+    {
+        builder.Append(char.IsLetterOrDigit(character) ? char.ToLowerInvariant(character) : '-');
+    }
+
+    return builder.ToString().Trim('-');
+}
+
 static PublishedLesson CreateRealReadingLesson(int toeicPart, string lessonId)
 {
     return toeicPart switch
@@ -358,6 +527,25 @@ static PublishedLesson CreateRealReadingLesson(int toeicPart, string lessonId)
         _ => throw new ArgumentOutOfRangeException(nameof(toeicPart), toeicPart, "Only TOEIC reading parts can be published by this utility."),
     };
 }
+
+sealed record ManualExtractedItem(
+    string SourceFile,
+    string SourceFileOriginalName,
+    string SourceTest,
+    int ToeicPart,
+    int QuestionNumber,
+    int SourcePdfPage,
+    int SourcePrintedPage,
+    int AnswerEvidencePdfPage,
+    string Prompt,
+    Dictionary<string, string> Options,
+    string CorrectAnswer,
+    string ExtractionMethod,
+    string Confidence,
+    string GroupId = "",
+    string PassageType = "",
+    string PassageText = ""
+);
 
 static class ApplicationTests
 {
