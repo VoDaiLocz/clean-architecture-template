@@ -1,0 +1,535 @@
+SOURCE_RELATIVE_PATH: downloads/Các dạng câu hỏi part 2 thường gặp trong TOEIC format mới.pdf
+SOURCE_FILE_NAME: Các dạng câu hỏi part 2 thường gặp trong TOEIC format mới.pdf
+QUEUE_ORDER: 3
+EXTRACTION_CLASS: VALID_TEXT_EXTRACTED
+PAGE_COUNT: 14
+
+----- BEGIN PDF TEXT -----
+                     Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+         MẤU CÂU HỎI VÀ MẸO THƯỜNG GẶP TRONG PHẦN 2 ĐỀ THI TOEIC
+
+
+
+Xin chào các bạn!
+
+Đây là tài liệu do nhóm học thuật Fire TOEIC biên soạn nhằm giúp các bạn có thể tự học
+TOEIC tốt hơn, tài liệu được chia sẻ phi thương mại, mong các bạn không dùng nó với mục
+đích thương mại.
+
+Trong quá trình biên soạn sẽ không tránh khỏi sai sót, các bạn có thể báo lỗi về mail:
+firetoeic@gmail.com
+
+Tài liệu được biên soạn bởi Fire TOEIC
+
+Chúc các bạn học tốt!
+
+Đội ngũ biên soạn.
+
+
+
+
+                                              1
+                      Lửa TOEIC – Trường đào tạo TOEIC online
+                  Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+                  I. Câu hỏi Who:
+1. Ví dụ:
+-   Who’s that man speaking to Mr.Douglas? (Người đàn ông mà đang nói chuyện với
+    ông Douglas là ai?)
+
+    A) They haven’t been waiting too long (Họ đã chờ không quá lâu)
+
+    B) Usually at least twice a week (Thông thường ít nhất hai lần một tuần)
+
+    * C) He’s a reporter for the local newspaper (Ông ấy là một phóng viên của tờ báo
+    địa phương)
+
+-   Who’ll be our sales director now that Ms. Wu’s been promoted? (Bây giờ ai sẽ là
+    giám đốc điều hành của chúng ta khi bà Wu được thăng chức?)
+    *A) Mr. Hudson will. (Ông Hudson sẽ làm)
+    B) It’s currently on sale (Nó hiện đang được bán)
+    C) Congratulations – that’s great news (Xin chúc mừng - đó là tin tuyệt vời)
+-   Who will meet me at the airport? (Ai sẽ đón tôi tại sân bay?)
+    * A) Mr. Chang, our sales manager (Ông Chang, giám đốc bán hàng)
+    B) Yes, between eleven and twelve (Có, từ mười một đến mười hai)
+    C) There’s a good one nearby (Có một cái tốt kế bên)
+-   Who will be presenting our idea to the board of directors? (Ai sẽ là người trình bày ý
+    tưởng với ban giám đốc?
+    A) The sale ends on Friday. (Việc bán hàng kết thúc vào thứ Sáu.)
+    B) The present is for Miguel (Quà này cho Miguel)
+    * C) I believe it will be Jennifer (Tôi tin rằng chính là Jennifer)
+-   Who can run the management workshop this summer? (Ai có thể điều hành hội thảo
+    quản lý vào mùa hè này?)
+    *A) I’ll probably be free then (Có lẽ tôi sẽ rảnh lúc đó)
+    B) I’m afraid not (Tôi sợ là không)
+    C) It stopped running a few days ago (Nó ngừng hoạt động một vài ngày trước)
+2. Mẹo nghe:
+-   Loại trừ các câu trả lời có Yes/No
+-   Câu trả lời phải là người: tên riêng (Jane, Jonas, …), chức vụ, nghề nghiệp
+-   Thì của câu trả lời phải cùng thì với câu hỏi
+II. Câu hỏi When:
+1. Ví dụ:
+-   When are you planning to go on vacation? (Khi nào Cô có kế hoạch đi nghỉ mát?)
+    A) It’s near a lake (Nó gần một cái hồ)
+
+                                              2
+                   Lửa TOEIC – Trường đào tạo TOEIC online
+                 Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+                 * B) In December (Tháng 12)
+    C) For two weeks (Khoảng 2 tuần)
+-   When are we interviewing the next job candidate? (Khi nào chúng ta sẽ phỏng vấn
+    các ứng viên tiếp theo?)
+    A) As part of the hiring process (Là một phần của quá trình tuyển dụng)
+    B) Our top three choices (Ba lựa chọn hàng đầu của chúng tôi)
+    * C) In about fifteen minutes (Trong khoảng mười lăm phút)
+-   When will the building plans be finished? (Công trình xây dựng sẽ được hoàn thành
+    khi nào?)
+    A) From the architect (Từ kiến trúc sư)
+    B) Yes, I plan to (Có, tôi có kế hoạch)
+    *C) By Thursday, I hope (Vào thứ năm, tôi hy vọng như vậy)
+-   When can I expect your final decision? (Khi nào tôi có thể nhận quyết định cuối cùng
+    của bạn?)
+    A) No, it’s leather, not vinyl (Không, nó bằng da, không phải vinyl)
+    B) An increased project budget (Một ngân sách dự án tăng)
+    C) After I speak to regional headquaters (Sau khi tôi nói chuyện với trưởng khu vực)
+-   When will you be returning to work? (Khi nào thì anh quay trở lại làm việc?)
+    A) Yes, I met him (Có, tôi đã gặp ông ấy)
+    B) It’s at the back (Nó ở phía sau)
+    *C) Late this morning (Khoảng cuối buổi sáng nay)
+2. Mẹo nghe:
+-   Câu trả lời có giới từ chỉ thời gian: in 2 years, a couple of weeks,
+    approximately/roughly = about; at + thời gian cụ thể; on +ngày
+-   Mệnh đề thời gian (when, before, after, not until, as soon as,…)
+-   Thì của câu trả lời khớp với thì của câu hỏi
+III. Câu hỏi Where:
+1. Ví dụ:
+-   Excuse me, where is conference room 11B? (Xin lỗi, phòng hội nghị 11B ở đâu ạ?)
+    A) Thanks, I’ll be there soon (Cảm ơn, tôi sẽ có mặt sớm)
+    * B) It’s at the end of the hall (Nó nằm cuối hội trường)
+    C) That bookshelf has one (Kệ sách có một)
+-   Where should I put this scarf that I found in the hallway? (Tôi nên đặt chiếc khăn mà
+    tôi tìm thấy trong hành lang ở đâu?
+    A) No, I’m afraid that isn’t mine (Không, tôi sợ rằng không phải là của tôi)
+    B) I set them on your desk last night (Tôi đặt chúng trên bàn của bạn đêm qua)
+    * C) You can leave it with the receptionist (Bạn có thể gửi nó cho nhân viên tiếp tân)
+                                              3
+                  Lửa TOEIC – Trường đào tạo TOEIC online
+                  Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+                  - Where has Ms. Garcia gone? (Cô Garrcia đã đi đâu?)
+    A) At three o’clock (Lúc 3 giờ)
+    * B) To see Mr. Jones (Đi gặp ông Jones)
+    C) No, not yet (Không, chưa)
+-   Where are you going on vacation? (Where are you going on vacation?)
+    A) For three months (Khoảng ba tháng)
+    B) I’m going by train (Tôi định đi bằng tàu hỏa)
+    *C) I’m just staying here (Tôi sẽ chỉ ở đây.)
+-   Where will you be staying while you're in London? (Bạn sẽ ở đâu khi bạn ở London?)
+    * A) With an old friend (Với một người bạn cũ)
+    B) Not at this time of year (Không được vào thời điểm này của năm)
+    C) It was a dinner invitation (Đó là một lời mời ăn tối)
+2. Mẹo nghe:
+-   Thường có giới từ chỉ nơi chốn (in + nơi chốn, at + địa điểm cụ thể, near to, next to,
+    close to, opposite,…)
+-   Chú ý các câu hỏi nhờ hướng dẫn, chỉ đường
+IV. Câu hỏi Why:
+1. Vi dụ:
+-   Why are you travelling to Denver? (Tại sao cô du lịch đến Denver?)
+    A) Only for a few days (Chỉ trong vài ngày)
+    *B) To spend time with my relatives (Để dành thời gian với người thân của tôi)
+    C) I’m planning to drive there (Tôi đang lên kết hoạch để lái xe tới đó)
+-   Why don’t I give you a ride to the airport on Monday morning? (Tại sao bạn không
+    quá giang tôi đến sân bay vào sáng thứ 2?
+    * A) Thanks, but I’ve already arranged for a taxi (Cảm ơn, nhưng tôi đã sắp xếp một
+    chiếc taxi)
+
+    B) To attend a training session for ourinternational clients (Để tham dự một buổi tập
+    huấn cho các khách hàng quốc tế của chúng tôi)
+
+    C) I called to confirm my flight (Tôi gọi để xác nhận chuyến bay của tôi)
+-   Why do you go to this grocery store when there’s one closer to your house? (Tại sao
+    em đi đến cửa hàng tạp hóa này khi có một cái gần nhà của em hơn?)
+    *A) This one has a wider selection (Cửa hàng này có nhiều hàng hóa để chọn.)
+    B) We live near each other (Chúng ta sống gần nhau)
+    C) Did you get everything you needed? (Bạn có nhận được mọi thứ bạn cần không?)
+-   Why don’t we take a taxi to the hotel? (Tại sao chúng ta không bắt taxi tới khách
+    sạn?)
+
+                                            4
+                   Lửa TOEIC – Trường đào tạo TOEIC online
+                 Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+                 * A) I’ll call for one on my phone (Tôi sẽ gọi cho một chiếc bằng điện
+    thoại tôi)
+    B) Thanks, I’m taking some (Cảm ơn, tôi đang gọi một số)
+    C) No, they don’t (Không, họ không)
+-   Why did you order more office supplies? (Tại sao bạn đặt thêm văn phòng phẩm?)
+    * A) We’d run out (Chúng ta hết rồi)
+    B) How old is he (Ông ấy bao nhiêu tuổi)
+    C) No, I’m not surprised (Không, tôi không ngạc nhiên)
+2. Mẹo nghe:
+-   Thường trả lời bắt đầu bằng: because/ because of/ due to/ owning to/ as/ since/
+    thank to.
+-   Chú ý câu hỏi có từ same sound, đọc gần giống => câu trả lời sai
+-   Chú ý câu hỏi Why don’t => Câu trả lời là từ chối hoặc đồng ý. That’s a good idea/
+    That sounds good/ I’d love to.
+V. Câu hỏi How:
+1. Ví dụ:
+-   How much paper should I buy? (Tôi nên mua bao nhiêu giấy?)
+    *A) Two boxes should be enough (Hai hộp là đủ)
+    B) Your total comes to 15 dollars (Tổng số tiền của bạn đến 15 đô la)
+    C) The comments were helpful (Các nhận xét đều hữu ích)
+-   How often do employees at your companyhave performance reviews? (Các nhân
+    viên tại công ty của Chị cthường đánh giá hiệu suất công việc không?)
+    A) Did you enjoy the performance (Chị có thích buổi biểu diễn không?)
+    *B) We have them twice a year (Chúng tôi có đánh giá hai lần một năm)
+    C) My manager’s Ms. Aweel (Giám đốc của tôi là bà Aweel)
+-   How will the new equipment be delivered to the factory? (Các thiết bị mới được giao
+    đến nhà máy bằng cách nào?)
+
+    A) I don’t know how to operate it yet. (Tôi không biết làm thế nào để vận hành nó)
+
+    *B) I think it’ll come by truck (Tôi nghĩ rằng nó sẽ đến bằng xe tải)
+
+    C) On this delivery form (Trên tờ đơn giao hàng này)
+
+-   How soon can I have the records I requested? (Tôi có thể có các hồ sơ tôi yêu cầu
+    sớm lúc nào?)
+    * A) This afternoon (Chiều nay)
+    B) Sounds good (Nghe hay đấy)
+    C) By messenger (Bằng tin nhắn)
+
+                                            5
+                   Lửa TOEIC – Trường đào tạo TOEIC online
+                  Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+                  - How did the presentation go? (Buổi thuyết trình diễn ra như thế nào?)
+    A) I can’t find it (Tôi không thể tìm thấy nó)
+    * B) Better than I expected (Tốt hơn so với mong đợi của tôi)
+    C) About a week ago (Khoảng 1 tuần trước)
+2. Mẹo nghe:
+-   Hỏi về phương tiện, cách thức: câu trả lời by + phương tiện, nếu là đi bộ: on foot/ on
+    walk.
+-   Hỏi về số lượng (how many): câu trả lời thường có số lượng
+-   Hỏi về giá tiền (how much): câu trả lời có giá tiền, thường là dollar, cent, euro
+-   Hỏi về mức độ thường xuyên (how often): câu trả lời có từ chỉ tần suất (once a
+    month, twice a week, usually, rarely,…
+-   Hỏi về khoảng thời gian của độ dài (how long/how far): thường bắt đầu bằng for+ độ
+    dài khoảng cách ( kilomet/mile); for+ khoảng thời gian nếu câu hỏi ở thì hiện tại hoàn
+    thành; about+ độ dài thời gian
+-   Hỏi về đề nghị (how about): Đồng ý nhận lời: it’s a good idea,…; Từ chối: i have
+    another plan tonight/ i’m very busy,…;
+VI. Câu hỏi What:
+1. Ví dụ:
+-   What’s the name of the medical clinic that you go to? (Tên của phòng khám mà cậu
+    đi khám là gì?)
+    A) To see Dr. Paulson. (Để gặp bác sĩ Paulson)
+    B) It’s a great job (Đó là một công việc tuyệt vời)
+    * C) Norrell Health Center (Trung tâm Y tế Norrell)
+-   What time should I meet you in the lobby? (Tôi nên gặp anh ở sảnh lúc mấy giờ)
+    *A) How about at noon? (Buổi chiều nhé?)
+    B) The side door (Cánh cửa bên cạnh)
+    C) That’s plenty of time (Rất nhiều thời gian)
+-   What type of chair would you like for your new office? (Loại ghế bạn muốn mua cho
+    văn phòng mới là gì?
+    A) That’s a good choice (Đó là một lựa chọn tốt)
+    *B) I’ll just keep the one I’m using now (Tôi muốn loại ghế tôi hiện đang dùng)
+    C) It won’t arrive for another month (Nó sẽ không đến nơi trong một tháng)
+-   What’s the price of this book? (Giá của cuốn sách này là bao nhiêu?)
+    *A) Fifteen hundred yen (Mười lăm yên)
+    B) Yes, with steamed rice, please (Có, vui lòng cho tôi với cơm trắng)
+    C) From Northern Mexico (Từ Bắc Mexico)
+-   What do you like to do in your spare time? (Bạn thích làm gì vào thời gian rảnh rỗi?)
+                                             6
+                   Lửa TOEIC – Trường đào tạo TOEIC online
+                     Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+                     *A) I depends on the weather (Tôi phụ thuộc vào thời tiết)
+     B) I suggested it (Tôi đề nghị nó)
+     C) At about half past four (Vào khoảng 04:30)
+ 2. Mẹo nghe:
+ -   Câu trả lời đa dạng vì câu hỏi có các dạng khác nhau nên chú ý nghe keyword
+ -   Chú ý same sound => câu trả lời sai
+ -   Trả lời yes/no => câu trả lời sai
+ -   Chú ý: What for = Why, What day = when, What place = where, what way = how
+ -   Các câu trả lời luôn đúng: I don’t know, I have no idea, It hasn’t been decided yet,
+     That sound( great), Let me check, Let me ask him( her),….
+VII. Câu hỏi đuôi:
+ 1. Ví dụ:
+ -   The receptionist usually takes a break now, doesn’t she? (Bây giờ nhân viên lễ tân
+     đang nghỉ trưa, phải không?)
+     *A) Yes, but she’s not here today (Đúng vậy, nhưng hôm nay cô ấy không có ở đây)
+     B) No, she broke it yesterday (Không, cô ấy đã làm bể nó ngày hôm qua)
+     C) Yes, the reception will start in five minutes (Vâng, lễ tân sẽ bắt đầu làm việc trong
+     5 phút nữa)
+ -   Tomorrow is the deadline for this project, isn’t it? (Ngày mai là hạn chót cho dự án
+     này, phải không?)
+     *A) Yes, Mr. Doyle wants it done by noon (Phải, ông Doyle muốn hoàn thành vào
+     buổi chiều)
+     B) The line’s over there (Cái dòng ở trên đó)
+     C) I’m sorry. I’m not wearing a watch (Tôi xin lỗi. Tôi không đeo đồng hồ)
+ -   I’ll be sharing this office, won’t I? (Tôi sẽ chia sẻ văn phòng này, đúng không?)
+     A) Their main office is in Hong Kong (Văn phòng chính ở Hongkong)
+
+     B) I think Sue’s the committee chair (Tôi nghĩ Sue là chủ tịch hội đồng)
+
+     * C) Yes, your desk is by the window (Vâng, bạn của bạn đặt cạnh cửa sổ)
+
+ -   These clients files are ordered alphabetically, aren’t they? (Hồ sơ khách hàng được
+     sắp xếp theo bảng chữ cái, đúng không?)
+
+     A) I haven’t placed the order yet. (Tôi vẫn chưa đặt đơn hàng)
+
+     *B) Yes, by last name (Đúng vậy, sắp xếp theo họ)
+
+     C) The first one you come across (Người đầu tiên bạn đi qua)
+
+
+
+                                              7
+                      Lửa TOEIC – Trường đào tạo TOEIC online
+                 Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+                 - You don’t work on Fridays, do you? (Bạn không làm việc vào ngày thứ
+    Sáu, phải không?)
+
+    A) Do you have one, too? (Bạn cũng có 1 chiếc, đúng không?)
+
+    B) That’d work for me (Đó là công việc cho tôi)
+
+    *C) Not unless I have a meeting (Không, trừ khi tôi có cuộc họp)
+
+2. Mẹo nghe:
+
+-   Câu trả lời có Yes/ no
+-   Câu trả lời nhưng bỏ Yes/No
+-   Các câu trả lời luôn đúng nêu ở phần câu hỏi What
+VIII.       Câu hỏi Yes/No:
+1. Ví dụ:
+-   Isn’t it supposed to rain this afternoon? (Không phải chiều nay có mưa sao?)
+    A) Roger was supposed to (Roger được cho là như vậy)
+    B) It’s a new umbrella (Cánh cửa bên cạnh)
+    *C) That’s what I heard (Tôi nghe được là như vậy)
+-   Do you think this advertisement would look better with blue writing, or with orange?
+    (Anh có nghĩ rằng quảng cáo này sẽ nhìn tốt hơn so với bản màu xanh, hoặc màu
+    cam?)
+    A) Yes, it’s the best I’ve seen so far. (Có, nó là tốt nhất tôi đã nhìn thấy cho đến
+    nay.)
+    *B) Why don’t you try green instead (Tại sao bạn không thử thay bảng màu xanh)
+    C) Aren’t you going to? (Bạn không định đi ?)
+-   Are you meeting with the district supervisor today? (Bạn có họp với giám sát vùng
+    hôm nay không?)
+    A) Three days (Ba ngày)
+    * B) No, tomorrow (Không, ngày mai)
+    C) Thanks, I already ate (Cám ơn, tôi đã ăn rồi)
+-   Haven’t they confirmed the reservation yet? (Họ đã xác nhận đặt phòng chưa?)
+    *A) Yes, by phone (Rồi, qua điện thoại)
+    B) I’d like two more (Tôi muốn thêm 2 cái nữa)
+    C) No, it’s in the lobby (Không, nó ở sảnh)
+-   Don’t you need a ticket for the show? (Bạn có cần vé cho chương trình không?)
+    * A) I already have one’ (Tôi đã có rồi)
+    B) Yes, I think it might snow (Có, tôi nghĩ rằng trời sẽ tuyết)
+    C) I took the train (Tôi đón xe xửa)
+                                               8
+                   Lửa TOEIC – Trường đào tạo TOEIC online
+                  Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+                  2.       Mẹo nghe:
+-   Câu hỏi với động từ Tobe: chú ý thì của động từ to be
+-   Câu hỏi với trợ động từ Do/Does/Did: chú ý thì, đôi khi trong câu có các động từ
+    want/expect/plan để hỏi về dự định tương lai
+-   Câu hỏi với Have/Has: Câu trả lời cho dạng này có thể là Yes/ No hoặc dạng thông
+    tin
+IX. Câu hỏi phức:
+1. Ví dụ:
+-   Do you know who will be taking over after Claudia retires? (Các bạn có biết ai sẽ
+    đảm nhận vị trí này sau khi Claudia nghỉ hưu?)
+    A) I’m not tired (Tôi không mệt)
+    *B) We don’t know yet (Chúng tôi chưa biết nữa)
+    C) In her office (Trong văn phòng của cô ấy)
+-   Could you tell me how often the bus leaves for Madrid? (Bạn có thể cho tôi biết
+    thường có tuyết xe buýt đến Madrid?
+    * A) There’s one every hour (Mỗi giờ có 1 chuyến)
+    B) Only two pieces, please (Chỉ có hai miếng)
+    C) No, she’s the trainer (Không, cô ấy là huấn luyện viên)
+-   Do you know who’s in charge of training the new recruits? (Bạn có biết ai là người
+    phụ trách huấn luyện cho các nhân viên mới?
+    A) Yes, it is right on time (Có, bây giờ là đúng lúc)
+    B) Next week (Tuần tới)
+    *C) I’m afraid I don’t know (Tôi e là tôi không biết)
+-   Excuse me, do you think you could turn the music down a little? (Xin lỗi, Anh có nghĩ
+    ang nên vặn nhạc nhỏ xuống một chút?)
+    *A) Sorry, I didn’t know anyone was here (Xin lỗi, tôi không biết có người ở đây)
+    B) Turn right, and then left (Rẻ phải, sau đó rẽ trái)
+    C) I think I left that CD in my car (Tôi nghĩ tôi đã để đĩa CD đó trong xe rồi)
+-   Do you remember where we met before? (Cô có nhớ nơi mà chúng ta đã gặp nhau
+    trước đây không?)
+    A) Not until next week (Không đến tuần sau)
+    *B) Last year, at a conference (Năm ngoái, tại một hội nghị)
+    C) Yes, put it on the shelf (Vâng, để nó trên kệ nhé)
+2. Mẹo nghe:
+-   Câu hỏi cần nghe hiểu, tuy nhiên vẫn áp dụng được tip same sound và chú ý tránh
+    để không bị nhầm lẫn thông tin giữa 2 câu hỏi.
+X. Câu trần thuật:
+                                             9
+                   Lửa TOEIC – Trường đào tạo TOEIC online
+                  Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+                  1.          Ví dụ:
+-   I just met the new board members (Tôi mới gặp các thành viên hội đồng quản trị mới)
+    A) No, it was quite interesting (Không, nó khá thú vị)
+    B) It’s on the first floor. (Nó ở trên tầng đầu tiên)
+    *C) I met them, too (Tôi cũng gặp họ)
+-   The quaterly report is going to be released tomorrow (Báo cáo quý sẽ được phát
+    hành vào ngày mai)
+    A) To sign a lease (Kể ký hợp đồng thuê nhà)
+    B) Not since last month (Không có kể từ tháng trước)
+    * C) I’ll be interested to see it (Tôi đang nóng lòng để xem nó)
+-   This room seems really warm (Căn phòng này dường như rất ấm)
+    A) No, it was seamless (Không, nó liền mạch)
+    B) It does look real (Nó nhìn khá thực tế)
+    * C) I’ll turn on a fan (Tôi sẽ mở quạt)
+-   I’m returning Ron Stover’s call (Tôi đang trả lời cho cuộc gọi của Ron Stover)
+    A) We’ll see you again soon then. (Chúng tôi sẽ sớm gặp lại bạn)
+    B) I’ll be back on Wednesday (Tôi sẽ quay lại vào thứ Tư)
+    *C) He’s not in, but may I take a message (Anh ấy không có ở đây, nhưng tôi có thể
+    có thể để lại lời nhắn)
+-   It’s hard to get a taxi at this time of the day (Thật khó để bắt được taxi vào giờ này
+    trong ngày)
+    *A) Yes, it always is (Đúng vậy, luôn luôn là vậy)
+    B) No, thank you. Maybe next week (Không, cám ơn bạn. Có lẽ để tuần sau nhé)
+    C) About ten dollars (Khoảng 10 đô la)
+2. Mẹo nghe:
+-   Đây là phần khó, cố gắng nghe hiểu
+-   Có thể áp dụng tip same sound/ các câu trả lời ăn sẵn luôn đúng
+XI. Câu yêu cầu lịch sự:
+1. Ví dụ:
+-   Would you look over my research proposalbefore I submit it? (Anh có muốn xem qua
+    đề nghị nghiên cứu của tôi trước khi tôi nộp nó không?
+    *A) I’d be happy to. (Tôi rất vui để được làm điều này)
+    B) Try looking in the drawer (Hãy tìm thử trong ngăn kéo)
+    C) You’re welcome (Không có gì)
+-   Could you distribute these brochures to all the staff? (Anh có thể phân phối các tài
+    liệu quảng cáo này cho tất cả các nhân viên?)
+    A) I’m sure it’s in here somewhere (Tôi chắc chắn rằng nó đang ở đâu đây)
+                                               10
+                   Lửa TOEIC – Trường đào tạo TOEIC online
+                     Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+                     B) The head of the publicity department (Trưởng phòng quan hệ công
+     chúng)
+     * C) Sure, I’ll put them in their mailboxes (Chắc chắn rồi. Tôi sẽ đặt chúng trong hộp
+     thư của họ)
+ -   Why don’t I give you a ride to the airport on Monday morning? (Tại sao bạn không
+     quá giang tôi tới sân bay vào sáng thứ hai?)
+     * A) Thanks, but I’ve already arranged for a taxi (Cám ơn nhé, nhưng tôi đã sắp xếp
+     taxi rồi)
+     B) To attend a training session for our international clients (Để tham dự một buổi tập
+     huấn cho các khách hàng quốc tế của chúng tôi)
+     C) I called to confirm my flight (Tôi đã gọi để xác nhận chuyến bay)
+ -   Mr. Tan, would you mind printing the results of the survey? (Anh Tân, phiền anh in
+     kết quả của khảo sát giúp tôi nhé?)
+     A) I’ll lend you a catalog (Tôi sẽ gửi bạn một danh mục)
+     *B) Is it alright if I do it after l   unch (Tôi làm nó sau bữa trưa được không?)
+     C) Across from the copy room (Đi qua phòng copy)
+ -   Would you like to go to the beach today? (Bạn có muốn đi biển ngày hôm nay
+     không?)
+     *A) No, it’s much too cold (Không, trời lạnh quá)
+     B) Better than the last ones (Tốt hơn so với những người cuối cùng)
+     C) Yes, she did (Có, cô ấy đã làm)
+ 2. Mẹo nghe:
+ -   Câu trả lời có 3 dạng:
+
+    Đồng ý nhận lời: It’s a good idea/ Sure/ I’d love to + V-inf
+    Từ chối: I have another plan/I’m very busy/ Thanks, but I…
+    Một số câu trả lời luôn đúng áp dụng cho tất cả các dạng câu hỏi như: it’s my
+     pleasure
+XII. Câu hỏi dạng lựa chọn:
+ 1. Ví dụ:
+ -   Is the employee appreciation dinner going to be formal or informal? (Buổi tiệc tối
+     khen thương nhân viên cần ăn mặc long trọng hay bình thường?)
+     * A) I was told that we could dress casually. (Tôi được bảo chúng ta có thể ăn mặc
+     bình thường
+     B) I’m looking forward to it, too. (Tôi cũng mong đợi đợi đến ngày đó)
+     C) You’re welcome to sit by me. (Hãy cứ tự nhiên ngồi cạnh tôi nhé)
+
+
+
+                                             11
+                      Lửa TOEIC – Trường đào tạo TOEIC online
+                   Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+                   - Should I return his call, or will he contact me? (Tôi có nên gọi lại anh
+     ta, hay anh ấy sẽ liên lạc với tôi?)
+     A) A round-trip ticket, please (Tôi muốn lấy một vé khứ hồi)
+     B) It’s down the hall (Nó ở dưới sảnh)
+     *C) He said he’ll call back (Anh ta nói sẽ gọi lại)
+ -   Should I work on the report at home tonight, or can I finish it tomorrow? (Tôi có nên
+     làm báo cáo ở nhà tối nay, hay tôi có thể hoàn thành nó vào ngày mai?)
+     A) We left at three (Chúng tôi đi lúc 3 giờ)
+     *B) Whichever you prefer (Bất cứ lúc nào bạn thích hơn)
+     C) Yes, she can (Vâng, cô ấy có thể)
+ -   Do you want to stop now or should we try to finish the work? (Cô muốn ngưng làm
+     việc bây giờ hay chúng ta sẽ cố gắng hoàn thành xong công việc?)
+     A) On the top shelf (Trên nóc kệ)
+     B) They should be (Họ nên vậy)
+     * C) Let’s get it done now (Chúng ta nên làm xong bây giờ đi)
+ -   Are we supposed to dress casually or formally for that dinner? (Chúng tôi nên mặc
+     đồ bình thường hay long trọng cho bữa tối?)
+     A) Pay in cash (Trả bằng tiền mặt)
+     *B) You should wear a suit (Bạn nên mặc suit)
+     C) Address and phone number (Địa chỉ và số điện thoại)
+ 2. Mẹo nghe:
+ -   Dạng này không dùng tip same sound được. Các câu trả lời thường chỉ trong 4 dạng
+     dưới đây:
+
+    Lựa chọn 1 trong 2 ( the beach or picnic)
+    Không lựa chọn cái nào trong cả 2 cái đó
+    Đưa ra 1 lựa chọn khác không phải 2 cái được nêu ở trên câu hỏi (How about/what
+     about)
+    Một số câu trả lời ăn sẵn( luôn đúng) như: either would be fine/good/ it’s up to
+     you/both are ok/neither look bad,…
+XIII. Câu hỏi khẳng định có chức năng hỏi:
+ 1. Ví dụ:
+ -   Isn’t it supposed to rain this afternoon? (Không phải là chiều nay có mưa sao?)
+     A) Roger was supposed to (Roger được cho là như vậy)
+     B) It’s a new umbrella (Đó là một chiếc ô mới)
+     *C) That’s what I heard (Tôi nghe như vậy)
+ -   It sounds like you’ll be in Tokyo for quite awhile. (Có vẻ như bạn sẽ ở Tokyo rất lâu.)
+
+                                              12
+                    Lửa TOEIC – Trường đào tạo TOEIC online
+                 Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+                 A) Sorry, we’ll be quieter (Xin lỗi, chúng tôi sẽ im lặng hơn)
+    *B) For a few months (Khoảng vài tháng)
+    C) Why doesn’t he?(Tại sao ông ấy không?)
+-   Our heating system is getting old? (Hệ thống sưởi ấm của chúng ta đã cũ rồi phải
+    không?)
+    A) Just two hours ago (Mới chỉ 2 giờ trước)
+    * B) Yes, we need a new one (Phải, chúng ta cần một cái mới)
+    C) Mr. Lee’s older sister (Chị gái của ông Lee)
+-   I didn’t see your car parked outside this morning? (Tôi đã không nhìn thấy xe của
+    bạn đậu bên ngoài sáng nay?)
+    * A) John gave me a ride today (Sáng nay John đã cho tôi đi nhờ xe)
+    B) The park is beautiful right now (Công viên này rầt đẹp)
+    C) It’s supposed to start at 8.30 (Nó được cho là sẽ bắt đầu lúc 8.30)
+-   Don’t you need to leave soon? (Anh không cần phải rời đi sớm chứ?)
+    * A) Not for another hour (Không tới một tiếng nữa)
+    B) It’ll get there soon (Tôi sẽ đến đó sớm)
+    C) I don’t need it yet (Tôi chưa cần nó)
+2. Mẹo nghe:
+-   Phần này cũng cần nghe hiểu
+-   Áp dụng tip same sound được
+
+
+
+
+                                           13
+                  Lửa TOEIC – Trường đào tạo TOEIC online
+

@@ -1,0 +1,25 @@
+SOURCE_RELATIVE_PATH: downloads/folders/New TOEIC 700/huong-dan-lay-pass-11.pdf
+SOURCE_FILE_NAME: huong-dan-lay-pass-11.pdf
+QUEUE_ORDER: 22
+EXTRACTION_CLASS: VALID_TEXT_EXTRACTED
+PAGE_COUNT: 2
+
+----- BEGIN PDF TEXT -----
+    HƯỚNG DẪN LẤY PASS GIẢI NÉN
+Bước 1: Nhập cụm từ “ielts 1 kèm 1” vào công cụ tìm
+kiếm (Google)
+
+
+
+
+Bước 2: Kéo xuống từ trang 1 đến trang 2 tìm website
+       Khóa học IELTS 1 kèm 1 - IELTS Vietop
+
+
+
+
+Bước 3: Nhấp vào website, kéo xuống cuối và tìm đoạn
+như hình, click vào để xem, chờ 60s sẽ hiện ra 1 dãy số,
+đó chính là pass giải nén.
+Chúc các bạn thành công!
+

@@ -1,0 +1,919 @@
+SOURCE_RELATIVE_PATH: downloads/HƯỚNG DẪN GIẢI BÀI NGHE CÓ BA GIỌNG ĐỌC.pdf
+SOURCE_FILE_NAME: HƯỚNG DẪN GIẢI BÀI NGHE CÓ BA GIỌNG ĐỌC.pdf
+QUEUE_ORDER: 6
+EXTRACTION_CLASS: VALID_TEXT_EXTRACTED
+PAGE_COUNT: 33
+
+----- BEGIN PDF TEXT -----
+          Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+Lửa TOEIC – Trường đào tạo TOEIC online
+                                Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+             HƯỚNG DẪN GIẢI BÀI NGHE CÓ BA GIỌNG ĐỌC
+
+
+
+Xin chào các bạn!
+
+Đây là tài liệu do nhóm học thuật Fire TOEIC biên soạn nhằm giúp các bạn có thể tự
+
+
+
+
+                 fire
+học TOEIC tốt hơn, tài liệu được chia sẻ phi thương mại, mong các bạn không dùng nó
+với mục đích thương mại.
+
+Trong quá trình biên soạn sẽ không tránh khỏi sai sót, các bạn có thể báo lỗi về email:
+
+
+
+
+                          toe
+firetoeic@gmail.com
+
+Tài liệu được biên soạn bởi Fire TOEIC
+
+Chúc các bạn học tốt!
+
+Đội ngũ biên soạn.
+                                  ic.
+                                         ed
+                                                  n
+                                               u.v
+
+                     Lửa TOEIC – Trường đào tạo TOEIC online
+                                   Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                      A. GIỚI THIỆU
+
+
+Từ năm 2019, part 3 của đề thi TOEIC có thêm dạng bài tập nghe có ba giọng đọc.
+Dạng bài tập này có những đặc điểm như sau:
+      Mỗi đề thi có duy nhất một bài tập nghe có ba giọng đọc, xuất hiện ở vị trí ngẫu
+       nhiên trong part 3.
+
+
+
+
+                 fire
+      Khi nhìn vào đề bài, không thể phân biệt được bài tập dạng này với những bài
+       tập khác, nó chỉ được nhận diện bằng cách lắng nghe câu giới thiệu trên băng,
+       ví dụ: “Question 56 to 58 refer to the following conversation with three speakers.”
+   
+
+
+
+                             toe
+       Đoạn hội thoại có 3 giọng đọc thay vì 2 giọng đọc luân phiên như trong đề cũ.
+       Như vậy, có 2 giọng đọc cùng giới tính, khiến việc khoanh vùng thông tin để trả
+       lời trở nên khó khăn hơn.
+Để làm tốt dạng bài tập này, thí sinh có thể tham khảo và áp dụng những chiến thuật
+
+
+
+                                    ic.
+được đề cập ở những phần sau đây.
+
+
+
+
+                                           ed
+                                                    n
+                                                 u.v
+
+                    Lửa TOEIC – Trường đào tạo TOEIC online
+                                 Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                      B. PHÂN LOẠI VÀ CHIẾN THUẬN
+
+Bước 1: Đọc trước đề bài
+
+Đây là một bước thiết yếu trong chiến thuật làm phần nghe, mục đích là để hình dung
+ngữ cảnh, xác định trước những thông tin trọng tâm cần chú ý và những câu trả lời có
+thể nghe được.
+
+
+
+
+                 fire
+Phương pháp tiến hành như sau:
+      Thời gian đọc trước đề:
+       o Đối với câu 32 đến 34: Khi băng đọc hướng dẫn cách làm part 3
+
+
+
+
+                          toe
+                                  ic.
+       o Đối với các câu còn lại: Khi băng đọc 3 câu hỏi của bài tập liền trước
+          Ví dụ, thời gian băng đọc câu hỏi 50 – 52 chính là lúc để đọc câu hỏi 53 – 55:
+
+
+                   Nghe
+                                         ed                     Đọc
+
+
+
+
+                                                  n
+                                               u.v
+
+                   Lửa TOEIC – Trường đào tạo TOEIC online
+                               Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+     Cách đọc trước đề:
+      o Ưu tiên đọc câu hỏi để hình dung ngữ cảnh, đồng thời nắm được thông tin
+         cần nghe được trong băng
+      o Thời gian còn lại đọc lướt 12 đáp án lựa chọn để nắm từ khóa, chuẩn bị tâm
+         thế sẽ nghe được một trong những đáp án lựa chọn đó hoặc cách diễn đạt
+         đồng nghĩa của nó trong băng.
+
+
+
+
+                  fire
+Bước 2: Phân loại hai dạng bài tập nghe có ba giọng đọc
+Dạng 1: Câu hỏi không đề cập đến tên của những người tham gia hội thoại
+     Nhận xét:
+
+
+
+
+                          toe
+      o Câu hỏi chỉ dùng từ “the man”, “the woman” để chỉ chủ ngữ của hành động,
+         ví dụ:
+          What does the woman want?
+          What does the man suggest?
+
+
+
+                                ic.
+      o Những câu hỏi như vậy thường hướng đến người có giới tính khác hai người
+         còn lại trong đoạn hội thoại. Nói cách khác, nếu đoạn hội thoại có hai người
+         đàn ông và một người phụ nữ tham gia thì khả năng cao sẽ có câu hỏi về
+
+
+
+
+  
+         dẫn lời thoại.                ed
+         “the woman”, không có câu hỏi đề cập tới “the man”, trừ dạng câu hỏi có trích
+
+
+      Chiến thuật:
+
+
+                                                n
+      o Coi hai người có giới tính giống nhau là một người
+
+
+
+
+                                             u.v
+      o Đọc đề xem thông tin dùng để trả lời câu hỏi nằm ở giọng nam (the man) hay
+         nữ (the woman), khoanh vùng thông tin cần chú ý để trả lời
+     Bài tập minh họa:
+      o Bước 1:
+         Đọc trước đề bài khi băng đang đọc câu hỏi 56 đến 58.
+
+
+
+
+                     Lửa TOEIC – Trường đào tạo TOEIC online
+                       Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+        fire
+                toe
+                         ic.
+Khi đọc 3 câu hỏi, ta thấy:
+
+-
+                               ed
+    Câu 59 là câu hỏi chung về vấn đề chính đang được thảo luận (từ khóa:
+    main problem). Thường thì đáp án câu này sẽ nghe được ở lời thoại đầu
+
+
+
+                                        n
+    tiên.
+
+
+
+
+                                     u.v
+-   Câu 60: Hỏi về chủ ngữ “the woman”, từ khóa là “suggest” (gợi ý làm gì),
+    có nghĩa là đưa ra giải pháp cho vấn đề chính. Cần chú ý những cụm từ
+    sau những từ mang tính chất gợi ý giải pháp như: I think we
+    should/need/have to, Let’s, Why don’t we, We’d better, etc.
+-   Câu 61: Hỏi về chủ ngữ “the woman”, từ khóa là “send the man”, tức là
+    cần chú ý một danh từ chỉ đồ vật nào đó mà người phụ nữ sẽ gửi cho
+    người đàn ông, rất có thể sẽ nằm sau mệnh đề “I will send you…” hoặc “I
+    will…”
+Như vậy, có thể suy luận ngữ cảnh như sau: Đoạn hội thoại diễn ra khi ba
+người (một người phụ nữ, hai người đàn ông) đang thảo luận về một vấn đề
+
+            Lửa TOEIC – Trường đào tạo TOEIC online
+                        Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+   họ gặp phải, người phụ nữ đã đề xuất một giải pháp trong đó cô ấy cần phải
+   gửi cho một trong hai người đàn ông một thứ gì đó.
+   Đọc tiếp các đáp án lựa chọn và chuẩn bị tinh thần sẽ nghe được một trong
+   số đó trong đoạn băng, nghĩ về những từ đồng/trái nghĩa và cách diễn đạt
+   tương tự.
+o Bước 2: Phân loại và xác định chiến thuật:
+
+
+
+
+          fire
+   Như đã đề cập, đoạn văn chỉ nhắc tới “the woman”, tức là thuộc dạng 1. Ta
+   chỉ cần coi hai người đàn ông là một người và bắt đầu làm bài.
+
+           Transcript                                       Dịch
+                                         Chào Bob và Karen. Tôi gọi hai bạn vào
+
+
+
+
+                  toe
+                                         để bàn về ngân sách chi tiêu cho hai
+                                         tháng vừa qua. Vấn đề lớn nhất là chi phí
+                                         giải trí quá cao. Tôi nghĩ rằng cần giảm
+                                         chi tiêu của công ty cho bữa trưa và tối.
+
+
+
+                          ic.            Tôi đồng ý. Tôi nghĩ chúng ta cần bắt đầu
+                                         tự chi trả cho bữa trưa của mình.
+                                         Tôi cũng đồng ý như vậy, nhưng tôi cho
+
+
+
+                                ed       rằng chúng ta cần phải tiếp tục chăm sóc
+                                         khách hàng. Nếu chúng ta tự chi trả tiền
+                                         ăn trưa, vậy số tiền tiết kiệm được sẽ
+
+
+
+                                          n
+                                         dùng để đưa khách hàng đi ăn tối.
+
+
+
+
+                                       u.v
+                                         Đó là một ý kiến rất hay, Bob ạ. Karen,
+                                         làm vậy có ổn không?
+                                         Tôi nghĩ đó là một sự dàn xếp hợp lý đó
+                                         Bob. Thôi sẽ lập một bản kế hoạch chi
+                                         tiêu hàng tháng và gửi qua email cho các
+                                         bạn vào chiều nay.
+o Chọn đáp án đúng:
+   -   Câu 59: Ở lời thoại đầu tiên, ta nghe được những từ khóa như: “to talk
+       about the budget for the last two months”, “the biggest issue”,
+       “entertainment expenses… too high”. Đáp án C hoàn toàn giữ nguyên các
+
+            Lửa TOEIC – Trường đào tạo TOEIC online
+                                  Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+              từ khóa này, chỉ đảo một chút thứ tự để tạo thành một cụm danh từ. Vậy,
+              C là đáp án đúng.
+          -   Câu 60: Cần chú ý lời thoại đầu tiên của người phụ nữ, có cụm: “I think
+              we need”, sau đó là “to start paying for ours own lunches”. Đáp án D hoàn
+              toàn lặp lại cụm này và là đáp án chính xác.
+          -   Câu 61: Tiếp tục chỉ chú ý vào lời thoại của người phụ nữ, có cụm “I will”,
+
+
+
+
+                   fire
+              sau đó nói rõ cô ấy sẽ tạo một bản “monthly budget plan” và gửi cho
+              người đàn ông. Vậy đáp án đúng là A.
+
+Dạng 2: Câu hỏi có đề cập đến tên của những người tham gia hội thoại
+      Nhận xét:
+
+
+
+                           toe
+       o Câu hỏi thường dùng tên nhân vật để chỉ chủ ngữ của hành động, ví dụ:
+           Who most likely is Linda?
+           What does Mark suggest the other man to do?
+
+
+
+                                   ic.
+       o Đôi khi, câu hỏi vẫn sẽ có chủ ngữ là “the man” hoặc “the woman”, tức là
+          người có giới tính khác hai người còn lại trong đoạn hội thoại hoặc người có
+          câu thoại được trích dẫn. Khi đó, có nhiều giọng đọc cần phải chú ý hơn.
+
+
+
+                                          ed
+      Chiến thuật:
+       o Đọc đề để nắm được tên một số người tham gia hội thoại
+       o Đặc biệt chú ý những thời điểm trong đoạn băng khi mà tên các nhân vật
+
+
+
+                                                   n
+          được nhắc đến, từ đó xác định được ba người riêng biệt
+
+
+
+
+                                                u.v
+       o Phân biệt giọng nói của hai người cùng giới tính để tìm vị trí thông tin cần chú
+          ý. Hai người này thường có giọng nói của các nước khác nhau, ví dụ như:
+          Anh và Mỹ, Mỹ và Úc, Úc và Canada.
+      Bài tập minh họa:
+       o Bước 1:
+          Đọc trước đề bài khi băng đang đọc câu hỏi 56 đến 58.
+
+
+
+
+                      Lửa TOEIC – Trường đào tạo TOEIC online
+                       Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+       fire
+                toe
+                         ic.
+                               ed
+Khi đọc 3 câu hỏi, ta thấy:
+
+-   Câu 59 có từ khóa “position”, hỏi về vị trí của Robert Porter, như vậy cần
+    chú ý đến những danh từ chỉ nghề nghiệp trong đoạn băng. Ngoài ra, vì
+
+
+                                         n
+    đây là một câu hỏi chi tiết, lại xuất hiện đầu tiên nên khả năng cao ta sẽ
+
+
+
+
+                                      u.v
+    nghe được đáp án ở lời thoại thứ nhất.
+-   Câu 60 có từ khóa “problem”, hỏi về vấn đề Susan Sherman đang mô tả,
+    cần chú ý đến những từ vựng chỉ sự rắc rối, tiêu cực
+-   Câu 61 có từ khóa “why”, hỏi lý do Robert mang thiết bị (equipment) đi,
+    cần chú ý đến những động từ dạng to V hoặc trạng ngữ, mệnh đề có
+    chứa “for”, “since”, “because” trong băng.
+
+Như vậy, có thể suy luận ngữ cảnh như sau: Có một thiết bị Susan dùng gặp
+phải một sự cố nhất định, cô ấy trò chuyện với hai người về vấn đề này, trong
+đó có Robert. Sau đó, anh ta đã mang thiết bị đó đi vì một lý do nào đó.
+          Lửa TOEIC – Trường đào tạo TOEIC online
+                        Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+o Bước 2: Phân loại và xác định chiến thuật:
+   Ba câu hỏi trong bài đều nhắc tới tên người cụ thể, tức là thuộc dạng 2.
+   Chúng ta cần nghe được những đoạn có nhắc tới tên nhân vật trong đoạn và
+   xác định được giọng nói của hai người này.
+
+           Transcript                                       Dịch
+                                         Xin chào, tôi có thể nói chuyện với Robert
+
+
+
+
+         fire
+                                         Porter được không? Về việc sửa chữa
+                                         thiết bị văn phòng của Baker & McKenzie.
+                                         Anh ấy là Kỹ sư trưởng phải không?
+                                         Đúng vậy. Làm ơn cho tôi biết bạn là ai?
+
+
+
+
+                  toe
+                                         Tôi là Susan Sherman, giám đốc bảo trì
+                                         tại Baker & McKenzie. Một số thiết bị của
+                                         chúng tôi bị mất và tôi muốn biết chúng
+                                         đang ở đâu, cũng như khi nào chúng tôi
+
+
+
+                          ic.
+                                         có thể lấy về.
+                                         OK, đợi một chút. Tôi sẽ nối máy với
+                                         Robert. Làm ơn giữ máy.
+
+
+
+
+                                ed
+                                         Cảm ơn cô.
+                                         Xin chào? Susan hả?
+                                         Chào Robert. Tôi gọi để hỏi về những
+
+
+
+
+                                         n
+                                         thiết bị văn phòng hôm qua anh sửa cho
+
+
+
+
+                                      u.v
+                                         Baker & McKenzie. Chúng đang ở đâu và
+                                         khi nào chúng tôi có thể lấy lại?
+                                         Ôi, tôi đã nhắn với lễ tân bên cô rồi mà.
+                                         Tôi nói với cô ấy rằng chúng tôi cần mang
+                                         chúng đến xưởng để tiến hành vài khâu
+                                         sửa chữa đặc biệt. Cuối tuần này chúng
+                                         tôi có thể trả hàng.
+
+
+
+
+            Lửa TOEIC – Trường đào tạo TOEIC online
+                         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+o Chọn đáp án đúng:
+  -   Câu 59: Chú ý lời thoại đầu tiên, có nhắc tới tên của Robert Porter và cụm
+      “Head Engineer”, sau đó có thông tin xác nhận lại ở lời thoại thứ 2. Vậy, B
+      là đáp án đúng.
+  -   Câu 60: Câu này hỏi về vấn đề mà Susan mô tả, vì vậy đáp án sẽ nằm ở
+      lời thoại của Susan. Lời thoại thứ hai của Susan có đoạn “Some of our
+
+
+
+
+         fire
+      equipment is missing”. Như vậy, C là đáp án đúng. Cần nghe rõ từ “some”
+      (một số) để tránh phân vân với đáp án B là “all” (tất cả).
+  -   Câu 61: Câu này hỏi về lý do Robert mang thiết bị đi, vì vậy khả năng cao
+      câu trả lời sẽ xuất hiện trong lời thoại của Robert. Lời thoại cuối cùng của
+
+
+
+
+                  toe
+      đoạn băng có đoạn “we need to take it away to our workshop for special
+      repairs”. Vậy, B là đáp án đúng.
+
+
+
+
+                           ic.
+                                  ed
+                                            n
+                                         u.v
+
+            Lửa TOEIC – Trường đào tạo TOEIC online
+                            Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                               C. LUYỆN TẬP
+
+Link audio: https://drive.google.com/open?id=1Dx1LoCrjZ71eLj-
+yrgWgP_xpx4T5AKiS
+
+
+
+
+               fire
+                Bài 1                                      Bài 2
+
+
+
+
+                        toe
+                              ic.
+                                    ed
+                                             n
+                                          u.v
+
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+          Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 3                                     Bài 4
+
+
+
+
+fire
+        toe
+Bài 5
+           ic.                            Bài 6
+
+
+                  ed
+                           n
+                        u.v
+
+Lửa TOEIC – Trường đào tạo TOEIC online
+          Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 7                                    Bài 8
+
+
+
+
+fire
+        toe
+Bài 9
+           ic.                           Bài 10
+
+
+
+
+                  ed
+                           n
+                        u.v
+
+Lửa TOEIC – Trường đào tạo TOEIC online
+           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 11                                   Bài 12
+
+
+
+
+fire
+         toe
+Bài 13      ic.                          Bài 14
+
+
+
+                   ed
+                            n
+                         u.v
+
+ Lửa TOEIC – Trường đào tạo TOEIC online
+           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 15                                   Bài 16
+
+
+
+
+fire
+         toe
+Bài 17
+            ic.                          Bài 18
+
+
+
+
+                   ed
+                            n
+                         u.v
+
+ Lửa TOEIC – Trường đào tạo TOEIC online
+           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 19                                   Bài 20
+
+
+
+
+fire
+Bài 21
+         toe                             Bài 22
+
+
+            ic.
+                   ed
+                            n
+                         u.v
+
+ Lửa TOEIC – Trường đào tạo TOEIC online
+           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 23                                    Bài 24
+
+
+
+
+fire
+         toe
+Bài 25      ic.                           Bài 26
+
+
+
+                   ed
+                            n
+                         u.v
+
+ Lửa TOEIC – Trường đào tạo TOEIC online
+           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+Bài 27                                    Bài 28
+
+
+
+
+fire
+         toe
+Bài 29      ic.                           Bài 30
+
+
+
+                   ed
+                            n
+                         u.v
+
+ Lửa TOEIC – Trường đào tạo TOEIC online
+           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 31                                    Bài 32
+
+
+
+
+fire
+         toe
+Bài 33
+            ic.                           Bài 34
+
+
+
+
+                   ed
+                            n
+                         u.v
+
+ Lửa TOEIC – Trường đào tạo TOEIC online
+                          Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                               ĐÁP ÁN
+
+
+Bài 1: B A C                          Bài 2: C B A
+
+Bài 3: C B B                          Bài 4: D C B
+
+Bài 5: A B C                          Bài 6: B B D
+
+Bài 7: D B A
+
+Bài 9: C A B    fire                  Bài 8: A C B
+
+                                      Bài 10: C A D
+
+
+
+
+                    toe
+Bài 11: B C B                         Bài 12: D B C
+
+Bài 13: B D A                         Bài 14: D C C
+
+Bài 15: C D C                         Bài 16: A C C
+
+Bài 17: D B A
+
+Bài 19: C D A
+                           ic.        Bài 18: D D C
+
+                                      Bài 20: C A D
+
+Bài 21: B C C
+
+Bài 23: B C D
+                                  ed  Bài 22: A C C
+
+                                      Bài 24: D B C
+
+Bài 25: D C B
+                                           n
+                                      Bài 26: C B A
+
+
+
+                                        u.v
+Bài 27: D C B                         Bài 28: C A D
+
+Bài 29: D B A                         Bài 30: C D A
+
+Bài 31: D C A                         Bài 32: C B D
+
+Bài 33: B C D                         Bài 34: C B A
+
+
+
+
+                Lửa TOEIC – Trường đào tạo TOEIC online
+           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+           D. TRANSCRIPTS
+
+Bài 1                                        Bài 2
+
+
+
+
+fire
+        toe
+            ic.
+                   ed
+                            n
+                         u.v
+
+ Lửa TOEIC – Trường đào tạo TOEIC online
+           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 3                                          Bài 4
+
+
+
+
+fire
+        toe
+            ic.
+                   ed
+                            n
+                         u.v
+
+ Lửa TOEIC – Trường đào tạo TOEIC online
+           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 5                                          Bài 6
+
+
+
+
+fire
+        toe
+            ic.
+                   ed
+                            n
+                         u.v
+
+ Lửa TOEIC – Trường đào tạo TOEIC online
+          Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 7                                          Bài 8
+
+
+
+
+fire
+        toe
+           ic.
+                  ed
+                           n
+                        u.v
+
+Lửa TOEIC – Trường đào tạo TOEIC online
+           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 9                                         Bài 10
+
+
+
+
+fire
+        toe
+            ic.
+                   ed
+                            n
+                         u.v
+
+ Lửa TOEIC – Trường đào tạo TOEIC online
+           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 11                                         Bài 12
+
+
+
+
+fire
+         toe
+Bài 13
+            ic.                                Bài 14
+
+
+                   ed
+                            n
+                         u.v
+
+ Lửa TOEIC – Trường đào tạo TOEIC online
+           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 15                                         Bài 16
+
+
+
+
+fire
+         toe
+Bài 17
+            ic.                                Bài 18
+
+
+
+
+                   ed
+                            n
+                         u.v
+
+ Lửa TOEIC – Trường đào tạo TOEIC online
+           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 19                                          Bài 20
+
+
+
+
+fire
+         toe
+Bài 21
+            ic.                                 Bài 22
+
+
+
+
+                   ed
+                            n
+                         u.v
+
+ Lửa TOEIC – Trường đào tạo TOEIC online
+           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 23                                           Bài 24
+
+
+
+
+Bài 25                                           Bài 26
+
+
+
+
+ Lửa TOEIC – Trường đào tạo TOEIC online
+           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 27                                           Bài 28
+
+
+
+
+Bài 29                                           Bài 30
+
+
+
+
+ Lửa TOEIC – Trường đào tạo TOEIC online
+            Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 31                                          Bài 32
+
+
+
+
+  Lửa TOEIC – Trường đào tạo TOEIC online
+            Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 33                                          Bài 34
+
+
+
+
+  Lửa TOEIC – Trường đào tạo TOEIC online
+

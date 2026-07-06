@@ -1,0 +1,144 @@
+SOURCE_RELATIVE_PATH: downloads/folders/ĐỀ WRITING SAMPLE/ĐỀ 11.pdf
+SOURCE_FILE_NAME: ĐỀ 11.pdf
+QUEUE_ORDER: 76
+EXTRACTION_CLASS: VALID_TEXT_EXTRACTED
+PAGE_COUNT: 13
+
+----- BEGIN PDF TEXT -----
+          TOEIC WRITING TEST
+This writing test includes 8 questions that evaluate your
+ability to write English.
+This test will take approximately 60 minutes.
+PART 1
+Questions 1-5: Write a sentence based on a picture.
+
+Directions: In this part of the test, you will write ONE sentence that is based on
+a picture. With each picture, you will be given TWO words or phrases that you
+must use in your sentence. You can change the forms of the words and you can
+use the words in any order. Your sentences will be scored on:
+
+   ●​ The appropriate use of grammar
+   ●​ The relevance of the sentence to the picture
+
+You will have 8 minutes to complete this part of the test.
+                               CONTRACT/PEN
+
+A man in a black suit is signing a contract with a pen.
+                             WASH/BEFORE
+
+Two people are washing their hands before making lunch.
+                              TELEVISION/ON
+
+A man is sitting on a sofa and watching television.
+                               LUGGAGE/CAR
+
+Two people are loading their luggage into a car.
+                                EXAMINE/AS
+
+A boy is having his eyes examined as he can’t see well.
+PART 2
+Questions 6-7: Respond to a written request.
+
+Directions: In this part of the test, you will show how well you can write a
+response to an email. Your response will be scored on:
+
+   ●​ The quality and variety of your sentences
+   ●​ Vocabulary
+   ●​ Organization
+
+You will have 10 minutes to read and answer each email.
+Dear Riverside Library, / Dear Ms. John,
+
+My name is Khoi Tran, and I am a local citizen who wants to use the library. I
+am writing in response to your email dated March 27.
+
+I have a couple of questions and I hope to receive your answers. First, could you
+let me know what the opening hours of the library are? Moreover, can I borrow
+as many books as I want, or will there be any limits? Besides, I hope that you
+can send me a detailed map of the library. This would help me browse the
+library more easily and avoid getting lost.
+
+I look forward to hearing from you soon.
+
+Best regards,
+
+Khoi Tran
+Dear Ms. Foster,
+
+My name is Khoi Tran, and I am the customer service manager of Blaza Airline.
+I am writing in response to your email dated June 21.
+
+First of all, please accept my sincere apology for any inconvenience this may
+have caused. The crew members assisting you on flight SD2541 were recently
+hired, so making mistakes was very likely to happen. Furthermore, they didn’t
+receive enough training to handle such complex situations like flight delays.
+Therefore, I just really hope for your understanding and forgiveness.
+
+To compensate for this terrible experience, we would like to offer you a 50%
+discount for your next flight and we also want to invite you to use our lounge
+services at no cost.
+
+Once again, I am very sorry for this problem and I promise to provide you with
+better care in the future.
+
+Best regards,
+Khoi Tran
+PART 3
+Question 8: Write an opinion essay.
+
+Directions: In this part of the test, you will write an essay in response to a
+question that asks you to state, explain and support your opinion on an issue.
+Typically an effective essay will contain a minimum of 300 words. Your
+response will be scored on:
+
+   ●​ Whether your opinion is supported with reasons and/or examples
+   ●​ Grammar
+   ●​ Vocabulary
+   ●​ Organization
+
+You will have 30 minutes to plan, write, and revise your essay.
+
+
+
+Do you agree or disagree with the following statement?
+
+Cooking and enjoying meals at home is better than eating out at restaurants.
+
+Give reasons and examples to support your opinion.
+
+
+
+In today’s world, there is a popular statement among the general public,
+claiming that cooking and enjoying meals at home is better than eating out at
+restaurants. From my point of view, I totally agree with this idea. In this essay, I
+will provide several reasons to support my opinion.
+
+First, enjoying meals at home is more cost-effective than dining out. Normally,
+the food prices in restaurants are quite expensive to match the high quality of
+ingredients, effort made by chefs and beautiful dining space. Moreover, when
+eating at restaurants, we usually have to tip for waiters because they serve us
+attentively during our meals. However, if we choose to eat at home, we can
+avoid wasting on those expenses. As a result, we can save a lot of money and
+stay within budget.
+
+Second, eating homemade food allows us to ensure our health. This is because
+we can select fresh and clean ingredients to make nutritious meals. In addition,
+we can also adjust the dishes to suit the taste of each family member. In
+contrast, when eating at a restaurant, we might not know the origin of the food
+and the hygiene conditions in the kitchen. Consuming low-quality products
+could lead to serious health issues.
+
+Last but not least, this is a good way to help us strengthen family relationships.
+When family members engage in the food-making process, they are likely to
+have many opportunities to connect with each other. For example, my family
+usually spends time cooking on the weekends. During these moments, we can
+share multiple stories about work or school, helping us understand each other
+better and having memorable experiences. Besides, when gathering around the
+kitchen like this, we can also share tasks and support each other. Consequently,
+love and positive energy are always present in my house.
+
+In conclusion, I am strongly convinced that preparing and having meals at home
+is far more enjoyable than eating out. However, other people might have
+different opinions from mine. This all depends on their preferences,
+personalities and ways of thinking.
+

@@ -1,0 +1,454 @@
+SOURCE_RELATIVE_PATH: downloads/VƯỢT QUA DẠNG ĐIỀN CÂU VÀO CHỖ TRỐNG TRONG PART 6 DỄ DÀNG.pdf
+SOURCE_FILE_NAME: VƯỢT QUA DẠNG ĐIỀN CÂU VÀO CHỖ TRỐNG TRONG PART 6 DỄ DÀNG.pdf
+QUEUE_ORDER: 16
+EXTRACTION_CLASS: VALID_TEXT_EXTRACTED
+PAGE_COUNT: 30
+
+----- BEGIN PDF TEXT -----
+       Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                                                             1
+Lửa TOEIC – Trường đào tạo TOEIC online
+                           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+              VƯỢT QUA DẠNG ĐIỀN CÂU VÀO CHỖ TRỐNG
+                            TRONG PART 6 DỄ DÀNG
+
+
+
+Xin chào các bạn!
+
+Đây là tài liệu do nhóm học thuật Fire TOEIC biên soạn nhằm giúp các bạn có thể tự
+học TOEIC tốt hơn, tài liệu được chia sẻ phi thương mại, mong các bạn không dùng nó
+với mục đích thương mại.
+
+Trong quá trình biên soạn sẽ không tránh khỏi sai sót, các bạn có thể báo lỗi về email:
+
+firetoeic@gmail.com
+
+Tài liệu được biên soạn bởi Fire TOEIC
+
+Chúc các bạn học tốt!
+
+Đội ngũ biên soạn.
+
+
+
+
+                                                                                          2
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                   A. GIỚI THIỆU
+
+
+Từ năm 2019, part 6 của đề thi TOEIC có thêm dạng bài tập điền câu vào chỗ trống,
+thay vì chỉ điền từ hoặc cụm từ. Dạng bài tập này có những đặc điểm như sau:
+   •   Mỗi văn bản nằm trong part 6 có chứa một câu bài tập điền câu vào chỗ trống,
+       tức là một đề đọc có tổng cộng 4 câu dạng này.
+   •   Có 4 câu với nội dung phân biệt được đưa ra ở các lựa chọn A, B, C và D.
+       Nhiệm vụ của thí sinh là chọn câu phù hợp nhất để điền vào chỗ trống. Vì vậy,
+       dạng bài tập này kiểm tra mức độ hiểu ý nghĩa văn bản của thí sinh thay vì kiểm
+       tra ngữ pháp hay từ vựng như các câu khác.
+Để làm tốt dạng bài tập này, thí sinh có thể tham khảo và áp dụng những chiến thuật
+được đề cập ở những phần sau đây.
+
+
+
+
+                                                                                    3
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                  B. CHIẾN THUẬT
+
+Bước 1: Làm sau các câu hỏi khác
+
+Sau khi làm xong các câu hỏi về từ vựng và ngữ pháp xuất hiện trong bài, thí sinh đã
+cơ bản nắm được ý chính của cả bài và cách triển khai ý qua các đoạn, từ đó phần nào
+đoán được nội dung ở khoảng cần điền có thể là gì. Điều này tiết kiệm thời gian cho
+việc đọc bài, đồng thời giúp thí sinh dễ dàng hiểu nội dung của văn bản một cách chính
+xác hơn.
+
+Bước 2: Đọc câu bên cạnh chỗ trống
+
+Có từ một đến hai câu trong bài cần được đọc kỹ hơn các câu khác để đảm bảo lựa
+chọn cho phần này là chính xác. Đó là câu ngay trước và/hoặc câu ngay sau chỗ trống.
+Một trong hai câu này sẽ liên quan rất chặt chẽ đến nội dung của câu cần điền.
+Ngoài việc chủ yếu sử dụng nội dung và cách triển khai ý để chọn đáp án chính xác, thí
+sinh còn có thể dựa vào các dấu hiệu trong từ ngữ của các câu liên quan để nhận biết
+mối liên hệ. Dấu hiệu để nhận biết mối liên hệ bao gồm:
+
+                Dấu hiệu                       Câu cạnh chỗ        Đáp án chính xác
+                                                   trống
+Từ vựng giống hệt, đồng nghĩa hoặc cùng           Discount             Good deal
+               trường nghĩa
+      Từ nối                  Liên từ         Nêu một sự thật       But + một sự thật
+                                                                        ngược lại
+                              Đại từ            New nutrition         This initiative
+                                                 technology
+                        Các (cụm) từ có       Nêu một sự thật      As a result, một kết
+                       chức năng liên kết                          quả của sự thật đó
+                               câu
+
+
+
+                                                                                        4
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                          Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bước 3: Thử điền từng lựa chọn một để tìm được đáp án chính xác
+
+Sau bước 2, bạn thử điền lựa chọn có nhiều liên kết với các câu trước và sau chỗ trống
+trước, đánh giá độ phù hợp.
+
+Sau đó, để chắc chắn lựa chọn là chính xác, điền thử các lựa chọn còn lại và đánh giá
+độ phù hợp.
+
+So sánh độ phù hợp của các lựa chọn với nhau và đưa ra kết luận về đáp án đúng.
+
+
+
+
+                                                                                    5
+                Lửa TOEIC – Trường đào tạo TOEIC online
+                   Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài tập minh họa
+
+
+
+
+                                                                         6
+            Lửa TOEIC – Trường đào tạo TOEIC online
+                           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Dễ thấy, câu 133 chính là dạng bài tập điền câu vào chỗ trống.
+
+Bước 1. Làm câu 131, 132, 134
+
+Câu 131: Dễ thấy câu đã có động từ chính và không có đại từ quan hệ, vậy động từ
+seek không thể ở dạng của một động từ chính trong câu, ta loại dạng nguyên thể (seek)
+ở đáp án A và động từ dạng chủ động thì hiện tại tiếp diễn (are seeking) ở đáp án D.
+Nếu điền “to seek”, động từ này sẽ trở thành mục đích của hành động “came across”
+của Sharron, điều này khong hợp lý vì đã “tình cờ gặp” thì không thể có một mục đích
+từ trước, hơn nữa việc tìm “partnership” phải là của Mr. Smith thay vì Sharron. Vậy đáp
+án còn lại là đáp án C. Đây chính là dạng rút gọn mệnh đề quan hệ chủ động: which is
+seeking → seeking.
+
+Câu 132: Câu này cần tìm được tính từ thích hợp đi với danh từ “experience”. Các lựa
+chọn có ý nghĩa lần lượt là:
+
+   A. Rất nhiều, rất lớn
+   B. Bị hạn chế
+   C. Hào phóng
+   D. Không giới hạn
+
+Vậy đáp án phù hợp nhất là A, có rất nhiều kinh nghiệp trong việc gì.
+
+Câu 134: Look forward to (doing) something là một cấu trúc điển hình để kết thúc một
+bức thư, vậy B là đáp án chính xác.
+
+Bước 2. Đọc câu trước và/hoặc sau chỗ trống
+
+Câu trước chỗ trống nói rằng BiggsGraphics có rất nhiều kinh nghiệm làm việc với các
+doanh nghiệp và công ty nhỏ trong việc thiết kế chiến dịch quảng cáo, logo và websites.
+Chúng ta nên lưu ý đến từ khóa “experience” và sự liệt kê các dịch vụ. Vậy ý chính câu
+này là quảng cáo thế mạnh về dịch vụ và sản phẩm của công ty. Câu sau có thể sẽ
+nhấn mạnh hơn hoặc minh họa điều này.
+
+Câu sau chỗ trống có từ đáng để tâm là “also”, dùng để bổ sung một hành động có tính
+chất tương tự hành động đã được nhắc tới trước đó. Hành động ở câu này là “chứa
+một số thông tin về công ty”. Vậy câu cần điền có khả năng nhắc tới việc cung cấp
+thông tin theo một kênh nào đó ngoài website của công ty.
+
+Bước 3. Thử điền từng lựa chọn
+
+Lựa chọn A: Tôi sẽ rất trân trọng cơ hội được hợp tác với ngài.
+
+
+
+                                                                                     7
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+   ➔ Câu này không phù hợp 2 tiêu chí đưa ra ở bước 2, hơn nữa nội dung phù hợp
+     với đoạn cuối thư hơn là đoạn giữa. Loại lựa chọn này.
+
+Lựa chọn B: Tôi được biết rằng DigitalIT là một công ty tuyệt vời.
+
+   ➔ Câu này không đáp ứng 2 tiêu chí đưa ra ở bước 2, lại lạc sang nói về công ty
+     của người nhận email. Loại lựa chọn này.
+
+   Lựa chọn C: Thực ra, các thiết kế của chúng tôi thường bị các công ty khác sao
+   chép.
+
+   ➔ Câu này không đáp ứng 2 tiêu chí đưa ra ở bước 2, đồng thời lại nêu ra một rắc
+     rối đang gặp phải của công ty, không phù hợp cho mục tiêu quảng cáo công ty
+     với khách hàng tiềm năng. Loại lựa chọn này.
+
+   Lựa chọn D: Tôi đã đính kèm email này rất nhiều mẫu chúng tôi từng thiết kế để
+   minh họa cho chuyên môn của chúng tôi.
+
+   ➔ Câu này đáp ứng cả 2 tiêu chí trên, vừa nhắc tới nhiều mẫu thiết kế, vừa nhắc
+     tới thông tin minh họa chuyên môn. Vậy D là đáp án đúng.
+
+   Dịch toàn bộ văn bản:
+
+   Xin chào ngài Smith,
+
+   Tôi là Sharron Biggs, giám đốc điều hành và nhà sáng lập của BiggsGraphics. Gần
+   đây, tôi tình cờ xem được tin tìm kiếm sự hợp tác với một công ty thiết kế đồ họa
+   cho rất nhiều sự án của Quý công ty. BiggsGraphics có rất nhiều kinh nghiệm làm
+   việc với các doanh nghiệp và công ty nhỏ trong việc thiết kế chiến dịch quảng cáo,
+   logo và websites. Tôi đã đính kèm email này rất nhiều mẫu chúng tôi từng thiết kế
+   để minh họa cho chuyên môn của chúng tôi. Website của công ty www.biggs-
+   graphics.com cũng có chứa một số thông tin về công ty.
+
+   Tôi rất mong muốn được cùng với Quý công ty thực hiện các sự án và xây dựng sự
+   hợp tác đem lại lợi ích cho cả hai bên. Tôi mong rằng sớm nhận được phản hồi từ
+   phía ngài.
+
+   Trân trọng,
+
+   Sharron Biggs
+
+
+
+
+                                                                                   8
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+               Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                      C. LUYỆN TẬP
+Bài 1
+
+
+
+
+                                                                     9
+        Lửa TOEIC – Trường đào tạo TOEIC online
+               Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 2
+
+
+
+
+                                                                    10
+        Lửa TOEIC – Trường đào tạo TOEIC online
+               Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 3
+
+
+
+
+                                                                    11
+        Lửa TOEIC – Trường đào tạo TOEIC online
+               Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 4
+
+
+
+
+                                                                    12
+        Lửa TOEIC – Trường đào tạo TOEIC online
+               Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 5
+
+
+
+
+                                                                    13
+        Lửa TOEIC – Trường đào tạo TOEIC online
+               Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 6
+
+
+
+
+                                                                    14
+        Lửa TOEIC – Trường đào tạo TOEIC online
+               Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 7
+
+
+
+
+                                                                    15
+        Lửa TOEIC – Trường đào tạo TOEIC online
+       Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                                                            16
+Lửa TOEIC – Trường đào tạo TOEIC online
+               Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 8
+
+
+
+
+                                                                    17
+        Lửa TOEIC – Trường đào tạo TOEIC online
+               Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 9
+
+
+
+
+                                                                    18
+        Lửa TOEIC – Trường đào tạo TOEIC online
+                Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 10
+
+
+
+
+                                                                     19
+         Lửa TOEIC – Trường đào tạo TOEIC online
+                Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 11
+
+
+
+
+                                                                     20
+         Lửa TOEIC – Trường đào tạo TOEIC online
+       Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                                                            21
+Lửa TOEIC – Trường đào tạo TOEIC online
+                Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 12
+
+
+
+
+                                                                     22
+         Lửa TOEIC – Trường đào tạo TOEIC online
+                Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 13
+
+
+
+
+                                                                     23
+         Lửa TOEIC – Trường đào tạo TOEIC online
+                Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 14
+
+
+
+
+                                                                     24
+         Lửa TOEIC – Trường đào tạo TOEIC online
+                Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 15
+
+
+
+
+                                                                     25
+         Lửa TOEIC – Trường đào tạo TOEIC online
+                Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 16
+
+
+
+
+                                                                     26
+         Lửa TOEIC – Trường đào tạo TOEIC online
+                Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 17
+
+
+
+
+                                                                     27
+         Lửa TOEIC – Trường đào tạo TOEIC online
+                Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 18
+
+
+
+
+                                                                     28
+         Lửa TOEIC – Trường đào tạo TOEIC online
+       Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                                                            29
+Lửa TOEIC – Trường đào tạo TOEIC online
+                        Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                 D. ĐÁP ÁN
+
+
+Bài 1: B D A C                          Bài 2: C D B B
+Bài 3: D C C B                          Bài 4: C D B C
+Bài 5: D D A C                          Bài 6: C A A C
+Bài 7: C A B D                          Bài 8: A A B D
+Bài 9: A B B B                          Bài 10: B B A C
+Bài 11: A B B B                         Bài 12: C D C B
+Bài 13: C B D A                         Bài 14: A C B C
+Bài 15: C D A B                         Bài 16: C D B A
+Bài 17: D A C B                         Bài 18: B D C A
+
+
+
+
+                                                                             30
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+

@@ -1,0 +1,152 @@
+SOURCE_RELATIVE_PATH: downloads/folders/Sparta Toeic/Đáp án (answer key) Sách Sparta TOEIC - Phần nghe.pdf
+SOURCE_FILE_NAME: Đáp án (answer key) Sách Sparta TOEIC - Phần nghe.pdf
+QUEUE_ORDER: 28
+EXTRACTION_CLASS: VALID_TEXT_EXTRACTED
+PAGE_COUNT: 3
+
+----- BEGIN PDF TEXT -----
+TEST1                                                         TEST3
+
+ 1.    !Al    2.   !Cl    3.   [Bl    4.   !Al    5.  [Cl      1.   ID)    2.   !Bl    3.   IC)    4.   IBJ    5.    (CJ
+ 6.    !Bl    7.   IC]    8.   (Bl    9.   (Al   10.  (Bl      6.   IA]    7.   [BJ    8.   !Al    9.   IC]   10.    (Al
+11.    !Bl   12.   !Al   13.   (Cl   14.   (Al   15. (Al      11.   [Bl   12.   [BJ   13.   IA]   14.   !Al   15.    (Cl
+16.    !Al   17.   (Bl   18.   (Cl   19.   (Bl   20. (Bl      16.   (Al   17.   (Cl   18.   (Al   19.   [Bl   20.    (Al
+21.    (Bl   22.   (Bl   23.   (Bl   24.   (Cl   25. (Al      21.   (Cl   22.   (Cl   23.   [Al   24.   (Al   25.    (Al
+26.    (Al   27.   (Cl   28.   (Al   29.   !Al   30. (Cl      26.   (Al   27.   !Al   28.   (Al   29.   (Al   30.    (Cl
+31.    (Al   32.   [Al   33.   (Cl   34.   [Bl   35. (Cl      31.   [Cl   32.   ID)   33.   IDl   34.   [Cl   35.    [Al
+36.    (DJ   37.   ID)   38.   (Al   39.   [Cl   40. (Dl      36.   [Cl   37.   ID)   38.   !Al   39.   IC]   40.    (DJ
+41.    (Bl   42.   (Cl   43.   (Dl   44.   !Bl   45. [Bl      41.   !Al   42.   ID)   43.   !Cl   44.   (Al   45.    (Dl
+46.    (Dl   47.   (Cl   48.   (Dl   49.   !Bl   50. [Cl      46.   (Dl   47.   (Bl   48.   [Bl   49.   (Dl   50.    (Cl
+51.    (Bl   52.   [Cl   53.   (Bl   54.   !Cl   55. ID)      51.   (Bl   52.   (Al   53.   ID)   54.   ID)   55.    !Bl
+56.    (Bl   57.   IDl   58.   (Al   59.   ID)   60. !Al      56.   (Cl   57.   (Al   58.   (DJ   59.   ID)   60.    [Bl
+61.    (Bl   62.   !Al   63.   (Dl   64.   !Al   65. ID)      61.   (Dl   62.   ID)   63.   (CJ   64.   (Bl   65.    (Al
+66.    (Al   67.   (DJ   68.   (Al   69.   !Bl   70. !Bl      66.   (Cl   67.   [Cl   68.   [Cl   69.   (Cl   70.    (Bl
+71.    !Al   72.   (Cl   73.   (Dl   74.   (Dl   75. (Bl      71.   [Bl   72.   (Dl   73.   [Cl   74.   IB]   75.    (Al
+76.    (Dl   77.   (Bl   78.   (Dl   79.   (Bl   80. (Bl      76.   [Cl   77.   (Al   78.   [Bl   79.   (Cl   80.    (Cl
+81.    (Dl   82.   (Al   83.   (Cl   84.   (Dl   85. (Dl      81.   [Cl   82.   !Bl   83.   [Cl   84.   (Dl   85.    [Al
+86.    !Al   87.   ID)   88.   [Bl   89.   (DJ   90. (Cl      86.   [Cl   87.   !Cl   88.   ID)   89.   (Cl   90.    !Bl
+91.    !Bl   92.   [Bl   93.   ID)   94.   (Bl   95. !Cl      91.   ID)   92.   (Al   93.   IC]   94.   (Dl   95.    [Cl
+96.    !Bl   97.   !Cl   98.   ID)   99.   (Bl   100. ID)     96.   !Al   97.   IDl   98.   ID)   99.   (Bl   100.   !Cl
+
+
+
+
+TEST 2                                                        TEST 4
+
+ 1.    [Bl    2.   ID)    3.   IDl    4.   IC]    5.    [Bl    1.   ID)    2.   [Cl    3.   !Al    4.   (Cl    5.    ID)
+ 6.    !Al    7.   [Bl    8.   !Bl    9.   IA]   10.    [Cl    6.   [Cl    7.   [Cl    8.   !Bl    9.   (Al   10.    [Al
+11.    !Al   12.   !Bl   13.   !Al   14.   IC)   15.    [Cl   11.   [Bl   12.   [Cl   13.   !Bl   14.   (Cl   15.    [Cl
+16.    [Bl   17.   [Cl   18.   !Bl   19.   !Bl   20.    !Al   16.   (Al   17.   (Al   18.   !Cl   19.   (Bl   20.    !Bl
+21.    [Cl   22.   !Bl   23.   !Cl   24.   !Al   25.    !Al   21.   IC)   22.   (Cl   23.   [Al   24.   [Al   25.    !Al
+26.    [Al   27.   !Bl   28.   !Al   29.   !Bl   30.    !Al   26.   [Cl   27.   (Al   28.   !Al   29.   !Bl   30.    !Cl
+31.    [Bl   32.   (Cl   33.   [Bl   34.   (Cl   35.    [Bl   31.   !Al   32.   IDl   33.   ID)   34.   !Al   35.    !Bl
+36.    ID)   37.   !Cl   38.   (DJ   39.   !Al   40.    !Cl   36.   [Cl   37.   ID)   38.   [Cl   39.   (Dl   40.    [Cl
+41.    [Bl   42.   !Al   43.   ID)   44.   IA)   45.    ID)   41.   [Cl   42.   ID)   43.   !Bl   44.   (Al   45.    ID)
+46.    !Cl   47.   !Cl   48.   ID)   49.   !Al   50.    !Al   46.   [Al   47.   [Cl   48.   !Al   49.   (Dl   50.    !Cl
+51.    [Bl   52.   ID)   53.   [Cl   54.   ID)   55.    !Al   51.   !Bl   52.   (Dl   53.   [Cl   54.   (Bl   55.    ID)
+56.    !Bl   57.   ID)   58.   [Cl   59.   ID]   60.    [Bl   56.   [Cl   57.   !Bl   58.   [Cl   59.   !Al   60.    ID)
+61 .   [Al   62.   IDl   63.   !Bl   64.   IB]   65.    !Cl   61.   (Cl   62.   [Bl   63.   IOI   64.   (Dl   65.    [Al
+66.    !Bl   67.   !Al   68.   ID)   69.   !Al   70.    !Bl   66.   ID)   67.   [Bl   68.   !Al   69.   (Bl   70.    !Al
+71.    !Bl   72.   [Cl   73.   IDl   74.   ID)   75.    [Bl   71.   ID)   72.   [Cl   73.   !Cl   74.   (Al   75.    ID)
+76.    !Cl   77.   !Al   78.   ID)   79.   [Bl   80.    [Bl   76.   [Cl   77.   !Al   78.   ID)   79.   (Cl   80.    !Cl
+81.    (Dl   82.   [Cl   83.   ID)   84.   [Cl   85.    !Bl   81.   [Bl   82.   (Bl   83.   [Cl   84.   (Al   85.    [Bl
+86.    (DJ   87.   ID)   88.   !Bl   89.   [Cl   90.    ID)   86.   (Al   87.   !Bl   88.   !Bl   89.   (Cl   90.    !Al
+91.    (Cl   92.   ID)   93.   [Bl   94.   (Dl   95.    (Cl   91.   [Cl   92.   IDl   93.   [Cl   94.   (Al   95.    !Bl
+96.    !Al   97.   ID)   98.   !Al   99.   (Bl   100.   !Al   96.   !Al   97.   [Cl   98.   ID)   99.   (Cl   100.   ID)
+TESTS                                                            TEST7
+
+ 1.    [DI    2.    [Bl    3.    [Al    4.    [Cl    5.    [Bl    1.    [Bl    2.    ID)    3.    [Bl    4.   ID)    5.     IA)
+ 6.    [Bl    7.    [Bl    8.    [Cl    9.    [Al   10.    [A)    6.    [Cl    7.    [Al    8.    [Bl    9.   [Bl   10.    [Al
+11.    [Al   12.    [Cl   13.    [Bl   14.    [Al   15.    [Bl   11.    [Cl   12.    [Al   13.    IA)   14.   [Al   15.    [Al
+16.    [Bl   17.    [Cl   18.    [Al   19 .   [Cl   20.    IA)   16.    [Bl   17.    [Cl   18.    [Cl   19.   [Al   20.    [Cl
+21.    [Bl   22.    [Cl   23.    [Al   24.    [Bl   25.    [Cl   21 .   [Al   22.    [Bl   23.    [Cl   24.   [Bl   25.    [Al
+26.    [Cl   27.    [Cl   28 .   [Bl   29 .   [Cl   30.    [Cl   26.    [Cl   27.    [Al   28.    [Al   29.   [Cl   30.    [Al
+31.    [Bl   32.    [Cl   33.    [Bl   34.    [Al   35.    [Bl   31.    [Bl   32.    [Cl   33.    [Cl   34.   [DI   35.    ID)
+36.    ID)   37.    [Cl   38 .   [Al   39.    [Cl   40.    [Al   36.    [Cl   37.    ID)   38.    [Bl   39.   ID)   40.    [Al
+41.    [Bl   42.    [Al   43.    ID)   44.    IA)   45.    (Cl   41.    [Bl   42.    [Bl   43.    [Cl   44.   [Bl   45.    ID)
+46.    ID)   47.    [Bl   48.    [Cl   49.    IA)   50.    ID)   46.    ID)   47.    [Bl   48 .   [Bl   49.   ID)   50.    [DI
+51.    [Al   52.    [Cl   53.    [Al   54.    [Cl   55.    [Bl   51.    [Cl   52.    ID)   53.    [Al   54.   [Bl   55.    ID)
+56.    [Bl   57.    [Cl   58.    IC)   59.    ID)   60.    (Al   56.    [Cl   57.    ID)   58.    ID)   59.   [Al   60.    IA)
+61.    [Cl   62.    [DI   63.    IA)   64.    [Cl   65.    [Bl   61.    ID)   62.    [Al   63.    [Bl   64.   [Cl   65.    [Cl
+66.    [Cl   67.    [Bl   68.    ID)   69.    [Cl   70.    [Cl   66.    [Bl   67.    [DI   68.    [Bl   69.   [Al   70.    [DI
+71 .   [Al   72.    IBI   73.    [Cl   74.    [Cl   75.    [Cl   71.    [Al   72.    (Al   73.    (Cl   74.   [D)   75.    [Cl
+76.    [DI   77.    [Bl   78.    [Cl   79.    [DI   80.    [Al   76.    [Cl   77.    [DI   78.    [Cl   79.   [Bl   80.    [Bl
+81 .   (DI   82.    [Cl   83.    [Bl   84.    (DI   85.    [Cl   81.    [DI   82.    [DI   83.    [Cl   84.   ID)   85.    [Bl
+86.    [DI   87.    [Al   88.    [Cl   89.    [DI   90.    [Cl   86.    ID)   87.    [Al   88.    [Bl   89.   IA)   90.    [Bl
+91.    [Bl   92.    [Bl   93.    ID)   94.    [DI   95.    [Cl   91.    [D)   92.    [Bl   93.    [Al   94.   ID)   95.    [Al
+96.    [Al   97.    IC)   98.    [DI   99.    [DI   100.   [Bl   96.    [C)   97.    [DI   98.    [Bl   99.   [Bl   100.   ID)
+
+
+
+
+TEST6                                                            TESTS
+
+ 1.    (DI    2.    [Al    3.    [DI    4.    [Cl    5.    [Bl    1.    [DI    2.    [Bl    3.    [DI    4.   [Bl    5.    [Cl
+ 6.    [Bl    7.    [Cl    8.    [Al    9.    [Cl   10.    [Bl    6.    [Cl    7.    [Al    8.    [Bl    9.   [Al   10.    (Cl
+11.    IA)   12.    [Cl   13.    [Cl   14.    [Al   15.    [Cl   11.    (Bl   12.    [Al   13.    (Al   14.   [Cl   15.    [Al
+16.    (Al   17.    [Cl   18.    [Bl   19.    [Al   20.    [Cl   16.    (Cl   17.    [Bl   18.    !Bl   19.   [Al   20.    [Bl
+21.    (Al   22 .   [A)   23.    (Bl   24.    (Al   25.    [Cl   21.    (Al   22.    [Cl   23.    !Bl   24.   [Cl   25.    [Al
+26.    [Al   27.    [Bl   28.    !Cl   29.    [Bl   30.    [Al   26.    (Al   27.    [Bl   28.    [Cl   29.   [Bl   30.    IA)
+31.    IA)   32.    [DI   33.    !Cl   34.    [Bl   35.    [Cl   31.    (Cl   32 .   [Cl   33.    [DI   34.   ID)   35.    IA)
+36.    IA)   37.    [DI   38.    (Bl   39.    (DI   40.    ID)   36.    ID)   37.    [Al   38.    (DI   39.   [Bl   40.    [DI
+41.    IC)   42 .   (Bl   43.    (Al   44.    [Al   45.    [DI   41.    (Al   42.    !Cl   43.    ID)   44.   [Al   45.    [Cl
+46.    [Cl   47.    (Al   48.    [Bl   49.    [DI   50.    [Bl   46.    [Bl   47.    [Al   48.    ID)   49.   [Bl   50.    [Cl
+51.    [Al   52.    (Cl   53.    [Bl   54.    [Bl   55 .   ID)   51.    [Bl   52.    [Cl   53.    IA)   54.   [Cl   55.    [DI
+56.    [DI   57.    (Bl   58.    IA)   59.    [DI   60.    [Cl   56.    (Cl   57.    (Bl   58.    ID)   59.   [DI   60.    (DI
+61 .   (Bl   62.    [Cl   63.    [DI   64.    [Cl   65.    [Cl   61.    [Al   62.    !Cl   63.    [Bl   64.   ID)   65.    !Bl
+66.    (Bl   67.    [Dl   68.    [DI   69.    !Bl   70.    !Bl   66.    !Cl   67.    (Bl   68.    [Cl   69.   [Cl   70.    ID)
+71.    (Al   72.    ID)   73.    [Cl   74.    !Bl   75.    IA)   71.    !Al   72.    (Cl   73.    (DI   74.   IC)   75.    IA)
+76.    ID)   77.    [Cl   78 .   (Cl   79.    ID)   80.    !DI   76.    (DI   77.    !Cl   78.    [Bl   79.   ID)   80.    IC)
+81.    !Bl   82.    [Al   83.    ID)   84.    !Bl   85.    IA)   81.    (Bl   82.    !DI   83.    !Cl   84.   IC)   85.    ID)
+86.    IA)   87.    !Cl   88.    (Cl   89.    [Bl   90.    [Cl   86.    (Bl   87.    (Cl   88.    (DI   89.   ID)   90.    [Bl
+91.    [Al   92.    (DI   93.    !Bl   94.    [D)   95.    [Cl   91.    [Cl   92.    (A)   93.    !Cl   94.   [Cl   95.    [DI
+96.    [Bl   97.    (Al   98.    !Cl   99.    [Cl   100.   [Cl   96.    [DI   97.    !Cl   98.    !Cl   99.   (DI   100.   [Al
+TEST9
+
+  1.   (Bl    2.   (DI    3.   (DI    4.   (Cl    5.    (Al
+ 6.    IDI    7.   (Bl    8.   (Al    9.   (Al   10.    (Bl
+11.    (Bl   12.   (Al   13.   (Bl   14.   (Al   15.    (Cl
+16.    (Al   17.   (Cl   18.   IA)   19.   (Bl   20.    (Al
+21.    (Cl   22.   (Al   23.   (Al   24.   (Bl   25.    !Cl
+26.    (Al   27.   IBI   28.   IC)   29.   IAI   30.    [Cl
+31.    (Cl   32.   (DI   33.   IAI   34.   ICI   35.    IBI
+36.    IOI   37.   (Cl   38.   ID)   39.   (Bl   40.    (Cl
+41.    (Cl   42.   (Al   43.   ID)   44.   (DI   45.    !Cl
+46.    !Bl   47.   (DI   48.   (Cl   49.   IOI   50.    IAI
+51.    (Cl   52.   (DI   53.   (Cl   54.   [Al   55.    IOI
+56.    (Al   57.   (DI   58.   !Cl   59.   IBI   60.    [Cl
+61.    !Al   62.   [Bl   63.   (Cl   64.   [Cl   65.    (Dl
+66.    (Cl   67.   (Bl   68.   (Bl   69.   (Cl   70.    (Al
+71.    ID)   72.   !Cl   73.   (Al   74.   !Cl   75.    ID)
+76.    IOI   77.   IAI   78.   !Cl   79.   ID)   80.    (Al
+81.    !Cl   82.   ID)   83.   (Cl   84.   (Bl   85.    (DJ
+86.    (Cl   87.   ID)   88.   (Bl   89.   (DJ   90.    (Dl
+91.    (Al   92.   (Cl   93.   (Dl   94.   ID)   95.    ID)
+96.    (Bl   97.   (Dl   98.   (Cl   99.   (Dl   100.   (Al
+
+
+
+
+TEST10
+
+ 1.    (Bl    2.   (Bl    3.   (Cl    4.   (Dl    5.    (Bl
+ 6.    (DI    7.   (Cl    8.   (Bl    9.   (Al   10.    (Al
+11.    (Cl   12.   (Bl   13.   (Cl   14.   (Al   15.    (Al
+16.    (Cl   17.   (Al   18.   (Cl   19.   !Bl   20.    (Bl
+21.    (Bl   22.   (Cl   23.   (Bl   24.   (Al   25.    (Cl
+26.    (Cl   27.   [Cl   28.   (Bl   29.   (Cl   30.    IA)
+31.    !Cl   32.   (Bl   33.   ID)   34.   ID)   35.    !Bl
+36.    (Dl   37.   (Cl   38.   (Bl   39.   ID)   40.    IC)
+41.    (Bl   42.   !Al   43.   ID)   44.   (Al   45.    ID)
+46.    (Dl   47.   (Dl   48.   (Cl   49.   ID)   50.    (Cl
+51.    (Al   52.   ID)   53.   ID)   54.   (Cl   55.    (Al
+56.    (Al   57.   (Bl   58.   ID)   59.   (Bl   60 .   ID)
+61 .   (Al   62.   (Cl   63.   (Al   64.   !Cl   65.    (Cl
+66.    (Cl   67.   (Bl   68.   (Bl   69.   (Cl   70.    !Bl
+71.    (Dl   72.   (Cl   73.   (Al   74.   IA)   75.    [Cl
+76.    (Cl   77.   IA)   78.   ID)   79.   IBI   80.    (Cl
+81.    (Al   82.   (Bl   83.   [Bl   84.   ID)   85.    (Al
+86.    (Dl   87.   (Cl   88.   !Al   89.   !Bl   90.    (Dl
+91.    (Cl   92.   (Cl   93.   (Al   94.   [Cl   95.    (Al
+96.    (Bl   97.   ID)   98.   !Cl   99.   (DJ   100.   (Al
+

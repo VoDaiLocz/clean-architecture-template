@@ -1,0 +1,884 @@
+SOURCE_RELATIVE_PATH: downloads/Tổng hợp Từ vựng part 2 - Duonghiephl.pdf
+SOURCE_FILE_NAME: Tổng hợp Từ vựng part 2 - Duonghiephl.pdf
+QUEUE_ORDER: 14
+EXTRACTION_CLASS: VALID_TEXT_EXTRACTED
+PAGE_COUNT: 22
+
+----- BEGIN PDF TEXT -----
+Xin chào các bạn! Dưới đây là một số lưu ý nhỏ để các bạn sử dụng tài liệu hiệu
+quả hơn:
+
+1. Bạn có thể học bộ từ vựng riêng lẻ hoặc kết hợp với bộ đề bạn đang luyện.
+
+2. Bộ từ vựng được tổng hợp theo thứ tự: bộ câu hỏi part 2, mẫu câu trả lời phổ
+biến, ETS 2018, ETS 2019, ETS 2020, Hacker 2, Hacker 3, Toeic 10 days 1000
+(Quyển xanh cam). Các từ vựng của bộ đề sau nếu trùng hoặc cùng trường từ
+vựng với bộ đề trước sẽ được xếp chung với nhau. Do đó bạn sẽ thấy độ dài
+ngắn của các bộ đề khác nhau.
+
++ Các bộ đề từ Hacker 2, Hacker 3 và Quyển xanh cam có độ khó cao hơn, phù
+hợp với các bạn mục tiêu 700+. Với các bạn mục tiêu 450-650+, mình khuyên
+chỉ cần học thật kĩ từ vựng từ đầu đến ETS 2020 là đủ.
+
++ Vì file PDF không đi kèm phát âm, nên mình khuyên các bạn sử dụng
+trang web: https://notevibes.com/. Nó chuyển văn bản thành giọng nói, điều
+chỉnh được nhiều loại giọng.
+
++ Mình đã chuyển tài liệu sang Quizlet để học tiện dụng hơn. Bạn có thể
+tham khảo theo link: https://quizlet.com/vn/558344289/tu-vung-toeic-part-2-
+flash-cards/. Trên Quizlet mình sẽ tiếp tục cập nhật bộ từ vựng này.
+
++ Tài liệu vẫn còn nhiều thiếu sót nhưng chắc chắn khi bạn học xong bộ từ
+vựng này, bạn kiểm tra transcripts sẽ thấy có rất ít từ vựng mới. Từ vựng không
+chỉ hữu dụng trong part 2 mà còn hữu dụng với cả part 3,4 hay phần reading
+nữa.
++ Trong quá trình học nếu bạn có thắc mắc hay vấn đề gì, có thể nhắn tin cho
+mình qua facebook. Chúc các bạn học tập vui vẻ! (Ngoài ra đây là tài liệu
+mình dành tặng Toeic Practice Club nên vui lòng không mua bán)
+
+
+
+
+ Dương Đức Hiệp - Toeic Practice Club
+1.Từ vựng cơ bản
+
+ 1    Secretary / President / Manager / Assistant               Thư kí/ Chủ tịch /Quản lý/
+      [ˈsekrəteri] / [ˈprezɪdənt] / [ˈmænɪdʒər] / [əˈsɪstənt]   Trợ lý
+ 2    Accountant / Receptionist / Director                      Kế toán / Lễ tân / Giám đốc
+      ( [əˈkaʊntənt] / [rɪˈsepʃənɪst] / [daɪˈrektə(r)] )
+ 3    ( + Human resources department                            + Phòng nhân sự
+      [ˈhjuːmən] [rɪˈsɔːrs]                                     + Phòng kế toán
+      + Accounting office                                       + Phòng bán hàng
+                                                                + Phòng bảo trì
+      + Accounting department
+      + Sales department
+      + Maintenance department
+      [ˈmeɪntənəns] )
+ 4    + Technology department                                   + Phòng công nghệ
+      [tekˈnɑːlədʒi]                                            + Phòng giao hàng
+      + Shiping department                                      + Phòng marketing
+                                                                + Dịch vụ khách hàng
+      + Marketing department
+                                                                + Phòng quảng cáo/
+      + Customer service                                        + Phòng nghiên cứu và phát
+      + Advertising department                                  triển
+      [ˈædvərtaɪzɪŋ] /a/
+      + R & D department
+ 5    When / What time                                          Khi nào / Mấy giờ (hỏi mốc
+                                                                thời gian)
+ 6    As soon as / After / Till / Until                         Ngay sau khi / Sau khi /
+                                                                Cho đến khi
+ 7    How many/ much                                            Hỏi số lượng/ giá cả
+ 8    at least / roughly / about                                ít nhất / khoảng chừng /
+                                                                khoảng
+ 9    How long                                                  Hỏi khoảng thời gian / Độ
+                                                                dài
+ 10   About/ for + khoảng thời gian                             Trả lời how long
+      Approximately                                             Xấp xỉ
+      More than                                                 Nhiều hơn
+                                                                ít hơn
+      Less than
+ 11   How often                                                 Hỏi tần suất
+ 12   Once, Twice, Three                                        Một lần, hai lần, 3 lần
+ 13   Price / Charge / Fare / Fee / Cost                        Tiền / Phí
+ 14   What do you think of/ about                               Bạn nghĩ gì về
+ 15   What’s the weather                                        Mưa, gió, nắng, ẩm ướt
+      Rainy / Cloudy / Sunny / Humid
+
+
+Dương Đức Hiệp - Toeic Practice Club
+ 16   What’s the problem with                                 Có vấn đề gì với
+      What’s wrong with                                       Có gì sai với
+      What’s matter                                           Có vấn đề gì
+                                                              Có vấn đề gì xảy ra với
+      What happened to
+ 17   Hỏi bằng                                                Trả lời bằng Yes / No + trợ
+      + Am/ Is/ Are hoặc Was/ Were                            động từ / thêm thông tin
+      + Do, Does, Did
+      + Have, Has, Had
+ 18   Can you, Could you, Would you, Will you                Dùng đề nghị, Bạn có thể
+                                                             làm gì đó không
+ 19   Yes / sure / certainly / no problem / I’d be delighted Được, chắc chắn rồi, không
+      / I’d glad, happy to                                   vấn đề, tôi rất vui, rất sẵn
+                                                             lòng
+ 20   Would you like (to) …or….?                             Bạn thích cái này … hay cái
+      Would you prefer (to)..or…?                            kia
+ 21   Either / It depends on you / it’s up to you / what      Một trong hai / Tùy bạn /
+      ever / It’s doesn’t matter to me / either way is fine   Cái nào cũng được / Không
+      with me                                                 vấn đề gì với tôi / Với tôi
+                                                              cái nào cũng được
+ 22   That would be good/ fine/ nice/ great                   Cái đó được đấy
+ 23   Let’s, What about, How about, Why not/ Why              Cái này thì thế nào, Tại sao
+      don’t                                                   không, Tại sao không làm
+                                                              cái này. Dùng để đề nghị,
+                                                              gợi ý
+ 24   Sure/ Okay, that’s a good idea, that sounds good        Được, ý tưởng hay đấy,
+                                                              nghe được đấy
+                                                              (Dùng để đồng ý khi hỏi đề
+                                                              nghị)
+ 25   No/ No thanks, Sorry, Unfortunately                     Không, không xin lỗi,
+                                                              không may
+                                                              (Dùng để từ chối)
+ 26   Could/Can I, Would/ Could/ Will/ Can you,               Câu yêu cầu
+      Would/ Do you mind, Would/ Do you mind if
+ 27   Sure, No problem, Help yourself, I’d be happy to,       Dùng để đồng ý khi nghe
+      Be my guest                                             câu yêu cầu
+ 28   No/ No thanks, Sorry                                    Dùng để từ chối khi nghe
+                                                              yêu cầu
+
+
+
+
+Dương Đức Hiệp - Toeic Practice Club
+2. ETS 2018
+
+ 1     Coffee / Copies                                       Cà phê, bản copy
+       [ˈkɔːfi] / [ˈkɔːpi]
+ 2     That’d be great                                       Thật là tốt
+       [ɡreɪt]
+ 3     Schedule for / Reschedule / Behind schedule           Lên lịch trình cho / Rời
+       [ˈskedʒuːl]                                           lịch / Chậm tiến độ
+ 4     The conference / Exhibit /                            Hội thảo/ Triển lãm
+        [ˈkɑːnfərəns] / [ɪɡˈzɪbɪt] /
+ 5     Who did you ‘Contact’                                 Liên lạc
+        [ˈkɑːntækt]
+ 6     Business loan                                         Khoản cho vay
+        ['biznis] [loʊn]
+ 7     Safety inspector                                      Thanh tra sự an toàn
+        [ˈseɪfti] [ɪnˈspektər]
+ 8     Monday ‘At the latest’                                Muộn nhất là
+        [ˈleɪtɪst]
+ 9     On the floor / On the ‘third floor’ / Upstairs        Trên sàn / Trên tầng 3/
+        [flɔːr]                              [ˌʌpˈsterz]     Trên tầng
+ 10    Membership fee                                        Phí thành viên
+ 11    Fitness center                                        Trung tâm thể hình
+        ['fitnis]
+ 12    Highly recommend                                      Được đề nghị
+        [ˌrekəˈmend]
+ 13    Store my luggage                                      Cất hành lý
+        [stɔːr] [ˈlʌɡɪdʒ]
+ 14    Service desk                                          Bàn dịch vụ
+ 15    Manage the production line                            Quản lý dây chuyền sản
+        [ˈmænɪdʒ] /a/                                        xuất
+ 16    The Warehouse                                         Nhà kho
+        [ˈwerhaʊs]
+ 17    The bridge                                            Cây cầu
+        [brɪdʒ]
+ 18    Repair                                                Sửa chữa
+        [rɪˈper]
+ 19    Difficult decision / Decide (v)                       Quyết định khó khăn /
+        [ˈdɪfɪkəlt] [dɪˈsɪʒn]                                Quyết định
+ 20    Printer / Ink Cartridge / Suppy room / Publisher      Máy in / Nhà xuất bản
+       [ˈprɪntər] / [ɪŋk] [ˈkɑːrtrɪdʒ] /     / [ˈpʌblɪʃər]
+ 21    Contest                                               Cuộc thi
+        [ˈkɑːntest]
+
+
+Dương Đức Hiệp - Toeic Practice Club
+ 22    Instruction / Direction / Complicated               Tài liệu hướng dẫn / Sự
+        [ɪnˈstrʌkʃn] / [dɪˈrekʃn] / [ˈkɑːm plɪ keɪ tɪd]    chỉ đường / Phức tạp
+ 23    Job Candidate / Position / Interview                Ứng cử viên / Vị trí
+        [ˈkændɪdət] / [pəˈzɪʃn]
+ 24    Install / The updated software / Software Program   Cài đặt / Phần mềm
+        [ɪnˈstɔːl] [ˈsɔːftwer]
+ 25    Give sb a ride                                      Cho ai đó nhờ
+ 26    An extra fee                                        Một khoản phí thêm vào
+        [ˈekstrə]
+ 27    ‘Set up’ the ‘projector’                            Cài đặt máy chiếu
+        [prəˈdʒektər]
+ 28    Event planner / The banquet                         Người lên kế hoạch sự kiện
+                          [ˈbæŋkwɪt]                       / Buổi tiệc
+ 29    The ‘budget report’ / The ‘Financial report’        Báo cáo ngân sách / tài
+        [ˈbʌdʒɪt]                                          chính
+ 30    Supposed to / Be Rain / Probably                    Được cho là / sắp mưa
+        [səˈpoʊzd] / [ˈprɑːbəbli]
+ Test
+ 2
+ 1    The flight / Arrive / The airport                    Chuyến bay / Đến / sân
+       [flaɪt] / [əˈraɪv] / [ˈerpɔːrt]                     bay
+ 2    ‘Because of ’the ‘weather’ / Weather forecast        Bởi vì / Thời tiết / Dự báo
+       [bɪˈkʌz [ʌv ] / [ˈweðər] [ˈfɔːrkæst] /a/            thời tiết
+ 3    The brochure / Manual / Handbook/ Flyer              Cuốn sách nhỏ / Cuốn sách
+      [broʊˈʃʊr] / [ˈmæ njuəl] / [ˈflaɪər]                 hướng dẫn / Tờ rơi
+ 4    Who ‘Be in charge of’                                Ai là người chịu trách
+                    [tʃɑːdʒ]                               nhiệm cho
+ 5    Employees’s work shift                               Ca làm việc của nhân viên
+      [ɪmˈplɔɪ iː]         [ʃɪft]
+ 6    ‘Juice’ or ‘Water’                                   Nước hoa quả / Nước lọc
+       [dʒuːs] / [ˈwɑːtər]
+ 7    Order / Office supplies / Cleaning supplies /        Đặt hàng / Đồ dùng văn
+      Paper supplies / Supply                              phòng / Đồ làm sạch / Đồ
+                         [səˈplaɪ]                         cung cấp
+ 8    The ‘Catalog’                                        Cuốn catalog
+             [ˈkætəlɔːɡ]
+ 9    The ‘Project deadline’ / ‘ Due’                      Hạn chót của dự án / Hết
+                      [ˈdedlaɪn] / [duː]                   hạn
+ 10   Find the ‘Sunglasses’                                Tìm kính râm
+       [faɪnd] [ˈsʌnɡlæsɪz]
+ 11   Reservation / Reserve                                Sự đặt bàn, đặt phòng
+       [ˌrezərˈveɪʃn] / [rɪˈzɜːv]
+
+
+Dương Đức Hiệp - Toeic Practice Club
+ 12    Take place                                          Diễn ra
+ 13    The ‘Sculpture Gallery’                             Triển lãm tượng
+        [ˈskʌlptʃər] (đọc gần giống ‘Scóp chờ’)
+        [ˈɡæləri] /a/
+ 14    The local ‘Artist’                                  Nghệ sĩ
+        [ˈɑːrtɪst]
+ 15    ‘Travel’ to China / Travel Agency                   Đi công tác / Đại lý du lịch
+                                    [ˈeɪdʒənsi]
+ 16    Pick up / Pick sb up / Deliver                      Đón, nhận / Chuyển
+ 17    The ‘Invitation’ / Sent out                         Lời mời / Gửi đi
+        [ˌɪn vɪˈteɪʃn]
+ 18    Attend / Meeting / Awards ceremony                  Tham dự / Cuộc họp / Lễ
+        [əˈtend]            [əˈwɔːrd] [ˈse rə moʊ ni]      trao thưởng
+ 19    Headquarters / London ‘Branch Office’               Trụ sở chính / Chi nhánh
+       [ˈhed kwɔːr tərz]          [bræntʃ]
+ 20    Delay / Postpone / Cancel                           Chậm trễ / Trì hoãn /Hủy
+       [dɪˈleɪ] / [poʊˈspoʊn] / [ˈkænsl]
+ 21    The ‘Intern’ / The ‘Project’                        Thực tập sinh / Dự án
+        [ɪnˈtɜːrn] / [ˈprɑːdʒekt]
+ 22    ‘Openings’ on your company                          Vị trí trống
+       The ‘Grand Opening’                                 Lễ khai trương
+
+ 23    Fill out / Fill in ‘Application’                    Điền vào đơn (xin việc)
+       [fɪl]               [ˌæp lɪˈkeɪ ʃn] /a/
+ 24    Discount / Coupon / 15% off / On sale               Giảm giá
+       [ˈdɪskaʊnt] / [ˈkuːpɑːn]
+ 25    A ‘Driver’s License’                                Bằng lái xe
+       [ˈlaɪsns]
+ 26    The ‘Lecture’ / Be held / Hold                      Bài giảng, được tổ chức
+                          [held]     [hoʊld]
+ Test
+ 3
+ 1    The ‘Client’ / ‘Patron’ / ‘Customer’ / ‘Shopper’ /   Khách hàng, người mua
+      ‘Guest’ / ‘Consumer’                                 hàng
+       [ˈklaɪənt] / [ˈpeɪtrən] / [ˈkʌstəmər] / [ɡest] /
+      [kənˈsuːmər]
+ 2    The ‘Front desk’ / ‘reception desk’                  Bàn lễ tân
+       [frʌnt]              [rɪˈsepʃn]
+ 3    The ‘Office furniture’                               Đồ nội thất văn phòng
+                    [ˈfɜːrnɪtʃər]
+ 4    ‘Recover’ the files                                  Phục hồi
+       [rɪˈkʌvər]
+
+
+Dương Đức Hiệp - Toeic Practice Club
+ 5     Restore / Repair / Fix / Renovate / Mend (v)               Sửa chữa, phục hồi
+        [rɪˈstɔːr] / [rɪˈper] / [ˈrenəveɪt] / [mend]
+ 6     Who will be leading / Lead                                 Lãnh đạo
+        [liːd]
+ 7     Training session                                           Buổi đào tạo
+ 8     Take + phương tiện giao thông                              Đi bằng phương tiện giao
+       Take the train/ Take a taxi                                thông gì
+ 9     Drop off                                                   Xe dừng tại điểm đón
+ 10    Factory / Production / Product / Umbrella                  Nhà máy / Việc sản xuất /
+        [ˈfæktəri] / [prəˈdʌkʃn] / [ʌmˈbrelə]                     Sản phẩm / Cái ô
+ 11    Be going to                                                Chuẩn bị diễn ra
+        It’s going to rain                                        (Chuẩn bị mưa)
+ 12    ‘Leave’ at four / Why did Marie ‘leave’ early ?            Rời đi
+        [liːv]
+ 13    Grocery / Groceries                                        Hàng tạp hóa
+        [ˈɡroʊ sə ri]
+ 14    The ‘Budget Proposal’                                      Bản đề xuất ngân sách
+                      [prəˈpoʊzl]
+ 15    Approve                                                    Chấp nhận
+        [əˈpruːv]
+ 16    ‘Shipment’ of ‘Running shoes’                              Việc giao hàng / giày
+        [ˈʃɪpmənt] / [ʃuː]
+ 17    Dinner / breakfast / Lunch / Hungry / Menu                 Bữa tối, bữa sáng, bữa trưa
+                  [ˈbrekfəst] / [lʌntʃ] / [ˈhʌŋɡri] / [ˈmenjuː]
+ 18    Vegetables / Vegetarian menu                               Rau củ / Thực đơn chay
+        [ˈvedʒ tə bl] / [ˌve dʒəˈte ri ən]
+ 19    Presentation / Present (v)                                 Buổi thuyết trình, trình bày
+        [ˌpre znˈteɪ ʃn] / [ˈpre znt]                             / trình bày (v)
+ 20    The ‘Advertisement’ / The ‘Ad’ / Commercial                Quảng cáo
+        [ˌæd vərˈtaɪz mənt] / [æd] / [kəˈmɜːrʃl]
+ 21    Result / Consequence                                       Kết quả
+        [rɪˈzʌlt] (Đọc gần giống ‘Rì sót’)
+        [ˈkɑːn sə kwens]
+ 22    Available                                                  + Với người: rảnh, trống
+       + Are you ‘Available’ this Friday?                         lịch
+       + When will membership cards be ‘Available’                + với vật: có sẵn, có thể
+                                                                  dùng được
+ Test
+ 4
+ 1    Workshop / Seminar                                          Hội thảo / Hội nghị
+      [ˈwɜːrk ʃɑːp] / [ˈsemɪnɑːr]
+ 2    Check in / Check out                                        Thủ tục nhận/ trả phòng
+
+
+Dương Đức Hiệp - Toeic Practice Club
+ 3     Cash / Check                                         Tiền mặt / Séc
+ 4     Caterer / Be catered                                 Người cung cấp đồ ăn, đồ
+        [ˈkeɪtərər]                                         uống cho 1 sự kiện
+ 5     Architecture firm / Architect / Designer             Công ty kiến trúc / Kiến
+        [ˈɑːr kɪ tek tʃər]                                  trúc sư / Người thiết kế
+ 6     Air-conditioning / Air-conditioner                   Điều hòa
+ 7     Retire                                               Về hưu
+       [rɪˈtaɪər]
+ 8     Career / Career Center                               Sự nghiệp / Trung tâm việc
+        [kəˈrɪr]                                            làm
+ 9     Reimburse / Travel expenses                          Hoàn lại tiền / Chi tiêu
+       [ˌriːɪmˈbɜːrs] / [ɪkˈspens]                          công tác
+ Test
+ 5
+ 1    New TV model be ‘Released’                            Phát hành
+      [rɪˈliːs]
+ 2    The ‘Post office’ / ‘Postage Stamps’                  Bưu điện / Tem bưu chính
+                        [ˈpoʊstɪdʒ] [stæmp]
+ 3    Graduate / Semester                                   Tốt nghiệp / Học kỳ
+      [ˈɡræ dʒu ət] / [sɪˈmestər]
+ 4    Dental appointment / Doctor / Dentist                 Cuộn hẹn với bác sĩ
+      [ˈdentl] [əˈpɔɪnt mənt] / [ˈdɑːktər] / [ˈdentɪst]
+
+ 5     Cafeteria / Outside / Patio                          Nhà ăn / Bên ngoài / Hiên
+       [ˌkæfəˈtɪriə] / [ˈpætioʊ]
+ 6     Technical assistance / Technician                    Kỹ thuật viên
+       [ˈtek nɪ kl]     /     [tekˈnɪʃn]
+ 7     Depend on / Depending on                             Phụ thuộc vào
+       [dɪˈpend]
+ 8     The ‘station’ / ‘transportation’                     Nhà ga / Sự vận chuyển
+       [ˈsteɪʃn] / [ˌtræns pɔːrˈ teɪ ʃn]
+ 9     The speech / Keynote speaker / Informative/ Useful   Bài phát biểu / Người phát
+       [spiːtʃ] / [ɪnˈfɔːr mə ɪv]                           biểu chính / Hữu ích
+
+
+
+
+Dương Đức Hiệp - Toeic Practice Club
+3. ETS 2019
+
+ Test
+ 1
+ 1      Buy / Purchase                               Mua
+             [ˈpɜːr tʃəs]
+ 2      Front entrance / gate                        Cổng trước
+              [ˈentrəns]
+ 3      The ‘Merger negotiation’                     Việc đàm phán sáp nhập
+        [ˈmɜːr dʒər] [nɪˌɡoʊ ʃiˈeɪ ʃn]
+ 4      The ‘Assignment’ / ‘Permission’              Nhiệm vụ / Sự cho phép
+        [əˈsaɪn mənt] / [pərˈmɪʃn]
+ 5      Younger ‘Audience’                           Khán giả
+        [ˈɔːdiəns]
+ 6      The ‘Bill’ / ‘Receipt’ / Invoice             Hóa đơn, khoản thanh toán
+        /Payment /
+                      [rɪˈsiːt] / [ˈɪnvɔɪs]
+ 7      Register / Registration / Sign up (v)        Đăng ký
+ Test
+ 2
+ 1      The ‘Rent’ / The ‘Apartment complex          Tiền thuê / Chung cư
+        [əˈpɑːrtmənt] [ˈkɑːmpleks]
+ 2      Discuss (v) / Panel discussion               Thảo luận (v) / 1 nhóm ng thảo luận
+                                                     1 chủ đề trước khán giả
+ 3      Update / Upgrade / Improve                   Cập nhật / Nâng cấp / Cải tiến
+        [ˌʌpˈdeɪt] / [ˌʌpˈɡreɪd] / [ɪmˈpruːv]
+ 4      The public ‘Policy’                          Chính sách / công khai (cộng đồng)
+        [ˈpʌblɪk] / [ˈpɑːləsi]
+ 5      Paper clips                                  Kẹp giấy / áo len
+ 6      Dressing room / Be Occupied / Sweater        Phòng thay đồ / đang có người dùng /
+                          [ˈɑːkjupaɪd] / [ˈswetər]   áo len
+ 7      Put on/ Take off                             Mặc vào/ cởi ra
+        Turn on/ Turn off / Shut down                Bật lên/ Tắt đi
+        Pick up/ Pick down                           Nhặt lên/ Đặt xuống
+ Test
+ 3
+ 1      Charity Concert / Ticket                     Buổi hòa nhạc từ thiện / Vé
+        [ˈtʃærəti] / [ˈkɑːnsərt] / [ˈtɪkɪt]
+ 2      Contract / Agreement                         Hợp đồng
+        [ˈkɑːntrækt]
+ 3      Be responsible for                           Chịu trách nhiệm cho
+        [rɪˈspɑːnsəbl]
+ 4      Book (v) / Reserve (v)                       Đặt phòng, đặt bàn, đặt vé máy bay
+
+
+
+Dương Đức Hiệp - Toeic Practice Club
+ 5      Arrangement                                 Sự sắp xếp
+         [əˈreɪndʒmənt]
+ 6      Salary / earnings / income                  Tiền lương
+        [ˈsæləri] / [ˈɜːrnɪŋz]
+ 7      Vacation policy / Flexible                  Chính sách kỳ nghỉ / Sự linh hoạt
+                            [ˈfleksəbl]
+ 8      Supermarket / Market Data [ˈdeɪtə] /        Siêu thị / Dữ liệu thị trường / Báo
+        Marketing Report                            cáo marketing
+ Test
+ 4
+ 1      Location / Corner / Historic District       Vị trí / Góc đường / Khu vực lịch sử
+        [loʊˈkeɪʃn] / [ˈkɔːrnər] / [hɪˈstɑːrɪk]
+ 2      Annual / Quarter / Fund-raising banquet     Hằng năm, hằng quý, bữa tiệc huy
+        [ˈænjuəl] / [ˈkwɔːrtər] / [ˈbæŋkwɪt]        động vốn
+ 3      Handle / Client’s ‘Complaint’               Giải quyết / Phàn nàn
+        [ˈhændl] / [kəmˈpleɪnt]
+ 4      Still under ‘Warranty’                      Còn Bảo hành
+        [ˈwɔːrənti]
+ 5      Present the ‘Proposal’                      Trình bày ‘bản đề xuất’
+                     [prəˈpoʊzl]
+ 6      The ‘Competition’                           Cuộc thi đấu
+        [ˌkɑːmpəˈtɪʃn]
+ 7      The bus ‘terminal’/ ‘stop’                  Cổng/ điểm đón xe bus
+        [ˈtɜːrmɪnl]
+ Test
+ 5
+ 1      Hiring ‘Decision’                           Quyết định tuyển dụng
+               [dɪˈsɪʒn]
+ 2      A Sporting ‘Event’                          Sự kiện thể thao
+                     [ɪˈvent
+ 3      Request the ‘Transfer’                      Yêu cầu / Sự chuyển (vị trí làm việc,
+        [rɪˈkwest] / [trænsˈfɜːr]                   công việc, nghề)
+ 4      ‘Real estate’ contract / Sign (v)           Hợp đồng ‘Bất động sản’ / kí
+        /ˈriː.əl ɪˌsteɪt/
+ 5      Kitchen ‘Appliances’ / ‘Refrigerator’       Dụng cụ nhà bếp / Tủ lạnh
+                 [əˈplaɪəns] [rɪˈfrɪ dʒə reɪ tər]
+ 6      The sale ‘Figures’                          Con số bán hàng
+               [ˈfɪɡjər]
+ 7      Scarf / Jacket / Sweater                    Khăn quàng cổ / áo khoác / áo len
+        [skɑːrf] / [ˈdʒækɪt] / [ˈswetər]
+ 8      ‘Plenty of’ rooms                           Còn nhiều phòng
+        [ˈplenti]
+
+
+Dương Đức Hiệp - Toeic Practice Club
+ 9      Stop by / Get on / Get off                   Ghé qua / Lên phương tiện / Xuống
+ Test
+ 6
+ 1      A Generous Donation                          Sự quyên góp hào phóng
+        [ˈdʒenərəs] / [doʊˈneɪʃn]
+ 2      Job fair                                     Hội chợ việc làm
+            [fer]
+ 3      Checking the ‘Inventory’                     Kiểm tra hàng tồn kho
+                       [ˈɪnvəntɔːri]
+ 4      Suitcase / Luggage / Bags                    Va li / Hành lý / Túi
+        [ˈsjuːtkeɪs] / [ˈlʌɡɪdʒ] / [bæɡ]
+ 5      Change / Password / System                   Thay đổi / Mật khẩu / Hệ thống
+        [tʃeɪndʒ] / [ˈpæswɜːrd / [ˈsɪstəm]
+ 6      Lawyer / Law firm / Courthouse               Luật sư / Công ty luật / Tòa án
+        [ˈlɔːjər] / [lɔː] [fɜːrm] / [ˈkɔːrthaʊs]
+ Test
+ 7
+ 1      Offical ‘Stationery’                         Đồ dùng văn phòng
+        [ˈsteɪʃəneri]
+ 2      The ‘Film’/’Cinema’/’Award-winning           Phim / Rạp Chiếu phim / Đạo diễn
+        movie director’                              bộ phim chiến thắng giải thưởng
+        [fɪlm] / ˈsɪnəmə] / [əˈwɔːrd] [daɪˈrektər]
+ 3      Machine / Mechanic                           Máy móc / Thợ máy
+        [məˈʃiːn] / [məˈke nɪk]
+ 4      ‘Reasonable’ rate                            Mức giá phải chăng
+        [ˈriːznəbl]
+ 5      Improving ‘Efficiency’                       Hiệu quả
+        [ɪˈfɪʃnsi]
+ 6      Fitness Club / Exercise                      Trung tâm thể hình / Bài tập thể dục
+        ['fitnis] / [ˈeksərsaɪz]
+ Test
+ 8
+ 1      A ‘guided tour’                              Chuyến du lịch có hướng dẫn
+        [ˈɡaɪdɪd] [tɔː(r)]
+ 2      A ‘Rental Property’                          Bất động sản cho thuê
+        [ˈrentl] [ˈprɑːpərti]
+ 3      Elevator / Maintenance Crew                  Thang máy/ Đội bảo trì
+        [ˈelɪveɪtər] / [ˈmeɪntənəns] [kruː]
+ Test
+ 9
+ 1      Safety regulations/ safety checklist         Quy định an toàn/ Danh sách kiểm
+        [ˈseɪfti] [ˌreɡjuˈleɪʃn] /  [ˈtʃeklɪst]      tra an toàn
+
+
+Dương Đức Hiệp - Toeic Practice Club
+ 2      Boxes / Storage room                       Những cái hộp / Nhà kho
+        [boksɪz] / [ˈstɔːrɪdʒ]
+ 3      Trade Show (Fair)                          Hội chợ thương mại
+        [treɪd] [ʃoʊ] / [fer]
+ 4      Stapler / Pencil / Scanner / Materials /   Cái gim/ Bút chì/ Máy scan /Tài liệu
+        Cabinet                                    / Tủ tài liệu
+        [ˈsteɪplər] / [ˈpensl] / [ˈskænər] /
+        [məˈtɪriəl] / [ˈkæbɪnət]
+ 5      Charge / Mobile phone / Plug it in         Sạc/ Điện thoại / Cắm nó vào
+        [tʃɑːrdʒ]                   [plʌɡ]
+ 6      Signature                                  Chữ kí
+        [ˈsɪɡnətʃər]
+
+
+
+
+Dương Đức Hiệp - Toeic Practice Club
+4. ETS 2020
+ Test1
+ 1     The ‘Patient’/ Clinic                     Bệnh nhân / Phòng khám
+        [ˈpeɪʃnt] / [ˈklɪnɪk]
+ 2     Organize (v)/ Organization (N)            Tổ chức (v) (N)
+        [ˈɔːrɡənaɪz] / [ˌɔːrɡənəˈzeɪʃn]
+ 3     Dessert / Delicious                       Món ngọt tráng miệng / Ngon
+        [dɪˈzɜːrt] / [dɪˈlɪʃəs]
+ 4     Wearing (v)/ Uniform                      Mặc / Đồng phục
+        [ˈwerɪŋ] / [ˈjuːnɪfɔːrm]
+ 5     Display / Data / Chart / Graph            Trình bày / Dữ liệu / Biểu đồ / Đồ thị
+                          [tʃɑːrt] / [ɡrɑːf]
+ 6     Quality-control/ Inspect / Factory        Kiểm soát chất lượng / kiểm tra / Nhà
+        [ˈkwɑːləti] [kənˈtroʊl] / [ˈfæktəri]     máy
+ Test
+ 2
+ 1     Retirement / Retire / Tires               Nghỉ hưu / Lốp xe
+        [rɪˈtaɪərmənt] / [rɪˈtaɪər] / [ˈtaɪər]
+ 2     Gloves / Laboratory / Test result         Găng tay / phòng thì nghiệm / Kqua
+        [ɡlʌv] / [ˈlæbrətɔːri] / [rɪˈzʌlt]       ktra
+ 3     Itinerary /                               Kế hoạch cho 1 cuộc hành trình /
+       [aɪˈtɪnəreri]
+ Test
+ 3
+ 1     Exhibit (v) / Art Gallery                 Triển lãm (v) / Nơi trưng bày tác phẩm
+         [ɪɡˈzɪbɪt] / [ˈɡæləri]                  nghệ thuật
+ 2     The ‘Library’                             Thư viện
+        [ˈlaɪbreri]
+ 3     ‘I’m afraid’                              Tôi lo rằng
+        [əˈfreɪd]
+ 4     Photography / Photograph /                Nghề nhiếp ảnh/ bức ảnh/
+       Photographer
+       [fəˈtɑːɡrəfi] / [ˈfoʊtəɡræf] /
+       [fəˈtɑːɡrəfər]
+ Test
+ 4
+ 1     Orientation / Career / Employment         Buổi định hướng / Sự nghiệp / Việc làm
+        [ˌɔːriənˈteɪʃn] / [kəˈrɪə(r)]
+ 2     Brand of sth / Branch / Headquarters      Nhãn hàng / Chi nhánh / Trụ sở
+       [brænd] (e) / [bræntʃ] (e) /
+       [ˈhedkwɔːrtərz]
+ Test
+ 5
+
+
+Dương Đức Hiệp - Toeic Practice Club
+ 1      Come up with                           Nghĩ ra
+ 2      Reference / Referral                   Tài liệu tham khảo / Sự giới thiệu
+         [ˈrefrəns]
+ 3      Pharmacy / Medicine / A pain-killing   Nhà thuốc / Thuốc / Thuốc giảm đau /
+        ‘Drug’ / Prescription                  Đơn thuốc
+         [ˈfɑːrməsi] / [ˈmedɪsn] / [drʌɡ] /
+        [prɪˈskrɪpʃn]
+ 4      Break room                             Phòng nghỉ
+         [breɪk]
+ Test
+ 6
+ 1      Enjoy / Your ‘Stay’                    Tận hưởng / Việc ở lại đâu đó (ở tại
+        [ɪnˈdʒɔɪ] / [steɪ]                     khách sạn)
+ 2      Electronic / Batteries                 Điện tử / Pin
+        [ɪˌlekˈtrɑːnɪk] / [ˈbætəri]
+ Test
+ 7
+ 1      Zoo / Wild Animals                     Sở thú / Động vật hoang dã
+        [zuː] / [waɪld] [ˈænɪml]
+ 2      A variety of sth                       Đa dạng, nhiều gì đó
+        [vəˈraɪəti]
+ 3      Prototype                              Nguyên mẫu
+        [ˈproʊtətaɪp]
+ 4      Modify / Timeline                      Chỉnh sửa / Dòng thời gian
+        [ˈmɑːdɪfaɪ] / [ˈtaɪmlaɪn]
+ Test
+ 8
+ Test
+ 9
+ 1      Tenants                                Người thuê nhà
+        [ˈtenənt]
+ 2      Social media                           Mạng xã hội
+        [ˈsoʊʃl] [ˈmiːdiə]
+ 3      Loading dock / Crates / Stockroom      Logistics / Thùng đựng hàng hóa / Kho
+        [kreɪt] / [ˈstokrʊm]                   hàng
+ Test
+ 10
+ 1      Subscription / Front cover             Việc đăng kí báo / Trang bìa
+        [səbˈskrɪpʃn] / [frʌnt] [ˈkʌvər]
+ 2      Downtown / Countryside                 Khu vực mua bán trung tâm / Nông
+         [ˌdaʊnˈtaʊn] / [ˈkʌntrisaɪd]          thôn
+
+
+
+Dương Đức Hiệp - Toeic Practice Club
+ 3      Accommodation / Vacancy         Chỗ ở / Phòng trống
+        [əˌkɑːməˈdeɪʃn] / [ˈveɪkənsi]
+
+
+
+
+Dương Đức Hiệp - Toeic Practice Club
+5. Hacker 2
+
+ Test 1
+ 1        A sedan / Van / Large Vehicle            Xe 4 chỗ / xe tải / xe cộ (ô tô)
+          [sɪˈdæn] / [væn] / [lɑːrdʒ] [ˈviːhikl]
+ 2        Restock the shelves                      Bổ sung hàng cho các kệ hàng
+          [,ri:'stɔk] / [ʃelvz]
+ 3        Resume / Cover letter                    Sơ yếu lý lịch / Thư xin việc
+          [rɪˈzuːm] / [ˈkʌvər]
+ 4        Charity Luncheon                         Bữa trưa từ thiện
+          [ˈtʃæ rə ti] [ˈlʌntʃən]
+ 5        Generous donation / Donors               Quyên góp hào phóng / người quyên
+          [ˈdʒe nə rəs] [doʊˈneɪ ʃn] / [ˈdoʊnər]   góp
+ 6        Recall vehicle / Faulty brakes           Thu hồi / Phanh bị lỗi
+          [rɪˈkɔːl] / [ˈfɔːlti] [breɪk]
+ 7        Business strategies                      Chiến lược kinh doanh
+          ['biznis] [ˈstræ tə dʒi]
+ Test 2
+ 1        Proofread the documents                  Đọc và chỉnh sửa lại lỗi sai của tài
+          [ˈpruːfriːd] ['dɔ kju mənt]              liệu
+ 2        Board chairman / Bulletin board          Chủ tịch hội đồng quản trị / bảng
+          [bɔːrd] [ˈtʃermən] / [ˈbʊlətɪn]          thông báo
+ 3        Advertising Methods                      Phương pháp quảng cáo
+          [ˈmeθəd]
+ 4        Pamphlet / Envelopes                     Sách mỏng / Phong bì
+          [ˈpæmflət] / [ˈenvəloʊp]
+ Test 3
+ 1        Email the ‘Analysis’ to me               Gửi bản phân tích
+          [əˈnæ lə sɪs] /a/
+ 2        The ‘press conference’ going to get      ‘Buổi họp báo’ chuẩn bị ‘được tiến
+          ‘Underway’ [ˌʌndərˈweɪ]                  hành’
+ 3        The topic is very ‘Appealing’            Chủ đề rất thu hút (lôi cuốn)
+          [əˈpiːlɪŋ]
+ 4        I’m ‘Curious’ about sth                  Tôi tò mò về cái gì
+          ['kjuriəs]
+ Test 4
+ 1        Are you looking to buy ‘car              Bảo hiểm ô tô
+          insurance’ [ɪnˈʃɔːrəns]
+ Test 5
+ 1        When to you expect to begin ‘Staff       Đánh giá nhân viên
+          Evaluations’ [ɪˌvæ ljuˈeɪ ʃn]
+ 2        Dishes must be ‘rinsed off’              Đĩa phải được rửa sạch
+          [rɪns]
+
+
+
+Dương Đức Hiệp - Toeic Practice Club
+ 3        Ferry departs from the pier              Phà khởi hành từ bến tàu
+          [ˈferi] [dɪˈpɑːrt] pier
+ Test 6
+ 1        What ‘Assignment’ were you given? Nhiệm vụ
+          [əˈsaɪnmənt]
+ 2        It takes less time if we sent the letters Chuyển phát nhanh
+          by ‘Courier’ [ˈkʊriər] /ơ/
+ Test 7
+ 1        It’s ‘underneath’ that tree              Bên dưới
+          [ˌʌndərˈniːθ]
+ 2        Suitcases supposed to be stored in       Cái ngăn đựng đồ trên cao của xe lửa,
+          ‘overhead compartments’?                 máy bay
+          [ˌoʊvərˈhed] [kəmˈpɑːrtmənt]
+ 3        That’s ‘A great incentive’ for           Một sự khuyến khích (động viên) lớn
+          workers. [ɪnˈsentɪv]                     cho nhân viên
+ 4        No, that’s just ‘a rumor’                Không, đó chỉ là ‘Một lời đồn’
+          [ˈruːmər]
+ 5        ‘Fountain pen’ is sitting on the front   Cái bút máy (bút bơm mực) / Đài
+          desk? [ˈfaʊntn] / Fountain               phun nước
+ Test 8
+ 1        When our ‘Rehearsal’ is supposed to      Việc tập diễn (vở kịch, bài múa)
+          begin? [rɪˈhɜːrsl]
+ 2        What did the ‘Realtor’ say about the     ‘Môi giới nhà đất’ nói gì về ‘Chung
+          ‘Condominium’                            cư’
+          [ˈrɪəl.tə r ] / ['kɔndə'miniəm]
+ Test 9
+ 1        Only under ‘Certain Circumstances’       Những điều kiện cụ thể
+          [ˈsɜːrtn] [ˈsɜːkəmstənsiz]
+ Test
+ 10
+ 1        Vacation Destination                     Điểm đến du lịch
+          [ˌdestɪˈneɪʃn]
+ 2        When will the ‘Acquisition’ be           Việc công ty này mua lại công ty khác
+          announced? [ækwɪˈzɪʃn]
+ 3        The ‘Merger’ was very ‘profitable’       ‘Việc sáp nhập’ thì rất ‘Có lợi’
+          [ˈmɜːrdʒər] / ['prɔfitəbl]
+ 4        Enjoy the ‘Gathering’ last nigh          Việc tụ tập
+          [ˈɡæðərɪŋ]
+ 5        he has been ‘Coughing’ all day           Anh ấy đã ‘Ho’ cả ngày nay
+          [ˈkɔːfɪŋ]
+
+
+
+
+Dương Đức Hiệp - Toeic Practice Club
+ 6        A customer ‘Accidentally’ left her   Một khách hàng đã ‘Vô tình’ để quên
+          ‘Purse’ at the register              ‘Ví tiền’ tại quầy đăng kí
+          [ˌæksɪˈdentəli] / [pɜːrs]
+ 7        This is her ‘favorite boutique’      Đây là ‘Cửa hàng bán quần áo ưa
+          [ˈfeɪvərɪt] [buːˈtiːk]               thích’
+
+
+
+
+Dương Đức Hiệp - Toeic Practice Club
+6. Hacker 3
+
+ Test 1
+ 1        The ‘Annual Shareholder’ Report              Báo cáo ‘Cổ đông hằng năm’
+          [ˈænjuəl] [ˈʃer hoʊl dər]
+ 2        ‘Sign on/ Sign up’ for a ‘Course’            ‘Đăng kí’ một ‘Khóa học’
+          [sign up] / [kɔːrs] / [ɪnˈroʊl]
+ 3        ‘Enroll’ at the ‘College’?/ Enrollment       Đăng kí vào trường cao đẳng (enroll
+          [ɪnˈroʊl] / [ˈkɑːlɪdʒ] / [ɪnˈroʊlmənt]       là đăng kí học)
+ 4        Restroom / Towel / Swimsuit                  Nhà vệ sinh / Khăn tắm / Đồ bơi
+          [ˈrestruːm] / [ˈtaʊəl] / [ˈswɪmsjuːt]
+ 5        The ‘Wireless keyboard’                      Bàn phím không dây
+          ['waiəlis] [ˈkiːbɔːrd]
+ 6        There’s a ‘Power Outlet’ over there          Có một cái ‘Ổ cắm điện’ đằng kia
+          ['pauə] [ˈaʊtlet]
+ 7        ‘Scan’ all of these ‘Images’                 Scan tất cả những hình ảnh
+          [skæn] /e/ / [ˈɪmɪdʒ]
+ 8        Tuition / College ‘Faculty’ and              Học phí / Giảng viên / Người quản
+          ‘Administrators’                             lý
+          [tjuˈɪʃn] / ['fækəlti] / [ədˈmɪnɪstreɪtər]
+ 9        We’ve ‘Concluded that’                       Chúng tôi ‘kết luận rằng’
+          [kənˈkluːd]
+ 10       Maria ‘Intends to’ ‘Redecorate’ her          Maria ‘Định’ ‘Trang trí lại’ phòng
+          living room                                  khách của cô ấy.
+          [ɪnˈtend] / [ˌriːˈde kə reɪt]                Intend to V: dự định làm gì
+ 11       The road was just ‘Repaved’                  Con đường vừa được lát lại
+          [riː peɪv]
+ Test 2
+ 1        How did the meeting ‘Turn out’               Cuộc họp ‘Diễn ra’ thế nào.
+          [tɜːrn]                                      Turn out ~ Happen
+ 2        Sufficient / Adequate                        Đầy đủ
+          [səˈfɪʃnt] / ['æ di kwit]
+          Did you have ‘Sufficient’ time to do
+          the work?
+ 3        Plenty of / Ample Resources                  Nhiều, phong phú tài nguyên
+          [ˈplenti] / [ˈæmpl] /e/
+ 4        The Center ‘is Remodeled’                    Trung tâm được ‘Tu sửa lại’
+          [ri:' mɔ dl]
+
+
+
+
+Dương Đức Hiệp - Toeic Practice Club
+7. Toeic 10 Days 1000 (Quyển xanh cam)
+ Test 1
+ 1      Opinion / Certainly                         Ý kiến/ Chắc chắn rồi
+        [əˈpɪnjən] / [ˈsɜːrtnli]
+ 2      Symphony / Orchestra / Violin               Bản hòa âm / Dàn nhạc / Violin
+        [ˈsɪmfəni] / [ˈɔːrkɪstrə] / [ˌvaɪəˈlɪn]
+ 3      Qualification / Position                    Trình độ/ Vị trí
+        [ˌkwɑːlɪfɪˈkeɪʃn]/ [pəˈzɪʃn]
+ 4      Adjust / Engineer / Auditorium              Điều chỉnh / kĩ sư / Thính phòng
+        [əˈdʒʌst] / [endʒɪˈnɪr] / [ˌɔːdɪˈtɔːriəm]
+ 5      Recall / Items / Manufacturer               Thu hồi / Sản phẩm / Nhà sản xuất
+        [rɪˈkɔːl] / [ˈaɪtəm] / [ˌmænjuˈfæktʃərər]
+ 6      Advise (v) / Advisory meeting               Khuyên, cố vấn/ Buổi họp cố vấn
+        [ədˈvaɪz] / [ədˈvaɪzəri]
+ 7      Auto Mechanic                               Thợ máy ô tô
+        [məˈkænɪk] /a/
+ 8      Towels / Hotel room / Shuttle bus           Khăn tắm / Phòng khách sạn / Xe
+        [ˈtaʊəl] (“thao ồ”)/ [hoʊˈtel] / [ˈʃʌtl]    đưa đón
+ 9      Disappointed / Negotiation                  Thất vọng / Việc đàm phán
+        [ˌdɪsəˈpɔɪntɪd] / [nɪˌɡoʊʃiˈeɪʃn]
+ 10     In stock / Out of stock                     Còn hàng/ Hết hàng
+        [stɑːk]
+ Test 2
+ 1      Washing machine / Water-saving cycle        Máy giặt / tiết kiệm nước
+        [ˈwɑːʃɪŋ] [məˈʃiːn] / [ˈsaɪkl]
+ 2      A sample of Perfume / Cosmetic              Mẫu thử nước hoa / Mỹ phẩm
+        [ˈsɑːmpl] [pərˈfjuːm] / [kɔz'metik]
+ 3      Necklaces / Jewelry                         Vòng cổ / trang sức
+        [ˈnekləs] / [ˈdʒuːəlri]
+ 4      Carpool / Staff Retreat                     Đi chơi bằng xe / vacation ngắn cho
+        [ˈkɑːrpuːl] / [stæf] [rɪˈtriːt]             nhân viên
+ 5      Be Surprised at/by sth                      Ngạc nhiên về gì đó
+        [sərˈpraɪzd]
+ 6      Lawn mowers                                 Máy cắt cỏ
+        [lɔːn] [ˈmoʊər]
+ 7      Landlord / Proprietor                       Chủ nhà / Chủ sở hữu
+        [ˈlændlɔːrd] /a/ / [prəˈpraɪ ə tər]
+ Test 3
+ 1      Car Engine                                  Động cơ ô tô
+        [ˈendʒɪn]
+ 2      Handle this Contract / Assign (v)           Giải quyết hợp đồng / Phân công
+        [ˈhændl] /a/ / [əˈsaɪn]                     (nhiệm vụ, công việc)
+
+
+
+Dương Đức Hiệp - Toeic Practice Club
+ 3       Take the ‘Subway’ / Rush hour         Đi tàu điện ngầm / giờ cao điểm
+         [ˈsʌbweɪ] / [rʌʃ] [ˈaʊər]
+ 4       Bulk orders                           Đơn hàng lớn
+         [bʌlk]
+ 5       Errors / Revise it                    Lỗi / Xem xét lại
+         [ˈerər] / [rɪˈvaɪz]
+ Test 4
+ 1      ‘Mentoring’ program / the ‘Tutorial’   Chương trình cố vấn / Hướng dẫn
+        for                                    (gia sư) cho
+        [ˈmentɔːr] / [tuːˈtɔːriəl]
+ 2      ‘Reliable’ travel agency               Đại lý du lịch ‘đáng tin cậy’
+        [rɪˈlaɪəbl]
+ 3      Let me check my ‘Calendar’             Lịch
+        [ˈkælɪndər] /a/
+ 4      You need to ‘clear customs’ and        Bạn cần phải làm ‘thủ tục hải quan’
+        ‘immigration’                          và ‘nhập cư’
+        [ˌɪmɪˈɡreɪʃn]
+ Test 5
+ 1      Overseas ~ International               Nc ngoài
+        [ˌoʊvərˈsiːz] / [ˌɪntərˈnæʃnəl] /a/
+ 2      Sporting Tournament                    Giải đấu thể thao
+        [ˈtʊrnəmənt]
+ 3      Commission payments                    Tiền hoa hồng
+        [kəˈmɪʃn]
+ 4      ‘Demonstrate’ the ‘Features’ of sth    ‘Biểu diễn, chứng minh’ các ‘tính
+        [ˈdemənstreɪt] / [ˈfiːtʃər]            năng’ của gì đó
+ 5      Refreshments / Beverage                Đồ ăn nhẹ / Đồ uống
+        [rɪˈfreʃmənt] / [ˈbevərɪdʒ]
+ 6      Formal Attire / Dress code             Quần áo trang trọng / Quy định trang
+        [ˈfɔːrml] [əˈtaɪər]                    phục
+ Test 6
+ 1      Cargo Ship                             Tàu chở hàng
+        [ˈkɑːrɡoʊ]
+ Test 7
+ 1      Are you ‘Fluent’ in Spanish?           Trôi chảy
+        [ˈfluːənt]
+ 2      Reimbursement / Travel Expenses        Hoàn trả / Chi phí công tác
+        [ˌriːɪmˈbɜːrsmənt] / [ɪkˈspens]
+ 3      Diploma / Graduated                    Bằng cấp / Tốt nghiệp
+        [dɪˈploʊmə] / [ˈɡræ dʒu eɪ tɪd]
+ Test 8
+
+
+
+Dương Đức Hiệp - Toeic Practice Club
+ 1       Sales Pitch                             Thuyết trình bàn hàng
+         [pɪtʃ]
+ 2       Whose shift ‘Overlaps’ with Manager’s   Chồng chéo lên nhau (lịch trình)
+         visit
+         [ˌoʊvərˈlæp]
+ 3       Amusement Park / Peak season            Công viên giải trí / Mùa cao điểm
+         [əˈmjuːzmənt] / [piːk] [ˈsiːzn]
+ 4       Attractions for children / Attract      Thu hút trẻ em / lôi cuốn, thu hút (v)
+         [əˈtrækʃn] / [əˈtrækt]
+ 5       Driver’s license                        Bằng lái xe
+         [ˈlaɪsns]
+ 6       ‘Plenty of’ supplies                    Nhiều hàng cung cấp
+         [ˈplenti]
+ 7       Blueprints                              Bản thiết kế
+         [ˈbluːprɪnt]
+ 8       Confidential files / I’m ‘Confident’    Tài liệu mật / Tự tin, chắc chắn
+         [ˌkɑːnfɪˈdenʃl] / [ˈkɑːnfɪdənt]
+ Test 9
+ 1      Soccer Championship Game                 Trận đấu vô địch
+        [ˈtʃæm piən ʃɪp]
+ 2      A vacuum cleaner                         Máy hút bụi
+        [ˈvækjuəm] [ˈkliːnər]
+ 3      Reasonable / Affordable / Economical /   Giá cả phải chăng, cạnh tranh, rẻ
+        Cheap/ Competitive + Prices / Rates /
+        Fares
+        [ˈriːznəbl] / [əˈfɔːrdəbl]
+ 4      Flu Symptoms                             Triệu chứng cúm
+        [ˈsɪmptəm]
+ 5      Postal Parcel                            Bưu kiện bưu chính
+        [ˈpoʊstl] [ˈpɑːrsl]
+ Test
+ 10
+ 1      Spare keys                               Chìa khóa dự phòng
+        [speə(r)]
+ 2      Manuscripts                              Bản thảo
+        [ˈmæ nju skrɪpt]
+ 3      Emergency evacuation                     Sơ tán khẩn cấp
+        [iˈmɜːrdʒənsi] [ɪˌvækjuˈeɪʃn]
+ 4      Movie’s new sequel                       Phần tiếp theo của bộ phim
+        [ˈsiːkwəl]
+ Ended
+
+
+
+Dương Đức Hiệp - Toeic Practice Club
+

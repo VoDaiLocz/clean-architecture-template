@@ -1,0 +1,51 @@
+SOURCE_RELATIVE_PATH: downloads/folders/TOEIC - BÀI LUYỆN TẬP THEO THANG ĐIỂM/FB Trần Thanh Tuyện_Phương pháp luyện từng thang điểm TOEIC.pdf
+SOURCE_FILE_NAME: FB Trần Thanh Tuyện_Phương pháp luyện từng thang điểm TOEIC.pdf
+QUEUE_ORDER: 34
+EXTRACTION_CLASS: VALID_TEXT_EXTRACTED
+PAGE_COUNT: 3
+
+----- BEGIN PDF TEXT -----
+→
+
+
+
+
+        -
+
+
+                dừng
+    ➔
+
+            →   →   →
+-
+-
+-
+
+➔
+
+-
+
+
+
+
+        →
+
+
+
+
+    -
+
+    -
+
+
+
+    -
+    -
+
+    -
+
+    -
+→
+
+→
+

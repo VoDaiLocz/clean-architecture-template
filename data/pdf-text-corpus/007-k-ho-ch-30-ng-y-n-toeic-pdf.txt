@@ -1,0 +1,2323 @@
+SOURCE_RELATIVE_PATH: downloads/KẾ HOẠCH 30 NGÀY ÔN TOEIC.pdf
+SOURCE_FILE_NAME: KẾ HOẠCH 30 NGÀY ÔN TOEIC.pdf
+QUEUE_ORDER: 7
+EXTRACTION_CLASS: VALID_TEXT_EXTRACTED
+PAGE_COUNT: 61
+
+----- BEGIN PDF TEXT -----
+    Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                    1
+
+Lửa TOEIC – Trường đào tạo TOEIC Online
+                         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+                 KẾ HOẠCH ÔN THI TOEIC 30 NGÀY
+Xin chào các bạn!
+
+Đối với các bạn bắt đầu ôn luyện TOEIC hoặc đang ôn luyện được một thời gian, điều các
+bạn luôn băn khoăn là làm thế nào để có một lộ trình phù hợp với trình độ của mình để đạt
+được kết quả mong muốn trong bài thi TOEIC. Hiểu được băn khoăn đó, đội ngũ Fire
+TOEIC xin giới thiệu đến các bạn Tài liệu “Kế hoạch ôn thi TOEIC 30 ngày” do chính nhóm
+học thuật Fire TOEIC biên soạn, mang đến cho các bạn kế hoạch ôn chi tiết và cụ thể nhất
+trong 30 ngày.
+
+Tài liệu được chia sẻ phi thương mại, các bạn vui lòng không dùng nó với mục đích thương
+mại.
+
+Trong quá trình biên soạn sẽ không tránh khỏi sai sót, các bạn có thể báo lỗi về mail:
+firetoeic@gmail.com.
+
+Chúc các bạn học tốt!
+
+Đội ngũ biên soạn.
+
+
+
+
+                                           2
+
+                     Lửa TOEIC – Trường đào tạo TOEIC Online
+              Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+                         MỤC LỤC
+
+Ngày 0…………………………………………………………………………………………………4
+Ngày 1…………………………………………………………………………………………………7
+Ngày 2……………..…………………………………………………………………………………11
+Ngày 3………………………………………………………………………………………………..13
+Ngày 4………………………………………………………………………………………………..16
+Ngày 5………………………………………………………………………………………………..20
+Ngày 6………………………………………………………………………………………………..23
+Ngày 7………………………………………………………………………………………………..27
+Ngày 8………………………………………………………………………………………………..32
+Ngày 9………………………………………………………………………………………………..32
+Ngày 10………………………………………………………………………………………………32
+Ngày 11………………………………………………………………………………………………33
+Ngày 12………………………………………………………………………………………………33
+Ngày 13………………………………………………………………………………………………44
+Ngày 14………………………………………………………………………………………………49
+Ngày 15………………………………………………………………………………………………53
+Ngày 16………………………………………………………………………………………………57
+Ngày 17………………………………………………………………………………………………57
+Ngày 18………………………………………………………………………………………………57
+Ngày 19………………………………………………………………………………………………58
+Ngày 20………………………………………………………………………………………………58
+Ngày 21………………………………………………………………………………………………58
+Ngày 22………………………………………………………………………………………………58
+Ngày 23………………………………………………………………………………………………59
+Ngày 24………………………………………………………………………………………………59
+Ngày 25………………………………………………………………………………………………59
+Ngày 26………………………………………………………………………………………………60
+Ngày 27………………………………………………………………………………………………60
+Ngày 28………………………………………………………………………………………………60
+Ngày 29………………………………………………………………………………………………60
+Ngày 30………………………………………………………………………………………………61
+
+
+
+                              3
+
+          Lửa TOEIC – Trường đào tạo TOEIC Online
+                         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+NGÀY 0: XÁC ĐỊNH MỤC TIÊU, TÂM LÝ VÀ HIỂU VỀ BÀI THI TOEIC
+
+1. Xác định mục tiêu, tâm lý:
+
+   Trước khi bước vào giai đoạn 30 ngày ôn luyện, các bạn cần xác định mục tiêu của
+   mình để sắp xếp thời gian, khối lượng đề cần luyện cho hợp lý. Có mục tiêu rõ ràng thì
+   bạn có động lực để thôi thúc bản thân quyết tâm ôn luyện, từ đó khả năng bạn hoàn
+   thành mục tiêu cũng cao hơn.
+
+   Những yếu tốt giúp bạn xác định được mục tiêu TOEIC của bản thân:
+
+       Hiểu về trình độ của mình: bạn cần biết vị trí hiện tại của mình trước khi đặt ra mục
+        tiêu. Bạn cần làm trước một hoặc hai đề thi để xác định số điểm hiện tại của mình.
+        Sau đó mục tiêu sẽ được đặt ra dễ dàng hơn. (VD: bạn có nền tảng Tiếng Anh tốt
+        và hiện làm đề thử đạt số điểm 600, bạn có thể đặt mục tiêu cho mình là 750-800;
+        ngược lại, bạn học Tiếng Anh chưa tốt và muốn có một số điểm trung bình, bạn có
+        thể đặt mục tiêu cho mình là 450-550)
+       Xác định mục đích thi: Bạn cần thi TOEIC để làm gì và bạn cần bao nhiêu điểm để
+        đạt được mục đích đó (VD: Tôi cần TOEIC 450 để đạt đầu ra đại học; Tôi cần
+        TOEIC 850 để thi đậu vào một tập đoàn đa quốc gia). Điều này giúp bạn có thái độ
+        quyết tâm hơn với mục tiêu TOEIC của mình, hoặc bạn thi đạt được số điểm mong
+        muốn hoặc bạn không đạt được mục đích của mình.
+       Xác định thời gian cần có để đạt được mục tiêu TOEIC: Nếu bạn là người có vốn
+        Tiếng Anh khiêm tốn và cần thời gian dài để đạt được mục tiêu như mong muốn
+        (VD: 450 để ra trường), bạn cần trung bình 45 giờ học để đạt được mức điểm 300
+        và tăng dần để đạt được số điểm mong muốn. Nếu bạn đã ở mức khá và cần ôn
+        luyện để lên mức điểm cao từ 800+, bạn cần xem xét khả năng tiếp thu của bản
+        thân cũng như phải thật kiên trì, siêng năng vì mức điểm từ 800 trở lên khá khó
+        tăng điểm hơn mức điểm 600-700, sau đó tùy vào khả năng mỗi người mà có thời
+        gian học mỗi ngày cho hợp lý. Bên cạnh đó, bạn cũng cần sự chăm chỉ để chạy
+        nước rút ôn luyện nếu thời gian cần bằng TOEIC đang tới gần, tùy vào nhu cầu cụ
+        thể của mỗi người.
+
+
+2. Hiểu về bài thi TOEIC:
+
+   Sau khi xác định được mục tiêu TOEIC cần đạt được, bạn cần chuẩn bị tâm lý chăm chỉ,
+   nghiêm túc, quyết tâm để tạo thói quen ôn luyện thường xuyên mỗi ngày theo lộ trình
+   30 ngày này, điều này giúp bạn chắc chắn bạn không bị tâm lý lười biếng cản trở bạn
+   trên con đường chinh phục mục tiêu TOEIC của mình.
+
+                                             4
+
+                    Lửa TOEIC – Trường đào tạo TOEIC Online
+                       Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+Kế đến, bạn nhất định phải hiểu về bài thi TOEIC. Đối với các bạn mới biết đến bài thi
+TOEIC, bạn cần hiểu nội dung và cấu trúc của đề, điều này giúp bạn không bị bỡ ngỡ
+khi bước vào giai đoạn luyện đề. Hiểu nội dung và cấu trúc đề còn giúp bạn có hướng
+ôn luyện một cách hiệu quả hơn.
+
+   Format bài thi TOEIC:
+    -   Bài thi TOEIC được diễn ra trong vòng 2 giờ.
+    -   Đây là bài thi sử dụng bút chì.
+    -   Đây là một bài thi chọn đáp án đúng. Với mỗi câu hỏi, bạn chọn đáp án đúng sau
+        đó điền vào tờ giấy trả lời (answer sheet).
+    -   Tổng cộng 200 câu hỏi.
+    -   Các câu hỏi được chia làm 2 phần: Listening & Reading. Mỗi phần sẽ được chia
+        thời gian riêng biệt: khoảng 45 phút với bài thi Listening và 75 phút với bài thi
+        Reading.
+   Nội dung bài thi TOEIC:
+
+             Phần         Nội dung             Số câu                   Chi tiết
+                                                        Chọn câu miêu tả đúng nhất cho
+               1          Hình ảnh               6
+                                                        bức ảnh trong 4 câu được nghe
+                                                        Bạn sẽ nghe 1 câu hỏi và 3 lựa
+                                                        chọn trả lời, bạn chọn 1 câu trả
+               2            Hỏi đáp             25      lời phù hợp trong 3 lựa chọn đó.
+                                                        Câu hỏi        và câu trả lời không
+                                                        được in trên đề thi.
+                                                        Bạn sẽ nghe 13 đoạn hội thoại
+                                                        ngắn và 3 câu hỏi tương ứng
+Listening
+                                                        với đoạn hội thoại, bạn chọn
+               3       Hội thoại ngắn           39      đáp án đúng cho mỗi câu hỏi
+                                                        trong 4 lựa chọn đáp án. Câu
+                                                        hỏi và các câu trả lời được in
+                                                        trên đề thi.
+                                                        Bạn sẽ nghe 10 đoạn thông tin
+                       Đoạn thông tin                   ngắn và 3 câu hỏi tương ứng
+               4                                30
+                             ngắn                       với đoạn thông tin, bạn chọn
+                                                        đáp án đúng cho mỗi câu hỏi
+
+
+                                           5
+
+                   Lửa TOEIC – Trường đào tạo TOEIC Online
+                         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+                                                      trong 4 lựa chọn đáp án. Câu
+                                                      hỏi và các câu trả lời được in
+                                                      trên đề thi.
+                                                      Chọn đáp án đúng điền vào chỗ
+                 5      Hoàn thành câu        30
+                                                      trống trong một câu cho trước
+                                                      Mỗi đoạn văn có 4 chỗ trống,
+                        Hoàn thành đoạn
+                 6                            16      chọn đáp án đúng cho mỗi chỗ
+                             văn
+    Reading                                           trống đó.
+                                                      Mỗi bài có từ 1 đến 3 văn bản
+                                                      khác nhau. Chon đáp án đúng
+                 7         Đọc hiểu           54
+                                                      cho mỗi câu hỏi ứng với các văn
+                                                      bản đã cho.
+
+
+
+Sau khi đã chuẩn bị sẵn sàng mục tiêu, tâm lý và hiểu biết cơ bản về bài thi TOEIC, hãy
+cùng nhau bước vào 30 ngày ôn luyện TOEIC thôi nào!
+
+
+
+
+                                          6
+
+                     Lửa TOEIC – Trường đào tạo TOEIC Online
+                        Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+                    NGÀY 1: ÔN TẬP TỔNG HỢP PART 1
+
+1. Nội dung Part 1:
+
+   Phần này có 6 câu được hỏi dưới dạng miêu tả tranh. Mỗi bức tranh bạn sẽ được
+   nghe 4 câu miêu tả tương ứng và chọn ra câu miêu tả đúng nhất về tranh đó.
+
+2. Cách luyện tập Part 1:
+      Trước khi vào nghe có khoảng thời gian chết hơn 1 phút (phát hướng dẫn làm
+       bài thi Listening), tận dụng thời gian này xem qua các tranh và brainstorm về các
+       từ vựng có thể sẽ có trong các câu miêu tả. Nắm trong đầu trạng thái, hành động
+       của sự vật sự việc trong tranh để có tâm thế chủ động khi nghe, tránh việc bị lỡ
+       thông tin.
+      Chú ý nghe chủ từ, động từ, giới từ trong câu, chú ý nghe các từ được nhấn
+       mạnh. Ví dụ: nghe được chủ từ sai => bỏ qua câu đó để tập trung câu tiếp theo.
+      Tập trung nghe hiểu nghĩa cả câu, không được bỏ qua một chi tiết nhỏ nào.
+      Trả lời càng nhanh càng tốt, tránh làm mất thời gian của các câu sau.
+      Các bẫy có thể có trong phần 1: bẫy đồng âm; bẫy đồng âm khác nghĩa; bẫy
+       thông tin không chính xác, không liên quan tới tranh.
+3. Bài tập thực hành:
+
+   CHÚ Ý ĐỂ LÀM BÀI TẬP THỰC HÀNH HIỆU QUẢ:
+
+      Ghi lại các cấu trúc mới, từ mới gặp.
+      Câu nào nghe sai cần nghe đi nghe lại nhiều lần để nắm được vì sao nghe sai.
+      Cố gắng nghe kỹ, nghe hiểu. Nghe bài nào hiểu bài đó.
+
+
+
+   Link audio: http://bit.ly/toeic30days-day1
+
+
+
+
+                                           7
+
+                    Lửa TOEIC – Trường đào tạo TOEIC Online
+    Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                    8
+
+Lửa TOEIC – Trường đào tạo TOEIC Online
+    Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                    9
+
+Lửa TOEIC – Trường đào tạo TOEIC Online
+                   Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+TRANSCRIPT:
+
+1. (A) She is doing the dishes.
+   (B) She is cleaning the kitchen counter.
+   (C) She is preparing a dish for her family.
+   (D) She is looking out the window.
+2. (A) He is locking the bicycle against the fence.
+   (B) He is putting away the guitar in its case.
+   (C) He is playing a musical instrument.
+   (D) He is walking along the river.
+3. (A) The man is putting away the ladder.
+   (B) The man is painting the house.
+   (C) The man is replacing the window.
+   (D) The man is working on the ladder.
+4. (A) They're studying in a library.
+   (B) They're seated around the table.
+   (C) They're putting up signs on the wall.
+   (D) They're sorting through books on the table.
+5. (A) There are pictures on display outside.
+   (B) The women are shopping in a store.
+
+
+                                        10
+
+              Lửa TOEIC – Trường đào tạo TOEIC Online
+                             Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+          (C) The building is being painted.
+          (D) The street is busy with cars today.
+
+
+   ĐÁP ÁN:
+
+           1A        2C         3D      4B          5A
+
+
+
+                     NGÀY 2: ÔN TẬP TỔNG HỢP PART 2
+
+1. Nội dung Part 2:
+         Bạn sẽ nghe 1 câu hỏi và 3 lựa chọn câu trả lời, bạn 1 câu trả lời phù hợp trong 3
+          lựa chọn đó. Câu hỏi và câu trả lời không được in trên đề thi.
+         Các loại câu hỏi thường xuất hiện:
+   o      Câu hỏi WH-Question (What, When, Where, Why, Which, Who)
+   o      Câu hỏi How (Many, Much, How long, How far, How about, How often)
+   o      Câu hỏi dạng lựa chọn (VD: Do you want to go to the beach or go picnic this
+          weekend)
+   o      Câu hỏi Yes/No
+   o      Câu hỏi đuôi
+   o      Câu hỏi dạng câu trần thuật
+2. Cách luyện tập Part 2:
+         Lắng nghe thật kĩ từ để hỏi, ôn lại căn bản các dạng câu hỏi thường xuất hiện
+          trong phần này.
+         Chú ý lắng nghe kĩ nghe hiểu vì sẽ có nhiều các câu trả lời gián tiếp, không trực
+          tiếp trả lời nội dung câu hỏi. VD: This item is on sale this week, isn't it? (Món hàng
+          này được giảm giá vào tuần này đúng không) => No, that was last week (Không,
+          tuần trước lận).
+         Chú ý các bẫy có thể có: bẫy đồng âm; bẫy đồng âm khác nghĩa; bẫy câu hỏi và
+          câu trả lời không liên quan tới nhau.
+3. Bài tập thực hành:
+
+   CHÚ Ý ĐỂ LÀM BÀI TẬP THỰC HÀNH HIỆU QUẢ:
+
+          Ghi lại các cấu trúc mới, từ mới gặp.
+          Câu nào nghe sai cần nghe đi nghe lại nhiều lần để nắm được vì sao nghe sai.
+          Cố gắng nghe kỹ, nghe hiểu. Nghe bài nào hiểu bài đó.
+
+
+
+
+                                               11
+
+                     Lửa TOEIC – Trường đào tạo TOEIC Online
+                        Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+Link audio từ câu 11 đến câu 20: http://bit.ly/toeic30days-day2
+
+TRANSCRIPT
+
+11. Where did Mary go?                            (A) I believe it was Ms. Gomez.
+(A) To the head office.                           (B) No, I report to Mr. Johnson.
+(B) She is doing great.                           (C) By the end of the day.
+(C) I talked to her.                              17. Why did John miss the
+                                                  conference today?
+12. How was the food?
+                                                  (A) The meeting is at 9 o'clock.
+(A) At the restaurant.                            (B) Mr. Smith is leading it today.
+(B) With the staff members.                       (C) He was stuck in traffic.
+(C) It was very good.                             18. Could you return these DVDs
+
+13. Do you like working by yourself               back to the store?
+
+or in a group?                                    (A) Let's head back soon.
+
+(A) He went by himself.                           (B) Sorry, they're not refundable.
+
+(B) Either suits me fine.                         (C) Of course. I'll take care of it
+
+(C) A group of five people.                       right away.
+
+14. It's not too far, is it?                      19. How much was the new
+
+(A) Yes, I like it, too.                          computer?
+
+(B) It is far better.                             (A) The Internet.
+
+(C) No, I don't think so.                         (B) Nine hundred dollars.
+
+15. When do you want to take off?                 (C) No, it is not new.
+
+(A) Right away.                                   20. You've been here a few times
+
+(B) Sure, take it.                                before, haven't you?
+
+(C) No, I don't want it.                          (A) Yes, a couple of times.
+
+16. Who requested the sales report?               (B) No, but maybe later.
+                                                  (C) I can't hear you too well
+
+
+
+ĐÁP ÁN:
+
+     11A      12C       13B    14C    15A   16A    17C      18C       19B    20A
+
+
+
+
+                                       12
+
+                Lửa TOEIC – Trường đào tạo TOEIC Online
+                      Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                 NGÀY 3: ÔN TẬP TỔNG HỢP PART 3
+
+1. Nội dung Part 3:
+      Bạn sẽ nghe 13 đoạn hội thoại ngắn và 3 câu hỏi tương ứng với đoạn hội thoại,
+       bạn chọn đáp án đúng cho mỗi câu hỏi trong 4 lựa chọn đáp án. Câu hỏi và các
+       câu trả lời được in trên đề thi.
+      Đoạn hội thoại có từ 2 đến 3 người tham gia, gồm giọng đọc của nam và nữ.
+       Các chủ đề xoay quanh công việc, đời sống, kinh doanh. Một số câu hỏi cuối
+       phần 3 có xuất hiện hình ảnh (bảng, biểu đồ, bản đồ, sơ đồ, vé, phiếu, đơn hang,
+       thông báo, quảng cáo…)
+      Các câu hỏi có thể xuất hiện trong Part 3:
+       -   Câu hỏi tổng quan (hỏi về nơi chốn, nghề nghiệp, hoạt động của hai người
+           nói, chủ đề bài nói), câu hỏi dạng này yêu cầu người nghe cần nắm ý chính
+           cả bài để suy ra câu trả lời
+       -   Câu hỏi chi tiết (hỏi về thời gian, lý do, kế hoạch, vấn đề xảy ra, đề nghị, ý
+           kiến cá nhân), câu hỏi dạng này yêu cầu người nghe tập trung cao độ cho
+           những chi tiết trong bài nghe.
+ 2. Cách luyện tập Part 3:
+     Tận dụng thời gian loa đọc hướng dẫn (directions) để đọc trước câu hỏi và câu
+       trả lời, thời gian chết giữa các câu hỏi, khi làm xong chuyển sang đọc các câu
+       hỏi tiếp theo ngay lập tức.
+     Xem xét kỹ các câu hỏi.
+     Chú ý đến đối tượng trong câu hỏi: người đàn ông, người phụ nữ (với tên cụ thể
+       hoặc không) hay nhân vật thứ ba được nhắc tới. Điều này giúp bạn rõ trọng tâm
+       câu hỏi và tìm ra đáp án nhanh hơn.
+     Cố gắng nghe kỹ, nghe hiểu và phản xạ nhanh khi nghe được thông tin cần
+       nghe.
+     Đối với những câu hỏi suy luận thông tin (What can be inferred/suggested/…),
+       chú ý lắng nghe những thông tin liên quan.
+     Các đáp án hay được viết lại bằng cách dùng từ đồng nghĩa, không trực tiếp
+       dùng chính xác từ trong bài nói.
+3. Bài tập thực hành:
+
+   CHÚ Ý ĐỂ LÀM BÀI TẬP THỰC HÀNH HIỆU QUẢ:
+
+      Ghi lại các cấu trúc mới, từ mới gặp.
+      Câu nào nghe sai cần nghe đi nghe lại nhiều lần để nắm được vì sao nghe sai.
+
+                                          13
+
+                 Lửa TOEIC – Trường đào tạo TOEIC Online
+                       Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+      Cố gắng nghe kỹ, nghe hiểu. Nghe bài nào hiểu bài đó.
+
+
+Link audio: http://bit.ly/toeic30days-day3
+
+41. When did the woman go to                      (D) Checking out of a hotel
+Mexico?                                           46. What does the woman want to
+(A) Early this year                               know?
+(B) A year ago                                    (A) How long it'll take for the
+(C) Two years ago                                 package to be delivered
+(D) Three years ago                               (B) When the next flight to Toronto
+42. Where will the man stay during                will take off
+his trip?                                         (C) How much the tickets come to
+(A) At a hotel                                    in total
+(B) At a condominium                              (D) Where to go to weigh the
+(C) At his parent's house                         products
+(D) At his friend's place
+                                                  47. What will Mr. Sanchez do?
+43. What does the woman want to
+                                                  (A) Cancel his meeting with his
+know?
+                                                  client
+(A) When the man will be leaving
+                                                  (B) Deliver the boxes to Mr. Black
+(B) Who he will be going on the trip
+                                                  (C) Be out of the office for the day
+with
+                                                  (D) Sign for the boxes when they
+(C) How long he will spend in
+                                                  arrive
+Mexico
+                                                  48. What was Mr. Black supposed
+(D) Where he bought the plane
+                                                  to do today?
+tickets
+                                                  (A) Deliver some boxes
+44. Where most likely is the                      (B) Check the contents of some
+conversation taking place?                        boxes
+(A) In a travel agency                            (C) Sign for the delivery
+(B) In a fitness club                             (D) Meet with a client
+(C) In a post office                              49. What does the man ask the
+(D) In a grocery store                            woman to do?
+45. What is the woman doing?                      (A) Take the boxes to the back
+(A) Sending a letter                              (B) Call to postpone the delivery
+(B) Buying groceries                              (C) Meet the client in his place
+(C) Reserving a flight ticket                     (D) Place an order with Mr. Black
+
+
+
+                                       14
+
+                 Lửa TOEIC – Trường đào tạo TOEIC Online
+                    Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+TRANSCRIPT:
+
+41-43 refer to the following conversation:
+
+M. I have a friend who works at a travel agency and he got me a great deal on a flight
+to Mexico.
+
+W: Wow. I was there last year and I had a great time. Did you make hotel
+reservations yet?
+M: Well, my brother has a condominium and I am going to stay there.
+W: That's great. When are you taking off, anyway?
+
+44-46 refer to the following conversation:
+
+M: Would you like me to weigh that on a scale for you?
+W: Yes, and could I also have some stamps as well? I'd also like to send this letter to
+Toronto, Canada.
+M: Of course. The total comes to $9.50 and your letter and package will go out before
+noon today.
+W: Thank you. And could you tell me how long it will take for the package to get there?
+
+47-49 refer to the following conversation:
+
+M: Jenny, I am stepping out to meet a client now and won't be coming back to the
+office today.
+W: All right, but what should I do if Mr. Black comes by with the boxes you had asked
+for, Mr. Sanchez?
+M: Yes, that's right. I forgot all about that. Could you call him and ask him to come by
+early tomorrow morning instead? I have to be here when he brings those boxes
+because I need to check the contents.
+
+W: Okay, I'll call him and let him know right away.
+
+
+
+ĐÁP ÁN:
+
+ 41B         42B      43A       44C         45A       46A     47C       48A       49B
+
+
+
+
+                                       15
+
+                Lửa TOEIC – Trường đào tạo TOEIC Online
+                       Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                      NGÀY 4: ÔN TẬP TỔNG HỢP PART 4
+
+1. Nội dung Part 4:
+          Bạn sẽ nghe 10 đoạn thông tin ngắn và 3 câu hỏi tương ứng với đoạn thông
+           tin, bạn chọn đáp án đúng cho mỗi câu hỏi trong 4 lựa chọn đáp án. Câu hỏi
+           và các câu trả lời được in trên đề thi.
+          Phần này mỗi đoạn chỉ gồm một giọng nói.
+          Các nội dung thường gặp trong Part 4:
+              Announcement (hướng dẫn, thông báo)
+              Advertisement (quảng cáo)
+              Report (báo cáo, tường thuật)
+              Recorded message (tin nhắn ghi âm)
+              Flight and Airport Announcement (thông báo ở sân bay hoặc trên máy
+               bay)
+              Broadcast (chương trình truyền hình)
+              Talk (diễn thuyết)
+2. Cách luyện tập Part 4:
+          Tận dụng thời gian chết đọc hướng dẫn (directions) và thời gian giữa các
+           đoạn thoại đọc lướt thật nhanh các câu hỏi và đáp án.
+          Cố gắng đọc hiểu đúng nghĩa câu hỏi. VD: Who is most likely the speaker
+           addressing (Người nói đang diễn thuyết cho ai nghe?) hiểu sai thành “Người
+           nói là ai” làm cho câu trả lời bị sai và mất điểm.
+          Tập trung nghe phần có thông tin cần thiết. Vì thứ tự của câu hỏi không theo
+           thứ tự của bài nói nên cần đảo mắt qua lại giữa các câu hỏi để xem người nói
+           đang nói đến thông tin cần cho câu hỏi nào.
+          Nghe kỹ các thông tin đặc biệt như số, ngày, số tiền,.. Như ở các part khác
+           thì câu trả lời hay được viết lại dưới dạng thông tin đồng nghĩa với thông tin
+           trong đoạn băng (VD: bạn nghe được thông tin “Saturday” trong câu trả lời sẽ
+           được viết lại là “Weekend”)
+3. Bài tập thực hành:
+
+   CHÚ Ý ĐỂ LÀM BÀI TẬP THỰC HÀNH HIỆU QUẢ:
+
+           Ghi lại các cấu trúc mới, từ mới gặp.
+           Câu nào nghe sai cần nghe đi nghe lại nhiều lần để nắm được vì sao nghe
+            sai.
+           Cố gắng nghe kỹ, nghe hiểu. Nghe bài nào hiểu bài đó.
+                                           16
+
+                   Lửa TOEIC – Trường đào tạo TOEIC Online
+                    Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+Link audio: http://bit.ly/toeic30days-day4
+71. Why couldn't the caller see Angela at the office today?
+(A) She was not there.
+(B) He had to go to the hospital.
+(C) She was busy with someone.
+(D) He was with a client.
+
+
+72. Where will Joe be next week?
+(A) At a hospital
+(B) On vacation
+(C) In his office
+(D) At home
+73. What does the caller want Angela to do?
+(A) Visit Kevin at the hospital
+(B) Ask Joe to postpone his vacation
+(C) Tell Dave to come to the meeting
+(D) Postpone the meeting to another time
+
+
+74. What is being reported?
+(A) The traffic around the city
+(B) The events around town
+(C) The weather report
+(D) The local business news
+75. What does the speaker remind listeners to do?
+(A) To enjoy the beautiful weather
+(B) To get ready for a weekend event
+(C) To take along an umbrella
+(D) To come to the station this afternoon
+76. What will be aired next?
+(A) Commercials
+(B) Traffic report
+(C) Business news
+(D) Weather report
+
+
+
+
+                                     17
+
+           Lửa TOEIC – Trường đào tạo TOEIC Online
+                 Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+77. Who is the intended audience of this announcement?
+(A) Shoppers
+(B) Children
+(C) Employees
+(D) Teachers
+78. How long will the sale last?
+(A) All this week
+(B) Only today
+(C) All weekend
+(D) For two hours
+79. How can a listener get free tickets to the play?
+(A) By purchasing over 50 dollars worth of products
+(B) By coming to the store early this weekend
+(C) By bringing their children to the theate
+(D) By not being late to school for the entire year
+
+
+TRANSCRIPT:
+71-73 refer to the following voice mail message.
+Angela, this is Dave. I'm sorry to bother you at home but I have to talk to you
+about something. Anyway, I went by your office this afternoon but you were with a
+client. I wanted to let you know that Kevin is not feeling well and probably won't
+be attending the Monday morning meeting. Also, Joe will be taking his vacation
+next week, so he won't be attending the meeting as well. Could you call me back
+and let me know if the meeting is still going to be held on Monday? I think it would
+be a better idea to postpone the meeting to the week after next. I'm at home right
+now, so let me know what you think is best.
+
+
+74-76 refer to the following report.
+Thank you, Ron, for the local traffic situation around the city. Now, for the weather
+update. The beautiful sunshine we are enjoying at the moment is expected to
+come to an end by this afternoon. It looks like heavy rain with possible
+thunderstorms is headed our way from the northwest. Listeners should pack an
+umbrella as you leave for work this morning. The weather for this weekend
+seems a bit brighter with sunshine returning and temperatures in the upper teens.
+This has been Jeff Willis with the weather update. We will be right back with local
+business news right after this commercial break.
+
+                                   18
+
+          Lửa TOEIC – Trường đào tạo TOEIC Online
+                 Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+77-79 refer to the following announcement.
+May I have your attention, shoppers! We here at Vick's Wear will be having a sale
+on allchildren's wear starting this Friday and lasting until Sunday. All items in the
+store will be on sale, with some items up to 50% off the regular price. And if you
+are one of the first 50 customers in the store on Saturday or Sunday, you will
+receive two free tickets to see the famous children's play Pinocchio at the Dragon
+Theater. So, if you are thinking of buying clothes for your children as they head
+back to school, don't miss out on this sale of the century and come down to Vick's
+Wear this weekend.
+
+
+ĐÁP ÁN:
+ 71C       72B       73D      74C        75C      76A      77A       78C       79B
+
+
+
+
+                                    19
+
+          Lửa TOEIC – Trường đào tạo TOEIC Online
+                              Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                        NGÀY 5: ÔN TẬP TỔNG HỢP PART 5
+
+1. Nội dung Part 5:
+             Phần này bạn chọn đáp án đúng trong 4 lựa chọn đáp án để điền vào chỗ trống
+              trong câu.
+             Các dạng câu hỏi trong phần này có thể được chia ra như sau:
+              -    Meaning (xác định nghĩa để điền)
+              -    Preposition (điền giới từ)
+              -    Word form (điền từ loại)
+              -    Connecting words/Adverb Clause (từ nối/mệnh đề trạng ngữ)
+              -    Relative Pronoun (điền đại từ quan hệ)
+              -    Pronoun/Reflexive pronoun/Possesive adjective (điền đại từ/đại từ phản
+                   thân/tính từ sở hữu)
+2. Cách ôn tập Part 5:
+
+   Khi vào làm Part 5 cần nhìn ngay vào từ đứng trước và sau chỗ trống để xác định
+   loại từ cần điền, sau đó nhìn xuống các đáp án. Cụ thể ta xử lý từng trường hợp như
+   sau:
+
+         Meaning: loại câu này bạn cần biết nghĩa hoặc đoán nghĩa của các đáp án.
+         Preposition: để làm được loại câu hỏi này bạn cần học thuộc các cụm từ và giới
+          từ hay đi cùng nhau.
+         Word-form: đây là loại câu dễ ăn điểm, bạn cần ôn lại các cấu trúc ngữ pháp cơ
+          bản, xác định được loại từ là chọn ngay được đáp án đúng. Các cấu trúc cơ bản
+          như: prep+V-ing; present participle, past participle; adv+V; adv+adj; adv+V hoặc
+          V+adv; adj+N; câu điều kiện; các động từ chỉ tri giác;…
+
+         Connecting words: ôn lại các cấu trúc ngữ pháp với:
+          -       For, and, nor, but, or, yet, so
+          -       Both … and; not only…. but also; either … or, neither…nor.
+          -       Before, after, since, until, once
+          -       As so on as, as/when, while
+          -       Because/since, Although/though/Even though/While/Whereas
+          -       If, unless, Whether … or…
+          -       So that/ In order that
+          -       So adj that + Clause
+          -       Because of/Due to + Noun/V-ing
+          -       Despite/In spite of + Noun/V-ing
+                                                    20
+
+                         Lửa TOEIC – Trường đào tạo TOEIC Online
+                           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+          Relative pronoun: Loại câu này cần lưu ý từ loại của chỗ trống cần điền là gì, cần
+           từ bổ nghĩa cho chủ ngữ hay tân ngữ, hay cần đại từ sở hữu (whose).
+          Pronoun/Reflexive pronoun/Possesive adjective: loại câu này cần lưu ý chỗ trống
+           là chủ ngữ hay tân ngữ để chọn được đáp án phù hợp.
+3. Bài tập thực hành:
+    CHÚ Ý ĐỂ LÀM BÀI TẬP THỰC HÀNH HIỆU QUẢ:
+
+           Ghi lại các cấu trúc mới, từ mới gặp.
+           Câu nào làm sai cần xem lại kĩ để biết rõ vì sao sai.
+           Làm câu nào hiểu chắc câu đó
+
+    BÀI TẬP:
+101. Customers are advised to double-                  are offered ------- for any expenses
+check their orders to ensure that they                 incurred for meals-related to
+will be sent ------- the correct address.              workshops, business meetings, or
+(A) until                                              company-related events.
+(B) upon                                               (A) investment
+(C) among                                              (B) dimension
+(D) to                                                 (C) reimbursement
+102. Last week's performance was                       (D) expenditure
+judged to be a major ------- even                      105. Underwood Energy Services Inc.
+though it received no local media                      offers ------- benefits to full-time
+coverage.                                              employees, including dental insurance.
+(A) success                                            (A) attraction
+(B) succeed                                            (B) attractive
+(C) successful                                         (C) attract
+(D) successfulness                                     (D) attracted
+103. Please ------- Ms. Condell that no                106. Mr. Whatley unintentionally took
+one has received their paychecks yet.                  Ms. Potvin's timetable, thinking it was
+(A) accept                                             -------.
+(B) notify                                             (A) him
+(C) deliver                                            (B) himself
+(D) present                                            (C) his
+104. Employees on official business                    (D) he
+
+
+
+
+                                              21
+
+                     Lửa TOEIC – Trường đào tạo TOEIC Online
+                         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+107. Since the invention of seatbelts, certain automobile fatalities are now often -------.
+(A) preventability
+(B) prevention
+(C) preventing
+(D) preventable
+108. Customers at Prussian Blue Books are reminded to keep their receipt ------- proof
+of purchase when they place an order.
+(A) off
+(B) except
+(C) as
+(D) though
+109. Several staff heads ------- a better understanding of the importance of motivation
+and teamwork from the last workshop.
+(A) gaining
+(B) will gain
+(C) gained
+(D) were gained
+110. Anyone ------- experiences complications with the new software is encouraged to
+bring this matter to Mr. Gruber's attention in room 210.
+(A) who
+(B) which
+(C) whom
+(D) whose
+
+
+   ĐÁP ÁN
+101D      102A       103B   104C      105B      106C      107D     108C      109C      110A
+
+
+
+
+                                           22
+
+                     Lửa TOEIC – Trường đào tạo TOEIC Online
+                      Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                NGÀY 6: ÔN TẬP TỔNG HỢP PART 6
+
+1. Nội dung Part 6:
+      Phần này 16 câu trắc nghiệm chia thành 4 đoạn văn, mỗi đoạn gồm 4 chỗ trống
+       cần điền và chỗ trống hỏi sẽ có 4 lựa chọn đáp án. Bạn chọn đáp án đúng điền
+       vào mỗi chỗ trống. Các lựa chọn có thể là từ, cụm từ hoặc câu.
+      Các loại ngữ pháp mà Part 6 thường tập trung vào như sau:
+       -   Word form (từ loại)
+       -   Verb-related (liên quan tới động từ)
+       -   Prepositions & Conjunctions (Liên từ & Giới từ)
+      Các dạng đoạn văn thường gặp:
+       -   Email (trao đổi trong công ty, đồng nghiệp)
+       -   Memos (thông báo nội bộ công ty)
+       -   Ads (quảng cáo)
+       -   Instructions (Hướng dẫn sử dụng dịch vụ, đổi trả sản phẩm,..)
+       -   Articles (Bài báo trích ra từ tạp chí liên quan tới các ngành kinh tế, văn hóa
+           xã hội, kỹ thuật,…)
+       -   Notices (thông báo về các sự kiện sắp tới)
+2. Cách ôn tập Part 6:
+      Khi vào làm Part 6, cũng như Part 5, cần nhìn ngay vào từ đứng trước và sau
+       chỗ trống để xác định loại từ cần điền, sau đó nhìn xuống các đáp án, tránh việc
+       đọc cả đoạn văn mất thời gian.
+      Ôn tập lại các thì cơ bản, ngữ pháp cơ bản với động từ như Part 5.
+      Các câu điền loại từ là các câu dễ ăn điểm, cần nắm chắc thứ tự loại từ trong
+       câu để chọn đáp án nhanh gọn. Ôn tập về hậu tố của từ để xác định loại từ.
+      Ôn tập lại các phrasal verb thông dụng: take over, pay attention to, keep in touch,
+       take into consideration,…
+3. Bài tập thực hành:
+
+   CHÚ Ý ĐỂ LÀM BÀI TẬP THỰC HÀNH HIỆU QUẢ:
+
+      Ghi lại các cấu trúc mới, từ mới gặp.
+      Câu nào làm sai cần xem lại kĩ để biết rõ vì sao sai.
+      Làm câu nào hiểu chắc câu đó
+      Không đọc cả đoạn văn, chỉ đọc câu có từ cần điền
+
+
+
+
+                                         23
+
+                Lửa TOEIC – Trường đào tạo TOEIC Online
+                    Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+BÀI TẬP
+
+Question 141-143 refer to the following letter:
+
+ March 27, 2008
+ Dear Ms. Salvador,
+ We received your request for a current catalogue on March 25. Thank you for your
+ continued interest in our product line. We are continually striving to improve the
+ quality of our parts, and hope that you will find the items included in this year's
+ catalogue to be satisfactory. Along with the catalogue, we are including in this
+ shipment an order form and directions for ordering online.
+ Some significant changes are ------- in this year's catalogue. More price-saving
+ packages have been inserted, and a new index will guide you to the section that
+ you need. In addition, all prices have been updated. You may also be interested to
+ know that ABC Tech has opened another factory in Delaware. ------- this new facility,
+ we will be able to grow our company's line of electronics. In the coming years, you
+ will see even more additions to our catalogue.
+ Thank you once again for your business. Please feel ------- to contact me if you
+ need further assistance. I can be reached at 302-232-3900 (direct line) or at
+ liamr@tech.com.
+
+141. (A) produced
+(B) included
+(C) wished
+(D) decided
+
+142. (A) During
+(B) Before
+(C) Among
+(D) With
+
+143. (A) free
+(B) freely
+(C) freedom
+(D) freeing
+
+
+
+
+                                       24
+
+                Lửa TOEIC – Trường đào tạo TOEIC Online
+                     Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+ Question 144-146 refer to the following letter:
+
+ Patagonia Treks
+ 130 Calle San Martin
+ Rio Gallegos, Argentina
+ Welcome to Patagonia Treks! By ------- our company, you are guaranteed to get the
+ most out of your experience in the wild lands of Patagonia. No other company offers
+ the high-quality tours that we do into the back country of Argentina. With Patagonia
+ Treks, your experience is guaranteed to be a memorable one.
+ The following tour information has been confirmed: Your flight from Miami will ------
+ at 6 a.m. on February 11. A representative from Patagonia Treks will then meet you
+ at the airport when you arrive in Argentina and transport you to our offices so that
+ you can till out any ------- forms prior to the start of the trip.
+ It is important that you read the enclosed information, as it contains your itinerary
+ and some suggestions about how to prepare for your trip to Patagonia. Please let
+ us know if you have any questions.
+ We appreciate your business and look forward to your visit.
+ Sincerely,
+ Patagonia Treks
+
+144. (A) choose
+(B)chooses
+(C) choice
+(D) choosing
+
+145. (A) arrive
+(B) depart
+(C) resume
+(D) start
+
+146. (A) remaining
+(B) remained
+(C) remains
+(D) remain
+
+
+
+
+                                          25
+
+               Lửa TOEIC – Trường đào tạo TOEIC Online
+                               Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+        Question 147-149 refer to the following memo
+
+                                            MEMO
+
+        To: All staff
+        From: Charles Beretti
+        Date: January 2
+        Re: Lockers
+        You may remember that staff voted last fall to have lockers installed in the lounge
+        area.
+        After a few months searching for the right company to help us with this project, we
+        have good news. We would like to announce that we have ------- LockSmart to
+        complete the installation within the next week. All staff should be able to utilize
+        these new lockers to store personal items by next Friday, January 8th. Each staff
+        member will be given a key; please get yours from Marleen in the main office. The
+        lockers will be available ------· all times for your security. We hope that this will make
+        our work environment a secure and happy one. By Monday, LockSmart will begin
+        installation and you may need to stay clear of the lounge area. We are sorry for any
+        inconvenience that ------- by this project, but believe that any short-term
+        inconvenience will be outweighed by the long-term benefits.
+
+       147. (A) collaborated
+       (B) contracted
+       (C) decided
+       (D) discounted
+
+       148. (A) at
+       (B) in
+       (C) by
+       (D) on
+
+       149. (A) is caused
+       (B) causes
+       (C)caused
+       (D) has been caused
+
+       ĐÁP ÁN
+
+141B      142D          143A      144D     145B      146A       147B       148A        149A
+
+
+
+
+                                               26
+
+                        Lửa TOEIC – Trường đào tạo TOEIC Online
+                      Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                NGÀY 7: ÔN TẬP TỔNG HỢP PART 7
+
+1. Nội dung ôn tập Part 7:
+      Part 7 gồm là phần đọc hiểu gồm từ một đến ba văn bản:
+       -   Khoảng 10 bài gồm 1 văn bản, số câu hỏi từ 2-4 câu.
+       -   Khoảng 2 bài gồm 2 văn bản, mỗi bài gồm 5 câu hỏi.
+       -   Khoảng 3 bài gồm 3 văn bản, mỗi bài gồm 5 câu hỏi.
+      Các dạng câu hỏi thường gặp trong Part 7:
+       -   Chủ đề chính (main topic)
+       -   Câu hỏi chi tiết
+       -   Câu hỏi về từ vựng
+2. Cách ôn tập Part 7:
+   Part 7 là một part khá khó khăn với độ rộng về ngữ pháp và tự vựng cao nên bạn
+   cần nhắm chắc các phương pháp sau để ôn tập Part 7 dễ dàng hơn:
+      Skimming (đọc lướt): phương pháp này áp dụng để bạn tìm được ý chính của
+       đoạn văn, trả lời cho câu hỏi main topic. Chú ý cách đọc lướt như sau:
+       -   Đọc chủ đề của bài đọc, đây là phần tóm tắt ngắn gọn nội dung của bài.
+       -   Đọc đoạn giới thiệu hoặc khái quát.
+       -   Các câu đầu tiên thường là các câu chủ đề.
+       -   Rèn luyện đọc thường xuyên vì thông thường đây là một Part dễ gây nản
+           cho người luyện thi TOEIC.
+      Scanning (đọc để lấy dữ liệu): phương pháp này giúp bạn đọc có phương
+       hướng, không bị đọc lan man tốn thời gian không tìm được thông tin cần thiết để
+       trả lời cho các câu hỏi. Chú ý cách scanning như sau:
+       -   Xác định rõ thông tin cần tìm, là số, là tên riêng, địa điểm,…
+       -   Dự đoán xem thông tin nằm ở đoạn nào đối với đoạn văn kép
+       -   Đọc từ trên xuống dưới
+       -   Đưa mắt thật nhanh và xử lý thông tin chính xác, tránh đọc từ từ từng câu.
+      Cũng như các Part khác của bài thi TOEIC, đáp án thường được viết lại dưới
+       dạng từ đồng nghĩa nên các bạn cần có vốn từ thật phong phú, để có được vốn
+       từ nhiều các bạn cần đọc nhiều, làm nhiều và chăm chỉ học từ mới.
+      Đối với bài có 2 hoặc 3 văn bản, cần đọc lướt qua các văn bản một lần để xác
+       định mối liên kết giữa các văn bản là gì, từ đó xác định thông tin nằm ở đoạn
+       nào, giúp trả lời câu hỏi nhanh chóng hơn.
+
+
+
+
+                                         27
+
+                Lửa TOEIC – Trường đào tạo TOEIC Online
+                       Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+3. Bài tập thực hành:
+
+   CHÚ Ý ĐỂ LÀM BÀI TẬP THỰC HÀNH HIỆU QUẢ:
+
+      Ghi lại các cấu trúc mới, từ mới gặp.
+      Câu nào làm sai cần xem lại kĩ để biết rõ vì sao sai.
+      Làm câu nào hiểu chắc câu đó
+
+   BÀI TẬP:
+
+   Questions 153-154 refer to the following advertisement.
+
+
+
+
+                    Diva's Yearly Summer Clearance Sale -
+                                 This Weekend Only!
+
+
+   This weekend, summer clothing is 20% off! Come early to take advantage of our
+   remaining summer items, including shirts, shorts, and sandals. Take an extra 10% off
+   kids' clothing and active wear. Beach accessories discounted up to 50%. Visit our
+   Southend, Westmere, and Northstar locations and save!
+   Please be aware:
+   • Women's swimwear is not included in summer clearance sale.
+   • Store hours during the clearance sale will be 7 a.m. - l 0 p.m.
+   • Discounts do not apply to our Eastwind location.
+   Starting Monday, 9/10, we will resume our normal hours(8 a.m. - 6 p.m.).
+
+
+
+   153. What is inferred from the advertisement?
+   (A) The sale will continue for a week.
+   (B) The sale begins on Thursday.
+   (C) The sale only applies to the Northstar location.
+   (D) The sale will take place during extended business hours.
+   154. As stated in the advertisement, which item will NOT be on sale this weekend?
+   (A) Sandals
+   (B) Women's swimwear
+   (C) Shirts
+   (D) Shorts
+
+
+
+
+                                            28
+
+                 Lửa TOEIC – Trường đào tạo TOEIC Online
+                     Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+Questions 155-156 refer to the following memo
+
+                                   Memorandum
+
+To: Team Members
+From: Administration
+Date: August 3
+Save the date! In order to continue our long-standing tradition, The Sun Group will
+hold a yearly "Fun in the Sun" day at Patterson Park for all employees and their
+immediate family members. Last year's event was a huge success, and we are
+looking
+forward to an even better turnout this year. We hope that you will join us for great
+food, great company, and fantastic entertainment.
+Thanks to Connie Rosegarden for organizing this year's get-together, to be held on
+Sunday, August 15. We would also like to thank Charles Sandpiper for offering to
+provide musical entertainment. Charles will be playing a variety of woodwind
+instruments. We hope to see you in the park, or, in the case of bad weather, in the
+pavilion immediately next to the park.
+Volunteers are needed before and after the gathering. Contact John White at 223-
+2122 if you are able to help. Look for more information in your mailboxes in the
+coming week.
+
+155. What is being organized?
+(A) A performance
+(B) Training
+(C) A job fair
+(D) A social event
+
+156. What is the alternate plan?
+(A) The event will be cancelled.
+(B) The event will be held at the office.
+(C) The event will be held in a pavilion.
+(D) The event will be held later in the afternoon.
+
+
+
+
+                                         29
+
+                 Lửa TOEIC – Trường đào tạo TOEIC Online
+                    Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+Questions 181-185 refer to the following announcement and form.
+
+                           Best Business Practices
+
+
+Keep your company up-to-date with the latest research in business success! Don't
+let your employees fall behind when it comes to networking, product development,
+technology, and marketing. Staying competitive in today's market means staying
+informed. Don't miss this opportunity to find out the latest research.
+BusinessTrain will be conducting interactive and highly-relevant training sessions
+this summer on all aspects of business development. To register, visit our site at
+www.businesstrain.org. Fees are per person and include lunch. Here is just a
+sampling of our workshop offerings:
+
+1. Marketing Outward provides workshop participants with practical ideas on
+   attracting new clientele.
+   Monday, March 7, 8:00-10:00 a.m.
+   Cost $40
+2. Network Connections encourages participants to utilize their existing business
+   connections and gives strategies on creating new contacts.
+   Tuesday, April 4, 8:30-11 :00 a.m.
+   Cost $45
+3. Technology Yes! involves workshop-goers in a hands-on session that highlights
+   the relevance of technology to marketing.
+   Monday, May 6, 8:00-10:30 a.m.
+   Cost $65
+4. Product Ingenuity has made product development more exciting than ever!
+   Participants will use new design templates to learn how to impress clients with
+   new products.
+   Tuesday, June 9, 8:30-11 :00 a.m.
+   Cost $55
+
+
+
+
+                                        30
+
+              Lửa TOEIC – Trường đào tạo TOEIC Online
+                          Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+181. What is the purpose of the                184. What is the fee for the workshop
+announcement?                                  Charles
+(A) To ask for new workshop ideas              Salazar plans to attend?
+(B) To promote upcoming workshops              (A) $40
+(C) To inform business owners of               (B) $45
+previous workshops                             (C) $55
+(D) To modify the workshop schedule            (D) $65
+182. In the 2nd paragraph of the               185. What does Charles Salazar want to
+announcement, the word "conducting" in         know?
+line 1 is similar in meaning to                (A) Which workshop would be most
+(A) sending                                    helpful to him
+(B) neglecting                                 (B) If he can get a discount
+(C) presenting                                 (C) Workshop locations
+(D) electrifying                               (D) Names of the presenters
+183. What is NOT a workshop topic?
+(A) Finding new clients
+(B) Product development                        ĐÁP ÁN:
+
+(C) Using technology
+                                               153D      154B   155D      156C
+(D) Managing meetings
+                                               181B      182C   183D      184A   185B
+
+
+
+
+                                         31
+
+                    Lửa TOEIC – Trường đào tạo TOEIC Online
+                     Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                 NGÀY 8: LUYỆN TẬP PART 1 & 2
+
+Áp dụng cách ôn tập và các kiến thức đã ôn được từ ngày 1 & 2 trong lộ trình để
+luyện tập làm Part 1 & 2.
+
+Link download đề, audio, transcript và đáp án: http://bit.ly/toeic30days-day8
+
+Chú ý khi làm bài:
+
+   Ghi chú lại từ mới, cấu trúc mới gặp trong đề.
+   Cố gắng nghe kĩ, nghe hiểu và xem lại transcript những chỗ chưa biết
+   Có thể áp dụng phương pháp chép chính tả để nâng cao khả năng nghe
+   Nên nghe loa ngoài để quen với phòng thi
+ Chúc các bạn luyện tập tốt!
+
+
+                       NGÀY 9: LUYỆN TẬP PART 3 & 4
+
+Áp dụng cách ôn tập và các kiến thức đã ôn được từ ngày 3 & 4 trong lộ trình để
+luyện tập làm Part 3 & 4.
+
+Link download đề, audio, transcript và đáp án: http://bit.ly/toeic30days--day9
+
+Chú ý khi làm bài:
+
+   Ghi chú lại từ mới, cấu trúc mới gặp trong đề.
+   Cố gắng nghe kĩ, nghe hiểu và xem lại transcript những chỗ chưa biết
+   Có thể áp dụng phương pháp chép chính tả để nâng cao khả năng nghe
+   Nên nghe loa ngoài để quen với phòng thi
+
+Chúc các bạn luyện tập tốt!
+
+                     NGÀY 10: LUYỆN TẬP PART 5 & 6
+
+Áp dụng cách ôn tập và các kiến thức đã ôn được từ ngày 5 & 6 trong lộ trình để
+luyện tập làm Part 5 & 6.
+
+Link download đề và đáp án: http://bit.ly/toeic30days-day10
+Chú ý khi làm bài:
+   Ghi chú lại từ mới và các cấu trúc ngữ pháp mới, phrasal verb mới,… gặp trong
+    đề.
+   Làm đề một cách thật tập trung để đạt hiệu quả cao nhất
+
+
+
+
+                                     32
+
+             Lửa TOEIC – Trường đào tạo TOEIC Online
+                               Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                              NGÀY 11: LUYỆN TẬP PART 7
+
+ Áp dụng các phương pháp đã được ôn để luyện tập làm Part 7.
+
+ Link download đề và đáp án: http://bit.ly/toeic30days-day11
+
+ Chú ý khi làm bài:
+                Ghi chú lại từ mới và các cấu trúc ngữ pháp mới, phrasal verb mới,… gặp trong
+                 đề.
+                Làm đề một cách thật tập trung để đạt hiệu quả cao nhất.
+
+     Chúc các bạn luyện tập tốt!
+
+                            NGÀY 12: MẸO NGHE PART 1 & 2
+
+I.       Part 1:
+         1. Mẹo 1:
+
+         Trước khi vào làm, tận dụng thời gian đọc directions và thời gian chết giữa các
+         câu nhìn tổng quan hình và brainstorm ra nhanh nhất những danh từ, động từ,…
+         có thể xuất hiện và đoán ngữ cảnh hoặc tình huống đang xảy ra. Điều này giúp
+         bạn chủ động khi nghe hơn.
+
+         VD: Nhìn bức tranh sau đây và đoán hoạt động, ngữ cảnh/tình huống và mối quan
+         hệ giữa người/vật trong hình
+
+
+
+
+         T
+         a
+
+
+         c
+         ó
+
+
+         t
+         h
+         ể
+             Đoán được như sau:
+
+             -     Hoạt động: 2 người đang nhìn vào màn hình máy tính
+
+                                                 33
+
+                          Lửa TOEIC – Trường đào tạo TOEIC Online
+                    Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+ -     Tình huống: có thể là ở trong văn phòng vì có giấy tờ, máy tính, có bối cảnh
+       văn phòng ở nền bức tranh
+ -     Mối quan hệ: người phụ nữ chỉ tay vào màn hình, người đàn ông đang nhìn
+       vào màn hình, người phụ nữ và người đàn ông đang nói chuyện với nhau,
+       máy tính được đặt trên bàn,…
+
+ Bài tập áp dụng: Xem hình
+
+
+
+
+ Ghi ra các dự đoán:
+
+        -    Hoạt động:
+        -    Tình huống:
+        -    Mối quan hệ:
+
+     Link nghe: http://bit.ly/toeic30days-day12 (File “Part 1=>Mẹo 1”)
+
+     Nghe xong, đưa ra đáp án và chỉ ra bạn đã đoán được phần nào ngữ cảnh hay
+     chưa.
+
+2. Mẹo 2:
+      Chú ý nghe động từ và danh từ của từng phương án. Đáp án sai là do danh từ
+      và động từ đó không có trong bức tranh.
+
+
+
+
+                                       34
+
+               Lửa TOEIC – Trường đào tạo TOEIC Online
+               Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+ VD: Xem hình
+
+
+
+
+Bạn sẽ nghe:
+(A) The couple is crossing the street. (Một cặp đôi đang băng qua đường) Có
+“the couple” trong hình => chủ từ đúng, “crossing the street” => động từ sai, đáp
+án sai.
+(B) The road is closed to traffic. (Con đường không cho phép xe cộ qua lại) =>
+đáp án sai, con đường vẫn có xe cộ qua lại.
+(C) A tree has fallen onto the road. (Có một cái cây ngả xuống đường) Có “a tree”
+trong hình => chủ từ đúng, “fallen onto the road” => động từ sai, đáp án sai.
+(D) Some cars are parked along the road. (Một vài chiếc xe hơi đang đỗ bên
+đường) => Đáp án chính xác phù hợp với hình.
+
+
+
+
+                                  35
+
+          Lửa TOEIC – Trường đào tạo TOEIC Online
+                Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+   Bài tập áp dụng: Xem hình:
+
+   Link nghe: http://bit.ly/toeic30days-day12 (File “Part 1=>Mẹo 2”)
+
+   Nghe xong, đưa ra đáp án và chỉ ra những đáp án có động từ, danh từ sai:…….
+
+3. Mẹo 3:
+   Chú ý quan sát các hành động đang xảy ra trong hình và sử dụng thì tiếp diễn
+   để brainstorm trong đầu các câu có khả năng xảy ra.
+
+
+
+
+                                   36
+
+            Lửa TOEIC – Trường đào tạo TOEIC Online
+                  Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+   Bạn sẽ nghe:
+      (A) He's looking out at the scenery. => Anh ấy đang ngắm cảnh: đáp án này
+         sai hoàn toàn vì không có phong cảnh nào trong hình.
+      (B) He's hanging a picture on the wall. => Anh ấy đang treo tranh lên tường:
+         đáp án này mắc lỗi động từ đã giới thiệu ở Mẹo số 2.
+      (C) He's admiring a painting on the wall. => Anh ấy đang ngắm bức tranh
+         trên tường: đáp án chính xác hành động trong tranh
+      (D) He's walking around an art gallery. => Anh ấy đang đi thăm quan phòng
+         tranh: đáp án này sai, có thể người đàn ông này đang đi thăm quan
+         phòng tranh nhưng trong hình không thể hiện rõ hành động này.
+
+   Bài tập áp dụng: Xem hình
+
+
+
+
+   Ghi ra các dự đoán hành động có thể xảy ra:……
+
+   Link nghe: http://bit.ly/toeic30days-day12 (File “Part 1=>Mẹo 3”)
+
+   Nghe xong, đưa ra đáp án và chỉ ra bạn đã dự đoán đúng hành động hay chưa.
+
+4. Mẹo 4:
+   Chú ý lắng nghe giới từ đối với các tranh có nhiều đồ vật. Trước khi vào làm
+   bạn cần xác định vị trí của các vật trong tranh và nghĩ ra các giới từ có thể có
+   để chủ động hơn khi vào bài nghe.
+
+
+
+
+                                    37
+
+            Lửa TOEIC – Trường đào tạo TOEIC Online
+                    Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+     Ví dụ: Xem hình
+
+
+
+
+     Bạn sẽ nghe:
+
+        (A) Cars are parked on both sides of the road. (Xe hơi được đỗ ở cả hai bên
+        đường)
+        (B) The ground is covered with leaves. (Mặt đường được bao phủ bởi lá cây)
+        (C) The trees are being planted along the road. (Cây đang được trồng dọc
+        đường)
+        (D) Some people are getting out of a vehicle. (Một vài người đang xuống xe)
+
+Đáp án A là đáp án đúng.
+
+Bài tập áp dụng: Xem hình:
+
+Link nghe: http://bit.ly/toeic30days-day12 (File “Part 1=>Mẹo 4”)
+
+
+
+
+                                      38
+
+              Lửa TOEIC – Trường đào tạo TOEIC Online
+                   Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+ĐÁP ÁN VÀ TRANSCRIPT BÀI TẬP ÁP DỤNG:
+
+ĐÁP ÁN:
+
+      Mẹo 1: B             Mẹo 2: B             Mẹo 3: C              Mẹo 4: D
+
+
+
+TRANSCRIPT:
+
+
+
+
+II. Part 2:
+   1. Mẹo 1:
+      Lắng nghe thật kĩ từ để hỏi trong bài nghe. Khi đã nắm bắt được ý câu hỏi
+      muốn hỏi điều gì, việc loại đáp án cũng trở nên dễ dàng hơn.
+      Ví dụ:
+
+
+
+                                      39
+
+               Lửa TOEIC – Trường đào tạo TOEIC Online
+                 Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+      When are we going to get audited? (Khi nào chúng ta sẽ được kiểm toán?)
+      (A) Yes, it will be edited. (Vâng, nó sẽ được sửa) => Câu này mắc lỗi đồng
+      âm edited và audited và lỗi cách trả lời sai loại câu hỏi (Câu hỏi Wh- trả lời
+      Yes/No)
+      (B) To get it on time. (Để tới đúng giờ) => Câu này có từ time liên quan tới
+      câu hỏi when, dễ gây nhầm lẫn
+      (C) In September. (Trong tháng 9) => Đáp án chính xác
+   Bài tập áp dụng:
+   Nghe các câu sau:
+   14. Mark your answer on your answer sheet.
+   15. Mark your answer on your answer sheet.
+   17. Mark your answer on your answer sheet.
+   18. Mark your answer on your answer sheet.
+   Link nghe: http://bit.ly/toeic30days-day12 (File “Part 2=>Mẹo 1”)
+2. Mẹo 2:
+   Tránh các bẫy từ đồng âm khác nghĩa. Đây là bẫy quen thuộc đã có từ Part 1
+   của bài thi TOEIC.
+   Ví dụ:
+   Did you find the book helpful? (Bạn thấy cuốn sách đó hữu ích không?)
+   (A) Yes, it was very good. (Vâng, nó rất tốt) => Đáp án chính xác
+   (B) He booked it already. (Anh ấy đã đặt vé rồi) => Từ đồng âm khác nghĩa
+   “book”. “Book” trong câu hỏi là danh từ “cuốn sách”, “book” trong câu này là
+   động từ “đặt vé, đặt chỗ”.
+   (C) I'll look for it later. (Tôi sẽ tìm nó sau) => Đáp án sai về ngữ nghĩa, không
+   liên quan tới câu hỏi. Nếu bạn chỉ nghe được find và look for thì sẽ có nguy cơ
+   mắc bẫy ở mẹo số 4, câu trả lời nghe có vẻ liên quan tới câu hỏi nhưng sai.
+   Bài tập áp dụng:
+   Nghe câu sau: : http://bit.ly/toeic30days-day12 (File “Part 2=>Mẹo 2”)
+   Đưa ra đáp án và tìm ra câu có bẫy đồng âm khác nghĩa.
+3. Mẹo 3:
+   Tránh các bẫy từ phát âm gần giống và nghĩa hoàn toàn khác nhau. Bẫy này
+   rất hay gặp trong Part 2 bài thi TOEIC.
+   Ví dụ:
+   Let's share a cab to the mall. (Hãy cùng đi taxi tới trung tâm thương mại đi)
+   (A) I bought a pair of pants. (Tôi đã mua một cặp quần dài)=> Đáp án sai,
+   không liên quan tới câu hỏi. Nếu bạn không nghe rõ câu hỏi và suy đoán từ
+   mall và bought a pair of pants có liên quan tới nhau thì sẽ gặp lỗi sai ở Mẹo số
+
+                                    40
+
+            Lửa TOEIC – Trường đào tạo TOEIC Online
+                  Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+   4.
+   (B) Thanks, but I have a cap. (Cám ơn nhé, nhưng tôi đã có một cái mũ lưỡi
+   trai rồi) => Từ phát âm gần giống khác nghĩa “cab” và “cap”. “Cap” trong câu
+   này là danh từ “mũ lưỡi trai” còn “cab” trong câu hỏi là danh từ “xe taxi”
+   (C) Sure, I'll call one right away. (Được, tôi sẽ gọi một chiếc xe luôn đây) =>
+   Đáp án chính xác.
+   Bài tập áp dụng:
+   Nghe câu sau: http://bit.ly/toeic30days-day12 (File “Part 2=>Mẹo 3”)
+   Đưa ra đáp án và tìm ra câu có bẫy từ phát âm gần giống và khác nghĩa.
+4. Mẹo 4:
+   Tránh bẫy câu hỏi và đáp án liên quan tới cùng một trường từ vựng, một chủ
+   đề nhưng không liên quan tới nhau.
+   Ví dụ:
+   Can I write the report by hand? (Tôi có thể viết báo cáo bằng tay không?)
+   (A) I'll hand it in before the meeting. (Tôi sẽ đưa nó trước buổi hội nghị) => Câu
+   này có “the meeting” liên quan tới “report”, nếu bạn nghe không kĩ rất có thể sẽ
+   mắc bẫy.
+   (B) Well, I'd prefer that you type it. (À, tôi thấy bạn nên đánh máy nó thì hơn)
+   => Đáp án chính xác
+   (C) Yes, I can give you a ride home. (Vâng, tôi có thể chở bạn về nhà) => Câu
+   này mắc bẫy từ gần âm khác nghĩa “ride” và “write”.
+   Bài tập áp dụng:
+   Nghe câu sau: : http://bit.ly/toeic30days-day12 (File “Part 2=>Mẹo 4”)
+   Đưa ra đáp án và tìm ra câu có bẫy câu hỏi và đáp án có cùng chủ đề nhưng
+   không liên quan tới nhau.
+5. Mẹo 5:
+   Chú ý nghe các đáp án được viết lại gián tiếp. Ở Part 2 này, các đáp án được
+   viết lại gián tiếp xuất hiện khá phổ biến.
+   Ví dụ:
+   Did you park your car in the underground garage or on the first floor? (Bạn đậu
+        xe ở dưới tầng hầm hay trên tầng trệt?)
+        (A) Yes, I would like a ride. (Vâng, cho tôi xin đi nhờ nhé) => Câu này có
+        bẫy ở mẹo số 4.
+        (B) I didn't drive to work today. (Hôm nay tôi không lái xe đi làm)=> Đáp án
+        chính xác, trả lời gián tiếp không lái xe đi làm => không đậu xe
+        (C) It should be there. (Nó nên ở đây) => Câu trả lời không liên quan.
+   Bài tập áp dụng:
+
+                                     41
+
+             Lửa TOEIC – Trường đào tạo TOEIC Online
+             Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+Nghe câu sau: http://bit.ly/toeic30days-day12 (File “Part 2=>Mẹo 5”)
+
+
+ĐÁP ÁN VÀ TRANSCRIPT BÀI TẬP ÁP DỤNG:
+   ĐÁP ÁN
+    -   Mẹo 1: 14A 15B 17A 18B
+    -   Mẹo 2: C
+    -   Mẹo 3: A
+    -   Mẹo 4: C
+    -   Mẹo 5: C
+   TRANSCRIPT
+
+
+
+
+                               42
+
+        Lửa TOEIC – Trường đào tạo TOEIC Online
+    Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                   43
+
+Lửa TOEIC – Trường đào tạo TOEIC Online
+                       Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                       NGÀY 13: MẸO NGHE PART 4
+
+1. Mẹo 1:
+   Trước khi vào nghe, nhìn qua các câu hỏi và câu trả lời từ đó đoán các từ vựng và
+   ngữ cảnh của đoạn băng sắp nghe. Điều này giúp bạn chủ động hơn trong việc nghe
+   và dễ dàng cho việc lấy thông tin một cách chính xác.
+   Ví dụ:
+   1. Who would most likely be interested in the ad?
+       (A) People who are studying magic
+       (B) Families looking for something to do
+       (C) Students who are studying for exams
+       (D) Children who like to watch plays
+   2. How long will the event last?
+       (A) One day
+       (B) Two days
+       (C) One week
+       (D) Two weeks
+   3. Who is Mr. Hennington?
+       (A) A teacher
+       (B) A performer
+       (C) A restaurant owner
+       (D) A policeman
+   Đọc 3 câu hỏi và các câu trả lời này bạn có thể dự đoán được: đây là một đoạn
+   quảng cáo về một sự kiện.
+   Transcript:
+   Tired of doing the same thing every weekend? Then how about a night of magic at
+   the "Houdini House" for some great fun for you and your family? For this week only,
+   you will get to witness the great magic of Larry Hennington just by coming down to
+   the Houdini House. The tickets are limited, so act now. The show will start each day
+   at 7 p.m. from next Monday and end in a breathtaking finale on Sunday night.
+   So, if you are looking for something to do, check out the Houdini House, next week
+    Có thể thấy, việc đoán ngữ cảnh đã giúp bạn chủ động hơn nhiều trong khi vào
+      nghe băng và từ đó giúp bạn đưa ra đáp án nhanh, chính xác hơn.
+
+
+
+
+                                        44
+
+                 Lửa TOEIC – Trường đào tạo TOEIC Online
+                       Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+  Bài tập áp dụng:
+  Link nghe: http://bit.ly/toeic30days-day13 (File “Mẹo 1”)
+
+
+
+
+2. Mẹo 2:
+   Nhớ ý bài nghe và cẩn thận với các từ đồng nghĩa. Part 4 này cũng như các part
+   trước của phần thi Listening, đáp án sẽ được viết lại đồng nghĩa với ý trong đoạn
+   nghe chứ không lặp lại như trong đoan văn, vì vậy bạn cần phải chú ý với các từ
+   đồng nghĩa.
+   Ví dụ:
+   95. How long has consumer spending been on a downward trend?
+   (A) 6 months
+   (B) 12 months
+   (C) 24 months
+   (D) 36 months
+   96. What do the leading economists believe?
+   (A) The currency has increased too quickly.
+   (8) The president has done all he can.
+   (C) Fuel prices will begin to fall soon.
+   (D) The economy is at its lowest point.
+
+                                              45
+
+                  Lửa TOEIC – Trường đào tạo TOEIC Online
+                   Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+97. According to the speaker, why has the president been criticized lately?
+(A) He has been taking too many trips to Europe.
+(B) He has not listened to the advice of the economists.
+(C) He has not acted aggressively in trying to revive the economy.
+(D) He has not been healthy enough to lead the nation.
+Transcript:
+The Consumer Price Index shows that consumer spending and consumer purchasing
+power has decreased for the last six months and has steadily decreased for the
+last two years. However, leading economists believe the bottom is leveling out
+and in the next year or two the economy should start picking up again. For this
+reason, the President has been criticized as of late for not taking strong enough
+measures to stimulate the economy. Nonetheless, with fuel prices at its highest
+levels ever and the dollar losing its strength against the euro and other international
+currencies, there aren't enough measures for the President to take at the moment to
+stimulate the economy into a healthy state.
+Câu 95: Đáp án tìm ở đoạn “…has steadily decreaded for the last two years” (giảm
+dần đều trong vòng hai năm trở lại đây => Chọn đáp án C: 24 months (24 tháng = 2
+năm)
+Câu 96: Đáp án được viết rõ ở đoạn “…leading economists believe…”(Những nhà
+kinh tế học tiên phong tin rằng điểm cuối cùng đã không còn giảm nữa) được viết lại
+như sau “The economy is at its lowest point” (Nền kinh tế đang ở điểm thấp nhất của
+nó) => Chọn đáp án D
+Câu 97: Đáp án được viết rõ ở đoạn “the President has been criticized…” (Tổng
+thống bị chỉ trích vì gần đây không dùng các biện pháp mạnh để cải thiện nền kinh tế)
+được viết lại như sau “He has not acted aggressively in trying to revive the economy”
+(Ông ấy không hành động một cách năng nổ để cố gắng khôi phục lại nền kinh tế)
+=> Chọn đáp án C
+
+
+
+
+                                       46
+
+              Lửa TOEIC – Trường đào tạo TOEIC Online
+                    Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+Bài tập áp dụng :
+Link nghe: http://bit.ly/toeic30days-day13 (File “Mẹo 2”)
+
+
+
+
+ĐÁP ÁN VÀ TRANSCRIPT BÀI TẬP ÁP DỤNG:
+   ĐÁP ÁN:
+     -   Mẹo 1: 83A 84B 85D
+     -   Mẹo 2: 92A 93C 94D
+   TRANSCRIPT:
+
+
+
+
+                                      47
+
+              Lửa TOEIC – Trường đào tạo TOEIC Online
+        Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+Mẹo 1
+
+
+
+
+Mẹo 2
+
+
+
+
+                       48
+
+   Lửa TOEIC – Trường đào tạo TOEIC Online
+                              Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                               NGÀY 14: MẸO LÀM PART 5 & 6
+I.   Part 5:
+     1. Mẹo 1:
+        Xác định từ loại của từ cần điền. Đầu tiên, bạn nhìn 4 lựa chọn đáp án và xác định
+        loại câu hỏi (từ vựng, ngữ pháp, từ loại). Nếu là câu ngữ pháp hoặc từ loại thì không
+        cần nhìn cả câu chỉ cần nhìn từ đứng trước và sau đáp án để làm thật nhanh.
+        Ví dụ:
+        Under the ------- of Dr. Veracini, Cascadia Chamicals Inc. has patented several
+        formulas and signed some lucrative contracts with other companies.
+        (A) directs
+        (B) directed
+        (C) direction
+        (D) directly
+        Câu này nhìn vào đáp án ta biết đó là câu hỏi về loại từ, nhìn trước và sau chỗ trống
+        là mạo từ “the” và giới từ “of”, vì vậy từ cần điền là danh từ => Chọn đáp án C
+        Bài tập áp dụng:
+        1.1 The two competing software programs were determined to be ------- effective in
+            making filing taxes from home an easy task.
+            (A) equal
+            (B) equally
+            (C) equaled
+            (D) equality
+        1.2 The ------- delivery date was moved ahead by one week because of a minor
+            computer error.
+            (A) expected
+            (B) expecting
+            (C) expectation
+            (D) expect
+     2. Mẹo 2:
+        Chú ý đến thì của động từ. Các câu hỏi liên quan tới ngữ pháp ở Part 5 không quá
+        khó nhưng nếu không chú ý xác định đúng thì của câu thì rất có thể bạn sẽ bị nhầm
+        lẫn chọn sai đáp án.
+        Ví dụ:
+        Ms. Gamble, who ------- an influential literary critic in the 1980s, is now a contributing
+        writer to the National Gazette newspaper.
+        (A) will
+        (B) is
+
+                                                49
+
+                        Lửa TOEIC – Trường đào tạo TOEIC Online
+                              Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+          (C) was
+          (D) has been
+          Câu này động từ chia theo dấu hiệu “in the 1980s” => chia thì quá khứ đơn => Chọn
+          đáp án C.
+          Bài tập áp dụng:
+          2.1 Ms. Cho relayed her concerns about the company's financial situation while she -
+          -----a meeting with the manager.
+          (A) having
+          (B) will have
+          (C) was having
+          (D) has
+          2.2 Rather than the usual hosted dinner and drinks, we will be ------- tonight at the
+          Mandarin Garden at 2025 Shattuck Ave, near the corner of Elm Street.
+          (A) dine
+          (B) dined
+          (C) dining
+          (D) diner
+          ĐÁP ÁN BÀI TẬP ÁP DỤNG:
+          1.1B         1.2A    2.1C      2.2C
+
+
+II.   Part 6:
+      Đối với Part 6, các mẹo áp dụng với Part 5 vẫn có thể áp dụng được vì cấu trúc nội
+      dung Part 6 không có nhiều sự thay đổi đối với Part 5:
+          Xác định nhanh từ loại của từ cần điền với các câu dạng word form
+          Chú ý thì của động từ
+
+      Ví dụ:
+
+      Sedona, AZ - Communications giant TeleStar's first satellite was launched this morning.
+      The satellite will be a key factor in increasing communications capacity as the company
+      increases the size of its market in the western USA. A group of top executives was
+      present in Sedona as the satellite was launched. The satellite should be fully
+      operational ------- 48 hours after its launch.
+      1. (A) just => Đáp án chính xác
+      (B) when (Sau When phải có một clause => đáp án sai)
+      (C) so (Sau So phải có một clause => đáp án sai)
+      (D) since (Sau Since + một mốc thời gian xác định => đáp án sai)
+
+
+
+                                                 50
+
+                          Lửa TOEIC – Trường đào tạo TOEIC Online
+                       Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+TeleStar's new communications network will then be ------- by the end of June.
+2. (A) operationally
+(B) operational
+(C) operation
+(D) operate
+
+(Câu này là dạng word form. Nhìn xuống đáp án thấy A là trạng từ, B là tính từ, C là
+danh từ, D là động từ. Nhìn vào câu hỏi, sau động từ “be” cần một tính từ hoặc V-ed
+hoặc V-ing tùy thì, nhìn đáp án có operational là tính từ => chọn B)
+The satellite ------- by Dutch company Sendek and cost approximately $200,000,000.
+3. (A) made
+(B) is making
+(C) will be made
+(D) was made
+
+(Câu này thấy cần chia bị động vì chủ từ là vật và có giới từ by phía sau, chọn D là cấu
+trúc bị động duy nhất)
+As the satellites are expected to bring record revenue to the corporation, the goal is to
+have several such satellites in space within the next two years
+
+Bài tập áp dụng:
+
+                                          MEMO
+
+To: All employees of Delfin Corporation
+From: Daniel Mayer
+Subject: Workshop next Friday
+
+
+Please mark your calendars for next Friday's workshop, entitled "Networking Tips."
+Even though our company's image is known worldwide, we still continue to depend on
+not only our reputation, but also the building of ------- networks. These networks are key
+in maintaining our existing image and promoting it even further.
+1. (A) extend
+(B) extensive
+(C) extensiveness
+(D) extension
+
+The presenter for this workshop will be Sarah Blandon, Executive Director .and an
+expert in the area of networking. Ms. Blandon is well known for her book, Networking
+for the 21st Century. Her workshop ------- the topic of how networking is important in
+
+                                          51
+
+                  Lửa TOEIC – Trường đào tạo TOEIC Online
+                        Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+                                    2. (A) addressed
+
+                                    (B) addresses
+
+                                    (C) had addressed
+
+                                    (D) has addressed
+
+every ------- of a business, including telephone communication and the distribution of
+official materials.
+
+3. (A) passage
+
+(B) facility
+
+(C) aspect
+(D) reference
+Practical information and tips applicable specifically to our corporation will be provided.
+Please plan to attend this important session and bring a bag lunch.
+
+ĐÁP ÁN BÀI TẬP ÁP DỤNG:
+
+1B             2B        3C
+
+
+
+
+                                          52
+
+                    Lửa TOEIC – Trường đào tạo TOEIC Online
+                      Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                    NGÀY 15: CHIẾN LƯỢC LUYỆN PART 7
+
+Part 7 thường được đánh giá là một Part khó nhằn trong bài thi TOEIC và vì đây là
+phần đọc hiểu cuối cùng nên làm đến đây nhiều bạn sẽ cảm thấy khá mất sức, cộng
+với khối lượng từ vựng và đoạn văn đơn cũng như kép khiến cho Part 7 trở nên khó
+khăn hơn nữa. Để chinh phục Part 7 thành công, ngoài việc phân bổ thời gian cho hợp
+lý thì bạn nên có chiến lược ôn luyện cho hiệu quả để nhuần nhuyễn kỹ năng làm bài.
+
+1. Xác đinh thứ tự câu hỏi:
+   Đầu tiên bạn cần đọc lướt qua các câu hỏi và xác định nó thuộc một trong các loại
+   sau: Câu hỏi ý chính, suy ra từ đoạn văn; câu hỏi chi tiết; câu hỏi từ vựng; câu hỏi
+   phủ định (not mention, not given,…)
+   Sắp xếp thứ tự trả lời các câu hỏi từ: câu hỏi chi tiết; câu hỏi từ vựng; câu hỏi ý
+   chính và cuối cùng là câu hỏi phủ định.
+2. Cách trả lời từng loại câu hỏi:
+     Câu hỏi chi tiết: chú ý nắm keyword, tên riêng trong câu hỏi để lật tìm nội dung
+      câu trả lời; nếu trong câu hỏi có yêu cầu tìm dữ kiện số thì tập trung nhìn lướt
+      qua các con số có trong bài. Áp dụng phương pháp scanning (đọc lấy dữ kiện)
+      đã được giới thiệu trong Ngày 7 để làm các câu hỏi dạng này
+     Câu hỏi từ vựng: câu hỏi này thường là tìm từ đồng nghĩa, vì vậy bạn nên chuẩn
+      bị một vốn từ vựng kha khá để có thể làm chính xác các câu hỏi này. Chú ý
+      trong một số ngữ cảnh thì một từ có nhiều nghĩa khác nhau nên cần cẩn trọng
+      đọc cả câu có chứa từ đó để không bị nhầm lẫn.
+     Câu hỏi ý chính: câu hỏi loại này bạn áp dụng phương pháp skimming (đọc lướt)
+      để lấy ý chính chủ yếu toàn bài và thêm các dữ kiện đã scanning được kết hợp
+      để trả lời.
+     Câu hỏi phủ định: câu hỏi loại này yêu cầu đối chiếu từng loại thông tin trong
+      đáp án với nội dung trong bài đọc, tuy nhiên với hai lần scanning và skimming ở
+      trên thì bạn đã lấy được kha khá thông tin và có thể tiết kiệm thời gian dò hơn ở
+      câu này.
+
+
+
+
+                                         53
+
+                 Lửa TOEIC – Trường đào tạo TOEIC Online
+                      Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+3. Bài tập áp dụng:
+ 3.1 Question 1 to 3 refer to the following article
+   To Boost the Economy, Make a Sale
+   Economic growth comes not from Washington but from a sale at a time.
+   Around six million American sales professionals get up each business morning to
+   spend their day driving the growth of our economy by selling new business, which
+   spawns yet more jobs - those dedicated to producing the goods and services to
+   fulfill customer orders. Three trillion dollars worth of gross domestic product is
+   fueled in this way, one sale at a time. (Initial jobless claims rose by 10,000 the week
+   before last, the highest number in several months.) The nation's salespeople must
+   make more calls and close more sales to attempt to turn this tide yet again. Selling
+   new business is what creates jobs. Our economy is not a weather front that passes
+   overhead while we wait for sunshine or brace for a storm. It's a gigantic, man-made
+   enterprise that creates wealth and jobs in direct proportion to the rate of
+   development of new businesses. But, too often, we're led to believe in a fairy tale:
+   that the president, Congress and the Federal Reserve chairman can go to their
+   offices and flip switches that somehow will turn the U.S. economy on (or up, or
+   down) and create jobs.
+
+
+   1. What does the author believe is most responsible for economic growth?
+   (A) The U.S. President
+   (B) Congress
+   (C) Salespeople
+   (D) The Federal Reserve chairman
+   2. According to the passage, which of the following is true?
+   (A) People are mistaken that those in high positions in the government will solve
+   problems.
+   (B) Less than 10,000 Americans are currently out of work.
+   (C) The U.S. economy is on the brink of collapsing.
+   (D) The total GDP of the United States is three trillion dollars and is likely to
+   increase.
+   3. How does the author believe the American economy will begin to improve?
+   (A) By companies exporting more goods
+   (B) By salespeople making more calls and closing more sales
+   (C) By people putting more faith in powerful economists
+   (D) By people in the workforce working longer hours
+
+
+                                          54
+
+                Lửa TOEIC – Trường đào tạo TOEIC Online
+                    Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+3.2 Question 4 to 8 refer to the following advertisement and e-mail
+
+Marrakech restaurant is an exotic dining experience that transcends mere dining and
+brings you into another world where you are greeted by smiling faces in Moroccan
+garb, taking you out of your daily routine for several wonderful hours. Course after
+course of Moroccan cuisine featuring succulent meats, vegetables, and salads
+served against the backdrop of North African music and decor will both excite and lull
+you into one of the most special evenings of your life. Also, our expert staff is
+committed to provide top-quality service to our customers.
+Marrakech restaurant is the perfect place for a celebration and gives exquisite
+attention to those enjoying a birthday, anniversary, graduation, wedding reception, or
+that one time secret moment that you want to create or remember. We promise you
+an experience far out of the ordinary that you will never forget. Call us at 444-3327 or
+visit our website www.marrakech.com for more details and reservation.
+December Special: Mention this advertisement when making a group reservation and
+get a 10% discount!*
+* Group reservation: 8 people or over. Effective from Dec. 1 to Dec. 31 .
+
+From: Mia Niro
+To:TaharJelloun
+Subject: Reservation
+Date: Dec 3
+Dear Mr. Jelloun:
+I saw your advertisement in the Food Magazine and tried to call your restaurant
+several times, but each attempt has failed. The phone number shown in the ad must
+be inaccurate, because I keep hearing a message that the number is not in service.
+So I finally decided to make a reservation through your website. I would like to make
+a reservation for 10 people tor Friday, Dec 12 at 7:30 p.m. Since it is a birthday party,
+I would like a private room, if possible. Also, I believe I am entitled to the special offer
+mentioned in the advertisement.
+Please send a confirmation to my e-mail address(nirom@chfi.com). I'd also
+appreciate it if you send me information on party and set menus.
+Thank you.
+
+
+
+
+                                        55
+
+              Lửa TOEIC – Trường đào tạo TOEIC Online
+                    Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+4. What is being promoted?
+(A) A special offer by a restaurant
+(B) A cultural event
+(C) A new website
+(D) A Moroccan cooking school
+5. What is the purpose of Mia Niro's e-mail?
+(A) To invite Mr. Jelloun to a party
+(B) To ask Mr. Jelloun to promote her restaurant
+(C) To change her reservation
+(D) To make a reservation tor an event
+6. According to the passages, what seems to be true?
+(A) Marrakech restaurant holds special events every month.
+(B) People who make a reservation in December are eligible for a 10% discount.
+(C) Marrakech restaurant put the wrong information in the advertisement.
+(D) Mr. Jelloun is planning a birthday party tor his customer.
+
+7. According to the advertisement, what is NOT a characteristic of Marrakech
+restaurant?
+(A) Waiters wearing Moroccan clothes
+(B) Live music played by a North African band
+(C) A multi-course meal composed of meats, vegetables and salads
+(D) Excellent staff and high-quality service
+8. What is Mia Niro asking Tahar Jelloun to do?
+(A) Correct inaccurate information
+(B) Organize a birthday party
+(C) Improve restaurant service
+(D) Send a confirmation tor the reservation
+
+ĐÁP ÁN BÀI TẬP ÁP DỤNG
+
+  1C          2A       3B       4A       5D        6C        7B    8D
+
+
+
+
+                                       56
+
+               Lửa TOEIC – Trường đào tạo TOEIC Online
+                           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                        NGÀY 16: LUYỆN ĐỀ LISTENING
+Link download đề, audio, transcript và đáp án: http://bit.ly/toeic30days-day16
+Chú ý khi luyện đề:
+
+   Tập thói quen chọn đáp án nhanh chóng dứt khoát, nếu không nghe được thì không cố
+    gắng suy nghĩ câu đó nữa để tập trung nghe câu tiếp theo
+   Ghi lại các từ mới, idiom, cấu trúc mới
+   Note lại các câu sai để làm lại sau
+
+Chúc các bạn luyện đề tốt!
+
+                         NGÀY 17: LUYỆN ĐỀ READING
+Link download đề, audio, transcript và đáp án: http://bit.ly/toeic30days-day17
+Chú ý khi luyện đề:
+
+   Ghi lại các từ mới, idiom, cấu trúc mới
+   Note lại các câu sai để làm lại sau
+
+
+
+Chúc các bạn luyện đề tốt!
+
+                   NGÀY 18: ÔN LUYỆN TỪ VỰNG ĐÃ HỌC
+Đến ngày 18, bạn đã có gần như đầy đủ kiến thức, kỹ năng cũng như các mẹo và luyện
+được 1 đề thi TOEIC. Ngoài những yếu tố trên thì từ vựng là yếu tốt quan trọng để bạn hoàn
+thành tốt bài thi của mình. Trong ngày 19, bạn sẽ ôn lại toàn bộ những từ vựng đã được ghi
+chép lại trong quá trình ôn luyện từ đầu.
+
+Cách ôn luyện từ vựng như sau:
+
+   Bạn gõ từ vào các từ điển online như Oxford hoặc Cambridge để xem phiên âm và
+    nghe cách phát âm của người bản xứ.
+   Phát âm lại từ bạn vừa học một cách rõ ràng, chính xác.
+   Đặt câu với từ bạn vừa học sau đó tập đọc đi đọc lại câu đó cho tới khi không cần nhìn
+    vào câu đó nữa.
+   Lặp lại với các từ khác.
+
+Bằng cách đặt câu, bạn sẽ hiểu được cách áp dụng từ đó trong các ngữ cảnh, đồng thời có
+thể học thêm collocation (cách kết hợp từ) của từ.
+
+
+
+
+                                              57
+
+                      Lửa TOEIC – Trường đào tạo TOEIC Online
+                          Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                        NGÀY 19: LUYỆN ĐỀ LISTENING
+
+Link download đề, audio, transcript và đáp án: http://bit.ly/toeic30days-day19
+
+Chú ý khi luyện đề:
+
+      Tập thói quen chọn đáp án nhanh chóng dứt khoát, nếu không nghe được thì không
+       cố gắng suy nghĩ câu đó nữa để tập trung nghe câu tiếp theo
+      Ghi lại các từ mới, idiom, cấu trúc mới
+      Note lại các câu sai để làm lại sau
+
+Chúc các bạn luyện đề tốt!
+
+                         NGÀY 20: LUYỆN ĐỀ READING
+
+Link download đề, audio, transcript và đáp án: http://bit.ly/toeic30days-day20
+
+Chú ý khi luyện đề:
+
+      Ghi lại các từ mới, idiom, cấu trúc mới
+      Note lại các câu sai để làm lại sau
+
+Chúc các bạn luyện đề tốt!
+
+             NGÀY 21: LUYỆN ĐỀ HOÀN CHỈNH CÓ BẤM GIỜ
+
+Link download đề, audio, transcrript và đáp án: http://bit.ly/toeic30days-day21
+
+Các bạn bấm giờ 2 tiếng (45 phút cho phần Listening và 75 phút cho phần Reading). Luyện
+đề có áp lực thời gian sẽ giúp các bạn có động lực và quen với phòng thi hơn.
+
+Phần Reading bạn nên dành khoảng 30s/câu cho Part 5&6 (khoảng 23 phút), với Part 7
+bạn nên dành khoảng 50s/câu. Thời gian còn lại các bạn soát lại đáp án.
+
+Chúc các bạn luyện đề tốt!
+
+                       NGÀY 22: LUYỆN 2 ĐỀ LISTENING
+
+Hôm nay chúng ta sẽ tăng cường độ Listening với 2 đề.
+Link download đề, audio, transcript và đáp án: http://bit.ly/toeic30days-day22
+
+Chú ý khi luyện đề:
+
+      Tập thói quen chọn đáp án nhanh chóng dứt khoát, nếu không nghe được thì không
+       cố gắng suy nghĩ câu đó nữa để tập trung nghe câu tiếp theo
+      Ghi lại các từ mới, idiom, cấu trúc mới
+      Note lại các câu sai để làm lại sau
+
+                                             58
+
+                      Lửa TOEIC – Trường đào tạo TOEIC Online
+                          Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+Chúc các bạn luyện đề tốt!
+
+
+
+                         NGÀY 23: LUYỆN ĐỀ READING
+Link download đề, audio, transcript và đáp án: http://bit.ly/toeic30days-day23
+Chú ý khi luyện đề:
+
+      Ghi lại các từ mới, idiom, cấu trúc mới
+      Note lại các câu sai để làm lại sau
+
+Chúc các bạn luyện đề tốt!
+
+
+
+                        NGÀY 24: LUYỆN ĐỀ LISTENING
+Link download đề, audio, transcript và đáp án: http://bit.ly/toeic30days-day24
+Chú ý khi luyện đề:
+
+      Tập thói quen chọn đáp án nhanh chóng dứt khoát, nếu không nghe được thì không
+       cố gắng suy nghĩ câu đó nữa để tập trung nghe câu tiếp theo
+      Ghi lại các từ mới, idiom, cấu trúc mới
+      Note lại các câu sai để làm lại sau
+
+Chúc các bạn luyện đề tốt!
+
+
+
+                         NGÀY 25: LUYỆN ĐỀ READING
+Link download đề, audio, transcript và đáp án: http://bit.ly/toeic30days-day25
+Chú ý khi luyện đề:
+
+      Ghi lại các từ mới, idiom, cấu trúc mới
+      Note lại các câu sai để làm lại sau
+
+Chúc các bạn luyện đề tốt!
+
+
+
+
+                                             59
+
+                      Lửa TOEIC – Trường đào tạo TOEIC Online
+                            Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                        NGÀY 26: LUYỆN ĐỀ LISTENING
+Link download đề, audio, transcript và đáp án: http://bit.ly/toeic30days-day26
+Chú ý khi luyện đề:
+
+       Tập thói quen chọn đáp án nhanh chóng dứt khoát, nếu không nghe được thì không
+        cố gắng suy nghĩ câu đó nữa để tập trung nghe câu tiếp theo
+       Ghi lại các từ mới, idiom, cấu trúc mới
+       Note lại các câu sai để làm lại sau
+
+Chúc các bạn luyện đề tốt!
+
+                          NGÀY 27: LUYỆN ĐỀ READING
+Link download đề, audio, transcript và đáp án: http://bit.ly/toeic30days-day27
+Chú ý khi luyện đề:
+
+       Ghi lại các từ mới, idiom, cấu trúc mới
+       Note lại các câu sai để làm lại sau
+
+Chúc các bạn luyện đề tốt
+
+
+
+                        NGÀY 28: LÀM LẠI CÁC CÂU SAI
+Trong quá trình luyện đề từ ngày 16 bạn đã được chú ý note lại các câu sai khi làm để để
+làm lại sau. Trong ngày 28 của lộ trình 30 ngày ôn này bạn sẽ làm lại các câu sai từ các đề
+đã luyện. Sau khi làm và kiểm tra đáp án xong nên xem lại chỗ tư duy của bạn có gì sai để
+khắc phục không bị sai các câu tương đương trong những lần sau.
+
+Chúc các bạn luyện đề tốt!
+
+
+
+                       NGÀY 29: LUYỆN ĐỀ HOÀN CHỈNH
+Ngày 29 đã là ngày bạn gần đi hết lộ trình 30 ngày ôn luyện, trong ngày 29 này bạn sẽ làm
+một đề hoàn chỉnh có bấm giờ thật nghiêm túc để bạn quen với phòng thi và áp lực thời
+gian.
+
+Link download đề, audio, transcript và đáp án: http://bit.ly/toeic30days-day29
+
+Chúc các bạn luyện đề tốt!
+
+
+
+
+                                              60
+
+                      Lửa TOEIC – Trường đào tạo TOEIC Online
+                           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                     NGÀY 30: THƯ GIÃN TRƯỚC KHI THI
+
+Ngày cuối của lộ trình, bạn không nên ôn thêm bất kỳ đề nào nữa mà nên thư giãn để
+chuẩn bị tinh thần thoải mái trước khi thi.
+
+Bạn có thể xem vlog, đọc sách báo tiếng Anh hoặc nghe nhạc để thoải mái đầu óc, chuẩn bị
+tâm lý thoải mái nhất để bước vào phòng thi.
+
+Bạn nên đến địa điểm thi trước 30 phút để chủ động tránh sơ sót, nhớ mang đầy đủ
+CMND/Hộ chiếu và ăn mặc thật thoải mái để bước vào phòng thi với trạng thái tốt nhất.
+
+Đội ngũ biên soạn của Fire TOEIC chúc bạn đạt được kết quả mong muốn với lộ trình 30
+ngày ôn luyện này!
+
+
+
+
+                                               61
+
+                      Lửa TOEIC – Trường đào tạo TOEIC Online
+

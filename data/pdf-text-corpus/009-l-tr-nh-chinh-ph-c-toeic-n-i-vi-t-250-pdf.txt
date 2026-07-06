@@ -1,0 +1,304 @@
+SOURCE_RELATIVE_PATH: downloads/Lộ trình chinh phục TOEIC Nói Viết 250+.pdf
+SOURCE_FILE_NAME: Lộ trình chinh phục TOEIC Nói Viết 250+.pdf
+QUEUE_ORDER: 9
+EXTRACTION_CLASS: VALID_TEXT_EXTRACTED
+PAGE_COUNT: 7
+
+----- BEGIN PDF TEXT -----
+Lộ trình chinh phục TOEIC Nói Viết mục tiêu
+                   250+
+Được biên soạn bởi đội ngũ Anh ngữ ACE The Future.
+
+   1.​ Tiêu chí đạt 250+ cho từng phần trong TOEIC Speaking and Writing
+
+      TOEIC Speaking & Writing bao gồm những phần nào và có tiêu chí đánh giá
+      gì?​ ​
+      Theo https://iigvietnam.com/toeic-sw-test/ (cập nhật 2022):
+
+
+                                  TOEIC Speaking
+
+                                    Số câu
+ Các phần        Thời gian                          Kỹ năng cần đạt được
+                                     hỏi
+
+ Phần 1:     Chuẩn bị: 45s/câu
+                                     2 câu     Phát âm đúng, lên xuống giọng phù
+ Đọc lớn     Nói: 45s/câu
+                                     (1,2)     hợp, ngắt nghỉ đúng trọng tâm.
+ đoạn văn
+
+ Phần 2:
+             Chuẩn bị: 45s/câu       2 câu     Sử dụng từ vựng phù hợp, nói trôi
+ Mô tả bức
+             Nói: 30s/câu            (3,4)     chảy.
+ tranh
+
+             Chuẩn bị: 3s/câu
+             ​
+ Phần 3:     Đối với Câu 5,6​
+                                     3 câu     Nghe được câu hỏi và phản xạ
+ Trả lời     Nói: 15s/câu
+                                    (5,6,7)    nhanh.
+ câu hỏi     ​
+             Đối với Câu 7​
+             Nói: 30s/câu
+
+             Đọc thông tin: 45s
+             ​
+             Chuẩn bị: 3s/câu
+ Phần 4:
+             Đối với Câu 8, 9
+ Trả lời
+             Nói: 15s/câu                      Phân tích thông tin cho sẵn, nghe
+ câu hỏi                             3 câu
+                                               được câu hỏi và chọn đúng thông
+ dựa vào                            (8,9,10)
+             Đối với Câu 10                    tin cho sẵn để nói.
+ thông tin
+             (được nghe câu
+ cho sẵn
+             hỏi 2 lần)
+             Nói: 30s/câu
+Phần 5:
+              Chuẩn bị: 45s/câu
+Trình bày                               1 câu      Nghe vấn đề, đưa ra quan điểm cá
+              Nói: 60s/câu
+quan                                     (11)      nhân về quan điểm đó.
+điểm
+
+                                     TOEIC Writing
+
+                                       Số câu
+Các phần      Thời gian                            Kỹ năng cần đạt được
+                                        hỏi
+
+Phần 1:                                            Viết câu đúng ngữ pháp, sử dụng
+              Tổng: 8 phút            5 (1 – 5)
+Viết câu                                           từ vựng phù hợp.
+
+                                                   Đọc hiểu yêu cầu, tư duy ý tưởng
+Phần 2:
+              Tổng: 20 phút                        liên quan, sử dụng từ vựng và cấu
+Viết email                             2 (6,7)
+              10 phút/câu                          trúc theo văn phong email. Câu viết
+phản hồi
+                                                   đúng ngữ pháp.
+
+                                                   Trình bày quan điểm theo tư duy
+Phần 3:
+                                                   logic, triển khai vấn đề rõ ràng. Sử
+Viết bài      Tổng: 30 phút             1 (8)
+                                                   dụng từ vựng, dạng câu đa dạng
+luận
+                                                   và đúng ngữ pháp.
+
+
+  2.​ Rèn luyện kỹ năng Speaking theo từng phần của TOEIC SW để đạt 250+
+
+           a.​ Phần 1 Đọc lớn đoạn văn - Câu hỏi 1 - 2: Học phát âm bảng IPA,
+               luyện tập ngữ điệu, và tăng cường tiếp xúc tiếng Anh hằng ngày.
+
+              Điều kiện đạt 250+: Phát âm đúng, lên xuống giọng phù hợp, ngắt
+              nghỉ đúng trọng tâm.
+
+              Ngoài ra, hãy tránh các lỗi phát âm thường gặp của người Việt như:
+              thiếu final sounds, đọc sai âm đuôi -ed, -s/-es, các cặp phụ âm khó (/θ/
+              và /ð/, /ʃ/ và /ʒ/, /dʒ/ và /tʃ/), các cặp nguyên âm khó (/ɒ/ và /ɔː/, /æ/ và
+              /e/, /ɪ/ và /iː/, /ʊ/ và /uː/)
+
+              Để phát âm tự nhiên, hãy tham khảo thêm cách nối âm và biến âm
+              trong câu.
+
+              Dưới đây là đoạn văn mẫu của Câu hỏi 1-2 TOEIC Speaking. Kèm
+              theo đó các bạn có thể thấy là hướng dẫn chi tiết cách đọc Ngữ điệu
+              lên xuống, Cách nhấn âm trong Câu (chữ in đậm), được trích từ Sách
+              TOEIC Speaking của Anh ngữ ACE The Future. (Sách này hiện tại chỉ
+              được sử dụng nội bộ, dành riêng cho các bạn đang theo học Khóa
+   TOEIC Speaking & Writing của ACE. Các bạn ib fanpage hoặc
+   hotline/zalo: 0335.215.893 để được hỗ trợ tư vấn nhé.)
+
+
+
+
+   Giai đoạn 1: Đọc đúng từng từ một cách riêng rẽ trong bảng IPA.
+   Ngoài ra việc biết cách đọc âm cơ bản, bạn có luyện tập những mục
+   sau:
+      ●​ Cách đoán cách phát âm của những từ khó, dựa vào tiền tố,
+         hậu tố của từ.
+      ●​ Cách đọc số điện thoại, email, tên người, tên địa danh.
+      ●​ Cách đọc các con số đặc biệt như ngày tháng năm, nhiệt độ,
+         phần trăm, số tiền, đơn vị tiền tệ.
+
+   Giai đoạn 2: Đọc thành câu.
+   Các bạn hãy tìm hiểu cách luyện Cách nối âm, Ngữ điệu, Cách ngắt
+   nghỉ, Cách nhấn từ quan trọng trong câu.
+   Tài liệu hữu ích cho phần này: Ship or Sheep, Tim’s Pronunciation
+   Workshop của BBC Learning English.
+
+b.​ Phần 2 Mô tả bức tranh - Câu hỏi 3 - 4: Sử dụng từ vựng phù hợp,
+    nói trôi chảy.
+
+   Điều kiện đạt 250+: Phát âm đúng, trôi chảy, tự nhiên; sử dụng từ
+   vựng phù hợp, từ vựng mô tả chi tiết của hình; không sai lỗi ngữ pháp,
+   có thể sử dụng thêm mệnh đề quan hệ rút gọn; sử dụng tối đa thời
+   gian 30s để hoàn thành câu trả lời
+   Giai đoạn 1:
+      -​ Hãy học từ vựng về đa dạng chủ đề đồ vật và hoạt động.
+      -​ Hãy thành lập một cấu trúc chung, cách sắp xếp ý tưởng để áp
+         dụng vào tất cả các hình. Như vậy, các bạn không cần suy nghĩ
+         nhiều về cấu trúc mỗi khi gặp một hình ảnh mới.
+      -​ Cấu trúc gợi ý: Địa điểm - Số lượng người - Hành động
+         chính/phụ của đối tượng trong hình - Background của hình ảnh
+
+   Giai đoạn 2:
+      -​ Tập brainstorm ý tưởng nhanh chóng trong 45s
+      -​ Tập trả lời trôi chảy trong 30s, câu trả lời cần đúng phát âm và
+         ngữ pháp, ít nhất 2-3 chi tiết trong hình.
+
+c.​ Phần 3 Trả lời câu hỏi - Câu hỏi 5 - 6 - 7:
+
+   Điều kiện đạt 250+: Trả lời đúng trọng tâm thông tin, tận dụng tối đa
+   thời gian trả lời câu hỏi, phát âm trôi chảy và không mắc lỗi ngữ pháp.
+
+   Giai đoạn 1: Hãy tập dịch các câu hỏi nhanh chóng
+   Thường tình huống đặt ra sẽ là tình huống bạn phải trả lời những câu
+   hỏi phỏng vấn khảo sát. Câu hỏi sẽ không quá khó và phức tạp, mà
+   thông thường là những topic quen thuộc như thói quen hằng ngày, sở
+   thích, sự lựa chọn trong các tình huống cuộc sống.
+
+   Trong phần này, bạn được nhìn thấy câu hỏi nhưng đôi khi do không
+   nhìn ra ngữ pháp của câu, bạn dễ dịch nhầm câu hỏi, hoặc khi trả lời
+   bạn bị mắc lỗi Ngữ pháp.
+
+   Hãy xem kỹ Ngữ pháp phần Cách đặt câu hỏi và luyện tập thật nhiều
+   nhé!
+           Giai đoạn 2: Hãy tập nói phản xạ!
+           Với các câu phần này, bạn không có thời gian chuẩn bị nên hãy tập nói
+           tiếng Anh thật nhiều với bạn bè, hoặc tự tập nói. Bạn cũng có thể tham
+           khảo phần mềm ELSA để luyện phát âm và phản xạ.
+
+        d.​ Phần 4 Trả lời câu hỏi dựa vào thông tin cho sẵn - Câu hỏi 8 - 9 - 10:
+
+           Điều kiện đạt 250+: Nghe hiểu câu hỏi, đọc hiểu bảng, trả lời đúng
+           trọng tâm thông tin, tận dụng tối đa thời gian trả lời câu hỏi, phát âm
+           trôi chảy và không mắc lỗi ngữ pháp.
+
+           Giai đoạn 1: Hiểu thông tin được đưa ra và thông tin được hỏi.
+
+           Ngoài việc tập nghe hiểu câu hỏi, bạn cũng cần tăng cường đọc hiểu,
+           đặc biệt đối với các biển thông báo, bảng giá.
+
+           Giai đoạn 2: Tập nói trôi chảy các chi tiết, số liệu, ngày tháng
+           Những chi tiết này khá dễ nói, tuy nhiên một số chi tiết dễ nhầm lẫn khi
+           các bạn đọc các chi tiết như 21st, 22nd. Hãy chú ý những chi tiết này
+           khi nói!
+
+           Giai đoạn 3: Học các cụm từ, liên từ để phản ứng với câu hỏi một
+           cách tự nhiên nhất có thể và người nghe có thể thấy được sự thống
+           nhất trong câu trả lời của bạn.
+
+        e.​ Phần 5 - Câu 11: Trình bày quan điểm
+​   ​
+           Điều kiện đạt 250+: Quan điểm rõ ràng và có luận điểm, luận cứ để
+           làm rõ quan điểm; Đa dạng hóa từ vựng; Phát âm trôi chảy và không
+           mắc lỗi ngữ pháp.
+
+           Tip 1: Hãy xác định quan điểm rõ ràng!
+           Đừng mất thời gian tìm ra quan điểm “hoàn hảo” cho phần này. Hãy
+           quyết đoán! Bạn không cần hoàn toàn đồng ý với quan điểm bạn đưa
+           ra, miễn là bạn có thể trình bày quan điểm đó một cách tự tin nhất với
+           từ vựng và ngữ pháp của bạn.
+
+           Tip 2: Hãy luyện các đề nói thường gặp, bạn sẽ thấy có nhiều luận
+           điểm có thể dùng lại cho nhiều đề.
+
+           Tip 3: Trong TOEIC Speaking, bạn được khuyến khích kể về một câu
+           chuyện cá nhân cho phần lấy ví dụ của luận điểm. Thế nên, không cần
+         suy nghĩ supporting ideas nào quá trừu tượng hay phức tạp, mà chỉ
+         cần liên hệ cá nhân thôi nhé!
+
+         Tip 4: Khi kể chuyện, hãy nhớ dùng linh hoạt các thì quá khứ. Đừng
+         sử dụng nhầm thì hiện tại khi kể chuyện hoặc trải nghiệm trong quá
+         khứ của bạn nhé!
+
+3.​ Rèn luyện kỹ năng Writing
+    ​
+      a.​ Phần 1 - Câu 1-5: Viết câu
+
+         Điều kiện đạt 250+: Câu không có lỗi ngữ pháp, đầy đủ 2 key words,
+         và có liên quan/đúng với nội dung hình ảnh
+
+         Lộ trình ôn tập:
+
+         Luyện những điểm ngữ pháp sau là đủ: Cách sử dụng thì, liên từ, bị
+         động, cấu trúc câu cơ bản, mệnh đề quan hệ, giới từ.
+
+         Thêm nữa, tập gọi tên các từ vựng bạn thấy trong cuộc sống hằng
+         ngày: văn phòng phẩm, đồ gia dụng, nội thất, hoạt động trong nhà,
+         hoạt động ngoài trời, hoạt động trong văn phòng.
+
+      b.​ Phần 2 - Câu 6 - 7: Viết email phản hồi
+
+         Điều kiện đạt 250+: Trả lời đúng nội dung trọng tâm mà đề bài gợi ý
+         trả lời, trả lời đầy đủ yêu cầu của đề, hiểu rõ ngữ cảnh đề bài, sử dụng
+         linh hoạt đa dạng các mẫu câu để viết email, thể hiện được văn phong
+         phù hợp với đề bài, sử dụng từ vựng đa dạng và chính xác.​
+
+         Lộ trình ôn tập:
+
+         Xác định được yêu cầu đề bài, tận dụng từ ngữ trong đề bài, sử dụng
+         văn phong và bám sát cấu trúc của một email.
+
+         Nội dung chủ yếu bao gồm các nhiệm vụ mà mọi người có thể thực
+         hiện trong các tình huống liên quan đến công việc hoặc trong các hoạt
+         động hàng ngày quen thuộc phổ biến ở các nền văn hóa và không yêu
+         cầu thí sinh phải có kiến ​thức chuyên môn về kinh doanh.
+
+         Lưu ý: Khi brainstorm ý tưởng cho đề bài, hãy đặt bản thân vào ngữ
+         cảnh và linh hoạt chọn những ý tưởng bạn có nhiều vốn từ và thể hiện
+         tự nhiên nhất.
+             Hãy luôn để ý thời gian khi làm bài này vì bạn sẽ không quay lại làm
+             sau được nhé! Hãy nhớ bạn chỉ có 10 phút cho mỗi email!
+
+          c.​ Phần 3 - Câu 8: Viết bài luận
+
+             Điều kiện đạt 250+: Bạn cần viết một đoạn văn:
+                -​ Ít nhất 300 từ
+                -​ Bám sát chủ đề của câu hỏi
+                -​ Đưa luận cứ, lý do, ví dụ cho mỗi quan điểm
+                -​ Cấu trúc essay: Mở bài - Thân bài - Kết bài
+                -​ Tính logic và nhất quán
+
+             Lộ trình ôn tập:
+
+             Trong câu hỏi này, bạn sẽ phải viết một đoạn văn ít nhất 300 từ ngữ
+             trong 30 phút. Lời khuyên cho phần này sẽ là hãy nhớ tính nhất quán
+             quan trọng hơn ngữ pháp trong phần này.
+
+             Để tăng cường kỹ năng viết nói chung, hãy viết nhiều và được sửa bài
+             thường xuyên! Đó là cách duy nhất để bạn mở rộng vốn từ, làm quen
+             văn phong, và tránh những lỗi hay gặp!
+
+Các bạn tham khảo lộ trình và thiết kế phù hợp cho bản thân để ôn luyện thật tốt
+nhé! Chúc các bạn ôn thi thật hiệu quả và đạt được kết quả mong muốn!
+--------------------------------------------
+Xem thêm kết quả học viên nhà ACE:
+  TOEIC: https://aceschool.edu.vn/p/diem-hoc-vien-toeic
+  VNU-EPT: https://aceschool.edu.vn/p/diemhocvienvnu
+  Let’s ACE Giao tiếp - Phỏng vấn - Thuyết trình: https://bit.ly/3qkBDgE
+    Tân sinh viên chinh phục TA đầu vào: https://bit.ly/3pKsstd
+--------------------------------------------
+Liên hệ tư vấn và đăng ký khóa học: 0335215893
+--------------------------------------------
+Website: https://aceschool.edu.vn/
+Fanpage: https://www.facebook.com/acethefuture.english/
+Youtube: https://bit.ly/3zA7Gkf
+--------------------------------------------
+   Cơ sở:
+- Tầng trệt, Nhà công vụ Đại học Quốc gia Tp.HCM, phường Đông Hòa, thị xã Dĩ
+An, tỉnh Bình Dương (gần Nhà khách ĐHQG, trên đường vào KTX khu B ĐHQG
+Tp.HCM)
+- Quận 10, Tp.HCM
+- Số 69, ngõ 40 Tạ Quang Bửu, Q.Hai Bà Trưng, TP. Hà Nội
+

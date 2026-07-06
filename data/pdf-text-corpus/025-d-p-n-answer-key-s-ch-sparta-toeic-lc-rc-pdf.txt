@@ -1,0 +1,141 @@
+SOURCE_RELATIVE_PATH: downloads/folders/Spart Toeic Quyển 2/Đáp án (answer key) Sách Sparta TOEIC LC & RC.pdf
+SOURCE_FILE_NAME: Đáp án (answer key) Sách Sparta TOEIC LC & RC.pdf
+QUEUE_ORDER: 25
+EXTRACTION_CLASS: VALID_TEXT_EXTRACTED
+PAGE_COUNT: 3
+
+----- BEGIN PDF TEXT -----
+ ANSWER Key
+
+TEST 1                                                          TEST2
+
+01.   IDI   02.    ICI   03.    (Al   04.    !Bl   05.    ICI   01.     IOI   02.    IAI   03.    ICI   04.    IBI   05.    IBI
+06.   IBI   07.    ICI   08.    ICI   09.    IBI   10.    IBI   06.     IAI   07.    IAI   08.    IAI   09.    IBI   10.    IAI
+11.   ICI   12.    IBI   13.    IBI   14.    IAI   15.    ICI   11.     IAI   12.    (Cl   13.    IBI   14.    (Cl   15.    IBI
+16.   IBI   17.    IAI   18.    ICI   19.    IAI   20.    IBI   16.     IBI   17.    (Al   18.    ICI   19.    IBI   20.    IAI
+21.   ICI   22.    ICI   23.    ICI   24.    ICI   25.    IBI   21.     ICI   22.    IAI   23.    ICI   24.    IBI   25.    IAI
+26.   IBI   27.    IAI   28.    ICI   29.    IAI   30.    ICI   26.     IBI   27.    ICI   28.    ICI   29.    IAI   30.    ICI
+31.   IAI   32.    IAI   33.    IBI   34.    IOI   35.    ICI   31.     IAI   32.    IBI   33.    IOI   34.    IAI   35.    IOI
+36.   ICI   37.    (Cl   38.    !Bl   39.    IDI   40.    ICI   36.     IAI   37.    IAI   38.    IAI   39.    IC)   40.    IBI
+41.   IBI   42.    ICI   43.    !Al   44.    IDI   45.    ICI   41.     IAI   42.    ICI   43.    IBI   44.    IBI   45.    ICI
+46.   IAI   47.    IAI   48.    IBI   49.    !DI   50.    !Al   46.     IAI   47.    IBI   48.    ICI   49.    ICI   50.    IBI
+51.   ICI   52.    ICI   53.    !Cl   54.    (Bl   55.    (Al   51.     IOI   52.    IOI   53.    IAI   54.    ICI   55.    !Cl
+56.   IAI   57.    ICI   58.    !Cl   59.    (Bl   60.    (DI   56.     ICI   57.    IAI   58.    IBI   59.    IBI   60.    (Al
+61.   IAI   62.    IOI   63.    !Cl   64.    IBI   65.    ICI   61.     IAI   62.    !DI   63.    ICI   64.    IBI   65.    !DI
+66.   ICI   67.    IDI   68.    (DI   69.    ICI   70.    ICI   66.     IOI   67.    IAI   68.    ICI   69.    ICI   70.    !DI
+71.   IAI   72.    IBI   73.    (Al   74.    IAI   75.    IAI   71.     ICI   72.    IOI   73.    IBI   74.    ICI   75.    IAI
+76.   ICI   77.    IC)   78.    (Bl   79.    IOI   80.    ICI   76.     IBI   77.    ICI   78.    IAI   79.    ICI   80.    IBI
+81.   IDI   82.    IBI   83.    IA)   84.    ICI   85.    IAI   81.     IAI   82.    IAI   83.    ICI   84.    IAI   85.    IBI
+86.   IOI   87.    IBI   88.    ICI   89.    IBI   90.    IOI   86.     IDI   87.    ICI   88.    IAI   89.    !Bl   90.    ICI
+91.   IA)   92.    IBI   93.    IAI   94.    IOI   95.    !DI   91.     IDI   92.    (DI   93.    IAI   94.    !Cl   95.    ICI
+96.   IDI   97.    IAI   98.    ICI   99.    IOI   100.   IOI   96.     (DI   97.    !Al   98.    ICI   99.    ICI   100.   ICI
+
+101. IA)    102.   IBI   103.   IBI   104.   IBI   105.   ICI   101.    IAI   102.   ICI   103.   IAI   104.   ICI   105.   IOI
+106. IAI    107.   IBI   108.   !Cl   109.   IAI   110.   ICI   106.    IDI   107.   ICI   108.   ICI   109.   IOI   110.   IAI
+111. IBI    112.   IAI   113.   IOI   114.   IAI   115.   ICI   111.    ID)   112.   IC)   113.   IAI   114.   IOI   115.   IBI
+116. !Al    117.   ICI   118.   IBI   119.   IA)   120.   IBI   116.    ICI   117.   ICI   118.   IOI   119.   ICI   120.   !DI
+121. IAI    122.   (Cl   123.   (Cl   124.   IDI   125.   IDI   121.    IC)   122.   ICI   123.   ID)   124.   IAI   125.   !Bl
+126. IBI    127.   (Cl   128.   (DI   129.   IDI   130.   !DI   126.    IOI   127.   IAI   128.   ICI   129.   IAI   130.   !Bl
+131. IBI    132.   (Cl   133.   !DI   134.   IBI   135.   ICI   131.    ICI   132.   ICI   133.   IB)   134.   !DI   135.   IBI
+136. IAI    137.   IAI   138.   IDI   139.   IBI   140.   IAI   136.    IA)   137.   IAI   138.   ICI   139.   IDI   140.   ICI
+141. IOI    142.   IAI   143.   !Al   144.   ICI   145.   IAI   141.    IAI   142.   IBI   143.   IA)   144.   IAI   145.   !DI
+146. IBI    147.   ICI   148.   !Al   149.   IAI   150.   IBI   146.    ICI   147.   IBI   148.   IBI   149.   IDI   150.   !Bl
+151. ICI    152.   IBI   153.   (Bl   154.   IAI   155.   ICI   151.    (Cl   152.   IBI   153.   IBI   154.   IC)   155.   ICI
+156. IBI    157.   IBI   158.   ICI   159.   IDI   160.   ICI   156.    (Cl   157.   IAI   158.   IBI   159.   IA)   160.   ID)
+161. IB)    162.   IBI   163.   ICI   164.   IOI   165.   IBI   161.    !Cl   162.   IAI   163.   IBI   164.   IDI   165.   IC)
+166. ICI    167.   IAI   168.   IBI   169.   IAI   170.   ICI   166.    IBI   167.   IAI   168.   ICI   169.   IA)   170.   [CJ
+171. (DJ    172.   ICI   173.   IOI   174.   IBI   175.   IA)   171 .   ICI   172.   IAI   173.   IOI   174.   IA)   175.   IAI
+176. ID)    177.   IBI   178.   IOI   179.   ICI   180.   IA)   176.    IAI   177.   ICI   178.   IOI   179.   ICI   180.   !Bl
+181. ICI    182.   IAI   183.   IBI   184.   ICI   185.   IBI   181.    IOI   182.   ICI   183.   ICI   184.   IB)   185.   [DJ
+186. ID)    187.   IAI   188.   !DI   189.   [DJ   190.   IAI   186.    IBI   187.   ICI   188.   ICI   189.   IC)   190.   ID)
+191. IDI    192.   IAI   193.   IBI   194.   IAI   195.   ICI   191.    IOI   192.   !Cl   193.   IAI   194.   ICI   195.   !DI
+196. ICI    197.   IAI   198.   IOI   199.   IDI   200.   IBI   196.    ICI   197.   ICI   198.   IOI   199.   ID)   200.   IA)
+TESTJ                                                            TEST4
+
+01.     (Bl   02.    IA)   03.   [Bl   04.    [Bl   05.    IB)   01.     IA)   02.    ID)   03.    [B)   04.    IC)   05.    IA)
+06.     (Cl   07.    IC)   08.   [Bl   09.    [Bl   10.    IA)   06.     IA)   07.    [Bl   08.    [B)   09.    IB)   10.    IA)
+11.     [B)   12.    [Bl   13.   IA)   14.    [Bl   15.    IC)   11.     [Bl   12.    IA)   13.    IA)   14.    (Bl   15.    IC)
+16.     [B)   17.    IA)   18.   IA)   19.    IC)   20.    IA)   16.     IC)   17.    IA)   18.    IA)   19.    (A)   20.    [Bl
+21.     IA)   22.    IB)   23.   IA)   24.    IA)   25.    IC)   21.     IC)   22.    IC)   23.    [B)   24.    (Bl   25.    IA)
+26.     IC)   27.    IC)   28.   [B)   29.    IA)   30.    IB)   26.     IA)   27.    IC)   28.    IA)   29.    (Bl   30.    IA)
+31.     (Cl   32.    IC)   33.   [Bl   34.    (Bl   35.    (Cl   31.     IB)   32.    IA)   33.    ID)   34.    IC)   35.    (D)
+36.     IB)   37.    IA)   38.   IA)   39.    (D)   40.    IC)   36.     IA)   37.    IB)   38.    (Bl   39.    (D)   40.    IA)
+41.     ID)   42.    (Bl   43.   IC)   44.    (Al   45.    [Bl   41 .    IC)   42.    IA)   43.    (Bl   44.    (Cl   45.    IB)
+46.     IC)   47.    IA)   48.   IC)   49.    IC)   50.    [Bl   46.     IA)   47.    IA)   48.    [Bl   49.    (Cl   50.    IC)
+51.     IC)   52.    IB)   53.   (Cl   54.    IC)   55.    IA)   51 .    IA)   52.    IC)   53.    IC)   54.    (Bl   55.    ID)
+56.     (D)   57.    ID)   58.   IA)   59.    IA)   60.    IC)   56.     [Bl   57.    IC)   58.    (Cl   59.    IB)   60.    [Bl
+61 .    (Al   62.    IA)   63.   IC)   64.    ID)   65.    IB)   61.     IC)   62.    IB)   63.    IA)   64.    IC)   65.    IC)
+66.     IB)   67.    IB)   68.   ID)   69.    ID)   70.    IA)   66.     IC)   67.    IB)   68.    ID)   69.    IC)   70.    ID)
+71.     IB)   72.    IB)   73.   IC)   74.    (Cl   75.    IA)   71.     IC)   72.    [Bl   73.    IC)   74.    ID)   75.    [Bl
+76.     IC)   77.    IA)   78.   IC)   79.    IC)   80.    IA)   76.     IC)   77.    IC)   78.    (Bl   79.    ID)   80.    (Bl
+81.     (D)   82.    (DI   83.   ID)   84.    [Bl   85.    IC)   81.     IB)   82.    [Bl   83.    (D)   84.    IB)   85.    (Bl
+86.     IA)   87.    ID)   88.   (Bl   89.    IC)   90.    ID)   86.     IA)   87.    IC)   88.    (Al   89.    IC)   90.    IA)
+91.     IC)   92.    IA)   93.   IA)   94.    IC)   95.    IA)   91.     ID)   92.    IA)   93.    ID)   94.    IC)   95.    IC)
+96.     ID)   97.    IC)   98.   ID)   99.    [Bl   100.   IC)   96.     IC)   97.    [Bl   98.    (Bl   99.    IA)   100.   [Bl
+
+101 .   [BJ   102.   IA)   103. (Cl    104.   IB)   105.   ID)   101.    [Bl   102.   ID)   103.   IC)   104.   IA)   105.   IA)
+106.    [BJ   107.   IC)   108. (D)    109.   ID)   110.   IC)   106.    [Bl   107.   IC)   108.   (Al   109.   ID)   110.   IC )
+111.    (Cl   112.   ID)   113. (D)    114.   ID)   115.   IB)   111.    (D)   112.   IC)   113.   (D)   114.   IC)   115.   IC)
+116.    (D)   117.   (Al   118. IA)    119.   IA)   120.   IC)   116.    (Cl   117.   (Al   118.   (A)   119.   IA)   120.   IC)
+121.    ID)   122.   (Bl   123. IA)    124.   (Cl   125.   ID)   121.    (Cl   122.   IC)   123.   (Bl   124.   IA)   125.   IC)
+126.    IB)   127.   ID)   128. IA)    129.   IA)   130.   ID)   126.    ID)   127.   ID)   128.   IB)   129.   IB)   130.   ID)
+131.    IB)   132.   ID)   133. IA)    134.   (D)   135.   IB)   131 .   (D)   132.   IB)   133.   IA)   134.   [Bl   135.   (Bl
+136.    ID)   137.   IC)   138. (Cl    139.   (Al   140.   IA)   136.    ID)   137.   IA)   138.   (D)   139.   ID)   140.   IA)
+141.    IC)   142.   ID)   143. (Cl    144.   (Al   145.   IB)   141.    ID)   142.   IB)   143.   IC)   144.   [Bl   145.   IB)
+146.    IB)   147.   ID)   148. (Al    149.   (D)   150.   IA)   146.    IC)   147.   ID)   148.   ID)   149.   IBl   150.   IA)
+151.    IC)   152.   IA)   153. (Al    154.   (D)   155.   ID)   151 .   IB)   152.   IB)   153.   IC)   154.   IA)   155.   IB)
+156.    IC)   157.   ID)   158. IB)    159.   IA)   160.   IB)   156.    IB)   157.   IA)   158.   IC)   159.   [Bl   160.   IA)
+161.    ID)   162.   (Bl   163. IB)    164.   IB)   165.   IA)   161.    ID)   162.   ID)   163.   IC)   164.   IC)   165.   IC)
+166.    IA)   167.   (Cl   168. ID)    169.   IB)   170.   (Cl   166.    [Bl   167.   (Cl   168.   IA)   169.   IB)   170.   ID)
+171.    [Bl   172.   ID)   173. IC)    174.   IB)   175.   (Bl   171.    ID)   172.   (Al   173.   IC)   174.   ID)   175.   IC)
+176.    IC)   177.   IA)   178. (Cl    179.   IB)   180.   (Cl   176.    !Bl   177.   (Al   178.   ID)   179.   IC)   180.   IB )
+181.    (Cl   182.   IB)   183. ID)    184.   IC)   185.   (Bl   181.    IA)   182.   (Al   183.   IA)   184.   ID)   185.   IB)
+186.    (D)   187.   IA)   188. (Bl    189.   IA)   190.   IC)   186.    IA)   187.   IC)   188.   (Bl   189.   (Bl   190.   IA)
+191.    IB)   192.   IC)   193. (D)    194.   IA)   195.   IB)   191.    IA)   192.   IC)   193.   (D)   194.   (Cl   195.   [Bl
+196.    IB)   197.   IA)   198. (Cl    199.   (Bl   200.   IC)   196.    (D)   197.   IA)   198.   (Cl   199.   (D)   200.   (Cl
+ ANSWER Key
+
+TESTS
+
+01.     IA!   02.    IA)   03.    IC)   04.    IA)   05.    (DI
+06.     IA)   07.    IA)   08.    IA)   09.    IC)   10.    [BJ
+11.     IA)   12.    IA)   13.    (Bl   14.    IA!   15.    IA)
+16.     [Bl   17.    IA)   18.    (Al   19.    [BJ   20.    [BJ
+21.     IA)   22.    [BJ   23.    (Cl   24.    IA)   25.    IC)
+26.     IC)   27.    IC)   28.    (Al   29.    IC)   30.    IA)
+31.     IC)   32.    (CJ   33.    (Bl   34.    IA)   35.    (DI
+36.     ID)   37.    (Bl   38.    (Bl   39.    IA!   40.    (Cl
+41.     [Bl   42.    IBI   43.    ID)   44.    [Bl   45.    (DI
+46.     [BJ   47.    IC!   48.    [Bl   49.    IA)   50.    (Bl
+51.     [BJ   52.    ID)   53.    ID)   54.    IA)   55.    [Bl
+56.     ID)   57.    IA)   58.    [Bl   59.    [Bl   60.    [Bl
+61 .    (Al   62.    ID)   63.    IA)   64.    ID)   65.    IA)
+66.     IA)   67.    [Bl   68.    IC)   69.    ICI   70.    IBI
+71.     ID)   72.    IDI   73.    ID)   74.    IDI   75.    IAI
+76.     [Al   77.    [Bl   78.    ICI   79.    IBI   80.    [Cl
+81.     IAI   82.    [BJ   83.    [Cl   84.    (Cl   85.    IDI
+86.     !DI   87.    (DI   88.    IAI   89.    ICI   90.    (Al
+91.     (Al   92.    (Bl   93.    ID!   94.    ICI   95.    (Al
+96.     (Cl   97.    (DI   98.    ID)   99.    ID)   100.   [Cl
+
+101.    (Bl   102.   [Cl   103.   IC)   104.   [BJ   105.   IA)
+106.    [BJ   107.   [Bl   108.   IA)   109.   IA)   110.   IC)
+111.    ICI   112.   [BJ   113.   ID)   114.   IC)   115.   (Bl
+116.    (A)   117.   (Al   118.   (Bl   119.   ID)   120.   (Al
+121.    (Al   122.   ICI   123.   IAI   124.   (DJ   125.   (Al
+126.    (Al   127.   ICI   128.   ID)   129.   (DI   130.   ID!
+131.    (DI   132.   IA)   133.   [BJ   134.   (Al   135.   (DI
+136.    (DI   137.   IBI   138.   IAI   139.   (Cl   140.   (DI
+141.    (Al   142.   IBI   143.   [BJ   144.   (DI   145.   (Bl
+146.    (Cl   147.   IBI   148.   ID!   149.   ICI   150.   ICI
+151 .   (Al   152.   IA!   153.   ID!   154.   IA)   155.   IC)
+156.    (Bl   157.   ID)   158.   IA)   159.   IC)   160.   (CJ
+161.    (Al   162.   (Cl   163.   (DI   164.   (Bl   165.   (Al
+166.    (Cl   167.   (DI   168.   (CJ   169.   [BJ   170.   IA)
+171.    (Al   172.   (Bl   173.   IC)   174.   (A)   175.   IDI
+176.    IC!   177.   (A)   178.   [BJ   179.   ID)   180.   IC)
+181.    [BJ   182.   (DI   183.   [Bl   184.   IC)   185.   IA)
+186.    (DJ   187.   ID!   188.   ID!   189.   IA)   190.   (CJ
+191 .   ID)   192.   IA)   193.   IC)   194.   IA)   195.   (Cl
+196.    IBI   197.   [Bl   198.   IA)   199.   IC)   200.   IA!
+

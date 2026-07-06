@@ -1,0 +1,690 @@
+SOURCE_RELATIVE_PATH: downloads/folders/[tài liệu có giải chi tiết] Tự Luyện 550+ trong 10 ngày - Benzen/HƯỚNG DẪN LỘ TRÌNH BẮT ĐẦU.pdf
+SOURCE_FILE_NAME: HƯỚNG DẪN LỘ TRÌNH BẮT ĐẦU.pdf
+QUEUE_ORDER: 71
+EXTRACTION_CLASS: VALID_TEXT_EXTRACTED
+PAGE_COUNT: 23
+
+----- BEGIN PDF TEXT -----
+                               EBOOK
+LỘ TRÌNH TỰ HỌC TOEIC
+ TRONG 10 NGÀY TẾT
+     NGUYÊN ĐÁN
+        2021
+ Ng ày                  N ộ i dung ô n tậ p                 Thời gian   Tiến đ ộ
+
+   1     Part 1: Khởi động                                  20’ – 30’
+   2     Part 2: 550+ thì phải biết M ẸO gì?                30’ – 1h
+   3     Part 3: M Ẹ O làm đúng 2/3 kh ông cần hiểu         30’ – 1h
+   4     Pa rt 4: M Ẹ O làm đúng 2/3 kh ông cần hiểu        30’ – 1h
+   5     Làm FULL đ ề phần nghe 100 câu                     45’
+   6     Part 5: N ê n ôn từ v ự ng v à ng ữ ph áp n à o?   30’ – 1h
+   7     Part 6: V ì sao sai nhiều phần n ào?               30’ – 1h
+   8     Part 7: M Ẹ O làm đúng 2/3 khô ng cần tốn sứ c     45’ – 1h
+         d ịch
+   9     Làm FU LL đề phần đọc 100 câu                      75’
+  10     Làm FULL trọn 01 bộ đề TOEIC                       120’
+
+
+
+
+         Benzen Enlgish chúc các bạn học tốt và
+                  chúc mừng năm mới!!!
+Ngày 1: ÔN TẬP PART 1
+Hôm nay là ngày đầu tiên mình ôn tập nên chỉ làm sương sương khởi động tầm 20-
+30 phút thôi nhé ^^
+Các bạn đã biết rồi đó, phần này chỉ có 06/200 câu trong đề thi TOEIC thôi nên sẽ là
+phần ít quan trọng nhất! Tuy nhiên, phần này cũng là phần dễ lấy điểm nhất nên
+mình cố gắng chứ đừng bỏ nó luôn nha.
+Để đạt chỉ tiêu 550+ thì các bạn cần làm đúng 4/6 là ngon lành nhé. Lưu ý, trong 06
+bức ảnh phần này thì sẽ có 01 bức ảnh khó, lắc léo để phân loại thí sinh. Do vậy,
+không cần ép buộc bản thân mình phải đúng hết đâu. Nếu làm như vậy các bạn sẽ
+rất là mệt mỏi luôn ấy.
+
+Mình nên ôn tập tài liệu gì?
+
+Đây là 7749 loại tài liệu nhé: Link: bit.ly/7749TOEIC
+
+Tuy nhiên, mình đâu có nhiều thời gian để ôn hết đâu, nên thầy đề xuất là mình nên
+ôn trong cuốn này thôi hỉ.
+Link: http://bit.ly/sachETS-benzenenglish
+
+
+Cuốn này có 5 TESTS tất cả. Mình ôn PART 1 như thế nào đây?
+
+Bước 1: Nhớ lại MẸO làm bài của phần này, như sau:
+
+-   01 từ sai là cả câu sai. Tuyệt đối không cần cố căng tai nghe cho hết mà cần chú
+    ý từ sai là LOẠI NGAY và LUÔN nha các bạn.
+-   Bức tranh không có người mà nghe được có chữ “being” thì 99% là sai.
+Ví dụ minh hoạ:
+(Các bạn tưởng tượng mình không nhìn thấy lời thoại và không nghe được hết cả câu để hiểu cách
+vận dụng kỹ hơn nhé)
+
+
+                 Bức tranh                                         Lời thoại
+
+
+
+                                                 A. Cyclists are riding by a fountain.
+                                                 B. There’s a park bench beside a path.
+                                                 C. A man is hanging a map on a sign.
+                                                 D. Workers are raking leaves into piles.
+
+
+ Phân tích:
+ + Câu A sai từ “fountain (vòi phun nước)” nên loại
+ + Câu B có nghe được hay không thì cứ để đó
+ + Câu C sai từ “hanging (treo)”
+ + Câu D sai từ “workers (những người công nhân)”
+ Chắc chắn chọn B
+
+
+                                                 A. A building is under construction.
+                                                 B. A street is being paved.
+                                                 C. Some cars are stopped at a traffic
+                                                 light.
+                                                 D. Some cars are parked side by side.
+
+ Phân tích:
+ + Câu A sai từ “construction (xây dựng)”
+ + Câu B sai từ “being” vì bức tranh không có người, bạn chẳng cần biết từ “paved”
+ nghĩa là gì cho tốn sức
+ + Câu C sai từ “traffic light (đèn giao thông)”
+ Chắc chắn chọn D
+
+Qua 2 ví dụ trên, bạn sẽ thấy cách chúng ta tư duy làm bài là rất quan trọng.
+Không phải cứ cố gắng nhồi nhét học từ vựng hoặc cố nghe cho bằng được cả câu
+mới làm được. Điều đó đôi khi sẽ làm chúng ta rất mệt và nản.
+Tất nhiên, sẽ có những câu khó dùng để phân loại thí sinh. Câu này bạn nào mục
+tiêu cao thì mới cần cố gắng làm đúng, còn với những bạn mục tiêu 550+ thì nhớ chỉ
+cần đúng 4/6 là an toàn rồi nhé.
+Bước 2: Mở 6 bức ảnh test 01 ra nghe và check xem đúng được 04/06 bức ảnh
+chưa? Nếu chưa thì xem lại lời thoại vì sao mình sai, nhất là mấy câu dễ.
+Lưu ý, xem lại 02 MẸO bên trên.
+Nếu bạn nhìn lời thoại và bạn biết từ sai trong câu nhưng lúc nghe bạn không nghe
+ra được từ đó thì vấn đề của bạn là ở phát âm. Vì rõ ràng, nếu bạn đọc 1 kiểu mà
+audio đọc 1 kiểu thì chắc chắn bạn sẽ không bắt được từ đó.
+   Vậy nên, cái bạn cần là PHƯƠNG PHÁP SHADOWING, nghĩa là nhại lại
+     theo audio, nhất là những từ quan trọng lúc nãy mà bạn nghe chưa được.
+     Nhại càng giống nghĩa là khả năng lần sau gặp lại từ đó bạn càng có khả
+       năng nghe rõ là rất cao!
+
+
+Bước 3: Nếu bạn nào tốt hơn thì tiếp tục làm part 01của test 02, 03 tương tự như
+bước 2.
+Lưu ý, chỉ cần nghe 01-03 test, tức là khoảng 06-18 bức tranh là được nhé.
+Hôm nay chỉ là ngày khởi động, đừng quá áp lực, nhớ đấy!
+
+
+(Mỗi lần hoàn thành xong 1 ngày hãy quay lại check vào ô “tiến độ” đầu Ebook để theo dõi
+                               việc tự học của mình nhé ^^)
+Ngày 2: ÔN TẬP PART 2
+
+Phần này chiếm 25/200 câu nên được xem là 1 phần quan trọng nhé. Tuy nhiên,
+phần này cũng chưa khó lắm. Thứ nhất là lúc này các bạn vẫn còn khả năng tập
+trung làm bài, thứ 2 là phần này thì có rất nhiều MẸO để làm.
+Lưu ý nhỏ xíu là nếu bạn cần 550+ thì mình cần làm đúng khoảng 18/25 câu là an
+toàn nhé.
+
+
+Bước 1: Ôn tập MẸO: Nhớ kỹ LOẠI TRỪ PHƯƠNG ÁN SAI
+Ví dụ minh hoạ:
+(các bạn tưởng tượng mình không nhìn thấy lời thoại và không nghe được hết cả câu để hiểu cách
+vận dụng kỹ hơn nhé)
+
+
+               Lời thoại                                        Phân tích
+ Who is your immediate supervisor?        Câu này các bạn chỉ cần nghe từ “who” trong câu
+ A. OK, I’ll go now.                      hỏi là được.
+ B. It’s Ms. Tanaka.                      Trong 3 đáp án chỉ có câu B có “Ms. Tanaka” là chỉ
+ C. Instructions for the project.         người nên ta chọn B
+ Aren’t you attending the manager’s       Câu này có 2 cách làm
+ training session?                            Cách 1: MẸO lặp lại từ là sai, ví dụ câu hỏi có
+ A. No, it was canceled.                      từ “training” mà đáp án B có từ “train” nên loại
+ B. The train arrives at noon.                B. Đồng thời, câu hỏi có từ “manager” mà đáp
+ C. My manager.                               án C lặp lại từ đó nên loại C. => Chọn A
+                                              Cách 2: Loại trừ từ từ
+                                          -   Câu A nghe được hay không cứ để im đó.
+                                              Chưa chắc “yes/no question” lúc nào cũng chọn
+                                              đáp án “yes” hoặc “no” đâu nhé.
+                                          -   Ta nghe câu B. Câu B có từ “At noon” chỉ thời
+                                              gian là của câu hỏi “when” nên ta loại.
+                                          -   Còn câu C thì rõ ràng là của câu hỏi “who” nên
+                                              ta cũng không chọn được. => Chọn A
+
+
+ When will you finish editing the final   Câu này thì các bạn nếu nhìn thấy từ “when” thì
+ draft of my article?                     quá dễ để chúng ta chọn câu C là thời gian rồi.
+ A. Yes, I think so.                      Tuy nhiên, khi nghe audio, các bạn cần phải hết
+ B. At the publisher’s.                   sức chú ý nó đọc “when” hay là “where” nhé. Hai
+ C. By Friday evening.                    từ này cực kỳ dễ bị nhầm lẫn khi nghe, và nếu bạn
+                                          nghe nhầm, bạn sẽ chọn câu B trong trường hợp
+                                          này đấy.
+How late should we schedule the        Câu này thì có vẻ nhiều chữ, dài, nhưng lại không
+interviews tomorrow?                   phải là khó nếu bạn nắm vững cách làm bài như
+A. Well, my flight leaves at three     sau:
+o’clock.                               -   Các câu hỏi WH và HOW đều không chọn đáp
+B. For the office assistant position       án có chứa “yes/no” nên ta loại ngay câu C nhé.
+                                       -   Còn A với B thì bạn cần nắm 1 tý là “how late”
+C. Yes, the view at night is
+                                           hay “how soon” thì đều hỏi về thời gian nên ta
+beautiful.
+                                           chọn A.
+
+Tất nhiên, sẽ có 1 số câu khác, khó hơn và bắt buộc các bạn phải nghe cả câu và phải
+hiểu mới chọn được đáp án. Tuy nhiên, điều quan trọng, vẫn nói lại đó là mục tiêu của bạn
+là bao nhiêu điểm, nếu chỉ cần 550+ thì đừng đụng vô mấy câu đó làm gì. Càng đụng vào
+càng rối, càng hoài nghi bản thân, càng mất thời gian, càng nản.
+Còn đối với những bạn nào có mục tiêu điểm cao thì cố gắng nghe hiểu nhé.
+
+
+Link tài liệu ôn tập: http://bit.ly/sachETS-benzenenglish
+
+Bước 2: Làm 25 câu phần 2 (từ câu 7 – câu 31 trong đề). Check lại xem đúng được
+18/25 câu chưa? Nếu chưa thì xem lại lời thoại vì sao mình sai, nhất là mấy câu dễ.
+
+Nếu bạn nhìn lời thoại và biết vì sao mình sai mà lúc nghe khi nãy bạn không nghe
+ra được thì có 2 lý do: 1 là phát âm, 2 là nối âm.
+Đặc sản của phần này là có NỐI ÂM nhé các bạn. Cho nên đôi khi bạn không nghe
+ra cũng là chuyện thường tình. Cách giải quyết vẫn là như trên, bạn dùng PHƯƠNG
+PHÁP SHADOWING, mở lời thoại ra rồi nghe audio đọc rồi bắt chước đọc theo cho
+thật giống là được nhé.
+
+Bước 3: Sau khi chữa kỹ 25 câu test 1 thì bạn thử sức lại 25 câu phần 2 của test 2
+xem sao nhé. Nếu bạn chữa kỹ ở bước 2 thì bạn sẽ bất ngờ vì số câu đúng của
+mình ở bước 3 này sẽ tăng lên đáng kể đó.
+Các bạn có thể xem kỹ bài giảng về PART 1 và PART 2 tại đây nhé!
+https://www.youtube.com/watch?v=two2QOGfC9I&t=2s
+https://www.youtube.com/watch?v=zaiR-fncwHg&t=2470s
+https://www.youtube.com/watch?v=pK5mOGFaSHc
+https://www.youtube.com/watch?v=sVjVLRQ-I3k
+https://www.youtube.com/watch?v=aiUHsrJWHTw
+
+(Mỗi lần hoàn thành xong 1 ngày hãy quay lại check vào ô “tiến độ” đầu Ebook để theo dõi
+                               việc tự học của mình nhé ^^)
+Ngày 3: ÔN TẬP PART 3
+
+Phần này là phần QUAN TRỌNG NHẤT trong phần nghe của bài thi TOEIC, vì nó
+chiếm tới 39/200 câu.
+
+Đối với dạng 2 người nói, 3 người nói hoặc dạng bảng biểu, các bạn tuỳ theo mục
+tiêu của mình mà nên xem là mình cần đạt được bao nhiêu câu là hợp lý.
+
+Trung bình, để đạt được 550+ thì bạn cần làm đúng 22/39 câu là ngon lành rồi.
+
+
+   Các bạn cần phải nắm vững cách làm như sau:
+   BẮT BUỘC đọc trước 3 câu hỏi. Nếu có thời gian thì đọc từ khoá ở 4 câu trả lời
+   luôn nhé.
+   Phân biệt câu hỏi Nam – Nữ để tập trung nghe cho đúng chỗ.
+   Chú ý từ đồng nghĩa.
+   Chỉ cần làm đúng 02/03 đã là an toàn.
+
+
+Ví dụ minh hoạ
+(các bạn tưởng tượng mình không nhìn thấy lời thoại và không nghe được hết cả câu để hiểu cách
+vận dụng kỹ hơn nhé)
+
+
+                       Câu hỏi                                        Lời thoại
+                                                        M: Hi, this is Neil Chen. I just
+                   Đoạn 2 người                         made an online reservation at
+ 1. Where does the woman most likely work?              your hotel, but when I saw the
+ A. At a restaurant                                     confirmation page, I realized that
+ B. At a ticket office                                  I’d made a mistake in the dates.
+ C. At a bank                                           Can I make a change?
+ D. At a hotel
+                                                        W: I’ll be happy to change your
+ 2. Why is the man calling?                             reservation provided we have a
+ A. To get directions                                   room available. Could you please
+ B. To ask for a discount                               give me your confirmation code?
+ C. To change a reservation
+ D. To check an address                                 M: Sure, it’s VF732. I want the
+                                                        reservation for the following
+ 3. What will the woman email the man?                  weekend – January tenth through
+ A. A confirmation                                      twelfth. Will the price be the
+ B. A discount code                                     same?
+ C. An application form
+ D.A menu
+                                                W: Let me see. Yes, we do have a
+                                                room available for that weekend at
+                                                the same rate, so I’ve changed
+                                                your booking with us. You can
+                                                expect an updated confirmation
+                                                in your e-mail shortly.
+
+Phân tích:
+- Câu 1 hỏi nơi người phụ nữ làm việc nên bạn chỉ cần để ý người đàn ông nói
+    “your hotel” hoặc người phụ nữ nói “we have a room” thì đều có thể chọn được
+    ngay câu D chứ không cần phải hiểu câu chuyện làm gì cả.
+- Câu 2 hỏi tại sao người đàn ông gọi điện thì nghe người đàn ông nói “Can I
+    make a change?” + tình huống đang gọi cho khách sạn thì chỉ có thể chọn câu
+    C là hợp lý, cũng chưa cần phải hiểu gì cả.
+- Câu 3 hỏi người phụ nữ email cái gì cho người đàn ông thì điều mấu chốt là
+    bạn phải nghe được từ “email” trong lượt lời của người phụ nữ! Nếu bạn để ý
+    điều đó thì bạn chỉ cần nghe “confirmation in your e-mail” là chọn được luôn
+    câu A rồi.
+Nhận xét: Không hẳn đoạn nào cũng dễ như vậy cả. Thầy hoàn toàn đồng ý với
+điều này. Tuy nhiên, sự thật là có rất nhiều đoạn dễ như vậy đấy! Và nếu bạn cần
+550+ thì bạn biết rồi, chỉ cần vận dụng tốt kỹ thuật trên là làm được ngay. Nhớ kỹ,
+chỉ cần đúng 2/3 câu mỗi đoạn là được.
+
+
+
+                                                W1: Thank you for taking me to
+                Đoạn 3 người                    that wonderful concert. It was a
+1. What are the speakers celebrating?           nice way to celebrate the merger
+A. An increase in sales                         of our companies.
+B. A company merger
+C. A product launch                             M: We knew you’d enjoy it. That
+D. A job promotion                              string quartet performs all over the
+                                                world.
+2. What does the man imply when he says,
+“That string quartet performs all over the      W1: I’m not surprised … So, my
+world”?                                         flight doesn’t leave until noon.
+A. He will be seeing the show again in          Should I come by your office in
+another country.                                the morning to finish up the
+B. A music group is often mistaken for a        paperwork?
+different one.
+C. Some musicians are very accomplished.        M: Oh, Ms. Yamada is handing
+D. Some tickets are difficult to find.          that.
+
+3. What do the women agree to do in the         W2: Yes, I am. I’ll be in the office
+morning?                                        by eight in the morning, so you
+A. Arrange a press conference                   can stop by anytime after that.
+B. Test some equipment                          There are only a few final
+C. Complete some paperwork                      documents to sign.
+D. Present a proposal
+
+Phân tích: Đặc điểm của đoạn 3 người nói đó là lượt lời sẽ nhiều hơn, tuy nhiên
+điều đó không đồng nghĩa với việc sẽ khó hơn.
+- Câu 1 hỏi những người nói đang ăn mừng chuyện gì? Hoặc thậm chí bạn
+   không biết từ “celebrating” nghĩa là gì thì cứ bám vào từ đó và nghe audio đọc
+   “celebrate the merger of our companies” vậy là cũng chọn được câu B rồi còn
+   gì!
+- Câu 2 là câu khó, câu này bạn phải hiểu mới có khả năng làm đúng được. Vậy
+   nếu bạn chỉ cần 550+ thì có quyền làm sai câu này nhé. Người đàn ông nói
+   “that string quartet” biểu diễn toàn thế giới là ý gì? Thì nghĩa là “họ rất nổi
+   tiếng” thôi chứ gì, chọn C. Nhưng bạn phải dịch được và hiểu được!
+- Câu 3 hỏi người phụ nữ đồng ý làm gì vào buổi sáng thì bạn cứ nghe lượt lời
+   của người phụ nữ và bám vào “in the morning” là được. Bạn nghe “office in the
+   morning to finish up the paperwork” vậy là chọn C nhé. Từ “paperwork” được
+   giữ nguyên, còn từ “finish up” được thay bằng “complete” thôi.
+Vậy chỉ tiêu đúng 2/3 thì với đoạn này chúng ta vẫn có thể đạt được mà, đúng ko
+nhỉ?
+
+
+
+                                                M: Excuse me, are you ready to
+            Đoạn có bảng biểu                   order lunch, or are or waiting for
+                                                someone else to arrive?
+
+                                                W: Oh, I’m ready to order. I’m
+                                                eating alone. I’m preparing for a
+                                                meeting this afternoon, and I
+                                                need somewhere quiet to work.
+
+                                                M: Of course. What would you
+                                                like?
+
+                                                W: I’m interested in the daily
+                                                special. Can you tell me what it
+1. Why does the woman say she is at the
+                                                is?
+restaurant?
+A. To celebrate a contract
+                                                M: Today it’s a small cheese pizza
+B. To evaluate a business
+                                                and a beverage.
+C. To prepare for a meeting
+D. To interview for a job
+                                                W: Oh, I think that’s what I’ll get.
+                                                And by the way, since I’ll be
+2. Look at the graphic. How much will the            working on my laptop here, can I
+woman pay for her menu item?                         have the password for the
+A. $9.99                                             restaurant’s wireless Internet?
+B. $5.00
+C. $3.50                                             M: Sure, it’s on the back of the
+D. $6.99                                             menu.
+
+3. What does the man say is on the back of
+the menu?
+A. A dessert list
+B. A password
+C. A Website adress
+D. Nutrition information
+
+Phân tích: Đặc điểm của dạng này là sẽ kèm theo 01 bức hình trong các câu hỏi.
+Lưu ý, chỉ khi nào câu hỏi có từ “Look at the graphic” Thì các bạn mới nhìn ảnh để
+kết hợp làm. Còn lại làm như bình thường thôi nhé.
+- Câu 1 hỏi tại sao người phụ nữ ở nhà hàng thì bạn chỉ cần nghe người phụ nữ
+    nói “I’m preparing for a meeting this afternoon” vậy là chọn được luôn câu C!
+- Câu 2 hỏi nhìn hình để xem người phụ nữ trả bao nhiêu tiền. Vậy ta phải biết
+    người phụ nữ ăn món gì mới biết là bao nhiêu tiền! Tiếp tục nghe người phụ
+    nữ nói “I’m interested in the daily special.” Vậy là $6.99 rồi! Ta chọn D.
+- Câu 3 hỏi người đàn ông nói cái gì ở phía sau menu. Ta nghe người đàn ông
+    nói “it’s on the back of the menu.” Vậy để biết “it” là cái gì thì nó là cái mà người
+    phụ nữ vừa mới nhắc phía trước, chính là “password”. Còn nếu không nghe
+    được thì đoán! Vào nhà hàng ăn, phía sau memu thường là pass wifi chứ gì
+    nữa!
+Bạn thấy có gì khó lắm không? Hoàn toàn không! Chẳng qua bạn chưa biết, hoặc
+vận dụng chưa tới những chiến thuật này nên mới cho rằng PART 3 là khó thôi!
+
+
+
+
+Lịch ôn tập: Làm 39 câu PART 03 test 01 rồi check lại đúng 22/39 câu chưa. Sau đó,
+check từng đoạn xem đã đúng được 02/03 câu chưa. Đoạn nào chỉ đúng 01/03 hoặc
+00/03 thì xem kỹ lại đoạn đó.
+Nghe lại thêm 01 lần nữa part 03 test 01 trước khi chuyển sang nghe part 03 test 02
+nhé các bạn.
+
+(Mỗi lần hoàn thành xong 1 ngày hãy quay lại check vào ô “tiến độ” đầu Ebook để theo dõi
+                               việc tự học của mình nhé ^^)
+Ngày 4: ÔN TẬP PART 4
+
+Phần này cũng tương tự như PART 3, các bạn phải đọc trước 3 câu hỏi nhé.
+Đa phần nếu các bạn làm được PART 3 thì sẽ làm được PART 4 vì dạng bài không
+có gì quá khác. Ngoại trừ việc ở PART 4 chỉ có duy nhất 1 người đọc từ đầu đến
+cuối đoạn.
+
+Lý do phần lớn mọi người làm phần này không đạt được như mong đợi đó là vì đuối
+sức, sau khi nghe 03 phần trên nghĩa là bạn đã nghe liên tiếp 30 phút nên lúc này sẽ
+rất đuối sức và không thể tập trung nữa. Do vậy, một giải pháp được đặt ra đó là
+bạn phải tập thói quen nghe liên tiếp trong 45 phút nhé.
+
+Giải pháp cho phần này thầy cũng đã có Ebook biên soạn, nó là CHIẾN THUẬT 9
+trong cuốn 20 CHIẾN THUẬT nhất định phải biết cho TOEIC 2021
+Link tải: http://bit.ly/3cjc0t6
+
+Phần này thầy không làm ví dụ minh hoạ nữa nhé. Vì thầy đã làm khá kỹ ở PART 3
+rồi.
+
+Mục tiêu 550+ thì nên đúng 17/30 câu trong phần này là ổn nhé.
+
+Lịch ôn tập: Làm 30 câu PART 04 test 01 rồi check lại đúng 17/30 câu chưa. Sau đó,
+check từng đoạn xem đã đúng được 02/03 câu chưa. Đoạn nào chỉ đúng 01/03 hoặc
+00/03 thì xem kỹ lại đoạn đó.
+Nghe lại thêm 01 lần nữa part 04 test 01 trước khi chuyển sang nghe part 04 test 02
+nhé các bạn.
+
+(Mỗi lần hoàn thành xong 1 ngày hãy quay lại check vào ô “tiến độ” đầu Ebook để theo dõi
+                               việc tự học của mình nhé ^^)
+Ngày 5: LÀM FULL ĐỀ 100 CÂU PHẦN NGHE
+
+Link: http://bit.ly/sachETS-benzenenglish
+Các bạn lấy TEST 04 trong cuốn sách này làm nhé.
+Sau khi làm xong thì nhớ check lại tổng số câu có đạt 55+/100 câu không nhé.
+Sau đó, đếm riêng từng phần, xem phần nào làm mà đúng dưới 55% thì kiểm tra lại
+và ôn tập cho kỹ phần đó nhé.
+
+Đừng hỏi thầy là nên ôn phần nào để tăng điểm nhanh nhé. Câu trả lời đó, xin nhắc
+lại rất quan trọng, đó chính là hãy đếm riêng từng phần, xem phần nào làm mà đúng
+dưới 55% thì kiểm tra lại và ôn tập cho kỹ phần đó nhé!
+
+(Mỗi lần hoàn thành xong 1 ngày hãy quay lại check vào ô “tiến độ” đầu Ebook để theo dõi
+                               việc tự học của mình nhé ^^)
+Ngày 6: ÔN TẬP PART 5
+
+Phần này thì hầu như thầy đã chữa rất rất nhiều qua các livestream rồi ấy.
+Các bạn trước khi làm 30 câu part 05 test 01 của cuốn sách này thì nên xem qua 01
+vài video hướng dẫn part 05 của thầy trước nhé, thầy tin rằng khi xem thì các bạn sẽ
+nắm được tư duy làm bài của từng loại câu hỏi trong phần này, gồm có ngữ pháp thì
+nên làm gì, từ vựng thì nên làm gì, …..
+Link:
+https://www.youtube.com/watch?v=n9pEz7bF2hw&t=13s
+https://www.youtube.com/watch?v=d1BUSxxjLwQ&t=2233s
+
+Mỗi video dài cả tiếng nên các bạn chỉ cần xem 01-02 video rồi làm test 01 trong
+cuốn sách http://bit.ly/sachETS-benzenenglish là được rồi.
+
+Lưu ý, phần này phải CANH THỜI GIAN làm bài, tầm khoảng 15 - 20 phút là tối đa
+thôi nhé.
+
+Mục tiêu 550+ thì cần làm đúng 20/30 câu là okie nhé.
+Khi có thời gian nhiều hơn, các bạn có thể xem thêm nhiều video hơn hoặc làm
+thêm part 05 của test 02 trong cuốn sách nhé.
+
+Đừng quên subscribe kênh Youtube của Benzen English nhé ^^
+
+(Mỗi lần hoàn thành xong 1 ngày hãy quay lại check vào ô “tiến độ” đầu Ebook để theo dõi
+                               việc tự học của mình nhé ^^)
+Ngày 7: ÔN TẬP PART 6
+
+Thật ra thì PART 6 cũng gần như tương tự PART 5 thôi các bạn, nó chỉ thêm 2 dạng
+nữa, ngoài dạng ngữ pháp và từ vựng, đó là dạng từ nối (liên từ) và dạng điền 1 câu
+vào chỗ trống.
+
+Cách làm thì như sau:
+  Dạng ngữ pháp/ từ vựng: cách làm tương tự PART 5
+  Dạng từ nối (liên từ): đọc câu trước và câu sau
+  Dạng điền 1 câu vào chỗ trống: để lại làm sau cùng, bạn nào mục tiêu 500+ thì
+   bỏ qua luôn, không cần làm vì rất tốn thời gian. Sau khi làm tới câu 200 rồi, nếu
+   có thời gian thì mới quay lại làm. Còn nếu bạn nào mục tiêu cao thì nhớ cách
+   làm của dạng này là CÂU CẦN ĐIỀN VÀO phải liên kết với câu trước hoặc câu
+   sau. Bạn có thể làm theo cách hiểu hoặc cách loại trừ. Tuy nhiên, lời khuyên của
+   thầy là hãy làm theo cách LOẠI TRỪ cho nhanh nhé.
+
+Ví dụ minh hoạ
+
+
+
+                                Mifflin Moving Services
+      Frequently Asked Questions (FAQs): When is the best time to move?
+There are several factors to consider as you decide when to schedule your move. It
+may be helpful to know that being flexible with your scheduling can often save you
+money. ___(135)______ moving costs are higher during the summer months when
+               135.
+               (A) Equally
+               (B) Rather
+               (C) In general
+               (D) As a result
+the volume of shipments being handled by your moving company tends to increase.
+Conversely, moving costs are relatively low during the winter months.
+____(136)_____.
+136.
+(A) This is true for both residential and commercial moves.
+(B) Therefore, allow one to two weeks for your shipment to arrive.
+(C) Most moving companies are based in large cities.
+(D) Moving is stressful at any time of the year.
+Moreover, regardless of the time of year that you move, being flexible about your
+loading and delivery dates can also be _____(137)____. For example, by giving your
+                                           137.
+                                           (A) frustrating
+                                           (B) similar
+                                           (C) beneficial
+                                           (D) unusual
+ moving company a seven-day window to load your shipment, you ____(138)_____
+                                                                 138.
+                                                                 (A) reduced
+                                                                 (B) reduces
+                                                                 (C) reducing
+                                                                 (D) reduce
+the chance that your goods will sit in a truck for a long period of time.
+
+Phân tích:
+135. Đây là dạng từ nối.
+Ta phải dịch câu trước và câu sau mới chọn được từ nối phù hợp. Việc này sẽ tốn
+nhiều thời gian và công sức để dịch, nên nếu thấy khó quá thì có thể bỏ qua để tý
+nữa còn thời gian quay lại làm sau nhé.
+“Có một vài yếu tố cần cân nhắc khi bạn chuyển đồ đi chỗ khác. Sẽ có ích cho bạn
+nếu bạn linh hoạt việc chuyển đồ. NHÌN CHUNG, chi phí vận chuyển cao hơn vào
+những tháng mùa hè…Ngược lại, chi phí vận chuyển vào các tháng mùa đông thì lại
+tương đối thấp” => Đáp án C.
+Bạn thấy đấy, để làm được câu này tốn khá nhiều thời gian.
+
+136. Đây là dạng điền 01 câu vào chỗ trống.
+Dịch tiếp ý câu: “Ngược lại, phí vận chuyển tương đối thấp trong suốt các tháng mùa
+đông. Điều này đúng cho cả việc chuyển đồ dân dụng và thương mại.”
+Hoặc bạn cũng có thể làm theo cách LOẠI TRỪ như sau:
+Mạch bài đang so sánh giá chuyển đồ giữa những tháng mùa hè và tháng mùa
+đông. Nên:
+- Không thể chọn B vì “two weeks” không có liên quan gì cả.
+- Không thể chọn C vì không nhắc gì đến “cities”
+- Còn câu D thì “any time of the year” lại càng không hợp mạch bài.
+Ta chọn A. Câu này cũng làm chúng ta tốn khá nhiều thời gian.
+
+137. Câu này là dạng từ vựng. Chỉ cần dịch 1 câu chứa chỗ trống là ta làm được
+luôn, tương tự cách làm như PART 5.
+“Hơn thế nữa, bất kể thời gian trong năm mà bạn di chuyển, việc linh hoạt về ngày
+chất hàng và giao hàng của bạn cũng có thể CÓ LỢI.”
+* regardless of: bất chấp
+* flexibility (n): sự linh hoạt
+Đáp án C.
+
+138. Đây là dạng ngữ pháp. Cách làm tương tự như PART 5.
+Câu B loại vì chủ ngữ “you” không thể đi với động từ thêm “s”
+Câu C loại vì “reducing” không phải động từ chia thì
+Câu A loại vì không thể chọn thì quá khứ vào chỗ này được, vì phía sau là “your
+goods will sit”
+Đáp án D.
+
+
+Mục tiêu 550+ thì cần làm đúng 08/12 câu của phần này các bạn nhé.
+
+Các bạn có thể xem video hướng dẫn PART 6 tại đây:
+https://www.youtube.com/watch?v=1s84fJ4KWeU&t=80s
+
+Lịch ôn tập:
+Sau khi xem video các bạn làm part 06 test 01 trong cuốn sách http://bit.ly/sachETS-
+benzenenglish
+Check lại xem đúng 08/12 câu chưa nhé. Nếu chưa thì xem lại, nhất là dạng ngữ
+pháp và dạng từ vựng đừng để sai nhé.
+Nếu có nhiều thời gian thì làm thêm part 06 test 02 trong sách nhé.
+
+(Mỗi lần hoàn thành xong 1 ngày hãy quay lại check vào ô “tiến độ” đầu Ebook để theo dõi
+                               việc tự học của mình nhé ^^)
+Ngày 8: ÔN TẬP PART 7
+
+Phần này là phần quan trọng nhất của phần đọc vì nó chiếm tới 52/200 câu.
+
+Có 3 dạng câu hỏi là:
+- Đoạn đơn
+- Đoạn đôi
+- Đoạn ba
+
+Để làm được phần này cần có hai yếu tố quan trọng, đó là từ vựng và kỹ năng làm
+bài. Đại đa phần các trường hợp đều không cần phải dịch hết từ đầu đến cuối mới
+trả lời được câu hỏi. Vì nếu làm như vậy thì một là tốn quá nhiều thời gian và hai là
+bản thân bạn khi ôn tập sẽ cảm thấy rất nản, vì có một sự thật là luôn luôn gặp phải
+từ mới trong các đoạn văn khác nhau. Trong khi có những từ quan trọng cần phải
+học thuộc thì bạn lại biết để tập trung mà lại dàn trải học hết tất cả các từ vựng mà
+bạn không biết thì sẽ tốn rất nhiều thời gian và công sức. Thậm chí, có rất nhiều bạn
+vì không thể nào học thuộc từ vựng nên chọn cho mình một giải pháp là CHỌN LỤI,
+nghĩa là phụ thuộc vào cảm giác là chính. Linh cảm thấy cái nào giống giống là chọn
+luôn. Việc này sẽ làm cho số điểm của bạn cực kỳ HÊNH XUI. Mà thông thường, là
+xui nhiều hơn hênh. Ahuhu
+
+Để đạt 550+ thì bạn cần làm đúng khoảng 28/52 câu nhé!
+    Ví dụ minh hoạ:
+    Ví dụ 1:
+
+
+
+
+Phân tích: Đoạn này gồm 2 đoạn nhỏ và có 2 câu hỏi => câu 151 thường thì thông
+tin ở đoạn đầu và câu 152 thường thì thông tin ở đoạn 2. Đây là KỸ THUẬT
+KHOANH VÙNG thông tin. Tránh việc đọc lang man cả lên.
+-   151 thì phải đọc đoạn 1 và bám vào từ “Wednesday morning” nên ta dịch câu đó
+    như sau: “Hạn chót đặt chỗ quảng cáo ở tờ báo Skillington Weekly là sáng thứ 3
+    lúc 11h để xuất bản vào hôm thứ 4.” => Nghĩa là nếu mà nộp quảng cáo vào thứ
+    4 thì thứ 4 tuần tới mới được xuất bản. => Chọn A
+-   152 thì ta đọc đoạn 2 và dựa vào từ “Credit” thì có thể thấy ngay dòng 2 đoạn 2
+    có nhắc đến “cancel” nên ta chọn B nhé.
+Ví dụ 2:
+Phân tích: Đây là đoạn đôi và gồm 5 câu hỏi. Mục tiêu 550+ chỉ cần làm đúng 3/5 là
+okie nhé. Trong đoạn đôi này, luôn xuất hiện 1 loại câu hỏi KẾT HỢP. Tức là phải
+liên kết 2 đoạn văn mới tìm được đáp án. Loại câu hỏi này đôi khi không khó nhưng
+lại tốn thời gian khá nhiều để đi tìm.
+-   181 hỏi mục đích của email đầu tiên thì ta đọc sơ bộ vài câu của đoạn đầu email
+    thứ nhất thôi. Câu “Listed below, please note our standard advertisement fees”
+    dịch là “dưới đây là liệt kê các mức phí quản lý thông thường của chúng tôi” =>
+    vậy mục đích không thể là “photographs”, không thể là improvements”, cũng
+    không thể là “new subscriber” => chọn D. Nghĩa là để cung cấp thông tin cho
+    khách hàng (nhà quảng cáo) tiềm năng.
+    Cách làm của dạng này là LOẠI TRỪ, ta thấy A, B, C đều không hợp lý thì chọn
+    D. Trong một số trường hợp ta không hiểu rõ hoặc không dịch được D nhưng A,
+    B, C quá sai thì cứ mạnh dạn chọn D thôi!
+-   182 hỏi bà Gajinoo chỉ ra điều gì thì ta tìm tên của bà ấy ở chỗ nào trong email
+    đầu tiên. Ta thấy bà này chính là người gửi email! Vậy ta không khoanh vùng
+    được thông tin thì cứ đọc tiếp chỗ 3 dấu “   ”. Ta thấy dấu “ ” có nói “Chúng
+    tôi không chỉnh sửa lại hình ảnh. Do vậy, yêu cầu phải xem kỹ ảnh trước khi gửi”
+    => ta chọn B “Nhà quảng cáo nên xem ảnh trước khi nộp”
+    Kinh nghiệm: dù đoạn đôi hay đoạn 3 thì thường thứ tự câu hỏi sẽ không có tráo
+    vị trí mà sẽ hỏi theo thứ tự đi tới nên bạn đừng lo là nó không theo thứ tự.
+    Trường hợp nó không theo thứ tự, thì câu đó, thật chất lại là câu hỏi phân loại thí
+    sinh nên mình làm sai cũng không phải là vấn đề gì lớn cả.
+-   183 hỏi ông Mason đề xuất điều gì trong email thứ hai. Ta thấy ông này là người
+    gửi email thứ hai nên ta cũng không biết thông tin chỗ nào thì ta cứ đọc tới thôi.
+    Câu “I would like to start ….. longer term” nghĩa là “Tôi muốn bắt đầu quảng cáo
+    ¼ trang báo thôi và sau đó đánh giá lại xem (hiệu quả như thế nào) rồi mới
+    quảng cáo với kích thước lớn hơn hoặc thời gian lâu hơn” => Ý này chính là câu
+    C, nghĩa là “Anh ấy có thể điều chỉnh kích thước của quảng cáo trong tương lai.”
+-   184 hỏi ông Mason có lẽ sẽ tốn bao nhiêu tiền phí?
+    Kinh nghiệm: câu hỏi thứ 4 sẽ rất có thể là câu hỏi kết hợp!
+    Giá ở email 1, còn ở email 2, ta dựa vào “six issues” + “a quarter page size” thì
+    đáp án sẽ là $2,880 => chọn B
+
+-   185 hỏi từ “term” trong email thứ 2, đoạn 1 dòng 3 gần nghĩa nhất với từ gì.
+    Kinh nghiệm: hãy cứ đọc từ đó trong đoạn xem nó nghĩa gì vì 1 từ tiếng Anh sẽ
+    có nhiều nghĩa! Nghĩa bạn hay dùng và bạn biết chưa chắc là nghĩa trong đoạn
+    văn đâu!
+    Từ “term” nghĩa là “thời gian”, như đã phân tích ở câu 183 nên ta chọn A.
+
+Lịch ôn tập: Làm 52 câu part 07 test 1 của cuốn sách http://bit.ly/sachETS-
+benzenenglish
+Nếu có thời gian thì Làm 52 câu part 07 test 2 nhé!
+Hãy nhớ đến chỉ tiêu là đúng 28/52 câu!
+
+
+(Mỗi lần hoàn thành xong 1 ngày hãy quay lại check vào ô “tiến độ” đầu Ebook để theo dõi
+                               việc tự học của mình nhé ^^)
+Ng ày 9: L àm FULL đ ề ph ần đ ọ c 100 câu
+
+Link: http://bit.ly/sachETS-benzenenglish
+Các bạn lấy TEST 04 trong cuốn sách này làm nhé.
+Sau khi làm xong thì nhớ check lại tổng số câu có đạt 55+/100 câu không nhé.
+Sau đó, đếm riêng từng phần, xem phần nào làm mà đúng dưới 55% thì kiểm tra lại
+và ôn tập cho kỹ phần đó nhé.
+
+Đừng hỏi thầy là nên ôn phần nào để tăng điểm nhanh nhé. Câu trả lời đó, xin nhắc
+lại rất quan trọng, đó chính là hãy đếm riêng từng phần, xem phần nào làm mà đúng
+dưới 55% thì kiểm tra lại và ôn tập cho kỹ phần đó nhé!
+
+(Mỗi lần hoàn thành xong 1 ngày hãy quay lại check vào ô “tiến độ” đầu Ebook để theo dõi
+                               việc tự học của mình nhé ^^)
+Ngày 10: Làm FULL trọn 01 bộ đề TOEIC
+
+Canh 2h và làm bài thôi! Nhớ nghiêm túc nhé. Xem thử là điểm của mình lên KINH
+KHỦNG KHIẾP như thế nào rồi!
+Các bạn có thể chọn 1 trong 2 tài liệu sau đây:
+
+
+
+1. Link: http://bit.ly/sachETS-benzenenglish
+Các bạn lấy TEST 05 trong cuốn sách này làm nhé.
+
+
+2. Các bạn làm đề TOEIC mới nhất 2021 tại đây nhé.
+Link: https://bit.ly/sach950toeic
+
+Lưu ý công thức tính điểm: Số điểm = (tổng số câu đúng – 8)*5
+
+
+================================================================
+
+
+
+
+Bạn nào đã đọc tới đây và thực hành như những gì thầy hướng dẫn trong những
+ngà y qua là đã rất rất quyết tâm v à hơ n rất nhiều bạn khác rồi!
+
+Thầy biết có rất nhiều bạn chỉ tải tài liệu về rồi để im đó và không h ành động gì
+cả. Thầ y buồn chứ ! N ưng thầy biết, vẫn có rất nhiều bạn, đã nỗ lực ôn tập theo
+các tài liệu của thầy soạn và đạt được số điểm của m ình.
+
+Đó chính là động lực to lớn để giúp thầy và Benzen English soạn thêm tài liệu
+CẬP NHẬT liên tục cho các bạn trong thời gian tới.
+
+Benzen English – Chúc bạn học tốt và chúc mừng năm mới!!!
+

@@ -1,0 +1,44 @@
+SOURCE_RELATIVE_PATH: downloads/TÀI LIỆU 30 NGÀY TỰ ÔN TOEIC.pdf
+SOURCE_FILE_NAME: TÀI LIỆU 30 NGÀY TỰ ÔN TOEIC.pdf
+QUEUE_ORDER: 12
+EXTRACTION_CLASS: VALID_TEXT_EXTRACTED
+PAGE_COUNT: 1
+
+----- BEGIN PDF TEXT -----
+ TÀI LIỆU 30 NGÀY TỰ ÔN TOEIC                          Link tài liệu raw
+                                                                           Đăng kí test trình độ miễn phí: https://forms.gle/ykgaKJDs5KdAr9SS8
+ 1 Reading     Thành phần câu : CHỦ NGỮ - ĐỘNG TỪ            DAY 1
+ 2 Listening   Nghe từ và cụm từ gần giống nhau              DAY 2         Các kênh truyền thông của TOEIC Shine:
+ 3 Vocab       Tuyển dụng                                    DAY 3         Fanpage: https://www.facebook.com/toeicshine
+                                                                           Group: https://www.facebook.com/groups/434834128187296
+ 4 Reading     Thành phần câu : TÂN NGỮ, BỔ NGỮ              DAY 4
+                                                                           Instagram: https://www.instagram.com/toeicshine/
+ 5 Listening   Nghe nối âm                                   DAY 5
+ 6 Vocab       Phép tắc - Quy định                           DAY 6         ✨ TOEIC SHINE - CAM KẾT ĐẦU RA, TỐI ĐA ĐIỂM SỐ
+ 7 Reading     Từ loại : DANH TỪ                             DAY 7         🏡 Cơ sở 1: Số 174 Xã Đàn 2, P.Nam Đồng, Q Đống Đa, HN.
+                                                                           🏡 Cơ sở 2: Số 92 phố Cửa Bắc, P.Quán Thánh, Q Ba Đình, HN.
+ 8 Listening   Nghe dạng Tranh tả người - part 1             DAY 8
+                                                                           🏡 Cơ sở 3: Số 30 ngõ 203 Kim Ngưu, P. Thanh Lương, Q Hai Bà Trưng, HN.
+ 9 Vocab       Công việc văn phòng (1)                       DAY 9         ☎ Hotline: 086 8393 086 - 086 2265 086
+10 Reading     Từ loại : ĐẠI TỪ                              DAY 10        💌 Email: Mslan.english@nla.edu.vn
+11 Listening   Nghe dạng Tranh tả người - part 2             DAY 11
+12 Vocab       Công việc văn phòng (2)                       DAY 12
+13 Reading     Từ loại : TÍNH TỪ, TRẠNG TỪ                   DAY 13                                  KẾT QUẢ HỌC VIÊN
+14 Listening   Nghe dạng Tranh tả sự vật/ phong cảnh         DAY 14
+15 Vocab       Công việc văn phòng (3)                       DAY 15
+16 Reading     Từ loại : GIỚI TỪ                             DAY 16
+17 Listening   Nghe dạng Tranh tả sự vật/ phong cảnh         DAY 17
+18 Vocab       Thời gian rảnh - Cộng đồng                    DAY 18
+19 Reading     Từ loại : LIÊN TỪ                             DAY 19
+20 Listening   Nghe từ để hỏi "Who"                          DAY 20
+21 Vocab       Marketing (1)                                 DAY 21
+22 Reading     SỰ HÒA HỢP CHỦ NGỮ VÀ ĐỘNG TỪ                 DAY 22
+23 Listening   Nghe từ để hỏi "What" và "Which"              DAY 23
+24 Vocab       Marketing (2)                                 DAY 24
+25 Reading     THÌ                                           DAY 25
+26 Listening   Nghe từ để hỏi "Where"                        DAY 26
+27 Vocab       Kinh tế                                       DAY 27
+28 Reading     BỊ ĐỘNG                                       DAY 28
+29 Listening   Nghe từ để hỏi "When"                         DAY 29
+30 Vocab       Mua sắm                                       DAY 30
+

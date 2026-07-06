@@ -1,0 +1,1216 @@
+SOURCE_RELATIVE_PATH: downloads/GIAI THICH CHI TIET SACH HACKER TOEIC STYLE KOREA.pdf
+SOURCE_FILE_NAME: GIAI THICH CHI TIET SACH HACKER TOEIC STYLE KOREA.pdf
+QUEUE_ORDER: 5
+EXTRACTION_CLASS: VALID_TEXT_EXTRACTED
+PAGE_COUNT: 26
+
+----- BEGIN PDF TEXT -----
+            Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+Lửa TOEIC – Trường đào tạo TOEIC online
+                                     Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+           GIẢI THÍCH CHI TIẾT SÁCH HACKER TOEIC STYLE KOREA – PART 5
+
+
+
+Xin chào các bạn!
+
+Đây là tài liệu do nhóm học thuật Fire TOEIC biên soạn nhằm giúp các bạn có thể tự học
+TOEIC tốt hơn, tài liệu được chia sẻ phi thương mại, mong các bạn không dùng nó với mục
+đích thương mại.
+
+Trong quá trình biên soạn sẽ không tránh khỏi sai sót, các bạn có thể báo lỗi về mail:
+firetoeic@gmail.com
+
+Tài liệu được biên soạn bởi Fire TOEIC
+
+Chúc các bạn học tốt!
+
+Đội ngũ biên soạn.
+
+
+
+
+                    Lửa TOEIC – Trường đào tạo TOEIC online
+                                        Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                             TEST 1
+Câu                       Đề bài                                      Giải thích chi tiết
+     If employees ------ to take time off this     Đáp án D
+     summer, they must submit requests by the      Câu còn thiếu động từ chính nên cần điền một động
+     end of the week                               từ (loại B vì là phân từ) dạng chủ động (loại C vì là bị
+     (A) wants                                     động) vào chỗ trống phù hợp với chủ ngữ số nhiều
+     (B) wanting                                   (loại A).
+     (C) are wanted                                Dịch: Nếu các nhân viên muốn nghỉ làm vào mùa hè,
+ 101 (D) want                                      họ phải nộp yêu cầu muộn nhất là cuối tuần này.
+     Mr. Bowen could not take calls yesterday
+     morning, as he ----- a workshop on Website      Đáp án A
+     layout.                                         Dấu hiệu ""yesterday morning"" cho thấy cần điền
+     (A) was conducting                              động từ ở thì quá khứ.
+     (B) is conducting                               Dịch: Mr. Bowen không thể nghe điện thoại vào sáng
+     (C) will be conducting                          hôm qua vì ông ấy đang tổ chức một workshop về bố
+ 102 (D) has been conducting                         cục trang Web.
+     Since she ----- her passport, Ms. Kang was      Đáp án C
+     forced to apply for a replacement at the        Vì động từ ở vế sau đang được chia ở thì quá khứ
+     consultate office.                              đơn, vậy ành động mất xảy ra trước đó phải được
+     (A) was lost                                    chia quá khứ hoàn thành.
+     (B) has lost                                    Dịch: Vì bị mất hộ chiếu, Ms. Kang đã buộc phải đăng
+     (C) had lost                                    ký nhận một quyển thay thế tại văn phòng lãnh sự
+ 103 (D) is lost                                     quán.
+                                                     Đáp án C
+     Negotiations are underway to ----- some of the A. vẫn còn
+     issues the labour union has with the            B. hợp tác
+     automotive producer.                            C. giải quyết
+     (A) remain                                      D. phàn nàn
+     (B) cooperate                                   Dịch: Những cuộc đàm phán đang diễn ra để giải
+     (C) resolve                                     quyết một số vấn đề mà công đoàn đang có với người
+ 104 (D) complain                                    sản suất ô tô.
+     During the ----- technology fair, more than 200
+     firms showcased their newest electronic         Đáp án C
+     innovations.                                    Cần điền 1 tính từ bổ nghĩa cho danh từ ""technology
+     (A) industrious                                 fair"".
+     (B) industriously                               Dịch: Trong suốt hội chợ công nghệ công nghiệp, hơn
+     (C) industrial                                  200 công ty đã trưng bày những sáng kiến điện tử
+ 105 (D) industrialization                           mới nhất của họ.
+     All ----- wishing to use the hotel’s pool or
+     sports facilities must present their room pass
+     to attendants.
+     (A) visiting                                    Đáp án B
+     (B) visitors                                    Sau all, cần điền 1 danh từ số nhiều.
+     (C) visitor                                     Dịch: Tất cả những du khách muôn sử dụng hồ bơi và
+     (D) visitation                                  dụng cụ thể thao của khách sạn phải xuất trình thẻ
+ 106                                                 vào phòng của họ cho nhân viên phục vụ.
+
+
+
+
+                      Lửa TOEIC – Trường đào tạo TOEIC online
+                                           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Câu                          Đề bài                                           Giải thích chi tiết
+     The restaurant has a spacious dining room as
+     well as outdoor tables------- a beautiful
+     garden.                                             Đáp án B. Ta cần điền một giới từ đứng trước a
+     (A) into                                            beautiful garden.
+     (B) within                                          Within: inside something/somebody: trong
+     (C) apart                                           Dịch: Nhà hàng có phòng ăn rộng rãi cũng như bàn
+ 107 (D) out                                             ngoài trời trong khu vườn tươi đẹp.
+     The storm clouds created ------- visibility at the Đáp án A. Ta cần điền 1 tính từ đứng trước danh từ
+     airport, so many of the day's scheduled flights visibility: tầm nhìn.
+     were cancelled.                                     Dấu hiệu: cancelled >> chọn limited visibility: tầm nhìn
+     (A) limited                                         hạn chế.
+     (B) alleged                                         Dịch: Những đám mây của cơn bão gây ra tầm nhìn
+     (C) total                                           hạn chế ở sân bay nên nhiều chuyến bay trong ngày
+ 108 (D) hazardous                                       đã bị hủy bỏ
+     Bright red ruby gemstones are ------- rare,
+     which accounts for their high value in the
+     jewelry market.
+     (A) potentially                                     Đáp án B. Exceptionallly: phi thường
+     (B) exceptionally                                   > Exceptionally rare: phi thường hiếm
+     (C) conventionally                                  Dịch: Đá quý ruby đỏ tươi cực kỳ hiếm, vì vậy mà có
+ 109 (D) financially                                     giá trị cao trên thị trường trang sức.
+     There was insufficient ------- for guests to see Đáp án C. Ta cần điền một danh từ vào chỗ trống.
+     all the exhibits at the trade fair in just one day, Time là danh từ không đếm được mang nghĩa thời
+     so many purchased a weekend pass.                   gian (nếu mang nghĩa là lần thì sẽ đếm được). Ở đây
+     (A) times                                           nghĩa là thời gian.
+     (B) timer                                           Dịch: Do không có đủ thời gian cho khách xem triển
+     (C) time                                            lãm ở hội chợ thương mại chỉ trong một ngày nên
+ 110 (D) timely                                          nhiều người đã mua vé cuối tuần.
+     Members of the board------- with the profit
+     figures on the company's end-of-year financial Đáp án A. Ta cần điền động từ vào chỗ trống.
+     report.                                             Members số nhiều nên động từ chia ở số nhiều. Hơn
+     (A) were delighted                                  nữa ở đây đang nói về hành động đã kết thúc >> quá
+     (B) are delightful                                  khứ.
+     (C) had delighted                                   Dịch: Thành viên ban quản trị rất vui với số liệu lợi
+ 111 (D) are delighting                                  nhuận trên báo cáo tài chính cuối năm.
+     Foreign passengers arriving at the station          Đáp án B
+     ------- to fill out a customs and immigration       Ở đây cần điền dộng từ dạng bị động với nghĩa được
+     form in advance.                                    giục giã, bởi sau chỗ trống không có một tân ngữ nào,
+     (A) are urging                                      trong khi urge là ngoại động từ.
+     (B) are urged                                       Dịch: Những hành khách nước ngoài đến trạm xe
+     (C) had urged                                       được giục nhanh chóng điền trước vào mẫu đơn di cư
+ 112 (D) urge                                            và hải quan.
+
+
+
+
+                        Lửa TOEIC – Trường đào tạo TOEIC online
+                                         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Câu                      Đề bài                                       Giải thích chi tiết
+                                                    Đáp án C
+                                                    Cần điền một động từ dạng bị dộng vào chỗ trống vì
+     Membership forms------- on all cash counters   ngoại động từ place không có tân ngữ theo sau. Việc
+     in the store, resulting in a rise in the numbernày phải đã xảy ra nên mới có kết quả là ""a rise in
+     of applicants.                                 the number of applicants"", vậy loại đáp án ở thì
+     (A) are placing                                tương lai là đáp án D.
+     (B) have placed                                Dịch: Mẫu đơn đăng ký thành viên đã được đặt tại tất
+     (C) were placed                                cả các quầy thanh toán tại cửa hàng, dẫn tới việc số
+ 113 (D) will be placed                             người đăng ký tăng lên.
+     According to its brochure, ------- of customers
+     is the top priority of Pendleton Shipping
+     Services.                                         Đáp án C
+     (A) satisfied                                     Cần điền một danh từ để làm chủ ngữ chính của câu.
+     (B) satisfactorily                                Dịch: Theo sách giới thiệu, sự hài lòng của khách
+     (C) satisfaction                                  hàng chính là ưu tiên hàng đầu của Pendleton
+ 114 (D) satisfactory                                  Shipping Services.
+     Recent public research suggests that ------
+     residents do not approve of the city
+     government's proposed transit system.             Đáp án D
+     (A) locally                                       Cần điền 1 tính từ bổ nghĩa cho danh từ residents.
+     (B) locality                                      Dịch: Cuộc khảo sát công chúng gần đây cho thấy cư
+     (C) localize                                      dân không tán thành dự án hệ thống quá cảnh của
+ 115 (D) local                                         chính phủ.
+     As the cost of hiring an interior decorator is so
+     high, Michael's parents decided to do the
+     work.
+     (A) they                                          Đáp án C
+     (B) them                                          Cần điền 1 trạng ngữ vào chỗ trống.
+     (C) themselves                                    Dịch: Vì giá thuế người trang trí phòng quá cao, bố
+ 116 (D) their                                         mẹ của Michael quyết định tự mình làm việc đó.
+                                                       Đáp án A
+                                                       A. sử dụng
+     The development firm ------- some funds to        B. chuyển tiếp
+     conduct a feasibility study on constructing a     C. bán
+     residential complex in the downtown area.         D. mua
+     (A) allocated                                     Dịch: Công ty phát triển đã sử dụng một số khoản vốn
+     (B) forwarded                                     để thực hiện một cuộc nghiên cứu tính khả thi của
+     (C)vended                                         việc xây dựng một khu phức hợp nhà ở trong khu
+ 117 (D) purchased                                     trung tâm thành phố.
+                                                       Đáp án D
+     A group of------- from the film studio met with A. thí sinh
+     the acclaimed director and tried to convince      B. người được đề cử
+     her to work on an upcoming movie project.         C. người ứng tuyển
+     (A) candidates                                    D. người đại diện
+     (B) nominees                                      Dịch: Một nhóm những người đại diện đến từ xưởng
+     (C) applicants                                    phim đã gặp giám đốc được hoan nghênh và cố gắng
+ 118 (D) representatives                               thuyết phục bà tiến hành dự án phim sắp tới.
+
+
+
+                       Lửa TOEIC – Trường đào tạo TOEIC online
+                                          Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Câu                        Đề bài                                           Giải thích chi tiết
+     The client was mostly satisfied ------- the
+     marketing proposal, but did request several        Đáp án B
+     minor modifications.                               Tobe satisfied with something: hài lòng, thỏa mãn với
+     (A) upon                                           điều gì
+     (B) with                                           Dịch: Khách hàng đó đã gần như hải lòng với bản đề
+     (C) above                                          xuất cho kế hoạch marketing, nhưng còn yêu cầu
+ 119 (D) into                                           thêm vài sự chỉnh sửa nhỏ nữa.
+     The receptionist looked for some extra             Đáp án C
+     paperclips in the supply closet, but there were Cần điền một từ làm chủ ngữ cho vế câu sau. No là
+     ------- left.                                      tính từ nên loại, any và none có thể làm đại từ nhưng
+     (A) any                                            không hợp lý (dùng any thì tobe phải ở dạng phủ định
+     (B) no                                             và trong cả 2 trường hợp, sau đó phải có of them).
+     (C) nothing                                        Dịch: Nhân viên lễ tân tìm thêm vài cái kẹp giấy ở
+ 120 (D) none                                           trong ngăn tủ, nhưng không còn cái nào cả.
+     --------- expense was spared on the centennial
+     of the nation’s independence, with concerts        Đáp án C
+     and other performances planned in locations Cần điền một hạn định từ có thể đi với danh từ số ít
+     across the country.                                expense.
+     (A) Few                                            Dịch: Không có chút chi phí nào bị thừa ra trong dịp kỷ
+     (B) Numerous                                       niệm 100 năm ngày quốc khánh, với những buổi hòa
+     (C) No                                             nhạc và buổi biểu diễn khác được lên kế hoạch tổ
+ 121 (D) Many                                           chức tại nhiều địa điểm trên khắp đất nước.
+                                                        Đáp án C
+     As the firm's staff------- undergo training, they A. hiếm khi
+     stay up-to-date on current real estate market B. hiếm khi
+     trends.                                            C. thường xuyên
+     (A) rarely                                         D. không bao giờ
+     (B) seldom                                         Dịch: Vì nhân viên của công ty thường xuyên được
+     (C) frequently                                     đào tạo nên họ luôn nắm bắt được những xu hướng
+ 122 (D) never                                          mới trên thị trường bất động sản.
+     Although the actor has been nominated for
+     various prestigious awards several times, he Đáp án A
+     has ------- to actually win one.                   Have yet to do something: vẫn chưa làm được việc gì
+     (A) yet                                            đó
+     (B) also                                           Dịch: Mặc dù diễn viên đó đã được đề cử cho rất
+     (C) but                                            nhiều giải thưởng danh giá một vài lần rồi, nhưng anh
+ 123 (D) since                                          ta chưa thực sự được trao một giải nào.
+                                                        Đáp án C
+     The officer------- the passenger' bottle of juice, A. duy trì
+     as liquids were prohibited at the airport's        B. trả lại, trở lại
+     security check areas.                              C. tịch thu
+     (A) maintained                                     D. quy định, kiểm soát
+     (B) returned                                       Dịch: Cán bộ đã tịch thu chai nước hoa quả của hành
+     (C) confiscated                                    khách vì chất lỏng bị cấm đem vào khu kiểm tra an
+ 124 (D) regulated                                      ninh của sân bay.
+
+
+
+
+                       Lửa TOEIC – Trường đào tạo TOEIC online
+                                         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Câu                      Đề bài                                        Giải thích chi tiết
+                                                       Đáp án B
+     Ms. Robertson ------- took possession of the      A. chuyên nghiệp, thành thạo, giỏi
+     shipping company after signing purchase           B. hợp pháp
+     contracts last month.                             C. bền vững
+     (A) proficiently                                  D. chính xác
+     (B) legally                                       Dịch: Ms. Robertson đã sở hữu công ty vận tải đó một
+     (C) sustainably                                   cách hợp pháp sau khi ký vào hợp đồng mua lại từ
+ 125 (D) accurately                                    tháng trước.
+                                                       Đáp án B
+                                                       A. sau đó (trạng từ, dùng khi ở trước đã có 1 sự việc
+     ------- all the facts in the research report have xảy ra và không muốn nhắc lại sự việc đó)
+     been verified, it will be published as a feature B. ngay sau khi
+     in the local newspaper.                           C. bên trong
+     (A) Afterward                                     D. bất chấp
+     (B) As soon as                                    Dịch: Ngay sau khi tất cả chi tiết trong bản báo báo
+     (C) Inside                                        nghiên cứu được chỉnh sửa, nó sẽ được xuất bản
+ 126 (D) In spite of                                   như một chuyên đề trong tờ báo địa phương.
+     The waitress ---------- placed the plates on the
+     dinner’s table and warned them to be
+     cautious, as the dishes were very hot.            Đáp án C
+     (A) careful                                       Càn điền một trạng từ bổ nghĩa cho động từ “placed”.
+     (B) caring                                        Dịch: Nữ bồi bàn cẩn thận đặt những chiếc đĩa xuống
+     (C) carefully                                     bàn ăn và nhắc họ cẩn thận vì những món ăn đều còn
+ 127 (D) cared                                         rất nóng.
+     The CEO had to put ------- the press
+     conference, as there was an urgent matter he
+     had to attend to at corporate headquarters.       Đáp án D
+     (A) away                                          Put off là động từ cụm, có nghĩa là "hoãn lại".
+     (B) out                                           Dịch: Giám đốc điều hành đã phải hoãn lại buổi họp
+     (C) on                                            báo vì có một vấn đề khẩn cấp cần anh ta xuất hiện
+ 128 (D) off                                           giải quyết tại trự sở công ty.
+                                                       Đáp án A
+                                                       A. điều tra, khám phá
+     Inspectors from the Department of Transit         B. tham gia
+     --------- the scene, and determined that the      C. xác thực
+     cause of the train accident was a faulty track. D. ước tính
+     (A) investigated                                  Dịch: Những nhà giám định của Bộ phận chuyển tiếp
+     (B) participated                                  đã tiến hành điều tra hiện trường và xác định được
+     (C) authenticated                                 rằng nguyên nhân của vụ tai nạn xe lửa là do đường
+ 129 (D) estimated                                     ray bị lỗi.
+
+
+
+
+                       Lửa TOEIC – Trường đào tạo TOEIC online
+                                         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Câu                      Đề bài                                        Giải thích chi tiết
+                                                       Đáp án B
+     The National Food and Drug Agency requires A. thông số
+     that manufacturers clearly list all ------- used B. thành phần
+     in the preparation of the consumables they        C. thứ được thêm vào
+     sell.                                             D. nhà cầm quyền
+     (A) specifications                                Dịch: Cơ quan quản lý thực phẩm và dược phẩm
+     (B) ingredients                                   quốc gia yêu cầu tất cả những nhà sản xuất phải liệt
+     (C) attachments                                   kê rõ ràng tất cả những thành phần được sử dụng
+ 130 (D) authorities                                   trong các loại hàng hóa họ bán
+     As raw minerals are------- in the northern        Đáp án B
+     regions of Canada, small towns have become A. liên tiếp, liên tục
+     thriving communities because of mining            B. nhiều
+     developments.                                     C. đa
+     (A) continuous                                    D. hào phóng
+     (B) plentiful                                     Dịch: Vì khoáng sản thô có rất nhiều ở cùng phía bắc
+     (C) multiple                                      Canada, những thị trấn nhỏ tại đó đã trở nên giàu có
+ 131 (D) generous                                      nhờ phát triển việc khai thác mỏ.
+     The article reported that Mr. Grey had agreed
+     to sell his business, but he said that was not - Đáp án B
+     ------ he meant, and the interviewer had          Cần điền một từ có khả năng trở thành tân ngữ của
+     misunderstood his comments.                       động từ "meant".
+     (A) why                                           Dịch: Bài báo viết rằng Mr. Grey đã đồng ý bán đi
+     (B) what                                          công ty của mình, nhưng ông ấy lại nói rằng mình
+     (C) when                                          không có ý đó mà người phỏng vấn đã hiểu nhầm
+ 132 (D) how                                           những lời nói của ông ấy.
+                                                       Đáp án A
+                                                       A. trách nhiệm
+     It is the ------- of Garver Hotel' guests to take B. sự cho phép
+     care of their valuables, as the establishment C. sự thích hợp
+     accepts no liability for theft or loss.           D. sự thu nạp
+     (A) responsibility                                Dịch: Trách nhiệm của khách tại khách sạn Garver là
+     (B) permission                                    tự bảo quản những món đồ giá trị của mình, vì khách
+     (C) eligibility                                   sạn sẽ không chịu bất kỳ trách nhiệm nào với những
+ 133 (D) admission                                     trường hợp mất mát hoặc mất cắp.
+     The flight from Baltimore has------- touched      Đáp án B
+     down, so it will take at least 30 minutes for     A. (mang nghĩa phủ định)
+     passengers to disembark and claim their           B. vừa mới
+     baggage in the arrivals area.                     C. khá
+     (A) yet                                           D. thậm chí
+     (B) just                                          Dịch: Chuyến bay tới Baltimore vừa mới hạ cánh nên
+     (C) quite                                         sẽ mất ít nhất 30 phút để hành khách xuống máy bay
+ 134 (D) even                                          và nhận hành lý tại khu vực khách đến.
+
+
+
+
+                       Lửa TOEIC – Trường đào tạo TOEIC online
+                                         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Câu                         Đề bài                                        Giải thích chi tiết
+     Mr. and Mrs. Coleson decided to have their       Đáp án C
+     anniversary party at the Angel-Hearst Gallery, Cần điền 1 đại từ quan hệ chỉ địa điểm thay cho
+     as it was------- they first met 40 years ago.    "Gallery". Không chọn "which" vì triển lãm này không
+     (A) who                                          phải tân ngữ của động từ 'met" ở vế sau.
+     (B) once                                         Dịch: Ông bà Coleson đã quyết định tổ chức tiệc kỉ
+     (C) where                                        niệm tại triển lãm Angel-Hearst vì đó là nơi họ gặp
+ 135 (D) which                                        mặt lần đầu tiên vào 40 năm trước.
+                                                      Đáp án D
+     Included with every purchase of Star-Pro's       A. không cần thiết
+     office equipment is a ------- users' guide which B. có thể được hoàn tiền
+     contains usage and installation instructions.    C. mang tính chọn lọc
+     (A) dispensable                                  D. đầy đủ
+     (B) refundable                                   Dịch: Đi kèm với mỗi lần mua sản phẩm thiết bị văn
+     (C) selective                                    phòng của Star-Pro là một hướng dẫn đầy đủ bao
+ 136 (D) comprehensive                                gồm hướng dẫn sử dụng và lắp đặt.
+                                                      Đáp án A
+     Even though Medford Enterprises -------          A. thi thoảng
+     invests in small factories, it primarily is      B. chủ yếu
+     focused on larger manufacturing facilities.      C. phần lớn
+     (A) occasionally                                 D. luôn luôn
+     (B) majorly                                      Dịch: Mặc dù thi thoảng Medford Enterprises có đầu
+     (C) mostly                                       tư vào những nhà mày nhỏ, sự tập trung chính của họ
+ 137 (D) always                                       là vào những nhà máy sản xuất lớn hơn.
+                                                      Đáp án B
+     The conference planners hope the published A. vì vậy
+     advertisements will help increase registration B. nếu không
+     for the event, ------- it may have to be         C. bên cạnh (việc gì đó, không đi với mệnh đề)
+     cancelled.                                       D. thay vì (đi với giới từ of)
+     (A) therefore                                    Dịch: Những người lên kế hoạch cho hội thảo mong
+     (B) or else                                      muốn rằng những quảng cáo đến với công chúng sẽ
+     (C) besides                                      giúp cho số lượng đăng ký tham gia tăng lên, nếu
+ 138 (D) instead                                      không sự kiện này sẽ bị hủy.
+                                                      Đáp án A
+     Ms. Howard determined that the contractor's A. có thể chấp nhận được
+     building estimate was ------- and went ahead B. chưa hoàn thiện
+     and hired him for the construction project.      C. có thể trả lại
+     (A) acceptable                                   D. chưa đầy đủ
+     (B) incomplete                                   Dịch: Ms. Howard cho rằng ước tính chi phí xây dựng
+     (C) repayable                                    công trình của nhà thầu có thể chấp nhận được và đã
+ 139 (D) incomprehensive                              lập tức thuê ông ta làm dự án xây dựng này.
+
+
+
+
+                      Lửa TOEIC – Trường đào tạo TOEIC online
+                                         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Câu                      Đề bài                                      Giải thích chi tiết
+                                                    Đáp án A
+                                                    A. nhất quán, cố định
+     The agency's foundation day outing is-------   B. xấp xỉ
+     held on the first Saturday in the month of     C. tương đối
+     August and has been for the past 40 years.     D. lo lắng
+     (A) consistently                               Dịch: Chuyến dã ngoại nhân ngày thành lập công ty
+     (B) approximately                              luôn cố định tổ chức vào ngày thứ Bảy đầu tiên của
+     (C) considerably                               tháng Tám và điều này đã duy trì trong suốt 40 năm
+ 140 (D) apprehensively                             qua.
+
+
+
+
+                       Lửa TOEIC – Trường đào tạo TOEIC online
+                                          Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                                TEST 2
+Câu                       Đề bài                                        Giải thích chi tiết
+     Everyone who went to Luigi Escuccio’s final      Đáp án B
+     classical concert in New York said it was        Cần điền một tính từ vào chỗ trống, bổ nghĩa cho
+     among ----- finest performances.                 danh từ "finest performance".
+     (A) he                                           Dịch: Tất cả những người đã tham dự buổi hòa nhạc
+     (B) his                                          cổ điển cuối của Luigi Escuccio đều cho rằng đó là
+     (C) him                                          một trong số những màn biểu diễn tuyệt vời nhất của
+ 101 (D) himself                                      ông ấy.
+                                                      Đáp án D
+                                                      A. mỗi (không theo sau bởi mạo từ)
+     Many people would like to travel overseas        B. (prep) như, với vai trò, (conj) như
+     -------- a year, but the cost of such a trip     C. (prep)
+     makes it unachievable for most.                  D. (prep) trong vòng
+     (A) per                                          Dịch: Rất nhiều người muốn đi du lịch nước ngoài
+     (B) as                                           trong vòng một năm, nhưng chi phí cho một chuyến đi
+     (C) off                                          như vậy quá cao, khiến cho điều đó trở nên bất khả
+ 102 (D) for                                          thi đối với phần lớn trong số họ.
+                                                      Đáp án C
+     Physical therapists suggest stretching           A. (conj) bởi vì, (prep) kể từ khi
+     thoroughly ----- exercising in order to avoid    B. nếu không (có việc gì xảy ra)
+     muscle strain or injuries once the workout       C. trước khi
+     begins.                                          D. qua
+     (A) since                                        Dịch: Các chuyên gia vật lý trị liệu hợi ý rằng cần phải
+     (B) unless                                       làm động tác kéo giãn kỹ càng trước khi tiến hành tập
+     (C) before                                       thể dục để tránh gây áp lực lên hoặc làm tổn thương
+ 103 (D) through                                      cơ bắp một khi bắt đầu tập luyện.
+     Not only the elevator, ----- the escalator was
+     not working, so everyone who visited the mall Đáp án C
+     had to use the strairs.                       Cấu trúc: Not only A, but also B: không chỉ A mà còn
+     (A) both                                      B.
+     (B) and yet                                   Dịch: Không chỉ có thang máy mà cả thang cuốn cũng
+     (C) but also                                  bị hỏng, khiến cho tất cả mọi người đến trung tâm này
+ 104 (D) as well as                                đều phải sử dụng thang bộ.
+                                                   Đáp án C
+                                                   Cần điền 1 danh từ vào chỗ trống với ý nghĩa thích
+                                                   hợp:
+                                                   - Đáp án A vừa là động từ "sản xuất", vừa là danh từ
+                                                   "nông sản"
+     ----- on the Moroval vacuum cleaner is        - Đáp án B là danh từ "sản phẩm", lại là số nhiều nên
+     scheduled to begin a month after construction không phù hợp với động từ tobe "is"
+     on the factory is complete.                   - Đáp án C là danh từ "sự sản xuất", "việc sản xuất"
+     (A) Produce                                   - Đáp án D là danh từ "năng suất"
+     (B) Products                                  Dich: Việc sản xuất máy hút bụi Moroval đã được dự
+     (C) Production                                kiến bắt đầu sau một tháng kể từ ngày xây xong nhà
+ 105 (D) Productivity                              máy.
+
+
+
+
+                       Lửa TOEIC – Trường đào tạo TOEIC online
+                                          Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Câu                        Đề bài                                           Giải thích chi tiết
+     Lemar Cable Company ----- its billing system, Đáp án C
+     so customers can now make service                  Vì khách hàng đã có thể thanh toán trực tuyến, nên
+     payments online.                                   việc thay đổi hệ thống phải xảy ra và được hoàn
+     (A) changes                                        thành rồi. Vậy cần dùng thì hiện tại hoàn thành.
+     (B) is changed                                     Dịch: Công ty cáp Lemar đã thay đổi hệ thống thanh
+     (C) has changed                                    toán của mình, vì vậy hiện nay khách hàng của họ đã
+ 106 (D) will have changed                              có thể thanh toán phí dịch vụ trực tuyến.
+     The reservation for the hotel suite is ------- the
+     17th of December, though check-in does not
+     start until 4 P.M.                                 Đáp án D
+     (A) to                                             Cần điền giới từ "on" khi sau đó là một ngày.
+     (B) of                                             Dịch: Các phòng trong khách sạn đã được đặt trước
+     (C) at                                             để dùng vào ngày 17/12, mặc dù việc đăng ký vào
+ 107 (D) on                                             cửa sẽ không bắt đầu mãi cho tới 4 giờ chiều.
+     Cheryl and her sister Grace get together
+     every year, and since ------- of them live far     Đáp án B
+     apart, they usually meet in a city between         Cần điền một đại từ số nhiều để phù hợp với động từ
+     them.                                              nguyên thể "live".
+     (A) one                                            Dịch: Cheryl và chị gái của cô ấy là Grace luôn gặp
+     (B) both                                           nhau hằng năm. Vì họ sống rất xa nhau nên thường
+     (C) every                                          sẽ gặp nhau ở một thành phố nằm giữa hai nơi mà họ
+ 108 (D) either                                         sống.
+     There was ------- confusion among staff
+     members regarding changes to the night shift Đáp án C
+     schedule, so the human resources director          Cần điền một tính từ bổ nghĩa cho danh từ
+     sent a detailed memo.                              "confusion".
+     (A) considerate                                    Dịch: Vì có sự tương đối khó hiểu đối với các nhân
+     (B) considerably                                   viên liên quan đến những thay đổi về lịch làm việc ca
+     (C) considerable                                   đêm nên giám đốc nguồn nhân lực đã gửi thêm một
+ 109 (D) consideration                                  bản thông báo chi tiết.
+     The ideal ------- for Mercy's Bookstore was        Đáp án B
+     next to an ice cream shop, since people            A. khung cảnh
+     would frequently buy a book before going for B. địa điểm
+     a cone.                                            C. vị trí nói chung
+     (A) scenery                                        D. sự việc bất ngờ xảy ra
+     (B) location                                       Dịch: Địa điểm lý tưởng cho nhà sách Mercy là ở bên
+     (C) position                                       cạnh cửa hàng kem vì mọi người thường xuyên mua
+ 110 (D) incident                                       sách trước khi họ đi ăn kem.
+
+
+
+
+                       Lửa TOEIC – Trường đào tạo TOEIC online
+                                          Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Câu                      Đề bài                                        Giải thích chi tiết
+                                                      Đáp án C
+                                                      A. gửi (theo sau bởi 1 danh từ đóng vai trò làm tân
+                                                      ngữ)
+                                                      B. đưa ra (theo sau bởi 1 danh từ đóng vai trò làm tân
+     Sure Fast Courier will------- each customer      ngữ)
+     when a package has been successfully             C. thông báo (có thể theo sau bởi 1 mệnh đề)
+     delivered to the intended recipient.             D. cung cấp (theo sau bởi 1 danh từ đóng vai trò làm
+     (A) send                                         tân ngữ)
+     (B) offer                                        Dịch: Sure Fast Courier sẽ thông báo cho mỗi khách
+     (C) notify                                       hàng khi một kiện hàng đã được gửi đến thành công
+ 111 (D) supply                                       cho người nhận.
+                                                      Đáp án C
+     One of the most------- accomplishments of        A. tiềm năng
+     Archer Reeve is the book on advertising he       B. có thể chấp nhận được
+     wrote, which is still a marketing industry       C. đáng chú ý, nổi bật
+     standard.                                        D. miễn phí
+     (A) potential                                    Dịch: Một trong số những thành tựu đáng chú ý nhất
+     (B) acceptable                                   của Archer Reeve là cuốn sách về quảng cáo mà ông
+     (C) noteworthy                                   ấy viết. Cuốn sách đó cho tới giờ vẫn là tiêu chuẩn
+ 112 (D) complimentary                                cho ngành công nghiệp marketing.
+                                                      Đáp án B
+     113. Benicci Automotive set several------- last A. mục tiêu
+     year, selling more cars than ever before and B. kỷ lục
+     also earning their highest profits.              C. tiêu chuẩn
+     (A) goals                                        D. hạn cuối
+     (B) records                                      Dịch: Benicci Automotives đã đặt được một số kỷ lục
+     (C) standards                                    vào năm ngoái, bao gồm bán được nhiều ô tô nhất và
+ 113 (D) deadlines                                    thu được khoản lợi nhuận lớn nhất từ trước tới giờ.
+                                                      Đáp án D
+     Two notable architects in the city------- on the A. quan trọng, quyết định, tính toán
+     design for the new museum, combining their B. tính toán
+     ideas to create one stunning building.           C. tiết lộ, vận chuyển
+     (A) figured                                      D. hợp tác
+     (B) calculated                                   Dịch: Hai nhà kiến trúc sư nổi tiếng trong thành phố
+     (C) conveyed                                     đã hợp tác để thiết kế nên bảo tàng mới, kết hợp ý
+ 114 (D) collaborated                                 tưởng của họ để tạo nên một tòa nhà tuyệt đẹp.
+     Suranda's move into computers proved to be
+     a -------- one, as the product line became the Đáp án B
+     company's main source of income.                 Cần điền một tính từ bổ nghĩa cho đại từ "one".
+     (A) decided                                      Dịch: Việc tiến vào ngành sản xuất máy tính của
+     (B) decisive                                     Suranda đã cho thấy đó là một quyết định mấu chốt vì
+     (C) deciding                                     dòng sản phẩm này đã trở thành nguồn thu nhập
+ 115 (D) decisively                                   chính của công ty này.
+
+
+
+
+                       Lửa TOEIC – Trường đào tạo TOEIC online
+                                          Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Câu                      Đề bài                                         Giải thích chi tiết
+                                                       Đáp án B
+     Thanks to its superior technology, the RZ-23 A. đa dạng
+     starts --------- every time, even in cold weather B. đúng cách
+     when most other vehicles are difficult to get     C. sắc bén, mạnh mẽ, đột biến
+     going.                                            D. đáng tin
+     (A) variably                                      Dịch: Nhờ có công nghệ tiên tiến của nó, chiếc RZ-23
+     (B) rightly                                       đã luôn luôn khởi động đúng cách ngay cả trong thời
+     (C) sharply                                       tiết lạnh, khi mà phần lớn các chiếc xe khác gặp khó
+ 116 (D) reliably                                      khăn trong việc khởi động.
+                                                       Đáp án C
+                                                       A. gửi (theo sau bởi 1 danh từ đóng vai trò làm tân
+                                                       ngữ)
+                                                       B. đưa ra (theo sau bởi 1 danh từ đóng vai trò làm tân
+     In the last staff meeting, the vice president of ngữ)
+     sales ------- that there was good news about C. thông báo (có thể theo sau bởi 1 mệnh đề)
+     this year's financial figures, but he has not     D. cung cấp (theo sau bởi 1 danh từ đóng vai trò làm
+     elaborated further.                               tân ngữ)
+     (A) send                                          Dịch: Trong buổi họp nhân sự lần trước, phó phòng
+     (B) offer                                         kinh doanh đã thông báo có một tin tốt lành với tình
+     (C) notify                                        hình tài chính năm nay; tuy nhiên, ông ấy chưa giải
+ 117 (D) supply                                        thích gì thêm.
+     The first ------- for the store closing is always Đáp án D
+     made 15 minutes before closing, to give           Phía trước chỗ trống là một tính từ, phía sau là một
+     shoppers time to go through check-out.            giới từ, vậy cần điền một danh từ có ý nghĩa thích
+     (A) announcer                                     hợp.
+     (B) announced                                     Dịch: Thông báo đầu tiên về việc cửa hàng đóng cửa
+     (C) announcing                                    luôn được đưa ra 15 phút trước khi cửa hàng thực sự
+ 118 (D) announcement                                  đóng để khách hàng có thời gian để ra về.
+     Quindor&#39;s Electronics had several flat-       Đáp án C
+     screen televisions in stock, but ------- of them A. bất cứ (động từ phải ở dạng đi với danh từ số ít)
+     were available for sale because they had all B. phần lớn, hầu hết
+     been reserved.                                    C. không cái nào
+     (A) any                                           D. một số
+     (B) most                                          Dịch: Quindor & Electronics vẫn còn một số tivi màn
+     (C) none                                          hình phẳng trong kho, nhưng không cái nào có sẵn để
+ 119 (D) some                                          bán đi được vì đều được đặt mua trước cả rồi.
+                                                       Đáp án A
+     Any e-mails requiring an immediate response A. cấp bách, khẩn cấp
+     should be clearly marked so that the recipient B. đúng giờ
+     knows that the situation is -------.              C. vội vã
+     (A) urgent                                        D. (v) bày tỏ, (n) hãng chuyển phát nhanh
+     (B) prompt                                        Dịch: Bất cứ email nào yêu cầu trả lời ngay nên được
+     (C) hurried                                       đánh dấu rõ ràng để người nhận biết được rằng đó là
+ 120 (D) express                                       tình huống cấp bách.
+
+
+
+
+                       Lửa TOEIC – Trường đào tạo TOEIC online
+                                           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Câu                       Đề bài                                      Giải thích chi tiết
+     Publishers may be reluctant to print an        Đáp án C
+     academic text if they feel there are already   Giới từ on hoặc about được đặt trước một danh từ với
+     too many books ------- that particular subject.ý nghĩa "về" (một chủ đề nào đó).
+     (A) over                                       Dịch: Các nhà xuất bản sẽ có thể lưỡng lự không
+     (B) onto                                       muốn in một cuốn sách học thuật nếu họ cảm thấy
+     (C) about                                      rằng đã có quá nhiều sách viết về một chủ đề nhất
+ 121 (D) around                                     định đó rồi.
+     The ------- way to work with oil paints,       Đáp án C
+     particularly high-gloss ones, is to dilute themVì trước chỗ trống có mạo từ xác định "the", sau đó lại
+     with some mineral spirits.                     có một danh từ nên cần điền một tính từ dạng so sánh
+     (A) easily                                     nhất vào chỗ trống.
+     (B) easier                                     Dịch: Cách dễ nhất để có thể sử dụng màu dầu, đặc
+     (C) easiest                                    biệt là những màu có độ bóng cao, là hòa loãng
+ 122 (D) more easily                                chúng với một số loại cồn khoáng.
+                                                    Đáp án B
+     Nutritionists remind consumers to check dates A. kết thúc
+     on salad dressings and ensure they have not B. hết hạn
+     -------, as it can be hazardous to eat expired C. kết thúc
+     foods.                                         D. kết luận
+     (A) ended                                      Dịch: Các nhà dinh dưỡng luôn nhắc nhở người tiêu
+     (B) expired                                    dùng phải kiểm tra ngày tháng trên bao bì salad để
+     (C) finished                                   chắc chắn rằng chúng chưa hết hạn, vì ăn phải đồ hết
+ 123 (D) concluded                                  hạn có thể sẽ dẫn đến hậu quả nghiêm trọng.
+     Smythee's explained that Josh online order
+     had been mixed ------- with another person's
+     shipment, but promised to resolve the          Đáp án A
+     problem immediately.                           Mix up A with B: trộn lẫn A vào B
+     (A) up                                         Dịch: Smythee's đã giải thích rằng đơn hàng đặt trực
+     (B) after                                      tuyến của John đã bị trộn lẫn vào với đơn hàng của
+     (C) out                                        một người khác và hứa rằng sẽ giải quyết vấn đề này
+ 124 (D) by                                         ngay lập tức.
+     Though Grace was under no ------- to work on
+     Saturday, since it wasn't required in her      Đáp án A
+     contract, she still came in to finish the      Under no obligation to do st: không bị bắt buộc phải
+     assignment.                                    làm việc gì.
+     (A) obligation                                 Dịch: Mặc dù Grace không bị bắt buộc phải làm việc
+     (B) assurance                                  vào ngày thứ Bảy vì hợp đồng không yêu cầu điều
+     (C) compulsion                                 này, cô vẫn đến làm để hoàn thành công việc được
+ 125 (D) responsibility                             giao.
+     The marketing department director wants to     Đáp án C
+     cut down on expenses; -------, he is going to  A. thêm vào đó
+     make some new policies regarding business B. tuy nhiên
+     trips.                                         C. vì thế
+     (A) besides                                    D. bất chấp
+     (B) however                                    Dịch: Giám đốc bộ phận marketing muốn cắt giảm chi
+     (C) therefore                                  phí, vì vậy, ông ta sẽ đưa ra một số chính sách liên
+ 126 (D) despite                                    quan đến những chuyến công tác.
+
+
+
+                       Lửa TOEIC – Trường đào tạo TOEIC online
+                                           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Câu                       Đề bài                                          Giải thích chi tiết
+                                                       Đáp án B
+     Though it is practical to save money on           A. vô ích, vô dụng
+     appliances, sometimes the most ------- thing to B. hợp lý
+     do is spend more money on electronics that        C. đang hoạt động
+     will last longer.                                 D. có tính chất ủng hộ
+     (A) useless                                       Dịch: Mặc dù việc mua những thứ đồ gia dụng rẻ để
+     (B) sensible                                      tiết kiệm tiền khá là thực tế, nhưng đôi khi, việc hợp lý
+     (C) operative                                     cần làm lại là mua những món đồ điện bền, dùng
+ 127 (D) supportive                                    được lâu hơn.
+                                                       Đáp án C
+                                                       A. một cách nặng nề
+     Psychiatrists say that, though some people        B. một cách nhanh chóng, bền vững
+     look ------- calm, inside they may be feeling     C. bề ngoài
+     anxiety that does not show.                       D. có thể tiên đoán được
+     (A) heavily                                       Dịch: Các chuyên gia tâm thần cho rằng mặc dù một
+     (B) steadily                                      số người nhìn bên ngoài có vẻ rất bình tĩnh, nhưng
+     (C) outwardly                                     thực ra bên trong họ lại có thể đăng cảm thấy lo lắng
+ 128 (D) predictably                                   mà không biểu hiện ra.
+                                                       Đáp án D
+     Carry-on luggage ------- include size and         A. phong cách
+     weight limitations, as well as certain items that B. chỗ trống
+     cannot be put into the bags.                      C. phân đoạn
+     (A) styles                                        D. hạn chế
+     (B) capacity                                      Dịch: Những hạn chế đối với hành lý xách tay bao
+     (C) segments                                      gồm kích cỡ, cân nặng, cũng như một số đồ vật
+ 129 (D) restrictions                                  không được phép cho vào trong túi.
+     Once the deadline has been reached, all           Đáp án A
+     applications will be reviewed and those           A. có đủ năng lực
+     people considered ------- for the position will   B. nhận được
+     be contacted.                                     C. trao quyền
+     (A) qualified                                     D. hoàn thành
+     (B) received                                      Dịch: Một khi hạn chót đã đến, tất cả các đơn ứng
+     (C) authorised                                    tuyển sẽ được xem xét và những người đủ năng lực
+ 130 (D) complete                                      cho vị trí đó sẽ được liên hệ.
+     Doctors recommend people include a small          Đáp án D
+     amount of fast ------- as part of their daily     Cần điền một danh từ vào chỗ trống vì trước đó có
+     exercise regimen.                                 giới từ "of" và tính từ "fast" mà phía sau cũng chưa có
+     (A) walker                                        danh từ nào. Đáp án A là danh từ chỉ người nên
+     (B) walks                                         không thể đi với cụm "a small amount".
+     (C) to walk                                       Dịch: Các bác sĩ khuyên rằng nên thêm một ít bài tập
+ 131 (D) walking                                       đi bộ nhanh vào chế độ luyện tập thể dục hằng ngày.
+
+
+
+
+                        Lửa TOEIC – Trường đào tạo TOEIC online
+                                         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Câu                        Đề bài                                     Giải thích chi tiết
+     All citizens of the country are ------- to tax
+     laws, even when living overseas, unless they   Đáp án A
+     can prove they are residents of another        Tobe subject to st: chịu sự điều chỉnh, sự ảnh hưởng
+     nation.                                        của việc gì
+     (A) subject                                    Dịch: Tất cả các công dân của nước này đều phải
+     (B) subjection                                 chịu sự điều chỉnh của luật thuế, ngay cả khi họ sống
+     (C) subjective                                 ở nước ngoài, trừ khi họ có thể chứng minh được
+ 132 (D) subjectively                               rằng mình là người thưởng trú tại một quốc gia khác.
+                                                    Đáp án A
+                                                    A. cho tới khi
+     ------- the camera design for the Melody Smart B. một khi
+     Phone has been completed, the manufacturer C. trong khi
+     will not start any new major tasks.            D. trong suốt (đi với danh từ
+     (A) Until                                      Dịch: Cho tới khi thiết kế camera cho chiếc điện thoại
+     (B) Once                                       thông minh Melody được hoàn thành, nhà sản xuất sẽ
+     (C) While                                      không bắt tay vào làm bất kỳ công việc chính nào mới
+ 133 (D) During                                     cả.
+                                                    Đáp án B
+                                                    Cần điền vào chỗ trống một tính từ (hay phân từ như
+                                                    một tính từ) để bổ nghĩa cho danh từ "goods", loại đáp
+     Most cates have to sell more ------- goods     án A và D. Đáp án C có nghĩa chủ động, tức là hành
+     such as cakes and cookies, but also more       hóa thực hiện việc nướng nên không hợp lý, phải là
+     substantial foods such as sandwiches.          được nướng (baked).
+     (A) bakes                                      Dịch: Các điểm bán đồ ăn phải bán nhiều hơn các
+     (B) baked                                      món được nướng như bánh gato và bánh quy, nhưng
+     (C) baking                                     cũng cần bán thêm cả những đồ ăn khác như
+ 134 (D) to bake                                    sandwich.
+                                                    Đáp án D
+     Staff of Grummond Corporation complained       A. cũng
+     about the new operating system until they got B. phía trước
+     used to it, and ------- employees said they    C. hướng đến
+     liked it.                                      D. sau đó
+     (A) also                                       Dịch: Nhân viên của Grummond Corporation đã phàn
+     (B) ahead                                      nàn về hệ thống vận hành mới cho tới khi họ làm
+     (C) forward                                    quen được với nó và từ sau đó, họ lại nói rằng họ rất
+ 135 (D) thereafter                                 thích nó.
+                                                    Đáp án B
+                                                    A. đóng, khép kín
+     Shepherd Hill do not have fancy                B. rộng rãi
+     condominiums for rent, but they are -------    C. được trang hoàng
+     enough to fit up to six people, making them    D. giá cả phải chăng
+     perfect for families or groups.                Dịch: Shepherd Hill không có những căn phòng hạng
+     (A) close                                      sang để cho thuê, nhưng phòng ở đó thì rộng rãi tới
+     (B) spacious                                   nỗi đủ cho tận 6 người cùng ở, điều này làm cho nơi
+     (C) decorative                                 đây là lựa chọn hoàn hảo cho những gia đình hoặc
+ 136 (D) affordable                                 nhóm người thuê nhà.
+
+
+
+
+                       Lửa TOEIC – Trường đào tạo TOEIC online
+                                          Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Câu                       Đề bài                                        Giải thích chi tiết
+                                                        Đáp án B
+     Windom------- ever has items returned to its       A. thường
+     stores, but if it does, the process for returns is B. hiếm khi, hầu như không
+     very simple.                                       C. luôn luôn
+     (A) often                                          D. thường xuyên
+     (B) hardly                                         Dịch: Windom hiếm khi nhận được hàng hóa bị trả về
+     (C) always                                         cửa hàng, nhưng nếu có hàng hóa phải trả lại, thì thủ
+ 137 (D) usually                                        tục cũng rất đơn giản.
+     Workers are expected to clean the hotel lobby
+     and other public areas daily in order to           Đáp án C
+     maintain a ------- appearance.                     Cần điền một tính từ bổ nghĩa cho danh từ
+     (A) present                                        "appearance".
+     (B) presently                                      Dịch: Những người tạp vụ được mong đợi làm sạch
+     (C) presentable                                    hành lang và các khu vực công cộng khác hằng ngày
+ 138 (D) presentation                                   để duy trì một vẻ ngoài khang trang.
+                                                        Đáp án C
+                                                        Cần điền 1 danh từ làm tân ngữ cho động từ "have",
+     Though all the parties to the business             danh từ ở đáp án B là danh từ đếm được, nếu điền thì
+     agreement have ------- at the meetings, some phải có mạo từ ở trước hoặc phải ở dạng số nhiều.
+     decisions cannot be made without approval          Đáp án A là động từ, đáp án D là trạng từ.
+     from senior management.                            Dịch: Mặc dù tất cả các bên trong thỏa thuận kinh
+     (A) represent                                      doanh đều đã có đại diện của mình tại cuộc họp,
+     (B) representative                                 nhưng một số quyết định vẫn không thể được đưa ra
+     (C) representation                                 nếu không có sự chấp thuận của quan quản lý cấp
+ 139 (D) representationally                             cao.
+                                                        Đáp án D
+     Apartments in Darnley Towers proved difficult A. đắt đỏ
+     to rent because the location is -------, seeing B. giảm nhẹ
+     as the buildings are far from buses, subway        C. đổ nát
+     stations, and shopping.                            D. bất tiện
+     (A) expensive                                      Dịch: Những căn hộ ở tháp Darnley cho thấy chúng
+     (B) diminutive                                     rất khó để thuê vì địa điểm này không thuận tiện, nhất
+     (C) dilapidated                                    là khi xét thấy chúng xa bến xe buýt, xe điện ngầm và
+ 140 (D) inconvenient                                   khu mua sắm.
+
+
+
+
+                       Lửa TOEIC – Trường đào tạo TOEIC online
+                                         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                               TEST 3
+Câu                      Đề bài                                        Giải thích chi tiết
+                                                      Đáp án C
+     The department director ----- with how well the Cần điền một động từ có ý nghĩa thích hợp. Impress
+     team worked together to prepare their            nghĩa là gây ấn tượng. Ở đây phải là giám đốc bị ấn
+     presentation, and decided to reward the          tượng bởi cách làm việc của đội nên động từ phải ở
+     employees.                                       dạng bị động.
+     (A) impresses                                    Dịch: Giám đốc bộ phận đã rất ấn tượng với cách mà
+     (B) impressed                                    nhóm này làm việc cùng nhau để chuẩn bị cho bài
+     (C) was impressed                                thuyết trình của họ và đã quyết định trao thưởng cho
+ 101 (D) was impressive                               những nhân viên đó.
+     Few customers in major department stores
+     -------- the strategies marketers use to         Đáp án A
+     encourage people to buy things they don’t        Cần điền một động từ chính và chủ động (vì có tân
+     need.                                            ngữ phía sau) nên lần lượt loại đáp án B, D và C.
+     (A) realize                                      Dịch: Gần như không có khách hàng nào tại các cửa
+     (B) to realize                                   hàng bách hóa lớn nhận ra những chiến dịch mà
+     (C) have been realized                           nhừng người làm marketing thực hiện để khích lệ họ
+ 102 (D) having realized                              mua những món đồ mà họ không thực sự cần.
+     ----- educational Web sites offer fun and        Đáp án C
+     interesting activites for children to play while Vì danh từ sau chỗ trống là số nhiều nên loại đáp án
+     the youngsters are learning about a topic.       B và D. Đáp án A phải thêm "of" sau "lots" thì mới có
+     (A) Lots                                         nghĩa tương đương với "many" hoặc "a lot of". Dịch:
+     (B) Every                                        Rất nhiều các trang web giáo dục đưa ra các hoạt
+     (C) Many                                         động thú vị và vui nhộn cho trẻ em chơi, trong khi
+ 103 (D) Much                                         những trẻ lớn hơn có thể học về một chủ đề nào đó.
+     Sanver Moving Company will ----- customers Đáp án B
+     belongings at a nearby warehouse until the       A. lấy
+     clients are prepared to move to their new        B. giữ
+     homes.                                           C. đóng gói
+     (A) take                                         D. lái
+     (B) hold                                         Dịch: Công ty hỗ trợ chuyển nhà Sanver sẽ giữ đồ
+     (C) pack                                         đạc của khách hàng tại một nhà kho gần đó cho tới
+ 104 (D) drive                                        khi khách hàng sẵn sàng chuyển tới nhà mới của họ.
+     Most factories have to shut down ----- for
+     equipment upgrades and repairs, usually          Đáp án D
+     once every five years.                           Cần điền một trạng từ bổ nghĩa cho động từ "shut
+     (A) period                                       down".
+     (B) periodic                                     Dịch: Phần lớn nhà máy đều phải đóng cửa định kỳ
+     (C) periodical                                   để nâng cấp và sửa chữa thiết bị, thường là 5 năm 1
+ 105 (D) periodically                                 lần.
+
+
+
+
+                       Lửa TOEIC – Trường đào tạo TOEIC online
+                                          Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Câu                        Đề bài                                       Giải thích chi tiết
+     Although it ----- through much of last week’s    Đáp án B
+     class trip, the students enjoyed their time at   Cần điền một động từ ở thì quá khứ vì việc này đã
+     the archaeology museum.                          xảy ra và có kết quá trong quá khứ (enjoyed).
+     (A) rains                                        Dịch: Mặc dù trời mưa gần như trong suốt tuần đi
+     (B) rained                                       chơi lần trước của cả lớp, các học sinh vẫn được tận
+     (C) will rain                                    hưởng khoảng thời gian của họ tại bảo tàng khảo cổ
+ 106 (D) has rained                                   học.
+     Health specialists say people should not eat
+     -------- before swimming, but need to wait for
+     at least half an hour to get in the pool.         Đáp án A
+     (A) just                                          Just before: ngay trước khi
+     (B) well                                          Dịch: Các chuyên gia về sức khỏe khuyên mọi người
+     (C) even                                          không nên ăn ngay trước khi bơi mà cần đợi ít nhất là
+ 107 (D) quite                                         nửa tiếng sau đó mới xuống hồ bơi.
+                                                       Đáp án C
+                                                       A. cẩn trọng
+     A good supervisor will be ------- to new ideas if B. kiên định, không dao động
+     employees present the concepts clearly and C. tiếp nhận, tiếp thu
+     show how the company will make money.             D. thông minh
+     (A) cautious                                      Dịch: Một người giám sát tốt sẽ luôn tiếp thu những ý
+     (B) steadfast                                     tưởng mới nếu nhân viên trình bày ý tưởng đó rõ ràng
+     (C) receptive                                     và cho thấy cách mà công ty có thể kiếm tiền nhờ vào
+ 108 (D) intelligent                                   chúng.
+     Personal information that is saved ------- smart
+     phone software is vulnerable to hackers who
+     can break into unprotected files.                 Đáp án C
+     (A) of                                            Cần điền giới từ với ý nghĩa thích hợp.
+     (B) as                                            Dịch: Những thông tin cá nhân được lưu trong điện
+     (C) on                                            thoại thông minh rất dễ bị hacker lấy được vì họ có
+ 109 (D) for                                           thể truy cập vào những thư mục không được bảo vệ.
+     ------- the night before, Josh's car had to be
+     picked up by the garage to be repaired while
+     he took the subway to work.                       Đáp án D
+     (A) Breaks down                                   Đây là câu rút gọn dạng chủ động, cấu trúc: Having
+     (B) Broken down                                   done st, SV. Dịch: Vì bị hỏng từ tối hôm trước, xe của
+     (C) Being broken down                             Josh đã được chuyển đến garage để sửa chữa trong
+ 110 (D) Having broken down                            khi anh ấy đi làm bằng tàu điện ngầm.
+     Pedestrians visiting the mountain pass are        Đáp án C
+     advised to proceed cautiously as there are        A. nhanh chóng (một thời gian nữa sẽ xảy ra/kết thúc)
+     places where the trail turns -------, which can B. trực tiếp
+     be dangerous.                                     C. đột ngột
+     (A) shortly                                       D. hối hả
+     (B) directly                                      Dịch: Những người đi bộ đến thăm đường vượt núi
+     (C) abruptly                                      được khuyên đi lại vẩn thận vì có những đoạn đường
+ 111 (D) hurriedly                                     uốn cong đột ngột rất nguy hiểm.
+
+
+
+
+                       Lửa TOEIC – Trường đào tạo TOEIC online
+                                           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Câu                       Đề bài                                         Giải thích chi tiết
+                                                      Đáp án D
+     ------- a few minor complications with the       A. bao gồm
+     sound system, the opening reception was          B. cũng như
+     conducted without any trouble.                   C. thay vì
+     (A) Including                                    D. ngoài, không kể
+     (B) As well as                                   Dịch: Ngoài một vài vấn đề nhỏ đối với hệ thống âm
+     (C) Instead of                                   thanh ra, lễ khai trương đã được tiến hành rất trôi
+ 112 (D) Apart from                                   chảy.
+     Jennifer came up with several suggestions for
+     the advertising campaign------- but decided to
+     ask some coworkers for help with                   Đáp án D
+     development.                                       Cần điền một trạng từ bổ sung thêm sắc thái ý nghĩa
+     (A) she                                            cho câu. Dịch: Jennifer đã tự mình nghĩ ra một số ý
+     (B) her                                            tưởng cho chiến dịch quảng cáo, nhưng quyết định
+     (C) hers                                           nhờ một vài đồng nghiệp giúp đỡ phát triển những ý
+ 113 (D) herself                                        tưởng này.
+     After a short but productive------- to the
+     construction site, the engineer was able to        Đáp án C
+     identify the problem with the foundation.          Cần điền một danh từ có ý nghĩa thích hợp vào chỗ
+     (A) visit                                          trống. Dịch: Sau một chuyến đi thăm ngắn ngủi nhưng
+     (B) visited                                        hiệu quả tại khu vực thi công, anh kỹ sư đã có thể
+     (C) visiting                                       nhận diện được vấn đề đối với nền móng của công
+ 114 (D) visitor                                        trình.
+     There are usually eight different movies
+     playing ------- the Manganor Theater, though
+     some of them are matinees.                         Đáp án B
+     (A) out                                            Giới từ "at" có nghĩa là "ở, tại", phù hợp với ngữ cảnh
+     (B) at                                             của câu.
+     (C) to                                             Dịch: Thường có 8 bộ phim được chiếu tại Manganor
+ 115 (D) off                                            Theater, tuy rằng một số là các tiết mục buổi chiều.
+                                                        Đáp án D
+                                                        A. kích cỡ
+     The Callabow lawn mower has the highest -- B. tốc độ
+     ---------- of any in its class, with top scores in C. chi phí
+     all categories, particularly reliability.          D. xếp hạng
+     (A) size                                           Dịch: Chiếc máy cắt cỏ Callabow có thứ hạng cao
+     (B) speed                                          nhất trong số tất cả những chiếc máy cùng loại, với
+     (C) cost                                           điểm số cao nhất xét trên tất cả các hạng mục, đặc
+ 116 (D) ratings                                        biệt là độ tin dùng.
+     Chez Edmond serves ------- vegetables in
+     the summer, but it has to import produce in        Đáp án B
+     winter when they are not available locally.        Cần điền một tính từ bổ nghĩa cho danh từ
+     (A) seasons                                        "vegetables". Dịch: Chez Edmond phục vụ những
+     (B) seasonal                                       món rau theo mùa vào mùa hè, nhưng phải nhập
+     (C) seasonably                                     khẩu nông sản vào mùa đông khi mà chúng không có
+ 117 (D) seasoning                                      sẵn ở nội địa.
+
+
+
+
+                       Lửa TOEIC – Trường đào tạo TOEIC online
+                                           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Câu                        Đề bài                                        Giải thích chi tiết
+     All of the staff people who ------- in designing
+     last year's award-winning easy chair received      Đáp án C
+     substantial bonuses for their work.                Tobe involved in st: liên quan đến, tham gia vào
+     (A) involved                                       Dịch: Tất các những nhân viên tham gia vào việc thiết
+     (B) involvement                                    kế chiếc ghế có tay dựa cho người thắng cuộc năm
+     (C) were involved                                  ngoái đều đã nhận được phần thưởng to lớn vì cống
+ 118 (D) were involving                                 hiến của mình.
+                                                        Đáp án A
+     -------, two people should work together to        A. Về lý tưởng
+     construct the Bessame Shelves, but they are        B. đúng cách
+     simple enough that one person can build it.        C. ưu tiên
+     (A) Ideally                                        D. đặc biệt
+     (B) Rightly                                        Dịch: Về lý tưởng mà nói thì nên có hai người cùng
+     (C) Favorably                                      nhau đóng cái giá Bessame, nhưng việc này đơn giản
+ 119 (D) Exceptionally                                  tới nỗi một người đã có thể làm được.
+     The model Rachel Asgar is known for her -----
+     face, which she uses to show a wide range of Đáp án B
+     emotions depending on the situation.          Cần điền 1 tính từ bổ nghĩa cho danh từ "face". Dịch:
+     (A) expressly                                 Người mẫu Rachel Asgar được biết đến với khuôn
+     (B) expressive                                mặt rất biết biểu đạt. Cố ấy có thể dùng khuôn mặt
+     (C) expressing                                mình để diễn tả rất nhiều cảm xúc tùy từng hoàn
+ 120 (D) expression                                cảnh.
+     An evening wedding is more ------- than an
+     afternoon one, so full dress is required for  Đáp án A
+     these occasions unless otherwise specified. Cần điền 1 tính từ để tạo thành cấu trúc so sánh hơn:
+     (A) formal                                    tobe more adj than.
+     (B) formally                                  Dịch: Một đám cưới vào buổi tối thì trang trọng hơn
+     (C) formality                                 vào buổi chiều, nên những chiếc váy dài cần được
+ 121 (D) formalize                                 mặc vào một dịp như thế, trừ khi có quy định khác.
+                                                   Đáp án C
+                                                   A. thêm vào
+     The Asian trade agreement directly -------    B. lấy được, tích lũy được
+     large businesses, which can have an indirect C. mang lại lợi ích cho
+     but equally positive influence on citizens.   D. thúc đẩy, xúc tiến
+     (A) adds                                      Dịch: Hiệp định thương mại châu Á trực tiếp đem lại
+     (B) gains                                     lợi ích cho các doanh nghiệp lớn, từ đó có thể tạo nên
+     (C) benefits                                  những ảnh hưởng tích cực một cách gián tiếp nhưng
+ 122 (D) promotes                                  công bằng cho tất cả công dân.
+     Since Tom's house was quite far outside the
+     city, Tom found------- had to keep an
+     apartment in the downtown area.               Đáp án A
+     (A) he                                        Cần điền một đại từ làm chủ ngữ cho động từ "had to
+     (B) his                                       keep".
+     (C) their                                     Dịch: Vì nhà của Tom khá xa thành phố, anh ta thấy
+ 123 (D) them                                      mình cần phải có một căn hộ ngay tại khu trung tâm.
+
+
+
+
+                       Lửa TOEIC – Trường đào tạo TOEIC online
+                                          Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Câu                          Đề bài                                         Giải thích chi tiết
+     Not ------- of the city of Haversham&#39;s
+     parade committee members reveals who the
+     parade marshal will be until a week before the Đáp án B
+     event.                                             Cần điền một đại từ số ít vào chỗ trống làm chủ ngữ
+     (A) that                                           cho câu đã cho.
+     (B) one                                            Dịch: Không một thành viên nào của hội đồng diễu
+     (C) those                                          hành thành phố Haversham tiết lộ người sẽ là thống
+ 124 (D) much                                           soái cho tới một tuần trước khi sự kiện này diễn ra.
+     The interpreter had ------- a hard time
+     translating the economics textbook that he
+     eventually asked for assistance from a peer. Đáp án D
+     (A) so                                             Such a/an adj N: Một N rất adj.
+     (B) too                                            Dịch: Người phiên dịch đã trải qua một khoảng thời
+     (C) very                                           gian rất vất vả dịch cuốn sách về kinh tế đến nỗi cuối
+ 125 (D) such                                           cùng anh ta đã phải nhờ một người bạn hỗ trợ.
+                                                        Đáp án C
+     Now that the deadline for completing the           A. đầy đủ
+     Hasting'sproject has been extended, there          B. tuyệt vời, lớn
+     should be------ time to get everything finished. C. dư, nhiều
+     (A) full                                           D. lớn
+     (B) great                                          Dịch: Vì hạn cuối cho việc hoàn thành dự án của
+     (C) ample                                          Hasting đã được gia hạn thêm nên sẽ có nhiều thời
+ 126 (D) massive                                        gian để hoàn thành tất cả nọi thứ.
+                                                        Đáp án D
+                                                        Cần điền một trạng từ đẻ bổ sung sắc thái ý nghĩa cho
+     ------- the entire office staff take off the first câu. Các từ còn lại đều có thể là đại từ, nếu dùng cần
+     week of August, which is the most popular          thêm "of" phía sau, cofnneesu dùng với vai trò là hạn
+     time for summer vacation.                          định từ thì xét riêng về ngữ pháp phải đứng sau mạo
+     (A) Any                                            từ "the".
+     (B) Most                                           Dịch: Gần như toàn bộ nhân viên của văn phòng đều
+     (C) Some                                           nghỉ tuần đầu tiên của tháng 8 vì đây là thời điểm
+ 127 (D) Almost                                         tuyệt với nhất để đi nghỉ hè.
+     There were------- supposed to be over 100          Đáp án D
+     guests at the company party, but several           A. một cách hèn hạ
+     people later called in to say they couldn't        B. một cách độc đáo
+     attend.                                            C. chính, chủ yếu
+     (A) basely                                         D. ban đầu
+     (B) uniquely                                       Dịch: Ban đầu dự kiến có hơn 100 vị khách sẽ đến
+     (C) primarily                                      buổi tiệc của công ty, nhưng một số người sau đó đã
+ 128 (D) originally                                     gọi đến và báo rằng họ không thể tham gia được.
+     The------- for each applicant will take 15         Đáp án C
+     minutes, and will be conducted by the human A. buổi đào tạo, việc đào tạo
+     resources director, who will ask questions         B. kế hoạch, lịch trình
+     about background.                                  C. cuộc phỏng vấn
+     (A) training                                       D. nhiệm vụ được phân công
+     (B) schedule                                       Dịch: Cuộc phỏng vấn dành cho môi ứng viên sẽ kéo
+     (C) interview                                      dài 15 phút và được tiến hành bởi giám đốc nguồn
+ 129 (D) assignment                                     nhân lực, người sẽ đưa ra những câu hỏi về lý lịch.
+
+
+                       Lửa TOEIC – Trường đào tạo TOEIC online
+                                         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Câu                      Đề bài                                        Giải thích chi tiết
+                                                     Đáp án A
+     Any cable bills that are paid ------- may be    Cần điền một trạng từ có ý nghĩa thích hợp bổ nghĩa
+     subject to penalties, and failure to settle     cho động từ "are paid". Lately có nghĩa là gần đây,
+     accounts for six months will lead to            không hợp nghĩa, later và latest cũng không phù hợp
+     termination of service.                         ngữ cảnh.
+     (A) late                                        Dịch: Bất cứ hóa đơn tiền cáp nào bị trả muộn sẽ đều
+     (B) later                                       có thể phải chịu phạt, và việc không thanh toán tài
+     (C) lately                                      khoản trong vòng 6 tháng cũng sẽ dẫn đến việc bị
+ 130 (D) latest                                      ngừng cung cấp dịch vụ.
+     Since Archie Cornwell has ------- rights to all Đáp án C
+     of the band Sweet Desire's songs, people        A. lựa chọn
+     who want touse the songs have to pay a          B. giới hạn, có hạn
+     royalty.                                        C. độc nhất
+     (A) select                                      D. chủ quan
+     (B) limited                                     Dịch: Vì Archie Cornwell có độc quyền sử dụng tất cả
+     (C) exclusive                                   các bài hát của nhóm Sweet Desire nên ai muốn dùng
+ 131 (D) subjective                                  những bài đó phải trả phí sử dụng.
+                                                     Đáp án C
+     Patricia Emile ------- accepted the award for   A. một phần, có phần
+     the city of Midvale's citizen of the year,      B. lẫn nhau
+     humbly thanking the mayor for recognizing       C. trân trọng, biết ơn
+     her volunteer work.                             D. không cần nỗ lực, nhẹ nhàng
+     (A) partially                                   Dịch: Patricia Emile đã trân trọng nhận lấy giải thưởng
+     (B) mutually                                    Công dân của năm của thành phố Midvale, khiêm tốn
+     (C) gracefully                                  cảm ơn thị trưởng vì đã công nhận cống hiến của cô
+ 132 (D) effortlessly                                trong hoạt động tình nguyện.
+                                                     Đáp án B
+     The negotiators came up with two proposals A. một trong hai
+     for merging Bergmire and Seagel, but the        B. không cái nào trong hai cái
+     CEOs liked ------- of them, so discussions      C. một cái khác
+     started again.                                  D. cái còn lại trong hai cái
+     (A) either                                      Dịch: Những người đàm phán đã đưa ra hai đề xuất
+     (B) neither                                     cho việc sáp nhập Bergmire và Seagel, nhưng các
+     (C) another                                     giám đốc điều hành không thích cái nào cả nên cuộc
+ 133 (D) the other                                   thảo luận lại tiếp tục từ đầu.
+                                                     Đáp án C
+                                                     A. thiết kế
+     Several ------- had to be made to the company B. đồ họa
+     brochure after it was proofread, so it was      C. chỉnh sửa
+     released after the alterations were made.       D. ấn bản
+     (A) designs                                     Dịch: Một số chỉnh sửa phải được thực hiện đối với
+     (B) graphics                                    cuốn sổ quảng cáo của công ty sau khi nó được kiểm
+     (C) corrections                                 tra lỗi. Vì vậy, nó sẽ được tung ra sau khi những sửa
+ 134 (D) publications                                đổi được thực hiện.
+
+
+
+
+                       Lửa TOEIC – Trường đào tạo TOEIC online
+                                        Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Câu                     Đề bài                                       Giải thích chi tiết
+                                                     Đáp án A
+     ------- Finey Incorporated expands              A. Nếu
+     internationally, some employees may have to B. Nhưng
+     transfer overseas to train new workers.         C. Tuy nhiên
+     (A) If                                          D. Mặc dù, bất chấp
+     (B) But                                         Dịch: Nếu Finey Incorporated mở rộng trên phạm vi
+     (C) However                                     quốc tế, một số nhân viên có thể phải chuyển ra nước
+ 135 (D) Despite                                     ngoài để đào tạo các công nhân mới.
+     Only three people from the department are -- Đáp án C
+     -------- to go to the business conference, so   A. xếp đặt
+     the director will decide who is allowed to      B. giải quyết
+     attend.                                         C. cho phép
+     (A) settled                                     D. xác định
+     (B) resolved                                    Dịch: Chỉ có ba người từ bộ phận được cho phép đi
+     (C) permitted                                   đến hội thảo kinh doanh, vì vậy giám đốc sẽ quyết
+ 136 (D) determined                                  định ai là người được tham gia.
+     Buying a home could be a wise investment,
+     depending on ------- the market is strong or
+     not and how long people can keep money tied Đáp án D
+     up.                                             Cần điền whether trước một mệnh đề có ý nghĩa "cái
+     (A) as                                          này hoặc cái kia". Dịch: Mua một ngôi nhà có thể là
+     (B) when                                        một khoản đầu tư thông minh, tùy thuộc vào việc thị
+     (C) besides                                     trường mạnh hay yếu và nhà đầu tư có thể giữ số tiền
+ 137 (D) whether                                     của mình có ít tính thanh khoản được bao lâu.
+                                                     Đáp án B
+                                                     A. Sau khi
+     ------- the documents being sent by courier are B. Trong khi
+     in transit, clients can track the items online. C. Trừ khi
+     (A) After                                       D. Trong suốt (đi với danh từ)
+     (B) While                                       Dịch: Trong khi các văn bản được gửi bởi người vận
+     (C) Unless                                      chuyển đang trong quá trình di chuyển, khách hàng có
+ 138 (D) During                                      thể theo dõi hành trình của chúng trực tuyến.
+     Extra payment for------- will be available only Đáp án C
+     when permission to work extra hours has         A. phần thưởng thêm
+     been obtained from the staff member's           B. việc đi du lịch, việc đi lại
+     supervisor.                                     C. việc làm thêm giờ
+     (A) bonuses                                     D. chi phí
+     (B) traveling                                   Dịch: Khoản tiền cho việc làm thêm giờ sẽ chỉ được
+     (C) overtime                                    trả khi giấy cho phép làm thêm giờ đã được đưa đến
+ 139 (D) expenses                                    cho người giám sát nhân viên.
+
+
+
+
+                      Lửa TOEIC – Trường đào tạo TOEIC online
+                                          Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Câu                       Đề bài                                       Giải thích chi tiết
+                                                      Đáp án D
+     As people walk down the winding stone            A. từ
+     pathway ------- the Gaspel Statue, it actually   B. bên cạnh
+     appears to be changing shape as they get         C. ngược lại, chống lại, đổi lấy
+     closer to it.                                    D. hướng đến
+     (A) from                                         Dịch: Khi mọi người đi xuống con đường trải đá
+     (B) beside                                       hướng đến tượng đài Gaspel, càng tiến đến gần,
+     (C) against                                      tượng đài này càng có vẻ như đang thay đổi hình
+ 140 (D) toward                                       dạng.
+
+
+
+
+                       Lửa TOEIC – Trường đào tạo TOEIC online
+

@@ -1,0 +1,3765 @@
+SOURCE_RELATIVE_PATH: downloads/Lộ trình từ A đến Z đạt TOEIC 700+.pdf
+SOURCE_FILE_NAME: Lộ trình từ A đến Z đạt TOEIC 700+.pdf
+QUEUE_ORDER: 10
+EXTRACTION_CLASS: VALID_TEXT_EXTRACTED
+PAGE_COUNT: 77
+
+----- BEGIN PDF TEXT -----
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+                                     MỤC LỤC
+    PHẦN 1: TỔNG QUAN VỀ TOEIC                                                    2
+    PHẦN 2: LỘ TRÌNH ÔN LUYỆN                                                     5
+    Chặng 1: 0 – 300                                                              5
+1. Ngữ pháp                                                                       5
+    a. Các thì cơ bản                                                             5
+    b. Động từ khuyết thiếu                                                       10
+    c. Từ loại                                                                    14
+    d. Mệnh đề quan hệ                                                            27
+    e. Câu điều kiện (If)                                                         31
+    f. Câu bị động                                                                33
+2. Phần nghe                                                                      36
+    a. Part 1                                                                     36
+    b. Part 2                                                                     37
+3. Phần đọc                                                                       41
+    a. Part 5                                                                     41
+    b. Part 6                                                                     42
+ 4. Từ vựng                                                                       43
+    a. Cách học từ vựng hiệu quả                                                  43
+    b. Từ điển phù hợp với chặng này                                              43
+5. Tài liệu ôn luyện                                                              44
+    Chặng 2: 300 – 500                                                            45
+1. Ngữ pháp                                                                       45
+    a. Rút gọn mệnh đề quan hệ                                                    45
+    b. Đảo ngữ câu điều kiện                                                      46
+2. Phần nghe                                                                      48
+    a. Part 3                                                                     49
+    b. Part 4                                                                     50
+3. Phần đọc                                                                       51
+4. Từ vựng                                                                        52
+     a. Cách học từ vựng hiệu quả                                                 52
+     b. Một số từ điển phù hợp cho chặng này                                      53
+5. Giáo trình phù hợp với chặng này                                               53
+    Chặng 3: 500 – 700                                                            54
+1. Ngữ pháp                                                                       54
+     a. Cấu trúc so sánh                                                          54
+     b. Tương lai hoàn thành tiếp diễn                                            56
+     c. Thì quá khứ hoàn thành tiếp diễn                                          58
+                                             Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                             Lớp đầu ra 750+:
+                                             https://tienganhthayquy.com/yourtoeic750
+                                             Nhóm Facebook:
+                                             https://www.facebook.com/tienganhthayquy
+
+
+
+
+    d. Động từ đi kèm động từ nguyên mẫu                                             61
+    e. Động từ theo sau là V-ing                                                     63
+    f. Một số động từ đặc biệt có thể kết hợp cả Verb-ing và to-Infinitive           64
+    g. Câu tường thuật                                                               67
+2. Luyện nghe                                                                        72
+3. Phần đọc                                                                          72
+    a. Phần 7                                                                        72
+    b. Mẹo quản lý thời gian khi làm Reading TOEIC                                   73
+4. Từ vựng                                                                           74
+5. Giáo trình phù hợp chặng này                                                      75
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+              LỘ TRÌNH TỪ A ĐẾN Z ĐẠT TOEIC 700+
+
+Xin chào các bạn,
+
+Nếu như tấm bằng TOEIC 500+ là”tấm vé vào cổng” của các công ty thương mại thì
+TOEIC 700 + chính là tấm “vé mời” đến các cơ hội làm việc trong các công ty đa quốc
+gia hoặc các công ty có vốn đầu tư nước ngoài làm việc về các lĩnh vực như du lịch,
+kế toán, thương mại,.... Tuy nhiên, ôn luyện TOEIC 700+ như thế nào mới hiệu quả?
+Nên dùng những quyển từ điển nào? Sách luyện đề nào phù hợp trong lộ trình này?
+
+Quyển sách Lộ trình từ A đến Z đạt TOEIC 700+ sẽ trả lời cho các bạn những câu
+hỏi trên. Quyển sách này được chia thành 2 phần. Phần đầu chính là tổng quan về kì
+thi TOEIC, và phần thứ hai là về lộ trình ôn luyện để đạt TOEIC 700+ dành cho người
+mới bắt đầu. Phần lộ trình ôn luyện bao gồm 5 phần nhỏ: ôn luyện ngữ pháp, ôn luyện
+phần nghe, ôn luyện phần đọc, ôn luyện từ vựng và tài liệu luyện đề phù hợp cho từng
+chặng.
+
+Hãy cùng FireEnglish ôn luyện TOEIC 700+ theo một cách có hệ thống với ebook Lộ
+trình từ A đến Z đạt TOEIC 700+ nhé.
+
+Đây là tài liệu do nhóm học thuật FireEnglish biên soạn nhằm giúp các bạn ôn luyện
+TOEIC tốt hơn, tài liệu được chia sẻ phi thương mại, mong các bạn không sử dụng
+ebook này với mục đích thương mại.
+
+Trong quá trình biên soạn khó tránh khỏi sai sót, các bạn vui lòng báo lỗi về mail.
+firetoeic@gmail.com.
+
+Tài liệu được biên soạn bởi FireEnglish
+Chúc các bạn học tốt và sớm đạt được số điểm TOEIC mà mình mong muốn!
+Đội ngũ biên soạn.
+
+
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      1
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+                   PHẦN 1: TỔNG QUAN VỀ TOEIC
+   ● TOEIC là gì?
+TOEIC (Test of English for International Communication) là bài kiểm tra tiếng Anh giao
+tiếp quốc tế. Bài kiểm tra này dành cho những người muốn sử dụng tiếng Anh trong
+môi trường làm việc hoặc giao tiếp quốc tế. Kết quả của kì thi TOEIC phản ánh khả
+năng sử dụng tiếng Anh như một ngôn ngữ thứ hai trong các lĩnh vực thương mại,
+kinh doanh, hay du lịch,... Chứng chỉ TOEIC thường có hiệu lực trong vòng 2 năm.
+TOEIC được xây dựng và phát triển bởi ETS (Educational Testing Service), ETS còn
+được biết đến với tên gọi Viện khảo thí giáo dục Hoa Kỳ. Nơi này cung cấp các chương
+trình kiểm tra trắc nghiệm nổi tiếng trên thế giới như GMAT, GRE, TOEFL…
+Các công ty về kinh doanh, thương mại, du lịch sử dụng chứng chỉ TOEIC như một
+tiêu chí ngoại ngữ bắt buộc để đưa ra các quyết định về tuyển dụng, sắp xếp hay bổ
+nhiệm, bố trí nhân sự cả trong nước lẫn nước ngoài.
+   ● Cấu trúc của một bài thi TOEIC
+Thông thường, bài thi TOEIC có 2 phần là Listening và Reading. Mỗi phần Listening
+và Reading bao gồm 100 câu trắc nghiệm. Thí sinh sẽ có 45 phút làm phần Listening
+và 75 phút làm phần Reading.
+Thí sinh thực hiện bài thi TOEIC bằng cách tô đậm vào đáp án đúng duy nhất trong
+số 4 lựa chọn A, B, C, D với Part 1, Part 3, Part 4, Part 5, Part 6 và Part 7, và chọn
+một trong 3 lựa chọn A, B, C với Part 2.
+   ● Cách tính điểm bài thi TOEIC
+Số điểm tối đa cho một bài thi TOEIC là 990 điểm, điểm tối đa cho mỗi phần Listening
+và Reading là 450 điểm. Điểm của bài thi được tính dựa trên số câu trả lời đúng và thí
+sinh không bị trừ điểm ở những câu trả lời sai, do vậy nên các bạn không nên bỏ trống
+bất kỳ một câu nào nha.
+Tuy nhiên, số điểm của mỗi câu hỏi không hề giống nhau. Số điểm của một câu hỏi
+cao hay thấp tùy thuộc vào mức độ dễ hay khó của nó. Câu hỏi càng khó số điểm
+càng cao.
+Cách cho điểm của hai bài thi khác nhau cũng chưa chắc đã giống nhau. Lấy ví dụ
+như câu 50 đề thi này là một câu dễ, nhưng câu 50 trong đề khác lại là một câu khó,
+nên câu 50 của 2 đề này có số điểm khác nhau.
+Như vậy làm sao để tính chuẩn xác điểm bài thi TOEIC? Câu trả lời chính là: Đơn vị
+ra đề sẽ làm riêng một bảng quy đổi điểm TOEIC theo số câu đúng cho mỗi đề thi.
+
+
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      2
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+Không có cách tính điểm chuẩn xác cho mọi đề thi TOEIC, nhưng các bạn có thể sử
+dụng bảng quy đổi điểm TOEIC từ những nguồn đáng tin cậy và được ETS công nhận
+để tính ra điểm gần đúng cho bài thi TOEIC nhé.
+Dưới đây là bảng quy đổi điểm TOEIC từ sách Tactics for TOEIC đã được ETS công
+nhận:
+
+
+
+
+Cách tính điểm chỉ mang tính chất tương đối. Ví dụ, nếu bạn làm đúng từ 51 - 55 câu
+phần nghe thì số điểm phần nghe của bạn sẽ dao động từ 205 - 275 điểm, làm đúng
+trong khoảng từ 56 - 60 câu phần đọc thì số điểm phần đọc của bạn sẽ dao động từ
+235 - 295 điểm.
+Từ đây các bạn có thể đưa ra lộ trình ôn luyện TOEIC phù hợp hơn cho mình.
+Ví dụ, target TOEIC của bạn là 700 điểm, bạn có thể đặt mục tiêu ôn luyện TOEIC
+như sau:
+    - Nếu bình thường bạn làm Reading và Listening ngang nhau:
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      3
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+   -   Bạn cần đạt 350 điểm phần nghe → bạn cần làm đúng 66 - 70 câu phần nghe.
+         + Bạn cần đạt 250 điểm phần đọc → bạn cần làm đúng 66 - 70 câu phần
+             đọc.
+   -   Nếu thế mạnh của bạn là Reading:
+         + Bạn cần đạt 400 điểm bài đọc → bạn cần làm đúng từ 81 - 85 câu phần
+             đọc.
+         + Bạn cần đạt 300 điểm bài nghe → bạn cần làm đúng từ 66 - 70 câu phần
+             nghe.
+   -   Nếu thế mạnh của bạn là Listening:
+         + Bạn cần đạt 300 điểm bài đọc → bạn cần làm đúng từ 61 - 65 câu phần
+             đọc.
+         + Bạn cần đạt 400 điểm bài nghe → bạn cần làm đúng từ 76 - 80 câu phần
+             nghe.
+
+   ● Bảng điểm TOEIC
+Bạn sẽ nhận được bảng điểm TOEIC, chính là kết quả bài thi TOEIC, của mình sau
+khoảng 5 - 7 ngày sau khi thi xong. Kết quả của bạn, bao gồm điểm từng phần
+Listening và Reading và tổng điểm cả bài thi, sẽ được thể hiện rõ trên Bảng điểm
+TOEIC.
+Bên cạnh đó, bảng điểm còn có những nhận xét riêng về từng phần thi nghe hiểu và
+đọc hiểu. Những nhận xét này sẽ giúp bạn hiểu rõ hơn về khả năng của mình, để từ
+đây đưa ra chiến lược ôn luyện TOEIC hiệu quả hơn.
+   ● Quy đổi TOEIC sang IELTS
+
+                  TOEIC                                        IELTS
+
+                  0 - 250                                      0 - 1.0
+
+                255 - 400                                      2 - 3.5
+
+                405 - 600                                     4.0 - 5.0
+
+                605 - 780                                     5.5 - 6.5
+
+                785 - 990                                     7.0 - 8.5
+
+
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      4
+                                           Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                           Lớp đầu ra 750+:
+                                           https://tienganhthayquy.com/yourtoeic750
+                                           Nhóm Facebook:
+                                           https://www.facebook.com/tienganhthayquy
+
+
+
+
+                     PHẦN 2: LỘ TRÌNH ÔN LUYỆN
+  ● Chặng 1: 0 - 300
+  1. Ngữ pháp
+  a. Các thì cơ bản
+   i. Các thì hiện tại
+  ❖ Dấu hiệu nhận biết
+       Hiện tại đơn: có các từ chỉ tần suất như: often, seldom, rarely, frequently,
+       usually, … Hoặc các từ như everyday/month/week...
+  - Hiện tại tiếp diễn: có các từ như: now, right now, at the moment,...
+  - Hiện tại hoàn thành: có các từ: since, for, just, recently, yet, already, lately (gần
+       đây), so far (cho đến giờ), up to now, up to this moment, until now, until this
+       time, ever, never...before,...
+  ❖ Cấu trúc
+
+
+                     Hiện tại đơn              Hiện tại tiếp diễn       Hiện tại hoàn thành
+
+Dạng        khẳng S + V(s/es)                  S + am/is/are + Ving     S + have/has + Past
+định                                                                    participle (V3)
+
+Dạng phủ định        S + do not/ does not + S + am/is/are not + S + have/has not +
+                     Vinf                   Ving                Past participle (V3)
+
+Thể nghi vấn         Do/Does + S + Vinf        Am/Is/Are + S + Ving     Have/has + S + Past
+                                                                        participle (V3)
+
+
+  ❖ Cách dùng
+
+
+Hiện tại đơn                   Hiện tại tiếp diễn            Hiện tại hoàn thành
+
+Diễn tả 1 chân lý, 1 sự thật   Diễn tả 1 hành động đang      Diễn tả 1 sự việc vừa mới
+hiển nhiên.                    xảy ra tại thời điểm hiện     xảy ra.
+Ex: The sun rises in the       tại.                          Ex: I have just finished the
+East.                          Ex: I am having dinner with   internship report.
+                               my family at the moment.
+
+Diễn tả 1 thói quen, 1 hành Diễn tả 1 hành động sắp Diễn tả 1 sự việc xảy ra ở
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                        5
+                                            Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                            Lớp đầu ra 750+:
+                                            https://tienganhthayquy.com/yourtoeic750
+                                            Nhóm Facebook:
+                                            https://www.facebook.com/tienganhthayquy
+
+
+
+
+ động xảy ra lặp đi lặp lại ở xảy ra (tương lai gần).         một thời điểm không xác
+ hiện tại                     Ex: My family is going on       định trong quá khứ.
+ Ex: I usually go swimming vacation this summer.              Ex: She has been in
+ at the weekend.                                              London for a long time.
+
+ Diễn tả 1 lịch trình có sẵn,   Dùng theo sau câu đề          Diễn tả 1 sự việc đã xảy ra
+ thời khóa biểu, chương         nghị, mệnh lệnh.              trong quá khứ nhưng còn
+ trình.                         Ex: Look! The baby is         có thể kéo dài đến hiện tại.
+ Ex: The plane takes off at     smiling.                      Eg: My brother has worked
+ 2 p.m this afternoon.                                        for this company for 2
+                                                              years.
+
+ Dùng sau các cụm từ chỉ        Lưu ý: Không dùng thì hiện    Sau cấu trúc “This/It is the
+ thời gian: when, as soon       tại tiếp diễn với các động    first/ second.... times”
+ as và trong câu điều kiện      từ chỉ nhận thức, tri giác    dùng thì hiện tại hoàn
+ Ex: If he asks you, tell him   như: to be, see, hear,        thành
+ the truth.                     know, like, want, glance,     Ex: This is the first time I
+                                feel, think, understand,      have met him.
+                                smell, love, hate, realize,
+                                seem, remember, forget,
+                                belong to, believe ...
+                                Với các động từ này, ta
+                                thay bằng thì HIỆN TẠI
+                                ĐƠN
+
+
+
+
+ii. Các thì quá khứ
+     ❖ Dấu hiệu nhận biết
+     - Quá khứ đơn: Các từ như last year/month, yesterday, ...ago, in + năm.
+     - Quá khứ tiếp diễn: Các từ như: at this time last night, while...
+     - Quá khứ hoàn thành: Các từ: before, after, by, by the time,...
+
+   ❖ Cấu trúc
+                     Quá khứ đơn                Quá khứ tiếp diễn         Quá khứ hoàn thành
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                         6
+                                           Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                           Lớp đầu ra 750+:
+                                           https://tienganhthayquy.com/yourtoeic750
+                                           Nhóm Facebook:
+                                           https://www.facebook.com/tienganhthayquy
+
+
+
+
+Dạng        khẳng S + Ved/V2                   S + was/were + Ving        S + had +          Past
+định                                                                      participle (V3)
+
+Dạng phủ định        S + did not + Vinf        S + was/were not + S + had not + Past
+                                               Ving               participle (V3)
+
+Thể nghi vấn         Did + S + Vinf?           Was/were + S + Ving? Had + S +                Past
+                                                                    participle (V3)?
+
+
+  ❖ Cách dùng
+
+
+Quá khứ đơn                    Quá khứ tiếp diễn             Quá khứ hoàn thành
+
+Diễn tả hành động đã xảy       Diễn tả 1 hành động đang      Diễn đạt 1 hành động xảy
+ra và chấm dứt hoàn toàn       xảy ra tại 1 thời điểm xác    ra trước 1 hành động khác
+trong quá khứ.                 định trong quá khứ            trong quá khứ(hành động
+Ex. I met my friends           Ex: I was studying English    trước dùng QKHT, hành
+yesterday.                      at 8:00 p.m last night.      động sau quá khứ đơn)
+                                                             Ex: When I came home,
+                                                             my mother had prepared
+                                                             dinner for me.
+
+
+Diễn tả một chuỗi các          Diễn tả một hành động         Hành động trước 1 thời
+hành động liên tiếp xảy ra     đang xảy ra thì một hành      điểm xác định trong quá
+trong quá khứ.                 động khác xen vào: hành       khứ
+Eg: Last night, I watched      động đang xảy ra dùng         Ex: I had worked as a
+TV, made the bed and           QKTD; hành động xen vào       librarian before 2015.
+then went to sleep.            dùng QKĐ.
+                               Ex: Last night, I was doing
+                               homework       when     the
+                               electricity went out.
+
+Diễn tả sự việc không xảy      Diễn tả hành động xảy ra      Dùng trong câu điều kiện
+ra ở hiện tại (Sử dụng cho     song song cùng lúc trong      loại 3 hoặc câu ước muốn
+vế 1 trong câu điều kiện       quá khứ                       Ex: If I had studied, I would
+loại 2) Ex: If I had lots of   Ex: Yesterday, I was          have passed the exam
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                         7
+                                           Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                           Lớp đầu ra 750+:
+                                           https://tienganhthayquy.com/yourtoeic750
+                                           Nhóm Facebook:
+                                           https://www.facebook.com/tienganhthayquy
+
+
+
+
+ money, I would travel watching TV while my
+ around the world.             brother was playing a
+ Ex: If I were you, I wouldn't game.
+ trust him.
+
+
+iii. Các thì tương lai
+     ❖ Dấu hiệu nhận biết
+     - Tương lai đơn: Các từ như tomorrow, next day/week/month/year, in + thời gian,
+        probably, perhaps,...
+     - Tương lai tiếp diễn: các trạng từ chỉ thời gian trong tương lai kèm theo thời điểm
+        xác định:
+                  ● at this time/at this moment + thời gian trong tương lai: vào thời
+                     điểm này,...
+                  ● at + giờ cụ thể + thời gian trong tương lai: vào lúc
+     - Tương lai hoàn thành: trong câu xuất hiện các cấu trúc:
+                  ● By + thời gian tương lai
+                  ● By the end of + thời gian trong tương lai
+                  ● Before + thời gian tương lai
+                  ● By the time
+     ❖ Cấu trúc
+
+
+                     Tương lai đơn             Tương lai tiếp diễn      Tương         lai       hoàn
+                                                                        thành
+
+ Dạng       khẳng S+ will/shall + Vinf         S + will + be + Ving     S + will + have + Past
+ định                                                                   participle (V3)
+
+ Dạng phủ định       S + will/shall + not + S + will/shall not + be     S + will not have + Past
+                     Vinf?                  + Ving                      participle (V3)
+
+ Thể nghi vấn        Will/shall + S + V-inf?   Will/shall + S + be + Will + S + have + Past
+                                               Ving?                 participle (V3)?
+
+
+   ❖ Cách dùng
+
+
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                            8
+                                           Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                           Lớp đầu ra 750+:
+                                           https://tienganhthayquy.com/yourtoeic750
+                                           Nhóm Facebook:
+                                           https://www.facebook.com/tienganhthayquy
+
+
+
+
+ Tương lai đơn                 Tương lai tiếp diễn           Tương lai hoàn thành
+
+ Diễn tả một dự đoán Diễn đạt một hành động                  Diễn tả về một hành động
+ không có căn cứ xác định. đang xảy ra tại một thời          hoàn thành trước một thời
+ Ex: She thinks it will rain.. điểm xác định trong tương     điểm xác định trong tương
+                               lai                           lai.
+                               Ex.We will be having a        Ex: I will have finished my
+                               party tomorrow night          homework by 7 o’clock.
+
+
+ Diễn tả dự định đột xuất      Diễn ra 1 hành động đang      Diễn tả về một hành động
+ xảy ra ngay lúc nói.          xảy ra ở tương lai thì có 1   hoàn thành trước một
+ Ex: I will bring coffee to    hành động khác chen vào       hành động khác trong
+ you.                          Ex: The band will be          tương lai. (hành động xảy
+                               playing when the president    ra trước chia thì tương lai
+                               comes                         hoàn thành, hành động
+                                                             xảy ra sau chia thì hiện tại
+                                                             đơn)
+                                                             Ex: When my mother
+                                                             comes back, I will have
+                                                             done my homework.
+
+
+ Diễn tả lời ngỏ ý, hứa hẹn,
+ đề nghị, đe dọa.
+ Ex: I promise I will go
+ there.
+
+
+iv. Bài tập:
+
+1. My boss ----- to Australia next week to open a new business.
+A. travels
+B. is traveling
+C.has traveled
+D. has been traveling
+
+2. We had just got out of the car when he-----to set fire.
+A. was beginning
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                        9
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+B. has begun
+C. had begun
+D.began
+
+3. By the time, Mr Kim ----- in Incheon for sale meeting, she had already completed
+preliminary negotiations by telephone.
+A. arrives
+B. arrived
+C. has arrived
+D. will arrive
+
+4. Please mark the appropriate box to indicate if the person named above ------- any
+of the
+certificates listed below.
+A holding
+B held
+C holds
+D hold
+
+5. When you ------ your loan application, please remember to sign and date the last
+page.
+A completed
+B had completed
+C.are completing
+D.were completing
+
+KEY:
+
+    1. B             2. D              3. B              4. C              5. C
+
+
+
+
+    b. Động từ khuyết thiếu
+i) Can - Could:
+Can và could đều mang nghĩa là có thể, và chúng được sử dụng để chỉ khả năng của
+đối tượng được đề cập đến.
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      10
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+     ❖ Can
+- Can chỉ được dùng với 2 thì: hiện tại đơn và quá khứ đơn.
+- Trong văn nói, Can có thể thay cho May để diễn tả một sự cho phép.
+Ex: Can I take the photograph of this picture?
+- Can cũng có thể được sử dụng để diễn tả một điều có thể xảy đến.
+Ex: Can it rain?
+- Thể phủ định Cannot được dùng để thể hiện sự cấm đoán.
+Ex: You cannot smoke here.
+- Cannot cũng có thể được dùng để diễn tả một điều khó có thể xảy ra.
+Ex: It cannot rain. The weather forecast said today is a sunny day.
+     ❖ Could
+- Could là thì quá khứ của Can.
+Ex: When she was young, she believed she could live on the cloud.
+- Trong cách nói thân mật, việc sử dụng Could được xem là lịch sự hơn việc sử dụng
+Can.
+Ex: Could you please wait here for a moment?
+- Could được dùng để diễn tả một sự ngờ vực hay một lời phản kháng nhẹ nhàng.
+Ex: She could be rich, but I don’t think she will.
+ii. May - Might
+- Might là dạng quá khứ của May.
+- May/Might được sử dụng để diễn tả sự xin phép, cho phép.
+Ex: May I go out?
+- Chúng được sử dụng để diễn tả một khả năng có thể hoặc không thể xảy ra.
+Ex: He may know how to solve this problem.
+- Trong câu cảm thán, chúng được dùng như một lời cầu chúc.
+Ex: May all your dreams come true!
+- Chúng được sử dụng theo sau các động từ “hope” và “trust”
+Ex: She hopes she may have the chance to pass the TOEIC test.
+- Chúng dùng thay cho một mệnh đề trạng ngữ chỉ sự nhượng bộ.
+Ex: It may be hard, but we really enjoy this experience.
+- Chúng thường được sử dụng trong mệnh đề trạng ngữ chỉ mục đích.
+Ex: He is studying very hard so that he may pass the exam.
+- Might có thể được sử dụng để diễn tả một lời trách mắng
+Ex: You might listen to what I am saying.
+iii. Must
+- Diễn tả một mệnh lệnh hay một sự bắt buộc.
+Ex: You must do the homework.
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      11
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+- Dùng trong câu suy luận logic.
+Ex: He has not eaten anything until now. He must be very hungry.
+- Must not diễn tả một lệnh cấm.
+Ex: You must not break the rule.
+iv. Shall - Should
+    ❖ Shall
+- Dùng để khuyên ai nên làm gì
+Ex: You shall listen to your mother.
+- Được dùng trong thì tương lai ở ngôi thứ nhất.
+Ex: She shall be a popular singer.
+- Được sử dụng với mục đích diễn tả một lời hứa, một sự quả quyết, hay một mối đe
+dọa.
+Ex: You shall pay for all you did.
+    ❖ Should
+- Dùng thay cho must khi không muốn ép buộc ai làm gì.
+Ex: You should be friends with the people you meet, but not all people.
+v. Will - Would
+    ❖ Will
+- Dùng ở thì tương lai, diễn tả một kế hoạch, sự mong muốn, một lời hứa hay một sự
+quả quyết.
+Ex: I will go back to my hometown this weekend.
+- Dùng trong câu đề nghị.
+Ex: Will you close the door?
+    ❖ Would
+- Dùng để diễn tả thì tương lai trong quá khứ.
+Ex: My roommate said she would do the houseworks, but she didn’t.
+- Diễn tả một thói quen trong quá khứ.
+Ex: When I was young, everyday my mother would teach me how to cook.
+vi. Ought to - Dare - Need
+    ❖ Ought to
+- Trong một vài trường hợp Ought to có thể dùng để thay thế Should.
+Ex: You ought to listen to your mother.
+- Dùng để diễn tả một sự việc rất có thể xảy ra.
+Ex: If you study hard, you ought to pass the exam.
+- Có thể dùng trong tương lai với các từ xác định thời gian tương lai.
+Ex: You ought to finish this report tomorrow.
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      12
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+- Cấu trúc: Ought to not have + past participle dùng để diễn tả một sự không tán đồng
+về một hành động đã xảy ra trong quá khứ.
+Ex: She ought to not have said such painful words.
+    ❖ Dare
+- Có nghĩa là dám làm một điều gì đó.
+- Dare vừa có thể là một động từ khuyết thiếu vừa có thể là một động từ thường.
+Ex: Dare you say the truth? (động từ khuyết thiếu)
+Ex: I don’t dare to say the truth. (động từ thường)
+- Thành ngữ “I dare say” mang nghĩa là “có thể, có lẽ”.
+Ex: I dare say it will rain.
+    ❖ Need
+- Trong vai trò là một động từ khuyết thiếu, Need chỉ được sử dụng ở thì hiện tại và
+có đầy đủ các chức năng của 1 động từ khuyết thiếu.
+Ex: I needn’t go to school tomorrow
+**Lưu ý: Động từ khuyết thiếu Need không được sử dụng ở thể khẳng định. Nó chỉ
+được dùng ở thể phủ định và nghi vấn. Nếu được dùng ở thể khẳng định thì nó phải
+đi chung với một từ ngữ phủ định.
+Ex: I hardly need say how much I enjoy hanging out with my friends.
+vii. Used to
+- Used to vừa có thể là một động từ thường vừa có thể là một động từ khuyết thiếu
+trong việc hình thành thể phủ định và thể nghi vấn.
+Ex: My sister didn’t use to enjoy her job as much as she does now.
+- Được sử dụng để chỉ một hành động liên tục, kéo dài, lặp đi lặp lại trong quá khứ mà
+nay không còn nữa.
+Ex: My sister used to think that she can fly to the moon.
+- Cấu trúc “used to + infinitive” dùng để diễn tả một hành động liên tục trong quá khứ.
+Ex: My father used to smoke. (Now he don’t)
+- Cấu trúc “(be) used to + Ving” được dùng để diễn tả việc quen với một việc gì.
+Ex: I am used to staying up late.
+- Cấu trúc “(get) used to + Ving” được dùng để diễn tả việc làm quen với một việc gì.
+Ex: My grandparents got used to using computers.
+viii. Bài tập
+    1. You ----- teach your children how to behave properly.
+    A. ought to
+    B. may
+    C. might
+    D. used to
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      13
+                                             Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                             Lớp đầu ra 750+:
+                                             https://tienganhthayquy.com/yourtoeic750
+                                             Nhóm Facebook:
+                                             https://www.facebook.com/tienganhthayquy
+
+
+
+
+2. You ----- to finish the report today.
+    A. must
+    B. dare
+    C. ought
+    D. will
+
+3. ----- you hit me?
+    A. Ought
+    B. Must
+    C. Shall
+    D. Dare
+
+4. You ----- take the key if you are the owner of the house.
+    A. would
+    B. may
+    C. dare
+    D. none of the above
+
+5. I am ----- to staying up late.
+    A. ought
+    B. will
+    C. used
+    D. none of the above
+
+       KEY:
+
+    1. A               2. C                3. D           4. B             5. C
+
+
+
+c. Từ loại:
+Từ loại là phạm trù ngữ pháp có chung đặc điểm ngữ pháp và ý nghĩa khái quát, như
+danh từ, động từ, tính từ, trạng từ v.v
+i. Danh từ:
+    ❖ Định nghĩa:
+Là những từ chỉ sự vật, sự việc, con người, nơi chốn, địa điểm.
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      14
+                                           Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                           Lớp đầu ra 750+:
+                                           https://tienganhthayquy.com/yourtoeic750
+                                           Nhóm Facebook:
+                                           https://www.facebook.com/tienganhthayquy
+
+
+
+
+Ex: The weather is beautiful today
+     ❖ Cách nhận biết:
+     - Danh từ thường:
+     ● Đứng sau mạo từ a, an, the
+Ex: A nurse, a dog, an accident
+     ● Đứng sau tính từ
+Ex Beautiful hair, Cold weather, small hands
+     ● Đứng sau từ sở hữu
+Ex: My book, Her mother, John’s car
+     ● Sau các từ hạn định:
+     - Từ hạn định: this, that, these, those, each, every, both, no, some, any, few, a
+        few, little, a little, etc.
+Ex: this pen, every day, little money
+     ● Đứng sau giới từ: in, on, at, of, between, among, with, up, about, for, from, etc.
+Ex: In the city, on the table, among us, about time
+ii. Tính từ:
+     ❖ Định nghĩa
+là những từ dùng để miêu tả tính chất của con người, sự vật, sự việc, etc.
+Vd: a long black hair, a tall guy, expensive items
+     ❖ Thứ tự của tính từ: OSACOMP
+O: Opinion: ý kiến
+S: Size, shape: kích cỡ, hình dạng
+A: Age: tuổi
+C: color: màu sắc
+O: Origin: xuất xứ
+M: Material: chất liệu
+P: Purpose: mục đích
+     ❖ Cách nhận biết
+     - Tính từ thường:
+     ● Đứng trước danh từ:
+Ex: Today is a beautiful day
+     - Đứng sau Be:
+Dạng thức của động từ “be”: am, is, are, was, were, been
+Ex: She is beautiful, Her English is very good
+     - Đứng sau linking verb:
+Ex: The noodles become soft
+     - Đứng sau đại từ bất định
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      15
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+Ex: Is there anything unpleasant?
+   ❖ Các đại từ bất định thường gặp:
+
+
+                         Người            Vật               Nơi chốn
+
+                         someone
+ some- (-nào đó)                          something         somewhere
+                         somebody
+
+                         anyone
+ any- (bất kỳ-)                           anything          anywhere
+                         anybody
+
+                         no one
+ no- (không có-)                          nothing           nowhere
+                         nobody
+
+                         everyone
+ every- (mỗi-)                            everything        everywhere
+                         everybody
+
+
+     ❖ Các cấu trúc khác:
+     - Make + Object + ADJ: khiến ai/cái gì như thế nào
+Ex: The games make me happy
+     - Find + Object + ADJ: cảm thấy như thế nào
+Ex: We find the phone very easy to use.
+     ● Đứng sau The: The + Adj
+The + Adj: dùng để chỉ các nhóm người có tính chất của tính từ đó
+Ex: The poor: người nghèo, The rich: người giàu, The orphan: trẻ mồ côi
+iii. Động từ:
+     ❖ Định nghĩa
+Là những từ chỉ hành động (fly, run, try, etc.) hoặc chỉ trạng thái (seem, appear, etc.)
+Động từ cùng với chủ ngữ là 2 thành phần bắt buộc phải có trong một câu đơn (còn
+gọi là mệnh đề).
+     ❖ Quy tắc của động từ:
+Trong một câu đơn hoặc một mệnh đề, gắn với một chủ ngữ thì phải có và chỉ có thể
+có một động từ chia thì, còn những động từ còn lại phải được chia ở dạng.
+
+
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      16
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+          ● Động từ chia ở thì (tense) sẽ đứng sau chủ ngữ và từ đó mà ta biết được
+              thời gian xảy ra hành động đó. Động từ chia ở thì phải chia phù hợp với
+              chủ ngữ.
+          ● Động từ chia ở dạng (form) sẽ được chia dựa theo một công thức nào đó.
+Trong một câu đơn hoặc một mệnh đề, gắn với một chủ ngữ thì phải có và chỉ có
+thể có một động từ chia thì.
+iv. Trạng từ
+    ❖ Chức năng
+          ● Đứng trước và bổ nghĩa cho động từ
+          ● Đứng trước và bổ nghĩa cho tính từ
+          ● Đứng trước và bổ nghĩa cho trạng từ khác
+**Ngoài ra, trạng từ còn có các chức năng:
+          ● Bổ nghĩa cho cả câu
+          ● Bổ nghĩa cho các từ loại khác: cụm danh từ, cụm giới từ, đại từ, và từ hạn
+              định
+v. Giới từ:
+    ❖ Chức năng
+    - Giới từ là những từ dùng để diễn tả mối quan hệ của cụm từ đứng phía sau nó
+       với các thành phần khác trong câu.
+    ❖ Vị trí: giới từ theo sau
+          ● Noun:
+Ex: the book is on the table.
+          ● V-ing:
+Ex: He helped me with doing all the housework
+vi. Liên từ:
+ ❖ Chức năng
+Liên từ (từ nối) là từ dùng để nối các từ, các nhóm từ, các cụm từ hay các câu lại với
+nhau.
+    ❖ Phân loại: Liên từ có 3 loại: liên từ kết hợp, liên từ tương quan và liên từ phụ
+       thuộc
+Chúng ta sẽ xem cách dùng các liên từ này trong đoạn hội thoại bên dưới nhé:
+
+
+ Liên từ kết hợp                                            What do you want to do
+                                                            this weekend?
+
+
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      17
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+                              And                    Hm.. we can go to the park
+                              (dùng để thêm hoặc bổ and play badminton.
+                              sung vào một thứ khác)
+
+
+
+                              But                      That’s great! But I’m afraid
+                               (dùng để diễn tả sự đối it will rain.
+                              lập)
+
+
+                              Or                      Or we can go to the
+                              (dùng để trình bày thêm cinema, what do you
+                              một lựa chọn khác)      think?
+
+
+                              So                            Yeah, I’d love that! I will try
+                              (dùng để nói về kết quả       to have dinner earlier, so I
+                              của một hành động nào         can come to pick you up at
+                              đó)                           7 o’clock.
+
+
+Liên từ tương quan                                          Hey, do you watch
+                                                            “American Idol”?
+
+
+                                                            Yes, I do. I love the show.
+                                                            Who do you think is the
+                                                            winner of this year?
+
+                              either … or …               Either Ella or Ron will win,
+                              (hoặc cái này hoặc cái kia) their voices are so strong.
+
+
+
+                              neither … nor …           I don’t think so, although
+                              (không cái này cũng không both Ella and Ron have
+                              cái kia)                  good voices, neither her
+
+
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                         18
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+                              both … and …                  nor him will be the winner
+                              (cả cái này lẫn cái kia)      because they don’t make
+                                                            the right choice with their
+                                                            songs.
+
+                              not only … but also …   However, they not only
+                              (không những cái này mà sing well but they also
+                              còn cái kia)            have a lot of fans. I’m sure
+                                                      they will win
+
+Liên từ phụ thuộc                                            I  have just read an
+                                                              amazing book named
+                                                              “The door to the future.”
+                                                             - Oh, tell me about it
+
+
+                              after / before / when /        There is a very rich man,
+                              while / until                   he met an ugly and poor
+                              (dùng để diễn tả quan hệ        girl one day.After that
+                              về thời gian)                   they talked to each
+                                                              other a lot.Although
+                                                              everybody doesn’t like
+                              although / even though /
+                                                              her because of her
+                              despite / in spite of
+                                                              appearance, he fell in
+                              (dùng để diễn tả quyết tâm
+                                                              love with her beautiful
+                              của em khi làm việc gì đó,
+                                                              soul. People say she
+                              hoặc để diễn tả hai hành
+                                                              was only with him
+                              động trái ngược nhau. Chú
+                                                              because she wanted
+                              ý: although / even though
+                                                              his money. That’s why
+                              + S + V + O, nhưng despite
+                                                              whenever he met other
+                              / in spite of + Noun.)
+                                                              people, he always told
+                                                              them how amazing she
+                              because     /   since   /       was in case they said
+                              because of                      any bad things that
+                              (dùng để nói về nguyên          could hurt her.
+                              nhân của một hành động
+                              nào đó. Chú ý: because /
+                              since + S + V + O, nhưng
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      19
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+                              because of + Noun.)
+
+
+
+                              so that / in order that
+                              (dùng để diễn tả mục đích
+                              của một hành động nào
+                              đó)
+
+
+                              in case
+                              (dùng để diễn tả giả định
+                              về một hành động nào đó)
+
+
+
+vii. Đại từ
+    ❖ Chức năng
+Đại từ dùng để xưng hô, để chỉ vào sự vật hay sự việc, thay thế cho danh từ, động từ
+và tính từ trong câu, để tránh khỏi lặp những từ ngữ ấy, tránh để câu bị lủng củng khi
+lặp từ nhiều lần.
+    ❖ Phân loại
+    - Đại từ nhân xưng
+
+
+
+
+                          Vai trò là chủ
+                          ngữ            Vai trò là tân ngữ Nghĩa
+
+
+ Số ít      Ngôi thứ 1    I                    Me                    Tôi
+
+
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      20
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+            Ngôi thứ 2     You                 You                   Bạn
+
+
+
+
+            Ngôi thứ 3     He/ She/ It         Him/ Her/ It          Anh ấy/cô ấy/
+                                                                     nó
+
+
+
+
+Số          Ngôi thứ 1     We                  Us                    Chúng tôi
+nhiều
+
+
+
+
+            Ngôi thứ 2     You                 You                   Bạn/các bạn
+
+
+
+
+            Ngôi thứ 3     They                Them                  Họ
+
+
+
+
+    -   Đại từ phản thân
+
+
+
+Đại từ nhân xưng      Đại từ phản thân tương ứng Nghĩa
+
+
+I                     Myself                            Chính tôi
+
+
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      21
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+You                        Yourself                     Chính bạn/ các bạn
+
+
+
+We                         Ourselves                    Chính chúng tôi
+
+
+
+They                       Themselves                   Chính họ
+
+
+
+He                         Himself                      Chính anh ấy
+
+
+
+She                        Herself                      Chính cô ấy
+
+
+
+It                         Itself                       Chính nó
+
+
+
+                           Oneself                      Chính ai đó
+
+
+
+
+     -   Đại từ chỉ định
+
+
+
+Đại từ chỉ định Đại diện cho danh từ          Khoảng cách/ thời gian
+
+
+This                 Số ít/ không đếm được    Gần
+
+
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      22
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+That               Số ít/ không đếm được      Xa
+
+
+
+These              Số nhiều                   Gần
+
+
+
+Those              Số nhiều                   Xa
+
+
+
+
+    -   Đại từ sở hữu
+
+
+Đại từ nhân        Đại từ sở hữu tương
+xưng               ứng                 Nghĩa
+
+
+I                  Mine                       Của tôi
+
+
+
+You                Yours                      Của bạn
+
+
+
+He                 His                        Của anh ấy
+
+
+
+Her                Hers                       Của cô ấy
+
+
+
+Our                Ours                       Của chúng tôi
+
+
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      23
+                                             Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                             Lớp đầu ra 750+:
+                                             https://tienganhthayquy.com/yourtoeic750
+                                             Nhóm Facebook:
+                                             https://www.facebook.com/tienganhthayquy
+
+
+
+
+They               Theirs                       Của họ
+
+
+
+
+  -    Đại từ quan hệ
+
+
+
+                   Chủ ngữ           Tân ngữ           Đại từ sở hữu
+
+
+Người              Who               Who/ whom         Whose
+
+
+
+Vật                Which             Which             Whose
+
+
+
+Người      hoặc That                 That
+vật
+
+
+
+  -    Đại từ bất định
+
+
+
+        Số ít                   Số nhiều                  Cả hai
+
+
+Another                  Both                    All
+
+
+
+Each                     Few                     Any
+
+
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      24
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+ Either               Many                     More
+
+
+
+ Much                 Others                   Most
+
+
+
+ Neither              Several                  None
+
+
+
+ One                                           Some
+
+
+
+ Other
+
+
+
+ Anybody/ anyone/
+ anything
+
+
+ Everybody/
+ everyone/
+ everything
+
+
+ Nobody/ no one/
+ nothing
+
+
+
+ Somebody/
+ someone/
+ something
+
+
+
+viii. Từ cảm thán
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      25
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+   ❖ Chức năng
+Câu cảm thán là câu dùng để bày tỏ một cảm xúc nào đó của người nói như khen chê,
+buồn vui, giận dữ, vân vân..
+   ❖ Công thức.
+Câu cảm thán thường được dùng với cấu trúc What và How:
+
+
+ Công
+            Ví dụ
+ thức
+
+
+            What + (a/an) + tính từ + danh từ + (chủ
+            ngữ + động từ)!
+            Lưu ý:                                     What a beautiful day!
+ Với                ● Nếu danh từ là số ít thì dùng    What nice weather!
+ What                   a/an                           What      a       big
+                    ● Nếu danh từ là số nhiều          apartment you have!
+                        hoặc không đếm được thì
+                        không dùng a/an
+
+
+
+
+                                                 How beautiful it is!
+ Với        How + tính từ / trạng từ + chủ ngữ + How interesting the
+ How        động từ!                             book is!
+                                                 How fast he drives!
+
+
+
+
+ix. Bài tập
+Câu 1: We like their -----.
+A. friends
+B. friendly
+C. friendliness
+D. A and C are correct.
+
+Câu 2: The ----- between Vietnam and China is good.
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      26
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+A. friends
+B. friendly
+C. friendliness
+D. friendship
+
+Câu 3: They seem to be ------ We dislike them.
+A. friends
+B. friendly
+C. friendliness
+D. friendship
+
+Câu 4: We saw ------ girls there.
+A. beauty
+B. beautiful
+C. beautifully
+D. beautify
+
+Câu 5: The language of ------- is Bahasa Malaysia.
+A. instruction
+B. instruct
+C. instructive
+D. instructing
+
+KEY:
+
+
+    1. C              2. D             3. B              4. B              5. A
+
+
+
+d. Mệnh đề quan hệ
+i. Định nghĩa
+Mệnh đề quan hệ là mệnh đề dùng để bổ nghĩa cho danh từ đứng trước thông qua
+việc nối với mệnh đề chính bằng các đại từ quan hệ (Relative Pronouns) và trạng từ
+quan hệ (Relative Adverbs).
+- Relative Pronouns: who, whom, those, that, which.
+- Relative Adverbs: where, why, when
+
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      27
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+Đại từ quan hệ              Cách dùng & Ví dụ
+(relative pronouns)
+
+
+Who                         - Dùng để thay cho danh từ là người.
+                            - Công thức: …. N (person) + Who + V + O
+                            Ex: I met Linda, who is a famous influencer on
+                            social media, at the movie theatre.
+
+
+Whom                        - Dùng để thay cho túc từ là người.
+                            - Công thức: …..N (person) + Whom + S + V
+                            Ex: Nathan, from whom I receive the present, is an
+                            exchange student.
+
+
+Whose = of which            - Dùng để thay cho tính từ sở hữu (his, her, their,
+                            its, our).
+                            - Công thức: …..N (person, thing) + Whose + N +
+                            V ….
+                            Ex: I saw Sophie whose mother used to be the
+                            headmaster of the school.
+
+Which                       - Dùng để thay cho danh từ là đồ vật hoặc sự việc
+                            hoặc cả câu trước đó. Có thể làm chủ ngữ hoặc
+                            tân ngữ.
+                            - Công thức: ….N (thing) + Which + V + O
+                                          ….N (thing) + Which + S + V
+                            Ex: I live in a house which is located on a busy
+                            street.
+
+
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      28
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+ That                       - Dùng để thay cho danh từ là người, đồ vật, sự
+                            việc. Có thể làm chủ ngữ hoặc tân ngữ.
+                            - Các trường hợp sử dụng “that”:
+                            * Khi đi sau các dạng so sánh nhất
+                            * Khi đi sau “the first”, “the last”, “only”
+                            * Khi thay thế cho cả người và vật
+                            * Khi đi sau các đại từ phủ định, bất định hoặc đại
+                            từ chỉ số lượng như:someone, no one, nobody,
+                            somebody, anyone, anybody, nothing, something,
+                            anything, all, little, some, any, none.
+                            - Các trường hợp không được sử dụng “that”:
+                            * Trong mệnh đề quan hệ không xác định
+                            * Đằng sau giới từ
+                            Ex: We came to a decision that was absolutely
+                            unrealistic.
+
+
+
+**Lưu ý: “Who”, “Whom”, “Which” có thể được lược bỏ khi nắm vai trò là tân ngữ trong
+mệnh đề quan hệ xác định.
+ Trạng từ quan hệ           Cách dùng & Ví dụ
+ (relative adverbs)
+
+
+ When = In/On/At which      Dùng để thay cho danh từ chỉ thời gian.
+                            Ex: I met him with Sandy yesterday when they just
+                            arrived at the school.
+
+
+ Where = At/In/On/From Dùng để thay cho danh từ chỉ nơi chốn.
+ which                 Ex: This is my hometown where I was born and
+                       raised.
+
+ Why = For which            Thay thế cho danh từ chỉ nguyên nhân.
+                            Ex: I don't understand the reason why he acted like
+                            a child that day.
+
+
+ii. Phân loại Relative Clause
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      29
+                                             Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                             Lớp đầu ra 750+:
+                                             https://tienganhthayquy.com/yourtoeic750
+                                             Nhóm Facebook:
+                                             https://www.facebook.com/tienganhthayquy
+
+
+
+
+Mệnh đề quan hệ xác định (Defining relative clauses): bắt buộc phải có trong câu vì
+đây là bộ phận quan trọng, góp phần tạo nên nghĩa của câu. Thiếu thành phần này thì
+câu sẽ không rõ ràng.
+Ex: The car which my mom bought yesterday is from Vinfast.
+     The car is from Vinfast. (what car?)
+Mệnh đề quan hệ không xác định (Non-defining relative clauses): loại mệnh đề này
+dùng để làm rõ hơn về danh từ đứng trước. Nếu lược bỏ nó thì câu cũng vẫn không
+tối nghĩa.
+Ex: My mom bought me a car that was produced by Vinfast.
+**Lưu ý:
+- Không được dùng "that" trong mệnh đề quan hệ không xác định.
+- Phải có dấu phẩy giữa mệnh đề quan hệ không xác định và mệnh đề chính.
+iii. Bài tập:
+1. Mary failed the final test, ----- disappointed her parents.
+     A. Who
+     B. That
+     C. Which
+     D. Whose
+
+2. I found the lost key on the desk ------ there is a lot of other stuff.
+    A. In which
+    B. Which
+    C. Where
+    D. A & C are both correct
+
+3. The interviewer ------ asked me several questions was very talkative and friendly.
+   A. Whom
+   B. Who
+   C. Whose
+   D. Which
+
+ 4. Dalat, ------ attracts a lot of tourists every year, is famous for its wide variety of
+flowers.
+    A. Which
+    B. In which
+    C. On which
+    D. At which
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                       30
+                                            Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                            Lớp đầu ra 750+:
+                                            https://tienganhthayquy.com/yourtoeic750
+                                            Nhóm Facebook:
+                                            https://www.facebook.com/tienganhthayquy
+
+
+
+
+5. The man ------ car was parked in front of the restaurant, was fined by the police.
+ A. Which
+ B. Who
+ C. That
+ D. Whose
+
+KEY:
+
+     1. C               2. D             3. B              4. A             5. D
+
+
+
+e. Câu điều kiện (If)
+i. Câu điều kiện
+
+
+ Loại       Công thức + Ví dụ                               Cách sử dụng
+
+ 0          If S + V(s/es), S + V(s/es)                    Dùng để diễn tả 1 điều
+            Ex: If your body temperature is higher than 38 hiển nhiên, chắc chắn
+            Celsius Degree, you’re getting sick.
+
+
+ 1          If + S + V (e/es), S + will/ may/ can (won’t/ Dùng để diễn tả 1 sự việc
+            can/t…) + V bare                              có thể xảy ra ở hiện tại và
+            Ex: If you are late for school, you might be tương lai
+            punished.
+
+
+ 2          If + S + V2/ed, S + would/ should/ could Dùng để diễn tả 1 việc
+            (couldn’t/ wouldn’t….) + V bare                    không diễn tả ở hiện tại
+            Ex: If I were a billionaire, I would travel around
+            the world every month.
+
+
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                          31
+                                           Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                           Lớp đầu ra 750+:
+                                           https://tienganhthayquy.com/yourtoeic750
+                                           Nhóm Facebook:
+                                           https://www.facebook.com/tienganhthayquy
+
+
+
+
+ 3         If + S + had + V3, S + would/ should/ could + Dùng để diễn tả 1 sự việc
+           have V3                                       không diễn ra trong quá
+           Ex: If you had asked me, I would have helped khứ.
+           you deal with it.
+
+ 4         If + S + Had + V3, S + Would/ Could/ Should…    Hành động diễn ra trong
+           + V bare                                        quá khứ nhưng hậu quả/
+           If + S + V2/ed , S + Would/ Could/ Should….     ảnh hưởng kéo dài đến
+           + Have + V3                                     hiện tại, và ngược lại.
+           Ex: If Mary hadn’t spent so much time on Tik
+           Tok yesterday, she would get the homework
+           done on time.
+           If I were you, I wouldn’t have missed that
+           opportunity.
+
+
+ii. Bài tập
+1. If I had a chance to meet Miley Cyrus, I ------ ask her to take a picture with me.
+      A. Will
+      B. Have
+      C. Would
+      D. Would have
+
+2. If I had had more time, I ------ more about Math.
+      A. Would learn
+      B. Have learned
+      C. Should have learned
+      D. Would have learned
+
+3. If human beings used less plastic products, there ------ so much trash and pollution.
+      A. Would be
+      B. Wouldn’t be
+      C. Hadn’t been
+      D. None is correct
+
+4. If you heat ice, it-------into water.
+      A. Turn
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                        32
+                                            Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                            Lớp đầu ra 750+:
+                                            https://tienganhthayquy.com/yourtoeic750
+                                            Nhóm Facebook:
+                                            https://www.facebook.com/tienganhthayquy
+
+
+
+
+    B. Will turn
+    C. Turns
+    D. Would turn
+
+5. If the animals could speak, they ------- people for destroying their living habitat.
+      A. Blame
+      B. Will blame
+      C. Would have blame
+      D. Would blame
+
+    KEY:
+
+
+    1. C               2. D              3. B              4. C               5. D
+
+
+
+f. Câu bị động
+i. Định nghĩa
+Câu bị động là câu mà chủ ngữ là người hay vật chịu tác động của hành động, được
+sử dụng để nhấn mạnh đến đối tượng chịu tác động của hành động đó.
+ii. Cấu trúc
+
+
+ Thì                    Cấu trúc câu bị động               Ví dụ
+
+ Hiện tại đơn           S + am/is/are + V3 + (by +O)        My sister often washes dishes.
+                                                            → Dishes are often washed by
+                                                            my sister.
+
+ Hiện tại tiếp diễn     S + am/is/are + being + V3 My mother is making a cake.
+                        +(by +O)                   → A cake is being made by my
+                                                  mother.
+
+ Hiện      tại   hoàn S + have/has + been + V3 + (by He has washed his car for
+ thành                +O)                           hours.
+                                                     → His car has been washed by
+                                                    him for hours.
+
+ Quá khứ đơn            S + was/were + V3 +(by +O)          My mother bought that washing
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                          33
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+                                                        machine in 2015.
+                                                         → That washing machine was
+                                                        bought by my mother in 2015.
+
+ Quá khứ tiếp diễn     S + was/were + being + V3 Yesterday morning she was
+                       +(by +O)                 cutting the grass.
+                                                 → The grass was being cut by
+                                                her yesterday morning.
+
+
+ Quá khứ         hoàn S + had + been + V3 +(by +O)        She had cooked lunch before
+ thành                                                  leaving.
+                                                          → Lunch had been cooked by
+                                                        her before she left.
+
+
+ Tương lai đơn         S + will + be + V3 + (by +O)       He will feed the dogs.
+                                                          → The dogs will be fed.
+
+ Tương lai tiếp diễn S + will + be + being + V3 + (by I will be washing dishes this time
+                     +O)                             tomorrow.
+                                                       → Dishes will be being washed
+                                                     by me this time tomorrow.
+
+ Tương     lai   hoàn S + will + have + been + V3+ They will have completed the
+ thành                (by +O)                     assignment by the end of June
+                                                   → The assignment will have
+                                                  been completed by the end of
+                                                  June.
+
+ Modal verbs           S + modal verb + be + V3 + by Mary should buy oranges in the
+                       O)                            supermarket.
+                                                     → Oranges should be bought in
+                                                     the supermarket by Mary.
+
+
+iii. Bài tập
+1. "Are we about to have dinner?".
+"Yes, it _____ in the dining room".
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      34
+                                            Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                            Lớp đầu ra 750+:
+                                            https://tienganhthayquy.com/yourtoeic750
+                                            Nhóm Facebook:
+                                            https://www.facebook.com/tienganhthayquy
+
+
+
+
+A. is serving
+B. serves
+C. is being served
+D. served
+
+2. "Where are Jack and Jan?"
+"They_____ the boxes you asked for into the house".
+A. have been bringing
+B. bringing
+C. have been brought
+D. to bring
+
+3. "Those eggs of different colors are very artistic".
+"Yes, they_____ in Russia".
+A. were painted
+B. were paint
+C. were painting
+D. painted
+
+4. "The maintenance people didn't remove the chairs from the ballroom".
+"Don't worry. They _____ them before the dance begins".
+a. will have been moved
+b. will have moved
+c. were moved
+d. moved
+
+5. "Where did you get these old dresses?".
+"We_____ them in the old trunk".
+a. were found
+b. finding
+c. found
+d. have been found
+KEY:
+
+    1. C               2. A              3. A            4. B              5. C
+
+
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      35
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+2. Phần nghe:
+** Lưu ý: trong chặng này các bạn tập trung ôn luyện Part 1 và Part 2 nhé.
+    a. Part 1
+Part 1 của bài thi TOEIC là một phần nghe mô tả hình ảnh. Nhiệm vụ của các bạn
+chính là chọn ra đáp án mô tả chính xác bức tranh đề bài.
+Part 1 sẽ diễn ra như sau
+    - Đầu tiên, bạn xem một bức hình.
+    - Sau đó, bạn nghe đoạn băng nói về 4 lựa chọn A, B, C, D.
+    - Cuối cùng, bạn chọn ra đáp án phù hợp nhất với bức hình.
+Part 1 có 2 dạng tranh cơ bản: hình ảnh có con người và hình ảnh không có con
+người.
+       i. Hình ảnh có con người:
+    - Dạng này chiếm khoảng 70 - 80% câu hỏi trong Part 1 của đề thi TOEIC. Khi
+       gặp dạng bài này bạn cần trả lời các câu hỏi sau:
+    ❖ Người trong hình đang thực hiện hành động gì?
+Có hai dạng cấu trúc mà bạn sẽ nghe trong dạng bài này:
+    ● S + is/are + V-ing
+Ex: The man is closing the door.
+    ● There is/are + S + V-ing
+Ex: There is a woman walking across the street.
+Để chọn được đáp án đúng, bạn cần xem chủ ngữ và động từ có khớp với bức hình
+không.
+    ❖ Người trong hình đang ở vị trí nào so với người/vật xung quanh?
+Một vài cấu trúc xuất hiện trong dạng này chính là:
+    ● S + is/are + giới từ + vật/người
+Ex: The man is in the corner of the room.
+    ● There + is/are + S + giới từ + vật/người
+Ex: There is a man walking on the street.
+    ● S + is/are + V-ing + giới từ + vật/người
+Ex: The child is sitting on the floor.
+    ● There is/are + S + V-ing + giới từ + vật/người
+Ex: There are four women running on the field.
+Để làm tốt phần này thì bạn cần phải tập trung vào vị trí và hành động (nếu có) của
+người trong hình. Hãy cẩn thận với hành động của người trong hình, bởi vì nếu người
+đúng, vị trí đúng nhưng hành động sai thì đáp án đó cũng sai.
+       ii. Hình chỉ có vật mà không có người
+
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      36
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+   -    Dạng này chiếm khoảng 20 - 30% câu hỏi trong Part 1. Để làm tốt dạng này
+        bạn cần trả lời các câu hỏi sau:
+   ❖ Có những vật gì đáng chú ý trong hình?
+   ❖ Những vật trong hình đang ở trong trạng thái gì?
+Một vài cấu trúc trong hai dạng này chính là:
+   ● S + is/are + Adj
+Ex: All the lights are on.
+   ● S + look(s)/appear(s) + Adj
+Ex: The floor looks dirty.
+   ● S + have/has + been + V3
+Ex: The clothes have been hung up.
+Để làm tốt phần này thì thì bạn cần để ý kĩ chủ ngữ và tính từ xem chúng có mô tả
+đúng bức hình không.
+   ❖ Những vật trong hình có vị trí như thế nào với nhau?
+Một vài cấu trúc trong phần này chính là:
+   ● S + is/are + giới từ + vật/người
+Ex: The ball is under the table.
+   ● There + is/are + S + giới từ + vật/người
+Ex: there are 3 women in the room.
+
+    b. Part 2
+TOEIC listening Part 2 là một bài nghe trả lời câu hỏi. Nhiệm vụ của bạn là phải chọn
+ra câu trả lời phù hợp với câu hỏi mà bạn nghe được. Trong phần này câu hỏi và câu
+trả lời không xuất hiện trên đề bài, các bạn phải nghe và chọn đáp án.
+Part 2 sẽ diễn ra như sau:
+    - Đầu tiên, bạn nghe một câu hỏi hoặc một câu nói.
+    - Bạn nghe tiếp 3 trả lời hoặc 3 câu hồi đáp cho câu hỏi/câu nói trên.
+    - Chọn câu hồi đáp phù hợp cho câu hỏi.
+    - Dùng 5s nghỉ giữa 2 câu để chuẩn bị cho câu hỏi tiếp theo.
+Các bạn cần phải nhớ kỹ câu hỏi và 3 lựa chọn để làm tốt Part 2 này. Hãy dứt khoát
+bỏ qua những câu bạn không nghe được, tiết kiệm thời gian cho những câu hỏi sau.
+Trong bài thi TOEIC part 2 thường xuất hiện các dạng câu hỏi sau:
+i. Wh- question: đây là dạng câu hỏi có các từ để hỏi như Who, Where, When, How,
+Why.
+    ❖ Who
+Các dạng câu trả lời thường gặp cho câu hỏi này:
+    ● Tên người
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      37
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+Ex: Who is going to meet the client at the restaurant? - Gracia said she will.
+   ● Vị trí, chức vụ
+Ex: Hello, who are you? - Hi, I’m the new secretary.
+   ● Tên công ty, phòng ban
+Ex: Who was chosen as the new partner? - Redbrick Bakery.
+   ● Đại từ nhân xưng
+Ex: Who should I contact to order office supplies? - I will order them for you.
+   ● Dạng “I don’t know”: Các câu trả lời không xác định được đối tượng.
+Ex: Who will be in charge of the project? - It hasn’t been decided yet.
+Lời khuyên:
+   ● Loại trừ các câu trả lời có Yes/No.
+   ● Câu trả lời đúng thường là tên riêng (tên công ty, tên người, tên nghề nghiệp,...)
+   ● Thì của câu trả lời phải khớp với câu hỏi.
+   ● Học từ vựng.
+   ● Các câu trả lời thuộc dạng “I don’t know” thường đúng.
+   ● Phải nghe hết câu trả lời rồi mới chọn đáp án.
+   ❖ When
+Các dạng câu trả lời thường gặp:
+   ● Mệnh đề chỉ thời gian/thời điểm
+Ex: When should I turn on the air conditioner? - When it reaches 25 degrees.
+   ● Giới từ + thời gian/thời điểm
+Ex: When will the client come to visit our company? - Next Monday.
+Lời khuyên:
+   ● Khi đề bài hỏi về mốc thời gian thì câu trả lời thường xuất hiện giới từ hoặc
+      mệnh đề chỉ thời gian, địa điểm.
+   ● Thời gian của câu trả lời (quá khứ, hiện tại, tương lai) phải khớp với thì của câu
+      hỏi.
+   ● Nắm rõ cấu trúc của giới từ + thời gian/thời điểm.
+   ❖ Where
+Các dạng câu trả lời thường gặp:
+   ● Giới từ + địa điểm
+Ex: Where can I find Ms. Flower? - In the manager office.
+   ● Chỉ đường/địa điểm
+Ex: Where is the entrance to the supermarket? - Go straight ahead.
+   ● Bắt đầu bằng tên người/vị trí/chức vụ
+Ex: Where can I find the customer’s contact information? - Ms. Granger should know.
+Lời khuyên:
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      38
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+     ● Vì đây là câu hỏi chỉ nơi chốn nên câu trả lời thường có giới từ chỉ nơi chốn.
+     ● Nắm rõ cấu trúc giới từ + nơi chốn.
+     ● Tập trung nghe kĩ cả câu hỏi và câu trả lời.
+     ❖ Why
+Các dạng câu trả lời thường gặp
+     ● Bắt đầu với Because/ Because of/ Since/ As + lý do.
+Ex: Why were you so late this morning? - Because of the traffic jam.
+     ● Không bắt đầu bằng Because/Because of/Since/As
+Ex: Why doesn’t the post office open today? - It’s Sunday.
+     ● Bắt đầu với To-V
+Ex: Why did you go to Australia? - To experience new things.
+Lời khuyên:
+     ● Câu trả lời thường bắt đầu bằng Because/ Because of/ Due to/ Owing to/ As/
+       Since/ Thank to.
+     ● Với một số câu không có Because nhưng nghĩa ổn thì vẫn được chọn.
+     ❖ How
+Các dạng thường gặp
+     ● How many/ How much
+Ex: How much will it cost if I upgrade my computer? - About 100 dollars
+     ● How + be + N
+Ex: How is the new staff? - I think he’s good.
+     ● How can
+Ex: How can I find the material for the report? - Ask the manager.
+     ● How often
+Ex: How often do we upgrade our technology devices? - Once a year.
+Lời khuyên:
+     ● Chú ý ôn luyện các từ để hỏi thường đi với How
+     ● Phân biệt “how long” (khoảng thời gian) với “when” (mốc thời gian)
+ii. Yes/No question (câu hỏi yes/no)
+Các dạng câu trả lời thường gặp
+     ● Bắt đầu với Yes/No
+Ex: Have you met the new staff? - No, I’ve been busy all day.
+     ● Không bắt đầu với Yes/No
+Ex: Have you read the announcement yet? - I’ll read it tomorrow.
+Lời khuyên:
+Câu trả lời thường xuất hiện các từ sau:
+     ● Sure/ Of course
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      39
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+     ● Why not?
+     ● Yes/ No
+iii. Choice question (câu hỏi lựa chọn)
+Các dạng câu trả lời thường gặp
+     ● Chọn 1 trong 2 lựa chọn
+Ex: Would you like coffee or tea? - Tea, please.
+     ● Đưa ra một lựa chọn khác
+Ex: Will you choose America or England to study abroad? - I will go to Australia.
+Lời khuyên:
+     ● Một số câu trả lời cho dạng câu hỏi này:
+     + Whichever/ Either
+     + Neither
+     + Prefer
+iv. Statement (câu tường thuật)
+Câu hồi đáp cho dạng câu này thường là nêu ra ý kiến của mình.
+Ex: I love working with Jenny. - Me too, she’s very good at teamwork.
+Lời khuyên:
+     ● Chọn câu hồi đáp hợp lý cho câu tường thuật đề bài đưa ra.
+     ● Đưa ra câu nhận định (đưa ra ý kiến đồng tình hoặc phản đối)
+     ● Khi câu trả lời lặp lại câu hỏi thì nhiều khả năng đó là một câu bẫy.
+v. Tag question (câu hỏi đuôi)
+Các dạng câu trả lời thường gặp:
+     ● Trả lời có yes/ no
+Ex: You are in charge of this project, aren’t you? - No, I am not.
+     ● Trả lời gián tiếp không có yes/no
+Ex: You wrote this report, didn’t you? - Ginny wrote it.
+Lời khuyên:
+Một số từ hay gặp trong câu trả lời:
+     ● Sure/ Of course
+     ● Why not?
+     ● Yes/No
+vi. Suggestion question (câu gợi ý)
+Các dạng câu trả lời thường gặp:
+     ● Trả lời có yes/no
+Ex: Would you like to have dinner with me? - Yes, I’d love to.
+     ● Trả lời không có yes/no
+Ex: Would you like to walk to the park? - That sounds like a good idea.
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      40
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+Lời khuyên:
+Những câu hỏi gợi ý thường bắt đầu bằng:
+   ● Why don’t you/we + V
+   ● How about + V-ing
+   ● Let’s + V
+
+3. Phần đọc: Trong chặng này các bạn tập trung ôn luyện Part 5 và Part 6 nhé.
+     a. Part 5
+Trong phần này các bạn sẽ hoàn thành câu hỏi đề bài bằng cách chọn một đáp án
+chính xác từ 4 lựa chọn A, B, C, D. Part 5 bao gồm 11 - 13 câu hỏi về từ vựng, 12 -
+13 câu hỏi về từ loại, 14 - 16 câu hỏi xoay quanh các chủ đề khác nhau. Phần này đòi
+hỏi các bạn phải nắm vững ngữ pháp cơ bản nếu muốn đạt điểm cao.
+**Các dạng bài trong Part 5:
+i. Meaning (nghĩa của từ)
+Các đáp án trong dạng này thường sẽ giống nhau về một mặt nào đó, có thể là giống
+nhau về tiền tố, hậu tố, hay các từ viết gần giống nhau.
+Cách duy nhất để ôn luyện dạng này chính là chăm chỉ ôn luyện từ vựng, vì cách an
+toàn nhất và nhanh nhất để làm dạng bài này chính là dịch câu hỏi và dịch các phương
+án trả lời.
+ii. Preposition (giới từ)
+Trong dạng bài này các bạn sẽ phải chọn giới từ phù hợp với từ trước hoặc sau chỗ
+trống. Cách duy nhất để ôn luyện tốt dạng này chính là học thuộc các cụm hay đi
+chung với nhau.
+iii Word form (từ loại)
+Dạng này khá dễ kiếm điểm, câu hỏi trong dạng này chủ yếu thuộc các cấu trúc ngữ
+pháp sau:
+     - prep + N/V-ing
+     - a/the + (adv + adj + N) = a/the + N phrase
+     - to be + adv + V-ed/V-ing
+     - adv + V hoặc V + adv
+     - Các động từ khởi phát:
+Các bạn cần nhớ 2 cấu trúc chủ động và bị động
+     ● Câu chủ động: S + make/have/let + sb + do sth
+Ex: My mother made me apologize for what I had done
+     ● Câu bị động: S + Causative Verb + O + Past PArticiple
+Ex: I have my hair cut.
+     - Câu điều kiện
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      41
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+iv. Connecting verbs and Adverb clause (từ nối và mệnh đề trạng ngữ)
+    ● Từ nối: for, and, nor, but, or, yet, so. Đối với dạng bài này chúng ta cần đọc
+       hiểu cả hai vế câu và chọn ra từ nối phù hợp.
+    ● Liên từ tương quan: both...and, either... or, neither… nor, not only... but also,
+       would rather...than, no sooner...than, whether...or, hardly....when. Dạng này
+       không hề khó. Những gì bạn cần làm chính là bạn phải xem qua câu và chỗ
+       trống cần điền, sau đó chọn ra đáp án phù hợp cần điền.
+    ● Mệnh đề trạng ngữ chỉ thời gian: before, after, since, until, once/as soon
+       as/when, while. Với dạng bài này chúng ta cần phải đọc hiểu 2 vế thì mới chọn
+       được đáp án phù hợp với đề bài.
+v. Relative Pronoun (đại từ quan hệ)
+Đây là dạng bài tập yêu cầu điền một đại từ quan hệ (who, whom, which, what hay
+whose). Để làm tốt dạng bài này chúng ta cần xác định được từ loại cần điền vào chỗ
+trống là gì?
+vi. Pronoun/Reflexive/Possessive adjectives (đại từ/đại từ phản thân/tính từ sở
+hữu)
+Khi làm dạng bài này chúng ta cần lưu ý chỗ trống cần điền là chủ ngữ hay tân ngữ?
+Nếu chúng ta cần điền một tân ngữ thì tân ngữ này có liên quan đến chủ ngữ ở đề bài
+không? Dạng này tuy không khó nhưng đòi hỏi các bạn phải cẩn thận để tránh bị mất
+điểm oan.
+    b. Phần 6
+Trong phần này các bạn sẽ chọn một trong các đáp án A, B, C, D để điền vào một
+đoạn văn không hoàn chỉnh. Về cơ bản, các câu hỏi trong phần này cũng tương tự
+như các câu hỏi trong Part 5.
+Để làm tốt phần thi này thì cũng giống như phần 5, các bạn phải tập trung ôn luyện
+ngữ pháp cơ bản. Nhưng khác với phần 5, ở phần 6 đôi khi các bạn phải dựa vào ngữ
+cảnh và nội dung của toàn đoạn để chọn đáp án đúng.
+i. Các loại hình đoạn văn trong Part 6
+    ❖ Notice (thông báo): cung cấp thông tin về sự kiện sắp diễn ra trong một form
+       ngắn.
+    ❖ Letter (thư từ): dàng này xuất hiện khá nhiều, thường được dùng cho mục đích
+       giao tiếp trong công việc hoặc giao tiếp với bạn bè.
+    ❖ Instruction (hướng dẫn): cung cấp thông tin sử dụng sản phẩm hoặc dịch vụ
+       nào đó.
+    ❖ Article (bài báo): ghi lại thông tin liên quan đến một lĩnh vực cụ thể nào đó.
+    ❖ Ad (quảng cáo): một đoạn quảng cáo ngắn về một sản phẩm hay một dịch vụ
+       nào đó.
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      42
+                                           Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                           Lớp đầu ra 750+:
+                                           https://tienganhthayquy.com/yourtoeic750
+                                           Nhóm Facebook:
+                                           https://www.facebook.com/tienganhthayquy
+
+
+
+
+    ❖ Email: các đoạn email dùng để giao tiếp giữa các đồng nghiệp hoặc đối tác với
+      nhau.
+    ❖ Memorandum (các thông báo nội bộ): dạng thông báo thường được sử dụng
+      với mục đích cung cấp thông tin cho các vấn đề xảy ra trong văn phòng cho
+      nhân viên trong cùng một công ty, tổ chức.
+
+ 4. Từ vựng
+c. Cách học từ vựng hiệu quả
+ i. Tạo ra môi trường cho riêng bạn
+ Cũng giống như em bé học tiếng mẹ đẻ, các bạn hãy bắt đầu với việc học từ vựng
+ bằng đọc từ vựng trước. Bất cứ đâu bạn đi, bất cứ vật gì bạn thấy; các bạn chỉ vào rồi
+ đọc to từ đó lên ví dụ
+  Cái bàn → table
+  Cái ghế → chair
+  Bản quảng cáo → billboard
+ đối với những vật không biết bạn ghi lại từ tiếng việt của nó rồi về nhà bạn tìm nghĩa
+ trên mạng sau. bạn làm như thế gần 3 tháng là có kha khá từ vựng về những vật thấy
+ được
+ ii. Xem phim và coi youtube
+ Khi xem phim bạn bắt chước các nhân vật trong đó nói thế nào thì bạn nói theo y
+ chang. Từ đó bạn học được cách nói tiếng Anh cho tự nhiên như người bản xứ.
+ Ban đầu thì bạn mở sub tiếng Việt rồi dần dần đổi thành sub tiếng Anh. bây giờ thì
+ bạn không cần sub nữa. đối với những từ bạn không biết thì bạn note lại rồi dùng
+ oxford learner dictionary (trên mạng), cambridge dictionary, và google translate
+ paragraph.
+ Youtube thì vô vàn, một số kênh bạn nên xem: English with Lucy, Mmmenglish,
+ English speeches.
+ Các bạn cứ tìm những nội dung bạn thích là được, trên Youtube có rất nhiều, hãy tìm
+ những nội dung phù hợp với bạn nhé.
+d. Từ điển phù hợp với chặng này
+      ❖ Oxford Picture Dictionary
+ Tải sách TẠI ĐÂY
+      ❖ Cambridge English vocabulary list (Preliminary)
+ Tải sách TẠI ĐÂY
+
+
+
+
+ Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                       43
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+5. Tài liệu ôn luyện
+    ❖ Economy Volume 1
+Link PDF LC của Economy TOEIC Volume 1.
+Link PDF RC của Economy TOEIC Volume 1.
+    ❖ Economy Volume 2
+Link PDF LC của Economy TOEIC Volume 2.
+Link audio của Economy TOEIC Volume 2.
+Link PDF RC của Economy TOEIC Volume 2.
+    ❖ Economy Volume 3
+Link PDF + audio LC của Economy TOEIC Volume 3.
+Link PDF RC của Economy TOEIC Volume 3.
+    ❖ Economy Volume 4
+Link PDF + audio LC của Economy TOEIC Volume 4.
+Link PDF RC của Economy TOEIC Volume 4.
+    ❖ Economy Volume 5
+Link PDF + audio LC của Economy TOEIC Volume 5.
+Link PDF RC của Economy TOEIC Volume 5.
+
+
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      44
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+● Chặng 2: 300 - 500
+ 6. Ngữ pháp
+ a. Rút gọn mệnh đề quan hệ.
+i. Mệnh đề có chứa động từ V-ing
+     ❖ Nếu động từ trong mệnh đề quan hệ ở thể chủ động, ta dùng cụm hiện tại phân
+        từ (present participle phrase) thay cho mệnh đề đó.
+     ❖ Cách làm: Bỏ đại từ quan hệ và trợ động từ, đưa động từ chính về nguyên mẫu
+        và thêm đuôi – ing.
+Ex: The girl who is cooking in the kitchen is my cousin.
+→ The girl cooking in the kitchen is my cousin.
+ii. Mệnh đề chứa quá khứ phân từ
+     ❖ Nếu động từ trong mệnh đề quan hệ ở thể bị động, ta dùng cụm quá khứ phân
+        từ (past participle phrase) thay cho mệnh đề đó.
+     ❖ Cách làm: Bỏ đại từ quan hệ và trợ động từ, chuyển động từ chính sang V3/Ved
+Ex: The handkerchief which is made by Amanda is beautiful.
+ → The handkerchief made by Amanda is beautiful.
+iii. Mệnh đề quan hệ chứa động từ nguyên thể
+     ❖ Dùng khi danh từ đứng trước có các chữ sau đây bổ nghĩa: the only, the first,
+        the second,… the last, so sánh nhất, mục đích.
+     ❖ Cách làm: Bỏ đại từ quan hệ và trợ động từ, sau đó chuyển động từ chính thành
+        “to V”
+Ex: Ginnifer is the only woman who can do it well.
+→ Ginnifer is the only woman to do it well.
+iv. Mệnh đề quan hệ chứa “tobe” và tính từ
+     ❖ Ta bỏ đại từ quan hệ và ”to be” , sau đó giữ nguyên tính từ phía sau.
+Ex: The guy, who is very kind and sympathetic is her father.
+→ The guy, kind and sympathetic is her father.
+     ❖ Ngoài ra, còn có thể loại bỏ đại từ quan hệ và to be trước một ngữ giới từ (một
+        giới từ mở đầu kết hợp với các danh từ theo sau).
+Ex: The lipstick that is on the table is very expensive.
+→ The lipstick on the table is very expensive.
+v. Bài tập
+1. Attendance is mandatory for the staff meeting ------ for next Tuesday in the council
+hall
+     A. has been scheduled
+     B. scheduled
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      45
+                                            Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                            Lớp đầu ra 750+:
+                                            https://tienganhthayquy.com/yourtoeic750
+                                            Nhóm Facebook:
+                                            https://www.facebook.com/tienganhthayquy
+
+
+
+
+   C. will schedule
+   D. schedule
+
+2. The Perfect Pet Parlor is a chain of stores ------ a large selection of pet food and pet
+accessories at a reasonable price with excellent sales support.
+    A. sell
+    B. sells
+    C. sold
+    D. selling
+
+3. Ace Supplies, a Paris-based firm ------- in office supplies, announced its plan to
+relocate its
+    A. specializing
+    B. specializes
+    C. specialize
+    D. is specializing
+
+4. I am writing in response to your letter, ------- about any chance of you being covered
+     A. inquiry
+     B. inquire
+     C. inquiring
+     D. inquired
+
+5. The amount of destruction -------- by an earthquake depends on where it happens,
+what time it happens, and how strong it is.
+    A. was caused
+    B. is causing
+    C. is caused
+    D. caused
+
+KEY:
+
+
+    1. B              2. D               3. A              4. C              5. D
+
+
+
+b. Đảo ngữ câu điều kiện
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                        46
+                                             Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                             Lớp đầu ra 750+:
+                                             https://tienganhthayquy.com/yourtoeic750
+                                             Nhóm Facebook:
+                                             https://www.facebook.com/tienganhthayquy
+
+
+
+
+**Lưu ý:
+- Câu điều kiện loại 1,2,3 thường hay xuất hiện ở dạng đảo ngữ.
+- Ở dạng đảo ngữ, “If” sẽ bị lược bỏ.
+i. Công thức đảo ngữ câu điều kiện
+
+
+  Loại            Công thức chuẩn → Đảo ngữ                                Ví dụ
+
+ 1        If + S + V (e/es), S + will/ may/ can (won’t/ If she apologizes to me, I’ll
+          can’t…) + V bare                              forgive her.
+          → Should + S + V bare, S + Will + V bare      Should she apologizes to
+                                                        me, I’ll forgive her.
+
+
+
+
+ 2        If + S + V2/ed, S + would/ should/ could               If I were a billionaire, I
+          (couldn’t/ wouldn’t….) + V bare                        would donate 30 percent
+          → Were + S + to + V bare, S + Would + V                of my fortune.
+          bare                                                   Were I a billionaire, I
+                                                                 would donate 30 percent
+                                                                 of my fortune.
+
+
+
+ 3        If + S + had + V3/ed, S + would/ should/ could If the drivers had paid
+          + have V3/ed                                   more attention to driving
+          → Had + S + V3/ed, S + Would have + V3/ed their cars, the accidents
+                                                         wouldn’t have occurred.
+                                                         Had the drivers paid more
+                                                         attention to driving their
+                                                         cars,    the    accidents
+                                                         wouldn’t have occurred.
+
+
+
+
+ii. Bài tập
+1. Timy would find the milk if he ------- in the refrigerator.
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                              47
+                                                 Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                                 Lớp đầu ra 750+:
+                                                 https://tienganhthayquy.com/yourtoeic750
+                                                 Nhóm Facebook:
+                                                 https://www.facebook.com/tienganhthayquy
+
+
+
+
+      A. Will look
+      B. Looks
+      C. Looked
+      D. Have looked
+
+2. I ------ the police for help if I were you.
+       A. Calls
+       B. Would call
+       C. Called
+       D. Would have call
+
+3. If there hadn’t been so many wars, our country ------- a lot of developments.
+       A. Experiences
+       B. Might experience
+       C. Might have experienced
+       D. Would experience
+
+4. If the trees don't get enough sunshine and water, they -------.
+       A. Can’t survive
+       B. Wouldn’t survive
+       C. Have survive
+       D. None is correct
+
+5. If you want to save the file, you -------- “CTRL + s”.
+       A. Must press
+       B. Might press
+       C. Should press
+       D. A & C are correct
+
+      KEY:
+
+
+     1. C               2. B                3. C              4. A             5. A
+
+
+
+
+2. Phần nghe
+Trong chặng này các bạn tập trung ôn luyện Part 3 và Part 4 nha
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                         48
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+Với những bạn nhắm đến TOEIC 700 thì các bạn nên làm đúng ít nhất 65 - 70% bài
+nghe (⅔ bài nghe). Các bạn hãy tập trung vào câu hỏi tổng quát (câu hỏi đầu bài
+nghe), và câu hỏi “most likely do next” (câu hỏi cuối bài nghe).
+a. Part 3
+Cấu trúc part 3 được cập nhật mới từ 1/6/2019 chắc chắn sẽ gây khó khăn gấp bội
+cho các thí sinh vì:
+● Số câu hỏi tăng từ 30 lên 39 câu (13 đoạn hội thoại ngắn x 3 câu hỏi/đoạn)
+● Có thể xuất hiện giọng người thứ 3 trong bài nghe
+● Phải nhìn biểu đồ hoặc bảng biểu để trả lời
+● Có những câu hỏi buộc thí sinh phải hiểu và đoán ý của người nó.
+Các chủ đề thường xuất hiện trong phần 3
+     - Các chủ đề trong văn phòng: deadlines, documents, equipment, raises,
+        promotion, training, contracts, sales, expenses,etc.
+     - Các chủ đề đặt, hủy phòng ở nhà hàng (restaurants), khách sạn (hotels)
+     - Các chủ đề liên quan đến du lịch (travel)
+     - Hoạt động làm trong lúc rảnh rỗi (pastime activities)
+Các dạng câu hỏi
+i. Câu hỏi chung chung
+        Ví dụ:
+        ⇨ What is the conversation about?
+        ⇨ What is the topic of the conversation?
+        ⇨ What/Who are the speakers talking about?
+ii. Câu hỏi chi tiết
+Dạng bài này đòi hỏi các bạn cần nghe nội dung sâu hơn, chi tiết hơn thì mới trả lời
+được. Thông thường những câu này sẽ hỏi về nguyên nhân hay một vấn đề nào đó,
+hoặc là các con số…
+        Ví dụ:
+        ⇨ What is the purpose of the man/woman's call?
+        ⇨ What problem does the man have?
+        ⇨ How many sisters does Robin have?
+iii. Câu hỏi suy luận
+Ở dạng này, phải căn cứ vào thông tin ở bài hội thoại để suy luận ra các thông tin
+khác. Đây là một dạng bài khá khó, đòi hỏi kỹ năng nghe của thí sinh khá nhiều,
+thường mục tiêu nhắm vào các thang điểm cao.
+        Ví dụ:
+        ⇨ What is the relationship between 2 speakers?
+        ⇨ What will ( someone ) probably do next?
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      49
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+        ⇨ Where is the conversation likely taking place?
+iv. Câu hỏi kết hợp với bản đồ, bảng biểu
+Đây là dạng bài mới trong Part 3 này. Dạng này thường bắt đầu với câu “Look at the
+graphic”(Nhìn vào hình ảnh). Các bạn vừa phải nghe và nhìn hình để có thể chọn câu
+trả lời phù hợp.
+        Ví dụ:
+        ⇨ Look at the graphic. Where is the parking plot?
+        ⇨ Look at the graphic. Which room is Jonathan working?
+        ⇨ Look at the graphic. How much will the woman be repaid?
+b. Part 4
+Part 4 của đề thi TOEIC là một phần nghe về những mẫu nói chuyện ngắn của một
+người
+Part 4 sẽ diễn ra như sau
+     1. Bạn nghe một đoạn nói chuyện độc thoại
+     2. Tiếp theo bạn nghe 3 câu hỏi liên quan đến bài nói chuyện đó
+     3. Cuối cùng, bạn lựa chọn một đáp án chính xác trong 4 đáp án A, B, C, D để trả
+        lời câu hỏi đề bài.
+Các chủ đề thường gặp trong bài thi TOEIC part 4
+             ● Mẫu tin tức (news), thông báo (announcement)
+             ● Tin nhắn ghi âm (Recorded message)
+             ● Các chủ đề liên quan đến du lịch (travel)
+             ● Các buổi diễn thuyết (talks)
+             ● Chương trình phát thanh truyền hình (Broadcasts)
+Các dạng câu hỏi
+Mỗi đoạn ứng với 3 câu hỏi theo trình tự: Câu hỏi thông tin khái quát, câu hỏi thông
+tin chi tiết và câu hỏi suy luận
+i. Câu hỏi thông tin khái quát (Câu hỏi thông tin chung)
+- What is the purpose of this speech?
+- What is this speech about?
+- Who is most likely the speaker?
+- Who is the speech aimed at?
+- Who is listening to this announcement?
+- Where is the announcement being heard?/ Where would you hear this type of talk?
+ii. Câu hỏi về thông tin chi tiết
+- When will the boss leave for his vacation?
+- What will happen after brunch?
+- What is the quickest way to get connected to a representative?
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      50
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+ iii. Câu hỏi suy luận
+- What does the speaker suggest?
+- What should the listeners probably do next?
+
+3. Phần đọc
+Trong phần này các bạn tập trung ôn luyện phần 7 nha.
+Đây là phần thi được đánh giá khó nhất trong cả bài thi TOEIC. Trong phần này các
+bạn sẽ dựa theo thông tin của văn bản đề bài để chọn đáp án trả lời cho câu hỏi đề
+bài.
+Cấu trúc của bài thi TOEIC part 7
+Bài thi TOEIC part 7 gồm 2 phần
+    - Single Passage: đoạn đơn, đề thi có thể có từ 10 đoạn văn đơn.
+    - Double Passage: đoạn kép, đề thi có 2 bài có 2 đoạn văn.
+    - Triple Passage: 3 đoạn văn, part 7 có 3 bài có 3 đoạn văn.
+Trong chặng này các bạn tập trung ôn luyện Single Passage nha.
+Các loại hình đoạn văn thường xuất hiện
+    ❖ Loại 1: quảng cáo
+Các mẫu quảng cáo sản phẩm, dịch vụ hoặc giới thiệu một thông tin nào đó đến người
+dùng. Bạn cần chú ý đến các chi tiết sau:
+    - Có bao nhiêu sản phẩm?
+    - Đoạn này đang quảng cáo sản phẩm/dịch vụ gì?
+    - Ai có thể sử dụng chúng?
+    ❖ Loại 2: Fax dành cho doanh nghiệp
+Nội dung các đoạn fax là thông tin được trao đổi giữa các nhân viên với nhau về nội
+dung công việc. Bạn cần chú ý đến các chi tiết sau:
+    - Thời gian fax được gửi?
+    - Mục đích của đoạn fax là gì?
+    - Mô hình của đoạn fax là gì?
+    ❖ Loại 3: Forms, biểu đồ và đồ thị
+Bạn cần chú ý đến các chi tiết sau:
+    - Phần trăm của…?
+    - Mục đích của biểu đồ là gì?
+    - Thông tin này được dùng như thế nào?
+    ❖ Loại 4: Các bài báo và báo cáo
+Các nội dung trong loại này có liên quan đến số liệu, bảng biểu và một vài thông tin
+báo cáo. Bạn cần chú ý đến các chi tiết sau:
+    - Ngày quan trọng trong bài báo cáo
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      51
+                                           Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                           Lớp đầu ra 750+:
+                                           https://tienganhthayquy.com/yourtoeic750
+                                           Nhóm Facebook:
+                                           https://www.facebook.com/tienganhthayquy
+
+
+
+
+    - Ý tưởng chính của bài viết
+    - Bài báo cáo này dành cho ai?
+    ❖ Loại 5: Thông báo và đoạn văn
+ Các nội dung của dạng bài này khá đa dạng, tuy nhiên bạn cần chú ý đến một số điểm
+ chung sau:
+    - Ai là…?
+    - Thông báo về điều gì?
+    - Ý kiến của nhà văn là gì?
+
+  4. Từ vựng
+ a. Cách học từ vựng hiệu quả
+i. Học từ vựng qua báo chí
+  Ở bước này các bạn đã quen với tiếng Anh, biết mặt chữ và hiểu được nội dung của
+  những gì bạn nghe và đọc thì bạn tăng độ khó bằng cách đọc báo, tạp chí của nước
+  ngoài. Các bạn có thể dùng phương thức tiết kiệm là lên các trang web như BBC,
+  CNN; đọc những bài báo ở trên đó và cố gắng hiểu được nội dung của bài báo. Vì bài
+  thi TOEIC thường xoay quanh những diễn biến trên báo và tạp chí nên điều này sẽ
+  giúp các bạn quen với phong cách và văn phong của bài thi. Lần này các bạn không
+  tìm từ nữa mà tìm cụm từ mà các bạn không biết rồi tìm nghĩa của cụm từ đó. Và nếu
+  không hiểu cũng không sao, các bạn cứ kiên trì nhá.
+  Sau khi tìm ra được từ đó rồi, hãy tìm thêm gia đình từ của nó, ví dụ:
+      - Different (adj)
+      - Differentiate (v)
+      - Differ from (v)
+      - Difference (n)
+      - Differently (adv)
+  Nếu các bạn cảm thấy học một mình chán và không hiệu quả, thì có thể tìm 1 hoặc 2
+  người để học cùng, các bạn học theo các bước trên hoặc đơn giản hơn là trò chuyện
+  với nhau với hơn 90% là bằng tiếng Anh. Cách này gọi là trao đổi kiến thức, qua đó
+  các bạn có thể chỉ cho nhau các từ vựng và ngữ pháp mà đối phương chưa biết và
+  củng cố các điểm đã biết giúp cho tiếng Anh của cả hai ngày càng hoàn thiện hơn,
+  hoàn hảo hơn.
+ii. Học từ vựng qua giải đề
+  Đây là cách học hiệu quả nhất và một mũi tên trúng 2, 3 con nhạn. Vừa học được từ
+  vựng theo chủ đề - vừa học collocation - vừa làm quen với các từ theo ngữ cảnh. bạn
+  thấy học theo cách giải đề không chỉ giúp giúp bạn làm quen với đề mà còn giúp bạn
+  học dễ vô hơn và càng khó quên hơn khi biết được chỗ nào bạn đúng - sai.
+
+
+ Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                       52
+                                           Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                           Lớp đầu ra 750+:
+                                           https://tienganhthayquy.com/yourtoeic750
+                                           Nhóm Facebook:
+                                           https://www.facebook.com/tienganhthayquy
+
+
+
+
+ Khi giải đề các bạn hãy gạch dưới, highlight hay khoanh tròn các từ vựng chính trong
+ bài, hoặc những từ vựng bạn không biết. Rồi note nhỏ nghĩa của nó ngay trên đầu để
+ khi nhìn lại bạn sẽ biết từ đó nghĩa là gì. Đồng thời, hãy tìm ra điểm ngữ pháp quanh
+ từ vựng đó, bằng cách này, bạn sẽ hiểu được từ vựng theo ngữ cảnh mà không bị gò
+ bó rập khuôn khi chỉ biết một nghĩa của từ.
+b. Một số từ điển phù hợp cho chặng này
+❖ Cambridge English vocabulary list (A2)
+ Tải sách TẠI ĐÂY
+❖ Sách 600 từ vựng cần thiết cho kì thi TOEIC
+ Tải sách TẠI ĐÂY
+
+5. Giáo trình phù hợp với chặng này
+ETS 2020:
+phần nghe link
+phần đọc link
+đáp án     link
+transcript link
+mp3 nghe link
+
+
+
+
+ Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                       53
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+●   Chặng 3: 500 - 700
+     4. Ngữ pháp
+     a. Cấu trúc so sánh
+i. Cấu trúc so sánh bằng
+Cấu trúc câu so sánh bằng được dùng để so sánh 2 chủ thể (người, vật, sự việc hoặc
+nhóm đối tượng) về một khía cạnh nào đó.
+     ❖ Cấu trúc so sánh bằng với tính từ hoặc trạng từ
+S + V + (not) as + ADJ/ ADV + as + N/Pronoun
+E.g. She is as beautiful as her sister
+(Cô ấy xinh đẹp như chị của cô ấy.)
+E.g. Marry is not as charming as he thought.
+(Marry không quyến rũ như anh ấy nghĩ.)
+     ❖ Cấu trúc so sánh bằng với danh từ
+S + V + the same + NOUN + as + N/Pronoun
+E.g. Japanese is the same difficulty as Chinese.
+(Tiếng Nhật với tiếng Trung Quốc có độ khó tương đương nhau.)
+ii. Cấu trúc so sánh hơn
+Cấu trúc câu so sánh hơn là cấu trúc so sánh giữa hai chủ thể ( 2 người, 2 vật hay 2
+việc nào đó).
+     ❖ Cấu trúc so sánh hơn với tính từ và trạng từ ngắn
+S + V + Adj/Adv + “-er” + than + N/Pronoun
+E.g. He studied harder than the other students.
+(Anh ấy học chăm chỉ hơn những học sinh khác.)
+        ➢ Khi tính từ ngắn tận cùng bằng 1 PHỤ ÂM + 1 NGUYÊN ÂM + 1 PHỤ ÂM,
+          ta viết PHỤ ÂM CUỐI thêm 1 lần rồi mới thêm ER.
+          BIG ➝ BIGGER
+     ❖ Cấu trúc so sánh hơn với tính từ và trạng từ dài
+S + V + more + Adj/Adv + than + N/Pronoun
+E.g. Lara is more beautiful than her older sister.
+(Lara xinh hơn chị của cô ấy.)
+iii. Cấu trúc so sánh nhất
+Cấu trúc câu so sánh nhất được dùng khi cần so sánh một chủ thể với toàn bộ nhóm,
+tập thể mà chủ thể có trong đó.
+     ❖ Cấu trúc câu so sánh nhất với tính từ và trạng từ ngắn
+S + V + the + Adj/Adv + -est + Noun/ Pronoun
+E.g. Tom is the tallest in his family.
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      54
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+(Tom là người cao nhất trong gia đình anh ấy.)
+Lưu ý:
+     ➢ Khi tính từ ngắn tận cùng bằng y, thì y ➝ i + est
+          HAPPY ➝ THE HAPPIEST
+       ➢ Khi tính từ ngắn tận cùng bằng 1 PHỤ ÂM + 1 NGUYÊN ÂM + 1 PHỤ ÂM,
+         ta viết PHỤ ÂM CUỐI thêm 1 lần rồi mới thêm EST
+         BIG ➝ THE BIGGEST
+    ❖ Cấu trúc câu so sánh nhất với tính từ và trạng từ dài
+S + V + the + most + Adj/Adv + Noun/ Pronoun
+E.g. He is the most handsome boy I’ve ever met.
+(Cậu ấy là chàng trai đẹp trai nhất mà tôi từng gặp.)
+iv. Tính từ và trạng từ bất quy tắc
+Trong Tiếng anh có một số tính từ và trạng từ có dạng so sánh hơn và so sánh nhất
+khác biệt so với cấu trúc thông thường. Vì vậy các bạn cần phải lưu ý những trường
+hợp đặc biệt này.
+
+
+                       So sánh hơn                       So sánh nhất
+
+ Good/ Well            better                            the best
+
+ Bad/ Badly            worse                             the worst
+
+ Many                  more                              the most
+
+ Much                  more                              the most
+
+ Little                less                              the least
+
+ Far                   farther/ further                  farthest/ furthest
+
+
+v. Bài tập
+
+1. Of the four dresses, which is ______ expensive?
+A. the best
+B. the most
+C. the more
+D. the greater
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      55
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+2. “ Why did you buy these oranges? ” “They were ______ I could find. ”
+A. cheapest
+B. cheapest ones
+C. the cheapest ones
+D. the most cheapest
+
+3. You must explain your problems ______.
+A. as clear as you can
+B. as clearly as you can
+C. as clear than you are
+D. as clearly as you are
+
+4. It’s too noisy here. Can we go somewhere ______ ?
+A. noisier
+B. more quiet
+C. more noisy
+D. quieter
+
+5. My brother was feeling tired last night, so he went to bed ______ usual.
+A. more early than
+B. as early as
+C. more earlier as
+D. earlier than
+
+KEY:
+
+
+ 1                2                 3                 4                 5
+
+ B                C                 B                 D                 D
+
+
+
+
+    b. Tương lai hoàn thành tiếp diễn
+i. Khái niệm
+
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      56
+                                           Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                           Lớp đầu ra 750+:
+                                           https://tienganhthayquy.com/yourtoeic750
+                                           Nhóm Facebook:
+                                           https://www.facebook.com/tienganhthayquy
+
+
+
+
+ Thì tương lai hoàn thành tiếp diễn (Future Perfect Continuous) diễn tả một hành động
+ đã đang xảy ra cho tới 1 thời điểm trong tương lai
+ ii. Cấu trúc
+
+
+Loại câu     Câu Khẳng định            Câu Phủ định                Câu Nghi vấn
+
+             S + will have been + V- S + will not/ won’t have Will + S + have been + V-
+             ing                     been + V-ing             ing?
+                                                              Trả lời:
+Công thức
+                                                                       ● Yes, S + will
+                                                                       ● No, S + won’t
+
+
+             My family will have We won’t have been                Will they have been
+             been living in this studying at 7 a.m                 talking for half an hour
+Ví dụ        house for 15 years by tomorrow.                       by the time his wife
+             next month.                                           comes back?
+
+
+
+ iii. Cách dùng
+      ● Diễn tả một hành động xảy ra và kéo dài liên tục đến một thời điểm nào đó
+         trong tương lai
+ Ex: She will have been teaching in that school for 5 years by next July.
+      ● Dùng để nhấn mạnh tính liên tục của hành động so với một hành động khác
+         trong tương lai
+ E.g: When I get my degree, I will have been studying at this university for four years.
+ iv. Dấu hiệu nhận biết
+ Thì tương lai tiếp diễn thường đi với các cụm từ chỉ thời gian đi kèm sau:
+ By…for (+ khoảng thời gian)
+ By then
+ By the time
+ v. Bài tập
+
+ 1. My mother ______ dinner for 3 hours by the time our guests arrive at my house.
+ A. will cook
+ B. will have been cooking
+ C. will have cooked
+
+
+ Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                       57
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+2. I ______ my homework for 2 hours by the time my father gets home from work.
+A. will be doing
+B. will have done
+C. will have been doing
+
+3. By 2025, he ______ as the director of this company for thirty years.
+A. will work
+B. will be working
+C. will have been working
+
+4. My grandfather _____ this novel for 2 months by the end of this month.
+A. will have been writing
+B. will have writing
+C. will be writing
+
+5. She _____ for this company for 5 years by the end of this year.
+A. will be working
+B. will have been working
+C. will have worked
+
+KEY:
+
+
+ 1                2                 3                 4                 5
+
+ B                C                 C                 A                 B
+
+
+
+     c. Thì quá khứ hoàn thành tiếp diễn
+i. Định nghĩa
+        Thì quá khứ hoàn thành tiếp diễn (Past Perfect Continuous) dùng để diễn tả 1
+        hành động xảy ra trước 1 hành động khác trong quá khứ.
+ii. Cấu trúc
+
+
+          Loại câu      Câu Khẳng định          Câu Phủ định           Câu Nghi vấn
+
+        Công thức      S + had been + V- S + had not been + Had + S + been +
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      58
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+                       ing                    V-ing                   V-ing?
+
+                                                 ● had not       = Trả lời:
+                                                   hadn’t             ● Yes, S had.
+                                                                      ● No,       S
+                                                                          hadn’t.
+
+        Ví dụ          - It had been          - They hadn’t been  - Had Mary been
+                       raining cats and       talking to each other
+                                                                  using her phone
+                       dogs for more than     when we met them    this morning before
+                       2 hours until it       at the school.      the manager came
+                       stopped.               (Họ     không     nói
+                                                                  into the room?
+                       (Mưa rơi lớn suốt      chuyện với nhau khi Yes, she had./ No,
+                       hơn 2 giờ đồng hồ      chúng tôi gặp họ ở  she hadn’t.
+                       cho đến khi nó         trường.)            (Mary có phải đã
+                       dừng.)                                     sử dụng điện thoại
+                                              - She hadn’t been suốt trước khi quản
+                       - The kid had been     having dinner when lý vào phòng?)
+                       crying for hours       her parents came
+                       until her brother      home.               - Had they been
+                       gave her the doll.     (Cô ấy vẫn chưa ăn doing homework
+                       (Đứa trẻ đã khóc       tối khi ba mẹ cô ấy during the night
+                       hàng giờ đồng hồ       về nhà.)            before going to
+                       cho đến khi anh trai                       bed?
+                       đưa cho bé con                             Yes, they had./ No,
+                       búp bê)                                    they hadn’t.
+                                                                  (Họ đã làm bài tập
+                                                                  suốt đêm trước khi
+                                                                  đi     ngủ     phải
+                                                                  không?)
+
+
+iii. Cách sử dụng
+           a. Dùng để diễn tả 1 hành động đã và đang diễn ra trước 1 hành động khác
+              trong quá khứ
+              Ví dụ: He had been waiting for 45 minutes before she arrived at the
+              station.
+           a. Dùng để diễn tả 1 hành động xảy ra để chuẩn bị cho hành động khác
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      59
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+             Ví dụ: Daniel had been studying hard, so he was pretty confident on the
+             final exams he was about to take.
+
+           b. Dùng để diễn tả 1 hành động là nguyên nhân của việc gì trong quá khứ
+              Ví dụ: She had been staying up late the night before, that’s why she
+              couldn’t get up early to take the bus.
+iv. Dấu hiệu nhận biết
+Thì quá khứ khứ hoàn thành tiếp diễn thường có những từ sau:
+    ● Until then: cho đến lúc đó
+    ● By the time: đến lúc
+    ● Before/ After: trước khi/ sau khi
+    ● Prior to that time: thời điểm trước đó
+v. Bài tập
+    1. He ……. milk out the carton when Mom …… into the kitchen.
+           A. drank …… walked
+           B. was drinking …… was walking
+           C. had been drinking …… walked
+           D. had drunk …… walked
+
+   2. I …… at the company for five years when I …… the promotion.
+         A. am working …… get
+         B. was working ….. have got
+         C. had worked ….. got
+         D. had been working …. got
+
+   3. Martha ……. three miles a day before she …… her leg.
+        A. was walking …… breaks
+        B. had been walking …… broke
+        C. had been walking …. has broken
+        D. walked …… was breaking
+
+   4. We had been watching a movie in this Cineplex for three hours.
+   A. was watching
+   B. watched
+   C. had been watching
+   D. watch
+
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      60
+                                            Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                            Lớp đầu ra 750+:
+                                            https://tienganhthayquy.com/yourtoeic750
+                                            Nhóm Facebook:
+                                            https://www.facebook.com/tienganhthayquy
+
+
+
+
+5. Tom ……. around the world since the month of December.
+        A. travels
+        B. was traveling
+        C. had traveled
+        D. had been traveling
+KEY:
+
+
+ 1                 2                 3                 4                 5
+
+ C                 D                 B                 C                 D
+
+
+
+d. Động từ đi kèm động từ nguyên mẫu
+i. Verb + to - Verb
+Những động từ sau được theo sau trực tiếp bởi to-infinitive: agree, appear, arrange,
+attempt, ask, decide, determine, fail, endeavour, happen, hope, learn, manage, offer,
+plan, prepare, promise, prove, refuse, seem, tend, threaten, volunteer, expect, want,
+…
+Ex:
+     1. My sister agreed to go shopping with me.
+     2. I failed to make my daughter stop crying.
+     3. He refused to leave.
+     4. While studying abroad, I learnt to look after myself.
+     5. I hope to pass the exam.
+ii. Verb + how/what/when/where/why/which + to - Verb
+Những động từ sử dụng công thức này là: ask, decide, discover, find out, forget, know,
+learn, remember, see, show, think, understand, want to know, wonder…
+Ex:
+     1. I learnt how to cook.
+     2. I know where to buy cheap clothes.
+     3. She couldn’t know what to say.
+     4. Finally, I found out how to use that machine.
+     5. My sister cannot remember when to turn the stove off.
+iii. Verb + Object + to-verb
+Những động từ sử dụng công thức này là: advise, allow, enable, encourage, forbid,
+force, hear, instruct, invite, order, permit, persuade, request, remind, train, urge, want,
+tempt…
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                        61
+                                               Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                               Lớp đầu ra 750+:
+                                               https://tienganhthayquy.com/yourtoeic750
+                                               Nhóm Facebook:
+                                               https://www.facebook.com/tienganhthayquy
+
+
+
+
+Ex:
+    1. She invited me to come and visit her shop.
+    2. I reminded her to turn off the light before she leaves.
+    3. I want you to listen carefully to what I am saying.
+    4. He persuaded her parents to let him raise a cat.
+    5. I trained my daughter to become a strong and smart woman.
+iv. Bài tập
+    1. She agreed ------ me at the airport.
+            A. to meet
+            B. meeting
+            C. meet
+            D. none of the above
+2. She spent all night ------ to pass the TOEIC test.
+    A. prepares
+    B. preparing
+    C. to prepare
+    D. endeavour
+
+3. He asked me how ------- the door.
+    A. open
+    B. opened
+    C. to open
+    D. none of the above
+4. I show her where ------- to the Internet.
+    A. to access
+    B. accessing
+    C. accessed
+    D. access
+5. She -------- me to the party tonight.
+    A. invite
+    B. like
+    C. regret
+    D. invites
+
+KEY:
+
+
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                       62
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+1                  2                3                 4                 5
+
+A                  B                C                 A                 D
+
+
+
+e. Động từ theo sau là V-ing
+Trong tiếng Anh, các bạn sẽ gặp phải những động từ nhất định mà sau đó lại thêm
+một động từ nữa ở dạng V-ing. Vậy chúng là những từ nào, sau đây chúng ta sẽ điểm
+qua một vài động từ đi với V-ing nhé:
+
+      1. avoid + V-ing : tránh làm gì
+      2. delay + V-ing : trì hoãn
+      3. deny + V-ing :. phủ nhận
+      4. enjoy + V-ing : thích
+      5. finish + V-ing : hoàn thành
+      6. keep + V-ing : tiếp tục, duy trì
+      7. mind + V-ing : bận tâm
+      8. suggest + V-ing : gợi ý
+      9. like + V-ing : thích
+      10. hate + V-ing : ghét
+      11. Love + V-ing
+      12. S + can’t bear + Ving : không thể chịu được
+      13. S + can’t stand + Ving : không thể chịu được
+      14. S + can’t help + Ving : không thể tránh được
+      15. look forward + Ving : trông mong
+      16. remind sb of + Ving : gợi nhớ
+      17. be afraid of + Ving : sợ
+      18. be amazed at + Ving : ngạc nhiên
+      19. be angry about/at + Ving : giận/ bực mình
+      20. be good/bad at + Ving : giỏi/ kém
+      21. take part in + Ving : tham gia
+      22. join in Ving : tham gia làm gì
+      23. fed up with + Ving : chán
+      24. risk + V-ing: liều mình
+      25. prevent + V-ing: ngăn chặn
+      26. Mind + V-ing: để tâm
+Ex:
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      63
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+   -   John enjoys playing games every night? → John thích chơi game mỗi tối
+   -   The manager keeps being bossy all the time.
+   -   You should avoid spending too much money at the end of the month.
+   -   Have you finished doing your tasks? It’s been ages.
+   -   The thief didn’t deny stealing the car.
+
+   1. I look forward to __________ (see) you at the weekend.
+   2. She doesn’t mind __________ (work) the night shift.
+   3. Avoid __________ (make) silly mistakes.
+   4. The boys like ( play) __________ games but hate ( do) lessons.
+   5. Would you mind ( show )__________ me how ( send) an email?
+   6. My children enjoy (read)__________ books.
+Key:
+   1. Seeing
+   2. Working
+   3. Making
+   4. Playing
+   5. Showing
+   6. Reading
+
+f. Một số động từ đặc biệt có thể kết hợp cả Verb-ing và to-Infinitive
+i. Stop
+Stop + V-ing: dừng làm việc gì
+Stop + to-V: dừng lại để làm việc gì
+Ex:
+     1. After hearing the gun shot, he stopped making his speech.
+     2. He stopped to make his speech in cities along the way.
+ii. Remember/Forget/Regret
+Remember/Forget/Regret + to - V: nhớ/quên/tiếc sẽ phải làm gì (ở hiện tại - tương lai)
+Remember/Forget/Regret + V-ing: nhớ/quên/tiếc đã làm gì (ở quá khứ)
+Ex:
+Remember to turn the light off before you leave.
+I remember turning the light off yesterday.
+Do not forget to buy flowers.
+I will never forget sending such an important letter.
+I regret dropping out of school too early.
+I regret to inform you that the flight was canceled.
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      64
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+iii. Try
+Try + to-V: cố gắng làm gì
+Try + V-ing: thử làm gì
+Ex:
+I try my best to pass the TOEIC test.
+You should try tasting this delicious cake.
+iv. Like
+Like + V-ing: thích làm vì nó hay, nó thú vị
+Like + to-V: muốn làm gì, cần làm gì
+Ex:
+I like reading books.
+I like to learn English if I want to study abroad.
+v.Prefer
+Prefer + to-V: thích một thứ gì đó
+Prefer + V-ing + to + V-ing: thích thứ gì hơn thứ gì
+Ex:
+I prefer to read books.
+I prefer reading horror stories than love stories.
+vi. Mean
+Mean + to-V: có ý định làm gì
+Mean + V-ing: có nghĩa là gì
+Ex:
+I didn’t mean to hurt you.
+This sign means not smoking.
+vii. Need
+Need + to-V: cần làm gì
+Need + V-ing: cần được làm gì
+Ex:
+I need to finish my homework today.
+Your hair needs cutting.
+viii. Used to/Get used to
+Used to + bared - Infinitive: đã từng/thường làm gì trong quá khứ (bây giờ không làm
+nữa)
+Be/Get used to + V-ing: quen với việc gì (ở hiện tại)
+Ex:
+I used to get up early when I was young.
+I am used to getting up early.
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      65
+                                              Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                              Lớp đầu ra 750+:
+                                              https://tienganhthayquy.com/yourtoeic750
+                                              Nhóm Facebook:
+                                              https://www.facebook.com/tienganhthayquy
+
+
+
+
+ix. Advise/Allow/Permit/Recommend
+Advise/Allow/Permit/Recommend + Object + to-Verb: khuyên/cho phép/đề nghị ai làm
+gì
+Advise/Allow/Permit/Recommend + V-ing: khuyên/cho phép/đề nghị làm gì
+Ex:
+    1. He advised me to apply at once
+    2. He advised applying at once.
+    3. She allowed us to play in her room.
+    4. She allowed playing in her room
+x. See/Hear/Smell/Feel/Notice/Watch
+See/Hear/Smell/Feel/Notice/Watch + Object + V-ing: sử dụng khi người nói chỉ chứng
+kiến một phần của hành động.
+See/Hear/Smell/Feel/Notice/Watch + Object + V: sử dụng khi người nói chứng kiến
+toàn bộ hành động.
+Ex:
+    1. I see him visiting her house everyday.
+    2. I saw him close the door and leave the house.
+xi. Bài tập
+    1. My father ------- smoke when he was young. Now he quit smoking.
+    A. used to
+    B. is used to
+    C. was
+    D. none of the above
+
+2. I smell something ------- in the kitchen
+    A. to burn
+    B. burning
+    C. burns
+    D. burn
+
+3. She allowed me ------- to her house tonight.
+    A. to visit
+    B. visiting
+    C. visits
+    D. none of the above
+
+4. You should try ------ this dress.
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      66
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+     A. wear
+     B. wears
+     C. wearing
+     D. eat
+
+5. I like ------ with you.
+    A. to go
+    B. going
+    C. go
+    D. gone
+
+KEY:
+ 1                   2              3                 4                 5
+
+ A                   B              A                 C                 B
+
+
+
+g. Câu tường thuật
+i. Định nghĩa
+       Câu tường thuật (Reported Speech) là loại câu dùng để thuật lại lời nói của 1
+       ai đó.
+           ● Lời nói trực tiếp (Direct Speech) là nói lại chính xác điều ai đó diễn
+              đạt, hay được biết đến là trích dẫn. Lời của người nói được đặt trong
+              dấu “ __ ”.
+              Ví dụ: She told her kid: “Clean up your room when you have freetime”
+           ● Lời nói gián tiếp (Indirect Speech) là thuật lại dưới dạng gián tiếp,
+              không sử dụng dấu ngoặc kép.
+              Ví dụ: She told her kid to clean up her room when she had freetime.
+ii. Cách chuyển từ câu trực tiếp sang câu tường thuật
+       Bước 1: Chọn từ để tường thuật
+       Ngoài 2 từ thông dụng là tell (told) và say (said) thì chúng ta còn có thể dùng
+       những từ sau đây:
+           ● Advise (Advised): khuyên nhủ
+           ● Ask (Asked): yêu cầu
+           ● Deny (Denied): từ chối
+           ● Promise (Promised): hứa
+           ● Suggest (Suggested): gợi ý
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      67
+                                             Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                             Lớp đầu ra 750+:
+                                             https://tienganhthayquy.com/yourtoeic750
+                                             Nhóm Facebook:
+                                             https://www.facebook.com/tienganhthayquy
+
+
+
+
+      Bước 2: Biến đổi thì của động từ và động từ khuyết thiếu
+      Bước kế tiếp trong việc biến đổi câu là lùi về 1 thì cho các động từ trong câu
+      dẫn. Cụ thể như sau:
+        Direct speech                              Reported speech
+
+        Hiện tại     đơn     (Present     Simple): Quá khứ đơn (Past Simple):
+        V(s/es)                                    V2/ed
+
+        Hiện tại hoàn thành (Present Perfect): Quá khứ hoàn thành (Past Perfect):
+        has/ have + V3/ed                      had + V3/ed
+
+        Hiện     tại  tiếp     diễn       (Present Quá khứ tiếp diễn (Past Continuous):
+        Continuous):                               was/ were + V-ing
+        is/ are + V-ing
+
+        Quá khứ đơn (Past Simple):                 Quá khứ hoàn thành (Past Perfect):
+        V2/ed                                      had + V3/ed
+
+        Quá khứ tiếp diễn (Past Continuous): Quá khứ hoàn thành tiếp diễn (Past
+        had been + V-ing                     Perfect Continuous)
+
+        Will                                       Would
+
+        Can                                        Could
+
+        Shall                                      Should
+
+        May                                        Might
+
+        Must/ Have to                              Had to
+
+
+
+      Bước 3: Thay đổi các đại từ và tính từ sở hữu
+
+
+                                      Direct speech             Reported speech
+
+        Subject pronouns              I                         He/ She
+
+
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      68
+                                            Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                            Lớp đầu ra 750+:
+                                            https://tienganhthayquy.com/yourtoeic750
+                                            Nhóm Facebook:
+                                            https://www.facebook.com/tienganhthayquy
+
+
+
+
+                                    You                        I/ We/ They
+
+                                    We                         We/ They
+
+        Object pronouns             Me                         Him/ Her
+
+                                    You                        Me/ Us/ Them
+
+                                    Us                         Us/ Them
+
+        Possessive adjectives       My                         His/ Her
+
+                                    Your                       My/ Our/ Their
+
+                                    Our                        Our/ Their
+
+        Possessive pronouns         Mine                       His/ Hers
+
+                                    Yours                      Mine/ Ours/ Theirs
+
+                                    Ours                       Ours/ Theirs
+
+        Demonstratives              This                       That
+
+                                    These                      Those
+
+
+      Bước 4: Đổi các trạng từ chỉ nơi chốn và thời gian
+
+
+        Direct speech                           Reported speech
+
+        Here                                    There
+
+        Now                                     Then/ At that time
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      69
+                                           Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                           Lớp đầu ra 750+:
+                                           https://tienganhthayquy.com/yourtoeic750
+                                           Nhóm Facebook:
+                                           https://www.facebook.com/tienganhthayquy
+
+
+
+
+         Today/ Tonight                        That day/ That night
+
+         Yesterday                             The day before/ The previous day
+
+         Tomorrow                              The next day/ The following day
+
+         Last week/ day/ night                 The previous week/ day/ night
+
+         Next week                             The next week/ The following week
+
+         Ago                                   Before
+
+
+iii. Cấu trúc của các loại câu tường thuật
+     ❖ Câu tường thuật ở dạng câu kể
+              S + say/ said (that) + S + V
+              Lưu ý: says/ say to + O => tells/ tell + O
+                      said to + O => told + O
+              Ví dụ: My friend said to me: “If you want to buy clothes at an affordable
+              price, you should get them on sale.”
+              => My friend told me If I wanted to buy clothes at an affordable price, you
+              should get them on sale.
+
+             She said: “I always drink a cup of coffee before breakfast.”.
+             => She told me that she always drank a cup of coffee before breakfast.
+   ❖ Câu tường thuật ở dạng câu hỏi
+   ● Yes/ No Questions
+S + asked/ wanted to know/ wondered + If/ whether + S + V
+      Ví dụ: She asked: “Is this package yours?”.
+      => She asked if that package was mine.
+   ● Wh - questions
+          S + asked (+O)/ wanted to know/ wondered + Wh - words + S + V
+      Ví dụ: Tom asked: “What time does the film start?”
+      => Tom asked what time the film started.
+   ❖ Câu tường thuật ở dạng câu mệnh lệnh
+   ● Khẳng định: S + told + O + to V
+      Ví dụ: She told me to go out with her for a moment.
+   ● Phủ định: S + told + O + not to V
+      Ví dụ: She told me not to out at night.
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      70
+                                           Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                           Lớp đầu ra 750+:
+                                           https://tienganhthayquy.com/yourtoeic750
+                                           Nhóm Facebook:
+                                           https://www.facebook.com/tienganhthayquy
+
+
+
+
+iv. Bài tập
+Biến đổi những câu sau đây sang dạng câu tường thuật.
+    1. Mary asked her teacher: “Are there any assignments during the vacation?”.
+           A. Mary asked her teacher there were any assignments during the vacation.
+           B. Mary asked her teacher if there were any assignments during the
+              vacation.
+           C. Mary asked her teacher whether there are any assignments during the
+              vacation.
+           D. Mary asked her teacher there was any assignments during the vacation.
+
+     2. She said to her mom: “I’ll have an English class this afternoon”.
+          A. She told her mom that she will have an English class this afternoon.
+          B. She told her mom that she would have an English class this afternoon
+          C. She told her mom that she would have an English class that afternoon
+          D. She told her mom that she will have an English class that afternoon.
+
+     3. Thomas asked: “What are you planning to do after graduation?”.
+           A. Thomas asked what I was planning to do after graduation.
+           B. Thomas asked what I were planning to do after graduation.
+           C. Thomas asked what I am planning to do after graduation.
+           D. Thomas asked what I planned to do after graduation.
+
+     4. My teacher said to us: “Don’t let the lights on after leaving the classroom.”.
+           A. My teacher told us to let the lights on after leaving the classroom.
+           B. My teacher said us to let the lights on after leaving the classroom.
+           C. My teacher said that to let the lights on after leaving the classroom.
+           D. My teacher told us not to let the lights on after leaving the classroom.
+
+  5. The boss told her: “You’ll be responsible for the new employees.”.
+        A. The boss told her that she will be responsible for the new employees.
+        B. The boss asked her to be responsible for the new employees.
+        C. The boss told her that she would be responsible for the new employees.
+        D. The boss told her that she will responsible for the new employees.
+KEY:
+
+
+ 1                  2                3                 4                5
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                         71
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+ B                C                 A                 D                 C
+
+
+
+2. Luyện nghe
+Ở trình độ này, chúng ta sẽ tập trung luyện nghe qua việc áp dụng các kỹ thuật nghe
+bài bản để từ từ nâng cao khả năng nghe của các bạn.
+Trong phần nghe part 3 và part 4 chủ yếu là kiểm tra khả năng lấy thông tin từ đoạn
+hội thoại hoặc những bài phát biểu ngắn về thương mại. Vì vậy, các bạn chỉ cần tập
+trung vào các nguồn luyện nghe tương tự như vậy để trau dồi khả năng nghe phản xạ
+cũng như vốn từ vựng theo chủ đề. Đây là bước chuẩn bị quan trọng để bạn có thể
+hoàn thành tốt bài thi của mình.
+Bạn cũng có thể luyện tập khả năng nghe theo phương pháp vừa nghe vừa chép
+chính tả lại nội dung mình nghe được. Phương pháp này được đánh giá là cực kỳ hữu
+hiệu để nâng cao khả năng nghe của bạn đấy.
+Ngoài ra, luyện nghe qua phim ảnh cũng rất thú vị và bổ ích. Các bạn có thể xem phim
+tiếng Anh có phụ đề hoặc xem phim hoạt hình vì tốc độ đọc chậm và không dùng nhiều
+từ chuyên ngành.
+
+3. Phần đọc
+    a. Phần 7
+Trong chặng này các bạn tiếp tục ôn luyện Part 7 dạng Double Passage và Triple
+Passage. Để có thể đạt được mục tiêu TOEIC 700 thì ở phần này, các bạn nên làm
+được ít nhất 3 câu trên 5 câu ở mỗi bài có 2 hoặc 3 đoạn văn. Mình sẽ chia sẻ với các
+ban một số mẹo hỗ trợ các bạn làm Part 7 hiệu quả hơn nha.
+    ❖ Mẹo thứ nhất: Hãy trả lời câu hỏi về nội dung trong phạm vi một văn bản trước
+        tiên
+Những câu hỏi trong dạng bài này được chia thành 2 loại:
+    (1) Câu hỏi hỏi về nội dung trong phạm vi 1 văn bản
+    (2) Câu hỏi yêu cầu kết nối nội dung nhiều văn bản
+Không khó để xác định được câu nào thuộc loại (1) và câu nào thuộc loại (2). Đầu tiên
+các bạn hãy đọc lướt qua câu hỏi. Dấu hiệu nhận biết câu hỏi loại (1) thường là:
+    ● Câu hỏi ý chính, mục đích, chủ đề hoặc chi tiết của một văn bản cụ thể trong
+        các văn bản, ví dụ: what is the purpose of the email/ the article/ the message;
+        according to the announcement/ the advertisement,...; what is indicated about
+        the web page?
+
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      72
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+    ● Câu hỏi từ gần nghĩa với từ vựng trong văn bản, ví dụ: the word :limit” in
+       paragraph 1, line 5 is closest in the meaning to? Hãy ưu tiên làm dạng này nhé
+       vì dạng câu hỏi này không yêu cầu các bạn phải đọc cả đoạn thì mới có thể trả
+       lời được.
+Các bạn hãy lọc ra những câu hỏi nào mà các bạn có thể trả lời với chỉ một văn bản.
+Vì những câu hỏi này thường dễ trả lời hơn, và các đoạn văn trong bài đọc nhiều văn
+bản thường ngắn hơn. Do đó các bạn sẽ tiết kiệm được khá nhiều thời gian nếu các
+bạn làm trước các bài đọc loại (1).
+    ❖ Mẹo thứ hai: Đọc lướt các văn bản, nắm nội dung chính; hình dung ngữ cảnh
+       và xác định mối liên kết giữa chúng
+Mẹo này dùng để “trị” những câu hỏi loại (2). Việc hình dung rõ ràng ngữ cảnh và mối
+liên hệ giữa các văn bản giúp bạn nhanh chóng xác định được vị trí cần tìm thông tin
+để trả lời câu hỏi. Để xác định được nội dung chính, các bạn hãy đọc nhan đề (nếu
+có), câu đầu tiên của mỗi đoạn và đọc lướt tìm những từ khóa lặp đi lặp lại trong mỗi
+văn bản
+    ❖ Mẹo thứ ba: Trả lời câu hỏi về thông tin cụ thể trước
+Hãy tìm và làm trước những câu hỏi về những chi tiết cụ thể, ví dụ như: what time,
+how much,... Câu trả lời dành cho những câu hỏi này thường chỉ là một chi tiết nhỏ
+trong văn bản. Làm trước những câu hỏi dạng này sẽ tiết kiệm cho bạn rất nhiều thời
+gian, vì thường thì các bạn chỉ cần một chi tiết rất nhỏ trong bài đọc là đã có thể “xử
+lý” chúng.
+
+
+
+
+       b. Mẹo quản lý thời gian khi làm Reading TOEIC
+Luyện Reading TOEIC Test trong phần 5 - 6: Càng nhanh càng tốt (12’)
+Áp dụng quy tắc hai cửa:
+Cửa 1: Xử đẹp câu dễ trước với tốc độ cực cao → tối đa 10s mỗi câu
+Các bạn hãy giải quyết càng nhanh càng tốt những câu cực dễ để tiết kiệm thời gian
+làm những câu sau. Hãy nắm rõ những điểm mấu chốt sau để làm nhanh những câu
+này nhé:
+- Nếu câu trả lời có 4 đáp án cùng một gốc từ → xác định ngay loại từ và cách chia
+động từ.
+- Ghi nhớ công thức kinh điển: S + V + O
+Cửa 2: Chiến đấu với câu khó, nhưng khó quá thì cho qua
+Các bạn nên giới hạn thời gian tối đa 30s cho một câu
+Các dạng câu khó trong phần 7:
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      73
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+Chọn to infinitive hay gerund → thuộc danh sách động từ có to - infinitive và gerund
+theo sau.
+Câu chọn cụm động từ (phrasal verb) → với những câu dạng này thì cách ôn luyện
+hiệu quả nhất chính là học nhiều, làm nhiều.
+Câu kiểm tra từ vựng → học đi học lại những từ vựng theo chủ đề
+Với những câu hỏi liên quan đến kiến thức mới thì các bạn cứ bỏ qua hoặc chọn bừa
+đáp án nhé. Tránh việc tốn quá nhiều thời gian cho một câu để rồi không có đủ thời
+gian làm những câu sau.
+Còn với phần 7 thì sao? Bí quyết là chia mốc thời gian làm hai nhé.
+Khi giải phần 7, các bạn hãy chia mốc thời gian rõ rệt cho phần một đoạn văn và phần
+hai đoạn văn, đồng thời đảo ngược trình tự làm bài.
+20’ đầu: đọc từ câu 200 đến câu 180 (phần 2 đoạn văn)
+30’ sau: đọc từ câu 152 đến câu 179 (phần 1 đoạn văn)
+Nếu bạn phân bố thời gian chuẩn xác với phần 5 và phần 6, thì bạn sẽ còn tròn 60’ để
+làm phần 7. Các bạn nên phân bố thời gian làm phần 7 như sau:
+Đối với phần một đoạn văn: tối đa 3 phút 1 đoạn
+Đối với phần hai đoạn văn: tối đa 5 phút 1 đoạn
+Khi làm bài theo lộ trình này, chúng ta chiến phần khó nhất khi não bộ vẫn còn tỉnh
+táo và chưa quá mệt. Hơn nữa, việc quy định thời gian rõ ràng cho mỗi phần và mỗi
+đoạn văn khiến chúng ta không bị quá thời gian vào bất kỳ câu nào.
+Những điểm cần lưu ý để làm bài đạt kết quả cao hơn:
+    1. Đọc câu hỏi trước
+    2. không cần đọc và dịch toàn bộ đoạn văn
+    3. Áp dụng triệt để kĩ năng scan
+    4. Loại trước những đáp án chắc chắn sai → xác định đáp án đúng trong những
+       câu còn lại
+    5. Không làm quá thời gian đã định sẵn ở câu hoặc đoạn văn nào → nếu gần hết
+       thời gian mà vẫn chưa có đáp án thì hãy chọn đại và làm tiếp.
+
+4. Từ vựng
+Để đạt target 600 - 750 trong bài thi TOEIC, các bạn cần chú trọng nhóm từ vựng liên
+quan đến các chủ đề: giao dịch hằng ngày, hoạt động trong văn phòng, công xưởng…
+Đối với trình độ này, các bạn nên học các động từ chỉ hành động, kèm theo đó là tính
+từ và trạng từ để tạo thành câu hoàn chỉnh. Cách học này sẽ giúp bạn nhớ lâu, nhớ
+có tổ chức và khoa học.
+Các bạn chỉ cần học những chủ đề đã nêu ở 2 chặng trước, thêm 5 - 10 từ mỗi chủ
+đề là đủ, không cần phải nhồi nhét quá nhiều, dễ gây nản chí và thấy nặng nề.
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      74
+                                          Thầy Quý - Xử lý TOEIC, trị yếu tiếng Anh
+                                          Lớp đầu ra 750+:
+                                          https://tienganhthayquy.com/yourtoeic750
+                                          Nhóm Facebook:
+                                          https://www.facebook.com/tienganhthayquy
+
+
+
+
+5. Giáo trình phù hợp chặng này
+Với các bạn có target 700+ thì ôn luyện với sách Hacker chính là một sự lựa chọn
+tuyệt vời. Hacker TOEIC cung cấp cho các bạn format đề thi đẹp và chuẩn, giúp tạo
+hứng thú cho các bạn trong quá trình ôn luyện.
+Link Hacker TOEIC 2
+Link Hacker TOEIC 3
+
+
+
+
+Nhóm Zalo giải đề ETS Free: https://tienganhthayquy.com/khoa-giai-de-ets-free-2020/
+                                                                                      75
+

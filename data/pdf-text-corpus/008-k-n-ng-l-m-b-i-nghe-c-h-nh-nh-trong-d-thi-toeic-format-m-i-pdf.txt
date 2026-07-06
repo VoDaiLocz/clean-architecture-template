@@ -1,0 +1,759 @@
+SOURCE_RELATIVE_PATH: downloads/KỸ NĂNG LÀM BÀI NGHE CÓ HÌNH ẢNH TRONG ĐỀ THI TOEIC FORMAT MỚI.pdf
+SOURCE_FILE_NAME: KỸ NĂNG LÀM BÀI NGHE CÓ HÌNH ẢNH TRONG ĐỀ THI TOEIC FORMAT MỚI.pdf
+QUEUE_ORDER: 8
+EXTRACTION_CLASS: VALID_TEXT_EXTRACTED
+PAGE_COUNT: 32
+
+----- BEGIN PDF TEXT -----
+       Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                                                             1
+Lửa TOEIC – Trường đào tạo TOEIC online
+                           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+         KỸ NĂNG LÀM BÀI NGHE CÓ HÌNH ẢNH TRONG ĐỀ THI
+                               TOEIC FORMAT MỚI
+
+
+
+Xin chào các bạn!
+
+Đây là tài liệu do nhóm học thuật Fire TOEIC biên soạn nhằm giúp các bạn có thể tự
+                                                         n
+học TOEIC tốt hơn, tài liệu được chia sẻ phi thương mại, mong các bạn không dùng nó
+với mục đích thương mại.
+                                                 u.v
+Trong quá trình biên soạn sẽ không tránh khỏi sai sót, các bạn có thể báo lỗi về email:
+
+firetoeic@gmail.com
+
+Tài liệu được biên soạn bởi Fire TOEIC    ed
+Chúc các bạn học tốt!
+
+Đội ngũ biên soạn.
+                                    ic.
+                           toe
+                    fire
+
+                                                                                          2
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                   A. GIỚI THIỆU
+
+
+Từ năm 2019, part 3 và 4 của đề thi TOEIC có thêm dạng bài tập nghe có đi kèm hình
+ảnh. Dạng bài tập này có những đặc điểm như sau:
+   •   Mỗi đề thi có từ 5 đến 6 bài tập nghe có đi kèm hình ảnh, xuất hiện ở cuối part 3
+       và part 4.
+   •                                                     n
+       Hình ảnh đi kèm có thể là bảng, biểu đồ, sơ đồ, hoặc một đoạn thông tin nhắn
+
+
+   •                                             u.v
+       bất kỳ (ví dụ: một tấm vé) được đặt trong khung ngay trước 3 câu hỏi liên quan.
+       Cần phải sử dụng thông tin trong bảng kết hợp với thông tin nghe được trong
+       bảng để trả lời 1 trong 3 câu hỏi trong bài. Câu hỏi luôn bắt đầu bằng câu: “Look
+       at the graphic.”
+
+
+được đề cập ở những phần sau đây.
+                                          ed
+Để làm tốt dạng bài tập này, thí sinh có thể tham khảo và áp dụng những chiến thuật
+
+
+
+
+                                    ic.
+                           toe
+                     fire
+
+                                                                                         3
+                    Lửa TOEIC – Trường đào tạo TOEIC online
+                              Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                   B. CHIẾN THUẬN
+
+Bước 1: Đọc trước đề bài
+
+Đây là một bước thiết yếu trong chiến thuật làm phần nghe, mục đích là để hình dung
+ngữ cảnh, xác định trước những thông tin trọng tâm cần chú ý và những câu trả lời có
+thể nghe được. Vì vậy, bước này không chỉ áp dụng cho các bài tập có hình ảnh mà áp
+dụng cho tất cả các bài trong phần 3 và 4.                n
+Phương pháp tiến hành như sau:
+
+1.1.   Thời gian đọc trước đề:
+                                                  u.v
+       •
+                                             ed
+           Đối với câu 32 đến 34 và câu 71 đến 73: Khi băng đọc hướng dẫn cách làm
+           part 3 và part 4
+
+
+
+                                      ic.
+       •
+                              toe
+           Đối với các câu còn lại: Khi băng đọc 3 câu hỏi của bài tập liền trước
+           Ví dụ, thời gian băng đọc câu hỏi 80 – 82 chính là lúc để đọc câu hỏi 83 – 85:
+
+
+                    fire
+
+                                                                                        4
+                  Lửa TOEIC – Trường đào tạo TOEIC online
+                           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                  Nghe                                        Đọc
+
+
+
+
+                                                        n
+                                                u.v
+                                         ed
+                                   ic.
+                           toe
+1.2.
+                  fire
+       Cách đọc trước đề:
+   •   Ưu tiên đọc trước 3 câu hỏi để hình dung ngữ cảnh, đồng thời nắm được thông
+       tin cần nghe được trong băng. Sau khi làm xong những bước bắt buộc phía
+       dưới, nếu còn thừa thời gian có thể lướt nhanh qua 12 lựa chọn của các câu hỏi.
+   •   Lưu ý nhiều hơn với câu hỏi có liên quan tới hình ảnh. Tìm từ khóa của câu hỏi
+       này và dò nhanh thông tin có liên quan tới từ đó trên hình ảnh. Từ khóa trùng
+       khớp giữa câu hỏi này và hình ảnh chính là “Thông tin cần chú ý trong bảng”.
+
+
+                                                                                    5
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                             Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+       Ngoài ra, câu hỏi thường chứa một loại từ khóa khác không tìm thấy được trong
+       hình ảnh, gọi là “Thông tin cần chú ý trong đoạn băng”.
+
+
+Bước 2: Phân tích hình ảnh
+Nhìn vào hình ảnh, xác định:
+   •   Nội dung của mỗi trường thông tin
+
+                                                            n
+       Trong hình ảnh có ít nhất 2 trường thông tin để thí sinh kết nối và trả lời câu hỏi.
+       Cần xác định nội dung của các trường này để hiểu nội dung của hình ảnh và xác
+
+
+   •
+       định mối liên hệ giữa các trường.
+                                                       u.v
+       Mối liên hệ giữa các trường thông tin trong hình ảnh
+   •   Sự khác biệt giữa các mục trong cùng một trường thông tin
+
+
+       là câu trả lời chính xác.             ed
+       Mục có đặc điểm nổi bật trong trường thông tin cần được chú ý vì nó rất có thể
+
+
+       Ví dụ, trong trường thông tin “loại trái cây”, các loại trái cây “cam”, “táo”, “chuối”
+
+                                      ic.
+       đều được bán cả tuần, riêng “dâu tây” chỉ được bán vào thứ Hai và thứ Năm
+       hằng tuần. Câu hỏi có liên quan là: “Loại trái cây nào có chương trình giảm giá
+       đặc biệt trong tuần tới?”, với 4 lựa chọn lần lượt là: “cam”, “táo”, “chuối”, “dâu
+
+
+                             toe
+       tây”. Khi đó, rất có thể thông tin nghe được trong băng sẽ là: “Bắt đầu từ tuần tới,
+       cửa hàng có chương trình giảm giá 30% cho các loại trái cây không được bày
+       bán hằng ngày.”. Như vậy, đáp án chính xác chỉ có thể là dâu tây.
+   •   Vị trí thông tin cần chú ý để trả lời câu hỏi
+
+                    fire
+       Có 2 vị trí thông tin cần chú ý trong hình ảnh:
+           o Thứ nhất là trường thông tin có chứa “Thông tin cần chú ý trong bảng” đã
+              được xác định ở trên.
+
+           o Thứ hai là trường thông tin có mối quan hệ gần nhất với trường thông tin
+              phía trên, gọi là “Thông tin kết nối”. Đây là thông tin sẽ nghe được trong
+              băng, được dùng để tra trong bảng, tìm ra mục tương ứng trong trường
+              “Thông tin cần chú ý trong bảng”, cũng chính là đáp án chính xác cần lựa
+              chọn.
+
+                                                                                           6
+                  Lửa TOEIC – Trường đào tạo TOEIC online
+                          Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bước 3: Nghe, kết nối thông tin và tìm đáp án chính xác
+Khi nghe, để ý “Thông tin kết nối” có trong băng, tra thông tin này trong bảng, tìm ra
+mục tương ứng trong trường “Thông tin cần chú ý trong bảng”, soi vào 4 lựa chọn trong
+câu hỏi và chọn đáp án chính xác.
+
+Bài tập minh họa
+
+                                                       n
+Link audio: https://drive.google.com/open?id=1iuBHOJrbsDpmEeepMbx9p5tPuqYVzjuZ
+
+
+
+                                               u.v
+                                         ed
+                                    ic.
+                          toe
+                  fire
+
+                                                                                    7
+                Lửa TOEIC – Trường đào tạo TOEIC online
+                          Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bước 1: Đọc câu hỏi
+
+Ở đây, câu hỏi có liên quan tới hình ảnh là câu 100, ta xác định được các từ khóa:
+“Why”, “Brandywine” và “good deal”.
+
+Dò 3 từ này trên hình ảnh (có thể bỏ qua từ “why” vì chắc chắn không tìm được từ này),
+ta thấy “Brandywine” chính là “Thông tin cần chú ý trong bảng”.
+
+Bước 2: Phân tích hình ảnh
+
+                                                       n
+Ta thấy trường thông tin ở cột bên trái là tên mặt hàng, trường còn lại là giá bán của
+các mặt hàng. Sự khác biệt về thông tin ở đây là về giá bán, tuy nhiên không có gì quá
+
+chắn sẽ nghe được trong băng.                  u.v
+nổi bật. Ta cũng xác định được trường giá bán này chính là “Thông tin kết nối” chắc
+
+
+Bước 3: Nghe, kết nối thông tin và chọn đáp án đúng
+
+Transcript:
+                                         ed
+                                   ic.
+                           toe
+                  fire
+Trong băng có “Thông tin kết nối” xuất hiện là “Normally at $2.50 per pound”. Chúng ta
+đối chiếu với thông tin trong bảng, thấy giá này cao hơn giá được niêm yết. Vậy, lý do
+để Brandywine là một món hời chính là bởi nó được bán với đơn giá rẻ hơn so với bình
+thường. Đáp án chính xác là C.
+
+                                                                                    8
+                Lửa TOEIC – Trường đào tạo TOEIC online
+                           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Dịch:
+Xin chào các khách hàng của Granville Produce. Hôm nay là sinh nhật một tuổi của
+chúng tôi, và chúng tôi kỷ niệm ngày này bằng một ưu đãi đặc biệt từ giờ cho tới ngày
+Chủ Nhật. Bạn sẽ có thể tận dụng những khoản giảm giá của chúng tôi. Hãy đảm bảo
+bạn sẽ ghé thăm góc bán giống cà chua lâu năm, nơi bạn sẽ tìm thấy những lựa chọn
+đủ màu sắc và chủng loại đã giành giải thưởng của loại quả này. Ưu đãi lớn nhất mùa
+này áp dụng với loại Brandywine. Thông thường, giá bán của loại này là 2.5 đô la Mỹ
+cho một pound, vì vậy hàng sẽ rất nhanh hết. Đừng chần chừ nữa! Hãy đến với
+
+                                                         n
+Granville Produce ngay, trước khi những món rau ngon lành và tươi mát của chúng tôi
+được bán hết. Cảm ơn các bạn vì đã là khách hàng trung thành của chúng tôi trong
+
+
+Câu 98: Khi nào thì ưu đãi đặc biệt kết thúc?    u.v
+năm vừa qua. Chúng tôi hi vọng rằng sẽ còn nhiều dịp mừng sinh nhật như lần này.
+
+
+A. Thứ Hai
+B. Thứ Bảy
+C. Chủ Nhật
+D. Nó diễn ra hàng tuần
+   ➔ Đáp án đúng là C
+                                          ed
+Câu 99: Điều gì về Granville Produce là chính xác?
+A. Họ bán nhiều loại khoai tây
+                                    ic.
+B. Họ nhấn mạnh giống cà chua lâu năm của mình.
+C. Họ là người bán hàng với giá cả phải chăng.
+
+   ➔ Đáp án đúng là B
+                           toe
+D. Họ đã kinh doanh được một vài năm rồi.
+
+
+Câu 100: Nhìn vào hình ảnh đã cho. Tại sao Brandywine lại là ưu đãi lớn như vậy?
+A. Nó rẻ hơn Black Krim.
+B. Nó là loại cà chua ngon tuyệt.
+
+   Mỹ.             fire
+C. Giá bán thông thường cho một pound của nó cao hơn (giá ưu đãi) hơn một đô la
+
+D. Thông thường mùa này không có loại cà chua này.
+   ➔ Đáp án đúng là C
+
+Từ vựng nên chú ý:
+
+   •   Commemorate (v) /kəˈmeməreɪt/: kỷ niệm, tưởng niệm
+   •   Saving (n) /ˈseɪvɪŋ/: Khoản giảm giá, khoản tiết kiệm
+   •   Heirloom (adj) /ˈeəluːm/: (đi với giống cây) cổ, lâu năm, giờ không còn được bán
+       phổ biến
+
+
+                                                                                          9
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                        Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                               C. LUYỆN TẬP
+
+Link audio: https://drive.google.com/open?id=1ywFgz36rWxbuKaEI5O19U5schL0G0-
+6M
+
+                                   Part 3
+
+                Bài 1
+                                                   n     Bài 2
+
+
+
+
+                                            u.v
+                                     ed
+                                ic.
+                        toe
+                fire
+
+                                                                             10
+              Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+ Bài 3                                    Bài 4
+
+
+
+
+                                    n
+                            u.v
+                      ed
+                 ic.
+         toe
+ fire
+
+                                                              11
+Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+ Bài 5                                    Bài 6
+
+
+
+
+                                    n
+                            u.v
+                      ed
+                 ic.
+         toe
+ fire
+
+                                                              12
+Lửa TOEIC – Trường đào tạo TOEIC online
+        Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 7                                    Bài 8
+
+
+
+
+                                   n
+                           u.v
+                     ed
+                ic.
+        toe
+ fire
+
+                                                             13
+Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+ Bài 9                                   Bài 10
+
+
+
+
+                                    n
+                            u.v
+                      ed
+                 ic.
+         toe
+ fire
+
+                                                              14
+Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 11                                    Bài 12
+
+
+
+
+                                    n
+                            u.v
+                      ed
+                 ic.
+         toe
+ fire
+
+                                                              15
+Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 13                                    Bài 14
+
+
+
+
+                                    n
+                            u.v
+                      ed
+                 ic.
+         toe
+ fire
+
+                                                              16
+Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                    Part 4
+
+ Bài 1                                    Bài 2
+
+
+
+
+                                    n
+                             u.v
+                      ed
+                 ic.
+         toe
+ fire
+
+                                                              17
+Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+ Bài 3                                    Bài 4
+
+
+
+
+                                    n
+                            u.v
+                      ed
+                 ic.
+         toe
+ fire
+
+                                                              18
+Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+ Bài 5                                    Bài 6
+
+
+
+
+                                    n
+                            u.v
+                      ed
+                 ic.
+         toe
+ fire
+
+                                                              19
+Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+ Bài 7                                    Bài 8
+
+
+
+
+                                    n
+                            u.v
+                      ed
+                 ic.
+         toe
+ fire
+
+                                                              20
+Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+ Bài 9                                    Bài 10
+
+
+
+
+                                    n
+                            u.v
+                      ed
+                 ic.
+         toe
+ fire
+
+                                                              21
+Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 11                                    Bài 12
+
+
+
+
+                                    n
+                            u.v
+                      ed
+                 ic.
+         toe
+ fire
+
+                                                              22
+Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 13                                    Bài 14
+
+
+
+
+                                    n
+                            u.v
+                      ed
+                 ic.
+         toe
+ fire
+
+                                                              23
+Lửa TOEIC – Trường đào tạo TOEIC online
+                       Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                D. ĐÁP ÁN
+
+Part 3
+Bài 1: C D A                           Bài 2: A B B
+Bài 3: D C C                           Bài 4: B C D
+Bài 5: B D B                           Bài 6: D B D
+Bài 7: C D B                                      n
+                                       Bài 8: C A C
+Bài 9: B C B
+Bài 11: B C B
+                                          u.v
+                                       Bài 10: C B C
+                                       Bài 12: C C D
+Bài 13: A D A                          Bài 14: C B B
+
+
+
+Part 4
+                                    ed
+Bài 1: C B B
+Bài 3: C A C
+                               ic.     Bài 2: C C B
+                                       Bài 4: C A C
+Bài 5: D C D
+Bài 7: B D B
+Bài 9: A C D
+                       toe             Bài 6: C C B
+                                       Bài 8: A D D
+                                       Bài 10: A A D
+Bài 11: D B C                          Bài 12: C D D
+Bài 13: A C D    fire                  Bài 14: B A D
+
+
+
+
+                                                                            24
+                Lửa TOEIC – Trường đào tạo TOEIC online
+        Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+              E. TRANSCRIPT
+                   Part 3
+
+Bài 1                                       Bài 2
+
+
+
+
+                                   n
+                            u.v
+                     ed
+Bài 3
+                ic.                         Bài 4
+
+
+
+        toe
+  fire
+
+                                                             25
+ Lửa TOEIC – Trường đào tạo TOEIC online
+        Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 5                                       Bài 6
+
+
+
+
+                                   n
+                           u.v
+Bài 7                ed                     Bài 8
+
+
+
+                ic.
+        toe
+  fire
+
+                                                             26
+ Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 9                                        Bài 10
+
+
+
+
+                                    n
+                            u.v
+Bài 11                ed                     Bài 12
+
+
+
+                 ic.
+         toe
+  fire
+
+                                                              27
+ Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 13                                       Bài 14
+
+
+
+
+                                    n
+                            u.v
+                      ed
+                 ic.
+         toe
+   fire
+
+                                                              28
+ Lửa TOEIC – Trường đào tạo TOEIC online
+        Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                   Part 4
+
+Bài 1                                       Bài 2
+
+
+
+
+                                   n
+                            u.v
+                     ed
+Bài 3                                       Bài 4
+                ic.
+        toe
+  fire
+
+                                                             29
+ Lửa TOEIC – Trường đào tạo TOEIC online
+        Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+Bài 5                                       Bài 6
+
+
+
+
+                                   n
+                           u.v
+                     ed
+Bài 7
+                ic.                         Bài 8
+
+
+
+
+        toe
+  fire
+
+                                                             30
+ Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài 9                                        Bài 10
+
+
+
+
+                                    n
+                            u.v
+Bài 11
+                      ed                     Bài 12
+
+                 ic.
+         toe
+   fire
+
+                                                              31
+ Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+Bài 13                                      Bài 14
+
+
+
+
+                                    n
+                            u.v
+                      ed
+                 ic.
+         toe
+   fire
+
+                                                              32
+ Lửa TOEIC – Trường đào tạo TOEIC online
+

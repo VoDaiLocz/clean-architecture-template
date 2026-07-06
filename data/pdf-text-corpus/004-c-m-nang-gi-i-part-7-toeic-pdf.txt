@@ -1,0 +1,2776 @@
+SOURCE_RELATIVE_PATH: downloads/Cẩm nang giải part 7 TOEIC.pdf
+SOURCE_FILE_NAME: Cẩm nang giải part 7 TOEIC.pdf
+QUEUE_ORDER: 4
+EXTRACTION_CLASS: VALID_TEXT_EXTRACTED
+PAGE_COUNT: 73
+
+----- BEGIN PDF TEXT -----
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                                                               1
+Lửa TOEIC – Trường đào tạo TOEIC online
+                              Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                    MỤC LỤC
+
+                                  Nội dung                                     Trang
+
+
+I.   Kỹ năng làm bài part 7
+
+Bài học 1: Kỹ năng xác định loại câu hỏi, thứ tự ưu tiên trả lời và kỹ năng
+                                                                                  3
+Scanning (part 1)
+
+Bài học 2: Kỹ năng Skimming                                                       8
+
+
+Scanning (part 2)
+                                                          n
+Bài học 3: Kỹ năng xác định loại câu hỏi, thứ tự ưu tiên trả lời và kỹ năng
+                                                                                 11
+
+Bài học 4: Dạng câu hỏi điền câu vào chỗ trống
+                                                 u.v
+Bài học 5: Xử lí bài dưới dạng text messages (tin nhắn)
+                                                                                 14
+
+                                                                                 17
+
+
+
+
+Bài học 7: Xử lý bài gồm 2 đoạn văn
+                                          ed
+Bài học 6: Bài học nâng cao – xử lý đoạn văn dạng Articles (bài báo)             21
+
+                                                                                 24
+
+Bài học 8: Xử lý bài gồm 3 đoạn văn
+
+II. Bài tập luyện theo dạng
+                                   ic.                                           28
+
+
+
+
+Scanning (part 1)
+                              toe
+Bài học 1: Kỹ năng xác định loại câu hỏi, thứ tự ưu tiên trả lời và kỹ năng
+
+
+Bài học 2: Kỹ năng Skimming
+                                                                                 32
+
+                                                                                 34
+
+Bài học 3: Kỹ năng xác định loại câu hỏi, thứ tự ưu tiên trả lời và kỹ năng
+Scanning (part 2)
+                   fire
+Bài học 4: Dạng câu hỏi điền câu vào chỗ trống
+                                                                                 37
+
+                                                                                 39
+
+Bài học 5: Xử lí bài dưới dạng text messages (tin nhắn)                          42
+
+Bài học 6: Bài học nâng cao – xử lý đoạn văn dạng Articles (bài báo)             46
+
+Bài học 7: Xử lý bài gồm 2 đoạn văn                                              49
+
+Bài học 8: Xử lý bài gồm 3 đoạn văn                                              53
+
+Đáp án và lời giải chi tiết                                                      57
+
+
+                                                                                      2
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                                Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                        Bài học 1
+   Kỹ năng xác định loại câu hỏi, thứ tự ưu tiên trả lời và kỹ năng Scanning (part 1)
+
+
+
+1. Phân loại câu hỏi
+
+   •   (a) Câu hỏi thông tin chi tiết: hỏi về người, vật, thời gian cụ thể. Ex: Who is Ms.
+       Smith?
+
+   •   (b) Câu hỏi về mục đích/ý chính của bài (hỏi về ý chính của bài, mục đích của
+       người viết). Ex: What is the main idea of this article?
+
+   •                                                        n
+       (c) Câu hỏi về thông tin tổng quát (nguồn gốc của bài đọc/đối tượng độc giả/sản
+       phẩm được quảng cáo...). Ex: Who is the audience for this advertisement?
+
+   •
+                                                   u.v
+       (d) Câu hỏi yêu cầu giải thích ý nghĩa của một ý trong bài - dạng mới của đề thi
+       FORMAT MỚI: Ex: At 1.38, what does Ms. Owen mean when she write "give him
+       another shot for it"?
+
+   •   (e) Câu hỏi yêu cầu điền câu vào chỗ trống - dạng mới của đề thi FORMAT
+
+
+       the strong demand for smartphones".
+                                            ed
+       MỚI. Ex: In which of the position marked [1] [2] [3] and [4] does the following
+       sentence best belong? "This Increase in output will help the company keep up with
+
+
+   •
+
+
+   •
+                                     ic.
+       (f) Câu hỏi từ vựng (yêu cầu tìm từ đồng nghĩa với từ được hỏi): Ex. Which word
+       can replace the word "volume" in line 2 paragraph 3?
+
+       (g) Câu hỏi suy luận (yêu cầu suy luận để lấy thông tin, thường chứa các từ
+       Indicate, infer, imply). Ex: What does Mr. Carver indicate about Lamingtons?
+
+   •
+                            toe
+       (h) Câu hỏi NOT Mention/ NOT true/true: What is not mention as an option when
+       facing the bankcruptcy?
+
+(Tất nhiên có nhiều người chia theo cách khác nhau, mình chỉ lấy những cái phổ biến nhất,
+có những loại gần giống mình sẽ chuyển về 8 dạng trên).
+
+
+
+2. Thứ tự ưu tiên
+                    fire
+Dạng (a) ưu tiên số 1
+
+Dạng (d) ưu tiên số 2
+
+Dạng (c), (e) (f) ưu tiên số 3 (dạng này nếu có các từ khóa tên riêng, giờ giấc, địa điểm như
+ở dạng 1 thì đẩy lên làm trước).
+
+Dạng (b) ưu tiên thứ 4, dạng này mình thường làm sau vì với những bạn muốn mức điểm
+cao thường sợ bẫy; nếu chỉ đọc đầu dòng vào suy ra luôn ý chính thì hơi sơ sài, nên mình
+thường để sau, sau khi mình hiểu sơ về bài qua các câu hỏi đã làm trước đó thì sẽ không
+sợ bẫy và cực chắc chắn về câu trả lời của mình. Một số bạn nếu mức điểm vừa tầm thì có
+thể làm trước cũng được không có vấn đề gì cả.
+
+                                                                                           3
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                                  Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Dạng (g), (h) làm sau cùng vì lí do nó phải đọc cả 4 phương án thì nên làm lúc mình có hiểu
+biết nhất định về bài học đã.
+
+
+
+3. Kỹ năng Scanning
+
+   •   Scan câu hỏi bằng các từ: tên riêng, từ trong ngoặc kép, thời gian... hoặc những
+       từ/cụm từ mà rất khó đồng nghĩa
+
+   •   Khi thấy từ đó, dừng lại đọc câu chứa từ đó + câu trước và câu sau câu đó
+
+   •   KHÔNG đọc hiểu bài, CHỈ TÌM từ khóa
+
+                                                            n
+4. Áp dụng
+
+                                                          u.v
+Các bạn lấy giấy bút ra làm nhé, bây giờ nhìn vào ảnh nào (KHÔNG ĐỌC HIỂU BÀI). Làm
+theo hướng dẫn của mình:
+
+B1. Đọc tiêu đề và loại hình bài đọc: emai + History tutoring > Đây là email trao đổi về vấn
+đề gia sư môn lịch sử
+
+                                                ed
+B2. Đọc lướt qua 3 câu hỏi; phân loại 3 câu hỏi vào các dạng (a) đến (h) bên trên.
+
+   •   155: Kết hợp loại (b) + (h) (mục đích + không đề cập): làm cuối cùng
+
+   •
+
+   •
+                                        ic.
+       156: loại (a) (thông tin chi tiết): làm đầu tiên
+
+       157: nằm giữa loại (a) và (c) (làm thứ 2)
+
+
+
+
+                              toe
+                   fire
+
+
+                                                                                          4
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                                   n
+                           u.v
+                    ed
+              ic.
+       toe
+ fire
+
+
+                                                               5
+Lửa TOEIC – Trường đào tạo TOEIC online
+                                Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+B3. Bắt đầu giải quyết các câu hỏi
+
+156: Where does Ms. Gatineau's tutoring sessions take place? Từ khóa để scan là
+Gatineau. Lướt lên bài đọc; chỉ tìm chỗ nào có chữ Gatineau mà không đọc hiểu bài (check
+ở chỗ đầu/cuối email trước vì tên người thường ở chỗ đó); và sẽ thấy tên Gatineau ở dòng
+5, 6 đoạn 1, quay lại nhìn câu hỏi xem nó hỏi gì (where does Ms. Gatineau's tutoring
+sessions take place?); và thấy ngay ở dòng mình vừa scan (Ms. Gatineau's only work from
+our office), đối chiếu các phương án thì thấy đáp án B là có chữ office.
+
+
+
+Với các bạn không hướng tới mục tiêu cao thì đến đây là ok; nhưng với các bạn muốn điểm
+
+                                                            n
+cao thì chưa dừng lại tại đó. Hãy tự hỏi office đó có ở downtown Edmonton không? Nếu
+đúng thì đó mới là đáp án cuối cùng của các bạn. Nhìn ờ dòng 4 (gần dòng mà mình scan
+
+
+                                                   u.v
+ra từ Gatineau, có ghi Our office in downtown Edmonton) > B chính là đáp án đúng rồi.
+
+
+
+157: What will Mr. Harcourt be discussing in the future? Câu này hỏi về việc thảo luận
+trong tương lai, mình suy đoán nó sẽ nằm ở gần cuối đoạn, kiểu như kế hoạch tiếp theo là
+như thế nào (đoạn cuối thường là câu chào xã giao như kiểu tôi rất mong nhận được phản
+
+
+thấy ông này là người gửi email.
+                                            ed
+hồi từ ông, chúc ông thượng lộ bình an, hạ lộ nằm yên ...). Tuy nhiên do chưa đọc bài nên
+cũng không biết Mr. Harcourt là ai đúng không? Lại scan tiếp (vẫn scan đầu/cuối email) thì
+
+
+
+                                     ic.
+Và bây giờ tìm ở đoạn gần cuối bài (chính là đoạn 2) xem có chỗ nào nói về discuss trong
+tương lai > tra thấy câu: after we have this information, we can discuss payment methods >
+đối chiếu với các phương án thì đó là tuition payment (việc thanh toán học phí) > C là đáp
+án đúng
+                            toe
+155: What is NOT a purpose of the e-mail? Sau khi làm câu hỏi trên thì cũng nắm sơ sơ
+về nội dung bài, biết về 1 ông Harcourt gửi email thảo luận về việc gia sư của 1 gia đình, có
+
+
+                  fire
+giáo viên Gatineau chỉ dạy được ở văn phòng, và ông này xin 1 số thông tin gì đó, xin xong
+thì sẽ thảo luận về thanh toán học phí.
+
+
+
+Giờ quay ra đọc đoạn đầu (thường chưa thông tin về mục đích) thì ở ngay câu đầu có thông
+tin về việc trao đổi thông tin rõ hơn về việc gia sư cho con trai của 1 bà nào đó).
+
+Vì đây là câu hỏi dạng NOT nên các bạn phải đọc cả 4 phương án và loại trừ.
+
+A. Cụm to acknowledge receipt of an inquiry này hay này :)) Câu này đố mn biết vì sao
+không phải là đáp án đúng. Comment bên dưới nhé!
+
+B. Các bạn đã tìm thấy cái này khi làm câu 157 (thấy lợi khi làm câu 157 trước chưa)
+
+C. Ở đây có nhắc đến "career options"; như kiểu định hướng nghề nghiệp nhưng trong bài
+chỉ xoay quanh chủ đề "History tutoring".
+
+                                                                                           6
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                                  Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+D. Ngay dòng đầu của đoạn 1, vừa mới đề cập bên trên
+
+
+
+Do đó C chính là nàng công chúa của chúng ta.
+
+
+
+5. Từ vựng nên ghi nhớ
+
+    •    Tutor (n ): gia sư, tutoring: việc gia sư, liên quan đên gia sư
+
+    •    Meet someone's needs: thỏa mãn yêu cầu của ai đó (câu trong bài: meets Jason's
+
+
+    •
+         intellectual needs)
+
+         Payment method: phương thức thanh toán
+                                                                 n
+    •
+
+    •
+
+    •
+                                                       u.v
+         Inquiry (n ) yêu cầu (thường trang trọng, dùng trong văn bản)
+
+         Additional details = additional information = extra details: thông tin thêm
+
+         Tuition payment (n ) thanh toán học phí. Khi nào muốn nói tới học phí, các bạn dùng
+         từ Tuition cho sang nhé)
+
+-------------------
+                                                ed
+Bài này mình áp dụng những cái bên trên và không đọc toán bộ bài đọc cũng như
+không cần biết nhiều từ vựng (có 1 chút kỹ năng Skimming để tra thông tin nữa; tuy
+nhiên mình không đề cập trong này).
+                                         ic.
+                               toe
+                       fire
+
+
+                                                                                          7
+                      Lửa TOEIC – Trường đào tạo TOEIC online
+                                 Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                         Bài học 2
+                                     Kỹ năng Skimming
+
+
+
+Kỹ năng skimming là kỹ năng đọc lướt lấy thông tin chính. Kỹ năng này kết hợp với kỹ năng
+Scanning cùng với kỹ năng đọc hiểu chi tiết sẽ là bộ ba cực kỳ khủng trong việc giải quyết
+các câu hỏi.
+
+
+
+Nên Skimming như thế nào?
+
+   •   Đọc từ trên xuống dưới, trái qua phải                n
+   •
+
+   •                                               u.v
+       Bỏ qua các từ không quan trọng như: mạo từ/giới từ/các từ khoa học
+
+       Tập trung vào các danh từ đóng vai trò là chữ ngữ/động từ/tân ngữ chính
+
+Ví dụ: The Golden Lagoon has been serving Montego Bay for 18 years. We are an
+award-winning restaurant with a reputation that spans the Caribbean.
+
+
+
+từ này thì dùng kỹ năng Scanning để tra lại).
+                                              ed
+Từ in đậm là các từ nên chú ý; từ in đậm nghiêng là từ chú ý mức độ vừa vừa (vì tên riêng
+rất khó nhớ; mn chỉ cần biết nó là 1 người/vật/địa danh nào đó; sao đó nếu câu hỏi hỏi đến
+
+
+
+dụng các kỹ năng khác.                 ic.
+Bằng việc tập trung vào các từ chính; mình sẽ hiểu được ý chính của các câu và sau đó áp
+
+
+Cùng đi vào 1 ví dụ nhé! Nhìn vào ảnh dưới.
+
+
+
+                             toe
+Đây là 1 bài dạng TOEIC format mới, trao đổi thông tin qua tin nhắn.
+
+Với kinh nghiệm làm bài dạng này của mình thì các bạn nên dùng kỹ năng Skimming trước
+khi Scanning hay đọc câu hỏi. Bởi vì:
+
+   •   Các thông tin tin nhắn liên quan tới nhau theo thứ tự trên xuống dưới
+
+   •
+
+
+   •
+                   fire
+       Nếu scanning ra vùng trả lời cho câu hỏi thì chưa chăc đã hiểu hết ý nghĩa của đoạn
+       tin nhắn >> Dễ sai.
+
+       Các tin nhắn thường không quá khó và được tách biệt của từng người nên rất dễ
+       hiểu
+
+
+
+Do đó, với dạng bài này, các bạn nên:
+
+B1: Skimming (đọc lướt) toàn bài để nắm nội dung chính: nhiều người đang nói về địa
+điểm ăn
+
+B2: Đọc các câu hỏi: phân loại câu hỏi và xác định thứ tự trả lời.
+
+(Xem lại bài học 1 link phía trên để phân loại)
+
+Câu 161: Câu hỏi ý chính (làm cuối cùng)
+                                                                                        8
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                                  Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Câu 162: Câu hỏi thông tin chi tiết (trả lời đầu tiên)
+
+Câu 163: Câu hỏi thông tin chi tiết (làm thứ 2)
+
+Câu 164: Câu hỏi thông tin tổng quát (làm thứ 3)
+
+
+
+
+                                                            n
+                                                         u.v
+                                               ed
+                                        ic.
+                              toe
+                    fire
+B3: Trả lời câu hỏi
+
+162. What information does Mr. Foxx provide about Ocha Coronas?
+
+Từ khóa scanning: Ocha Coronas, thấy nó ở dòng 4:32, đọc câu gần cạnh từ đó: We're
+thinking of trying the new Mexican place on Slate Road. It's called Ocho Coronas và You're
+out of luck. That place closed a few days ago.
+
+
+                                                                                        9
+                  Lửa TOEIC – Trường đào tạo TOEIC online
+                                Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Trong 2 câu này thì câu thứ 2 khớp với ý (D) It is no longer in business.
+
+Đáp án D
+
+
+
+163. At 4:34 P.M., why most likely does Mr. Webber write, "That's too bad"?
+
+Từ khóa scanning: 4:34 và "that's too bad" trong đoạn hội thoại, nhìn lên câu phía trên dòng
+đó "You're out of luck. That place closed a few days ago" và nó ứng với đáp án (A) He
+wanted to try a new restaurant (anh ta muốn thử nhà hàng mới này nhưng nhà hàng đó lại
+đóng cửa nên anh ta cảm thấy tồi tệ).
+
+Đáp án A
+                                                              n
+164. What does Mr. Avril decide to do?
+                                                     u.v
+Từ khóa Scanning: Arvil. Có 2 dòng chứa thông tin là 4:31 và 4.38, và sẽ thấy dòng OK, but
+I won't be able to get there till about six chứa thông tin. Ông này đồng ý đi nhưng sẽ đến
+muộn hơn so với mợi người (tầm 6h); nó khớp với đáp án (C)Join his coworkers for a meal.
+
+
+
+Đáp án C
+                                             ed
+Câu này dùng cách diễn đạt khác nên các bạn phải tinh ý mới thấy được 2 câu này ý là 1.
+
+
+
+
+161. What are the writers discussing? ic.
+Tới đẩy rồi thì cũng dễ nhận thấy các nhân vật đang nói chuyện về việc ăn tối ở đâu, khớp
+
+
+Do đó D là đáp án đúng.      toe
+với đáp án (D) Where to go for dinner.
+
+
+
+
+Tới đây nhiều bạn đã nhận thấy là hình như Skimming không áp dụng gì mấy ngoài bước 1;
+
+
+                   fire
+vì khi làm các câu hỏi thì scanning cũng ra thông tin rồi. Tuy nhiên với những bạn điểm cao
+thì Skimming trước là điều nên làm với dạng bài này để tránh bị bẫy + không bị hoang mang
+không có phương hướng khi đọc bài.
+
+
+
+
+                                                                                          10
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                                 Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                         Bài học 3
+   Kỹ năng xác định loại câu hỏi, thứ tự ưu tiên trả lời và kỹ năng Scanning (part 2)
+
+
+
+Như ở bài 1 chúng ta đã được học cách phân loại các câu hỏi cũng như thứ tự ưu tiên trả
+lời; hôm nay chúng ta sẽ đi sâu về phần này. Bài này sẽ kết hợp kỹ năng Skimming đã học
+ở bài 2 nhiều hơn so với bài 1.
+
+Mọi người nhìn vào bài đọc nhé.
+
+B1: Loại hình đoạn văn: Company newsletter (bản tin công ty); mình sẽ suy đoán công ty
+thông báo 1 tin tức gì đó
+                                                             n
+B2: Đọc tiêu đề các câu hỏi 168, 169, 170, 171 và bắt đầu phân loại.
+
+B3: Phân loại câu hỏi và thứ tự trả lời
+
+168: Why most likely was the article written?
+                                                    u.v
+Dạng hỏi về mục đích: làm thứ 3
+
+
+
+Dạng từ vựng: làm thứ 2
+                                                ed
+169: The world “founded” in paragraph 2, line 1 is closet in meaning to?
+
+
+
+
+Dạng suy luận: Làm cuối cùng           ic.
+170: What is suggested about the Association of Web Designers?
+
+
+
+171: According to the article, what can be found in the website?
+
+
+
+B4: Bắt đầu vào làm          toe
+Dạng câu hỏi thông tin chi tiết: làm đầu tiên
+
+
+
+171: According to the article, what can be found in the website?
+
+Câu này hỏi thông tin ở website; mặc dù website thường sẽ khó Scan vì nó không phải từ
+
+                   fire
+đặc biệt nhưng khi nhắc đến Website thường thông tin nằm ở cuối đoạn văn và chúng ta sẽ
+kỳ vọng scan thông tin dạng w.w.w/website; do đó nếu tìm ở cuối đoạn và tìm 3 chữ W
+chúng ta sẽ thấy nó ở ngay câu cuối cùng: “The AWD will be holding more contests in
+the future, and those interested should visit the website at www.awd.com/contests to
+find out more information.”
+
+> Đáp án C: Details about upcoming contests.
+
+169: The world “founded” in paragraph 2, line 1 is closet in meaning to?
+
+Chúng ta tìm từ “founded” ở đoạn 2, dòng 1 và đọc câu chứa từ đó “The Association of Web
+Designers (AWD) is an organization founded in 2002 with ….
+
+Rõ ràng từ founded ở đây mang nghĩa thành lập. Đối chiếu các phương án thì established =
+founded. Do đó C là đáp án đúng.
+
+168: Why most likely was the article written?
+                                                                                        11
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                               Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài này chúng ta thấy tiêu đề: “Employee Winner of National Contest”; tiêu đề này đã
+giúp chúng ta hình dung được một phần nào đó về bản tin công ty khi muốn thông báo về
+nhân viên chiến thắng cuộc thi quốc gia. Với các bạn mức điểm thấp thì tới đây có thể suy
+luận đáp án là B rồi; tuy nhiên; vẫn có thể đây chưa hẳn là mục đích của bài vì TOEIC cũng
+khá nhiều bẫy. Với các bạn hy vọng mức điểm trên 800, các bạn nên áp dụng kỹ năng
+skimming để nắm chắc hơn với đáp án của mình Với câu này chúng ta cần sử dụng kỹ năng
+Skimming. Các bạn Skimming sau đó đối chiếu 4 phương án để chọn phương án sát với
+những gì mình đã Skimming được.
+
+Khi Skimming xong chúng ta thầy đoạn 1 nói về việc bà Holt đã chiến thắng cuộc thi; đoạn 2
+mô tả kỹ hơn về tổ chức tổ chức cuộc thi đó, đoạn 3 chủ yếu nói về giải thưởng + cuộc thi
+sắp tới cho những người quan tâm.
+
+Như vậy B vẫn là đáp án sát nhất.
+                                                           n
+yếu sẽ nằm ở đoạn 2 và 3
+                                                  u.v
+170: What is suggested about the Association of Web Designers?
+
+Câu này hỏi về the Association of Web Designers, như đã skimming ở trên thì thông tin chủ
+
+
+Với câu hỏi dạng suy luận này, chúng ta phải đọc kỹ từng phương án. Chúng ta sẽ đi từ
+phương án dễ tìm nhất.
+                                           ed
+B. It is based in Los Angeles. Chúng ta scan từ Los Angeles và thấy nó ở đoạn 3; nói về
+việc tổ chức hội thảo ở Los Angeles chứ không phải trụ sở ở đó > Loại.
+
+                                       ic.
+A. It holds a conference every year: Khi scanning Los Angeles và thấy câu: “she has been
+invited to give a speech at the Annual Web Designers’ Conference to be held…”
+
+> Thông tin trong bài và câu hỏi trùng khớp > đáp án A. Đến đây các bạn có thể dừng rồi,
+
+
+
+
+membership miễn phí > Loại
+                            toe
+tuy nhiên nếu muốn chắc chắn hơn, cùng thử làm tiếp nhé.
+
+C. It currently offers free membership. Chúng ta scan từ membership và thấy nó ở dòng 2,
+đoạn 3, tuy nhiên ở đây chỉ đề cập việc bà Holt giành giải thưởng nên được cấp
+
+
+
+
+                  fire
+D. It donates to community projects.
+
+> Câu này thì các bạn chú ý vào community. Ở câu cuối và câu gần cuối đoạn 2 có nhắc tới
+“in order to promote web design as a professional field” và “…can enhance people’s lives
+and build better communitues”; do đó nó không khớp với việc nó đóng góp trực tiếp tài chính
+cho cộng đồng mà ở đây chỉ là 1 niềm tin mang lại tương lai tốt cho cộng đồng.
+
+TOEIC thường sẽ đưa ra phương án gây nhiễu, có nhắc tới community nhưng mục đích lại
+không trùng khớp. > Loại.
+
+
+
+Bài này mọi người thấy thế nào? Có khó lắm không nhỉ? Cùng chờ đón bài học 4: Dạng câu
+hỏi điền câu vào chỗ trống nhé! Dạng này là dạng siêu mới trong đề thi Format mới.
+
+
+
+
+                                                                                        12
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                                   n
+                           u.v
+                    ed
+              ic.
+       toe
+ fire
+
+
+                                                              13
+Lửa TOEIC – Trường đào tạo TOEIC online
+                               Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                          Bài học 4
+                           Dạng câu hỏi điền câu vào chỗ trống
+
+
+
+Hey there, are you good?
+
+Chào các bạn, mọi người vẫn khỏe chứ ạ? Cái nắng mùa hè có làm bạn nhụt chí trong việc
+ôn thi TOEIC không?
+
+Bài học hôm nay chúng ta sẽ đi vào giải quyết dạng câu hỏi điền câu vào chỗ trống. Với
+dạng câu hỏi này, mọi người nên làm sau câu hỏi chi tiết là được.
+
+Mình sẽ trả lời câu hỏi từ 172-175 nhé.                     n
+1, 2, 3 mọi người skim đi nhé <3 (45s)
+                                                   u.v
+Bài này khi nhìn các câu hỏi thì không có các câu hỏi mà có thể ăn xổi (có thể scan lấy
+thông tin ngay lập tức) nên bài này phải skim để lấy thông tin chung của bài.
+
+
+
+Sau khi skim xong mình sẽ đi vào từng câu hỏi nhé.
+
+Câu 172: What is suggested about the shop?
+                                             ed
+A. Nếu đọc cả bài rồi các bạn sẽ thấy shop này rất thành công với các từ khóa như sau:
+“getting a seat or table can take as long as 30 mininutes….always crowded”
+
+
+
+C. Dòng 2 có nói opened last month
+                                     ic.
+B. Shop này có bàn, ghế để ăn nên không thể chỉ offer take-out (mang đi)
+
+
+
+
+> Đáp án A
+                            toe
+D. Chỗ này mở cho nhiều người chứ không chỉ mỗi patron (khách quen)
+
+
+
+Câu 173: What is suggested about Health Shack products?
+
+Câu này nhìn tiêu đề thì mọi người đã có thể đoán sơ bộ rồi ấy nhỉ. Sản phẩm này hướng
+
+
+                  fire
+tới mục tiêu sức khỏe; ở dòng 3 từ dưới lên có câu: “Without Health Snack, we’d be eating
+junk food”. > They are healthy > đáp án B
+
+Câu 174: Why don’t the owner advertise?
+
+Dòng 6, 7 có câu: In fact, everything spead by word of mouth so we didn’t need to advertise.
+Chúng ta có cụm Word of mouth: truyền miệng, kiểu người này chỉ người kia; như vậy nó sẽ
+khớp với phương án C.
+
+Câu 175: In which of the position marked [1] [2] [3] and [4] does the following
+sentence belong?
+
+“Despite the limited number of products on the menu, customers can’t get enough of
+the tast but healthy shakes that are on offer”.
+
+Câu này là mục tiêu của bài học ngày hôm nay.
+
+
+                                                                                         14
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                               Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Đầu tiên mọi người phải hiểu nghĩa câu này: Mặc dù số lượng sản phẩm trên menu hạn chế
+nhưng khách hàng vẫn không thể thưởng thức hết những thức uống thơm ngon và bổ
+dưỡng đang bán.
+
+Như vậy ở đây muốn ám chỉ sự thu hút khách hàng của sản phẩm mà nhà hàng đang cung
+cấp, đông đến nỗi menu ít món nhưng khách vẫn không nếm thử được hết vì đông khách
+quá! Như vậy chúng ta sẽ chèn câu này vào 1 phần mà nó có nhắc đến việc khách đông
+đúc; cửa hàng bán được nhiều … bởi vì các câu sẽ có sự liên kết với nhau. Nếu để ý thì sẽ
+thấy sau [2] có câu” We were overwhelmed by the response” >> [2] là chỗ trống phù hợp.
+
+
+
+
+                                                            n
+Để ăn chắc hơn với câu trả lời của mình, các bạn thử lắp câu được cho vào [1] [3] [4] và rất
+nhanh chóng nhận ra nó chả ăn nhập với câu trước/sau chỗ trống gì cả. Lưu ý chỉ đọc 1
+đoạn nhỏ trước/sau chỗ trống thôi nhé.
+
+Từ vựng nên nhớ:
+
+   •   Shake = drink: đồ uống
+                                                   u.v
+   •   By/through word of mouth: truyền miệng (từ này dùng trong giao tiếp thì siêu cool
+
+   •
+       luôn)
+       Patrons: khách quen, khách hàng quen
+                                            ed
+Hẹn gặp lại mọi người vào Bài học 5: Xử lí bài dưới dạng text messages (tin nhắn)
+
+Good bye!
+                                     ic.
+                            toe
+                  fire
+
+
+                                                                                         15
+                Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                                   n
+                           u.v
+                    ed
+              ic.
+       toe
+ fire
+
+
+                                                              16
+Lửa TOEIC – Trường đào tạo TOEIC online
+                                  Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                            Bài học 5
+                       Xử lí bài dưới dạng text messages (tin nhắn)
+
+
+
+Hey!! Long time no see!
+
+Chào mọi người, hôm nay chúng ta đến với bài học 5 trong chuỗi bài học Part 7 nhé. Bài
+này sẽ hướng dẫn mọi người xử lý bài đọc dạng text messages, một dạng khá dễ nhưng
+hay bẫy trong đề thi TOEIC format mới.
+
+Vậy dạng bài text messages là gì?
+                                                            n
+Là dạng hội thoại online qua tin nhắn giữa 2 hoặc nhiều người, có tên các nhân vật và thời
+gian xuất hiện các tin nhắn.
+
+Các loại câu hỏi hay gặp là gì ?
+                                                    u.v
+- Mục đích của cuộc hội thoại/mục đích của ai đó là gì ?
+
+- Thông tin chi tiết trong cuộc hội thoại
+
+
+                                               ed
+- At time xxx, what does ABC mean when she/he writes, “abcxyz”?: câu này là câu kinh điển,
+cụm trong ngoặc kép thường là các cụm từ ngắn, các expression.
+
+Dạng bài này thường không có quá nhiều từ mới, và rất dễ đọc vì các dòng tin nhắn được
+
+                                        ic.
+phân theo vai và có sự liên kết, nội dung dễ hiểu từ đầu tới cuối và phải đọc từ trên xuống
+dưới mới hiểu được. Cũng vì những lý do trên, việc đọc bài này khá nhanh và dễ đang,
+cùng đến với các bước làm bài dạng text messages nhé
+
+B1. Đọc lướt từ trên xuống dưới để hiểu nội dung bài (skimming)
+
+
+quá quan trọng).
+                              toe
+B2. Đọc các câu hỏi và sắp xếp thứ tự trả lời (với dạng bài này thì thứ tự trả lời không
+
+
+B3: Tìm kiếm tin nhắn của nhân vật được hỏi và trả lời
+
+
+
+
+đó.
+                    fire
+Các bạn cùng làm câu 164 – 167 nhé!
+
+Sau khi đọc lướt thì các bạn có thể thấy cuộc hội thoại nói về việc giao/nhận 1 món đồ nào
+
+
+164: Why did Mr. Koh start the online chat discussion? Câu này có thể làm thứ 2 vì đã skim
+cả bài rồi.
+
+165: What does Mr. Koskinen recommend doing?: làm thứ 3
+
+166: At 10:19 a.m., what does Ms Matova mean most likely mean when she writes, “sorry”?:
+Câu này dễ tìm thông tin trong bài nên sẽ làm đầu tiên
+
+167: What will Ms. Matova probably do with the package? Làm cuối cùng
+
+Cùng giải quyết các câu nhé!
+
+
+
+                                                                                        17
+                  Lửa TOEIC – Trường đào tạo TOEIC online
+                                Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+166: At 10:19 a.m., what does Ms Matova mean most likely mean when she writes,
+“sorry”?
+
+Chúng ta chọn đến dòng 10:19 và tìm từ khóa “sorry” và thấy câu Sorry, It does have your
+name on it. It was so small I didn’t notice it.
+
+Dịch: Xin lỗi, thực sự có tên bạn trên đó. Chữ bé quá nên tôi không để ý.
+
+Lưu ý: Chèn does/do vào câu để nhấn mạnh, vd: I do love you (em thực sự thích anh)
+
+>> Nó sẽ khớp với đáp án D: Cô ấy nhầm lẫn khi đọc nhãn
+
+164: Why did Mr. Koh start the online chat discussion?
+
+
+today
+                                                            n
+Câu này thông tin ở dòng đầu tiên: I was supposed to get a delivery of some documents
+
+
+
+
+165: What does Mr. Koskinen recommend doing?
+                                                     u.v
+= phương án C: He is expecting some important documents.
+
+
+
+Ông Koskinen gợi ý làm gì? =>> Tìm kiếm dòng tin nhắn của ông Koskinen
+
+
+floor.                                       ed
+Ta thấy ở dòng 10:17 có viết: You might want to check with the print shop on the ground
+
+
+= Đáp án D: Checking a different location
+
+
+                                      ic.
+167: What will Ms. Matova probably do with the package?
+
+Câu hỏi về bà Matova nên sẽ nhìn các tin nhắn của bà này.
+
+Ở dòng 10:20 có viết: No problem. I’m going upstairs in a minute anyway và ở câu trên đó
+
+
+                             toe
+có viết: Could you have the package sent up to my office please?
+
+Từ đây có thể suy luận bà Matova sẽ mang kiện hàng lên cho ông Koh = đáp án A.
+
+
+
+
+                   fire
+Từ vựng cần lưu ý trong bài:
+
+- Be supposed to: để diễn đạt rằng ai đó mong điều gì đó xảy ra
+
+- Có thể thêm do/does/did trước động từ để nhấn mạnh 1 hành động
+
+- Front desk: bàn tiếp tân/bàn tiếp nhận thông tin
+
+
+
+Tạm biệt mn <3 Các bạn làm câu 153-154 dưới đây và comment đáp án dưới bài post nhé.
+
+Cùng chờ đón Bài học 6: Bài học nâng cao – xử lý đoạn văn dạng Articles (bài báo)
+vào tuần sau nhé.
+
+
+
+
+                                                                                     18
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                                   n
+                           u.v
+                    ed
+              ic.
+       toe
+ fire
+
+
+                                                              19
+Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                                   n
+                           u.v
+                    ed
+              ic.
+       toe
+ fire
+
+
+                                                              20
+Lửa TOEIC – Trường đào tạo TOEIC online
+                                 Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                         Bài học 6
+                Bài học nâng cao – xử lý đoạn văn dạng Articles (bài báo)
+
+
+
+Hey everyone!
+
+Bài học hôm nay là môt bài học nâng cao vì bài báo thường là những bài đọc khó nhằn, từ
+vựng nhiều, nội dung cứng nhắc. Tuy nhiên, với những bạn mong muốn đạt điểm 700+ thì
+nên học dạng này nhé.
+
+Đặc điểm nhận dạng: Question xxx refer to the following article và bài báo được trình bày
+dưới dạng nhiều cột. Điểm cuối là nhiều chữ ;)
+                                                              n
+Làm bài này như thế nào? Theo mình, các bạn có thể thực hiện các bước sau:
+
+B1: Đọc tiêu đề bài báo để xem bài nói về chủ đề gì
+                                                     u.v
+B2: Đọc các câu hỏi và thực hiện phân loại, xác định thứ tự trả lời.
+
+B3: Scan, skim từ khóa trong câu hỏi với đoạn văn
+
+Chúng ta cùng đi vào ví dụ sau nhé.
+                                              ed
+Nội dung bài nói về cái gì? Nội dung nói về câu cầu đươc tạo bởi 2 cần cẩu.
+
+
+
+
+đầu)
+                                      ic.
+Câu 172: What is mentioned about the cranes? (Câu này có thể Scan từ crane, làm thứ 2)
+
+Câu 173: What is indicated about Mr. Lee? (Câu này có thể Scan Mr. Lee nên ưu tiên làm
+
+
+
+
+                             toe
+Câu 174: What is not suggested about the Stonewell Bridge? (Làm thứ 3)
+
+Câu 175: In which of the positions marked [1], [2], [3], [4] does the following sentence best
+belong? “The project, which was expected to take four years, was completed in less than
+three”. (câu này nên làm khi hiểu được kha khá nội dung của bài).
+
+Cùng bắt tay vào làm nhé.
+
+
+                    fire
+Câu 173: What is indicated about Mr. Lee?
+
+Các bạn scan Lee và sẽ thấy nó xuất hiện ở đầu đoạn 3 (Said Roger Lee). Đọc lướt cả đoạn
+này để nắm thông tin.
+
+Ông này có nói: “any large project is going to require unforeseen adjustments that may
+disrupt an official construction schedule”. = ý B.
+
+Các bạn đọc 3 phương án còn lại để khẳng định chắn chắn về đáp án B nhé.
+
+Câu 172: What is mentioned about the cranes?
+
+Các bạn scan từ cranes và sẽ thấy nó ở đoạn 2.
+
+A. 2 cái cranes này được sản xuất bởi Ronsonworks chứ không phải Ronsonworks sở hữu.
+
+B. Không nhắc tới
+
+                                                                                                21
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                                Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+C. Gần [2] có nói được lắp ghép ở bờ sông và trung tâm sông, cũng là nơi thi công
+
+D. 22 tons là của the new anchors
+
+> Đáp án C
+
+Câu 174: What is not suggested about the Stonewell Bridge?
+
+A. Đoạn 1 có nói về northern route for the town = northward exit out of town > Có nhắc tới
+
+B. Đoạn 4 có nhắc tới pedestrians (người đi bộ) và railings (đường ray) > có nhắc tới
+
+C. Đoạn 4 có nói harmonize beautifully with the local environment tức là blend with the
+natural setting > Có nhắc tới
+
+D. Không nhắc tới > Đáp án đúng
+                                                             n
+than three”.
+                                                    u.v
+Câu 175: In which of the positions marked [1], [2], [3], [4] does the following sentence
+best belong? “The project, which was expected to take four years, was completed in less
+
+
+Câu này phù hợp với [1] vì phía sau có chữ efficiency, là 1 từ dấu hiệu, kết hợp với ý dự án
+hoàn thiện sớm hơn so dự kiến > A
+
+Từ vựng
+
+   •   Spectacular: đẹp mắt
+                                            ed
+   •
+   •
+   •
+   •
+       Crane: cần cẩu
+                                     ic.
+       Finance: (v) cung cấp tài chính
+       Identical: giống hệt nhau
+       Assemble (v) lắp ráp
+   •
+   •
+   •
+       Anchor: mỏ neo
+
+                            toe
+       Pedestrian: người đi bộ
+       Harmonize: hài hòa
+
+
+
+Goobye, see yaaa!
+
+                  fire
+
+
+                                                                                             22
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                                   n
+                           u.v
+                    ed
+              ic.
+       toe
+ fire
+
+
+                                                              23
+Lửa TOEIC – Trường đào tạo TOEIC online
+                                Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                        Bài học 7
+                                 Xử lý bài gồm 2 đoạn văn
+
+
+
+Hôm nay mình đi vào bài học: Xử lý bài gồm 2 đoạn văn. Nhiều sĩ tử thường “ghét” phần 2,
+3 đoạn văn vì dài, nhiều câu hỏi, thời gian thì ngắn. Tuy nhiên, phần này không hẳn là quá
+khó nếu mình biết cách làm.
+
+Với những bạn có mục tiêu dưới 500 điểm, với phần này, các bạn có thể chọn bỏ qua các
+câu hỏi suy luận và làm các câu hỏi thông tin chi tiết (câu dễ). Tránh không dành quá nhiều
+thời gian vào dạng bài đọc này.
+                                                             n
+Với những bạn có mục tiêu từ 700 trở lên, mình khuyến khích các bạn làm phần 7 trước tiên
+
+
+
+
+đoạn văn nhé!
+                                                    u.v
+sau đó quay về làm part 5, 6 vì part 7 cần nhiều thời gian và sự bình tâm hơn, trong khi 1
+câu part 5 thì 1 phút là có thể giải quyết ngon ơ rồi.
+
+Quay trở lại với vấn đề chính này, chúng ta cùng đi vào cách giải quyết dạng bài 2
+
+
+
+
+                                             ed
+Bài có 2 đoạn văn có 5 câu hỏi, và thông thường mình sẽ chia ra theo quy tắc sau: 2-1-2
+hoặc 3-2 hoặc 2-3. Những con số này thể hiện gì?
+
+Thông thường 2 câu hỏi đầu sẽ liên quan tới đoạn văn 1 và 2 câu hỏi sau cùng sẽ liên quan
+tới đoạn văn 2, và chắc chắc có 1 câu phải kết hợp dữ liệu ở 2 đoạn mới có thể làm được,
+thường là câu giữa.
+
+Cách làm bài 2 đoạn văn
+                                      ic.
+B1: Đọc tiêu đề để xác định xem đó là loại hình đoạn văn nào (email, báo, memo hay bảng
+
+                            toe
+biểu…) và xem tiêu đề của các đoạn văn để đoán ý xem bài nói về gì.
+
+B2: Đọc lướt qua 1 lượt các câu hỏi, phân loại các câu hỏi và xác định thứ tự trả lời
+
+B3: Scan và skim trong bài để ra đáp án.
+
+
+
+                   fire
+Cùng bắt tay vào làm ví dụ dưới đây nhé!
+
+B1: Đọc tiêu đề ta thấy đây là 1 memo về “kế hoạch tháng 3” và 1 lịch trình.
+
+B2: Phân tích các câu hỏi
+
+176: Why was the memo sent to employees? (làm đầu tiên do mình sẽ đọc đoạn đầu
+memo để nắm nội dung bài luôn), câu này dự kiến ở đoạn 1 (memo)
+
+177: What are employees instructed to do? Làm thứ 4, câu này dự kiến ở đoạn 1 (memo)
+
+178: What is state about room 409? Câu hỏi thông tin chi tiết, làm thứ 2, câu này dự kiến
+ở đoạn 1 (memo)
+
+179: When should Ms Asbury be ready to vacate her office? Câu hỏi thông tin chi tiết,
+làm thứ 3, câu này dự kiến ở đoạn 1 và 2 (kết hợp)
+
+
+
+                                                                                        24
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                                  Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+180: What is suggested about Mr. Hagburg? Làm cuối cùng. Câu này dự kiến ở đoạn 2
+Hoặc kết hợp
+
+B3: Bắt tay vào làm nhé!
+
+176: Why was the memo sent to employees?
+
+Đọc đoạn đầu Memo có thấy nói về “repaint, recarpet and replace old furniture” =
+Renovations: nâng cấp =>> A là đáp án đúng (đoán đúng ở đoạn memo)
+
+178: What is state about room 409?
+
+Câu này các bạn scan số 409 nhé (không đọc hiểu, chỉ tìm chỗ nào có 409) – đó là đoạn
+
+                                                              n
+thứ 2 từ dưới lên của memo, sau đó đọc câu chứa số 409. Trong bài có nói: The conference
+room (Room 409) will remain available to be used as a workspace during the entire week =
+
+
+                                                     u.v
+đáp án B People may gather there for work. (đoán đúng ở đoạn memo)
+
+179: When should Ms Asbury be ready to vacate her office?
+
+Scan từ kháo Asbury (tên riêng) trong đoạn memo thì không thấy, thấy ở bài Schedule, chỗ
+ô March 4, 5. Rõ ràng từ cái bảng chưa thể hiểu được đó là gì, do đó cần sự kết hợp giữa
+
+
+
+
+177: What are employees instructed to do?
+                                               ed
+cả 2 đoạn. Ở dòng 4 memo có ghi” Affected employees … box up…by 3 pm on the day
+before their room is scheduled for work” >> Bà Asbury phải dọn phòng trước 3h chiều ngày
+March 4, 5 => chọn ngày sớm nhất March 4 =>> D là đáp án đúng
+
+
+
+                                       ic.
+Như câu trên vừa nói, có 1 việc nhân viên phải làm là dọn phòng trước ngày nâng cấp và
+đoạn 2 memo có nói “please label them (boxes) with your name and office number…” = đáp
+án C Indicates which office supplies are theirs.
+
+
+
+
+an office with a colleague = A.
+                                 toe
+180: What is suggested about Mr. Hagburg?
+
+Có kinh nghiệm scan rồi, scan Hagburg ở schedule và thấy phòng đó được nâng cấp vào
+March 6, dựa vào schedule có thấy, phòng này là của ông Hagburg và Keller =>> He shares
+
+
+
+
+                      fire
+Cùng điểm qua 1 số từ vựng nhé:
+
+- Vacate (v) di dời, dọn đi (liên tưởng tới vacation, cũng dọn đồ và đi chơi xa)
+
+- Work crew (cụm) đội làm việc, đội thi công
+
+- Assignment (n ) công việc, nhiệm vụ (= tasks)
+
+- Relocate (v) di chuyển tới
+
+- Renovation (n ) việc nâng cấp
+
+- Facility (n ) trang thiết bị
+
+- Videoconference (n ) họp qua video
+
+Bye-bye ;)
+
+                                                                                       25
+                    Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                                   n
+                           u.v
+                    ed
+              ic.
+       toe
+ fire
+
+
+                                                              26
+Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                                   n
+                           u.v
+                    ed
+              ic.
+       toe
+ fire
+
+
+                                                              27
+Lửa TOEIC – Trường đào tạo TOEIC online
+                                  Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                         Bài học 8
+                                  Xử lý bài gồm 3 đoạn văn
+
+
+
+Phần 3 đoạn văn được xem là phần phân loại sĩ tử thi TOEIC bởi vì thời lượng để xử lý bài
+này không phải là ngắn và để làm được các câu này cũng không phải là dễ, nó đòi hỏi việc
+đọc hiểu và liên kết nội dung trong 3 đoạn văn.
+
+Với bài gồm 3 đoạn văn, thường sẽ có thông tin về hóa đơn, bài báo, sau đó thường sẽ là
+các email phản hồi qua lại liên quan tới thông tin đã cho.
+
+                                                             n
+Với dạng bài này, rất may là 3 đoạn văn nhưng lượng từ vựng thường không quá nhiều, và
+nếu được trình bày dưới dạng bảng biểu, form thì rất dễ đọc thông tin.
+
+
+đoạn trong bài.                                     u.v
+Tuy nhiên các bạn phải lưu ý là, trong bài thường sẽ có 1-2 câu cần sự liên kết của 2-3
+
+
+Để xử lý dạng bài có 3 đoạn văn:
+
+B1: Đọc tiêu đề và nhìn xem bài nói về vấn đề gì
+
+
+
+B3: Scan và skim, giải quyết từng câu hỏi.
+                                             ed
+B2: Phân tích các câu hỏi và lựa chọn thứ tự trả lời.
+
+
+
+Chúng ta cùng đi vào ví dụ sau nhé.
+                                       ic.
+B1: Đây là bài về hóa đơn mua hàng của khách, emails phản hồi qua lại liên quan đến
+hóa đơn đó.
+
+B2: Phân tích các câu hỏi
+
+                             toe
+186: Why was first e-mail sent? câu này xác định được thông tin ở email thứ nhất, thường ở
+đầu email nên có thể làm đầu tiên
+
+187: What item was received damaged? Câu này chứa thông tin cụ thể, có thể làm thứ 2
+
+
+                   fire
+188: In the second email, the word “extend” in paragraph 1, line 1, is the closet meaning to?
+đây là 1 câu từ vựng, câu này có thể làm thứ 3
+
+189: What is NOT indicated about McGivernWholesale? Câu này này là câu hỏi suy luận
+thông tin, có thể để cuối cùng, sau khi đã nắm được 1 số thông tin cơ bản của bài
+
+190: What will McGivernWholesale give to Ms. Jacques? Thông tin của câu này có khả năng
+cứu ở email thứ 2 (email phản hồi và hóa đơn từ McGivernWholesale)
+
+B3: Giải quyết từng câu hỏi
+
+186: Why was first e-mail sent?
+
+Chúng ta đọc lướt đoạn đầu của email số 1 và thấy bà này đã nhận được hàng mua nhưng
+hàng bị lỗi, và muốn McGivernWholesale có phương án xử lý.
+
+> Đáp án đúng là B
+
+                                                                                           28
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                                Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+187: What item was received damaged?
+
+Ở email đầu tiên, bà này có nói: seven water goblets arrives with cracks in the glass > đối
+chiếu với hóa đơn, mã của water goblets là 21G > Đáp án D
+
+188: In the second email, the word “extend” in paragraph 1, line 1, is the closet meaning to?
+
+Đối chiếu đoạn 1, dòng 1 ở email thứ 2: … and about Mr. Salek’s as well: I will extend my
+apology to him today.
+
+> Extend = offer: đưa ra > Đáp án A
+
+190: What will McGivernWholesale give to Ms. Jacques?
+
+                                                             n
+Đề bài hỏi về McGivernWholesale đưa cho bà Jacques nên thông tin dự đoán nằm ở hóa
+đơn và email thứ 2. Ở hóa đơn chỉ có các mặt hàng, còn ở email thứ 2, 2 câu cuối đoạn có
+
+discount on your next shipment” >> Khớp với đáp án Cu.v
+ghi: “I have put in an order to correct the mistakes and I hope you will accept a 15 percent
+
+
+189: What is NOT indicated about McGivernWholesale?
+
+Câu này chúng ta phải xem từng phương án. Tuy nhiên để nắm thông tin nhanh hơn, mọi
+người nên skim thông tin trong 2 email.
+                                             ed
+A. Ở đoạn email 1 có nhắc đến ông Salek là chủ quán cà phê cũng là khách của công ty này
+>> công ty này làm ăn với các quán, nhà hàng > Loại
+
+
+                                      ic.
+B. Đoạn email 2 có nhắc tới việc đổi địa điểm > Loại
+
+C. Ở email 1 có nói về việc bà Jacques là khách hàng từ lúc công ty làm ăn 5 năm trước
+(câu đầu, đoạn 2, email số 1) > Có nhắc đến > loại
+
+
+
+Từ vựng cần lưu ý:           toe
+D. Bài không nói về việc xem lại giá > Đây là đáp án đúng
+
+
+
+- Loyal customer: khách hàng trung thành (yêu thích và thường xuyên mua hàng)
+
+- Valued customer: quý khách hàng (những người được các công ty coi trọng)
+
+                   fire
+- In the middle of something/doing something: đang bận rộn với cái gì, đang bận rộn làm gì
+
+- Warehouse: nhà kho
+
+- Place an order: đặt hàng
+
+
+
+
+                                                                                              29
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                                   n
+                           u.v
+                    ed
+              ic.
+       toe
+ fire
+
+
+                                                              30
+Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                                   n
+                           u.v
+                    ed
+              ic.
+       toe
+ fire
+
+
+                                                              31
+Lửa TOEIC – Trường đào tạo TOEIC online
+                             Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                         Bài tập luyện theo dạng
+                                    Bài học 1
+  Kỹ năng xác định loại câu hỏi, thứ tự ưu tiên trả lời và kỹ năng Scanning (part 1)
+
+Bài tập 1
+
+
+
+
+                                                        n
+                                                u.v
+                                         ed
+                                  ic.
+                          toe
+                fire
+
+
+                                                                                       32
+               Lửa TOEIC – Trường đào tạo TOEIC online
+                     Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài tập 2
+
+
+
+
+                                               n
+                                       u.v
+                                ed
+                          ic.
+                   toe
+             fire
+
+
+                                                                          33
+            Lửa TOEIC – Trường đào tạo TOEIC online
+                     Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                            Bài học 2
+                        Kỹ năng Skimming
+
+Bài tập 1
+
+
+
+
+                                               n
+                                       u.v
+                                ed
+                          ic.
+                   toe
+             fire
+
+Bài tập 2
+
+
+
+
+                                                                          34
+            Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                                   n
+                           u.v
+                    ed
+              ic.
+       toe
+ fire
+
+
+                                                              35
+Lửa TOEIC – Trường đào tạo TOEIC online
+                     Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài tập 3
+
+
+
+
+                                               n
+                                       u.v
+                                ed
+                          ic.
+                   toe
+             fire
+
+
+                                                                          36
+            Lửa TOEIC – Trường đào tạo TOEIC online
+                             Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                    Bài học 3
+  Kỹ năng xác định loại câu hỏi, thứ tự ưu tiên trả lời và kỹ năng Scanning (part 2)
+
+Bài tập 1
+
+
+
+
+                                                        n
+                                                u.v
+                                         ed
+                                  ic.
+                          toe
+                fire
+
+
+                                                                                       37
+               Lửa TOEIC – Trường đào tạo TOEIC online
+                     Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                                               n
+Bài tập 2
+                                       u.v
+                                ed
+                          ic.
+                   toe
+             fire
+
+
+                                                                          38
+            Lửa TOEIC – Trường đào tạo TOEIC online
+                      Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                             Bài học 4
+                  Dạng câu hỏi điền câu vào chỗ trống
+
+Bài tập 1
+
+
+
+
+                                                n
+                                        u.v
+                                 ed
+                           ic.
+                   toe
+             fire
+
+
+                                                                           39
+            Lửa TOEIC – Trường đào tạo TOEIC online
+                     Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài tập 2
+
+
+
+
+                                               n
+                                       u.v
+                                ed
+                          ic.
+                   toe
+             fire
+
+
+                                                                          40
+            Lửa TOEIC – Trường đào tạo TOEIC online
+                     Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài tập 3
+
+
+
+
+                                               n
+                                       u.v
+                                ed
+                          ic.
+                   toe
+             fire
+
+
+                                                                          41
+            Lửa TOEIC – Trường đào tạo TOEIC online
+                       Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                               Bài học 5
+               Xử lí bài dưới dạng text messages (tin nhắn)
+
+Bài tập 1
+
+
+
+
+                                                  n
+                                         u.v
+                                   ed
+                             ic.
+                    toe
+             fire
+
+
+                                                                            42
+            Lửa TOEIC – Trường đào tạo TOEIC online
+                     Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài tập 2
+
+
+
+
+                                               n
+                                       u.v
+                                ed
+                          ic.
+                   toe
+             fire
+
+
+                                                                          43
+            Lửa TOEIC – Trường đào tạo TOEIC online
+                     Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                                               n
+Bài tập 3
+                                       u.v
+                                ed
+                          ic.
+                   toe
+             fire
+
+
+                                                                          44
+            Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                                   n
+                           u.v
+                    ed
+              ic.
+       toe
+ fire
+
+
+                                                              45
+Lửa TOEIC – Trường đào tạo TOEIC online
+                           Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                  Bài học 6
+            Bài học nâng cao – xử lý đoạn văn dạng Articles (bài báo)
+
+Bài tập 1
+
+
+
+
+                                                     n
+                                             u.v
+                                      ed
+                                ic.
+                        toe
+               fire
+
+
+                                                                                46
+             Lửa TOEIC – Trường đào tạo TOEIC online
+                     Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài tập 2
+
+
+
+
+                                               n
+                                       u.v
+                                ed
+                          ic.
+                   toe
+             fire
+
+
+                                                                          47
+            Lửa TOEIC – Trường đào tạo TOEIC online
+                     Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài tập 3
+
+
+
+
+                                               n
+                                       u.v
+                                ed
+                          ic.
+                   toe
+             fire
+
+
+                                                                          48
+            Lửa TOEIC – Trường đào tạo TOEIC online
+                     Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                            Bài học 7
+                      Xử lý bài gồm 2 đoạn văn
+
+Bài tập 1
+
+
+
+
+                                                 n
+                                       u.v
+                                ed
+                          ic.
+                   toe
+             fire
+
+
+                                                                          49
+            Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                                   n
+                           u.v
+                    ed
+              ic.
+       toe
+ fire
+
+
+                                                              50
+Lửa TOEIC – Trường đào tạo TOEIC online
+                     Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài tập 2
+
+
+
+
+                                               n
+                                       u.v
+                                ed
+                          ic.
+                   toe
+             fire
+
+
+                                                                          51
+            Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                                   n
+                           u.v
+                    ed
+              ic.
+       toe
+ fire
+
+
+                                                              52
+Lửa TOEIC – Trường đào tạo TOEIC online
+                     Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                            Bài học 8
+                      Xử lý bài gồm 3 đoạn văn
+
+Bài tập 1
+
+
+
+
+                                                 n
+                                       u.v
+                                ed
+                          ic.
+                   toe
+             fire
+
+
+                                                                          53
+            Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                                   n
+                           u.v
+                    ed
+              ic.
+       toe
+ fire
+
+
+                                                              54
+Lửa TOEIC – Trường đào tạo TOEIC online
+                     Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Bài tập 2
+
+
+
+
+                                               n
+                                       u.v
+                                ed
+                          ic.
+                   toe
+             fire
+
+
+                                                                          55
+            Lửa TOEIC – Trường đào tạo TOEIC online
+         Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+
+
+                                   n
+                           u.v
+                    ed
+              ic.
+       toe
+ fire
+
+
+                                                              56
+Lửa TOEIC – Trường đào tạo TOEIC online
+                             Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                     Đáp án
+                 Bài tập 1                  Bài tập 2                Bài tập 3
+
+
+Bài học 1     155D 156B 157A            169C 170B 171D
+
+
+
+Bài học 2     153B 154C 155A               159C 160D             161C 162C 163B
+
+
+
+Bài học 3   172B 173C 174A 175D            147D 148C
+                                                        n
+Bài học 4     155C 156B 157D
+                                               u.v
+                                        156C 157B 158B        172B 173A 174A 175C
+
+
+
+Bài học 5       153D 154C               ed
+                                     165A 166B 167C 168D      164D 165C 166A 167C
+
+
+
+Bài học 6     158D 159C 160A
+                                  ic.172D 173C 174A 175C      168B 169D 170C 171A
+
+
+
+Bài học 7
+                       toe
+              176D 177D 178B
+                179C 180A
+                                        176B 177C 178D
+                                          179A 180D
+
+
+Bài học 8     186C 187A 188A            191C 192D 193B
+
+
+
+               fire
+                189D 190D                 194A 195B
+
+
+
+
+                                                                                  57
+              Lửa TOEIC – Trường đào tạo TOEIC online
+                                 Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                   Hướng dẫn giải
+                                           Bài học 1
+
+   Kỹ năng xác định loại câu hỏi, thứ tự ưu tiên trả lời và kỹ năng Scanning (part 1)
+
+Bài tập 1
+
+B1. Loại hình bài đọc: email; Tiêu đề email: Opportunity available → Đây là một email nói về
+thông tin tuyển dụng của một vị trí nào đó.
+
+B2. Thứ tự làm các câu: 155 (hỏi thông tin chi tiết) – 156 (hỏi thông tin chi tiết) – 157 (câu
+hỏi NOT mentioned)
+
+B3.                                                            n
+                                                       u.v
+Câu 155 hỏi lý do Mr. Gadhavi gửi email. Thông thường, lý do viết email sẽ được tìm thấy ở
+đầu thư. Chúng ta scan đoạn đầu, thấy có đoạn: “helping you find a rewarding career” và
+“found a promising opportunity”, vậy tức là ông này cung cấp dịch vụ giới thiệu việc làm và
+đang thông báo cho người nhận thư rằng có một vị trí đang tuyển người. Vậy D là đáp án
+đúng.
+
+
+                                              ed
+Câu 156 hỏi điều Mr. Gadhavi yêu cầu Ms. Esparza làm. Câu trả lời chắc chắn được tìm
+thấy ở sau những thông tin dùng để trả lời câu 155, ngoài ra, nên scan từ “please” với
+những dạng câu hỏi như thế này. Ta tìm thấy câu: “If you are interested…, please email me
+today”. Đáp án B có cách diễn đạt tương tự: contact = email, soon = today. Vậy B là đáp án
+đúng.
+                                       ic.
+Câu 157 hỏi về responsibilities của công việc này, dễ dàng scan được từ này trong email
+với 3 gạch đầu dòng cụ thể: dòng 1 tương ứng đáp án C, dòng 2 tương ứng đáp án B (mail
+
+đáp án đúng.
+                             toe
+billing statements = send bills), dòng 3 tương đương đáp án D (data = information). Vậy A là
+
+
+Bài tập 2
+
+B1. Loại hình bài đọc: email; Tiêu đề email: Information → Đây là một email cung cấp cho
+
+
+
+hỏi NOT mentioned)
+                   fire
+người nhận một số thông tin nhất định.
+
+B2. Thứ tự làm các câu: 169 (hỏi thông tin chi tiết) – 170 (hỏi thông tin chi tiết) – 171 (câu
+
+
+B3.
+
+Câu 169 hỏi lý do Mr. Chandra nhận được email. Câu hỏi này khả năng cao được tìm thấy
+ở đầu thư. Dễ thấy có câu: “IAGS wants its members to be among the first to know about
+our academy-sponsored online lecture series”, tức là mục tiêu của việc gửi email là cung
+cấp thông tin về các chuỗi bài giảng trực tuyến cho thành viên của họ (IAGS), suy ra, Mr.
+Chandra là thành viên của IAGS. C là đáp án đúng.
+
+Câu 170 hỏi về một đặc điểm của các bài giảng. Chúng ta cần dò được các thông tin về bài
+giảng trong email. Dễ thấy, nửa sau đoạn văn thứ nhất có chứa rất nhiều từ lectures, đọc kỹ
+hơn, ta thấy có thông tin “lectures on topics relevant to our field”, vậy tức là khóa học chỉ tập
+trung giảng dạy một lĩnh vực chuyên môn nhất định của họ. Có thể chọn luôn B là đáp án
+
+                                                                                              58
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                                Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+chính xác. Để chắc chắn hơn, từ thông tin “every other month” (2 tháng 1 lần), có thể loại
+đáp án A; “payment instructions” (hướng dẫn chi trả học phí), có thể loại đáp án C; và
+“online lectures” có thể loại đáp án D.
+
+Câu 171 hỏi về thông tin không có trên website của IAGS. Chúng ta nên đọc từng đán án
+lựa chọn và scan từ khóa trên đoạn văn còn lại của email vì thông tin chắc chắn chỉ nằm
+trong đoạn này. Chúng ta thấy lần lượt có các từ: dates, times, topics và registration, không
+nhắc tới profile của giảng viên. Vậy chỉ có D là đáp án đúng.
+
+
+
+
+                                                            n
+                                                   u.v
+                                            ed
+                                     ic.
+                            toe
+                  fire
+
+
+                                                                                          59
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                                   Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                             Bài học 2
+
+                                       Kỹ năng Skimming
+
+Bài tập 1
+
+B1. Skimming, chú ý câu mở đầu → Nội dung chính: Nói về buổi ngâm thơ của Dr. Hines.
+
+B2. Thứ tự trả lời: 154 (hỏi thông tin chi tiết) – 155 (hỏi thông tin chi tiết) – 153 (hỏi ý chính)
+
+B3.
+
+Câu 154 hỏi Mr. Lefevre là ai. Scan tên này trên văn bản, dễ thấy có thông tin “In addition to
+Dr. Hines, several of his creative-writing students will also read their work”, sau đó có tên
+Richard Lefevre. Vậy ông này là học trò của Dr. Hines, đáp án C.  n
+                                                         u.v
+Câu 155 hỏi về việc công chúng được mời làm gì. Scan từ khóa “(members of the) public”,
+ta thấy có thông tin “read their own poetry” và “email one original poem”, đây đều có thể là
+đáp án đúng. Soi vào 4 lựa chọn, ta thấy đáp án trùng khớp là A.
+
+Câu 153 hỏi về mục đích của toàn bộ thông báo. Sau khi làm xong những bước trên, ta dễ
+dàng chọn được B là đáp án chính xác (upcoming event chính là buổi ngâm thơ của Dr.
+Hines).
+
+Bài tập 2                                       ed
+B1. Skimming, chú ý tiêu đề → Nội dung chính: Mẫu đặt lệnh làm việc của một nhân viên
+
+                                         ic.
+(có thể là salesman) tại Caivano Printing Services.
+
+B2. Thứ tự trả lời: 159 (hỏi thông tin chi tiết) – 160 (hỏi thông tin chi tiết)
+
+B3.
+
+
+                               toe
+Câu 159 có nhắc tới Ms. Garza, scan từ này trên văn bản, ta thấy đây là khách hàng của
+công ty Caivano, vậy thông tin để trả lời câu hỏi chắc chắn nằm ở phần hướng dẫn
+(instructions) hoặc phần lưu ý đặc biệt (special notes). Vì đây là câu hỏi đầu tiên của bài nên
+khả năng cao sẽ tìm được thông tin ở đoạn hướng dẫn. Ta thấy có câu: “She asked for the
+
+
+
+                    fire
+image to be enlarged enough that all words and numbers can be seen clearly from about 3
+metres away.” (Cô ấy yêu cầu bức hình phải được phóng to đủ để nhìn thấy tất cả các chữ
+và số từ cách đó 3 mét), điều này đồng nghĩa với đáp án C “đảm bảo rằng người ta có thể
+nhìn thấy ký tự từ xa”. Vậy C là đáp án đúng.
+
+Câu 160 hỏi về những chiếc “posters”, scan từ này, ta thấy đây chính là sản phẩm mà Ms.
+Garza yêu cầu. Đoạn lưu ý quan trọng có câu: “The customer needs these items (chính là
+posters) for a conference on 2 October…”, vậy có thể suy ra ngay đáp án chính xác là D, cô
+ấy sẽ đến lấy chúng trước một buổi thảo.
+
+Bài tập 3
+
+B1. Skimming, chú ý tiêu đề và các tab → Nội dung chính: Giới thiệu về một tổ chức tên
+“Young Roboticists Canada” trên website của họ
+
+B2. Thứ tự trả lời: 162 (hỏi thông tin chi tiết) – 163 (hỏi thông tin chi tiết) – 161 (câu hỏi NOT
+indicated)
+
+                                                                                                 60
+                  Lửa TOEIC – Trường đào tạo TOEIC online
+                                Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+B3.
+
+Câu 162 hỏi về những người hướng dẫn (instrutors), ta scan từ này trên văn bản từ trên
+xuống dưới và gặp ngay từ này được viết hoa trong câu sau: “Visit the Instructors page to
+learn more about their research.”, điều đó có nghĩa là những người hướng dẫn này có tham
+gia nghiên cứu, đáp án C.
+
+Câu 163 hỏi điều phụ huynh cần làm. Sau khi skim toàn bài và trả lời câu 162, dễ thấy đoạn
+1 và 2 có nội dung chính là quảng cáo khóa học, đoạn 3 có nhiều câu dạng mệnh lệnh, khả
+năng cao sẽ tìm thấy hướng dẫn ở trong đoạn này. Một trong những điều phụ huynh cần
+làm là “read the course descriptions to ensure that your child meets all prerequisites” (đọc
+mô tả khóa học để chắc chắn rằng con bạn đáp ứng tất cả các điều kiện), vậy đáp án chính
+xác là B (kiểm tra các yêu cầu của khóa học).               n
+                                                   u.v
+Câu 161 hỏi về đặc điểm của tổ chức này, vì vậy, như đã nói ở trên, thông tin này dễ tìm
+thấy ở đoạn quảng cáo, tức là 1 và 2. Ta scan được từ khóa “scholarship” ở đáp án A trên
+văn bản, đọc kỹ hơn cả câu, ta có thể loại đáp án A. Khi dò từ khóa “build” ở câu B, ta
+không thấy có từ như vậy, nhưng gặp từ đồng nghĩa “constructing”, cùng câu đó có nhắc tới
+việc trẻ em được học trong phòng thí nghiệm (laboratory), tức đáp án B và D lần lượt bị loại.
+Vậy, C là đáp án đúng.
+
+                                            ed
+                                     ic.
+                            toe
+                  fire
+
+
+                                                                                          61
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                                 Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                           Bài học 3
+
+   Kỹ năng xác định loại câu hỏi, thứ tự ưu tiên trả lời và kỹ năng Scanning (part 2)
+
+Bài tập 1
+
+B1. Loại hình bài đọc: email; Tiêu đề email: New service → Đây là một email quảng cáo một
+dịch vụ mới đến khách hàng
+
+B2. Thứ tự trả lời: theo thứ tự xuất hiện của câu hỏi, vì đều là câu hỏi chi tiết
+
+B3.
+
+Câu 172 hỏi về Mr. Garrick, nhìn vào thông tin cơ bản của email, ta thấy đây là người nhận
+                                                               n
+email. Ở đoạn 1 có câu: “We’ve already helped many property rental agents in your area,
+and we’re giving free trials to new users.”, từ đó có thể suy ra Ms. Garrick cũng là một nhân
+viên cho thuê tài sản, đáp án B chính xác.
+                                                       u.v
+Câu 173 hỏi về công ty người gửi email (nhìn vào đuôi email để thấy tên tổ chức mà mỗi
+người làm việc ở đó). Đọc lướt các đáp án lựa chọn, ta có thể nhanh chóng nhận ra C là
+đáp án đúng nhờ vào suy luận ở bước 1. Để chắc hơn, có thể tìm thông tin ở các lựa chọn
+
+
+                                               ed
+khác trên văn bản, nhưng ta không thấy có lựa chọn chính xác.
+
+Câu 174 hỏi về “automated responses”, ta scan từ này trong văn bản, ta thấy đây chính là
+dịch vụ mới mà công ty này cung cấp cho khách hàng. Thông tin để trả lời câu hỏi chắc
+chắn nằm trong 4 mục được đánh số trong email. Mục 3 có câu: “Select an unique keyword
+
+đáp án A.                              ic.
+for each property”, nghĩa là mỗi tin nhắn cho một tải sản nhất định lại có một nội dung riêng,
+
+
+Câu 175 có từ khóa Friday dễ nhận diện, ta scan từ này trong văn bản và thấy câu: “I’ll add
+
+
+
+                              toe
+two more properties to the order” (tôi sẽ thêm 2 tài sản vào đơn hàng của bạn), soi vào các
+lựa chọn, ta chưa thấy có cái nào phù hợp. Khi đó, cần đọc thêm câu liền trước và/hoặc liền
+sau của câu đó. Câu trước có nhắc đến việc miễn phí việc in biển báo cho 1 tài sản, như
+vậy thêm 2 tài sản nữa tức là được miễn phí 3 tài sản, điều này được khẳng định lại trong
+câu liền sau. Vậy đáp án đúng là D, để được nhận dịch vụ miễn phí.
+
+Bài tập 2
+
+                   fire
+B1. Loại hình bài đọc: invoice → Đây là một hóa đơn thương mại
+
+B2. Thứ tự trả lời: theo thứ tự xuất hiện của câu hỏi, vì đều là câu hỏi chi tiết
+
+B3.
+
+Câu 147 hỏi về thời gian hàng đến theo lịch, ta cần scan những từ khóa về thời gian cũng
+như những từ như “schedule, plan,…”. Ta thấy có mục “Expected Delivery Date” (ngày giao
+hàng đến dự kiến) là ngày 15/12, vậy D là đáp án đúng.
+
+Câu 148 hỏi về một thông tin nhất định của invoice. Câu này buộc ta phải nhìn vào từng lựa
+chọn, scan từ khóa ở mỗi lựa chọn để tìm ra đáp án thích hợp. Đáp án A có từ khóa “placed
+online”, không được tìm thấy trong bài. Đáp án B nói về thời hạn thanh toán, cũng không
+được nhắc tới trong văn bản. Đáp án D nói rằng hàng sẽ được chuyển tới nhiều nơi, tuy
+
+
+
+                                                                                           62
+                  Lửa TOEIC – Trường đào tạo TOEIC online
+                              Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+nhiên khi nhìn vào mục “Ship To” chỉ thấy có 1 địa chỉ, vậy đáp án này sai. Nhìn kỹ vào
+bảng, ta thấy có phần phí giao hàng (Shipping) được cộng vào. Rõ ràng, C là đáp án đúng.
+
+
+
+
+                                                         n
+                                                 u.v
+                                          ed
+                                   ic.
+                          toe
+                 fire
+
+
+                                                                                     63
+                Lửa TOEIC – Trường đào tạo TOEIC online
+                                Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                          Bài học 4
+
+                           Dạng câu hỏi điền câu vào chỗ trống
+
+Bài tập 1
+
+Ta thấy câu 155 và 156 đều là câu hỏi chi tiết, vậy nên làm trước 2 câu này để nắm rõ cách
+triển khai ý của văn bản, sau đó trả lời câu 157 một cách dễ dàng hơn.
+
+Câu 155 có từ khóa “individual supporters”, ta dò từ này trên văn bản thấy có diễn đạt tương
+tự “everyone who shares our goals and principles is encouraged to support one or more of
+these business as a customer on this day”, có vẻ như C là đáp án đúng (customer ~ shop,
+businesses ~ stores), để chắc hơn, ta scan thêm một thứ cụ thể trong tuần để đảm bảo đó
+là thứ Ba. Vậy, C là đáp án đúng.                             n
+                                                      u.v
+Câu 156 có từ khóa “partner”, ta scan từ này thì thấy nó nắm ở cuối bài và không có thông
+tin gì cụ thể, vì vậy cần đọc những câu liền trước đó, trong đó có câu “Participation in this
+program provides businesses with an opportunity to show the community that they care
+about the environment”, vậy tức là tạo được ấn tượng tốt với công chúng, đáp án B.
+
+Câu 157: Qua 2 câu trên, ta phần nào nắm được cách triển khai ý của bài, từ việc giải thích
+
+
+                                             ed
+cách hỗ trợ (đoạn 1) đến việc đề cập thông tin có thể bị thiếu (đoạn 2) và các lợi ích khi hỗ
+trợ (đoạn 3). Trước tiên, ta đọc câu cần điền: “Nếu bạn thấy có thông tin bị thiếu, hãy liên hệ
+qua email donors@srec.org”. Vậy không cần phải đọc thêm nhiều, dễ thấy nó cần đặt ở vị trí
+sau khi nói rằng có 1 số thông tin có thể bị bỏ sót, đáp án D.
+
+Bài tập 2
+                                      ic.
+Tương tự bài tập 1, câu 156 và 157 đều là câu hỏi chi tiết, vậy nên làm trước 2 câu này để
+nắm rõ cách triển khai ý của văn bản, sau đó trả lời câu 158 một cách dễ dàng hơn.
+
+
+                             toe
+Câu 156: Trong bài có câu: “you will not receive any email promotions from us”, tức là họ
+không quảng cáo, xúc tiến sản phẩm qua email, đáp án C.
+
+Câu 157: Trong bài có câu: “you will be helping companies develop better offerings”, tức là
+giúp cho các công ty cải thiện sản phẩm của họ, đáp án B.
+
+
+                   fire
+Câu 158: Dịch câu cần điền: “Bắt đầu từ tháng Một, chúng tôi sẽ có kế hoạch thêm vào các
+sản phẩm nội thất”. Như vậy nội dung câu nhắc nhắc tới 1 loại sản phẩm, cần điền vào vị trí
+trong đoạn văn cũng đang nhắc tới các loại sản phẩm, tức vị trí [2] (hiện đang có đồ điện tử
+và thiết bị gia dụng), đáp án B.
+
+Bài tập 3
+
+Ở bài tập này có câu 172 là câu hỏi suy luận, vì vậy thứ tự trả lời là: 173 – 174 – 175 – 172
+
+Câu 173 dễ thấy Ms. Alves là người gửi thư, vậy cần tìm yêu cầu của người này trong thư.
+Ta thấy người này yêu cầu người nhận xác minh các giấy tờ tài chính, nhưng điều này
+không có trong các lựa chọn, vậy cần đọc thêm. Sau đó có câu: “I have notified your
+teamleader, Hyun Shik, who has agreed to let me borrow you for a few days”, tức là Ms.
+Alves đã yêu cầu được tái chỉ định một nhận viên để làm việc cho mình, đáp án A.
+
+
+
+                                                                                            64
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                               Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Câu 174: Dễ thấy trong bài có câu: “I would be happy to meet with you to show you how to
+use the software to accomplish those tasks”, tức là Mr. Alves cần mô tả một phần mềm cho
+Mr. Ruzinski hiểu, vậy A là đáp án đúng.
+
+Câu 175: Dịch câu cần điền: “He says your team can take over your work for the time being”.
+Dễ thấy câu này thích hợp để điền vào sau câu Huyn Shik đã đồng ý cho mượn người để
+giải thích thêm lý do cho mượn. Vậy C là đáp án đúng.
+
+Câu 172: Từ việc hoàn thành những câu trên, dễ suy luận được Mr. Zuzinki phải là người có
+hiểu biết về các giấy tờ tài chính, vậy khả năng lớn nhất ông này là một kế toán, đáp án B.
+
+
+
+                                                           n
+                                                  u.v
+                                           ed
+                                    ic.
+                           toe
+                  fire
+
+
+                                                                                        65
+                Lửa TOEIC – Trường đào tạo TOEIC online
+                                 Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                          Bài học 5
+
+                       Xử lí bài dưới dạng text messages (tin nhắn)
+
+Bài tập 1
+
+Thứ tự trả lời câu hỏi: 154 (câu hỏi ngụ ý) - 153 (câu hỏi suy luận)
+
+Câu 154 nhắc đến thời điểm cụ thể là 10:26, ta scan tin nhắn được gửi tại thời điểm này thì
+thấy câu này nằm ngay đầu tin nhắn. Vậy, đại từ “it” dùng để thay thế cho một điều gì đó ở
+tin nhắn liền trước, cụ thể là “but it would be a nice gesture to welcome them in their own
+language” (nhưng sẽ thật tốt nếu họ được chào đón bằng ngôn ngữ của mình). Đáp án C,
+“những người khách sẽ rất trân trọng một sự chào đón nồng nhiệt” có ý phù hợp nhất với
+điều này.                                                     n
+                                                      u.v
+Câu 153 hỏi về Mr. Dolezych, chúng ta nên ưu tiên đọc các lựa chọn và đối chiếu với những
+tin nhắn do người này gửi trước. Khi dò các lựa chọn, đáp án D (anh ấy từng gặp những
+người khách rồi) là phù hợp, bởi trong bài có đoạn “but they all spoke English to me when I
+went there last spring” (nhưng họ đều nói chuyện với tôi bằng tiếng Anh khi tôi đến đó và
+mùa xuân vừa qua).
+
+Bài tập 2
+                                              ed
+Thứ tự trả lời câu hỏi: 168 (câu hỏi chi tiết) – 167 (câu hỏi ngụ ý) – 165 (câu hỏi suy luận) –
+166 (câu hỏi suy luận)
+
+
+                                       ic.
+Câu 168 xuất hiện cuối cùng nên chúng ta nên đọc cuối đoạn hội thoại (hoặc từ dưới lên
+trên) để tìm thông tin trả lời. Ở tin nhắn của Michael Whitmore lúc 2:40, người này có nói:
+“I’m supposed to leave at 3:30 but can stay an extra hour until Jason arrives.”, tức là người
+này sẽ ở lại muộn hơn kế hoạch ban đầu. Đáp án D.
+
+
+
+Gonzalez.
+                             toe
+Câu 167 nhắc đến tin nhắn lúc 2:50, vì đã đọc lườt từ dưới lên để trả lời câu 168, dễ hiểu
+được ngữ cảnh và chọn đáp án C, Mr. Maki đồng ý cho Whitmore làm việc thay cho
+
+
+Câu 165 hỏi chung về những người tham gia cuộc hội thoại bằng tin nhắn. ta cần đọc lướt
+
+
+                   fire
+toàn bộ văn bản đề trả lời câu này. Từ 2 tin nhắn đầu tiên, dễ thấy những người này làm
+việc tại một nhà hàng. Đáp án A.
+
+Câu 166 tiếp tục sử dụng kỹ thuật như câu 165. Có thể loại đáp án A và D vì trong số họ có
+một người đi xem bóng rổ, ngoài ra tình huống đang là một người nhờ những người khác
+làm thay ca nên họ không thể cùng nhau lái xe đi làm, loại đáp án C. Vậy B là đáp án đúng.
+
+Bài tập 3
+
+Thứ tự trả lời: 164 (câu hỏi chi tiết) – 166 (câu hỏi chi tiết) – 165 (câu hỏi ngụ ý) – 167 (câu
+hỏi suy luận)
+
+Câu 164 nhắc tới Mr. Sento, vậy cần scan những tin nhắn của ông này. Trong tin nhắn đầu
+tiên: “We need your decision on the tile pattern for the restroom floor”, vậy D là đáp án đúng
+(tile ~ materials, pattern ~ design).
+
+
+
+                                                                                             66
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                                Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Câu 166 tiếp tục cần dò tin nhắn của Mr. Sento. Tin nhắn cuối cùng của ông này có câu: “I’ll
+have an answer for you by the end of the day” (tôi sẽ trả lời cô vào cuối ngày). Vậy A là đáp
+án chính xác.
+
+Câu 165 nhắc tới tin nhắn lúc 11:17, scan tới đoạn này, ta thấy “never mind” ở đầu tin nhắn,
+vậy ta phải đọc một hoặc một vài tin trước đó. Ở đây, Sento nhắn đến hỏi thông tin (11:14),
+nhưng Charbel lại đang nói chuyện điện thoại nên Han nói rằng có lẽ sẽ gọi lại cho Sento
+sau (11:15), tuy nhiên sau đó cuộc gọi của Charbel kết thúc nhanh hơn Han nghĩ nên anh ta
+đã nói “never mind” để thông báo Sento đừng dập máy, Charbel đã kết thúc cuộc nói
+chuyện qua điện thoại và có thể thảo luận về vấn đề Sento hỏi được rồi. Vậy C là đáp án
+chính xác.
+
+                                                            n
+Câu 167 hỏi về lý do của việc thi công, ta nên scan những tin nhắn cuối để tìm thông tin cho
+câu này. Tin nhắn cuối cùng có nghĩa là: “Cảm ơn đã thay đổi văn phòng từ phong cách
+
+là có sự nâng cấp (update).
+                                                   u.v
+truyền thống sang hiện đại”. Vậy C là đáp án phù hợp vì từ truyền thống thành hiện đại tức
+
+
+
+
+                                            ed
+                                     ic.
+                            toe
+                  fire
+
+
+                                                                                          67
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                                 Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                           Bài học 6
+
+                Bài học nâng cao – xử lý đoạn văn dạng Articles (bài báo)
+
+Bài tập 1
+
+Thứ tự trả lời: 159 (câu hỏi chi tiết) – 160 (câu hỏi chi tiết) – 158 (câu hỏi suy luận)
+
+Câu 159 hỏi về local business, ta scan từ này trong bài, thấy có câu: “Local businesses
+interested in helping to fund this project can pay to have their logos printed on the back of
+the bags”, vậy tức là họ sẽ trả tiền để được quảng cáo thông qua việc in logo công ty sau
+những chiếc túi, đáp án C.
+
+                                                                n
+Câu 160 hỏi về Fairmill residents, scan từ này, ta thấy: “Fairmill residents are encouraged to
+welcome their new neighbors by personally delivering these bags to each household”. Dễ
+
+bags ~ materials. Vậy A là đáp án đúng.
+                                                       u.v
+tìm được các diễn đạt tương tự trong đáp án A: distribute ~ deliver, greeing ~ welcome,
+
+
+Câu 158 hỏi về địa điểm xuất hiện của bài báo. Vì nội dung bài là hướng đến các doanh
+nghiệp và người dân trong vùng Fairmill nên nó có khả năng cao nhất được tìm thấy ở bản
+tin cộng đồng, đáp án D.
+
+Bài tập 2
+                                               ed
+Thứ tự trả lời: 173 (câu hỏi chi tiết) – 175 (câu hỏi chi tiết) – 172 (câu hỏi suy luận) – 174
+(câu hỏi NOT indicate)
+
+
+
+động nghiên cứu. Đáp án C.
+                                       ic.
+Câu 173 hỏi về Metro-Edibles Corporation, scan từ này và đọc những thông tin xung quanh,
+ta thấy: “A survey conducted by Metro-Edibles over the last year…”, vậy tổ chức này có hoạt
+
+
+
+
+ngay lập tức, đáp án C.
+                              toe
+Câu 175 hỏi về Soup and Salad Central, scan cụm này và tìm được: “will start to turn profits
+by its second year of operations”, tức là người ta không kỳ vọng nó sẽ mang lại lợi nhuận
+
+
+Câu 172 hỏi về Mr. Merkey, scan tên này, ta tìm được từ “industry analyst”, vậy ông này là
+một nhà phân tích trong ngành được nhắc đến, hay chính là một nhà nghiên cứu trong
+
+
+                   fire
+ngành công nghiệp thực phẩm, đáp án D.
+
+Câu 174 hỏi về bữa ăn tại Soup and Salad Central, ta nên nhìn vào đáp án lựa chọn, scan
+thông tin trong bài, áp dụng phương pháp loại trừ để có được câu trả lời đúng. Đáp án B
+loại vì học có cung cấp bữa trưa, tối và sáng, tức là trong suốt cả ngày. Đáp án C loại vì có
+thông tin rằng họ cũng theo xu hướng tập trung vào nguyên liệu tươi và giá trị dinh dưỡng.
+Đáp án D loại vì bài óc nhắc đến việc những người dân thành thị có lối sống nhanh sẽ hài
+lòng với sự tiện lợi trong thực đơn của họ. Vậy A là đáp án đúng.
+
+Bài tập 3
+
+Thứ tự trả lời: 168 (câu hỏi chi tiết) – 170 (câu hỏi chi tiết) – 171 (câu hỏi từ vựng) – 169
+(câu hỏi NOT included)
+
+
+
+
+                                                                                           68
+                  Lửa TOEIC – Trường đào tạo TOEIC online
+                                Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+Câu 168 xuất hiện đầu tiên, nhắc đến nhân vật Tim, vì cậy nên scan những chỗ nhắc đến
+Tim ở đoạn đầu tiên. Ta thầy thông tin: “to earn money for the new uniforms needed by his
+middle school football team”, vậy cậu ta là thành viên của một đội bóng, đáp án B.
+
+Câu 170 hỏi về phần thưởng dành cho Tim, vậy thông tin khả năng cao được tìm ở đoạn
+cuối, khi câu chuyện gần kết thúc. Ta thầy thông tin: “he was so please that he opened up
+his wallet and bought all 20 candy bars that Tim had for sale. Anh he gave him an extra $50
+to further boost the uniform fund”, vậy “a donation”, C là đáp án đúng.
+
+Câu 171 hỏi về nghĩa của từ “deed”, ta dịch câu có chứa từ này: “Một ___ tốt như thế xứng
+đáng nhận được một phần thưởng”. Dễ dàng đoán được, “deed” đồng nghĩa với “act” (hành
+động).
+                                                              n
+Câu 169 hỏi về thứ không có trong ví, ta scan từ wallet và included cùng các từ đồng nghĩa,
+
+
+lái xe, đáp án D.                                   u.v
+tìm được thông tin: “the wallet contained several large bills (đồng nghĩa với cash), two credit
+cards, and a family picture (đồng nghĩa với photograph)”, vậy thứ duy nhất không có là bằng
+
+
+
+
+                                             ed
+                                      ic.
+                             toe
+                   fire
+
+
+                                                                                            69
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                                 Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                          Bài học 7
+
+                                 Xử lý bài gồm 2 đoạn văn
+
+Bài tập 1
+
+Thứ tự trả lời: 177 (câu hỏi chi tiết, văn bản 1) – 178 (câu hỏi chi tiết, văn bản 1) – 176 (câu
+hỏi mục đích/ý chính, văn bản 1) – 179 (câu hỏi chi tiết) – 180 (câu hỏi chi tiết)
+
+Câu 177 hỏi về FMRG nên thông tin khả năng cao được tìm thấy trong phạm vi văn bản 1.
+Ta thấy có thông tin: “We have been helping restaurant operators nationwide achieve
+financial success for over a decade.”, vậy tức là họ đã kinh doanh được hơn 10 năm, đáp án
+D.
+                                                              n
+Câu 178, ta scan từ change và weekly, có thông tin: “Resources are updated every week to
+
+tuần chính là Informational Resources, đáp án B.
+                                                      u.v
+provide members with the most current information available”. Vậy thứ được cập nhật hàng
+
+
+Câu 176 hỏi về mục đích của thông tin trên trang web. Ta skim qua toàn bộ văn bản 1 và
+thấy có nhiều lợi ích dành cho thành viên của FMRG, vậy D là đáp án đúng.
+
+
+
+
+FMRG giới thiệu, đáp án C.
+                                              ed
+Câu 179 Hỏi về Mr. Ries, ta cần nhìn vào văn bản 2, thấy tab “register” đang bật, phía dưới
+có các thông tin cá nhân và thanh toán đơn giản, vậy đây là những thông tin đăng ký tại của
+Mr. Ries tại trang web của FMRG. Dễ đoán được ông ta đang đăng ký học các lớp do
+
+
+
+                                       ic.
+Câu 180 xuất hiện cuối nên dù nhắc tới FMRG, ta nên ưu tiên tìm thông tin ở cuối văn bản
+2. Có thông tin: “If your restautant’s finances do not improve within the first year as an
+FMRG member, we will reimburse fifty percent of your membership fees.”. Trong các lựa
+chọn, chỉ có đáp án A là liên quan tới tình hình tài chính (finances), vậy đây là đáp án đúng.
+
+Bài tập 2
+                             toe
+Thứ tự trả lời: 176 (câu hỏi chi tiết, văn bản 1) – 177 (câu hỏi chi tiết, văn bản 1) – 180 (câu
+hỏi chi tiết, văn bản 2) – 178 (câu hỏi từ vựng, văn bản 2) – 179 (câu hỏi chi tiết, dự đoán
+phải dùng cả 2 văn bản)
+
+
+                   fire
+Câu 176 hỏi về cửa hàng sách Give-and-Take. Đây là câu hỏi đầu tiên và hỏi về cửa hàng
+nên khả năng cao sẽ tìm được câu trả lời trong phạm vi website, tức văn bản 1. Sử dụng
+các từ khóa trong đáp án và scan, ta thấy có chi tiết “10 percent of all proceeds from our
+book sales are donated to projects in the community”, vậy B là đáp án đúng.
+
+Câu 177 trực tiếp chỉ ra thông tin để trả lời nằm trong website. Chúng ta scan từ “donors”,
+“receive” hoặc cách diễn đạt tương tự. Có thông tin: “Any book donation will be awarfed with
+a merchandise credit”. Vậy C là đáp án đúng.
+
+Câu 180 trực tiếp chỉ ra thông tin để trả lời nằm trong email. Câu này hỏi điều Mr. Plum yêu
+cầu được làm, suy ra ông này là người nhận email, ta nên scan từ “please” hoặc cách diễn
+đạt tương tự. Có thông tin: “Please stack the books by genre to the best of your ability”,
+stack ~ organize, genre ~ category, vậy D là đáp án đúng.
+
+Câu 178 trực tiếp chỉ ra thông tin để trả lời nằm trong email. Ta nên đọc câu có chứa từ
+được hỏi và thêm những câu xung quanh nếu cần để chọn từ đồng nghĩa. Dịch câu này, ta
+
+                                                                                             70
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                                Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+được: “Tôi sẽ rất vui lòng ___ để đến nhận sách từ nhà ngài.”, nghĩa “vứt đi”, “sắp xếp theo
+trật tự” hay “giúp đỡ” ở đáp án A, B, C đều không phù hợp bằng nghĩa “chuẩn bị” ở đáp án
+D. Vậy D là đáp án đúng.
+
+Câu 179 hỏi về chính sách nào của cửa hàng được miễn đối với Mr. Plum. Ở website, ta
+thấy có thông tin: “Books pickups are available to donors of 25 or more books.”, tức là người
+ủng hộ từ 25 cuốn sách trở lên sẽ được miễn mang sách đến cửa hàng, mà cửa hàng sẽ có
+dịch vụ đến tận nhà để nhận sách. Trong email, ta được biết Mr. Plum quyên góp 100 cuốn,
+suy ra ông này được miễn việc đi đến cửa hàng. Điều này được khẳng định lại trong câu: “I
+would be happy to arrange to have the books picked up at your home”. Vậy, A là đáp án
+đúng.
+
+                                                            n
+                                                   u.v
+                                            ed
+                                     ic.
+                            toe
+                  fire
+
+
+                                                                                          71
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                                 Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+                                           Bài học 8
+
+                                  Xử lý bài gồm 3 đoạn văn
+
+Bài tập 1
+
+Thứ tự trả lời: 188 (câu hỏi chi tiết, văn bản 2) - 186 (câu hỏi từ vựng, văn bản 1) - 190 (câu
+hỏi suy luận, văn bản 3) - 187 (câu hỏi chi tiết, có thể dùng nhiều văn bản) - 189 (câu hỏi
+chi tiết, có thể dùng nhiều văn bản)
+
+Câu 188 trực tiếp chỉ ra thông tin để trả lời nằm trong book review, vì vậy ta nhìn vào văn
+bản 2, scan từ hotel clerk. Có thông tin: “nothing matches the earlier book’s crystal clear
+descriptions of his escapades and unexpected advantures as a hotel clerk”, unexpected
+advantures ~ surprising incidents, vậy A là đáp án đúng.      n
+                                                       u.v
+Câu 186 trực tiếp chỉ ra thông tin để trả lời nằm trong article, ta nên đọc câu có chứa từ
+được hỏi và thêm những câu xung quanh nếu cần để chọn từ đồng nghĩa. Dịch câu này, ta
+được: “Life Lessons in Advertising ___ từ đoạn mà cuốn sách trước kết thúc, với Mendoza
+vừa đặt chân tới thành phố New York.” Ý nghĩa “trở nên tốt hơn”, “trở nên nhanh hơn” và
+“nâng lên” ở đáp án A, B, D không phù hợp bằng “bắt đầu” ở đáp án C. Vậy C là đáp án
+chính xác.
+
+                                              ed
+Câu 190 trực tiếp chỉ ra thông tin để trả lời nằm trong interview transcript. Đây là câu hỏi
+cuối nên ta cần ưu tiên skim câu trả lời cuối cùng của Mendoza. Nhìn chung, cả câu trả lời
+này hàm ý rằng ông này có thể thay đổi nghề, rõ nhất là ở đoạn “I might go back to fishing or
+tennis”. Vậy D là đáp án đúng.
+                                       ic.
+Câu 187 hỏi về cuốn Waking Up, ta scan từ này thì thấy nó nằm trong article, nhưng lại
+không tìm được thông tin nào khớp với các lựa chọn. Ta tiếp tục scan cuống phần review vì
+phần này cũng chứa thông tin nói về sách của Mendoza, có đoạn: “Given that it took twenty
+
+                             toe
+years for David Mendoza to write his second book”, từ đó suy ra được rằng cuốn thứ nhất
+đã được viết 20 năm trước, đáp án A.
+
+Câu 189 hỏi về bất đồng ý kiền giữa Mendoza và Turnbull. Đoạn này khả năng cao suy ra
+từ book review khi mà Turnbull nhận xét về sách của Mendoza (quan điểm của Turnbull) kết
+
+
+                   fire
+hợp với interview transcript khi mà Mendoza được phỏng vấn đề sách của mình (quan điểm
+của Turnbull). Turnbull cho rằng cuốn sách của Mendoza không hay như cuốn trước, tối
+nghĩa và câu cú lủng củng làm cho việc đọc trở nên nhàm chán (“made up of dull,
+complicated sentences that make reading a chore…”) và khuyên người khác không nên đọc
+(“this is one book you can skip”). Trong khi đó, Mendoza tự đánh giá sách của mình là dễ
+đọc, có tính thường thức cao, hệt như cuốn sách đầu tiên (“easy to read and highly
+enjoyable, just like my first book) của ông này. Vậy họ bất đồng quan điểm về chất lượng
+của cuốn sách thứ hai “Life Lessons in Advertising”, đáp án D.
+
+Bài tập 2
+
+Thứ tự trả lời: Trả lời theo thứ tự xuất hiện của câu hỏi.
+
+Câu 191 trực tiếp chỉ ra thông tin để trả lời nằm trong article, ta scan từ Gomes. Có khá
+nhiều trích dẫn lời nói của ông này nên ta sẽ ưu tiên skim chúng trước, trong đó có thông
+
+
+
+                                                                                            72
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+                                Tài liệu được biên soạn bởi Lửa TOEIC (firetoeic.edu.vn)
+
+
+tin: “I had to fly in five more employees from our headquarters in Brazil to staff our busy
+display area”, vậy đáp án đúng là C, cần mang thêm nhân viên đến sự kiện.
+
+Câu 192 trực tiếp chỉ ra thông tin để trả lời nằm trong article, ta nên đọc câu có chứa từ
+được hỏi và thêm những câu xung quanh nếu cần để chọn từ đồng nghĩa. Dịch câu này, ta
+được: “Chúng tôi ___ quá nhiều khách đến nối mà tôi phải mang 5 nhân viên từ trụ sở tại
+Brazil đến để hỗ trợ khu vực trưng bày bận rộn này”. Nghĩa “lựa chọn”, “phác thảo” và “phác
+họa” ở đáp án A, B, C không phù hợp bằng từ “thu hút”, vậy D là đáp án đúng.
+
+Câu 193 hỏi về ngày tháng, ta nên để ý văn bản schedule để trả lời câu này. Có 4 mốc thời
+gian, trong đó ngày 16 August phải bị loại vì nó xảy ra sau này đăng bài báo, trong khi đó
+bài báo đã nhắc tới việc Mr. Gomes đến buổi triển lãm: “who arrived at the expo just in time
+                                                            n
+to see his company’s artisanal confectioners explain the chocolate-making process” (có mặt
+vừa đúng lúc để xem các nghệ nhân làm bánh kẹo thủ công giải thích quá trình làm
+
+
+                                                   u.v
+chocolate). Trong khi đó, 12 August là ngày có sự kiện “Demonstration Pavilions” với nội
+dung chia sẻ cách tạo ra sản phẩm. Vậy B là đáp án đúng.
+
+Câu 194 hỏi về sản phẩm đặc biệt được sản xuất cho buổi triển lãm. Ta nên lấy các danh từ
+riêng trong bốn lựa chọn để scan. Khi dùng từ Carpatho, ta thấy thông tin: “the legendary
+dried-fruit and dark-chocolate Carpatho”, tuy nhiên không có thông tin gì khác về việc nó
+
+                                            ed
+được đặc biệt sản xuất cho buổi triển lãm, tương tự với các từ còn lại. Vậy ta cần scan
+thông tim từ văn bản khác. Bài báo có đoạn: “One exclusively available at (chỉ có duy nhất
+tại) the Expo is the once-popular bar made from dried fruit and cover with dark chocolate”,
+chính là Carpatho, đáp án A.
+
+
+
+án B.
+                                     ic.
+Câu 195 hỏi về Malayna, dễ dàng scan được từ này trong flyer là thấy thông tin: “debuting in
+retail locations early nexr year”, vậy tức là nó hiện chưa được bày bán tại các cửa hàng, đáp
+
+
+
+
+                            toe
+                  fire
+
+
+                                                                                          73
+                 Lửa TOEIC – Trường đào tạo TOEIC online
+
