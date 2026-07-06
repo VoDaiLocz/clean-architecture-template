@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Parse Sparta TOEIC LC+RC Reading Test 1 Part 6/7 into validated JSONL rows."""
+"""Parse Sparta TOEIC LC+RC Reading Tests Part 6/7 into validated JSONL rows."""
 
 from __future__ import annotations
 
@@ -12,16 +12,16 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_BOOK = ROOT / "data/pdf-text-corpus/024-s-ch-sparta-toeic-lcrc-pdf.txt"
 DEFAULT_ANSWER_KEY = ROOT / "data/pdf-text-corpus/025-d-p-n-answer-key-s-ch-sparta-toeic-lc-rc-pdf.txt"
-DEFAULT_OUTPUT = ROOT / "data/manual-extraction/sparta-lcrc-test1-part6-7-from-txt.jsonl"
-DEFAULT_REJECT_OUTPUT = ROOT / "data/manual-extraction/sparta-lcrc-test1-part6-7-from-txt-rejected.jsonl"
+DEFAULT_OUTPUT = ROOT / "data/manual-extraction/sparta-lcrc-reading-tests-part6-7-from-txt.jsonl"
+DEFAULT_REJECT_OUTPUT = ROOT / "data/manual-extraction/sparta-lcrc-reading-tests-part6-7-from-txt-rejected.jsonl"
 SOURCE_ORIGINAL = "downloads/folders/Spart Toeic Quyển 2/Sách Sparta TOEIC LCRC.pdf"
 
 GROUP_HEADER = re.compile(
-    r"Questions?\s+(\d{3})\s*-\s*(\d{3})\s+refer to the following[^\n]*",
+    r"Questions?\s+(\d\s*\d\s*\d)\s*-\s*(\d\s*\d\s*\d)\s+refer to the following[^\n]*",
     re.IGNORECASE,
 )
 QUESTION_START = re.compile(r"^\s*(\d{3})\s*[\.\)]\s*(.+)")
-OPTION_START = re.compile(r"^\s*[\(\[]([A-D0O8])[\)\]I]\s*(.*)", re.IGNORECASE)
+OPTION_START = re.compile(r"^\s*[\(\[]([A-D0O8])[\)\]I}]\s*(.*)", re.IGNORECASE)
 ANSWER_PAIR = re.compile(r"(\d{1,3})\s*\.\s*([^\s]+)")
 NOISE_LINE = re.compile(
     r"^\s*(Go on to the next page|PART[67]|Directions:|-----|SOURCE_|QUEUE_|PAGE_COUNT|EXTRACTION_CLASS)",
@@ -65,7 +65,91 @@ def normalize_answer_token(token: str) -> str | None:
     return None
 
 
+def parse_answer_table(section: str, left_test: int, right_test: int | None = None) -> dict[int, dict[int, str]]:
+    answers: dict[int, dict[int, str]] = {left_test: {}}
+    if right_test is not None:
+        answers[right_test] = {}
+
+    for line in section.splitlines():
+        pairs = ANSWER_PAIR.findall(line)
+        if not pairs:
+            continue
+
+        halves = [(left_test, pairs)]
+        if right_test is not None and len(pairs) >= 10 and pairs[0][0] == pairs[len(pairs) // 2][0]:
+            midpoint = len(pairs) // 2
+            halves = [(left_test, pairs[:midpoint]), (right_test, pairs[midpoint:])]
+
+        for test_number, test_pairs in halves:
+            for number_text, token in test_pairs:
+                number = int(number_text)
+                if 101 <= number <= 200 and number not in answers[test_number]:
+                    answer = normalize_answer_token(token)
+                    if answer:
+                        answers[test_number][number] = answer
+
+    return answers
+
+
+def parse_all_answers(answer_key_text: str) -> dict[int, dict[int, str]]:
+    first_table, rest = answer_key_text.split("TESTJ", 1)
+    second_table, fifth_table = rest.split("TESTS", 1)
+    answers: dict[int, dict[int, str]] = {}
+    for parsed in (
+        parse_answer_table(first_table, 1, 2),
+        parse_answer_table(second_table, 3, 4),
+        parse_answer_table(fifth_table, 5, None),
+    ):
+        answers.update(parsed)
+
+    for test_number, test_answers in answers.items():
+        missing = [number for number in range(101, 201) if number not in test_answers]
+        if missing:
+            raise ValueError(f"Missing TEST {test_number} answers: {missing[:20]}")
+    return answers
+
+
 def parse_test1_answers(answer_key_text: str) -> dict[int, str]:
+    return parse_all_answers(answer_key_text)[1]
+
+
+def normalize_question_number(value: str) -> int:
+    return int(re.sub(r"\s+", "", value))
+
+
+def reading_tests(text: str) -> list[str]:
+    starts = [match.start() for match in re.finditer(r"READING TEST", text)]
+    tests: list[str] = []
+    for index, start in enumerate(starts):
+        end = starts[index + 1] if index + 1 < len(starts) else len(text)
+        segment = text[start:end]
+        part6_start = segment.find("Questions 131-134")
+        if part6_start < 0:
+            continue
+        listening_start = segment.find("LISTENING TEST", part6_start)
+        tests.append(segment[part6_start : listening_start if listening_start >= 0 else len(segment)])
+    return tests
+
+
+def reading_test_one(text: str) -> str:
+    tests = reading_tests(text)
+    if not tests:
+        raise ValueError("Cannot find Sparta Reading Test 1 Part 6 start.")
+    return tests[0]
+
+
+def split_group_chunks(test_text: str) -> list[tuple[int, int, str, str]]:
+    headers = list(GROUP_HEADER.finditer(test_text))
+    chunks: list[tuple[int, int, str, str]] = []
+    for index, header in enumerate(headers):
+        start_q = normalize_question_number(header.group(1))
+        end_q = normalize_question_number(header.group(2))
+        chunk_end = headers[index + 1].start() if index + 1 < len(headers) else len(test_text)
+        chunks.append((start_q, end_q, header.group(0), test_text[header.end() : chunk_end]))
+    return chunks
+
+
+def parse_legacy_test1_answers(answer_key_text: str) -> dict[int, str]:
     answers: dict[int, str] = {}
     first_table = answer_key_text.split("TESTJ", 1)[0]
     for line in first_table.splitlines():
@@ -73,8 +157,6 @@ def parse_test1_answers(answer_key_text: str) -> dict[int, str]:
         if not pairs:
             continue
 
-        # The PDF text has TEST 1 in the left half and TEST 2 in the right half.
-        # When both halves are present, the second half repeats the same numbers.
         first_half = pairs
         if len(pairs) >= 10 and pairs[0][0] == pairs[len(pairs) // 2][0]:
             first_half = pairs[: len(pairs) // 2]
@@ -92,31 +174,10 @@ def parse_test1_answers(answer_key_text: str) -> dict[int, str]:
     return answers
 
 
-def reading_test_one(text: str) -> str:
-    start = text.find("Questions 131-134")
-    if start < 0:
-        raise ValueError("Cannot find Sparta Reading Test 1 Part 6 start.")
-    end = text.find("LISTENING TEST", start)
-    if end < 0:
-        raise ValueError("Cannot find end of Sparta Reading Test 1.")
-    return text[start:end]
-
-
-def split_group_chunks(test_text: str) -> list[tuple[int, int, str, str]]:
-    headers = list(GROUP_HEADER.finditer(test_text))
-    chunks: list[tuple[int, int, str, str]] = []
-    for index, header in enumerate(headers):
-        start_q = int(header.group(1))
-        end_q = int(header.group(2))
-        chunk_end = headers[index + 1].start() if index + 1 < len(headers) else len(test_text)
-        chunks.append((start_q, end_q, header.group(0), test_text[header.end() : chunk_end]))
-    return chunks
-
-
 def split_columns(line: str) -> list[str]:
     for pattern in (
         r"\s{2,}(?=\d{3}\s*[\.\)])",
-        r"\s{6,}(?=[\(\[][A-D0O8][\)\]I])",
+        r"\s{6,}(?=[\(\[][A-D0O8][\)\]I}])",
     ):
         match = re.search(pattern, line[35:])
         if match:
@@ -180,7 +241,14 @@ def parse_question_columns(lines: list[str]) -> dict[int, dict]:
     return questions
 
 
-def parse_group(start_q: int, end_q: int, header: str, chunk: str, answers: dict[int, str]) -> tuple[list[dict], list[dict]]:
+def parse_group(
+    test_number: int,
+    start_q: int,
+    end_q: int,
+    header: str,
+    chunk: str,
+    answers: dict[int, str],
+) -> tuple[list[dict], list[dict]]:
     part = 6 if start_q <= 146 else 7
     if part == 6:
         chunk = chunk.split("PART7", 1)[0]
@@ -197,7 +265,7 @@ def parse_group(start_q: int, end_q: int, header: str, chunk: str, answers: dict
 
     accepted: list[dict] = []
     rejected: list[dict] = []
-    group_id = f"sparta-lcrc-test1-p{part}-{start_q}-{end_q}"
+    group_id = f"sparta-lcrc-test{test_number}-p{part}-{start_q}-{end_q}"
     for number in range(start_q, end_q + 1):
         question = parsed_questions.get(number)
         if not question:
@@ -211,7 +279,7 @@ def parse_group(start_q: int, end_q: int, header: str, chunk: str, answers: dict
         item = {
             "sourceFile": SOURCE_ORIGINAL,
             "sourceFileOriginalName": SOURCE_ORIGINAL,
-            "sourceTest": "SPARTA TOEIC LC+RC TEST 1",
+            "sourceTest": f"SPARTA TOEIC LC+RC TEST {test_number}",
             "toeicPart": part,
             "questionNumber": number,
             "sourcePdfPage": 0,
@@ -263,19 +331,26 @@ def main() -> int:
 
     book_text = Path(args.book).read_text(encoding="utf-8", errors="ignore")
     answer_key_text = Path(args.answer_key).read_text(encoding="utf-8", errors="ignore")
-    answers = parse_test1_answers(answer_key_text)
-    test_text = reading_test_one(book_text)
-    groups = split_group_chunks(test_text)
-
     accepted: list[dict] = []
     rejected: list[dict] = []
-    for start_q, end_q, header, chunk in groups:
-        group_accepted, group_rejected = parse_group(start_q, end_q, header, chunk, answers)
-        accepted.extend(group_accepted)
-        rejected.extend(group_rejected)
+    all_answers = parse_all_answers(answer_key_text)
+    tests = reading_tests(book_text)
+    for test_number, test_text in enumerate(tests, start=1):
+        groups = split_group_chunks(test_text)
+        for start_q, end_q, header, chunk in groups:
+            group_accepted, group_rejected = parse_group(
+                test_number,
+                start_q,
+                end_q,
+                header,
+                chunk,
+                all_answers[test_number],
+            )
+            accepted.extend(group_accepted)
+            rejected.extend(group_rejected)
 
-    accepted.sort(key=lambda item: item["questionNumber"])
-    rejected.sort(key=lambda item: item.get("questionNumber", 0))
+    accepted.sort(key=lambda item: (item["sourceTest"], item["questionNumber"]))
+    rejected.sort(key=lambda item: (item.get("sourceTest", ""), item.get("questionNumber", 0)))
 
     output = Path(args.output)
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -290,21 +365,21 @@ def main() -> int:
         encoding="utf-8",
     )
 
-    expected = set(range(131, 201))
-    parsed = {item["questionNumber"] for item in accepted}
+    expected = {(test, number) for test in range(1, 6) for number in range(131, 201)}
+    parsed = {(int(item["sourceTest"].rsplit(" ", 1)[1]), item["questionNumber"]) for item in accepted}
     missing = sorted(expected - parsed)
     part6 = sum(1 for item in accepted if item["toeicPart"] == 6)
     part7 = sum(1 for item in accepted if item["toeicPart"] == 7)
     print(
-        "SPARTA_LCRC_TEST1_PARSE "
-        f"groups={len(groups)} accepted={len(accepted)} rejected={len(rejected)} "
+        "SPARTA_LCRC_READING_TESTS_PARSE "
+        f"tests={len(tests)} accepted={len(accepted)} rejected={len(rejected)} "
         f"part6={part6} part7={part7} missing={len(missing)} output={output}"
     )
     if missing:
-        print("MISSING", ",".join(map(str, missing)))
+        print("MISSING", ",".join(f"T{test}Q{number}" for test, number in missing[:80]))
     if rejected:
         print(f"REJECT_OUTPUT {reject_output}")
-    return 0 if len(accepted) == 70 and not rejected and part6 == 16 and part7 == 54 else 2
+    return 0 if len(accepted) == 350 and not rejected and part6 == 80 and part7 == 270 else 2
 
 
 if __name__ == "__main__":
