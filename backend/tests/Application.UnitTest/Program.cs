@@ -102,6 +102,7 @@ var tests = new List<(string Name, Action Run)>
     ("parses TOEIC transcripts into draft segments", ApplicationTests.ParsesToeicTranscriptsIntoDraftSegments),
     ("parses TOEIC reading drafts with tags and source trace", ApplicationTests.ParsesToeicReadingDraftsWithTagsAndSourceTrace),
     ("reading draft parser import is idempotent and preserves reviewed status", ApplicationTests.ReadingDraftParserImportIsIdempotentAndPreservesReviewedStatus),
+    ("reading draft parser skips legacy semantic duplicates", ApplicationTests.ReadingDraftParserSkipsLegacySemanticDuplicates),
     ("regex reading parser creates valid Part 5 drafts from extracted text and answer key", ApplicationTests.RegexReadingParserCreatesValidPart5DraftsFromExtractedTextAndAnswerKey),
     ("regex reading parser creates valid Part 6 cloze drafts from split OCR blocks", ApplicationTests.RegexReadingParserCreatesValidPart6ClozeDraftsFromSplitOcrBlocks),
     ("regex reading parser creates valid Part 6 and Part 7 drafts with passage context", ApplicationTests.RegexReadingParserCreatesValidPart6AndPart7DraftsWithPassageContext),
@@ -1407,6 +1408,45 @@ static class ApplicationTests
         Assert.Equal(1, drafts.Count, "Rerunning parser import must not create duplicate draft rows.");
         Assert.Equal(DraftContentStatus.Published, drafts.Single().Status, "Rerunning parser import must preserve reviewed/published status.");
         Assert.Equal(1, repository.CountPublishedQuestions(5), "Published learner content must remain published after parser rerun.");
+    }
+
+    public static void ReadingDraftParserSkipsLegacySemanticDuplicates()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var asset = SeedSourceAsset(repository);
+        const string legacyPayload = """
+        {"schemaVersion":"toeic-draft.v1","kind":"ReadingQuestion","data":{"questionType":"TextCompletion","prompt":"Complete blank (131) in the passage.","skillTags":["part6","reading"],"parserPayload":{"extractedNumber":131,"passageId":"passage-legacy","passageText":"A passage with blank (131).","options":{"A":"answer A","B":"answer B","C":"answer C","D":"answer D"},"correctAnswer":"A"}}}
+        """;
+        repository.UpsertDraftContentItem(new DraftContentItem(
+            DraftId: "legacy-reviewed-part6-131",
+            AssetId: asset.AssetId,
+            MaterialClass: MaterialClass.TestBook,
+            ToeicPart: 6,
+            ItemType: "ReadingQuestion",
+            PayloadJson: legacyPayload,
+            SourceTraceJson: """{"assetId":"asset-sparta-test-01-pdf","sourceId":"sheet-row-7","sourceBlockId":"block-part6-131"}""",
+            ParserConfidence: 0.95m,
+            Status: DraftContentStatus.Published
+        ));
+        var parser = new FakeReadingDraftParser([
+            new ReadingDraftQuestionResult(
+                ToeicPart: 6,
+                QuestionType: "TextCompletion",
+                Prompt: "Complete blank (131) in the passage.",
+                SkillTags: ["part6", "reading"],
+                PayloadJson: """{"extractedNumber":131,"passageId":"passage-legacy","passageText":"A passage with blank (131).","options":{"A":"answer A","B":"answer B","C":"answer C","D":"answer D"},"correctAnswer":"A"}""",
+                SourceBlockId: "block-part6-131",
+                Confidence: 0.95m
+            )
+        ]);
+
+        var result = new ParseToeicReadingDraftsHandler(repository, parser)
+            .Handle(new ParseToeicReadingDraftsCommand(asset.AssetId));
+
+        Assert.Equal(0, result.CreatedReadingDraftCount, "Parser import must skip legacy drafts with the same part, source block, and extracted number.");
+        Assert.Equal(1, repository.GetDraftContentItems(asset.AssetId).Count, "Semantic duplicate import must not create another draft row.");
+        Assert.Equal(DraftContentStatus.Published, repository.GetDraftContentItems(asset.AssetId).Single().Status, "Legacy reviewed status must be preserved.");
     }
 
     public static void RegexReadingParserCreatesValidPart5DraftsFromExtractedTextAndAnswerKey()
