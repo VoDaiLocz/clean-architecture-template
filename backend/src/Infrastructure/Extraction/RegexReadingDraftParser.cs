@@ -8,11 +8,11 @@ namespace Infrastructure.Extraction;
 public sealed class RegexReadingDraftParser : IReadingDraftParser
 {
     private static readonly Regex QuestionRegex = new(
-        @"(?<number>1[0-9]{2}|200)\.\s*(?<prompt>.+?)\s*(?:\(?A\)|A[.)])\s*(?<a>.+?)\s*(?:\(?B\)|B[.)])\s*(?<b>.+?)\s*(?:\(?C\)|C[.)])\s*(?<c>.+?)\s*(?:\(?D\)|D[.)])\s*(?<d>.+?)(?=(?:\s+1[0-9]{2}\.|\s+200\.|$))",
+        @"(?<number>1[0-9]{2}|200)\.\s*(?<prompt>.+?)\s*(?:\(?A\)|A[.)])\s*(?<a>.+?)\s*(?:\(?B\)|B[.)]|\(8\)|8[.)])\s*(?<b>.+?)\s*(?:\(?C\)|C[.)])\s*(?<c>.+?)\s*(?:\(?D\)|D[.)]|\(0\)|0[.)])\s*(?<d>.+?)(?=(?:\s+1[0-9]{2}\.|\s+200\.|$))",
         RegexOptions.Compiled | RegexOptions.Singleline);
 
     private static readonly Regex AnswerKeyRegex = new(
-        @"\b(?<number>1[0-9]{2}|200)\s*[\).:-]?\s*(?<answer>[ABCD])\b",
+        @"\b(?<number>1[0-9]{2}|200)\s*[\).:-]?\s*\(?(?<answer>[ABCD80])\)?\b",
         RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
     private static readonly Regex QuestionNumberRegex = new(
@@ -47,6 +47,7 @@ public sealed class RegexReadingDraftParser : IReadingDraftParser
             .ThenBy(block => ExtractBlockOrdinal(block.BlockId))
             .ThenBy(block => block.BlockId, StringComparer.Ordinal)
             .ToArray();
+        var globalAnswerEvidence = BuildGlobalAnswerEvidence(orderedBlocks);
 
         for (var blockIndex = 0; blockIndex < orderedBlocks.Length; blockIndex++)
         {
@@ -61,7 +62,10 @@ public sealed class RegexReadingDraftParser : IReadingDraftParser
                     continue;
                 }
 
-                var answerEvidence = FindNearbyAnswer(questionNumber, blockIndex, orderedBlocks);
+                var answerEvidence = FindNearbyAnswer(questionNumber, blockIndex, orderedBlocks)
+                    ?? (globalAnswerEvidence.TryGetValue(questionNumber, out var globalAnswer)
+                        ? globalAnswer
+                        : null);
                 if (answerEvidence is null)
                 {
                     continue;
@@ -300,7 +304,7 @@ public sealed class RegexReadingDraftParser : IReadingDraftParser
                     if (int.Parse(match.Groups["number"].Value) == questionNumber)
                     {
                         return new AnswerEvidence(
-                            match.Groups["answer"].Value.ToUpperInvariant(),
+                            NormalizeAnswer(match.Groups["answer"].Value),
                             text
                         );
                     }
@@ -318,6 +322,32 @@ public sealed class RegexReadingDraftParser : IReadingDraftParser
         }
 
         return null;
+    }
+
+    private static IReadOnlyDictionary<int, AnswerEvidence> BuildGlobalAnswerEvidence(
+        IReadOnlyList<ExtractedTextBlock> blocks
+    )
+    {
+        var answers = new Dictionary<int, AnswerEvidence>();
+        foreach (var block in blocks)
+        {
+            var text = NormalizeWhitespace(block.Text);
+            if (!ContainsAnswerKeyMarker(text))
+            {
+                continue;
+            }
+
+            foreach (Match match in AnswerKeyRegex.Matches(text))
+            {
+                var number = int.Parse(match.Groups["number"].Value);
+                answers.TryAdd(number, new AnswerEvidence(
+                    NormalizeAnswer(match.Groups["answer"].Value),
+                    text
+                ));
+            }
+        }
+
+        return answers;
     }
 
     private static PassageEvidence? FindNearbyPassage(
@@ -346,13 +376,38 @@ public sealed class RegexReadingDraftParser : IReadingDraftParser
                 continue;
             }
 
+            var passageText = BuildPassageTextFromMarker(index, questionBlockIndex, blocks);
             return new PassageEvidence(
                 PassageId: $"passage-{SanitizeId(block.AssetId)}-{SanitizeId(block.BlockId)}",
-                PassageText: text
+                PassageText: string.IsNullOrWhiteSpace(passageText) ? text : passageText
             );
         }
 
         return null;
+    }
+
+    private static string BuildPassageTextFromMarker(
+        int markerBlockIndex,
+        int questionBlockIndex,
+        IReadOnlyList<ExtractedTextBlock> blocks
+    )
+    {
+        var parts = new List<string>();
+        for (var index = markerBlockIndex; index < questionBlockIndex; index++)
+        {
+            var text = NormalizeWhitespace(blocks[index].Text);
+            if (string.IsNullOrWhiteSpace(text)
+                || text.Length < 12
+                || QuestionRegex.IsMatch(text)
+                || ContainsBoilerplate(text))
+            {
+                continue;
+            }
+
+            parts.Add(text);
+        }
+
+        return NormalizeWhitespace(string.Join(" ", parts));
     }
 
     private static bool StartsDifferentQuestion(string text, int questionNumber)
@@ -365,7 +420,20 @@ public sealed class RegexReadingDraftParser : IReadingDraftParser
         text.Contains("answer", StringComparison.OrdinalIgnoreCase)
         || text.Contains("key", StringComparison.OrdinalIgnoreCase)
         || text.Contains("đáp", StringComparison.OrdinalIgnoreCase)
-        || text.Contains("dap", StringComparison.OrdinalIgnoreCase);
+        || text.Contains("dap", StringComparison.OrdinalIgnoreCase)
+        || Regex.IsMatch(text, @"\b1[5-9]\d\.\s*\([ABCD80]\)", RegexOptions.IgnoreCase);
+
+    private static bool ContainsBoilerplate(string text) =>
+        text.Contains("Go on to the next page", StringComparison.OrdinalIgnoreCase)
+        || text.Contains("Facebook.com", StringComparison.OrdinalIgnoreCase)
+        || text.Contains("BenzenEnglish", StringComparison.OrdinalIgnoreCase);
+
+    private static string NormalizeAnswer(string answer) => answer.ToUpperInvariant() switch
+    {
+        "8" => "B",
+        "0" => "D",
+        var value => value,
+    };
 
     private static int? GetReadingPart(int questionNumber) => questionNumber switch
     {

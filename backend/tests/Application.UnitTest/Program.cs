@@ -105,6 +105,7 @@ var tests = new List<(string Name, Action Run)>
     ("regex reading parser creates valid Part 5 drafts from extracted text and answer key", ApplicationTests.RegexReadingParserCreatesValidPart5DraftsFromExtractedTextAndAnswerKey),
     ("regex reading parser creates valid Part 6 cloze drafts from split OCR blocks", ApplicationTests.RegexReadingParserCreatesValidPart6ClozeDraftsFromSplitOcrBlocks),
     ("regex reading parser creates valid Part 6 and Part 7 drafts with passage context", ApplicationTests.RegexReadingParserCreatesValidPart6AndPart7DraftsWithPassageContext),
+    ("regex reading parser creates valid Part 7 drafts with global answer key", ApplicationTests.RegexReadingParserCreatesValidPart7DraftsWithGlobalAnswerKey),
     ("parses TOEIC listening draft groups", ApplicationTests.ParsesToeicListeningDraftGroups),
     ("validates TOEIC draft content and records issues", ApplicationTests.ValidatesToeicDraftContentAndRecordsIssues),
     ("reviews and publishes approved TOEIC draft content", ApplicationTests.ReviewsAndPublishesApprovedToeicDraftContent),
@@ -1678,6 +1679,103 @@ static class ApplicationTests
         Assert.True(draft.PayloadJson.Contains("\"correctAnswer\":\"A\"", StringComparison.Ordinal), "Draft payload must include answer evidence.");
         Assert.True(draft.PayloadJson.Contains("Throughout the trial", StringComparison.Ordinal), "Draft payload must preserve option text.");
         Assert.True(draft.PayloadJson.Contains("\"passageText\"", StringComparison.Ordinal), "Draft payload must include passage text.");
+    }
+
+    public static void RegexReadingParserCreatesValidPart7DraftsWithGlobalAnswerKey()
+    {
+        using var repository = SqliteKnowledgeRepository.InMemory();
+        repository.Initialize();
+        var asset = SeedSourceAsset(repository) with
+        {
+            AssetId = "asset-toeic-analyst-book",
+            FileName = "TOEIC Analyst Book.pdf",
+            ObjectKey = "source-assets/reading/toeic-analyst-book.pdf",
+            Checksum = "sha256-toeic-analyst"
+        };
+        repository.UpsertSourceAsset(asset);
+        repository.UpsertExtractedPage(new ExtractedPage(
+            PageId: "page-analyst-148",
+            AssetId: asset.AssetId,
+            PageNumber: 148,
+            Width: 595,
+            Height: 842,
+            ExtractedAtUtc: new DateTimeOffset(2026, 7, 6, 0, 0, 0, TimeSpan.Zero)
+        ));
+        repository.UpsertExtractedPage(new ExtractedPage(
+            PageId: "page-analyst-229",
+            AssetId: asset.AssetId,
+            PageNumber: 229,
+            Width: 595,
+            Height: 842,
+            ExtractedAtUtc: new DateTimeOffset(2026, 7, 6, 0, 1, 0, TimeSpan.Zero)
+        ));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock(
+            BlockId: "extracted-block-analyst-148-1",
+            AssetId: asset.AssetId,
+            PageId: "page-analyst-148",
+            PageNumber: 148,
+            BlockType: ExtractedBlockType.Paragraph,
+            Text: "Questions 156 through 158 refer to the following notice.",
+            Confidence: 0.96m,
+            CoordinatesJson: "{}"
+        ));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock(
+            BlockId: "extracted-block-analyst-148-2",
+            AssetId: asset.AssetId,
+            PageId: "page-analyst-148",
+            PageNumber: 148,
+            BlockType: ExtractedBlockType.Paragraph,
+            Text: "NOTICE: To all patrons of the Blue Wave Fitness Center",
+            Confidence: 0.96m,
+            CoordinatesJson: "{}"
+        ));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock(
+            BlockId: "extracted-block-analyst-148-3",
+            AssetId: asset.AssetId,
+            PageId: "page-analyst-148",
+            PageNumber: 148,
+            BlockType: ExtractedBlockType.Paragraph,
+            Text: "The management would like members to note that the Blue Wave Fitness Center is not liable for any items left in the coin lockers. Therefore, it is important that your locker is kept locked while you are using our facilities.",
+            Confidence: 0.96m,
+            CoordinatesJson: "{}"
+        ));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock(
+            BlockId: "extracted-block-analyst-148-6",
+            AssetId: asset.AssetId,
+            PageId: "page-analyst-148",
+            PageNumber: 148,
+            BlockType: ExtractedBlockType.Question,
+            Text: "156. Where would this notice be posted? (A) In a changing room (B) At a railway station (C) In a restroom (0) In an office",
+            Confidence: 0.96m,
+            CoordinatesJson: "{}"
+        ));
+        repository.UpsertExtractedTextBlock(new ExtractedTextBlock(
+            BlockId: "extracted-block-analyst-229-3",
+            AssetId: asset.AssetId,
+            PageId: "page-analyst-229",
+            PageNumber: 229,
+            BlockType: ExtractedBlockType.Paragraph,
+            Text: "153. (B) To cancel an order 154. (A) A contract to work for a private railway 155. (D) Max Green and John Andersen already know each other. 156. (A) In a changing room 157. (C) A series of numbers 158. (A) The Blue Wave has suffered thefts recently.",
+            Confidence: 0.98m,
+            CoordinatesJson: "{}"
+        ));
+
+        var handler = new ParseToeicReadingDraftsHandler(
+            repository,
+            new Infrastructure.Extraction.RegexReadingDraftParser()
+        );
+
+        var result = handler.Handle(new ParseToeicReadingDraftsCommand(asset.AssetId));
+        var validation = new ValidateToeicDraftContentHandler(repository)
+            .Handle(new ValidateToeicDraftContentCommand(asset.AssetId));
+
+        Assert.Equal(1, result.CreatedReadingDraftCount, "Part 7 question with passage and global answer key should become one draft.");
+        Assert.Equal(1, validation.ValidDraftCount, "Part 7 draft with passage and answer key should pass validation.");
+        var draft = repository.GetDraftContentItems(asset.AssetId).Single();
+        Assert.Equal(7, draft.ToeicPart, "Question 156 belongs to TOEIC Part 7.");
+        Assert.True(draft.PayloadJson.Contains("\"correctAnswer\":\"A\"", StringComparison.Ordinal), "Global answer key evidence should populate the correct answer.");
+        Assert.True(draft.PayloadJson.Contains("Blue Wave Fitness Center", StringComparison.Ordinal), "Draft payload must preserve real passage text.");
+        Assert.True(draft.PayloadJson.Contains("\"D\":\"In an office\"", StringComparison.Ordinal), "OCR option marker (0) must normalize to option D.");
     }
 
     public static void ParsesToeicListeningDraftGroups()
