@@ -17,10 +17,10 @@ public static class ToeicPart1EngineTests
             OptionsJson: "{\"A\":\"He is walking.\",\"B\":\"He is running.\",\"C\":\"He is jumping.\",\"D\":\"He is sleeping.\"}",
             CorrectAnswer: "A",
             Explanation: "He is clearly walking.",
-            MediaAssetId: "media-1",
+            MediaAssetId: "image-1",
             PassageId: null,
             GroupId: null,
-            EvidenceJson: "{}",
+            EvidenceJson: "{\"audioAssetId\":\"audio-1\"}",
             SkillTags: "[]",
             SourceTraceJson: "{}",
             Status: PublishedContentStatus.Published
@@ -38,6 +38,18 @@ public static class ToeicPart1EngineTests
     {
         var engine = new ToeicPart1Engine();
         var q = CreateValidQuestion() with { MediaAssetId = null };
+        try
+        {
+            engine.CreatePlayableItem(q);
+            throw new Exception("Expected InvalidOperationException");
+        }
+        catch (InvalidOperationException) { }
+    }
+
+    public static void MissingAudioAssetIdThrows()
+    {
+        var engine = new ToeicPart1Engine();
+        var q = CreateValidQuestion() with { EvidenceJson = "{}", SourceTraceJson = "{}" };
         try
         {
             engine.CreatePlayableItem(q);
@@ -72,7 +84,11 @@ public static class ToeicPart1EngineTests
         }
         
         if (item.Choices![0] != "A. He is walking.") throw new Exception("Choices not formatted correctly");
-        if (item.MediaRefs![0] != "media-1") throw new Exception("MediaRef missing");
+        if (item.MediaRefs![0] != "image-1") throw new Exception("Image MediaRef missing");
+        if (item.MediaRefs![1] != "audio-1") throw new Exception("Audio MediaRef missing");
+        var payload = (Part1Payload)item.Payload!;
+        if (payload.ImageAssetId != "image-1") throw new Exception("Payload image asset missing");
+        if (payload.AudioAssetId != "audio-1") throw new Exception("Payload audio asset missing");
     }
 
     public static void ReviewItemIncludesAnswer()
@@ -83,6 +99,7 @@ public static class ToeicPart1EngineTests
 
         if (item.CorrectAnswer != "A") throw new Exception("Missing CorrectAnswer");
         if (item.Explanation != "He is clearly walking.") throw new Exception("Missing Explanation");
-        if (item.MediaRefs![0] != "media-1") throw new Exception("MediaRef missing");
+        if (item.MediaRefs![0] != "image-1") throw new Exception("Image MediaRef missing");
+        if (item.MediaRefs![1] != "audio-1") throw new Exception("Audio MediaRef missing");
     }
 }

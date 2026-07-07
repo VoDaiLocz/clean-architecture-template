@@ -324,7 +324,14 @@ public static class PublishedQuestionRules
 
         if (question.ToeicPart == 1 && string.IsNullOrWhiteSpace(question.MediaAssetId))
         {
-            throw new InvalidOperationException("Part 1 questions require image/audio media.");
+            throw new InvalidOperationException("Part 1 questions require image media.");
+        }
+
+        if (question.ToeicPart == 1
+            && !ContainsJsonStringProperty(question.EvidenceJson, "audioAssetId")
+            && !ContainsJsonStringProperty(question.SourceTraceJson, "audioAssetId"))
+        {
+            throw new InvalidOperationException("Part 1 questions require audio media evidence.");
         }
 
         if (question.ToeicPart is 3 or 4 && string.IsNullOrWhiteSpace(question.GroupId))
@@ -344,6 +351,58 @@ public static class PublishedQuestionRules
         {
             throw new InvalidOperationException(message);
         }
+    }
+
+    private static bool ContainsJsonStringProperty(string json, string propertyName)
+    {
+        if (string.IsNullOrWhiteSpace(json))
+        {
+            return false;
+        }
+
+        try
+        {
+            using var document = System.Text.Json.JsonDocument.Parse(json);
+            return ContainsJsonStringProperty(document.RootElement, propertyName);
+        }
+        catch (System.Text.Json.JsonException)
+        {
+            return false;
+        }
+    }
+
+    private static bool ContainsJsonStringProperty(System.Text.Json.JsonElement element, string propertyName)
+    {
+        if (element.ValueKind == System.Text.Json.JsonValueKind.Object)
+        {
+            foreach (var property in element.EnumerateObject())
+            {
+                if (property.NameEquals(propertyName)
+                    && property.Value.ValueKind == System.Text.Json.JsonValueKind.String
+                    && !string.IsNullOrWhiteSpace(property.Value.GetString()))
+                {
+                    return true;
+                }
+
+                if (ContainsJsonStringProperty(property.Value, propertyName))
+                {
+                    return true;
+                }
+            }
+        }
+
+        if (element.ValueKind == System.Text.Json.JsonValueKind.Array)
+        {
+            foreach (var item in element.EnumerateArray())
+            {
+                if (ContainsJsonStringProperty(item, propertyName))
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
 

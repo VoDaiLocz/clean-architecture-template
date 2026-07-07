@@ -25,6 +25,9 @@ public static class ListeningTestSessionTests
         repository.UpsertSourceAsset(new SourceAsset(
             "media1", "container1", "source1", "file.mp3", "audio/mpeg", ".mp3", 1024, SourceAssetRole.Audio, "url", "key", "hash"
         ));
+        repository.UpsertSourceAsset(new SourceAsset(
+            "image1", "container1", "source1", "image.jpg", "image/jpeg", ".jpg", 1024, SourceAssetRole.Image, "url", "image-key", "image-hash"
+        ));
     }
 
     public static void StartsSessionWithCorrectAssignedQuestions()
@@ -42,8 +45,9 @@ public static class ListeningTestSessionTests
             for (int i = 0; i < 5; i++)
             {
                 var qId = $"q_p{p}_{i}";
-                string? mediaId = p == 1 || p == 2 ? "media1" : null;
+                string? mediaId = p == 1 ? "image1" : p == 2 ? "media1" : null;
                 string? groupId = p == 3 || p == 4 ? "group1" : null;
+                var evidenceJson = p == 1 ? """{"imageAssetId":"image1","audioAssetId":"media1"}""" : "{}";
 
                 repository.UpsertPublishedQuestion(new PublishedQuestion(
                     QuestionId: qId,
@@ -57,9 +61,9 @@ public static class ListeningTestSessionTests
                     MediaAssetId: mediaId,
                     PassageId: null,
                     GroupId: groupId,
-                    EvidenceJson: "{}",
+                    EvidenceJson: evidenceJson,
                     SkillTags: "",
-                    SourceTraceJson: "{}",
+                    SourceTraceJson: evidenceJson,
                     Status: PublishedContentStatus.Published
                 ));
             }

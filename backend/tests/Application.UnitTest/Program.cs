@@ -70,12 +70,18 @@ if (args.Contains("--validate-manual-part1-house", StringComparer.Ordinal))
     return ValidateManualPart1House();
 }
 
+if (args.Contains("--publish-manual-part1-house", StringComparer.Ordinal))
+{
+    return PublishManualPart1House();
+}
+
 var tests = new List<(string Name, Action Run)>
 {
     ("ToeicPlayableItem does not leak answer", ToeicItemContractsTests.ToeicPlayableItemDoesNotLeakAnswer),
     ("ToeicReviewItem contains answer keys", ToeicItemContractsTests.ToeicReviewItemContainsAnswer),
     ("Engine supports Part 1 only", ToeicPart1EngineTests.EngineSupportsPart1Only),
     ("Missing MediaAssetId throws", ToeicPart1EngineTests.MissingMediaAssetIdThrows),
+    ("Missing audioAssetId throws", ToeicPart1EngineTests.MissingAudioAssetIdThrows),
     ("Invalid options throws", ToeicPart1EngineTests.InvalidOptionsThrows),
     ("Playable item hides answer", ToeicPart1EngineTests.PlayableItemHidesAnswer),
     ("Review item includes answer", ToeicPart1EngineTests.ReviewItemIncludesAnswer),
@@ -666,6 +672,7 @@ static int ValidateManualPart1House()
     var handler = new ValidateToeicDraftContentHandler(repository);
     var valid = 0;
     var invalid = 0;
+    var readyOrPublished = 0;
     var assetIds = repository.GetAllSourceAssets()
         .Where(asset => asset.DetectedRole == SourceAssetRole.Audio)
         .Select(asset => asset.AssetId)
@@ -679,10 +686,76 @@ static int ValidateManualPart1House()
         var result = handler.Handle(new ValidateToeicDraftContentCommand(assetId));
         valid += result.ValidDraftCount;
         invalid += result.InvalidDraftCount;
+        readyOrPublished += repository.GetDraftContentItems(assetId)
+            .Count(draft =>
+                draft.DraftId.StartsWith("draft-manual-taking-toeic-1-part1-house-q", StringComparison.Ordinal)
+                && draft.Status is DraftContentStatus.ReadyForReview or DraftContentStatus.Published);
     }
 
-    Console.WriteLine($"MANUAL_PART1_HOUSE_VALIDATE assets={assetIds.Length} valid={valid} invalid={invalid}");
-    return assetIds.Length == 12 && valid == 12 && invalid == 0 ? 0 : 2;
+    Console.WriteLine($"MANUAL_PART1_HOUSE_VALIDATE assets={assetIds.Length} newlyValid={valid} readyOrPublished={readyOrPublished} invalid={invalid}");
+    return assetIds.Length == 12 && readyOrPublished == 12 && invalid == 0 ? 0 : 2;
+}
+
+static int PublishManualPart1House()
+{
+    var dbPath = Path.GetFullPath("backend/src/Api/toeic-normalization.db");
+    if (!File.Exists(dbPath))
+    {
+        Console.Error.WriteLine($"Real normalization DB not found: {dbPath}");
+        return 1;
+    }
+
+    using var repository = SqliteKnowledgeRepository.FromConnectionString($"Data Source={dbPath}");
+    repository.Initialize();
+
+    const string lessonId = "lesson-taking-toeic-1-part1-house";
+    repository.UpsertPublishedLesson(new PublishedLesson(
+        LessonId: lessonId,
+        UnitId: "part1-photographs-house",
+        ToeicPart: 1,
+        Title: "Part 1 Photographs: House",
+        Objective: "Match the spoken statement to the visible action or object in a home scene.",
+        SkillTags: """["part-1","photographs","house","manual-verified"]""",
+        SourceTraceJson: """{"sourceId":"manual-taking-toeic-1-part1-house","manualEvidence":"pdf-pages-14-17-transcript-240-answer-key-255"}""",
+        Status: PublishedContentStatus.Published
+    ));
+
+    var handler = new ReviewAndPublishToeicContentHandler(repository);
+    var published = 0;
+    var skipped = 0;
+
+    var assetIds = repository.GetAllSourceAssets()
+        .Where(asset => asset.DetectedRole == SourceAssetRole.Audio)
+        .Select(asset => asset.AssetId)
+        .Where(assetId => repository.GetDraftContentItems(assetId)
+            .Any(draft => draft.DraftId.StartsWith("draft-manual-taking-toeic-1-part1-house-q", StringComparison.Ordinal)))
+        .OrderBy(assetId => assetId, StringComparer.Ordinal)
+        .ToArray();
+
+    foreach (var assetId in assetIds)
+    {
+        var readyDrafts = repository.GetDraftContentItems(assetId)
+            .Where(draft => draft.DraftId.StartsWith("draft-manual-taking-toeic-1-part1-house-q", StringComparison.Ordinal))
+            .Where(draft => draft.Status == DraftContentStatus.ReadyForReview)
+            .ToArray();
+
+        if (readyDrafts.Length == 0)
+        {
+            skipped++;
+            continue;
+        }
+
+        var result = handler.Handle(new ReviewAndPublishToeicContentCommand(
+            assetId,
+            lessonId,
+            readyDrafts.Select(draft => new ReviewDecision(draft.DraftId, ReviewDecisionAction.Approve)).ToArray()
+        ));
+        published += result.PublishedCount;
+    }
+
+    var totalPublishedPart1 = repository.CountPublishedQuestions(1);
+    Console.WriteLine($"MANUAL_PART1_HOUSE_PUBLISH assets={assetIds.Length} published={published} skipped={skipped} totalPublishedPart1={totalPublishedPart1}");
+    return totalPublishedPart1 >= 12 ? 0 : 2;
 }
 
 static SourceAsset ResolveManualExtractionAsset(IKnowledgeRepository repository, ManualExtractedItem item)
@@ -3190,6 +3263,17 @@ static class ApplicationTests
                 MediaAssetId = null,
             }),
             "Part 1 question must require media."
+        );
+        Assert.Throws<InvalidOperationException>(
+            () => repository.UpsertPublishedQuestion(part5Question with
+            {
+                QuestionId = "invalid-part1-no-audio",
+                ToeicPart = 1,
+                MediaAssetId = "image-asset-1",
+                EvidenceJson = """{"imageAssetId":"image-asset-1"}""",
+                SourceTraceJson = """{"imageAssetId":"image-asset-1"}""",
+            }),
+            "Part 1 question must require audio media evidence."
         );
         Assert.Throws<InvalidOperationException>(
             () => repository.UpsertPublishedQuestion(part5Question with

@@ -5,7 +5,11 @@ namespace Application.Common.Models;
 public interface IPartPayload { }
 
 // Part-specific payloads
-public class Part1Payload : IPartPayload { }
+public class Part1Payload : IPartPayload
+{
+    public required string ImageAssetId { get; set; }
+    public required string AudioAssetId { get; set; }
+}
 public class Part2Payload : IPartPayload { }
 public class Part3Payload : IPartPayload { }
 public class Part4Payload : IPartPayload { }

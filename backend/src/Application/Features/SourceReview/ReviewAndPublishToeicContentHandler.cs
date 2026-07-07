@@ -69,7 +69,7 @@ public sealed class ReviewAndPublishToeicContentHandler(IKnowledgeRepository rep
             OptionsJson: parserPayload.GetProperty("options").GetRawText(),
             CorrectAnswer: parserPayload.GetProperty("correctAnswer").GetString() ?? "",
             Explanation: parserPayload.TryGetProperty("explanation", out var explanation) ? explanation.GetString() ?? "" : "Reviewed TOEIC explanation pending enrichment.",
-            MediaAssetId: null,
+            MediaAssetId: GetMediaAssetId(toeicPart, data, parserPayload),
             PassageId: GetOptionalString(data, parserPayload, "passageId"),
             GroupId: GetOptionalString(data, parserPayload, "groupId"),
             EvidenceJson: draft.SourceTraceJson,
@@ -98,5 +98,16 @@ public sealed class ReviewAndPublishToeicContentHandler(IKnowledgeRepository rep
         }
 
         return parserPayload.TryGetProperty(propertyName, out var payloadValue) ? payloadValue.GetString() : null;
+    }
+
+    private static string? GetMediaAssetId(int toeicPart, JsonElement data, JsonElement parserPayload)
+    {
+        if (toeicPart == 1)
+        {
+            return GetOptionalString(data, parserPayload, "imageAssetId");
+        }
+
+        return GetOptionalString(data, parserPayload, "mediaAssetId")
+            ?? GetOptionalString(data, parserPayload, "audioAssetId");
     }
 }

@@ -25,6 +25,9 @@ public static class FullTestSessionTests
         repository.UpsertSourceAsset(new SourceAsset(
             "media1", "container1", "source1", "file.mp3", "audio/mpeg", ".mp3", 1024, SourceAssetRole.Audio, "url", "key", "hash"
         ));
+        repository.UpsertSourceAsset(new SourceAsset(
+            "image1", "container1", "source1", "image.jpg", "image/jpeg", ".jpg", 1024, SourceAssetRole.Image, "url", "image-key", "image-hash"
+        ));
     }
 
     public static void StartsSessionWithCorrectAssignedQuestions()
@@ -47,10 +50,11 @@ public static class FullTestSessionTests
         {
             for (int i = 0; i < req.Value + 5; i++)
             {
-                string? mediaId = (req.Key == 1 || req.Key == 2) ? "media1" : null;
+                string? mediaId = req.Key == 1 ? "image1" : req.Key == 2 ? "media1" : null;
                 string? groupId = (req.Key == 3 || req.Key == 4) ? "group1" : null;
                 string? passageId = (req.Key == 6 || req.Key == 7) ? "passage1" : null;
-                repository.UpsertPublishedQuestion(new PublishedQuestion($"q{req.Key}_{i}", "l1", req.Key, PublishedQuestionType.SingleQuestion, "prompt", "{}", "A", "exp", mediaId, passageId, groupId, "{}", "tags", "{}", PublishedContentStatus.Published));
+                var evidenceJson = req.Key == 1 ? """{"imageAssetId":"image1","audioAssetId":"media1"}""" : "{}";
+                repository.UpsertPublishedQuestion(new PublishedQuestion($"q{req.Key}_{i}", "l1", req.Key, PublishedQuestionType.SingleQuestion, "prompt", "{}", "A", "exp", mediaId, passageId, groupId, evidenceJson, "tags", evidenceJson, PublishedContentStatus.Published));
             }
         }
 

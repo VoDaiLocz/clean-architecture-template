@@ -15,6 +15,8 @@ public class ToeicPart1Engine : IToeicPartEngine
         Validate(question);
 
         var choices = ParseChoices(question.OptionsJson);
+        var audioAssetId = ResolveAudioAssetId(question);
+        var imageAssetId = question.MediaAssetId!;
 
         return new ToeicPlayableItem
         {
@@ -22,8 +24,12 @@ public class ToeicPart1Engine : IToeicPartEngine
             Part = question.ToeicPart,
             Prompt = question.Prompt,
             Choices = choices,
-            MediaRefs = new List<string> { question.MediaAssetId! },
-            Payload = new Part1Payload()
+            MediaRefs = new List<string> { imageAssetId, audioAssetId },
+            Payload = new Part1Payload
+            {
+                ImageAssetId = imageAssetId,
+                AudioAssetId = audioAssetId,
+            }
         };
     }
 
@@ -32,6 +38,8 @@ public class ToeicPart1Engine : IToeicPartEngine
         Validate(question);
 
         var choices = ParseChoices(question.OptionsJson);
+        var audioAssetId = ResolveAudioAssetId(question);
+        var imageAssetId = question.MediaAssetId!;
 
         return new ToeicReviewItem
         {
@@ -41,8 +49,12 @@ public class ToeicPart1Engine : IToeicPartEngine
             Choices = choices,
             CorrectAnswer = question.CorrectAnswer,
             Explanation = question.Explanation,
-            MediaRefs = new List<string> { question.MediaAssetId! },
-            Payload = new Part1Payload()
+            MediaRefs = new List<string> { imageAssetId, audioAssetId },
+            Payload = new Part1Payload
+            {
+                ImageAssetId = imageAssetId,
+                AudioAssetId = audioAssetId,
+            }
         };
     }
 
@@ -52,7 +64,70 @@ public class ToeicPart1Engine : IToeicPartEngine
             throw new InvalidOperationException("This engine only supports TOEIC Part 1.");
 
         if (string.IsNullOrWhiteSpace(question.MediaAssetId))
-            throw new InvalidOperationException("Part 1 questions require a MediaAssetId.");
+            throw new InvalidOperationException("Part 1 questions require an image MediaAssetId.");
+
+        _ = ResolveAudioAssetId(question);
+    }
+
+    private static string ResolveAudioAssetId(PublishedQuestion question)
+    {
+        return TryReadStringProperty(question.EvidenceJson, "audioAssetId")
+            ?? TryReadStringProperty(question.SourceTraceJson, "audioAssetId")
+            ?? throw new InvalidOperationException("Part 1 questions require an audioAssetId in evidence/source trace.");
+    }
+
+    private static string? TryReadStringProperty(string json, string propertyName)
+    {
+        if (string.IsNullOrWhiteSpace(json))
+        {
+            return null;
+        }
+
+        try
+        {
+            using var document = JsonDocument.Parse(json);
+            return TryFindString(document.RootElement, propertyName);
+        }
+        catch (JsonException)
+        {
+            return null;
+        }
+    }
+
+    private static string? TryFindString(JsonElement element, string propertyName)
+    {
+        if (element.ValueKind == JsonValueKind.Object)
+        {
+            foreach (var property in element.EnumerateObject())
+            {
+                if (property.NameEquals(propertyName)
+                    && property.Value.ValueKind == JsonValueKind.String
+                    && !string.IsNullOrWhiteSpace(property.Value.GetString()))
+                {
+                    return property.Value.GetString();
+                }
+
+                var nested = TryFindString(property.Value, propertyName);
+                if (!string.IsNullOrWhiteSpace(nested))
+                {
+                    return nested;
+                }
+            }
+        }
+
+        if (element.ValueKind == JsonValueKind.Array)
+        {
+            foreach (var item in element.EnumerateArray())
+            {
+                var nested = TryFindString(item, propertyName);
+                if (!string.IsNullOrWhiteSpace(nested))
+                {
+                    return nested;
+                }
+            }
+        }
+
+        return null;
     }
 
     private static string[] ParseChoices(string optionsJson)

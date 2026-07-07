@@ -76,6 +76,19 @@ public sealed class ValidateToeicDraftContentHandler(IKnowledgeRepository reposi
             issues.Add(new ValidationIssue("missing_group_ref", "Part 3 and Part 4 drafts require group relationship."));
         }
 
+        if (draft.ToeicPart == 1)
+        {
+            if (!HasNonEmptyDataOrPayloadString(draft, "imageAssetId"))
+            {
+                issues.Add(new ValidationIssue("missing_image_asset", "Part 1 drafts require an image asset."));
+            }
+
+            if (!HasNonEmptyDataOrPayloadString(draft, "audioAssetId"))
+            {
+                issues.Add(new ValidationIssue("missing_audio_asset", "Part 1 drafts require an audio asset."));
+            }
+        }
+
         if (draft.ToeicPart is 6 or 7
             && !HasPassageContext(draft))
         {

@@ -24,11 +24,12 @@ public static class CalculateToeicScoreBreakdownTests
         repository.UpsertSourceManifestEntry(source);
         repository.UpsertSourceContainer(new SourceContainer("cont", source.SourceId, source.Provider, "url", "name", source.AccessStatus, DateTimeOffset.UtcNow));
         repository.UpsertSourceAsset(new SourceAsset("asset", "cont", source.SourceId, "file", "mime", ".mp3", 100, SourceAssetRole.Audio, "url", "key", "chk"));
+        repository.UpsertSourceAsset(new SourceAsset("image-asset", "cont", source.SourceId, "image.jpg", "image/jpeg", ".jpg", 100, SourceAssetRole.Image, "url", "image-key", "image-chk"));
 
         var lesson = new PublishedLesson("cont", "unit-1", 1, "Lesson Title", "Objective", "[]", "[]", PublishedContentStatus.Published);
         repository.UpsertPublishedLesson(lesson);
 
-        var q1 = new PublishedQuestion("q1", "cont", 1, PublishedQuestionType.SingleQuestion, "text", "{}", "A", "Exp", "asset", null, null, "[]", "[\"Grammar\"]", "[]", PublishedContentStatus.Published);
+        var q1 = new PublishedQuestion("q1", "cont", 1, PublishedQuestionType.SingleQuestion, "text", "{}", "A", "Exp", "image-asset", null, null, "{\"imageAssetId\":\"image-asset\",\"audioAssetId\":\"asset\"}", "[\"Grammar\"]", "{\"imageAssetId\":\"image-asset\",\"audioAssetId\":\"asset\"}", PublishedContentStatus.Published);
         var q2 = new PublishedQuestion("q2", "cont", 2, PublishedQuestionType.SingleQuestion, "text", "{}", "B", "Exp", "asset", null, null, "[]", "[\"Vocab\"]", "[]", PublishedContentStatus.Published);
         var q3 = new PublishedQuestion("q3", "cont", 5, PublishedQuestionType.SingleQuestion, "text", "{}", "C", "Exp", null, null, null, "[]", "[\"Grammar\"]", "[]", PublishedContentStatus.Published);
 
