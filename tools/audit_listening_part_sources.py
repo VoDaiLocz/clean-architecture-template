@@ -47,9 +47,13 @@ def read_text_corpus() -> list[dict]:
 
 def audio_inventory() -> dict:
     audio_exts = {".mp3", ".wav", ".m4a", ".ogg", ".aac", ".flac", ".wma"}
-    direct_audio = [path for path in (ROOT / "downloads").rglob("*") if path.is_file() and path.suffix.lower() in audio_exts]
+    direct_audio = sorted(
+        [path for path in (ROOT / "downloads").rglob("*") if path.is_file() and path.suffix.lower() in audio_exts],
+        key=lambda path: str(path),
+    )
     zip_files = sorted((ROOT / "downloads").rglob("*.zip"))
     mp4_files = sorted((ROOT / "downloads").rglob("*.mp4"))
+    rar_files = sorted((ROOT / "downloads").rglob("*.rar"))
 
     invalid_zips: list[str] = []
     for path in zip_files:
@@ -62,7 +66,17 @@ def audio_inventory() -> dict:
 
     valid_mp4_audio = 0
     invalid_mp4 = 0
+    html_mp4 = 0
     for path in mp4_files:
+        file_type = subprocess.run(
+            ["file", "--mime-type", str(path)],
+            text=True,
+            capture_output=True,
+            timeout=5,
+            check=False,
+        ).stdout
+        if "text/html" in file_type:
+            html_mp4 += 1
         result = subprocess.run(
             [
                 "ffprobe",
@@ -86,13 +100,65 @@ def audio_inventory() -> dict:
         else:
             invalid_mp4 += 1
 
+    unreadable_rars: list[str] = []
+    for path in rar_files:
+        result = subprocess.run(
+            ["7z", "l", str(path)],
+            text=True,
+            capture_output=True,
+            timeout=30,
+            check=False,
+        )
+        if result.returncode != 0:
+            unreadable_rars.append(str(path.relative_to(ROOT)))
+
+    valid_direct_audio = 0
+    invalid_direct_audio = 0
+    total_direct_audio_seconds = 0.0
+    longest_direct_audio: tuple[str, float] | None = None
+    for path in direct_audio:
+        result = subprocess.run(
+            [
+                "ffprobe",
+                "-v",
+                "error",
+                "-show_entries",
+                "format=duration",
+                "-of",
+                "default=noprint_wrappers=1:nokey=1",
+                str(path),
+            ],
+            text=True,
+            capture_output=True,
+            timeout=10,
+            check=False,
+        )
+        try:
+            duration = float(result.stdout.strip())
+        except ValueError:
+            duration = 0.0
+        if result.returncode == 0 and duration > 0:
+            valid_direct_audio += 1
+            total_direct_audio_seconds += duration
+            if longest_direct_audio is None or duration > longest_direct_audio[1]:
+                longest_direct_audio = (str(path.relative_to(ROOT)), duration)
+        else:
+            invalid_direct_audio += 1
+
     return {
         "directAudio": len(direct_audio),
+        "validDirectAudio": valid_direct_audio,
+        "invalidDirectAudio": invalid_direct_audio,
+        "totalDirectAudioSeconds": total_direct_audio_seconds,
+        "longestDirectAudio": longest_direct_audio,
         "zipFiles": len(zip_files),
         "invalidZipFiles": invalid_zips,
         "mp4Files": len(mp4_files),
+        "htmlMp4Files": html_mp4,
         "validMp4Audio": valid_mp4_audio,
         "invalidMp4": invalid_mp4,
+        "rarFiles": len(rar_files),
+        "unreadableRarFiles": unreadable_rars,
     }
 
 
@@ -110,6 +176,23 @@ def image_count(pdf_path: str) -> int | None:
     if result.returncode != 0:
         return None
     return sum(1 for line in result.stdout.splitlines() if re.search(r"\bimage\b", line))
+
+
+def pdf_page_count(pdf_path: str) -> int | None:
+    absolute = ROOT / pdf_path
+    if not absolute.exists():
+        return None
+    result = subprocess.run(
+        ["pdfinfo", str(absolute)],
+        text=True,
+        capture_output=True,
+        timeout=30,
+        check=False,
+    )
+    if result.returncode != 0:
+        return None
+    match = re.search(r"^Pages:\s+(\d+)", result.stdout, re.MULTILINE)
+    return int(match.group(1)) if match else None
 
 
 def classify_entries(entries: list[dict]) -> list[dict]:
@@ -179,6 +262,9 @@ def render_report(rows: list[dict], audio: dict, queue_counts: Counter, image_sc
     )
 
     sparta_images = image_count("downloads/folders/Sparta Toeic/Sách Sparta TOEIC - Phần nghe.pdf")
+    taking_images = image_count("downloads/noinoi/Taking the TOEIC - Skills and Strategies 1.pdf")
+    taking_pages = pdf_page_count("downloads/noinoi/Taking the TOEIC - Skills and Strategies 1.pdf")
+    longest_audio = audio["longestDirectAudio"]
 
     lines = [
         "# Listening Part 1-4 Source Audit",
@@ -195,11 +281,23 @@ def render_report(rows: list[dict], audio: dict, queue_counts: Counter, image_sc
         "## Audio Readiness",
         "",
         f"- Direct audio files found: `{audio['directAudio']}`",
+        f"- Direct audio files playable by `ffprobe`: `{audio['validDirectAudio']}`",
+        f"- Direct audio files invalid by `ffprobe`: `{audio['invalidDirectAudio']}`",
+        f"- Total direct audio duration: `{round(audio['totalDirectAudioSeconds'] / 60, 2)}` minutes",
+        "- Longest direct audio: "
+        + (
+            f"`{longest_audio[0]}` at `{round(longest_audio[1] / 60, 2)}` minutes"
+            if longest_audio
+            else "`none`"
+        ),
         f"- Zip files found: `{audio['zipFiles']}`",
         f"- Zip files that are HTML/placeholders, not real zip archives: `{len(audio['invalidZipFiles'])}`",
         f"- MP4 files found: `{audio['mp4Files']}`",
+        f"- MP4 files that are actually HTML Google Drive error pages: `{audio['htmlMp4Files']}`",
         f"- MP4 files with readable audio stream: `{audio['validMp4Audio']}`",
         f"- MP4 files invalid or without readable audio: `{audio['invalidMp4']}`",
+        f"- RAR files found: `{audio['rarFiles']}`",
+        f"- RAR files unreadable by `7z l`: `{len(audio['unreadableRarFiles'])}`",
         "",
         "## PDF Queue State",
         "",
@@ -228,19 +326,32 @@ def render_report(rows: list[dict], audio: dict, queue_counts: Counter, image_sc
             "",
             "## Best Production Bundles",
             "",
-            "1. `downloads/folders/Sparta Toeic/`",
+            "1. `downloads/noinoi/`",
+            "   - Question book: `Taking the TOEIC - Skills and Strategies 1.pdf`",
+            "   - Audio archive: `Audio Taking the TOEIC 1-20260706T075154Z-3-001.zip`",
+            "   - Extracted audio: `162` playable MP3 tracks, numbered `001-162`, no missing track numbers.",
+            "   - PDF status: "
+            + (
+                f"`{taking_pages}` pages with `{taking_images}` image objects; text layer is effectively empty, so OCR is required."
+                if taking_pages is not None and taking_images is not None
+                else "image/scanned PDF; OCR is required."
+            ),
+            "   - Production status: best current audio source, but question extraction needs OCR before publish.",
+            "2. `downloads/folders/Sparta Toeic/`",
             "   - Question book: `Sách Sparta TOEIC - Phần nghe.pdf`",
             "   - Transcript: `Lời thoại (transcript) Sách Sparta TOEIC.pdf`",
             "   - Answer key: `Đáp án (answer key) Sách Sparta TOEIC - Phần nghe.pdf`",
-            "   - Status: text and images are available; audio is missing.",
-            "2. `downloads/folders/Spart Toeic Quyển 2/`",
+            "   - Status: text and images are available; matching audio still needs to be linked.",
+            "3. `downloads/folders/Spart Toeic Quyển 2/`",
             "   - Question book: `Sách Sparta TOEIC LCRC.pdf`",
             "   - Transcript: `Lời thoại (transcript) Sách Sparta TOEIC LC+RC.pdf`",
             "   - Answer key: `Đáp án (answer key) Sách Sparta TOEIC LC & RC.pdf`",
-            "   - Status: text is available; audio is missing.",
-            "3. `downloads/folders/TOEIC Preparation LC + RC Volume 1, 2/` and duplicated `downloads/folders/Thư mục/`",
+            "   - Status: text is available; matching audio still needs to be linked.",
+            "4. `downloads/folders/TOEIC Preparation LC + RC Volume 1, 2/` and duplicated `downloads/folders/Thư mục/`",
             "   - Script/answer file: `TPLCRC2-ScriptsAK.pdf`",
             "   - Status: text is available; the downloaded audio zip files are placeholders, not usable archives.",
+            "5. `downloads/folders/New TOEIC 700/*.rar`",
+            "   - Status: RAR headers exist, but `7z` cannot list or test either archive, so their contents are not currently usable as audio evidence.",
             "",
         ]
     )
@@ -265,8 +376,9 @@ def render_report(rows: list[dict], audio: dict, queue_counts: Counter, image_sc
             "## Production Interpretation",
             "",
             "- `Part 1-4 content exists`: yes.",
-            "- `Part 1-4 ready to publish as TOEIC listening practice`: no, because valid audio is missing.",
-            "- Safe next implementation: create listening drafts from Sparta as `BlockedMissingAudio`, then import/publish only after audio is re-downloaded or linked.",
+            "- `47 mp3 files in the current workspace`: not exactly. The current scan finds `162` direct playable MP3 files under `downloads/noinoi`.",
+            "- `Part 1-4 ready to publish as TOEIC listening practice`: partially. Audio exists for `Taking the TOEIC 1`, but its question PDF is scanned/image-only and needs OCR before item-level publish.",
+            "- Safe next implementation: OCR `downloads/noinoi/Taking the TOEIC - Skills and Strategies 1.pdf`, align question groups with tracks `001-162`, then validate and publish only groups with matched audio/question/answer evidence.",
         ]
     )
     return "\n".join(lines) + "\n"
@@ -281,8 +393,11 @@ def main() -> int:
     print(f"LISTENING_AUDIT rows={len(rows)} report={REPORT_PATH}")
     print(
         "AUDIO "
-        f"direct={audio['directAudio']} zip={audio['zipFiles']} invalidZip={len(audio['invalidZipFiles'])} "
-        f"mp4={audio['mp4Files']} validMp4Audio={audio['validMp4Audio']}"
+        f"direct={audio['directAudio']} validDirect={audio['validDirectAudio']} "
+        f"minutes={round(audio['totalDirectAudioSeconds'] / 60, 2)} "
+        f"zip={audio['zipFiles']} invalidZip={len(audio['invalidZipFiles'])} "
+        f"mp4={audio['mp4Files']} htmlMp4={audio['htmlMp4Files']} validMp4Audio={audio['validMp4Audio']} "
+        f"rar={audio['rarFiles']} unreadableRar={len(audio['unreadableRarFiles'])}"
     )
     return 0
 

@@ -9,12 +9,19 @@
 
 ## Audio Readiness
 
-- Direct audio files found: `0`
-- Zip files found: `2`
+- Direct audio files found: `162`
+- Direct audio files playable by `ffprobe`: `162`
+- Direct audio files invalid by `ffprobe`: `0`
+- Total direct audio duration: `158.78` minutes
+- Longest direct audio: `downloads/noinoi/Audio Taking the TOEIC 1-20260706T075154Z-3-001/Audio Taking the TOEIC  1/162 Track162.mp3` at `47.36` minutes
+- Zip files found: `3`
 - Zip files that are HTML/placeholders, not real zip archives: `2`
 - MP4 files found: `49`
+- MP4 files that are actually HTML Google Drive error pages: `49`
 - MP4 files with readable audio stream: `0`
 - MP4 files invalid or without readable audio: `49`
+- RAR files found: `2`
+- RAR files unreadable by `7z l`: `2`
 
 ## PDF Queue State
 
@@ -39,19 +46,27 @@
 
 ## Best Production Bundles
 
-1. `downloads/folders/Sparta Toeic/`
+1. `downloads/noinoi/`
+   - Question book: `Taking the TOEIC - Skills and Strategies 1.pdf`
+   - Audio archive: `Audio Taking the TOEIC 1-20260706T075154Z-3-001.zip`
+   - Extracted audio: `162` playable MP3 tracks, numbered `001-162`, no missing track numbers.
+   - PDF status: `279` pages with `279` image objects; text layer is effectively empty, so OCR is required.
+   - Production status: best current audio source, but question extraction needs OCR before publish.
+2. `downloads/folders/Sparta Toeic/`
    - Question book: `Sách Sparta TOEIC - Phần nghe.pdf`
    - Transcript: `Lời thoại (transcript) Sách Sparta TOEIC.pdf`
    - Answer key: `Đáp án (answer key) Sách Sparta TOEIC - Phần nghe.pdf`
-   - Status: text and images are available; audio is missing.
-2. `downloads/folders/Spart Toeic Quyển 2/`
+   - Status: text and images are available; matching audio still needs to be linked.
+3. `downloads/folders/Spart Toeic Quyển 2/`
    - Question book: `Sách Sparta TOEIC LCRC.pdf`
    - Transcript: `Lời thoại (transcript) Sách Sparta TOEIC LC+RC.pdf`
    - Answer key: `Đáp án (answer key) Sách Sparta TOEIC LC & RC.pdf`
-   - Status: text is available; audio is missing.
-3. `downloads/folders/TOEIC Preparation LC + RC Volume 1, 2/` and duplicated `downloads/folders/Thư mục/`
+   - Status: text is available; matching audio still needs to be linked.
+4. `downloads/folders/TOEIC Preparation LC + RC Volume 1, 2/` and duplicated `downloads/folders/Thư mục/`
    - Script/answer file: `TPLCRC2-ScriptsAK.pdf`
    - Status: text is available; the downloaded audio zip files are placeholders, not usable archives.
+5. `downloads/folders/New TOEIC 700/*.rar`
+   - Status: RAR headers exist, but `7z` cannot list or test either archive, so their contents are not currently usable as audio evidence.
 
 
 ## Image/OCR Listening Candidates
@@ -85,5 +100,6 @@ These are likely listening-related PDFs but currently require OCR/manual extract
 ## Production Interpretation
 
 - `Part 1-4 content exists`: yes.
-- `Part 1-4 ready to publish as TOEIC listening practice`: no, because valid audio is missing.
-- Safe next implementation: create listening drafts from Sparta as `BlockedMissingAudio`, then import/publish only after audio is re-downloaded or linked.
+- `47 mp3 files in the current workspace`: not exactly. The current scan finds `162` direct playable MP3 files under `downloads/noinoi`.
+- `Part 1-4 ready to publish as TOEIC listening practice`: partially. Audio exists for `Taking the TOEIC 1`, but its question PDF is scanned/image-only and needs OCR before item-level publish.
+- Safe next implementation: OCR `downloads/noinoi/Taking the TOEIC - Skills and Strategies 1.pdf`, align question groups with tracks `001-162`, then validate and publish only groups with matched audio/question/answer evidence.
