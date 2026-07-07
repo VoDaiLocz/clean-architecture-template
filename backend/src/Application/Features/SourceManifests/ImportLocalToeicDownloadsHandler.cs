@@ -10,6 +10,7 @@ public sealed record ImportLocalToeicDownloadsCommand(string DownloadsRootPath);
 public sealed record ImportLocalToeicDownloadsResult(
     int ScannedFileCount,
     int ImportedPdfCount,
+    int ImportedAudioCount,
     int RejectedFileCount
 );
 
@@ -31,7 +32,8 @@ public sealed class ImportLocalToeicDownloadsHandler(IKnowledgeRepository reposi
         }
 
         var scanned = 0;
-        var imported = 0;
+        var importedPdfs = 0;
+        var importedAudio = 0;
         var rejected = 0;
         var files = Directory
             .EnumerateFiles(root, "*", SearchOption.AllDirectories)
@@ -42,20 +44,23 @@ public sealed class ImportLocalToeicDownloadsHandler(IKnowledgeRepository reposi
         {
             scanned++;
             var path = files[index];
-            if (!IsValidPdf(path))
+            var fileInfo = new FileInfo(path);
+            var extension = fileInfo.Extension.ToLowerInvariant();
+            var isValidPdf = IsValidPdf(path);
+            var isSupportedAudio = IsSupportedAudio(extension);
+
+            if (!isValidPdf && !isSupportedAudio)
             {
                 rejected++;
                 var rejectedRelativePath = NormalizeRelativePath(Path.GetRelativePath(root, path));
                 var rejectedPathHash = ShortHash(rejectedRelativePath);
-                var rejectedFileInfo = new FileInfo(path);
-                var extension = rejectedFileInfo.Extension.ToLowerInvariant();
 
                 var reason = RejectedReason.UnsupportedMime;
                 if (extension == ".pdf")
                 {
                     reason = RejectedReason.InvalidPdfHeader;
                 }
-                else if (rejectedFileInfo.Length < 10000 && !extension.Contains("mp4") && !extension.Contains("zip"))
+                else if (fileInfo.Length < 10000 && !extension.Contains("mp4") && !extension.Contains("zip"))
                 {
                     reason = RejectedReason.DriveHtmlPlaceholder;
                 }
@@ -64,7 +69,7 @@ public sealed class ImportLocalToeicDownloadsHandler(IKnowledgeRepository reposi
                     RejectionId: $"local-rejected-{rejectedPathHash}",
                     FilePath: rejectedRelativePath,
                     Extension: extension,
-                    SizeBytes: rejectedFileInfo.Length,
+                    SizeBytes: fileInfo.Length,
                     Reason: reason,
                     AuditNotes: "Failed IsValidPdf check.",
                     RejectedAtUtc: DateTimeOffset.UtcNow
@@ -78,10 +83,13 @@ public sealed class ImportLocalToeicDownloadsHandler(IKnowledgeRepository reposi
             var sourceId = $"local-download-{pathHash}";
             var fileName = Path.GetFileName(path);
             var title = Path.GetFileNameWithoutExtension(path).Trim();
-            var fileInfo = new FileInfo(path);
             var checksum = Sha256File(path);
             var materialClass = ClassifyMaterial(title, relativePath);
             var hasAnswerKey = ContainsAny($"{title} {relativePath}", "answer key", "đáp án", "dap an", "scriptsak", "script");
+            var detectedRole = isSupportedAudio ? SourceAssetRole.Audio : SourceAssetRole.Pdf;
+            var mimeType = isSupportedAudio ? MimeTypeForAudio(extension) : "application/pdf";
+            var hasPdf = !isSupportedAudio;
+            var hasAudio = isSupportedAudio;
 
             var source = new SourceManifestEntry(
                 SourceId: sourceId,
@@ -93,11 +101,11 @@ public sealed class ImportLocalToeicDownloadsHandler(IKnowledgeRepository reposi
                 PrimaryMaterialClass: materialClass,
                 AccessStatus: SourceAccessStatus.Accessible,
                 Evidence: new SourceEvidenceFlags(
-                    HasPdf: true,
-                    HasAudio: false,
+                    HasPdf: hasPdf,
+                    HasAudio: hasAudio,
                     HasImage: false,
                     HasTranscript: IsTranscript(title, relativePath),
-                    HasAnswerKey: hasAnswerKey
+                    HasAnswerKey: hasPdf && hasAnswerKey
                 ),
                 AuditNotes: $"Imported from downloads local corpus. RelativePath={relativePath}; Sha256={checksum}"
             );
@@ -115,10 +123,10 @@ public sealed class ImportLocalToeicDownloadsHandler(IKnowledgeRepository reposi
                 ContainerId: container.ContainerId,
                 SourceId: sourceId,
                 FileName: fileName,
-                MimeType: "application/pdf",
-                Extension: ".pdf",
+                MimeType: mimeType,
+                Extension: extension,
                 SizeBytes: fileInfo.Length,
-                DetectedRole: SourceAssetRole.Pdf,
+                DetectedRole: detectedRole,
                 ProviderUrl: source.Url,
                 ObjectKey: $"local-downloads/{relativePath}",
                 Checksum: checksum
@@ -127,18 +135,46 @@ public sealed class ImportLocalToeicDownloadsHandler(IKnowledgeRepository reposi
             repository.UpsertSourceManifestEntry(source);
             repository.UpsertSourceContainer(container);
             repository.UpsertSourceAsset(asset);
-            imported++;
+            if (isSupportedAudio)
+            {
+                importedAudio++;
+            }
+            else
+            {
+                importedPdfs++;
+            }
         }
 
-        return new ImportLocalToeicDownloadsResult(scanned, imported, rejected);
+        return new ImportLocalToeicDownloadsResult(scanned, importedPdfs, importedAudio, rejected);
     }
 
     private static bool IsValidPdf(string path)
     {
+        if (!string.Equals(Path.GetExtension(path), ".pdf", StringComparison.OrdinalIgnoreCase))
+        {
+            return false;
+        }
+
         Span<byte> header = stackalloc byte[5];
         using var stream = File.OpenRead(path);
         return stream.Read(header) == header.Length && Encoding.ASCII.GetString(header) == "%PDF-";
     }
+
+    private static bool IsSupportedAudio(string extension) =>
+        extension is ".mp3" or ".wav" or ".m4a" or ".ogg" or ".aac" or ".flac" or ".wma";
+
+    private static string MimeTypeForAudio(string extension) =>
+        extension switch
+        {
+            ".mp3" => "audio/mpeg",
+            ".wav" => "audio/wav",
+            ".m4a" => "audio/mp4",
+            ".ogg" => "audio/ogg",
+            ".aac" => "audio/aac",
+            ".flac" => "audio/flac",
+            ".wma" => "audio/x-ms-wma",
+            _ => "application/octet-stream",
+        };
 
     private static string NormalizeRelativePath(string relativePath) =>
         relativePath.Replace(Path.DirectorySeparatorChar, '/').Replace(Path.AltDirectorySeparatorChar, '/');

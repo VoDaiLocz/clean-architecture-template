@@ -55,6 +55,16 @@ if (args.Contains("--extract-local-pdf-blocks", StringComparer.Ordinal))
     return ExtractLocalPdfBlocksFromQueue(args);
 }
 
+if (args.Contains("--import-local-downloads", StringComparer.Ordinal))
+{
+    return ImportLocalDownloads(args);
+}
+
+if (args.Contains("--extract-real-audio-metadata", StringComparer.Ordinal))
+{
+    return ExtractRealAudioMetadata(args);
+}
+
 var tests = new List<(string Name, Action Run)>
 {
     ("ToeicPlayableItem does not leak answer", ToeicItemContractsTests.ToeicPlayableItemDoesNotLeakAnswer),
@@ -553,6 +563,87 @@ static int ExtractLocalPdfBlocksFromQueue(string[] args)
     Console.WriteLine($"LOCAL_PDF_BLOCK_EXTRACTION assets={extractedAssets} pages={extractedPages} blocks={extractedBlocks} failed={failed}");
     Console.WriteLine($"DB_COUNTS extracted_pages={repository.Count("extracted_pages")} extracted_text_blocks={repository.Count("extracted_text_blocks")}");
     return failed == 0 ? 0 : 2;
+}
+
+static int ImportLocalDownloads(string[] args)
+{
+    var dbPath = Path.GetFullPath("backend/src/Api/toeic-normalization.db");
+    if (!File.Exists(dbPath))
+    {
+        Console.Error.WriteLine($"Real normalization DB not found: {dbPath}");
+        return 1;
+    }
+
+    var downloadsRoot = args
+        .FirstOrDefault(arg => arg.StartsWith("--downloads-root=", StringComparison.Ordinal))
+        ?.Split('=', 2)[1]
+        ?? "downloads";
+    downloadsRoot = Path.GetFullPath(downloadsRoot);
+    if (!Directory.Exists(downloadsRoot))
+    {
+        Console.Error.WriteLine($"Downloads root not found: {downloadsRoot}");
+        return 1;
+    }
+
+    using var repository = SqliteKnowledgeRepository.FromConnectionString($"Data Source={dbPath}");
+    repository.Initialize();
+
+    var handler = new ImportLocalToeicDownloadsHandler(repository);
+    var result = handler.Handle(new ImportLocalToeicDownloadsCommand(downloadsRoot));
+
+    Console.WriteLine(
+        $"LOCAL_DOWNLOADS_IMPORT scanned={result.ScannedFileCount} pdf={result.ImportedPdfCount} audio={result.ImportedAudioCount} rejected={result.RejectedFileCount}");
+    Console.WriteLine(
+        $"DB_COUNTS source_assets={repository.Count("source_assets")} audio_assets={repository.GetAllSourceAssets().Count(asset => asset.DetectedRole == SourceAssetRole.Audio)}");
+    return result.ImportedPdfCount > 0 || result.ImportedAudioCount > 0 ? 0 : 2;
+}
+
+static int ExtractRealAudioMetadata(string[] args)
+{
+    var dbPath = Path.GetFullPath("backend/src/Api/toeic-normalization.db");
+    if (!File.Exists(dbPath))
+    {
+        Console.Error.WriteLine($"Real normalization DB not found: {dbPath}");
+        return 1;
+    }
+
+    var downloadsRoot = args
+        .FirstOrDefault(arg => arg.StartsWith("--downloads-root=", StringComparison.Ordinal))
+        ?.Split('=', 2)[1]
+        ?? "downloads";
+    downloadsRoot = Path.GetFullPath(downloadsRoot);
+    if (!Directory.Exists(downloadsRoot))
+    {
+        Console.Error.WriteLine($"Downloads root not found: {downloadsRoot}");
+        return 1;
+    }
+
+    using var repository = SqliteKnowledgeRepository.FromConnectionString($"Data Source={dbPath}");
+    repository.Initialize();
+
+    var probe = new Infrastructure.Extraction.LocalFileAudioMetadataProbe(downloadsRoot);
+    var handler = new ExtractToeicAudioMetadataHandler(repository, probe);
+    var extracted = 0;
+    var failed = 0;
+
+    foreach (var asset in repository.GetAllSourceAssets()
+        .Where(asset => asset.DetectedRole == SourceAssetRole.Audio)
+        .OrderBy(asset => asset.ObjectKey, StringComparer.Ordinal))
+    {
+        try
+        {
+            extracted += handler.Handle(new ExtractToeicAudioMetadataCommand(asset.AssetId)).ExtractedAudioMetadataCount;
+        }
+        catch (Exception ex)
+        {
+            failed++;
+            Console.Error.WriteLine($"AUDIO_METADATA_FAIL asset={asset.AssetId} file={asset.FileName} error={ex.Message}");
+        }
+    }
+
+    Console.WriteLine($"REAL_AUDIO_METADATA extracted={extracted} failed={failed}");
+    Console.WriteLine($"DB_COUNTS source_audio_metadata={repository.Count("source_audio_metadata")}");
+    return extracted > 0 && failed == 0 ? 0 : 2;
 }
 
 static SourceAsset ResolveManualExtractionAsset(IKnowledgeRepository repository, ManualExtractedItem item)
@@ -1271,8 +1362,10 @@ static class ApplicationTests
         Directory.CreateDirectory(Path.Combine(root, "folders", "Sparta Toeic"));
         var validPdfPath = Path.Combine(root, "folders", "Sparta Toeic", "Đáp án (answer key) Sách Sparta TOEIC.pdf");
         var fakePdfPath = Path.Combine(root, "folders", "Sparta Toeic", "video-1.pdf");
+        var audioPath = Path.Combine(root, "folders", "Sparta Toeic", "001 Track001.mp3");
         var notePath = Path.Combine(root, "folders", "Sparta Toeic", "note.txt");
         File.WriteAllBytes(validPdfPath, Encoding.ASCII.GetBytes("%PDF-1.7\n1 0 obj\n<<>>\nendobj\n"));
+        File.WriteAllBytes(audioPath, Encoding.ASCII.GetBytes("fake mp3 bytes for inventory import"));
         File.WriteAllText(fakePdfPath, "<html>Google Drive sign in</html>");
         File.WriteAllText(notePath, "not a pdf");
 
@@ -1282,18 +1375,27 @@ static class ApplicationTests
             var result = handler.Handle(new ImportLocalToeicDownloadsCommand(root));
             var secondResult = handler.Handle(new ImportLocalToeicDownloadsCommand(root));
 
-            Assert.Equal(3, result.ScannedFileCount, "Importer should scan files recursively.");
+            Assert.Equal(4, result.ScannedFileCount, "Importer should scan files recursively.");
             Assert.Equal(1, result.ImportedPdfCount, "Only valid PDF bytes should be imported.");
+            Assert.Equal(1, result.ImportedAudioCount, "Supported local audio files should be registered as source assets.");
             Assert.Equal(2, result.RejectedFileCount, "Fake PDF and non-PDF files must be rejected.");
             Assert.Equal(1, secondResult.ImportedPdfCount, "Repeated import should still report the valid source.");
-            Assert.Equal(1, repository.Count("source_manifest_entries"), "Repeated import must not duplicate local source rows.");
-            Assert.Equal(1, repository.Count("source_containers"), "Repeated import must not duplicate containers.");
-            Assert.Equal(1, repository.Count("source_assets"), "Repeated import must not duplicate assets.");
-            var source = repository.GetSourceManifestEntries().Single();
-            Assert.Equal(MaterialClass.TestBook, source.PrimaryMaterialClass, "Local TOEIC PDF should be classified by title.");
-            Assert.True(source.Evidence.HasPdf, "Local PDF source must record PDF evidence.");
-            Assert.True(source.Evidence.HasAnswerKey, "Answer key PDFs should be flagged for later parsing.");
-            Assert.True(source.AuditNotes.Contains("downloads local corpus", StringComparison.Ordinal), "Audit note should identify local corpus origin.");
+            Assert.Equal(1, secondResult.ImportedAudioCount, "Repeated import should still report the audio source.");
+            Assert.Equal(2, repository.Count("source_manifest_entries"), "Repeated import must not duplicate local source rows.");
+            Assert.Equal(2, repository.Count("source_containers"), "Repeated import must not duplicate containers.");
+            Assert.Equal(2, repository.Count("source_assets"), "Repeated import must not duplicate assets.");
+            var sources = repository.GetSourceManifestEntries();
+            var pdfSource = sources.Single(source => source.Title.Contains("Đáp án", StringComparison.Ordinal));
+            var audioSource = sources.Single(source => source.Title.Contains("Track001", StringComparison.Ordinal));
+            Assert.Equal(MaterialClass.TestBook, pdfSource.PrimaryMaterialClass, "Local TOEIC PDF should be classified by title.");
+            Assert.True(pdfSource.Evidence.HasPdf, "Local PDF source must record PDF evidence.");
+            Assert.True(pdfSource.Evidence.HasAnswerKey, "Answer key PDFs should be flagged for later parsing.");
+            Assert.True(audioSource.Evidence.HasAudio, "Local MP3 source must record audio evidence.");
+            Assert.False(audioSource.Evidence.HasPdf, "Audio source must not pretend to be a PDF.");
+            var audioAsset = repository.GetAllSourceAssets().Single(asset => asset.DetectedRole == SourceAssetRole.Audio);
+            Assert.Equal(".mp3", audioAsset.Extension, "Audio extension should persist.");
+            Assert.Equal("audio/mpeg", audioAsset.MimeType, "MP3 mime type should persist.");
+            Assert.True(pdfSource.AuditNotes.Contains("downloads local corpus", StringComparison.Ordinal), "Audit note should identify local corpus origin.");
         }
         finally
         {
