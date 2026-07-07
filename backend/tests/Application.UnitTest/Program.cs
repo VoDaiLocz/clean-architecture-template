@@ -65,6 +65,11 @@ if (args.Contains("--extract-real-audio-metadata", StringComparer.Ordinal))
     return ExtractRealAudioMetadata(args);
 }
 
+if (args.Contains("--validate-manual-part1-house", StringComparer.Ordinal))
+{
+    return ValidateManualPart1House();
+}
+
 var tests = new List<(string Name, Action Run)>
 {
     ("ToeicPlayableItem does not leak answer", ToeicItemContractsTests.ToeicPlayableItemDoesNotLeakAnswer),
@@ -644,6 +649,40 @@ static int ExtractRealAudioMetadata(string[] args)
     Console.WriteLine($"REAL_AUDIO_METADATA extracted={extracted} failed={failed}");
     Console.WriteLine($"DB_COUNTS source_audio_metadata={repository.Count("source_audio_metadata")}");
     return extracted > 0 && failed == 0 ? 0 : 2;
+}
+
+static int ValidateManualPart1House()
+{
+    var dbPath = Path.GetFullPath("backend/src/Api/toeic-normalization.db");
+    if (!File.Exists(dbPath))
+    {
+        Console.Error.WriteLine($"Real normalization DB not found: {dbPath}");
+        return 1;
+    }
+
+    using var repository = SqliteKnowledgeRepository.FromConnectionString($"Data Source={dbPath}");
+    repository.Initialize();
+
+    var handler = new ValidateToeicDraftContentHandler(repository);
+    var valid = 0;
+    var invalid = 0;
+    var assetIds = repository.GetAllSourceAssets()
+        .Where(asset => asset.DetectedRole == SourceAssetRole.Audio)
+        .Select(asset => asset.AssetId)
+        .Where(assetId => repository.GetDraftContentItems(assetId)
+            .Any(draft => draft.DraftId.StartsWith("draft-manual-taking-toeic-1-part1-house-q", StringComparison.Ordinal)))
+        .OrderBy(assetId => assetId, StringComparer.Ordinal)
+        .ToArray();
+
+    foreach (var assetId in assetIds)
+    {
+        var result = handler.Handle(new ValidateToeicDraftContentCommand(assetId));
+        valid += result.ValidDraftCount;
+        invalid += result.InvalidDraftCount;
+    }
+
+    Console.WriteLine($"MANUAL_PART1_HOUSE_VALIDATE assets={assetIds.Length} valid={valid} invalid={invalid}");
+    return assetIds.Length == 12 && valid == 12 && invalid == 0 ? 0 : 2;
 }
 
 static SourceAsset ResolveManualExtractionAsset(IKnowledgeRepository repository, ManualExtractedItem item)
